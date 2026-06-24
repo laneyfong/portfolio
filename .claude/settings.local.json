@@ -54,7 +54,21 @@
       "Bash(node about_zoom2.js)",
       "Bash(pkill -f vite)",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(xargs ls -la)",
+      "Bash(node qa2.js)",
+      "Bash(node qa3.js)",
+      "Bash(node qa3_zoom2.js)",
+      "Bash(cp \"/Users/laneyfong/portfolio/Foodie.jpg\" foodie_preview.jpg)",
+      "Bash(cp \"/Users/laneyfong/portfolio/NewYork.jpeg\" newyork_preview.jpg)",
+      "Bash(node qa3_zoom4.js)",
+      "Bash(node check_rect.js)",
+      "Bash(grep -n \"RowAnnotations\\\\|pointerEvents: \\\\\"none\\\\\",\\\\s*$\" /Users/laneyfong/portfolio/src/AboutPage.tsx)",
+      "Bash(node box_tight.js)",
+      "Bash(node home_qa.js)"
     ]
   }
 }

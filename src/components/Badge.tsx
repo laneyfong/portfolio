@@ -40,11 +40,11 @@ const Badge: FC<BadgeProps> = ({
   return (
     <div
       style={{
-        width: "clamp(280px, 92vw, 436px)",
+        width: "clamp(260px, 82vw, 400px)",
         backgroundColor: tokens.color.white,
         borderRadius: tokens.radius.xl,
         boxShadow: tokens.shadow.badge,
-        padding: "28px clamp(20px, 8vw, 47px) 48px",
+        padding: "24px clamp(16px, 7vw, 38px) 40px",
         fontFamily: tokens.font.sans,
         position: "relative",
         boxSizing: "border-box",
@@ -53,11 +53,11 @@ const Badge: FC<BadgeProps> = ({
       <div
         style={{
           position: "absolute",
-          top: 28,
+          top: 24,
           left: "50%",
           transform: "translateX(-50%)",
-          width: 28,
-          height: 28,
+          width: 24,
+          height: 24,
           borderRadius: "50%",
           backgroundColor: tokens.color.white,
           boxShadow: tokens.shadow.insetCircle,
@@ -66,7 +66,7 @@ const Badge: FC<BadgeProps> = ({
 
       <p
         style={{
-          margin: "56px 0 8px",
+          margin: "46px 0 6px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text["2xl"],
@@ -80,7 +80,7 @@ const Badge: FC<BadgeProps> = ({
 
       <p
         style={{
-          margin: "0 0 24px",
+          margin: "0 0 20px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.light,
           fontSize: tokens.text.md,
@@ -101,7 +101,7 @@ const Badge: FC<BadgeProps> = ({
 
       <div
         style={{
-          width: "min(213px, 100%)",
+          width: "min(180px, 100%)",
           aspectRatio: "213 / 252",
           margin: "0 auto",
           backgroundImage: photo ? `url(${photo})` : "none",
@@ -112,7 +112,7 @@ const Badge: FC<BadgeProps> = ({
         }}
       />
 
-      <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 8 }}>
+      <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 6 }}>
         {rows.map((row) => (
           <div
             key={row.label}
@@ -120,20 +120,20 @@ const Badge: FC<BadgeProps> = ({
               display: "flex",
               flexDirection: "row",
               alignItems: "flex-start",
-              gap: "clamp(20px, 8vw, 48px)",
-              minHeight: row.large ? 41 : 24,
+              gap: "clamp(16px, 7vw, 40px)",
+              minHeight: row.large ? 34 : 20,
             }}
           >
             <span
               style={{
-                width: 90,
+                width: 78,
                 flexShrink: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
                 fontSize: tokens.text.base,
                 color: tokens.color.body,
                 lineHeight: tokens.leading.none,
-                paddingTop: row.large ? 10 : 0,
+                paddingTop: row.large ? 8 : 0,
               }}
             >
               {row.label}
@@ -155,7 +155,7 @@ const Badge: FC<BadgeProps> = ({
         ))}
       </div>
 
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 22 }}>
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 18 }}>
         <button
           onClick={onCTAClick}
           onMouseEnter={() => setHovered(true)}
@@ -164,7 +164,7 @@ const Badge: FC<BadgeProps> = ({
             display: "inline-flex",
             alignItems: "center",
             gap: 10,
-            padding: "4px 6px",
+            padding: "12px 20px",
             borderRadius: tokens.radius.full,
             border: `0.5px solid ${tokens.color.navActive}`,
             backgroundColor: "transparent",

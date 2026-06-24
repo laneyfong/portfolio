@@ -44,16 +44,16 @@ export const SocialIconLink: FC<SocialIconLinkProps> = ({ href, label, external,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        width: 36,
-        height: 36,
+        width: isDark ? 36 : 40,
+        height: isDark ? 36 : 40,
         borderRadius: "50%",
-        border: isDark
-          ? `1px solid rgba(255, 255, 255, ${hovered ? 0.55 : 0.22})`
-          : `1px solid ${hovered ? tokens.color.navActive : tokens.color.cardBorder}`,
-        color: isDark ? tokens.color.white : tokens.color.body,
+        border: isDark ? `1px solid rgba(255, 255, 255, ${hovered ? 0.55 : 0.22})` : "none",
+        background: isDark ? "transparent" : hovered ? tokens.color.dark : tokens.color.ink,
+        boxShadow: isDark ? "none" : tokens.shadow.subtle,
+        color: isDark ? tokens.color.white : tokens.color.white,
         opacity: isDark ? (hovered ? 1 : 0.78) : 1,
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
-        transition: "opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease",
+        transition: "opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease",
       }}
     >
       {children}

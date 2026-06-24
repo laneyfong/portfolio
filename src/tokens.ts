@@ -56,6 +56,8 @@ export const tokens = {
     imageFrame: "inset 0 0 0 4px #F1F0EE, 0px 4px 20px 0px rgba(0, 0, 0, 0.10)",
     // Brand-blue outline glow for hovered work cards — sits right at the border, doesn't wash the whole card.
     cardGlowHover: "0 0 0 1.5px #8DC8E4, 0 0 14px 0px rgba(141, 200, 228, 0.55)",
+    // Same hue as `card`, just larger/darker — used where hover should read as "lifted", not "glowing".
+    cardHoverLarge: "0px 16px 44px 0px rgba(0, 0, 0, 0.24)",
   },
   layout: {
     // Fixed nav pill: top offset (24) + its own rendered height (~46) + a little breathing room.

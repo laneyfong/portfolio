@@ -210,7 +210,7 @@ const Portfolio: FC = () => {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 24,
+            marginBottom: 56,
           }}
         >
           <img
@@ -219,7 +219,7 @@ const Portfolio: FC = () => {
             aria-hidden
             style={{
               position: "absolute",
-              top: -40,
+              top: -10,
               left: "50%",
               transform: "translateX(-50%)",
               width: "min(1100px, 96vw)",
@@ -230,7 +230,7 @@ const Portfolio: FC = () => {
             }}
           />
           <div style={{ position: "relative", zIndex: 1 }}>
-            <HangingCard stringHeight={48}>
+            <HangingCard stringHeight={48} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
             </HangingCard>
           </div>

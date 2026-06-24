@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import { tokens } from "./tokens";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import PhotoCollage from "./components/PhotoCollage";
 import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import aboutProudPhoto from "./assets/about-proud-photo.jpg";
-import aboutTravelPhoto from "./assets/about-travel-photo.jpg";
+import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
+import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 
 // TODO: link to a real hosted resume file once one exists.
 const RESUME_URL = "#";
 
-const Italic: FC<{ children: string }> = ({ children }) => (
-  <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>{children}</em>
+const Italic: FC<{ children: string; color?: string }> = ({ children, color }) => (
+  <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400, color }}>{children}</em>
 );
 
 function withItalics(text: string, terms: string[]): ReactNode[] {
@@ -21,31 +21,16 @@ function withItalics(text: string, terms: string[]): ReactNode[] {
   return text.split(pattern).map((part, i) => (terms.includes(part) ? <Italic key={i}>{part}</Italic> : part));
 }
 
-const PinIcon: FC = () => (
-  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-    <path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.6 11.4 7.3 12a1 1 0 0 0 1.4 0c.7-.6 7.3-6.6 7.3-12 0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-  </svg>
-);
-
-const pillStyle = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 6,
-  padding: "6px 12px",
-  borderRadius: tokens.radius.full,
-  background: "rgba(255, 255, 255, 0.88)",
-  backdropFilter: "blur(6px)",
-  WebkitBackdropFilter: "blur(6px)",
-  fontFamily: tokens.font.sans,
-  fontSize: tokens.text.sm,
-  fontWeight: tokens.weight.regular,
-  color: tokens.color.ink,
-  whiteSpace: "nowrap" as const,
-};
-
 const HERO_WIDTH = "min(500px, 88vw)";
 const PANEL_WIDTH = 252;
 const ROW_GAP = 40;
+const PEEK_HEIGHT = 28;
+
+const STORY_SLIDES = [
+  { src: aboutStoryNewYork, caption: "I love traveling!" },
+  { src: aboutStoryFoodie, caption: "I am a huge foodie" },
+];
+const STORY_DURATION_MS = 6000;
 
 const AboutPage: FC = () => {
   const [revealed, setRevealed] = useState(false);
@@ -54,6 +39,7 @@ const AboutPage: FC = () => {
   );
   const [photoHovered, setPhotoHovered] = useState(false);
   const [resumeHovered, setResumeHovered] = useState(false);
+  const [storySlide, setStorySlide] = useState(0);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -62,20 +48,42 @@ const AboutPage: FC = () => {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  // Re-arms on every slide change (including manual taps), so a tap resets the clock.
+  useEffect(() => {
+    if (!revealed || reduceMotion) return;
+    const id = setTimeout(() => {
+      setStorySlide((s) => (s + 1) % STORY_SLIDES.length);
+    }, STORY_DURATION_MS);
+    return () => clearTimeout(id);
+  }, [storySlide, revealed, reduceMotion]);
+
+  const advanceStory = () => setStorySlide((s) => (s + 1) % STORY_SLIDES.length);
+
   const panelTransition = reduceMotion
     ? "none"
-    : "flex-basis 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
-  const rowGapTransition = reduceMotion ? "none" : "gap 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
+    : "flex-basis 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), margin 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
 
-  const panelBase = (side: "left" | "right") => ({
+  // Only the "Life Outside of Design" panel is gated behind the photo click — contact
+  // info and the resume should always be reachable without needing to discover that
+  // interaction first. The row keeps a constant `gap`; the collapsed left panel cancels
+  // its share of that gap with a matching negative margin, then releases it on reveal.
+  const leftPanelStyle = {
     flexBasis: revealed ? PANEL_WIDTH : 0,
     width: revealed ? PANEL_WIDTH : 0,
     minWidth: revealed ? 200 : 0,
     opacity: revealed ? 1 : 0,
+    marginRight: revealed ? 0 : -ROW_GAP,
     overflow: "hidden",
     transition: panelTransition,
-    transform: revealed ? "translateX(0)" : `translateX(${side === "left" ? 16 : -16}px)`,
-  });
+    transform: revealed ? "translateX(0)" : "translateX(16px)",
+    alignSelf: "flex-start" as const,
+  };
+
+  const rightPanelStyle = {
+    flexBasis: PANEL_WIDTH,
+    width: PANEL_WIDTH,
+    alignSelf: "center" as const,
+  };
 
   return (
     <div
@@ -86,6 +94,20 @@ const AboutPage: FC = () => {
         color: tokens.color.body,
       }}
     >
+      <style>{`
+        @keyframes aboutStoryFill {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+        .about-photo-card:focus {
+          outline: none;
+        }
+        .about-photo-card:focus-visible {
+          outline: 2px solid ${tokens.color.accent};
+          outline-offset: 4px;
+        }
+      `}</style>
+
       <Header />
 
       <main style={{ maxWidth: 1320, margin: "0 auto", padding: "96px 32px 96px" }}>
@@ -99,21 +121,21 @@ const AboutPage: FC = () => {
               margin: 0,
             }}
           >
-            Introducing <Italic>Laney Fong</Italic>
+            Introducing <Italic color={tokens.color.ink}>Laney Fong</Italic>
           </h1>
         </div>
 
         <div
           style={{
+            position: "relative",
             display: "flex",
             justifyContent: "center",
             flexWrap: "wrap",
-            gap: revealed ? ROW_GAP : 0,
-            transition: rowGapTransition,
+            gap: ROW_GAP,
           }}
         >
           {/* Life Outside of Design */}
-          <div style={{ ...panelBase("left"), alignSelf: "flex-start" }}>
+          <div style={leftPanelStyle}>
             <h3
               style={{
                 fontFamily: tokens.font.sans,
@@ -127,95 +149,183 @@ const AboutPage: FC = () => {
               Life <Italic>Outside</Italic> of design
             </h3>
             <div style={{ height: 1, background: tokens.color.cardBorder, margin: "10px 0 12px" }} />
-            <PhotoCollage
-              src={aboutTravelPhoto}
-              height={170}
-              gap={2}
-              gridTemplateColumns="1fr 1fr"
-              gridTemplateRows="1fr 1fr"
-              cells={[
-                { size: "320% auto", position: "30% 20%" },
-                { size: "260% auto", position: "70% 10%" },
-                { size: "280% auto", position: "40% 70%" },
-                { size: "300% auto", position: "80% 80%" },
-              ]}
-            />
+            <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
+              {STORY_SLIDES.map((_, i) => {
+                const isPast = i < storySlide;
+                const isActive = i === storySlide;
+                return (
+                  <div
+                    key={i}
+                    style={{
+                      flex: 1,
+                      height: 2,
+                      borderRadius: 1,
+                      background: tokens.color.cardBorder,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div
+                      style={{
+                        height: "100%",
+                        background: tokens.color.body,
+                        width: isPast ? "100%" : isActive ? "100%" : "0%",
+                        animation: isActive && !reduceMotion ? `aboutStoryFill ${STORY_DURATION_MS}ms linear` : undefined,
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            <div
+              role="button"
+              tabIndex={0}
+              aria-label="Next photo"
+              onClick={advanceStory}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  advanceStory();
+                }
+              }}
+              className="about-photo-card"
+              style={{
+                position: "relative",
+                height: 170,
+                borderRadius: tokens.radius.sm,
+                overflow: "hidden",
+                cursor: "pointer",
+                outline: "none",
+              }}
+            >
+              {STORY_SLIDES.map((slide, i) => (
+                <div
+                  key={i}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    backgroundImage: `url(${slide.src})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    opacity: i === storySlide ? 1 : 0,
+                    transition: reduceMotion ? "none" : "opacity 0.5s ease",
+                  }}
+                />
+              ))}
+            </div>
             <p
               style={{
                 marginTop: 10,
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.sm,
                 color: tokens.color.body,
+                transition: reduceMotion ? "none" : "opacity 0.3s ease",
               }}
             >
-              I love traveling
+              {STORY_SLIDES[storySlide].caption}
             </p>
           </div>
 
           {/* Center bio photo — click to reveal the side panels */}
           <div style={{ width: HERO_WIDTH, flexShrink: 0 }}>
-            <div
-              role="button"
-              tabIndex={0}
-              aria-pressed={revealed}
-              aria-label={revealed ? "Hide more about Laney" : "Reveal more about Laney"}
-              onClick={() => setRevealed((v) => !v)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setRevealed((v) => !v);
-                }
-              }}
-              onMouseEnter={() => setPhotoHovered(true)}
-              onMouseLeave={() => setPhotoHovered(false)}
-              style={{
-                position: "relative",
-                cursor: "pointer",
-                borderRadius: tokens.radius.lg,
-                overflow: "hidden",
-                aspectRatio: "624 / 412",
-                boxShadow: photoHovered
-                  ? `${tokens.shadow.cardGlowHover}, ${tokens.shadow.imageFrame}`
-                  : tokens.shadow.imageFrame,
-                transform: photoHovered ? "translateY(-3px)" : "translateY(0)",
-                transition: "transform 0.22s ease, box-shadow 0.22s ease",
-              }}
-            >
-              <PhotoCollage
-                src={aboutBioPhoto}
-                height="100%"
-                gap={2}
-                gridTemplateColumns="1fr 1fr"
-                gridTemplateRows="1fr 1fr"
-                cells={[
-                  { size: "280% auto", position: "49% 61%" },
-                  { size: "250% auto", position: "16% 22%" },
-                  { size: "230% auto", position: "79% 13%" },
-                  { size: "300% auto", position: "51% 44%" },
-                ]}
-              />
-              <div style={{ position: "absolute", top: 16, left: 16, ...pillStyle }}>
-                <PinIcon /> SF Bay Area
-              </div>
+            <div style={{ position: "relative" }}>
+              {/* Backdrop card — stays flat (0deg), peeks out below the rotated photo */}
               <div
                 style={{
                   position: "absolute",
-                  bottom: 16,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  opacity: revealed ? 0 : 1,
-                  transition: "opacity 0.3s ease",
-                  pointerEvents: "none",
-                  ...pillStyle,
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: -PEEK_HEIGHT,
+                  background: "#F1F0EE",
+                  borderRadius: 2,
+                  boxShadow: tokens.shadow.subtle,
                 }}
               >
-                Click to reveal more
+                <span
+                  style={{
+                    position: "absolute",
+                    left: "50%",
+                    bottom: 12,
+                    transform: "translateX(-50%)",
+                    fontFamily: tokens.font.sans,
+                    fontSize: tokens.text.sm,
+                    color: tokens.color.muted,
+                    opacity: revealed ? 0 : 1,
+                    transition: "opacity 0.3s ease",
+                    whiteSpace: "nowrap",
+                    pointerEvents: "none",
+                  }}
+                >
+                  Click to reveal
+                </span>
+              </div>
+
+              {/* Photo card — 3deg at rest, straightens to 0deg once revealed */}
+              <div
+                role="button"
+                tabIndex={0}
+                aria-pressed={revealed}
+                aria-label={revealed ? "Hide life outside of design" : "Show life outside of design"}
+                onClick={() => setRevealed((v) => !v)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setRevealed((v) => !v);
+                  }
+                }}
+                onMouseEnter={() => setPhotoHovered(true)}
+                onMouseLeave={() => setPhotoHovered(false)}
+                className="about-photo-card"
+                style={{
+                  position: "relative",
+                  cursor: "pointer",
+                  boxSizing: "border-box",
+                  outline: "none",
+                  border: "8px solid #ECE7D9",
+                  borderRadius: 2,
+                  overflow: "hidden",
+                  aspectRatio: "3 / 2",
+                  transformOrigin: "center center",
+                  transform: revealed ? "rotate(0deg)" : "rotate(3deg)",
+                  boxShadow: photoHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
+                  transition: reduceMotion
+                    ? "box-shadow 0.22s ease"
+                    : "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease",
+                }}
+              >
+                <img
+                  src={aboutBioPhoto}
+                  alt="Laney Fong in the SF Bay Area"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "50% 55%",
+                    display: "block",
+                  }}
+                />
+                <span
+                  style={{
+                    position: "absolute",
+                    bottom: 10,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    fontFamily: tokens.font.sans,
+                    fontSize: tokens.text.sm,
+                    color: "rgba(255, 255, 255, 0.92)",
+                    textShadow: "0 1px 4px rgba(0, 0, 0, 0.45)",
+                    whiteSpace: "nowrap",
+                    pointerEvents: "none",
+                  }}
+                >
+                  SF Bay Area
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Contact panel */}
-          <div style={{ ...panelBase("right"), alignSelf: "center" }}>
+          {/* Contact panel — always visible, not gated behind the photo click */}
+          <div style={rightPanelStyle}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
               <h3
                 style={{
@@ -248,13 +358,16 @@ const AboutPage: FC = () => {
                   textAlign: "center",
                   padding: "14px 20px",
                   borderRadius: tokens.radius.full,
-                  background: resumeHovered ? "#EFEFEF" : tokens.color.offWhite,
+                  background: resumeHovered ? tokens.color.dark : tokens.color.ink,
                   fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
                   fontSize: tokens.text.base,
-                  color: tokens.color.body,
+                  color: tokens.color.white,
                   textDecoration: "none",
                   whiteSpace: "nowrap",
-                  transition: "background 0.2s ease",
+                  boxShadow: tokens.shadow.subtle,
+                  transition: "background 0.2s ease, transform 0.2s ease",
+                  transform: resumeHovered ? "translateY(-2px)" : "translateY(0)",
                 }}
               >
                 View my resume
@@ -321,7 +434,7 @@ const AboutPage: FC = () => {
         </div>
 
         {/* Things I am proud of */}
-        <div style={{ marginTop: 64 }}>
+        <div style={{ width: HERO_WIDTH, margin: "64px auto 0" }}>
           <h2
             style={{
               fontFamily: tokens.font.sans,
@@ -335,7 +448,6 @@ const AboutPage: FC = () => {
           </h2>
           <div
             style={{
-              maxWidth: 740,
               background: tokens.color.offWhite,
               border: `1px solid ${tokens.color.cardBorder}`,
               borderRadius: tokens.radius.md,
