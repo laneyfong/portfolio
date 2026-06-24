@@ -12,6 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Raw photo drops at the project root — optimized copies belong in src/assets/
+/*.jpg
+/*.JPG
+/*.jpeg
+/*.JPEG
+/*.heic
+/*.HEIC
+/*.png
+/*.PNG
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
