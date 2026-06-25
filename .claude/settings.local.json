@@ -68,7 +68,22 @@
       "Bash(node check_rect.js)",
       "Bash(grep -n \"RowAnnotations\\\\|pointerEvents: \\\\\"none\\\\\",\\\\s*$\" /Users/laneyfong/portfolio/src/AboutPage.tsx)",
       "Bash(node box_tight.js)",
-      "Bash(node home_qa.js)"
+      "Bash(node home_qa.js)",
+      "Bash(git rm *)",
+      "WebFetch(domain:laneyfong.com)",
+      "Bash(cp image0_149_2016.png /Users/laneyfong/portfolio/src/assets/myshake-pinned-locations.png)",
+      "Bash(cp image1_149_2016.png /Users/laneyfong/portfolio/src/assets/myshake-dashboard.png)",
+      "Bash(node check_sidebar_class.js)",
+      "Bash(node myshake_mobile_top.js)",
+      "Bash(node myshake_qa.js)",
+      "Bash(node *)",
+      "WebFetch(domain:www.figma.com)",
+      "Bash(curl *)",
+      "Bash(rm -f /private/tmp/claude-501/-Users-laneyfong-portfolio/597cae0b-de05-460d-8854-a5bdcb7f6248/scratchpad/*.mjs /private/tmp/claude-501/-Users-laneyfong-portfolio/597cae0b-de05-460d-8854-a5bdcb7f6248/scratchpad/*.png)",
+      "Bash(rm -rf /private/tmp/claude-501/-Users-laneyfong-portfolio/597cae0b-de05-460d-8854-a5bdcb7f6248/scratchpad/node_modules /private/tmp/claude-501/-Users-laneyfong-portfolio/597cae0b-de05-460d-8854-a5bdcb7f6248/scratchpad/package*.json)",
+      "Bash(kill 96829)",
+      "Bash(npx -p playwright node shot.mjs)",
+      "Bash(NODE_PATH=/Users/laneyfong/.npm/_npx/e41f203b7505f1fb/node_modules node -e ' *)"
     ]
   }
 }

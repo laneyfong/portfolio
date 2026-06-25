@@ -145,7 +145,7 @@ const Badge: FC<BadgeProps> = ({
                 fontSize: row.large ? tokens.text["2xl"] : tokens.text.base,
                 letterSpacing: tokens.tracking.tight,
                 color: row.large ? tokens.color.muted : tokens.color.body,
-                lineHeight: tokens.leading.none,
+                lineHeight: row.large ? tokens.leading.none : tokens.leading.normal,
                 whiteSpace: "pre-line",
               }}
             >

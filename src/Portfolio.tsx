@@ -254,9 +254,14 @@ const Portfolio: FC = () => {
               logoHeight={20}
               screenshot={myshakeApp}
               layout="portrait"
-              height={717}
+              height={760}
               caption="Increasing user engagement through restructuring IA."
               captionItalic="Increasing user engagement"
+              metrics={[
+                { value: "45%", label: "↑ engagement" },
+                { value: "3.8M+", label: "users" },
+              ]}
+              to="/myshake-design"
             />
             <ViewMoreCard />
           </div>
@@ -271,6 +276,7 @@ const Portfolio: FC = () => {
               height={506}
               caption="Designing an AI UX Agent for internal usability testing."
               captionItalic="AI UX Agent"
+              to="/nvidia-ai-ux-agent"
             />
             <PlatoCard />
           </div>
