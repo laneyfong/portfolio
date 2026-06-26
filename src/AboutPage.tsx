@@ -48,6 +48,7 @@ const AboutPage: FC = () => {
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
   const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
   const [dogWaving, setDogWaving] = useState(false);
+  const [coffeeHovered, setCoffeeHovered] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -195,6 +196,12 @@ const AboutPage: FC = () => {
         @keyframes dogSpin {
           0% { transform: translate(-20px, 20px) rotate(0deg) scale(1); }
           100% { transform: translate(-20px, 20px) rotate(360deg) scale(1); }
+        }
+        @keyframes steamRise {
+          0% { opacity: 0; transform: translateY(0px) translateX(0px); }
+          20% { opacity: 1; }
+          80% { opacity: 1; }
+          100% { opacity: 0; transform: translateY(-40px) translateX(var(--offset, 0px)); }
         }
         .about-photo-card:focus {
           outline: none;
@@ -477,16 +484,67 @@ const AboutPage: FC = () => {
           {/* Contact panel — always visible, not gated behind the photo click */}
           <div className="about-right-panel" style={rightPanelStyle}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-              <img
-                src={coffeeMug}
-                alt="Black & White coffee mug"
+              <div
                 style={{
+                  position: "relative",
                   width: 80,
                   height: 80,
-                  objectFit: "contain",
-                  marginBottom: 4,
                 }}
-              />
+                onMouseEnter={() => setCoffeeHovered(true)}
+                onMouseLeave={() => setCoffeeHovered(false)}
+              >
+                <img
+                  src={coffeeMug}
+                  alt="Black & White coffee mug"
+                  style={{
+                    width: 80,
+                    height: 80,
+                    objectFit: "contain",
+                    marginBottom: 4,
+                  }}
+                />
+                {/* Steam particles */}
+                {coffeeHovered && (
+                  <>
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: 15,
+                        top: -10,
+                        fontSize: "12px",
+                        animation: "steamRise 2s ease-in-out infinite",
+                        "--offset": "-8px",
+                      } as any}
+                    >
+                      ☁️
+                    </div>
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: 32,
+                        top: -5,
+                        fontSize: "14px",
+                        animation: "steamRise 2s ease-in-out 0.3s infinite",
+                        "--offset": "0px",
+                      } as any}
+                    >
+                      ☁️
+                    </div>
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: 48,
+                        top: -8,
+                        fontSize: "12px",
+                        animation: "steamRise 2s ease-in-out 0.6s infinite",
+                        "--offset": "8px",
+                      } as any}
+                    >
+                      ☁️
+                    </div>
+                  </>
+                )}
+              </div>
               <h3
                 style={{
                   fontFamily: tokens.font.sans,
