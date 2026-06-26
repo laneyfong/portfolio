@@ -867,7 +867,30 @@ export const ProcessFlow: FC<{
         }}
       >
         {steps.map((step, i) => (
-          <div key={i} style={{ display: "flex", gap: 16, marginBottom: i < steps.length - 1 ? 24 : 0 }}>
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              gap: 16,
+              position: "relative",
+              paddingBottom: i < steps.length - 1 ? 32 : 0,
+            }}
+          >
+            {/* Connecting line between circles */}
+            {i < steps.length - 1 && (
+              <div
+                style={{
+                  position: "absolute",
+                  left: "calc(50% - 1px)",
+                  top: 48,
+                  width: 2,
+                  height: 32,
+                  background: `linear-gradient(to bottom, ${step.color}, ${steps[i + 1].color})`,
+                  opacity: inView ? 0.4 : 0.2,
+                }}
+              />
+            )}
+            {/* Circle */}
             <div
               style={{
                 width: 48,
@@ -885,11 +908,13 @@ export const ProcessFlow: FC<{
                 transform: inView ? "scale(1)" : "scale(0.6)",
                 transition: `opacity 0.5s ease ${i * 120}ms, transform 0.5s ease ${i * 120}ms`,
                 boxShadow: inView ? `0 4px 12px ${step.color}40` : "none",
+                zIndex: 1,
               }}
             >
               {step.icon || i + 1}
             </div>
-            <div style={{ flex: 1 }}>
+            {/* Text content */}
+            <div style={{ flex: 1, paddingTop: 6 }}>
               <div
                 style={{
                   fontFamily: tokens.font.sans,
@@ -913,19 +938,6 @@ export const ProcessFlow: FC<{
                 {step.description}
               </p>
             </div>
-            {i < steps.length - 1 && (
-              <div
-                style={{
-                  position: "absolute",
-                  left: "calc(24px + 8px)",
-                  width: 2,
-                  height: 24,
-                  background: `linear-gradient(to bottom, ${step.color}, ${steps[i + 1].color})`,
-                  marginTop: 56,
-                  opacity: inView ? 0.4 : 0.2,
-                }}
-              />
-            )}
           </div>
         ))}
       </div>
@@ -944,9 +956,18 @@ export const ProcessFlow: FC<{
         padding: 20,
       }}
     >
-      <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+      <div style={{ display: "flex", gap: 0, alignItems: "center", justifyContent: "space-between" }}>
         {steps.map((step, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flex: i < steps.length - 1 ? 1 : "0 0 auto",
+              minWidth: 0,
+            }}
+          >
+            {/* Circle */}
             <div
               style={{
                 width: 56,
@@ -964,20 +985,22 @@ export const ProcessFlow: FC<{
                 transform: inView ? "scale(1)" : "scale(0.5)",
                 transition: `opacity 0.5s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms`,
                 boxShadow: inView ? `0 8px 16px ${step.color}50` : "none",
+                zIndex: 1,
               }}
             >
               {step.icon || i + 1}
             </div>
+            {/* Connecting line */}
             {i < steps.length - 1 && (
               <div
                 style={{
                   flex: 1,
                   height: 3,
                   background: `linear-gradient(to right, ${step.color}, ${steps[i + 1].color})`,
-                  margin: "0 12px",
                   borderRadius: 2,
                   opacity: inView ? 0.6 : 0.2,
                   transition: `opacity 0.5s ease ${i * 100 + 150}ms`,
+                  minHeight: 3,
                 }}
               />
             )}
