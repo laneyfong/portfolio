@@ -59,7 +59,7 @@ const Badge: FC<BadgeProps> = ({
           .badge-label { font-size: 13px !important; }
           .badge-value { font-size: 13px !important; }
           .badge-container {
-            padding: 16px 12px 28px !important;
+            padding: 16px 28px 28px !important;
           }
           .badge-photo {
             width: min(140px, 100%) !important;
