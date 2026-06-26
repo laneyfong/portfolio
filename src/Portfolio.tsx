@@ -206,8 +206,9 @@ const Portfolio: FC = () => {
           .badge-section { min-height: clamp(400px, 70vh, 100vh) !important; }
         }
         @media (max-width: 640px) {
-          main { padding: 20px 12px 96px !important; }
+          main { padding: 20px 20px 96px !important; }
           .badge-section { min-height: clamp(350px, 60vh, 100vh) !important; }
+          .badge-bg-pattern { display: none !important; }
           .work-grid > div:last-child { order: 1; }
           .work-grid > div:first-child { order: 2; }
         }
@@ -228,6 +229,7 @@ const Portfolio: FC = () => {
           }}
         >
           <img
+            className="badge-bg-pattern"
             src={heroBgPattern}
             alt=""
             aria-hidden
