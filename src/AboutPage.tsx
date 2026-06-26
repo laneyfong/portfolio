@@ -30,7 +30,7 @@ const PEEK_HEIGHT = 28;
 
 const STORY_SLIDES = [
   { src: aboutStoryNewYork, caption: "I love traveling!" },
-  { src: aboutStoryFoodie, caption: "I am a huge foodie" },
+  { src: aboutStoryFoodie, caption: "Huge foodie <3" },
 ];
 const STORY_DURATION_MS = 6000;
 
@@ -355,7 +355,7 @@ const AboutPage: FC = () => {
               className="about-photo-card"
               style={{
                 position: "relative",
-                height: 170,
+                height: 240,
                 borderRadius: tokens.radius.sm,
                 overflow: "hidden",
                 cursor: "pointer",
