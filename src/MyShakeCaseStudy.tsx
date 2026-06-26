@@ -811,6 +811,7 @@ const MyShakeCaseStudy: FC = () => {
             </div>
             <a
               href="/nvidia-ai-ux-agent"
+              aria-label="View next case study: NVIDIA AI UX Agent"
               style={{
                 display: "inline-flex",
                 alignItems: "center",

@@ -517,6 +517,7 @@ const NvidiaCaseStudy: FC = () => {
             </div>
             <a
               href="/"
+              aria-label="Back to portfolio"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
