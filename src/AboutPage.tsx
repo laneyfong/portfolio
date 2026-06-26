@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import { tokens } from "./tokens";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
+import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import clubPic from "./assets/club-pic.jpg";
 import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import cursorDog from "./assets/cursor-dog.png";
 import coffeeMug from "./assets/coffee-mug.png";
-import resumeIcon from "./assets/resume-icon.png";
 
 // TODO: link to a real hosted resume file once one exists.
 const RESUME_URL = "#";
@@ -41,7 +40,6 @@ const AboutPage: FC = () => {
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
   const [photoHovered, setPhotoHovered] = useState(false);
-  const [resumeHovered, setResumeHovered] = useState(false);
   const [storySlide, setStorySlide] = useState(0);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [delayedPos, setDelayedPos] = useState({ x: 0, y: 0 });
@@ -565,39 +563,9 @@ const AboutPage: FC = () => {
                 <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
                   <EmailIcon />
                 </SocialIconLink>
-                <a
-                  href={RESUME_URL}
-                  aria-label="Download resume"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: 40,
-                    height: 40,
-                    borderRadius: "50%",
-                    border: "none",
-                    background: resumeHovered ? tokens.color.dark : tokens.color.ink,
-                    boxShadow: tokens.shadow.subtle,
-                    color: tokens.color.white,
-                    opacity: 1,
-                    transform: resumeHovered ? "translateY(-2px)" : "translateY(0)",
-                    transition: "opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                  }}
-                  onMouseEnter={() => setResumeHovered(true)}
-                  onMouseLeave={() => setResumeHovered(false)}
-                >
-                  <img
-                    src={resumeIcon}
-                    alt="Resume"
-                    style={{
-                      width: 24,
-                      height: 24,
-                      objectFit: "contain",
-                    }}
-                  />
-                </a>
+                <SocialIconLink href={RESUME_URL} label="Download resume" variant="light">
+                  <ResumeIcon />
+                </SocialIconLink>
               </div>
             </div>
           </div>
