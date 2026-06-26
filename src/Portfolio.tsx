@@ -203,11 +203,11 @@ const Portfolio: FC = () => {
         /* Mobile responsiveness */
         @media (max-width: 900px) {
           main { padding: clamp(60px, 10vw, 80px) 16px 96px !important; }
-          .badge-section { min-height: clamp(400px, 70vh, 100vh) !important; }
+          .badge-section { min-height: clamp(400px, 65vh, 90vh) !important; margin-bottom: 24px !important; }
         }
         @media (max-width: 640px) {
           main { padding: clamp(50px, 8vw, 70px) 20px 96px !important; }
-          .badge-section { min-height: clamp(350px, 60vh, 100vh) !important; }
+          .badge-section { min-height: clamp(350px, 60vh, 85vh) !important; margin-bottom: 20px !important; }
           .badge-bg-pattern { display: none !important; }
           .work-grid > div:last-child { order: 1; }
           .work-grid > div:first-child { order: 2; }
@@ -223,8 +223,8 @@ const Portfolio: FC = () => {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 56,
-            minHeight: "clamp(600px, 85vh, 100vh)",
+            marginBottom: 32,
+            minHeight: "clamp(500px, 70vh, 90vh)",
             alignItems: "center",
           }}
         >
