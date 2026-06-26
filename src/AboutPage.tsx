@@ -10,6 +10,7 @@ import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import cursorDog from "./assets/cursor-dog.png";
 import coffeeMug from "./assets/coffee-mug.png";
+import resumeIcon from "./assets/resume-icon.png";
 
 // TODO: link to a real hosted resume file once one exists.
 const RESUME_URL = "#";
@@ -569,26 +570,32 @@ const AboutPage: FC = () => {
                 href={RESUME_URL}
                 onMouseEnter={() => setResumeHovered(true)}
                 onMouseLeave={() => setResumeHovered(false)}
+                aria-label="Download resume"
                 style={{
-                  display: "block",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                   boxSizing: "border-box",
                   width: "100%",
-                  textAlign: "center",
-                  padding: "14px 20px",
-                  borderRadius: tokens.radius.full,
-                  background: resumeHovered ? tokens.color.dark : tokens.color.ink,
-                  fontFamily: tokens.font.sans,
-                  fontWeight: tokens.weight.medium,
-                  fontSize: tokens.text.base,
-                  color: tokens.color.white,
+                  padding: "16px",
+                  borderRadius: tokens.radius.md,
+                  background: resumeHovered ? "#E8E8E8" : "#F0F0F0",
                   textDecoration: "none",
-                  whiteSpace: "nowrap",
-                  boxShadow: tokens.shadow.subtle,
-                  transition: "background 0.2s ease, transform 0.2s ease",
+                  boxShadow: resumeHovered ? tokens.shadow.subtle : "none",
+                  transition: "background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease",
                   transform: resumeHovered ? "translateY(-2px)" : "translateY(0)",
+                  cursor: "pointer",
                 }}
               >
-                View my resume
+                <img
+                  src={resumeIcon}
+                  alt="Resume"
+                  style={{
+                    width: 48,
+                    height: 48,
+                    objectFit: "contain",
+                  }}
+                />
               </a>
             </div>
           </div>
