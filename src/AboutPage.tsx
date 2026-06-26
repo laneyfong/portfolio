@@ -565,39 +565,36 @@ const AboutPage: FC = () => {
                 <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
                   <EmailIcon />
                 </SocialIconLink>
-              </div>
-              <a
-                href={RESUME_URL}
-                onMouseEnter={() => setResumeHovered(true)}
-                onMouseLeave={() => setResumeHovered(false)}
-                aria-label="Download resume"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "100%",
-                  minHeight: 160,
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  borderRadius: tokens.radius.md,
-                  background: resumeHovered ? "#E0E0E0" : "#F0F0F0",
-                  border: "none",
-                  opacity: 1,
-                  transform: resumeHovered ? "translateY(-3px)" : "translateY(0)",
-                  transition: "background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
-                  boxShadow: resumeHovered ? tokens.shadow.subtle : "none",
-                }}
-              >
-                <img
-                  src={resumeIcon}
-                  alt="Download resume"
+                <a
+                  href={RESUME_URL}
+                  aria-label="Download resume"
                   style={{
-                    width: 140,
-                    height: 140,
-                    objectFit: "contain",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 40,
+                    height: 40,
+                    borderRadius: "50%",
+                    textDecoration: "none",
+                    cursor: "pointer",
+                    transition: "opacity 0.2s ease, transform 0.2s ease",
+                    opacity: resumeHovered ? 0.7 : 1,
+                    transform: resumeHovered ? "scale(1.15)" : "scale(1)",
                   }}
-                />
-              </a>
+                  onMouseEnter={() => setResumeHovered(true)}
+                  onMouseLeave={() => setResumeHovered(false)}
+                >
+                  <img
+                    src={resumeIcon}
+                    alt="Resume"
+                    style={{
+                      width: 28,
+                      height: 28,
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
