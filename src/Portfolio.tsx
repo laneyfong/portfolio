@@ -218,6 +218,8 @@ const Portfolio: FC = () => {
             display: "flex",
             justifyContent: "center",
             marginBottom: 56,
+            minHeight: "calc(100vh - 200px)",
+            alignItems: "center",
           }}
         >
           <img
