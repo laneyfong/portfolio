@@ -249,6 +249,7 @@ const AboutPage: FC = () => {
           }
           .about-left-panel.revealed {
             display: block !important;
+            margin-top: 16px !important;
           }
           .about-center-photo {
             width: 100% !important;
@@ -435,9 +436,10 @@ const AboutPage: FC = () => {
                   left: 0,
                   right: 0,
                   bottom: -PEEK_HEIGHT,
-                  background: "#F1F0EE",
+                  background: tokens.color.offWhite,
                   borderRadius: 2,
                   boxShadow: tokens.shadow.subtle,
+                  border: `1px solid ${tokens.color.cardBorder}`,
                 }}
               >
                 <span
