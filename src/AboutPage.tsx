@@ -234,9 +234,34 @@ const AboutPage: FC = () => {
         @media (max-width: 900px) {
           main { padding: 64px 16px 64px !important; }
         }
+        @media (max-width: 760px) {
+          .about-container {
+            gap: 24px !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .about-left-panel {
+            width: 100% !important;
+            flex-basis: 100% !important;
+            min-width: 100% !important;
+          }
+          .about-center-photo {
+            width: 100% !important;
+            flex-basis: 100% !important;
+            flex-shrink: 0 !important;
+          }
+          .about-right-panel {
+            width: 100% !important;
+            flex-basis: 100% !important;
+            min-width: 100% !important;
+            align-self: stretch !important;
+          }
+        }
         @media (max-width: 640px) {
           main { padding: 48px 12px 48px !important; }
-          .about-right-panel { align-self: flex-start !important; }
+          .about-container {
+            gap: 20px !important;
+          }
         }
       `}</style>
 
@@ -258,6 +283,7 @@ const AboutPage: FC = () => {
         </div>
 
         <div
+          className="about-container"
           style={{
             position: "relative",
             display: "flex",
@@ -267,7 +293,7 @@ const AboutPage: FC = () => {
           }}
         >
           {/* Life Outside of Design */}
-          <div style={leftPanelStyle}>
+          <div className="about-left-panel" style={leftPanelStyle}>
             <h3
               style={{
                 fontFamily: tokens.font.sans,
@@ -392,7 +418,7 @@ const AboutPage: FC = () => {
           </div>
 
           {/* Center bio photo — click to reveal the side panels */}
-          <div style={{ width: HERO_WIDTH, flexShrink: 0 }}>
+          <div className="about-center-photo" style={{ width: HERO_WIDTH, flexShrink: 0 }}>
             <div style={{ position: "relative" }}>
               {/* Backdrop card — stays flat (0deg), peeks out below the rotated photo */}
               <div
