@@ -249,7 +249,7 @@ const AboutPage: FC = () => {
           }
           .about-left-panel.revealed {
             display: block !important;
-            margin-top: 16px !important;
+            margin-top: 32px !important;
           }
           .about-center-photo {
             width: 100% !important;
