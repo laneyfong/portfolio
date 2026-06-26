@@ -50,6 +50,15 @@ const Badge: FC<BadgeProps> = ({
         boxSizing: "border-box",
       }}
     >
+      <style>{`
+        @media (max-width: 640px) {
+          .badge-role { font-size: 22px !important; }
+          .badge-name { font-size: 22px !important; }
+          .badge-tagline { font-size: 14px !important; }
+          .badge-label { font-size: 13px !important; }
+          .badge-value { font-size: 13px !important; }
+        }
+      `}</style>
       <div
         style={{
           position: "absolute",
@@ -65,6 +74,7 @@ const Badge: FC<BadgeProps> = ({
       />
 
       <p
+        className="badge-role"
         style={{
           margin: "46px 0 6px",
           fontFamily: tokens.font.sans,
@@ -79,6 +89,7 @@ const Badge: FC<BadgeProps> = ({
       </p>
 
       <p
+        className="badge-tagline"
         style={{
           margin: "0 0 20px",
           fontFamily: tokens.font.sans,
@@ -125,6 +136,7 @@ const Badge: FC<BadgeProps> = ({
             }}
           >
             <span
+              className="badge-label"
               style={{
                 width: 78,
                 flexShrink: 0,
@@ -139,6 +151,7 @@ const Badge: FC<BadgeProps> = ({
               {row.label}
             </span>
             <span
+              className={row.large ? "badge-name" : "badge-value"}
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: row.large ? tokens.weight.medium : tokens.weight.light,

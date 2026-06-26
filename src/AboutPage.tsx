@@ -203,6 +203,7 @@ const AboutPage: FC = () => {
         }
         @media (max-width: 640px) {
           main { padding: 48px 12px 48px !important; }
+          .about-right-panel { align-self: flex-start !important; }
         }
       `}</style>
 
@@ -447,7 +448,7 @@ const AboutPage: FC = () => {
           </div>
 
           {/* Contact panel — always visible, not gated behind the photo click */}
-          <div style={rightPanelStyle}>
+          <div className="about-right-panel" style={rightPanelStyle}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
               <svg
                 width="48"

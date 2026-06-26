@@ -203,9 +203,13 @@ const Portfolio: FC = () => {
         /* Mobile responsiveness */
         @media (max-width: 900px) {
           main { padding: 24px 16px 96px !important; }
+          .badge-section { min-height: clamp(400px, 70vh, 100vh) !important; }
         }
         @media (max-width: 640px) {
           main { padding: 20px 12px 96px !important; }
+          .badge-section { min-height: clamp(350px, 60vh, 100vh) !important; }
+          .work-grid > div:last-child { order: 1; }
+          .work-grid > div:first-child { order: 2; }
         }
       `}</style>
 
@@ -213,6 +217,7 @@ const Portfolio: FC = () => {
 
       <main style={{ maxWidth: 1320, margin: "0 auto", padding: "28px 32px 96px" }}>
         <div
+          className="badge-section"
           style={{
             position: "relative",
             display: "flex",
@@ -247,7 +252,7 @@ const Portfolio: FC = () => {
 
         <div
           id="work"
-          className="grid-cols"
+          className="grid-cols work-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "377px 1fr",
