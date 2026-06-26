@@ -241,20 +241,27 @@ const AboutPage: FC = () => {
             align-items: center !important;
           }
           .about-left-panel {
+            display: none !important;
             width: 100% !important;
             flex-basis: 100% !important;
             min-width: 100% !important;
+            order: 2 !important;
+          }
+          .about-left-panel.revealed {
+            display: block !important;
           }
           .about-center-photo {
             width: 100% !important;
             flex-basis: 100% !important;
             flex-shrink: 0 !important;
+            order: 1 !important;
           }
           .about-right-panel {
             width: 100% !important;
             flex-basis: 100% !important;
             min-width: 100% !important;
             align-self: stretch !important;
+            order: 3 !important;
           }
         }
         @media (max-width: 640px) {
@@ -293,7 +300,7 @@ const AboutPage: FC = () => {
           }}
         >
           {/* Life Outside of Design */}
-          <div className="about-left-panel" style={leftPanelStyle}>
+          <div className={`about-left-panel ${revealed ? "revealed" : ""}`} style={leftPanelStyle}>
             <h3
               style={{
                 fontFamily: tokens.font.sans,
