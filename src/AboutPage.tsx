@@ -197,6 +197,13 @@ const AboutPage: FC = () => {
           left: 20%;
           animation: float-3 2.2s ease-in-out infinite 0.6s;
         }
+        /* Mobile responsiveness */
+        @media (max-width: 900px) {
+          main { padding: 64px 16px 64px !important; }
+        }
+        @media (max-width: 640px) {
+          main { padding: 48px 12px 48px !important; }
+        }
       `}</style>
 
       <Header />

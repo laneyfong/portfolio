@@ -125,6 +125,15 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .case-btn-press { min-width: 44px !important; min-height: 44px !important; }
           button { min-height: 44px; }
         }
+        /* Responsive typography on mobile */
+        @media (max-width: 760px) {
+          h2 { font-size: 20px !important; }
+          p { font-size: 15px !important; }
+        }
+        @media (max-width: 640px) {
+          h2 { font-size: 18px !important; }
+          p { font-size: 14px !important; }
+        }
         ${extraStyle}
       `}</style>
 

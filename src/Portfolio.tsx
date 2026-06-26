@@ -200,6 +200,13 @@ const Portfolio: FC = () => {
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
         }
+        /* Mobile responsiveness */
+        @media (max-width: 900px) {
+          main { padding: 24px 16px 96px !important; }
+        }
+        @media (max-width: 640px) {
+          main { padding: 20px 12px 96px !important; }
+        }
       `}</style>
 
       <Header />
