@@ -46,6 +46,7 @@ const AboutPage: FC = () => {
   const [storyHovered, setStoryHovered] = useState(false);
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
   const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
+  const [dogWaving, setDogWaving] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -88,6 +89,13 @@ const AboutPage: FC = () => {
     return () => clearTimeout(id);
   }, [storySlide, revealed, reduceMotion]);
 
+  // Reset dog waving after animation completes
+  useEffect(() => {
+    if (!dogWaving) return;
+    const id = setTimeout(() => setDogWaving(false), 600);
+    return () => clearTimeout(id);
+  }, [dogWaving]);
+
   const advanceStory = () => setStorySlide((s) => (s + 1) % STORY_SLIDES.length);
 
   const panelTransition = reduceMotion
@@ -129,16 +137,18 @@ const AboutPage: FC = () => {
       <img
         src={cursorDog}
         alt="Cute dog following cursor"
+        onClick={() => setDogWaving(true)}
         style={{
           position: "fixed",
           width: 43,
           height: 47,
-          pointerEvents: "none",
+          pointerEvents: "auto",
+          cursor: "pointer",
           left: `${delayedPos.x}px`,
           top: `${delayedPos.y}px`,
           transform: bioPhotoHovered ? "translate(-20px, 20px)" : "translate(-20px, 20px)",
           zIndex: 999,
-          animation: bioPhotoHovered ? "dogBounce 0.6s ease-in-out infinite" : "none",
+          animation: dogWaving ? "dogWave 0.6s ease-in-out 1" : bioPhotoHovered ? "dogBounce 1.2s ease-in-out infinite" : "none",
         }}
       />
 
@@ -161,9 +171,20 @@ const AboutPage: FC = () => {
         }
         @keyframes dogBounce {
           0%, 100% { transform: translate(-20px, 20px) scale(1); }
-          25% { transform: translate(-20px, -5px) scale(1.1); }
+          12.5% { transform: translate(-20px, -5px) scale(1.1); }
+          25% { transform: translate(-20px, 20px) scale(1); }
+          37.5% { transform: translate(-20px, 5px) scale(1.05); }
           50% { transform: translate(-20px, 20px) scale(1); }
-          75% { transform: translate(-20px, 5px) scale(1.05); }
+          50.1%, 100% { transform: translate(-20px, 20px) scale(1); }
+        }
+        @keyframes dogWave {
+          0% { transform: translate(-20px, 20px) scale(1) rotate(0deg); }
+          10% { transform: translate(-20px, 20px) scale(1) rotate(-20deg); }
+          20% { transform: translate(-20px, 20px) scale(1) rotate(20deg); }
+          30% { transform: translate(-20px, 20px) scale(1) rotate(-20deg); }
+          40% { transform: translate(-20px, 20px) scale(1) rotate(20deg); }
+          50% { transform: translate(-20px, 20px) scale(1) rotate(-10deg); }
+          60%, 100% { transform: translate(-20px, 20px) scale(1) rotate(0deg); }
         }
         @keyframes dogSpin {
           0% { transform: translate(-20px, 20px) rotate(0deg) scale(1); }
