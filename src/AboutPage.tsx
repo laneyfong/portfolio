@@ -576,15 +576,15 @@ const AboutPage: FC = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   width: "100%",
-                  minHeight: 140,
+                  minHeight: 160,
                   textDecoration: "none",
                   cursor: "pointer",
                   borderRadius: tokens.radius.md,
-                  background: resumeHovered ? "#F5F5F5" : "transparent",
-                  border: `2px solid ${tokens.color.cardBorder}`,
-                  opacity: resumeHovered ? 0.85 : 1,
-                  transform: resumeHovered ? "translateY(-2px)" : "translateY(0)",
-                  transition: "opacity 0.2s ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease",
+                  background: resumeHovered ? "#E0E0E0" : "#F0F0F0",
+                  border: "none",
+                  opacity: 1,
+                  transform: resumeHovered ? "translateY(-3px)" : "translateY(0)",
+                  transition: "background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
                   boxShadow: resumeHovered ? tokens.shadow.subtle : "none",
                 }}
               >
@@ -592,8 +592,8 @@ const AboutPage: FC = () => {
                   src={resumeIcon}
                   alt="Download resume"
                   style={{
-                    width: 120,
-                    height: 120,
+                    width: 140,
+                    height: 140,
                     objectFit: "contain",
                   }}
                 />
