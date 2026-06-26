@@ -39,6 +39,7 @@ const Badge: FC<BadgeProps> = ({
 
   return (
     <div
+      className="badge-container"
       style={{
         width: "clamp(260px, 82vw, 400px)",
         backgroundColor: tokens.color.white,
@@ -57,6 +58,19 @@ const Badge: FC<BadgeProps> = ({
           .badge-tagline { font-size: 14px !important; }
           .badge-label { font-size: 13px !important; }
           .badge-value { font-size: 13px !important; }
+          .badge-container {
+            padding: 16px 12px 28px !important;
+          }
+          .badge-photo {
+            width: min(140px, 100%) !important;
+            margin: 0 auto !important;
+          }
+          .badge-rows {
+            margin-top: 12px !important;
+            gap: 3px !important;
+          }
+          .badge-role-wrapper { margin-top: 28px !important; }
+          .badge-tagline-wrapper { margin-bottom: 12px !important; }
         }
       `}</style>
       <div
@@ -74,7 +88,7 @@ const Badge: FC<BadgeProps> = ({
       />
 
       <p
-        className="badge-role"
+        className="badge-role badge-role-wrapper"
         style={{
           margin: "46px 0 6px",
           fontFamily: tokens.font.sans,
@@ -89,7 +103,7 @@ const Badge: FC<BadgeProps> = ({
       </p>
 
       <p
-        className="badge-tagline"
+        className="badge-tagline badge-tagline-wrapper"
         style={{
           margin: "0 0 20px",
           fontFamily: tokens.font.sans,
@@ -111,6 +125,7 @@ const Badge: FC<BadgeProps> = ({
       </p>
 
       <div
+        className="badge-photo"
         style={{
           width: "min(180px, 100%)",
           aspectRatio: "213 / 252",
@@ -123,7 +138,7 @@ const Badge: FC<BadgeProps> = ({
         }}
       />
 
-      <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 6 }}>
+      <div className="badge-rows" style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 6 }}>
         {rows.map((row) => (
           <div
             key={row.label}
