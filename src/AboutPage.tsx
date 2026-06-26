@@ -275,7 +275,7 @@ const AboutPage: FC = () => {
 
       <Header />
 
-      <main style={{ maxWidth: 1320, margin: "0 auto", padding: "clamp(80px, 12vw, 120px) 32px 96px" }}>
+      <main style={{ maxWidth: 1320, margin: "0 auto", padding: "clamp(60px, 10vw, 100px) 32px 96px" }}>
         <div style={{ width: HERO_WIDTH, margin: "0 auto 20px" }}>
           <h1
             style={{

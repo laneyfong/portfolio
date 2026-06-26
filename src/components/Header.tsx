@@ -60,7 +60,7 @@ const Header: FC = () => {
           color: #3A3A3A;
           text-decoration: none;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-          font-size: 13px;
+          font-size: 11px;
           font-weight: 400;
           letter-spacing: 0.3px;
           cursor: pointer;
@@ -124,60 +124,44 @@ const Header: FC = () => {
         .header-container {
           max-width: 1320px;
           margin: 0 auto;
-          padding: 24px clamp(16px, 6vw, 64px);
-        }
-
-        .header-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 24px;
+          padding: 12px clamp(16px, 6vw, 64px);
         }
 
         .header-brand {
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 1px;
+          flex-shrink: 0;
         }
 
         .header-name {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-          font-size: 13px;
+          font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.3px;
           color: #111111;
           text-transform: uppercase;
+          line-height: 1.2;
         }
 
         .header-title {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
+          font-size: 10px;
           letter-spacing: 0.3px;
           color: #6A6A6A;
           text-transform: uppercase;
           font-weight: 400;
+          line-height: 1.2;
         }
 
         .header-nav {
           display: flex;
-          gap: 32px;
+          gap: 24px;
           align-items: center;
         }
 
         .header-nav-item {
           position: relative;
-        }
-
-        .header-availability {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-          font-size: 11px;
-          letter-spacing: 0.4px;
-          color: #6A6A6A;
-          text-transform: uppercase;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          white-space: nowrap;
         }
 
         .nav-link-hover-state {
@@ -198,9 +182,6 @@ const Header: FC = () => {
         }
 
         @media (max-width: 900px) {
-          .header-availability {
-            display: none;
-          }
           .header-nav {
             gap: 20px;
           }
@@ -208,37 +189,38 @@ const Header: FC = () => {
 
         @media (max-width: 640px) {
           .header-container {
-            padding: 16px 12px;
+            padding: 10px 12px;
           }
-          .header-top {
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 16px;
+          .header-brand {
+            gap: 0px;
+          }
+          .header-name {
+            font-size: 10px;
+          }
+          .header-title {
+            font-size: 9px;
           }
           .header-nav {
-            width: 100%;
             gap: 16px;
-            margin-top: 12px;
+          }
+          .nav-link {
+            font-size: 10px;
           }
         }
       `}</style>
 
       <div className="header-container">
-        <div className="header-top">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
           <div className="header-brand">
             <div className="header-name">Laney Fong</div>
             <div className="header-title">UX Designer</div>
           </div>
-          <div className="header-availability">
-            • AVAILABLE FOR SELECT OPPORTUNITIES
-          </div>
-        </div>
 
-        <div
-          className="header-nav"
-          ref={navRef}
-          onMouseLeave={() => setHoveredItem(null)}
-        >
+          <div
+            className="header-nav"
+            ref={navRef}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
           {NAV_ITEMS.map((item) => {
             const isActive = item === active;
             const isHovered = item === hoveredItem;
@@ -270,6 +252,7 @@ const Header: FC = () => {
               </div>
             );
           })}
+          </div>
         </div>
       </div>
     </header>
