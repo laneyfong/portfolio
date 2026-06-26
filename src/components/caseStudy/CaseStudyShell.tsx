@@ -104,15 +104,15 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         @media (max-width: 900px) {
           .case-sidebar { display: none !important; }
           .case-mobile-back { display: flex !important; }
-          .case-mobile-tabs { display: flex !important; }
+          .case-mobile-tabs { display: none !important; }
           .case-main, .case-footer-wrap { margin-left: 0 !important; }
-          .case-main { padding-top: 132px !important; padding-left: 16px !important; padding-right: 16px !important; }
+          .case-main { padding-top: 80px !important; padding-left: 16px !important; padding-right: 16px !important; }
         }
         @media (max-width: 760px) {
           .case-grid-3 { grid-template-columns: 1fr !important; }
           .case-grid-2 { grid-template-columns: 1fr !important; }
           .case-intro-shots { grid-template-columns: 1fr !important; }
-          .case-main { padding: 132px 12px 0 12px !important; }
+          .case-main { padding: 80px 12px 0 12px !important; }
         }
         /* Accessibility: Focus styles for keyboard navigation */
         a:focus-visible, button:focus-visible { outline: 2px solid #8DC8E4; outline-offset: 2px; }
