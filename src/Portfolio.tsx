@@ -202,11 +202,11 @@ const Portfolio: FC = () => {
         }
         /* Mobile responsiveness */
         @media (max-width: 900px) {
-          main { padding: 24px 16px 96px !important; }
+          main { padding: clamp(60px, 10vw, 80px) 16px 96px !important; }
           .badge-section { min-height: clamp(400px, 70vh, 100vh) !important; }
         }
         @media (max-width: 640px) {
-          main { padding: 20px 20px 96px !important; }
+          main { padding: clamp(50px, 8vw, 70px) 20px 96px !important; }
           .badge-section { min-height: clamp(350px, 60vh, 100vh) !important; }
           .badge-bg-pattern { display: none !important; }
           .work-grid > div:last-child { order: 1; }
@@ -216,7 +216,7 @@ const Portfolio: FC = () => {
 
       <Header />
 
-      <main style={{ maxWidth: 1320, margin: "0 auto", padding: "28px 32px 96px" }}>
+      <main style={{ maxWidth: 1320, margin: "0 auto", padding: "clamp(80px, 12vw, 120px) 32px 96px" }}>
         <div
           className="badge-section"
           style={{
