@@ -158,37 +158,6 @@ const AboutPage: FC = () => {
         }}
       />
 
-      {/* Dog says hello */}
-      {dogWaving && (
-        <div
-          style={{
-            position: "fixed",
-            left: `${delayedPos.x}px`,
-            top: `${delayedPos.y}px`,
-            pointerEvents: "none",
-            zIndex: 998,
-            animation: "helloFadeIn 0.6s ease-in-out 1",
-          }}
-        >
-          <div
-            style={{
-              padding: "8px 12px",
-              background: tokens.color.ink,
-              color: tokens.color.white,
-              borderRadius: tokens.radius.full,
-              fontSize: "14px",
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              whiteSpace: "nowrap",
-              transform: "translate(-30px, -40px)",
-              boxShadow: tokens.shadow.subtle,
-            }}
-          >
-            Hello! 👋
-          </div>
-        </div>
-      )}
-
       <style>{`
         @keyframes aboutStoryFill {
           from { width: 0%; }
@@ -222,12 +191,6 @@ const AboutPage: FC = () => {
           40% { transform: translate(-20px, 20px) scale(1) rotate(20deg); }
           50% { transform: translate(-20px, 20px) scale(1) rotate(-10deg); }
           60%, 100% { transform: translate(-20px, 20px) scale(1) rotate(0deg); }
-        }
-        @keyframes helloFadeIn {
-          0% { opacity: 0; transform: translate(-30px, -40px) scale(0.8); }
-          10% { opacity: 1; transform: translate(-30px, -40px) scale(1); }
-          90% { opacity: 1; transform: translate(-30px, -40px) scale(1); }
-          100% { opacity: 0; transform: translate(-30px, -50px) scale(1); }
         }
         @keyframes dogSpin {
           0% { transform: translate(-20px, 20px) rotate(0deg) scale(1); }
