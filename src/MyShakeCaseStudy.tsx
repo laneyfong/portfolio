@@ -17,7 +17,6 @@ import {
   PullQuote,
   BarCompare,
   RankedBars,
-  StepFlow,
   RadialStat,
   TypeCompare,
   Bullets,
