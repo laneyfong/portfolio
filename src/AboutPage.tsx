@@ -575,11 +575,15 @@ const AboutPage: FC = () => {
                     width: 40,
                     height: 40,
                     borderRadius: "50%",
+                    border: "none",
+                    background: resumeHovered ? tokens.color.dark : tokens.color.ink,
+                    boxShadow: tokens.shadow.subtle,
+                    color: tokens.color.white,
+                    opacity: 1,
+                    transform: resumeHovered ? "translateY(-2px)" : "translateY(0)",
+                    transition: "opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease",
                     textDecoration: "none",
                     cursor: "pointer",
-                    transition: "opacity 0.2s ease, transform 0.2s ease",
-                    opacity: resumeHovered ? 0.7 : 1,
-                    transform: resumeHovered ? "scale(1.15)" : "scale(1)",
                   }}
                   onMouseEnter={() => setResumeHovered(true)}
                   onMouseLeave={() => setResumeHovered(false)}
@@ -588,8 +592,8 @@ const AboutPage: FC = () => {
                     src={resumeIcon}
                     alt="Resume"
                     style={{
-                      width: 28,
-                      height: 28,
+                      width: 24,
+                      height: 24,
                       objectFit: "contain",
                     }}
                   />
