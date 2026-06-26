@@ -794,7 +794,7 @@ export const UserJourney: FC<{
         padding: 20,
       }}
     >
-      <div style={{ display: "flex", gap: 0, alignItems: "stretch" }}>
+      <div className="user-journey-stages" style={{ display: "flex", gap: 0, alignItems: "stretch" }}>
         {stages.map((stage, i) => (
           <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", gap: 12, marginBottom: 12, alignItems: "center" }}>

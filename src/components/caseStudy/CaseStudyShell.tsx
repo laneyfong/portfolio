@@ -134,6 +134,22 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           h2 { font-size: 18px !important; }
           p { font-size: 14px !important; }
         }
+        /* Mobile tabs: center content and apply glassmorphism */
+        @media (max-width: 900px) {
+          .case-mobile-tabs {
+            justify-content: center !important;
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+          }
+        }
+        /* UserJourney responsive: vertical layout on mobile */
+        @media (max-width: 760px) {
+          .user-journey-stages {
+            flex-direction: column !important;
+            gap: 16px !important;
+          }
+        }
         ${extraStyle}
       `}</style>
 
