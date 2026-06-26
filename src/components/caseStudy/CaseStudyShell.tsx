@@ -31,6 +31,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
   const [active, setActive] = useState(sections[0]?.id ?? "");
   const [highlightsOpen, setHighlightsOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [showScrollUp, setShowScrollUp] = useState(false);
   const navListRef = useRef<HTMLDivElement>(null);
   const [indicatorTop, setIndicatorTop] = useState(0);
 
@@ -62,6 +63,8 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
       setProgress(Math.min(100, Math.max(0, pct)));
+      // Show scroll-up button after scrolling past 300px
+      setShowScrollUp(window.scrollY > 300);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -141,6 +144,12 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             background: transparent !important;
             border-bottom: none !important;
             box-shadow: none !important;
+          }
+        }
+        /* Hide scroll-up button on desktop */
+        @media (min-width: 901px) {
+          button[aria-label="Scroll to top"] {
+            display: none !important;
           }
         }
         /* UserJourney responsive: vertical layout on mobile */
@@ -388,6 +397,53 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
       >
         {children}
       </main>
+
+      {/* Mobile scroll-up button */}
+      {showScrollUp && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Scroll to top"
+          style={{
+            position: "fixed",
+            bottom: 32,
+            right: 20,
+            width: 48,
+            height: 48,
+            borderRadius: "50%",
+            background: tokens.color.ink,
+            color: tokens.color.white,
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: tokens.shadow.subtle,
+            zIndex: 50,
+            transition: "transform 0.2s ease, box-shadow 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "translateY(-4px)";
+            e.currentTarget.style.boxShadow = tokens.shadow.cardHoverLarge;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = tokens.shadow.subtle;
+          }}
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+        </button>
+      )}
 
       <div className="case-footer-wrap" style={{ marginLeft: SIDEBAR_WIDTH }}>
         <Footer />
