@@ -10,7 +10,10 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Scroll to top immediately and after a small delay to ensure layout is ready
     window.scrollTo(0, 0);
+    const timer = setTimeout(() => window.scrollTo(0, 0), 0);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return null;
