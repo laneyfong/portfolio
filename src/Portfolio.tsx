@@ -218,7 +218,7 @@ const Portfolio: FC = () => {
             display: "flex",
             justifyContent: "center",
             marginBottom: 56,
-            minHeight: "calc(100vh - 200px)",
+            minHeight: "clamp(600px, 85vh, 100vh)",
             alignItems: "center",
           }}
         >
