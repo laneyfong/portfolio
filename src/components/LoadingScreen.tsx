@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useEffect, useState } from "react";
 
-const LOADING_DURATION = 1800; // 1.8 seconds
+const LOADING_DURATION = 2800; // 2.8 seconds
 
 const LoadingScreen: FC<{ onLoadingComplete: () => void }> = ({ onLoadingComplete }) => {
   const [progress, setProgress] = useState(0);
@@ -22,7 +22,7 @@ const LoadingScreen: FC<{ onLoadingComplete: () => void }> = ({ onLoadingComplet
 
     const fadeTimer = setTimeout(() => {
       setIsVisible(false);
-    }, LOADING_DURATION - 300); // Start fade 300ms before complete
+    }, LOADING_DURATION - 500); // Start fade 500ms before complete
 
     const completeTimer = setTimeout(() => {
       onLoadingComplete();
@@ -45,7 +45,7 @@ const LoadingScreen: FC<{ onLoadingComplete: () => void }> = ({ onLoadingComplet
         background: "#FAFAF8",
         zIndex: 9999,
         opacity: isVisible ? 1 : 0,
-        transition: "opacity 0.3s ease-out",
+        transition: "opacity 1s ease-out",
         overflow: "hidden",
       }}
     >
