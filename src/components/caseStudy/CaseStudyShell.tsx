@@ -106,12 +106,24 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .case-mobile-back { display: flex !important; }
           .case-mobile-tabs { display: flex !important; }
           .case-main, .case-footer-wrap { margin-left: 0 !important; }
-          .case-main { padding-top: 132px !important; }
+          .case-main { padding-top: 132px !important; padding-left: 16px !important; padding-right: 16px !important; }
         }
         @media (max-width: 760px) {
           .case-grid-3 { grid-template-columns: 1fr !important; }
           .case-grid-2 { grid-template-columns: 1fr !important; }
           .case-intro-shots { grid-template-columns: 1fr !important; }
+          .case-main { padding: 132px 12px 0 12px !important; }
+        }
+        /* Accessibility: Focus styles for keyboard navigation */
+        a:focus-visible, button:focus-visible { outline: 2px solid #8DC8E4; outline-offset: 2px; }
+        /* Ensure sufficient color contrast and readability */
+        @media (prefers-contrast: more) {
+          body { letter-spacing: -0.01em; }
+        }
+        /* Touch target sizes (minimum 44x44px for mobile) */
+        @media (max-width: 900px) {
+          .case-btn-press { min-width: 44px !important; min-height: 44px !important; }
+          button { min-height: 44px; }
         }
         ${extraStyle}
       `}</style>
