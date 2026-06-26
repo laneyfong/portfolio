@@ -261,9 +261,6 @@ const NvidiaCaseStudy: FC = () => {
 
         <div style={{ marginTop: 40 }}>
           <Callout>The Real Insight: Say vs. Do.</Callout>
-          <Paragraph>
-            What engineers told us in interviews didn't fully align with their actual workflows — and this gap revealed the true design opportunity.
-          </Paragraph>
           <Reveal>
             <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <FeatureCard title="What they said">
@@ -284,19 +281,11 @@ const NvidiaCaseStudy: FC = () => {
           <SkillRow items={["Insight Framing", "How Might We"]} />
         </Reveal>
 
-        <Paragraph>
-          The say/do gap pointed at something more specific than "make the tool easier to use." We turned the four
-          themes into two design questions worth building toward.
-        </Paragraph>
-
         <div style={{ marginBottom: 40 }}>
           <Kicker>Design Question 1: Prioritization</Kicker>
           <Callout>
             How might we design a system that helps teams rank usability issues alongside technical bugs and see which will have the highest user impact?
           </Callout>
-          <Paragraph>
-            Today, code-breaking bugs are prioritized automatically, while usability issues get deprioritized when timelines are tight. An AI UX agent could help teams see the full picture.
-          </Paragraph>
 
           <Reveal>
             <ProcessFlow
@@ -342,9 +331,6 @@ const NvidiaCaseStudy: FC = () => {
           <Callout>
             How might we design AI-supported insights that provide clear reasoning so engineers can confidently act on recommendations?
           </Callout>
-          <Paragraph>
-            Engineers distrust black-box AI. An effective UX agent needs to show its work and let engineers verify findings themselves.
-          </Paragraph>
 
           <Reveal>
             <ProcessFlow

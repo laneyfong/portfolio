@@ -881,7 +881,7 @@ export const ProcessFlow: FC<{
               <div
                 style={{
                   position: "absolute",
-                  left: "calc(50% - 1px)",
+                  left: 24,
                   top: 48,
                   width: 2,
                   height: 32,
