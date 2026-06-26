@@ -65,9 +65,9 @@ export const SectionHeading: FC<{ children: ReactNode }> = ({ children }) => (
     style={{
       fontFamily: tokens.font.sans,
       fontWeight: tokens.weight.medium,
-      fontSize: tokens.text["2xl"],
-      color: tokens.color.ink,
-      margin: "0 0 28px",
+      fontSize: "24px",
+      color: tokens.color.textDark,
+      margin: "0 0 20px",
     }}
   >
     {children}
@@ -79,10 +79,10 @@ export const Callout: FC<{ children: ReactNode }> = ({ children }) => (
     style={{
       fontFamily: tokens.font.sans,
       fontWeight: tokens.weight.medium,
-      fontSize: tokens.text.lg,
-      color: tokens.color.ink,
+      fontSize: "18px",
+      color: tokens.color.textDark,
       lineHeight: tokens.leading.snug,
-      margin: "0 0 16px",
+      margin: "24px 0 16px",
     }}
   >
     {children}
@@ -93,10 +93,10 @@ export const Paragraph: FC<{ children: ReactNode }> = ({ children }) => (
   <p
     style={{
       fontFamily: tokens.font.sans,
-      fontSize: tokens.text.base,
+      fontSize: "16px",
       lineHeight: tokens.leading.normal,
       color: tokens.color.body,
-      margin: "0 0 20px",
+      margin: "0 0 16px",
       maxWidth: 720,
     }}
   >
@@ -158,7 +158,7 @@ export const SnapshotBar: FC<{ items: { label: string; value: ReactNode }[] }> =
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
             fontSize: tokens.text.base,
-            color: tokens.color.ink,
+            color: tokens.color.textDark,
             lineHeight: 1.3,
           }}
         >
@@ -180,16 +180,16 @@ export const FeatureCard: FC<{ title: string; children: ReactNode }> = ({ title,
         background: tokens.color.offWhite,
         border: `1px solid ${tokens.color.cardBorder}`,
         borderRadius: tokens.radius.md,
-        padding: 24,
+        padding: 20,
       }}
     >
       <div
         style={{
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
-          fontSize: tokens.text.base,
-          color: tokens.color.ink,
-          marginBottom: 10,
+          fontSize: "15px",
+          color: tokens.color.textDark,
+          marginBottom: 8,
         }}
       >
         {title}
@@ -197,7 +197,7 @@ export const FeatureCard: FC<{ title: string; children: ReactNode }> = ({ title,
       <p
         style={{
           fontFamily: tokens.font.sans,
-          fontSize: tokens.text.base,
+          fontSize: "14px",
           color: tokens.color.body,
           lineHeight: tokens.leading.normal,
           margin: 0,
@@ -247,7 +247,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.ink,
+          color: tokens.color.textDark,
           marginBottom: 10,
         }}
       >
@@ -285,7 +285,7 @@ export const FindingRow: FC<{ method: string; children: ReactNode }> = ({ method
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.ink,
+          color: tokens.color.textDark,
           paddingTop: 2,
         }}
       >
@@ -388,7 +388,7 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.ink,
+          color: tokens.color.textDark,
           marginBottom: 20,
         }}
       >
@@ -448,7 +448,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.ink,
+          color: tokens.color.textDark,
           marginBottom: 14,
         }}
       >
@@ -638,7 +638,7 @@ export const TypeCompare: FC<{ options?: { name: string; family: string }[] }> =
         <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, marginBottom: 12 }}>
           {opt.name}
         </div>
-        <div style={{ fontFamily: opt.family, fontSize: 30, color: tokens.color.ink, lineHeight: 1.2 }}>Aa Bb 12:45</div>
+        <div style={{ fontFamily: opt.family, fontSize: 30, color: tokens.color.textDark, lineHeight: 1.2 }}>Aa Bb 12:45</div>
       </div>
     ))}
   </div>
@@ -772,6 +772,246 @@ export const ReadingProgressBar: FC = () => {
       {/* Brand blue, not ink — ink would be invisible against the equally-dark sidebar it
           crosses over for the first 220px. */}
       <div style={{ height: "100%", width: `${progress}%`, background: tokens.color.accent }} />
+    </div>
+  );
+};
+
+// ---------- Colorful User Journey & Flow Visualizations ----------
+
+export const UserJourney: FC<{
+  stages: { label: string; description: string; color: string; icon?: ReactNode }[];
+}> = ({ stages }) => {
+  const [ref, inView] = useInView<HTMLDivElement>(0.3);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        margin: "20px 0 24px",
+        background: tokens.color.offWhite,
+        border: `1px solid ${tokens.color.cardBorder}`,
+        borderRadius: tokens.radius.md,
+        padding: 20,
+      }}
+    >
+      <div style={{ display: "flex", gap: 0, alignItems: "stretch" }}>
+        {stages.map((stage, i) => (
+          <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", gap: 12, marginBottom: 12, alignItems: "center" }}>
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: "50%",
+                  background: stage.color,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: 18,
+                  flexShrink: 0,
+                  opacity: inView ? 1 : 0.3,
+                  transform: inView ? "scale(1)" : "scale(0.7)",
+                  transition: `opacity 0.5s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms`,
+                }}
+              >
+                {stage.icon || i + 1}
+              </div>
+              <div
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
+                  fontSize: "15px",
+                  color: tokens.color.textDark,
+                }}
+              >
+                {stage.label}
+              </div>
+            </div>
+            <p
+              style={{
+                fontFamily: tokens.font.sans,
+                fontSize: "13px",
+                color: tokens.color.body,
+                lineHeight: tokens.leading.normal,
+                margin: 0,
+                marginLeft: 52,
+              }}
+            >
+              {stage.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export const ProcessFlow: FC<{
+  steps: { title: string; description: string; color: string; icon?: string }[];
+  direction?: "horizontal" | "vertical";
+}> = ({ steps, direction = "horizontal" }) => {
+  const [ref, inView] = useInView<HTMLDivElement>(0.3);
+
+  if (direction === "vertical") {
+    return (
+      <div
+        ref={ref}
+        style={{
+          margin: "20px 0 24px",
+          background: tokens.color.offWhite,
+          border: `1px solid ${tokens.color.cardBorder}`,
+          borderRadius: tokens.radius.md,
+          padding: 20,
+        }}
+      >
+        {steps.map((step, i) => (
+          <div key={i} style={{ display: "flex", gap: 16, marginBottom: i < steps.length - 1 ? 24 : 0 }}>
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: "50%",
+                background: `linear-gradient(135deg, ${step.color}, ${step.color}dd)`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontWeight: "bold",
+                fontSize: 20,
+                flexShrink: 0,
+                opacity: inView ? 1 : 0.3,
+                transform: inView ? "scale(1)" : "scale(0.6)",
+                transition: `opacity 0.5s ease ${i * 120}ms, transform 0.5s ease ${i * 120}ms`,
+                boxShadow: inView ? `0 4px 12px ${step.color}40` : "none",
+              }}
+            >
+              {step.icon || i + 1}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
+                  fontSize: "15px",
+                  color: tokens.color.textDark,
+                  marginBottom: 4,
+                }}
+              >
+                {step.title}
+              </div>
+              <p
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: "13px",
+                  color: tokens.color.body,
+                  lineHeight: tokens.leading.normal,
+                  margin: 0,
+                }}
+              >
+                {step.description}
+              </p>
+            </div>
+            {i < steps.length - 1 && (
+              <div
+                style={{
+                  position: "absolute",
+                  left: "calc(24px + 8px)",
+                  width: 2,
+                  height: 24,
+                  background: `linear-gradient(to bottom, ${step.color}, ${steps[i + 1].color})`,
+                  marginTop: 56,
+                  opacity: inView ? 0.4 : 0.2,
+                }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // Horizontal flow
+  return (
+    <div
+      ref={ref}
+      style={{
+        margin: "20px 0 24px",
+        background: tokens.color.offWhite,
+        border: `1px solid ${tokens.color.cardBorder}`,
+        borderRadius: tokens.radius.md,
+        padding: 20,
+      }}
+    >
+      <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+        {steps.map((step, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+            <div
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: "50%",
+                background: `linear-gradient(135deg, ${step.color}, ${step.color}dd)`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontWeight: "bold",
+                fontSize: 22,
+                flexShrink: 0,
+                opacity: inView ? 1 : 0.3,
+                transform: inView ? "scale(1)" : "scale(0.5)",
+                transition: `opacity 0.5s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms`,
+                boxShadow: inView ? `0 8px 16px ${step.color}50` : "none",
+              }}
+            >
+              {step.icon || i + 1}
+            </div>
+            {i < steps.length - 1 && (
+              <div
+                style={{
+                  flex: 1,
+                  height: 3,
+                  background: `linear-gradient(to right, ${step.color}, ${steps[i + 1].color})`,
+                  margin: "0 12px",
+                  borderRadius: 2,
+                  opacity: inView ? 0.6 : 0.2,
+                  transition: `opacity 0.5s ease ${i * 100 + 150}ms`,
+                }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
+        {steps.map((step, i) => (
+          <div key={i} style={{ flex: 1 }}>
+            <div
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "13px",
+                color: tokens.color.textDark,
+                marginBottom: 3,
+              }}
+            >
+              {step.title}
+            </div>
+            <p
+              style={{
+                fontFamily: tokens.font.sans,
+                fontSize: "12px",
+                color: tokens.color.body,
+                lineHeight: 1.3,
+                margin: 0,
+              }}
+            >
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

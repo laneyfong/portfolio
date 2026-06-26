@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
-import signature from "../assets/signature.svg";
+import nameLogoCharacter from "../../NameLogoFull_Character.svg";
 import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./SocialIcons";
 
 const NAV_LINKS = ["Work", "About", "Lab", "Resume"];
@@ -27,7 +27,7 @@ const FooterLink: FC<{ label: string }> = ({ label }) => {
       style={{
         fontFamily: tokens.font.sans,
         fontWeight: tokens.weight.regular,
-        fontSize: tokens.text.sm,
+        fontSize: "16px",
         color: tokens.color.white,
         textDecoration: "none",
         cursor: path ? "pointer" : "default",
@@ -61,13 +61,6 @@ const Footer: FC = () => (
       }}
     >
       <div>
-        <img
-          src={signature}
-          alt="Laney Fong signature"
-          width={280}
-          height={141}
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
         <p
           style={{
             fontFamily: tokens.font.sans,
@@ -75,7 +68,7 @@ const Footer: FC = () => (
             fontSize: tokens.text.sm,
             color: tokens.color.white,
             opacity: 0.85,
-            margin: "8px 0 0",
+            margin: "0 0 12px 0",
           }}
         >
           Designed and vibe coded with{" "}
@@ -88,8 +81,17 @@ const Footer: FC = () => (
           >
             passion
           </em>{" "}
-          by Laney Fong
+          by
         </p>
+        <img
+          src={nameLogoCharacter}
+          alt="Name logo character"
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            marginTop: "4px",
+          }}
+        />
       </div>
 
       <div>

@@ -19,6 +19,8 @@ import {
   FlaskIcon,
   CheckIcon,
   ClockIcon,
+  UserJourney,
+  ProcessFlow,
 } from "./components/caseStudy/CaseStudyKit";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
@@ -180,7 +182,37 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>Four themes came up again and again.</Callout>
+        <Callout>Key research themes from engineer interviews.</Callout>
+        <Paragraph>
+          Four critical patterns emerged that would shape the design of an AI UX agent that engineers would actually trust and use.
+        </Paragraph>
+
+        <Reveal>
+          <UserJourney
+            stages={[
+              {
+                label: "Trust & Transparency",
+                description: "Engineers need to verify AI findings and understand where accountability sits",
+                color: "#FF6B6B",
+              },
+              {
+                label: "Data Collection Gap",
+                description: "Teams lack structured feedback — relying on Slack and feedback buttons instead",
+                color: "#FFA500",
+              },
+              {
+                label: "Engineering Priorities",
+                description: "Code-breaking bugs and timelines crowd out usability fixes",
+                color: "#FFD93D",
+              },
+              {
+                label: "Simple Tools Win",
+                description: "Engineers want zero onboarding — the tool must replace manual work seamlessly",
+                color: "#6BCB77",
+              },
+            ]}
+          />
+        </Reveal>
 
         <Reveal>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -227,20 +259,18 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <div style={{ marginTop: 48 }}>
-          <Callout>Say vs. Do: a real gap.</Callout>
+        <div style={{ marginTop: 40 }}>
+          <Callout>The Real Insight: Say vs. Do.</Callout>
           <Paragraph>
-            What people told us in interviews didn't fully match what their day-to-day workflows actually showed —
-            and that gap turned out to matter more than any single theme above.
+            What engineers told us in interviews didn't fully align with their actual workflows — and this gap revealed the true design opportunity.
           </Paragraph>
           <Reveal>
             <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <FeatureCard title="What they said">
-                They value usability, human judgement, and trustworthy AI insights.
+                They value usability, human judgement, and trustworthy AI insights in a dedicated tool.
               </FeatureCard>
               <FeatureCard title="What their workflows showed">
-                In practice, teams lean on analytics, feedback buttons, Slack comments, and AI summaries — because
-                running direct usability testing consistently is hard.
+                In reality, teams rely on analytics dashboards, feedback buttons, Slack threads, and quick AI summaries to make decisions.
               </FeatureCard>
             </div>
           </Reveal>
@@ -260,27 +290,86 @@ const NvidiaCaseStudy: FC = () => {
         </Paragraph>
 
         <div style={{ marginBottom: 40 }}>
-          <Kicker>Insight 1 — Prioritization under engineering constraints</Kicker>
-          <Paragraph>
-            Engineers prioritize code-breaking bugs and delivery timelines over smaller usability issues, because
-            development resources and approval workflows are limited.
-          </Paragraph>
+          <Kicker>Design Question 1: Prioritization</Kicker>
           <Callout>
-            How might we design a prioritization system that helps teams rank usability issues alongside technical
-            bugs, and identify which issues will have the highest user impact?
+            How might we design a system that helps teams rank usability issues alongside technical bugs and see which will have the highest user impact?
           </Callout>
+          <Paragraph>
+            Today, code-breaking bugs are prioritized automatically, while usability issues get deprioritized when timelines are tight. An AI UX agent could help teams see the full picture.
+          </Paragraph>
+
+          <Reveal>
+            <ProcessFlow
+              direction="vertical"
+              steps={[
+                {
+                  title: "Code bug identified",
+                  description: "Breaking bug is flagged during code review",
+                  color: "#FF6B6B",
+                  icon: "1",
+                },
+                {
+                  title: "Priority assigned",
+                  description: "Code bugs immediately get priority over usability issues",
+                  color: "#FF8C42",
+                  icon: "2",
+                },
+                {
+                  title: "Usability issue surfaces",
+                  description: "Teams discover UI problem post-launch via Slack feedback",
+                  color: "#FFA500",
+                  icon: "3",
+                },
+                {
+                  title: "Assessment",
+                  description: "Engineers ask: 'Is this worth the time to fix?' No clear answer",
+                  color: "#FFD93D",
+                  icon: "4",
+                },
+                {
+                  title: "Deprioritized",
+                  description: "Usability fix gets delayed indefinitely without prioritization framework",
+                  color: "#A8A8A8",
+                  icon: "5",
+                },
+              ]}
+            />
+          </Reveal>
         </div>
 
         <div>
-          <Kicker>Insight 2 — Trust in AI depends on transparency</Kicker>
-          <Paragraph>
-            Engineers only trust AI-generated usability insights when the recommendation is transparent,
-            explainable, and easy to verify.
-          </Paragraph>
+          <Kicker>Design Question 2: Trust Through Transparency</Kicker>
           <Callout>
-            How might we design AI-supported insights that provide clear reasoning and traceable evidence, so
-            engineers can confidently review and act on recommendations?
+            How might we design AI-supported insights that provide clear reasoning so engineers can confidently act on recommendations?
           </Callout>
+          <Paragraph>
+            Engineers distrust black-box AI. An effective UX agent needs to show its work and let engineers verify findings themselves.
+          </Paragraph>
+
+          <Reveal>
+            <ProcessFlow
+              steps={[
+                {
+                  title: "AI Analysis",
+                  description: "Tool simulates user behavior and identifies usability issues",
+                  color: "#4D96FF",
+                  icon: "1",
+                },
+                {
+                  title: "Explain Findings",
+                  description: "Shows clear reasoning and evidence behind each recommendation",
+                  color: "#6BCB77",
+                  icon: "2",
+                },
+                {
+                  title: "Enable Verification",
+                  description: "Engineers can trace the finding back to see the reasoning",
+                  color: "#FFB84D",
+                  icon: "3",
+                },
+              ]}
+            />
+          </Reveal>
         </div>
       </section>
 
@@ -288,6 +377,56 @@ const NvidiaCaseStudy: FC = () => {
       <section id="status" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Status</SectionHeading>
+        </Reveal>
+
+        <Reveal>
+          <div
+            style={{
+              margin: "32px 0",
+              background: tokens.color.offWhite,
+              border: `2px dashed ${tokens.color.cardBorder}`,
+              borderRadius: tokens.radius.md,
+              padding: 60,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              gap: 12,
+            }}
+          >
+            <div
+              style={{
+                fontSize: "48px",
+                marginBottom: 8,
+              }}
+            >
+              🎬
+            </div>
+            <div
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "18px",
+                color: tokens.color.textDark,
+                marginBottom: 4,
+              }}
+            >
+              Design Concept Video
+            </div>
+            <p
+              style={{
+                fontFamily: tokens.font.sans,
+                fontSize: "14px",
+                color: tokens.color.body,
+                margin: 0,
+                maxWidth: 400,
+                lineHeight: tokens.leading.normal,
+              }}
+            >
+              Early-stage concept showing how an AI UX agent could help engineers prioritize and validate findings
+            </p>
+          </div>
         </Reveal>
 
         <Callout>This case study is a work in progress.</Callout>
@@ -314,7 +453,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
         </Reveal>
@@ -322,19 +461,100 @@ const NvidiaCaseStudy: FC = () => {
         <Bullets
           items={[
             <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Leading research, not just running it: </strong>
+              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>Leading research, not just running it: </strong>
               I scoped the study and led a 4-person team across research, visual design, and dev — and when the
               survey's response rate showed it wouldn't produce usable data, we cut it rather than forcing it to a
               finish line.
             </>,
             <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.ink }}>The real finding isn't a UI problem: </strong>
+              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>The real finding isn't a UI problem: </strong>
               the gap between what engineers say they want (trustworthy AI, simple tools) and what they actually do
               (lean on Slack threads and feedback buttons) is a workflow-trust problem, not a screen to redesign —
               that reframing is what's shaping the next phase.
             </>,
           ]}
         />
+      </section>
+
+      {/* Back to Portfolio */}
+      <section style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+        <Reveal dramatic>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
+            <div>
+              <div
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: tokens.text.sm,
+                  fontWeight: tokens.weight.medium,
+                  color: tokens.color.muted,
+                  marginBottom: 12,
+                }}
+              >
+                Explore more
+              </div>
+              <h2
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
+                  fontSize: tokens.text.lg,
+                  color: tokens.color.textDark,
+                  margin: 0,
+                }}
+              >
+                Back to Portfolio
+              </h2>
+              <p
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: tokens.text.base,
+                  color: tokens.color.body,
+                  margin: "8px 0 0",
+                  maxWidth: 400,
+                }}
+              >
+                View all case studies and projects.
+              </p>
+            </div>
+            <a
+              href="/"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 56,
+                height: 56,
+                borderRadius: "50%",
+                background: tokens.color.ink,
+                color: tokens.color.white,
+                textDecoration: "none",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                boxShadow: tokens.shadow.subtle,
+                flexShrink: 0,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = tokens.shadow.cardHoverLarge;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = tokens.shadow.subtle;
+              }}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </a>
+          </div>
+        </Reveal>
       </section>
     </CaseStudyShell>
   );

@@ -4,6 +4,7 @@ export const tokens = {
     white: "#FFFFFF",
     offWhite: "#FAFAFB",
     ink: "#111111",
+    textDark: "#3A3A3A",
     accent: "#8DC8E4",
     body: "#373737",
     stroke: "#F1F0EE",

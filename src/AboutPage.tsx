@@ -5,9 +5,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
-import aboutProudPhoto from "./assets/about-proud-photo.jpg";
+import clubPic from "./assets/club-pic.jpg";
 import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
+import cursorDog from "./assets/cursor-dog.png";
 
 // TODO: link to a real hosted resume file once one exists.
 const RESUME_URL = "#";
@@ -40,6 +41,11 @@ const AboutPage: FC = () => {
   const [photoHovered, setPhotoHovered] = useState(false);
   const [resumeHovered, setResumeHovered] = useState(false);
   const [storySlide, setStorySlide] = useState(0);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [delayedPos, setDelayedPos] = useState({ x: 0, y: 0 });
+  const [storyHovered, setStoryHovered] = useState(false);
+  const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
+  const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -47,6 +53,31 @@ const AboutPage: FC = () => {
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    let rafId: number;
+    const smoothFollow = () => {
+      setDelayedPos((prev) => {
+        const dx = cursorPos.x - prev.x;
+        const dy = cursorPos.y - prev.y;
+        return {
+          x: prev.x + dx * 0.06,
+          y: prev.y + dy * 0.06,
+        };
+      });
+      rafId = requestAnimationFrame(smoothFollow);
+    };
+    rafId = requestAnimationFrame(smoothFollow);
+    return () => cancelAnimationFrame(rafId);
+  }, [cursorPos]);
 
   // Re-arms on every slide change (including manual taps), so a tap resets the clock.
   useEffect(() => {
@@ -94,10 +125,49 @@ const AboutPage: FC = () => {
         color: tokens.color.body,
       }}
     >
+      {/* Cursor-following dog */}
+      <img
+        src={cursorDog}
+        alt="Cute dog following cursor"
+        style={{
+          position: "fixed",
+          width: 43,
+          height: 47,
+          pointerEvents: "none",
+          left: `${delayedPos.x}px`,
+          top: `${delayedPos.y}px`,
+          transform: bioPhotoHovered ? "translate(-20px, 20px)" : "translate(-20px, 20px)",
+          zIndex: 999,
+          animation: bioPhotoHovered ? "dogBounce 0.6s ease-in-out infinite" : "none",
+        }}
+      />
+
       <style>{`
         @keyframes aboutStoryFill {
           from { width: 0%; }
           to { width: 100%; }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        @keyframes float-2 {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(-2deg); }
+        }
+        @keyframes float-3 {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-6px) rotate(1deg); }
+        }
+        @keyframes dogBounce {
+          0%, 100% { transform: translate(-20px, 20px) scale(1); }
+          25% { transform: translate(-20px, -5px) scale(1.1); }
+          50% { transform: translate(-20px, 20px) scale(1); }
+          75% { transform: translate(-20px, 5px) scale(1.05); }
+        }
+        @keyframes dogSpin {
+          0% { transform: translate(-20px, 20px) rotate(0deg) scale(1); }
+          100% { transform: translate(-20px, 20px) rotate(360deg) scale(1); }
         }
         .about-photo-card:focus {
           outline: none;
@@ -105,6 +175,27 @@ const AboutPage: FC = () => {
         .about-photo-card:focus-visible {
           outline: 2px solid ${tokens.color.accent};
           outline-offset: 4px;
+        }
+        .story-doodle {
+          position: absolute;
+          font-size: 24px;
+          opacity: 0;
+          animation: float 2s ease-in-out infinite;
+        }
+        .story-doodle-1 {
+          top: -10px;
+          left: 10%;
+          animation: float 2s ease-in-out infinite;
+        }
+        .story-doodle-2 {
+          top: 5px;
+          right: 15%;
+          animation: float-2 2.5s ease-in-out infinite 0.3s;
+        }
+        .story-doodle-3 {
+          bottom: 10px;
+          left: 20%;
+          animation: float-3 2.2s ease-in-out infinite 0.6s;
         }
       `}</style>
 
@@ -187,6 +278,8 @@ const AboutPage: FC = () => {
                   advanceStory();
                 }
               }}
+              onMouseEnter={() => setStoryHovered(true)}
+              onMouseLeave={() => setStoryHovered(false)}
               className="about-photo-card"
               style={{
                 position: "relative",
@@ -211,6 +304,38 @@ const AboutPage: FC = () => {
                   }}
                 />
               ))}
+              {/* Hover doodles */}
+              {storyHovered && (
+                <>
+                  <div
+                    className="story-doodle story-doodle-1"
+                    style={{
+                      opacity: storyHovered ? 1 : 0,
+                      transition: "opacity 0.3s ease",
+                    }}
+                  >
+                    ✨
+                  </div>
+                  <div
+                    className="story-doodle story-doodle-2"
+                    style={{
+                      opacity: storyHovered ? 1 : 0,
+                      transition: "opacity 0.3s ease",
+                    }}
+                  >
+                    💫
+                  </div>
+                  <div
+                    className="story-doodle story-doodle-3"
+                    style={{
+                      opacity: storyHovered ? 1 : 0,
+                      transition: "opacity 0.3s ease",
+                    }}
+                  >
+                    ⭐
+                  </div>
+                </>
+              )}
             </div>
             <p
               style={{
@@ -273,8 +398,14 @@ const AboutPage: FC = () => {
                     setRevealed((v) => !v);
                   }
                 }}
-                onMouseEnter={() => setPhotoHovered(true)}
-                onMouseLeave={() => setPhotoHovered(false)}
+                onMouseEnter={() => {
+                  setPhotoHovered(true);
+                  setBioPhotoHovered(true);
+                }}
+                onMouseLeave={() => {
+                  setPhotoHovered(false);
+                  setBioPhotoHovered(false);
+                }}
                 className="about-photo-card"
                 style={{
                   position: "relative",
@@ -304,22 +435,6 @@ const AboutPage: FC = () => {
                     display: "block",
                   }}
                 />
-                <span
-                  style={{
-                    position: "absolute",
-                    bottom: 10,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    fontFamily: tokens.font.sans,
-                    fontSize: tokens.text.sm,
-                    color: "rgba(255, 255, 255, 0.92)",
-                    textShadow: "0 1px 4px rgba(0, 0, 0, 0.45)",
-                    whiteSpace: "nowrap",
-                    pointerEvents: "none",
-                  }}
-                >
-                  SF Bay Area
-                </span>
               </div>
             </div>
           </div>
@@ -327,6 +442,52 @@ const AboutPage: FC = () => {
           {/* Contact panel — always visible, not gated behind the photo click */}
           <div style={rightPanelStyle}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ marginBottom: 4 }}
+              >
+                {/* Coffee cup */}
+                <path
+                  d="M12 18H32V36C32 37.1046 31.1046 38 30 38H14C12.8954 38 12 37.1046 12 36V18Z"
+                  stroke={tokens.color.body}
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+                {/* Cup handle */}
+                <path
+                  d="M32 22C34 22 35.5 23.5 35.5 25.5C35.5 27.5 34 29 32 29"
+                  stroke={tokens.color.body}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                {/* Steam */}
+                <path
+                  d="M16 10C16 10 16 12 16 14"
+                  stroke={tokens.color.accent}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M22 8C22 8 22 10 22 12"
+                  stroke={tokens.color.accent}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M28 10C28 10 28 12 28 14"
+                  stroke={tokens.color.accent}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
               <h3
                 style={{
                   fontFamily: tokens.font.sans,
@@ -467,11 +628,22 @@ const AboutPage: FC = () => {
               club. My focus on member engagement and real-world project experience transformed the organization into
               a thriving, tight-knit professional community!
             </p>
-            <div style={{ borderRadius: tokens.radius.sm, overflow: "hidden" }}>
+            <div
+              onMouseEnter={() => setProudPhotoHovered(true)}
+              onMouseLeave={() => setProudPhotoHovered(false)}
+              style={{ borderRadius: tokens.radius.sm, overflow: "hidden", cursor: "pointer" }}
+            >
               <img
-                src={aboutProudPhoto}
+                src={clubPic}
                 alt="UC Berkeley UX club members celebrating together"
-                style={{ width: "100%", display: "block", filter: "grayscale(1)" }}
+                style={{
+                  width: "100%",
+                  display: "block",
+                  filter: proudPhotoHovered
+                    ? "grayscale(0) brightness(1.1)"
+                    : "grayscale(1) brightness(1.15)",
+                  transition: "filter 0.3s ease",
+                }}
               />
             </div>
           </div>

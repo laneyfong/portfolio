@@ -24,6 +24,8 @@ import {
   SearchIcon,
   BellIcon,
   ThumbsDownIcon,
+  UserJourney,
+  ProcessFlow,
 } from "./components/caseStudy/CaseStudyKit";
 import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
@@ -316,6 +318,22 @@ const MyShakeCaseStudy: FC = () => {
           />
         </Reveal>
 
+        <Reveal>
+          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
+            <FeatureCard title="Problem">
+              The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no
+              reason to return.
+            </FeatureCard>
+            <FeatureCard title="Solution">
+              Redesigned MyShake from a passive information tool into a high-stakes navigation utility, with instant
+              access to pinned family locations and critical safety status.
+            </FeatureCard>
+            <FeatureCard title="Result">
+              45% increase in user engagement by evolving MyShake into an all-in-one earthquake care package.
+            </FeatureCard>
+          </div>
+        </Reveal>
+
         <Reveal delay={100}>
           <ShakeOnView>
             <div className="case-intro-shots" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 16, marginBottom: 32 }}>
@@ -351,45 +369,22 @@ const MyShakeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>The Goal</Callout>
-        <Paragraph>
-          MyShake wants to be the #1 earthquake app in the market. Their ask: increase engagement and grow the
-          active-user rate.
-        </Paragraph>
-
-        <Reveal>
-          <BarCompare
-            title="Active users — today vs. goal"
-            bars={[
-              { label: "Today", value: 5, display: "3.8M users · 5% active" },
-              { label: "Goal", value: 12.5, display: "4M users · 12.5% active" },
-            ]}
-          />
-        </Reveal>
-
-        <div style={{ marginBottom: 48 }}>
-          <Kicker>Constraints</Kicker>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <TagPill>3-month timeline</TagPill>
-            <TagPill>Data privacy restrictions</TagPill>
-          </div>
+        <div style={{ marginBottom: 40 }}>
+          <Kicker>The Challenge</Kicker>
+          <Paragraph>
+            MyShake wanted to be the #1 earthquake app in the market by increasing engagement and growing the
+            active-user rate from 5% to 12.5%, while navigating a tight 3-month timeline and data privacy restrictions.
+          </Paragraph>
+          <Reveal>
+            <BarCompare
+              title="Engagement goal"
+              bars={[
+                { label: "Current", value: 5, display: "3.8M users · 5% active" },
+                { label: "Target", value: 12.5, display: "4M users · 12.5% active" },
+              ]}
+            />
+          </Reveal>
         </div>
-
-        <Reveal>
-          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-            <FeatureCard title="Problem">
-              The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no
-              reason to return.
-            </FeatureCard>
-            <FeatureCard title="Solution">
-              Redesigned MyShake from a passive information tool into a high-stakes navigation utility, with instant
-              access to pinned family locations and critical safety status.
-            </FeatureCard>
-            <FeatureCard title="Result">
-              45% increase in user engagement by evolving MyShake into an all-in-one earthquake care package.
-            </FeatureCard>
-          </div>
-        </Reveal>
       </section>
 
       {/* Research */}
@@ -447,11 +442,42 @@ const MyShakeCaseStudy: FC = () => {
               <IconCard
                 icon={<ThumbsDownIcon />}
                 title="What users disliked"
-                items={["Poor UI aesthetics", "The confusing “I felt shake” button", "Lack of color on the map"]}
+                items={["Poor UI aesthetics", "The confusing I felt shake button", "Lack of color on the map"]}
               />
             </div>
           </Reveal>
         </div>
+
+        <Callout>User journey: From awareness to churn.</Callout>
+        <Paragraph>
+          Research revealed a critical problem: users were downloading the app out of concern but had no reason to keep it.
+        </Paragraph>
+        <Reveal>
+          <UserJourney
+            stages={[
+              {
+                label: "Awareness",
+                description: "Users feel concerned about earthquake risk in their area and want timely alerts",
+                color: "#FF6B6B",
+              },
+              {
+                label: "Evaluation",
+                description: "They research available apps but are unsure if MyShake is better than alternatives",
+                color: "#FFA500",
+              },
+              {
+                label: "Adoption",
+                description: "Users download but engagement is low due to confusing UX and unclear value",
+                color: "#FFD93D",
+              },
+              {
+                label: "Churn",
+                description: "Without a crisis moment, users quickly uninstall—the app feels like a novelty",
+                color: "#A8A8A8",
+              },
+            ]}
+          />
+        </Reveal>
       </section>
 
       {/* Synthesis */}
@@ -464,14 +490,25 @@ const MyShakeCaseStudy: FC = () => {
           Having identified core user needs, we pivoted to prioritizing high-impact solutions that could
           realistically be delivered within our timeframe.
         </Paragraph>
-        <Callout>The Path to Instant Connection: Redefining Emergency Navigation</Callout>
+
+        <Callout>The Problem: 7 steps to find a loved one.</Callout>
         <Paragraph>
-          We identified a significant friction point in the existing flow. To support users in high-stakes
-          scenarios, we set out to redesign the architecture to minimize cognitive load and prioritize speed.
+          In a high-stakes moment, users had to navigate through too many steps to get critical information. Each step added friction and cognitive load during a crisis.
         </Paragraph>
 
         <Reveal>
-          <StepFlow steps={7} variant="before" label="Before — checking on a loved one took a seven-step location check" />
+          <ProcessFlow
+            direction="vertical"
+            steps={[
+              { title: "Launch app", description: "User opens MyShake in panic", color: "#FF6B6B", icon: "1" },
+              { title: "Navigate to search", description: "Find the search feature buried in menu", color: "#FF8C42", icon: "2" },
+              { title: "Enter name", description: "Type loved one's name or number", color: "#FFA500", icon: "3" },
+              { title: "Wait for results", description: "Slow API returns fuzzy matches", color: "#FFB84D", icon: "4" },
+              { title: "Verify location", description: "Check if result matches the right person", color: "#FFC870", icon: "5" },
+              { title: "Get status", description: "Finally see if they're safe", color: "#FFD93D", icon: "6" },
+              { title: "Relief", description: "7+ steps to get critical information", color: "#A8A8A8", icon: "7" },
+            ]}
+          />
         </Reveal>
 
         <Callout>Empathizing with users to find the most intuitive flow.</Callout>
@@ -539,6 +576,37 @@ const MyShakeCaseStudy: FC = () => {
 
         <Callout>Restructuring the landing page to minimize time-to-task for essential safety information.</Callout>
 
+        <Callout>Design principles: From data tool to safety companion.</Callout>
+        <Paragraph>
+          We established four core principles to guide the redesign and ensure the app served users in high-stakes moments.
+        </Paragraph>
+        <Reveal>
+          <UserJourney
+            stages={[
+              {
+                label: "Speed",
+                description: "Minimize taps and cognitive load to find critical info instantly",
+                color: "#FF6B6B",
+              },
+              {
+                label: "Clarity",
+                description: "Make the app's purpose clear — safety, not data visualization",
+                color: "#6BCB77",
+              },
+              {
+                label: "Reassurance",
+                description: "Provide immediate visual confirmation of loved ones' safety status",
+                color: "#4D96FF",
+              },
+              {
+                label: "Accessibility",
+                description: "Design for all users, not just data enthusiasts or scientists",
+                color: "#FFB84D",
+              },
+            ]}
+          />
+        </Reveal>
+
         <Callout>Choosing a font that balances brand and accessibility.</Callout>
         <Paragraph>
           I tested Helvetica Neue against Plus Jakarta Sans to find the right balance of authority and
@@ -571,30 +639,101 @@ const MyShakeCaseStudy: FC = () => {
         </Paragraph>
 
         <Reveal>
-          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, margin: "32px 0" }}>
-            <FeatureCard title="Personal Safety & Engagement">
-              Nearby earthquakes and pinned locations first — a movable map prioritizing loved ones and yourself,
-              plus damage reports.
-            </FeatureCard>
-            <FeatureCard title="Safety & Education">
-              Safety information on what to do in an emergency, with gamified education to increase engagement.
-            </FeatureCard>
-            <FeatureCard title="Accessibility-First">
-              Designed for all users and age groups, not just scientists — data made more digestible.
-            </FeatureCard>
+          <div
+            style={{
+              margin: "32px 0",
+              background: tokens.color.offWhite,
+              border: `2px dashed ${tokens.color.cardBorder}`,
+              borderRadius: tokens.radius.md,
+              padding: 60,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              gap: 12,
+            }}
+          >
+            <div
+              style={{
+                fontSize: "48px",
+                marginBottom: 8,
+              }}
+            >
+              ▶️
+            </div>
+            <div
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "18px",
+                color: tokens.color.textDark,
+                marginBottom: 4,
+              }}
+            >
+              Interactive Product Demo
+            </div>
+            <p
+              style={{
+                fontFamily: tokens.font.sans,
+                fontSize: "14px",
+                color: tokens.color.body,
+                margin: 0,
+                maxWidth: 400,
+                lineHeight: tokens.leading.normal,
+              }}
+            >
+              Try the redesigned app flow: Open dashboard → Tap a contact → See safety status in 3 steps
+            </p>
           </div>
         </Reveal>
 
         <Reveal>
           <RadialStat percent={45} label="Increase in user engagement, driven by the restructured information architecture." />
         </Reveal>
+
+        <Callout>The Solution: 3 steps instead of 7.</Callout>
         <Paragraph>
-          A faster task-completion rate, thanks to the restructured information architecture — the simplified flow
-          lets critical information get accessed faster.
+          By restructuring the information architecture around personal safety instead of data visualization, we reduced the time-to-critical-information from 7 steps to just 3.
         </Paragraph>
 
         <Reveal>
-          <StepFlow steps={3} variant="after" label="After — the same check now takes three steps" />
+          <ProcessFlow
+            steps={[
+              {
+                title: "Open App",
+                description: "Dashboard immediately visible with pinned loved ones",
+                color: "#6BCB77",
+                icon: "1",
+              },
+              {
+                title: "Tap Contact",
+                description: "One tap to see location and safety status in real-time",
+                color: "#4D96FF",
+                icon: "2",
+              },
+              {
+                title: "Get Status",
+                description: "Critical information displayed instantly and clearly",
+                color: "#FFB84D",
+                icon: "3",
+              },
+            ]}
+          />
+        </Reveal>
+
+        <Reveal>
+          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, margin: "32px 0" }}>
+            <FeatureCard title="Personal Safety">
+              Nearby earthquakes and pinned locations first — a movable map prioritizing loved ones and yourself.
+            </FeatureCard>
+            <FeatureCard title="Education & Engagement">
+              Safety information on what to do in an emergency, with gamified features to increase engagement.
+            </FeatureCard>
+            <FeatureCard title="Accessible Design">
+              Designed for all users and age groups — data made digestible, not just for scientists.
+            </FeatureCard>
+          </div>
         </Reveal>
         <div style={{ display: "inline-flex", marginBottom: 20 }}>
           <TagPill>Goal: find a loved one in two taps</TagPill>
@@ -606,7 +745,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
           <PullQuote>This is my proudest work.</PullQuote>
@@ -618,18 +757,99 @@ const MyShakeCaseStudy: FC = () => {
         <Bullets
           items={[
             <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Design advocacy: </strong>
+              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>Design advocacy: </strong>
               our client wanted to skip straight to redesigning. We talked through the risk together, agreed on a
               scoped-down research plan instead, and the findings ended up reshaping the entire information
               architecture.
             </>,
             <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.ink }}>With more time: </strong>
+              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>With more time: </strong>
               I'd scale the research further, add an earthquake news feed, and layer in more micro-interactions to
               round out the experience.
             </>,
           ]}
         />
+      </section>
+
+      {/* Next Case Study */}
+      <section style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+        <Reveal dramatic>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
+            <div>
+              <div
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: tokens.text.sm,
+                  fontWeight: tokens.weight.medium,
+                  color: tokens.color.muted,
+                  marginBottom: 12,
+                }}
+              >
+                Next case study
+              </div>
+              <h2
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
+                  fontSize: tokens.text.lg,
+                  color: tokens.color.textDark,
+                  margin: 0,
+                }}
+              >
+                NVIDIA AI UX Agent
+              </h2>
+              <p
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: tokens.text.base,
+                  color: tokens.color.body,
+                  margin: "8px 0 0",
+                  maxWidth: 400,
+                }}
+              >
+                Designing an AI UX agent that engineers actually trust.
+              </p>
+            </div>
+            <a
+              href="/nvidia-ai-ux-agent"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 56,
+                height: 56,
+                borderRadius: "50%",
+                background: tokens.color.ink,
+                color: tokens.color.white,
+                textDecoration: "none",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                boxShadow: tokens.shadow.subtle,
+                flexShrink: 0,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = tokens.shadow.cardHoverLarge;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = tokens.shadow.subtle;
+              }}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </Reveal>
       </section>
     </CaseStudyShell>
   );

@@ -65,9 +65,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
         cursor: to ? "pointer" : "default",
         transition: "transform 0.22s ease, box-shadow 0.22s ease",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        // box-shadow lives on this outer, overflow-visible box so the glow ring isn't clipped
+        // box-shadow lives on this outer, overflow-visible box so the shadow isn't clipped
         // by the inner content's overflow:hidden (needed for the rounded screenshot corners).
-        boxShadow: hovered ? `${tokens.shadow.cardGlowHover}, ${tokens.shadow.subtle}` : "none",
+        boxShadow: hovered ? tokens.shadow.subtle : "none",
       }}
     >
       <div

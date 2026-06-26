@@ -154,6 +154,15 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             justifyContent: "center",
             marginBottom: 64,
             flexShrink: 0,
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+            e.currentTarget.style.borderColor = tokens.color.accent;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)";
           }}
         >
           <BackArrowIcon />

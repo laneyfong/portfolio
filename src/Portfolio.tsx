@@ -44,7 +44,7 @@ const ViewMoreCard: FC = () => {
         boxSizing: "border-box",
         transition: "transform 0.22s ease, box-shadow 0.22s ease",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        boxShadow: hovered ? `${tokens.shadow.cardGlowHover}, ${tokens.shadow.subtle}` : "none",
+        boxShadow: hovered ? tokens.shadow.subtle : "none",
       }}
     >
       <span
@@ -90,9 +90,9 @@ const PlatoCard: FC = () => {
         cursor: "pointer",
         transition: "transform 0.22s ease, box-shadow 0.22s ease",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        // box-shadow lives on this outer, overflow-visible box so the glow ring isn't clipped
+        // box-shadow lives on this outer, overflow-visible box so the shadow isn't clipped
         // by the inner content's overflow:hidden (needed for the peeking-phone effect).
-        boxShadow: hovered ? `${tokens.shadow.cardGlowHover}, ${tokens.shadow.subtle}` : "none",
+        boxShadow: hovered ? tokens.shadow.subtle : "none",
       }}
     >
       <div
