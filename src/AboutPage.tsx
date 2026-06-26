@@ -575,24 +575,20 @@ const AboutPage: FC = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  boxSizing: "border-box",
-                  width: "100%",
-                  padding: "16px",
-                  borderRadius: tokens.radius.md,
-                  background: resumeHovered ? "#E8E8E8" : "#F0F0F0",
                   textDecoration: "none",
-                  boxShadow: resumeHovered ? tokens.shadow.subtle : "none",
-                  transition: "background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease",
-                  transform: resumeHovered ? "translateY(-2px)" : "translateY(0)",
                   cursor: "pointer",
+                  padding: "8px",
+                  opacity: resumeHovered ? 0.7 : 1,
+                  transform: resumeHovered ? "scale(1.1)" : "scale(1)",
+                  transition: "opacity 0.2s ease, transform 0.2s ease",
                 }}
               >
                 <img
                   src={resumeIcon}
-                  alt="Resume"
+                  alt="Download resume"
                   style={{
-                    width: 48,
-                    height: 48,
+                    width: 80,
+                    height: 80,
                     objectFit: "contain",
                   }}
                 />
