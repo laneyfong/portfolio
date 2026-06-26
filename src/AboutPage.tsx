@@ -9,6 +9,7 @@ import clubPic from "./assets/club-pic.jpg";
 import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import cursorDog from "./assets/cursor-dog.png";
+import coffeeMug from "./assets/coffee-mug.png";
 
 // TODO: link to a real hosted resume file once one exists.
 const RESUME_URL = "#";
@@ -513,52 +514,16 @@ const AboutPage: FC = () => {
           {/* Contact panel — always visible, not gated behind the photo click */}
           <div className="about-right-panel" style={rightPanelStyle}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ marginBottom: 4 }}
-              >
-                {/* Coffee cup */}
-                <path
-                  d="M12 18H32V36C32 37.1046 31.1046 38 30 38H14C12.8954 38 12 37.1046 12 36V18Z"
-                  stroke={tokens.color.body}
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                {/* Cup handle */}
-                <path
-                  d="M32 22C34 22 35.5 23.5 35.5 25.5C35.5 27.5 34 29 32 29"
-                  stroke={tokens.color.body}
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                {/* Steam */}
-                <path
-                  d="M16 10C16 10 16 12 16 14"
-                  stroke={tokens.color.accent}
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M22 8C22 8 22 10 22 12"
-                  stroke={tokens.color.accent}
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M28 10C28 10 28 12 28 14"
-                  stroke={tokens.color.accent}
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <img
+                src={coffeeMug}
+                alt="Black & White coffee mug"
+                style={{
+                  width: 80,
+                  height: 80,
+                  objectFit: "contain",
+                  marginBottom: 4,
+                }}
+              />
               <h3
                 style={{
                   fontFamily: tokens.font.sans,
