@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import { tokens } from "../tokens";
 
 const ROUTES: Record<string, string> = {
   Work: "/",
@@ -60,12 +61,12 @@ const Header: FC = () => {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: isScrolled ? "rgba(250, 250, 248, 0.7)" : "#FAFAF8",
+        background: isScrolled ? `rgba(250, 250, 251, 0.7)` : tokens.color.offWhite,
         backdropFilter: isScrolled ? "blur(8px)" : "none",
         WebkitBackdropFilter: isScrolled ? "blur(8px)" : "none",
         borderBottom: isScrolled
-          ? "1px solid rgba(0, 0, 0, 0.05)"
-          : "1px solid rgba(0, 0, 0, 0.08)",
+          ? `1px solid ${tokens.color.cardBorder}`
+          : `1px solid ${tokens.color.cardBorder}`,
         transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
       }}
     >
@@ -114,32 +115,31 @@ const Header: FC = () => {
         }
 
         .nav-item-label {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: 0.3px;
-          color: #111111;
-          text-transform: uppercase;
+          font-family: ${tokens.font.sans};
+          font-size: 14px;
+          font-weight: ${tokens.weight.regular};
+          letter-spacing: ${tokens.tracking.tight};
+          color: ${tokens.color.body};
           transition: color 0.2s ease, transform 0.2s ease;
           white-space: nowrap;
         }
 
         .nav-item:hover .nav-item-label {
           transform: translateY(-1px);
-          color: #111111;
+          color: ${tokens.color.ink};
         }
 
         .nav-item-micro {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-          font-size: 9px;
-          letter-spacing: 0.2px;
-          color: #6A6A6A;
+          font-family: ${tokens.font.sans};
+          font-size: 12px;
+          letter-spacing: ${tokens.tracking.tight};
+          color: ${tokens.color.muted};
           margin-top: 3px;
           opacity: 0;
           transition: opacity 0.3s ease, filter 0.3s ease;
           filter: blur(2px);
           white-space: nowrap;
-          font-weight: 400;
+          font-weight: ${tokens.weight.light};
         }
 
         .nav-item:hover .nav-item-micro {
@@ -148,15 +148,15 @@ const Header: FC = () => {
         }
 
         .nav-item.active .nav-item-label {
-          color: #111111;
-          font-weight: 600;
+          color: ${tokens.color.ink};
+          font-weight: ${tokens.weight.medium};
         }
 
         .nav-underline {
           position: absolute;
           bottom: -2px;
           height: 1px;
-          background: #111111;
+          background: ${tokens.color.accent};
           width: 0;
           transform-origin: left;
           transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -169,11 +169,11 @@ const Header: FC = () => {
 
         .nav-dot {
           position: absolute;
-          width: 5px;
-          height: 5px;
+          width: 4px;
+          height: 4px;
           border-radius: 50%;
-          background: #356AE6;
-          bottom: -16px;
+          background: ${tokens.color.accent};
+          bottom: -14px;
           left: 50%;
           transform: translateX(-50%);
           opacity: 0;
@@ -239,12 +239,11 @@ const Header: FC = () => {
           <div
             className="header-brand-name"
             style={{
-              fontFamily:
-                "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif",
-              fontSize: "11px",
-              fontWeight: 500,
-              letterSpacing: "0.3px",
-              color: "#111111",
+              fontFamily: tokens.font.sans,
+              fontSize: "14px",
+              fontWeight: tokens.weight.medium,
+              letterSpacing: tokens.tracking.tight,
+              color: tokens.color.ink,
               textTransform: "uppercase",
               lineHeight: "1.2",
             }}
@@ -254,13 +253,12 @@ const Header: FC = () => {
           <div
             className="header-brand-title"
             style={{
-              fontFamily:
-                "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif",
-              fontSize: "9px",
-              letterSpacing: "0.3px",
-              color: "#6A6A6A",
+              fontFamily: tokens.font.sans,
+              fontSize: "12px",
+              letterSpacing: tokens.tracking.tight,
+              color: tokens.color.muted,
               textTransform: "uppercase",
-              fontWeight: 400,
+              fontWeight: tokens.weight.light,
               lineHeight: "1.2",
             }}
           >
@@ -314,17 +312,16 @@ const Header: FC = () => {
         {/* Status Indicator */}
         <div
           style={{
-            fontSize: "10px",
-            letterSpacing: "0.3px",
-            color: "#6A6A6A",
+            fontSize: "12px",
+            letterSpacing: tokens.tracking.tight,
+            color: tokens.color.muted,
             textTransform: "uppercase",
             display: "flex",
             alignItems: "center",
             gap: "6px",
             whiteSpace: "nowrap",
-            fontFamily:
-              "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif",
-            fontWeight: 400,
+            fontFamily: tokens.font.sans,
+            fontWeight: tokens.weight.light,
             flexShrink: 0,
             animation: "headerFadeIn 0.6s ease-out 0.3s both",
           }}
