@@ -203,13 +203,13 @@ const Portfolio: FC = () => {
         /* Tablet responsiveness */
         @media (max-width: 900px) {
           main { padding: 48px 16px 96px !important; margin-left: 100px !important; }
-          .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 48px !important; margin-top: -24px !important; }
+          .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 80px !important; margin-top: -24px !important; }
         }
         /* Mobile responsiveness */
         @media (max-width: 640px) {
           main { padding: 48px 20px 96px !important; margin-left: 0 !important; }
-          .badge-section { min-height: clamp(350px, 55vh, 80vh) !important; margin-bottom: 40px !important; margin-top: -24px !important; }
-          .badge-bg-pattern { display: none !important; }
+          .badge-section { min-height: clamp(350px, 55vh, 80vh) !important; margin-bottom: 64px !important; margin-top: -24px !important; }
+          .badge-bg-pattern { opacity: 0.05 !important; }
           .work-grid > div:last-child { order: 1; }
           .work-grid > div:first-child { order: 2; }
         }
@@ -224,9 +224,9 @@ const Portfolio: FC = () => {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 64,
+            marginBottom: 96,
             marginTop: -40,
-            minHeight: "clamp(520px, 75vh, 95vh)",
+            minHeight: "clamp(500px, 70vh, 90vh)",
             alignItems: "center",
           }}
         >
@@ -245,6 +245,7 @@ const Portfolio: FC = () => {
               zIndex: 0,
               pointerEvents: "none",
               userSelect: "none",
+              opacity: 0.08,
             }}
           />
           <div style={{ position: "relative", zIndex: 1 }}>
