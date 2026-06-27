@@ -120,8 +120,10 @@ const Header: FC = () => {
           font-weight: ${tokens.weight.regular};
           letter-spacing: ${tokens.tracking.tight};
           color: ${tokens.color.body};
-          transition: color 0.2s ease, transform 0.2s ease;
+          transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
           white-space: nowrap;
+          position: relative;
+          z-index: 2;
         }
 
         .nav-item:hover .nav-item-label {
@@ -136,7 +138,7 @@ const Header: FC = () => {
           color: ${tokens.color.muted};
           margin-top: 3px;
           opacity: 0;
-          transition: opacity 0.3s ease, filter 0.3s ease;
+          transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
           filter: blur(2px);
           white-space: nowrap;
           font-weight: ${tokens.weight.light};
@@ -152,36 +154,26 @@ const Header: FC = () => {
           font-weight: ${tokens.weight.medium};
         }
 
-        .nav-underline {
+        .nav-background {
           position: absolute;
-          bottom: -2px;
-          height: 1px;
-          background: ${tokens.color.accent};
-          width: 0;
-          transform-origin: left;
-          transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: transparent;
+          border-radius: 6px;
+          transition: background 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          z-index: 1;
+          pointer-events: none;
         }
 
-        .nav-item.active .nav-underline,
-        .nav-item:hover .nav-underline {
-          width: 100%;
+        .nav-item:hover .nav-background {
+          background: rgba(141, 200, 228, 0.08);
         }
 
-        .nav-dot {
-          position: absolute;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          background: ${tokens.color.accent};
-          bottom: -14px;
-          left: 50%;
-          transform: translateX(-50%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .nav-item.active .nav-dot {
-          opacity: 1;
+        .nav-item.active .nav-background {
+          background: rgba(141, 200, 228, 0.12);
+          box-shadow: inset 0 0 0 1px rgba(141, 200, 228, 0.3);
         }
 
         @media (max-width: 900px) {
@@ -291,19 +283,15 @@ const Header: FC = () => {
                 aria-current={isActive ? "page" : undefined}
                 style={{
                   animation: `headerFadeIn 0.6s ease-out ${0.2 + index * 0.05}s both`,
+                  position: "relative",
+                  padding: "8px 12px",
                 }}
               >
+                <div className="nav-background" />
                 <div className="nav-item-label">{item.label}</div>
                 {isHovered && (
                   <div className="nav-item-micro">{item.micro}</div>
                 )}
-                <div
-                  className="nav-underline"
-                  style={{
-                    width: isActive || isHovered ? "100%" : "0%",
-                  }}
-                />
-                {isActive && <div className="nav-dot" />}
               </button>
             );
           })}
