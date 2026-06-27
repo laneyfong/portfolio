@@ -232,7 +232,7 @@ const AboutPage: FC = () => {
         }
         /* Mobile responsiveness */
         @media (max-width: 900px) {
-          main { padding: clamp(60px, 10vw, 80px) 16px 64px !important; }
+          main { padding: 48px 16px 64px !important; }
         }
         @media (max-width: 760px) {
           .about-container {
@@ -266,7 +266,7 @@ const AboutPage: FC = () => {
           }
         }
         @media (max-width: 640px) {
-          main { padding: clamp(50px, 8vw, 70px) 12px 48px !important; }
+          main { padding: 48px 12px 48px !important; }
           .about-container {
             gap: 20px !important;
           }
@@ -275,7 +275,7 @@ const AboutPage: FC = () => {
 
       <Header />
 
-      <main style={{ maxWidth: 1320, margin: "0 auto", padding: "clamp(60px, 10vw, 100px) 32px 96px" }}>
+      <main style={{ maxWidth: 1320, margin: "0 auto", padding: "64px 32px 96px" }}>
         <div style={{ width: HERO_WIDTH, margin: "0 auto 20px" }}>
           <h1
             style={{
