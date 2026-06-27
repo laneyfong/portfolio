@@ -102,16 +102,15 @@ const Header: FC = () => {
           top: 0;
           bottom: 0;
           width: 120px;
-          background: linear-gradient(180deg, ${tokens.color.offWhite} 0%, rgba(250, 250, 251, 0.5) 100%);
+          background: ${tokens.color.offWhite};
           border-right: 1px solid ${tokens.color.cardBorder};
-          padding: 40px 14px;
+          padding: 32px 16px;
           display: flex;
           flex-direction: column;
           gap: 0;
           z-index: 100;
           overflow-y: auto;
           animation: railFadeIn 0.6s ease-out;
-          box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.02);
         }
 
         .rail-header {
@@ -182,18 +181,18 @@ const Header: FC = () => {
 
         .nav-item-label {
           font-family: ${tokens.font.sans};
-          font-size: 12px;
+          font-size: 13px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
           color: ${tokens.color.body};
-          transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
           position: relative;
         }
 
         .nav-item:hover .nav-item-label,
         .nav-item.hovered .nav-item-label {
           color: ${tokens.color.ink};
-          transform: translateY(-0.5px);
+          transform: translateY(-1px);
         }
 
         .nav-item-micro {
@@ -277,13 +276,12 @@ const Header: FC = () => {
 
         .rail-metadata {
           font-family: ${tokens.font.sans};
-          font-size: 8px;
+          font-size: 9px;
           font-weight: ${tokens.weight.light};
-          letter-spacing: 0.5px;
+          letter-spacing: ${tokens.tracking.tight};
           color: ${tokens.color.muted};
-          line-height: 1.8;
+          line-height: 1.6;
           text-transform: uppercase;
-          opacity: 0.7;
         }
 
         .rail-availability {
