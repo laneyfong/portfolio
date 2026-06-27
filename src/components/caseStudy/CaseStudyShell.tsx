@@ -104,18 +104,24 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
            toggles. Cards with no click action intentionally don't get this. */
         .case-btn-press { transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
         .case-btn-press:active { transform: scale(0.94); }
+        @media (min-width: 901px) {
+          /* Desktop: case study sidebar + nav rail */
+          .case-main { margin-left: calc(220px + 120px) !important; }
+          .case-footer-wrap { margin-left: calc(220px + 120px) !important; }
+        }
         @media (max-width: 900px) {
           .case-sidebar { display: none !important; }
           .case-mobile-back { display: flex !important; }
           .case-mobile-tabs { display: none !important; }
-          .case-main, .case-footer-wrap { margin-left: 0 !important; }
+          .case-main, .case-footer-wrap { margin-left: 100px !important; }
           .case-main { padding-top: 80px !important; padding-left: 16px !important; padding-right: 16px !important; }
         }
         @media (max-width: 760px) {
           .case-grid-3 { grid-template-columns: 1fr !important; }
           .case-grid-2 { grid-template-columns: 1fr !important; }
           .case-intro-shots { grid-template-columns: 1fr !important; }
-          .case-main { padding: 80px 12px 0 12px !important; }
+          .case-main { margin-left: 0 !important; padding: 80px 12px 0 12px !important; }
+          .case-footer-wrap { margin-left: 0 !important; }
         }
         /* Accessibility: Focus styles for keyboard navigation */
         a:focus-visible, button:focus-visible { outline: 2px solid #8DC8E4; outline-offset: 2px; }

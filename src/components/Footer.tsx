@@ -47,8 +47,21 @@ const Footer: FC = () => (
     style={{
       backgroundColor: tokens.color.ink,
       padding: "clamp(40px, 8vw, 70px) clamp(24px, 7vw, 64px)",
+      marginLeft: "120px",
     }}
   >
+    <style>{`
+      @media (max-width: 900px) {
+        footer {
+          margin-left: 100px !important;
+        }
+      }
+      @media (max-width: 640px) {
+        footer {
+          margin-left: 0 !important;
+        }
+      }
+    `}</style>
     <div
       style={{
         display: "flex",

@@ -441,8 +441,6 @@ const Header: FC = () => {
         </div>
       </div>
 
-      {/* Main content offset */}
-      <div style={{ marginLeft: "120px" }} />
     </>
   );
 };

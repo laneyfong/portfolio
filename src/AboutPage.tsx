@@ -230,10 +230,11 @@ const AboutPage: FC = () => {
           left: 20%;
           animation: float-3 2.2s ease-in-out infinite 0.6s;
         }
-        /* Mobile responsiveness */
+        /* Tablet responsiveness */
         @media (max-width: 900px) {
-          main { padding: 48px 16px 64px !important; }
+          main { padding: 48px 16px 64px !important; margin-left: 100px !important; }
         }
+        /* Mobile responsiveness */
         @media (max-width: 760px) {
           .about-container {
             gap: 24px !important;
@@ -266,7 +267,7 @@ const AboutPage: FC = () => {
           }
         }
         @media (max-width: 640px) {
-          main { padding: 48px 12px 48px !important; }
+          main { padding: 48px 12px 48px !important; margin-left: 0 !important; }
           .about-container {
             gap: 20px !important;
           }
@@ -275,7 +276,7 @@ const AboutPage: FC = () => {
 
       <Header />
 
-      <main style={{ maxWidth: 1320, margin: "0 auto", padding: "64px 32px 96px" }}>
+      <main style={{ maxWidth: 1320, margin: "0 auto 0 120px", padding: "64px 32px 96px" }}>
         <div style={{ width: HERO_WIDTH, margin: "0 auto 20px" }}>
           <h1
             style={{
