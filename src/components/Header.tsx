@@ -22,7 +22,9 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoverDelay, setHoverDelay] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getActive = () => {
     switch (location.pathname) {
@@ -44,6 +46,20 @@ const Header: FC = () => {
     if (path) navigate(path);
   };
 
+  const handleMouseEnter = (item: string) => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHoverDelay(item);
+      setHoveredItem(item);
+    }, 75); // 75ms hover delay
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    setHoverDelay(null);
+    setHoveredItem(null);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -51,6 +67,12 @@ const Header: FC = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
   }, []);
 
   return (
@@ -67,12 +89,10 @@ const Header: FC = () => {
         borderBottom: isScrolled
           ? `1px solid ${tokens.color.cardBorder}`
           : `1px solid ${tokens.color.cardBorder}`,
-        transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        transition: "background 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
       }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital@0;1&display=swap');
-
         @keyframes grain {
           0%, 100% {
             backgroundPosition: 0 0;
@@ -108,10 +128,11 @@ const Header: FC = () => {
           flex-direction: column;
           align-items: center;
           cursor: pointer;
-          padding: 8px 0;
+          padding: 8px 12px;
           outline: none;
           background: none;
           border: none;
+          font-family: ${tokens.font.sans};
         }
 
         .nav-item-label {
@@ -120,13 +141,14 @@ const Header: FC = () => {
           font-weight: ${tokens.weight.regular};
           letter-spacing: ${tokens.tracking.tight};
           color: ${tokens.color.body};
-          transition: color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
           white-space: nowrap;
           position: relative;
           z-index: 2;
+          transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .nav-item:hover .nav-item-label {
+        .nav-item:hover .nav-item-label,
+        .nav-item.hovered .nav-item-label {
           transform: translateY(-1px);
           color: ${tokens.color.ink};
         }
@@ -136,22 +158,44 @@ const Header: FC = () => {
           font-size: 12px;
           letter-spacing: ${tokens.tracking.tight};
           color: ${tokens.color.muted};
-          margin-top: 3px;
-          opacity: 0;
-          transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-          filter: blur(2px);
+          margin-top: 2px;
           white-space: nowrap;
           font-weight: ${tokens.weight.light};
+          position: relative;
+          z-index: 2;
+          max-width: 100px;
+          text-align: center;
+          line-height: 1.3;
         }
 
-        .nav-item:hover .nav-item-micro {
-          opacity: 1;
-          filter: blur(0);
+        .nav-item-micro.visible {
+          animation: microFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        .nav-item.active .nav-item-label {
-          color: ${tokens.color.ink};
-          font-weight: ${tokens.weight.medium};
+        .nav-item-micro.hidden {
+          animation: microFadeOut 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes microFadeIn {
+          from {
+            opacity: 0;
+            filter: blur(4px);
+          }
+          to {
+            opacity: 1;
+            filter: blur(0);
+          }
+        }
+
+        @keyframes microFadeOut {
+          from {
+            opacity: 1;
+            filter: blur(0);
+          }
+          to {
+            opacity: 0;
+            filter: blur(4px);
+          }
         }
 
         .nav-background {
@@ -161,13 +205,14 @@ const Header: FC = () => {
           right: 0;
           bottom: 0;
           background: transparent;
-          border-radius: 6px;
-          transition: background 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          border-radius: 8px;
+          transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
           z-index: 1;
           pointer-events: none;
         }
 
-        .nav-item:hover .nav-background {
+        .nav-item:hover .nav-background,
+        .nav-item.hovered .nav-background {
           background: rgba(141, 200, 228, 0.08);
         }
 
@@ -176,28 +221,37 @@ const Header: FC = () => {
           box-shadow: inset 0 0 0 1px rgba(141, 200, 228, 0.3);
         }
 
+        .nav-item.active .nav-item-label {
+          color: ${tokens.color.ink};
+          font-weight: ${tokens.weight.medium};
+        }
+
         @media (max-width: 900px) {
           .nav-item-label {
-            font-size: 10px;
+            font-size: 13px;
           }
           .nav-item-micro {
-            font-size: 8px;
-            margin-top: 2px;
+            font-size: 11px;
+            margin-top: 1px;
+          }
+          .header-brand-name {
+            font-size: 12px !important;
           }
         }
 
         @media (max-width: 640px) {
+          .nav-item {
+            padding: 6px 10px;
+          }
           .nav-item-label {
-            font-size: 9px;
+            font-size: 12px;
           }
           .nav-item-micro {
-            font-size: 7px;
+            font-size: 10px;
+            display: none;
           }
           .header-brand-name {
-            font-size: 10px !important;
-          }
-          .header-brand-title {
-            font-size: 8px !important;
+            font-size: 11px !important;
           }
         }
       `}</style>
@@ -214,7 +268,7 @@ const Header: FC = () => {
           alignItems: "center",
           gap: "48px",
           position: "relative",
-          transition: "padding 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+          transition: "padding 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
           animation: "headerFadeIn 0.6s ease-out 0.1s both",
         }}
       >
@@ -236,25 +290,10 @@ const Header: FC = () => {
               fontWeight: tokens.weight.medium,
               letterSpacing: tokens.tracking.tight,
               color: tokens.color.ink,
-              textTransform: "uppercase",
               lineHeight: "1.2",
             }}
           >
             Laney Fong
-          </div>
-          <div
-            className="header-brand-title"
-            style={{
-              fontFamily: tokens.font.sans,
-              fontSize: "12px",
-              letterSpacing: tokens.tracking.tight,
-              color: tokens.color.muted,
-              textTransform: "uppercase",
-              fontWeight: tokens.weight.light,
-              lineHeight: "1.2",
-            }}
-          >
-            UX Designer
           </div>
         </div>
 
@@ -263,35 +302,40 @@ const Header: FC = () => {
           ref={navRef}
           style={{
             display: "flex",
-            gap: "48px",
+            gap: "8px",
             alignItems: "center",
             position: "relative",
             animation: "headerFadeIn 0.6s ease-out 0.2s both",
           }}
-          onMouseLeave={() => setHoveredItem(null)}
+          onMouseLeave={handleMouseLeave}
         >
           {NAV_ITEMS.map((item, index) => {
             const isActive = item.label === active;
             const isHovered = item.label === hoveredItem;
+            const willShow = item.label === hoverDelay || isHovered;
 
             return (
               <button
                 key={item.label}
-                className={`nav-item ${isActive ? "active" : ""}`}
+                className={`nav-item ${isActive ? "active" : ""} ${isHovered ? "hovered" : ""}`}
                 onClick={() => handleSelect(item.label)}
-                onMouseEnter={() => setHoveredItem(item.label)}
+                onMouseEnter={() => handleMouseEnter(item.label)}
+                onMouseLeave={handleMouseLeave}
                 aria-current={isActive ? "page" : undefined}
                 style={{
                   animation: `headerFadeIn 0.6s ease-out ${0.2 + index * 0.05}s both`,
-                  position: "relative",
-                  padding: "8px 12px",
                 }}
               >
                 <div className="nav-background" />
                 <div className="nav-item-label">{item.label}</div>
-                {isHovered && (
-                  <div className="nav-item-micro">{item.micro}</div>
-                )}
+                <div
+                  className={`nav-item-micro ${willShow ? "visible" : "hidden"}`}
+                  style={{
+                    display: willShow ? "block" : "none",
+                  }}
+                >
+                  {item.micro}
+                </div>
               </button>
             );
           })}
@@ -303,7 +347,6 @@ const Header: FC = () => {
             fontSize: "12px",
             letterSpacing: tokens.tracking.tight,
             color: tokens.color.muted,
-            textTransform: "uppercase",
             display: "flex",
             alignItems: "center",
             gap: "6px",
@@ -314,7 +357,7 @@ const Header: FC = () => {
             animation: "headerFadeIn 0.6s ease-out 0.3s both",
           }}
         >
-          • AVAILABLE FOR NEW OPPORTUNITIES
+          • Available for new opportunities
         </div>
       </div>
     </header>
