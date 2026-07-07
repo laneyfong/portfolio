@@ -46,9 +46,8 @@ const Footer: FC = () => (
   <footer
     style={{
       backgroundColor: tokens.color.ink,
-      padding: "clamp(40px, 8vw, 70px) clamp(24px, 7vw, 64px)",
-      paddingLeft: "120px",
       width: "100%",
+      paddingLeft: 120,
       boxSizing: "border-box",
     }}
   >
@@ -60,9 +59,13 @@ const Footer: FC = () => (
       }
       @media (max-width: 640px) {
         footer {
-          padding-left: 20px !important;
-          padding-right: 20px !important;
+          padding-left: 0 !important;
         }
+      }
+      /* Case study pages: footer fills case container */
+      .case-footer-wrap footer {
+        padding-left: 0 !important;
+        width: 100% !important;
       }
     `}</style>
     <div
@@ -74,6 +77,7 @@ const Footer: FC = () => (
         gap: 48,
         maxWidth: 1450,
         margin: "0 auto",
+        padding: "clamp(40px, 8vw, 70px) clamp(24px, 7vw, 64px)",
       }}
     >
       <div>
