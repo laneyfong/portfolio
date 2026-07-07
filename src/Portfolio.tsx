@@ -201,14 +201,14 @@ const Portfolio: FC = () => {
         }
         /* Tablet responsiveness */
         @media (max-width: 900px) {
-          main { padding: 64px 16px 0 100px !important; }
-          div[id="work-container"] { padding: 0 16px 0 100px !important; }
+          main { margin-left: 100px !important; width: calc(100% - 100px) !important; }
+          div[id="work-container"] { margin-left: 100px !important; width: calc(100% - 100px) !important; }
           .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 96px !important; margin-top: -24px !important; }
         }
         /* Mobile responsiveness */
         @media (max-width: 640px) {
-          main { padding: 64px 20px 0 20px !important; }
-          div[id="work-container"] { padding: 0 20px 0 20px !important; }
+          main { margin-left: 0 !important; width: 100% !important; }
+          div[id="work-container"] { margin-left: 0 !important; width: 100% !important; }
           .badge-section { min-height: clamp(350px, 55vh, 80vh) !important; margin-bottom: 40px !important; margin-top: -24px !important; }
           .badge-bg-pattern { display: none !important; }
           .work-grid > div:last-child { order: 1; }
@@ -218,7 +218,7 @@ const Portfolio: FC = () => {
 
       <Header />
 
-      <main style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "64px 32px 0 120px" }}>
+      <main style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "64px clamp(32px, 7vw, 80px) 0", boxSizing: "border-box" }}>
         <div
           className="badge-section"
           style={{
@@ -239,7 +239,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div id="work-container" style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "0 32px 0 120px" }}>
+      <div id="work-container" style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "0 clamp(32px, 7vw, 80px)", boxSizing: "border-box" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"
