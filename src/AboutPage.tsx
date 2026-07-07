@@ -23,7 +23,7 @@ function withItalics(text: string, terms: string[]): ReactNode[] {
   return text.split(pattern).map((part, i) => (terms.includes(part) ? <Italic key={i}>{part}</Italic> : part));
 }
 
-const HERO_WIDTH = "min(500px, 88vw)";
+const HERO_WIDTH = "min(820px, 90vw)";
 const PANEL_WIDTH = 252;
 const ROW_GAP = 40;
 const PEEK_HEIGHT = 28;
