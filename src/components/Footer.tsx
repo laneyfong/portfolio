@@ -47,41 +47,40 @@ const Footer: FC = () => (
     style={{
       backgroundColor: tokens.color.ink,
       width: "100%",
-      paddingLeft: 120,
-      boxSizing: "border-box",
+      maxWidth: "none",
     }}
   >
     <style>{`
+      footer {
+        width: 100%;
+        max-width: none;
+      }
+      footer > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 48px;
+        max-width: 1450px;
+        margin: 0 auto;
+        padding: clamp(40px, 8vw, 70px) clamp(32px, 7vw, 80px);
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 120px;
+      }
       @media (max-width: 900px) {
-        footer {
+        footer > div {
           padding-left: 100px !important;
         }
       }
       @media (max-width: 640px) {
-        footer {
-          padding-left: 0 !important;
+        footer > div {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
         }
       }
-      /* Case study pages: footer fills case container */
-      .case-footer-wrap footer {
-        padding-left: 0 !important;
-        width: 100% !important;
-      }
     `}</style>
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-        flexWrap: "wrap",
-        gap: 48,
-        maxWidth: 1450,
-        margin: "0 auto",
-        padding: "clamp(40px, 8vw, 70px) clamp(24px, 7vw, 64px)",
-        width: "100%",
-        boxSizing: "border-box",
-      }}
-    >
+    <div>
       <div>
         <p
           style={{
