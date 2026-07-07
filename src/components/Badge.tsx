@@ -21,9 +21,9 @@ interface BadgeProps {
 const Badge: FC<BadgeProps> = ({
   name = "Laney Fong",
   role = "Product Designer",
-  tagline = "curating intentional human-centered experiences, specialized in accessibility.",
+  tagline = "Designing accessible, research-driven products that increase user engagement and reduce friction.",
   location = "San Francisco Bay Area",
-  description = "Currently mastering HCI @ UCSC, Previously @ MyShake",
+  description = "HCI @ UCSC | Previously @ MyShake (45% engagement lift)",
   photo,
   onCTAClick,
 }) => {

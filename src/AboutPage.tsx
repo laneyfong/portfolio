@@ -658,8 +658,8 @@ const AboutPage: FC = () => {
             }}
           >
             {withItalics(
-              "I specialize in designing with strict intention—focusing on accessibility, inclusive systems, and transforming complex digital user flows into intuitive experiences.",
-              ["intention", "accessibility, inclusive systems"]
+              "I design products that work for everyone. My approach: research-backed decisions, obsessive attention to accessibility, and ruthless focus on reducing friction. Every pixel serves a purpose.",
+              ["research-backed", "accessibility", "friction"]
             )}
           </p>
         </div>

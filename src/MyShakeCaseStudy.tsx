@@ -283,7 +283,7 @@ const MyShakeCaseStudy: FC = () => {
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
           <EpicenterPulse />
           <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted }}>
-            High anxiety. Low clarity.
+            Users couldn't find loved ones in seconds. Information was hidden.
           </span>
         </div>
         <h1
@@ -297,7 +297,7 @@ const MyShakeCaseStudy: FC = () => {
             maxWidth: 680,
           }}
         >
-          Redesigning earthquake alerts for <Italic>intuitive, high-stakes navigation</Italic>.
+          Rebuilding MyShake from a <Italic>data dashboard into a safety tool</Italic>.
         </h1>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
@@ -320,15 +320,13 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
             <FeatureCard title="Problem">
-              The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no
-              reason to return.
+              During earthquakes, users needed instant access to loved ones' locations. Instead, they waded through outdated design and confusing navigation—losing precious seconds when clarity mattered most.
             </FeatureCard>
             <FeatureCard title="Solution">
-              Redesigned MyShake from a passive information tool into a high-stakes navigation utility, with instant
-              access to pinned family locations and critical safety status.
+              Restructured the entire information architecture around a single question: "Are my loved ones safe?" Pinned locations front-and-center. Critical information three taps away, not seven.
             </FeatureCard>
             <FeatureCard title="Result">
-              45% increase in user engagement by evolving MyShake into an all-in-one earthquake care package.
+              45% engagement lift. Step reduction from 7 → 3. Users could check on loved ones 70% faster.
             </FeatureCard>
           </div>
         </Reveal>

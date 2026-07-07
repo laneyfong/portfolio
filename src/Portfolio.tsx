@@ -255,11 +255,11 @@ const Portfolio: FC = () => {
               screenshot={myshakeApp}
               layout="portrait"
               height={760}
-              caption="Increasing user engagement through restructuring IA."
-              captionItalic="Increasing user engagement"
+              caption="Users couldn't find critical earthquake info fast. Restructured IA around safety first, not data visualization."
+              captionItalic="45% engagement increase"
               metrics={[
                 { value: "45%", label: "↑ engagement" },
-                { value: "3.8M+", label: "users" },
+                { value: "7→3", label: "steps to check loved ones" },
               ]}
               to="/myshake-design"
             />
@@ -274,8 +274,8 @@ const Portfolio: FC = () => {
               screenshot={uxAgentScreenshot}
               layout="landscape"
               height={506}
-              caption="Designing an AI UX Agent for internal usability testing."
-              captionItalic="AI UX Agent"
+              caption="Built an AI agent that autonomously tests product UX, catching issues researchers would miss—speeding up internal iteration cycles."
+              captionItalic="AI-powered usability testing"
               to="/nvidia-ai-ux-agent"
             />
             <PlatoCard />

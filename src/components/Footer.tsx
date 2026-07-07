@@ -84,7 +84,7 @@ const Footer: FC = () => (
             margin: "0 0 12px 0",
           }}
         >
-          Designed and vibe coded with{" "}
+          Designed with{" "}
           <em
             style={{
               fontFamily: tokens.font.serifItalic,
@@ -92,7 +92,7 @@ const Footer: FC = () => (
               color: tokens.color.accent,
             }}
           >
-            passion
+            intention
           </em>{" "}
           by
         </p>
@@ -118,10 +118,10 @@ const Footer: FC = () => (
             margin: 0,
           }}
         >
-          Thank you for{" "}
-          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic" }}>visiting</em>.
+          Let's{" "}
+          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic" }}>collaborate</em>.
           <br />
-          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic" }}>Connect</em> with me through
+          Reach out through
         </p>
 
         <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
