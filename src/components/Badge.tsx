@@ -59,17 +59,17 @@ const Badge: FC<BadgeProps> = ({
           .badge-label { font-size: 13px !important; }
           .badge-value { font-size: 13px !important; }
           .badge-container {
-            padding: 16px 28px 28px !important;
+            padding: 16px 20px 24px !important;
           }
           .badge-photo {
             width: min(140px, 100%) !important;
             margin: 0 auto !important;
           }
           .badge-rows {
-            margin-top: 12px !important;
+            margin-top: 10px !important;
             gap: 3px !important;
           }
-          .badge-role-wrapper { margin-top: 28px !important; }
+          .badge-role-wrapper { margin-top: 20px !important; margin-bottom: 2px !important; }
           .badge-tagline-wrapper { margin-bottom: 12px !important; }
         }
       `}</style>
@@ -90,7 +90,7 @@ const Badge: FC<BadgeProps> = ({
       <p
         className="badge-role badge-role-wrapper"
         style={{
-          margin: "46px 0 6px",
+          margin: "28px 0 4px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text["2xl"],
@@ -105,7 +105,7 @@ const Badge: FC<BadgeProps> = ({
       <p
         className="badge-tagline badge-tagline-wrapper"
         style={{
-          margin: "0 0 20px",
+          margin: "0 0 16px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.light,
           fontSize: tokens.text.md,
@@ -138,7 +138,7 @@ const Badge: FC<BadgeProps> = ({
         }}
       />
 
-      <div className="badge-rows" style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 6 }}>
+      <div className="badge-rows" style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 4 }}>
         {rows.map((row) => (
           <div
             key={row.label}
@@ -190,7 +190,7 @@ const Badge: FC<BadgeProps> = ({
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: 18,
+          marginTop: 12,
           padding: "16px 28px",
           width: "100%",
           boxSizing: "border-box",
