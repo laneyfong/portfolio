@@ -201,12 +201,14 @@ const Portfolio: FC = () => {
         }
         /* Tablet responsiveness */
         @media (max-width: 900px) {
-          main { padding: 48px 16px 96px 100px !important; }
-          .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 48px !important; margin-top: -24px !important; }
+          main { padding: 64px 16px 0 100px !important; }
+          div[id="work-container"] { padding: 0 16px 96px 100px !important; }
+          .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 96px !important; margin-top: -24px !important; }
         }
         /* Mobile responsiveness */
         @media (max-width: 640px) {
-          main { padding: 48px 20px 96px 20px !important; }
+          main { padding: 64px 20px 0 20px !important; }
+          div[id="work-container"] { padding: 0 20px 96px 20px !important; }
           .badge-section { min-height: clamp(350px, 55vh, 80vh) !important; margin-bottom: 40px !important; margin-top: -24px !important; }
           .badge-bg-pattern { display: none !important; }
           .work-grid > div:last-child { order: 1; }
@@ -216,14 +218,14 @@ const Portfolio: FC = () => {
 
       <Header />
 
-      <main style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "64px 32px 96px 120px" }}>
+      <main style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "64px 32px 0 120px" }}>
         <div
           className="badge-section"
           style={{
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 16,
+            marginBottom: 96,
             marginTop: -280,
             minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
@@ -235,7 +237,9 @@ const Portfolio: FC = () => {
             </HangingCard>
           </div>
         </div>
+      </main>
 
+      <div id="work-container" style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "0 32px 96px 120px" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"
@@ -283,7 +287,7 @@ const Portfolio: FC = () => {
           </div>
           </div>
         </div>
-      </main>
+      </div>
 
       <Footer />
     </div>
