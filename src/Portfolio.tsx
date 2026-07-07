@@ -201,12 +201,12 @@ const Portfolio: FC = () => {
         }
         /* Tablet responsiveness */
         @media (max-width: 900px) {
-          main { padding: 48px 16px 96px !important; margin-left: 100px !important; }
+          main { padding: 48px 16px 96px 100px !important; }
           .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 48px !important; margin-top: -24px !important; }
         }
         /* Mobile responsiveness */
         @media (max-width: 640px) {
-          main { padding: 48px 20px 96px !important; margin-left: 0 !important; }
+          main { padding: 48px 20px 96px 20px !important; }
           .badge-section { min-height: clamp(350px, 55vh, 80vh) !important; margin-bottom: 40px !important; margin-top: -24px !important; }
           .badge-bg-pattern { display: none !important; }
           .work-grid > div:last-child { order: 1; }
@@ -216,7 +216,7 @@ const Portfolio: FC = () => {
 
       <Header />
 
-      <main style={{ maxWidth: 1440, margin: "0 auto", marginLeft: 120, padding: "64px 32px 96px" }}>
+      <main style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "64px 32px 96px 120px" }}>
         <div
           className="badge-section"
           style={{
@@ -236,17 +236,18 @@ const Portfolio: FC = () => {
           </div>
         </div>
 
-        <div
-          id="work"
-          className="grid-cols work-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "377px 1fr",
-            gap: 8,
-            alignItems: "start",
-            minWidth: 0,
-          }}
-        >
+        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%" }}>
+          <div
+            id="work"
+            className="grid-cols work-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1.2fr",
+              gap: 12,
+              alignItems: "start",
+              minWidth: 0,
+            }}
+          >
           <div style={{ display: "flex", flexDirection: "column", gap: 12, minWidth: 0 }}>
             <ProjectCard
               logo={myshakeLogo}
@@ -279,6 +280,7 @@ const Portfolio: FC = () => {
               to="/nvidia-ai-ux-agent"
             />
             <PlatoCard />
+          </div>
           </div>
         </div>
       </main>
