@@ -202,13 +202,13 @@ const Portfolio: FC = () => {
         /* Tablet responsiveness */
         @media (max-width: 900px) {
           main { padding: 64px 16px 0 100px !important; }
-          div[id="work-container"] { padding: 0 16px 96px 100px !important; }
+          div[id="work-container"] { padding: 0 16px 0 100px !important; }
           .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 96px !important; margin-top: -24px !important; }
         }
         /* Mobile responsiveness */
         @media (max-width: 640px) {
           main { padding: 64px 20px 0 20px !important; }
-          div[id="work-container"] { padding: 0 20px 96px 20px !important; }
+          div[id="work-container"] { padding: 0 20px 0 20px !important; }
           .badge-section { min-height: clamp(350px, 55vh, 80vh) !important; margin-bottom: 40px !important; margin-top: -24px !important; }
           .badge-bg-pattern { display: none !important; }
           .work-grid > div:last-child { order: 1; }
@@ -239,7 +239,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div id="work-container" style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "0 32px 96px 120px" }}>
+      <div id="work-container" style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "0 32px 0 120px" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"
