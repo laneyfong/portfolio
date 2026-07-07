@@ -217,7 +217,7 @@ const Badge: FC<BadgeProps> = ({
             pointerEvents: "auto",
           }}
         >
-          View work
+          See my work
           <span
             style={{
               width: 14,
