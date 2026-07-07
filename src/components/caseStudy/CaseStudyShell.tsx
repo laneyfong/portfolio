@@ -123,8 +123,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .case-main { margin-left: 0 !important; padding: 80px clamp(20px, 5vw, 40px) 0 !important; }
           .case-footer-wrap { margin-left: 0 !important; }
         }
-        /* Footer width: remove Footer's default margin-left since wrapper handles it */
-        .case-footer-wrap footer { margin-left: 0 !important; }
         /* Accessibility: Focus styles for keyboard navigation */
         a:focus-visible, button:focus-visible { outline: 2px solid #8DC8E4; outline-offset: 2px; }
         /* Ensure sufficient color contrast and readability */
@@ -455,9 +453,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         </button>
       )}
 
-      <div className="case-footer-wrap" style={{ marginLeft: SIDEBAR_WIDTH }}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

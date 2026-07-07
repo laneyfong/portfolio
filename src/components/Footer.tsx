@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { tokens } from "../tokens";
 import nameLogoCharacter from "../../NameLogoFull_Character.svg";
 import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./SocialIcons";
@@ -42,45 +42,49 @@ const FooterLink: FC<{ label: string }> = ({ label }) => {
   );
 };
 
-const Footer: FC = () => (
-  <footer
-    style={{
-      backgroundColor: tokens.color.ink,
-      width: "100%",
-      maxWidth: "none",
-    }}
-  >
-    <style>{`
-      footer {
-        width: 100%;
-        max-width: none;
-      }
-      footer > div {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 48px;
-        max-width: 1450px;
-        margin: 0 auto;
-        padding: clamp(40px, 8vw, 70px) clamp(32px, 7vw, 80px);
-        width: 100%;
-        box-sizing: border-box;
-        padding-left: 120px;
-      }
-      @media (max-width: 900px) {
-        footer > div {
-          padding-left: 100px !important;
+const Footer: FC = () => {
+  const { pathname } = useLocation();
+  const isCaseStudy = pathname.includes("/myshake-design") || pathname.includes("/nvidia-ai-ux-agent");
+
+  return (
+    <footer
+      style={{
+        backgroundColor: tokens.color.ink,
+        width: "100%",
+        maxWidth: "none",
+      }}
+    >
+      <style>{`
+        footer {
+          width: 100%;
+          max-width: none;
         }
-      }
-      @media (max-width: 640px) {
         footer > div {
-          padding-left: 20px !important;
-          padding-right: 20px !important;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 48px;
+          max-width: 1450px;
+          margin: 0 auto;
+          padding: clamp(40px, 8vw, 70px) clamp(32px, 7vw, 80px);
+          width: 100%;
+          box-sizing: border-box;
+          padding-left: 120px;
         }
-      }
-    `}</style>
-    <div>
+        @media (max-width: 900px) {
+          footer > div {
+            padding-left: 100px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          footer > div {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+        }
+      `}</style>
+      <div style={isCaseStudy ? { paddingLeft: "340px" } : {}}>
       <div>
         <p
           style={{
@@ -149,6 +153,7 @@ const Footer: FC = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;
