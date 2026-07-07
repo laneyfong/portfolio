@@ -225,7 +225,7 @@ const Portfolio: FC = () => {
             display: "flex",
             justifyContent: "center",
             marginBottom: 16,
-            marginTop: -40,
+            marginTop: -280,
             minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
           }}
@@ -248,7 +248,7 @@ const Portfolio: FC = () => {
             }}
           />
           <div style={{ position: "relative", zIndex: 1 }}>
-            <HangingCard stringHeight={48} holeCenterOffset={36}>
+            <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
             </HangingCard>
           </div>
