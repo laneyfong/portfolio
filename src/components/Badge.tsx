@@ -23,7 +23,7 @@ const Badge: FC<BadgeProps> = ({
   role = "Product Designer",
   tagline = "Designing accessible, research-driven products that increase user engagement and reduce friction.",
   location = "San Francisco Bay Area",
-  description = "HCI @ UCSC | Previously @ MyShake (45% engagement lift)",
+  description = "B.A. Cognitive Science @ UC Berkeley | M.S. HCI @ UCSC",
   photo,
   onCTAClick,
 }) => {
