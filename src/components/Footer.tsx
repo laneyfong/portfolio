@@ -47,18 +47,21 @@ const Footer: FC = () => (
     style={{
       backgroundColor: tokens.color.ink,
       padding: "clamp(40px, 8vw, 70px) clamp(24px, 7vw, 64px)",
-      marginLeft: "120px",
+      paddingLeft: "120px",
+      width: "100%",
+      boxSizing: "border-box",
     }}
   >
     <style>{`
       @media (max-width: 900px) {
         footer {
-          margin-left: 100px !important;
+          padding-left: 100px !important;
         }
       }
       @media (max-width: 640px) {
         footer {
-          margin-left: 0 !important;
+          padding-left: 20px !important;
+          padding-right: 20px !important;
         }
       }
     `}</style>
@@ -69,7 +72,7 @@ const Footer: FC = () => (
         alignItems: "flex-start",
         flexWrap: "wrap",
         gap: 48,
-        maxWidth: 1384,
+        maxWidth: 1450,
         margin: "0 auto",
       }}
     >
