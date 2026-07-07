@@ -31,8 +31,8 @@ const Badge: FC<BadgeProps> = ({
 
   const rows: BadgeRow[] = [
     { label: "Name", value: name, large: true },
-    { label: "Location", value: location, large: true },
-    { label: "Description", value: description, large: true },
+    { label: "Location", value: location },
+    { label: "Description", value: description },
   ];
 
   const taglineParts = tagline.split(/(human-centered)/i);
@@ -170,7 +170,7 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: row.large ? tokens.weight.medium : tokens.weight.light,
-                fontSize: row.large ? tokens.text["2xl"] : tokens.text.base,
+                fontSize: row.large ? tokens.text["2xl"] : tokens.text.md,
                 letterSpacing: tokens.tracking.tight,
                 color: row.large ? tokens.color.muted : tokens.color.body,
                 lineHeight: row.large ? tokens.leading.none : tokens.leading.normal,
