@@ -427,13 +427,6 @@ const Header: FC = () => {
 
         {/* Footer Section */}
         <div className="rail-footer">
-          <div className="rail-metadata">
-            San Francisco
-            <br />
-            Updated June 2026
-            <br />
-            Est. 2021
-          </div>
           <div className="rail-availability">
             <div className="rail-availability-dot" />
             <span>Available</span>
