@@ -24,6 +24,7 @@ function withItalics(text: string, terms: string[]): ReactNode[] {
 }
 
 const HERO_WIDTH = "min(820px, 90vw)";
+const IMAGE_WIDTH = "min(580px, 85vw)";
 const PANEL_WIDTH = 252;
 const ROW_GAP = 40;
 const PEEK_HEIGHT = 28;
@@ -427,7 +428,7 @@ const AboutPage: FC = () => {
           </div>
 
           {/* Center bio photo — click to reveal the side panels */}
-          <div className="about-center-photo" style={{ width: HERO_WIDTH, flexShrink: 0 }}>
+          <div className="about-center-photo" style={{ width: IMAGE_WIDTH, flexShrink: 0 }}>
             <div style={{ position: "relative" }}>
               {/* Backdrop card — stays flat (0deg), peeks out below the rotated photo */}
               <div
