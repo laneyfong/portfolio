@@ -233,7 +233,7 @@ const AboutPage: FC = () => {
         }
         /* Tablet responsiveness */
         @media (max-width: 900px) {
-          main { padding: 48px 16px 64px !important; margin-left: 100px !important; }
+          main { padding: 48px 16px 64px 100px !important; }
         }
         /* Mobile responsiveness */
         @media (max-width: 760px) {
@@ -268,7 +268,7 @@ const AboutPage: FC = () => {
           }
         }
         @media (max-width: 640px) {
-          main { padding: 48px 12px 48px !important; margin-left: 0 !important; }
+          main { padding: 48px 12px 48px 12px !important; }
           .about-container {
             gap: 20px !important;
           }
@@ -277,7 +277,8 @@ const AboutPage: FC = () => {
 
       <Header />
 
-      <main style={{ maxWidth: 1440, margin: "0 auto", marginLeft: 120, padding: "64px 32px 96px" }}>
+      <main style={{ width: "100%", paddingLeft: 120, boxSizing: "border-box", padding: "64px 32px 96px 120px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", width: "100%" }}>
         <div style={{ width: HERO_WIDTH, margin: "0 auto 20px" }}>
           <h1
             style={{
@@ -718,6 +719,7 @@ const AboutPage: FC = () => {
               />
             </div>
           </div>
+        </div>
         </div>
       </main>
 
