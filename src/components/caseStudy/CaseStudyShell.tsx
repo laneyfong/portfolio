@@ -105,9 +105,9 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         .case-btn-press { transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
         .case-btn-press:active { transform: scale(0.94); }
         @media (min-width: 901px) {
-          /* Desktop: case study sidebar + nav rail */
-          .case-main { margin-left: calc(220px + 120px) !important; width: calc(100% - 340px) !important; }
-          .case-page-fade-in footer { margin-left: calc(220px + 120px) !important; width: calc(100% - 340px) !important; }
+          /* Desktop: case study sidebar only (Header sidebar not rendered on case study pages) */
+          .case-main { margin-left: 220px !important; width: calc(100% - 220px) !important; }
+          .case-page-fade-in footer { margin-left: 220px !important; width: calc(100% - 220px) !important; }
         }
         @media (max-width: 900px) {
           .case-sidebar { display: none !important; }
