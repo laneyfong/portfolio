@@ -114,13 +114,13 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .case-mobile-back { display: flex !important; }
           .case-mobile-tabs { display: none !important; }
           .case-main, .case-footer-wrap { margin-left: 100px !important; }
-          .case-main { padding-top: 80px !important; padding-left: 16px !important; padding-right: 16px !important; }
+          .case-main { padding: 80px clamp(28px, 6vw, 56px) 0 !important; }
         }
         @media (max-width: 760px) {
           .case-grid-3 { grid-template-columns: 1fr !important; }
           .case-grid-2 { grid-template-columns: 1fr !important; }
           .case-intro-shots { grid-template-columns: 1fr !important; }
-          .case-main { margin-left: 0 !important; padding: 80px 12px 0 12px !important; }
+          .case-main { margin-left: 0 !important; padding: 80px clamp(20px, 5vw, 40px) 0 !important; }
           .case-footer-wrap { margin-left: 0 !important; }
         }
         /* Footer width: remove Footer's default margin-left since wrapper handles it */
@@ -398,12 +398,14 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         className="case-main"
         style={{
           marginLeft: SIDEBAR_WIDTH,
-          maxWidth: 940,
-          padding: "80px clamp(24px, 6vw, 64px) 0",
+          padding: "80px clamp(32px, 7vw, 80px) 0",
           boxSizing: "border-box",
+          width: "100%",
         }}
       >
-        {children}
+        <div style={{ maxWidth: 1100, margin: "0 auto", width: "100%" }}>
+          {children}
+        </div>
       </main>
 
       {/* Mobile scroll-up button */}
