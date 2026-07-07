@@ -196,6 +196,55 @@ const Portfolio: FC = () => {
       }}
     >
       <style>{`
+        @keyframes ambientGradientShift {
+          0% {
+            background-position: 0% 0%, 100% 100%, 50% 50%;
+            transform: translate(0px, 0px) rotate(0deg);
+            opacity: 0.35;
+          }
+          25% {
+            background-position: 50% 30%, 80% 70%, 20% 80%;
+            transform: translate(8px, -6px) rotate(1.2deg);
+            opacity: 0.4;
+          }
+          50% {
+            background-position: 100% 50%, 30% 40%, 70% 20%;
+            transform: translate(0px, 4px) rotate(0deg);
+            opacity: 0.35;
+          }
+          75% {
+            background-position: 40% 70%, 70% 20%, 10% 60%;
+            transform: translate(-8px, -4px) rotate(-1.2deg);
+            opacity: 0.38;
+          }
+          100% {
+            background-position: 0% 0%, 100% 100%, 50% 50%;
+            transform: translate(0px, 0px) rotate(0deg);
+            opacity: 0.35;
+          }
+        }
+
+        .badge-ambient-gradient {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 800px 600px at 50% 30%, rgba(200, 210, 255, 0.15) 0%, transparent 70%),
+            radial-gradient(ellipse 900px 500px at 30% 60%, rgba(240, 240, 245, 0.12) 0%, transparent 75%),
+            radial-gradient(ellipse 700px 400px at 70% 40%, rgba(245, 242, 238, 0.08) 0%, transparent 80%);
+          background-size: 200% 200%, 250% 250%, 220% 220%;
+          background-position: 0% 0%, 100% 100%, 50% 50%;
+          animation: ambientGradientShift 35s ease-in-out infinite;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .badge-ambient-gradient {
+            animation: none;
+            opacity: 0.35;
+          }
+        }
+
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
         }
@@ -229,8 +278,10 @@ const Portfolio: FC = () => {
             marginTop: -280,
             minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
+            overflow: "hidden",
           }}
         >
+          <div className="badge-ambient-gradient" />
           <div style={{ position: "relative", zIndex: 1 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
