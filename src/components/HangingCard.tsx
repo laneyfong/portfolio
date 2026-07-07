@@ -8,29 +8,27 @@ interface HangingCardProps {
   holeCenterOffset?: number;
 }
 
-// Tunables for the suspended-badge feel.
-const IDLE_PERIOD = 3.4; // seconds per idle swing cycle
-const IDLE_AMPLITUDE = 0.7; // degrees — "barely noticeable"
-const PROXIMITY_RADIUS = 460; // px — how far the cursor's influence reaches
-const MAX_ROTATION = 6; // degrees
-const MAX_TRANSLATE = 9; // px
+// Realistic physics for a physical badge with mass
+// — inertia, gentle damping, no springiness
+
+const PROXIMITY_RADIUS = 380; // px — how far the cursor's influence reaches (reduced, subtler)
+const MAX_ROTATION = 3.5; // degrees — tiny rotation (reduced from 6)
+const MAX_TRANSLATE = 4; // px — minimal movement (reduced from 9)
 const MAX_DT = 0.05; // clamp so a backgrounded tab doesn't cause a huge jump on return
 
-// Continuous cursor-follow: a real mass-spring-damper, integrated with the
-// actual frame delta so it's correct at any refresh rate. Damping is kept
-// close to critical (ratio ~0.92) so it tracks the cursor responsively and
-// settles back calmly, with no visible overshoot — "suspended," not "springy."
-const TILT_STIFFNESS = 210; // 1/s² — higher = snappier, more immediate
-const TILT_DAMPING = 2 * Math.sqrt(TILT_STIFFNESS) * 0.92;
+// Cursor-follow: heavily damped to feel like inertia, not spring physics.
+// The badge resists movement and settles slowly with real damping.
+// Damping ratio > 1.0 means overdamped (no oscillation, slow settling).
+const TILT_STIFFNESS = 80; // 1/s² — much lower = lethargic, heavy feeling
+const TILT_DAMPING = 2 * Math.sqrt(TILT_STIFFNESS) * 1.8; // ratio ~1.8 = heavily overdamped, no bounce
 
-// Click/tap "nudge": a true lightly-damped pendulum released from an
-// impulse — it swings past center a couple of times, losing amplitude
-// each pass, then comes to rest. No scaling, no bounce, just rotation.
-const PENDULUM_STIFFNESS = 42; // sets the swing's natural period (~1s)
-const PENDULUM_DAMPING_RATIO = 0.28; // well underdamped — a few decaying swings
-const PENDULUM_DAMPING = 2 * Math.sqrt(PENDULUM_STIFFNESS) * PENDULUM_DAMPING_RATIO;
-const PENDULUM_IMPULSE = 26; // deg/s injected on a nudge
-const PENDULUM_MAX_DEG = 6; // hard ceiling so it can never look exaggerated
+// Nudge behavior: minimal, quick decay. Not a pendulum, just a tiny nudge.
+// When clicked, the badge barely moves and settles immediately.
+const NUDGE_STIFFNESS = 120; // rapid settling
+const NUDGE_DAMPING_RATIO = 2.2; // very overdamped — no overshoot, no oscillation
+const NUDGE_DAMPING = 2 * Math.sqrt(NUDGE_STIFFNESS) * NUDGE_DAMPING_RATIO;
+const NUDGE_IMPULSE = 8; // deg/s injected on a nudge (small!)
+const NUDGE_MAX_DEG = 2; // hard ceiling — barely noticeable
 
 function springTo(pos: number, vel: number, target: number, stiffness: number, damping: number, dt: number) {
   const accel = stiffness * (target - pos) - damping * vel;
@@ -117,23 +115,20 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
 
     let raf = 0;
     let lastTime = performance.now();
-    const start = lastTime;
     const tick = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, MAX_DT);
       lastTime = now;
-      const t = (now - start) / 1000;
       const m = motion.current;
-      const idle = enabledRef.current.idle ? Math.sin(t / IDLE_PERIOD) * IDLE_AMPLITUDE : 0;
 
       [m.rot, m.rotV] = springTo(m.rot, m.rotV, m.targetRot, TILT_STIFFNESS, TILT_DAMPING, dt);
       [m.tx, m.txV] = springTo(m.tx, m.txV, m.targetTx, TILT_STIFFNESS, TILT_DAMPING, dt);
       [m.ty, m.tyV] = springTo(m.ty, m.tyV, m.targetTy, TILT_STIFFNESS, TILT_DAMPING, dt);
-      // Free pendulum — always relaxing toward 0, no target to chase.
-      [m.pendulum, m.pendulumV] = springTo(m.pendulum, m.pendulumV, 0, PENDULUM_STIFFNESS, PENDULUM_DAMPING, dt);
-      const pendulumClamped = Math.max(-PENDULUM_MAX_DEG, Math.min(PENDULUM_MAX_DEG, m.pendulum));
+      // Nudge response — decays quickly with heavy damping, no oscillation
+      [m.pendulum, m.pendulumV] = springTo(m.pendulum, m.pendulumV, 0, NUDGE_STIFFNESS, NUDGE_DAMPING, dt);
+      const nudgeClamped = Math.max(-NUDGE_MAX_DEG, Math.min(NUDGE_MAX_DEG, m.pendulum));
 
       if (wrapperRef.current) {
-        wrapperRef.current.style.transform = `translate(${m.tx.toFixed(2)}px, ${m.ty.toFixed(2)}px) rotate(${(m.rot + idle + pendulumClamped).toFixed(3)}deg)`;
+        wrapperRef.current.style.transform = `translate(${m.tx.toFixed(2)}px, ${m.ty.toFixed(2)}px) rotate(${(m.rot + nudgeClamped).toFixed(3)}deg)`;
       }
       raf = requestAnimationFrame(tick);
     };
@@ -150,9 +145,9 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
 
   const nudge = () => {
     if (!enabledRef.current.anyMotion) return;
-    // Alternate the push direction a little so repeated nudges don't feel mechanical.
+    // Tiny nudge that settles immediately — barely noticeable
     const dir = Math.random() < 0.5 ? -1 : 1;
-    motion.current.pendulumV += dir * PENDULUM_IMPULSE;
+    motion.current.pendulumV += dir * NUDGE_IMPULSE;
   };
 
   return (

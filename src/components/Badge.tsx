@@ -43,10 +43,10 @@ const Badge: FC<BadgeProps> = ({
       style={{
         width: "clamp(280px, 82vw, 420px)",
         backgroundColor: tokens.color.white,
-        borderRadius: "8px",
-        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.08)",
-        border: "1px solid rgba(0, 0, 0, 0.04)",
-        padding: "40px 36px",
+        borderRadius: "14px",
+        boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
+        border: "1px solid rgba(0, 0, 0, 0.06)",
+        padding: "48px 40px",
         fontFamily: tokens.font.sans,
         position: "relative",
         boxSizing: "border-box",
@@ -60,7 +60,7 @@ const Badge: FC<BadgeProps> = ({
           .badge-label { font-size: 10px !important; }
           .badge-value { font-size: 12px !important; }
           .badge-container {
-            padding: 32px 24px !important;
+            padding: 36px 28px !important;
             width: clamp(260px, 85vw, 380px) !important;
           }
           .badge-photo {
@@ -68,37 +68,39 @@ const Badge: FC<BadgeProps> = ({
             margin: 0 auto 20px !important;
           }
           .badge-rows {
-            gap: 10px !important;
-            margin-bottom: 20px !important;
+            gap: 12px !important;
+            margin-bottom: 24px !important;
           }
-          .badge-role-wrapper { margin-top: 36px !important; margin-bottom: 10px !important; }
-          .badge-tagline-wrapper { margin-bottom: 20px !important; }
+          .badge-role-wrapper { margin-top: 28px !important; margin-bottom: 14px !important; }
+          .badge-tagline-wrapper { margin-bottom: 24px !important; }
         }
       `}</style>
+
       <div
+        className="badge-photo"
         style={{
-          position: "absolute",
-          top: 32,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: 32,
-          height: 32,
-          borderRadius: "50%",
-          backgroundColor: tokens.color.white,
-          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.06)",
+          width: "min(200px, 100%)",
+          aspectRatio: "213 / 252",
+          margin: "0 auto 32px",
+          backgroundImage: photo ? `url(${photo})` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundColor: photo ? "transparent" : tokens.color.offWhite,
+          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.6)",
+          borderRadius: "10px",
         }}
       />
 
       <p
         className="badge-role badge-role-wrapper"
         style={{
-          margin: "48px 0 12px",
+          margin: "0 0 10px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
-          fontSize: tokens.text.xl,
+          fontSize: "16px",
           letterSpacing: tokens.tracking.tight,
-          color: tokens.color.muted,
-          lineHeight: tokens.leading.snug,
+          color: tokens.color.ink,
+          lineHeight: 1.3,
         }}
       >
         {role}
@@ -107,12 +109,13 @@ const Badge: FC<BadgeProps> = ({
       <p
         className="badge-tagline badge-tagline-wrapper"
         style={{
-          margin: "0 0 28px",
+          margin: "0 0 32px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.light,
-          fontSize: tokens.text.sm,
+          fontSize: "13px",
           color: tokens.color.body,
-          lineHeight: 1.6,
+          lineHeight: 1.5,
+          opacity: 0.8,
         }}
       >
         {taglineParts.map((part, i) =>
@@ -126,46 +129,29 @@ const Badge: FC<BadgeProps> = ({
         )}
       </p>
 
-      <div
-        className="badge-photo"
-        style={{
-          width: "min(200px, 100%)",
-          aspectRatio: "213 / 252",
-          margin: "0 auto",
-          marginBottom: 28,
-          backgroundImage: photo ? `url(${photo})` : "none",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundColor: photo ? "transparent" : tokens.color.offWhite,
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
-          borderRadius: "4px",
-        }}
-      />
-
-      <div className="badge-rows" style={{ marginTop: 0, display: "flex", flexDirection: "column", gap: 12, marginBottom: 28 }}>
+      <div className="badge-rows" style={{ marginTop: 0, display: "flex", flexDirection: "column", gap: 14, marginBottom: 28 }}>
         {rows.map((row) => (
           <div
             key={row.label}
             style={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: "column",
               alignItems: "flex-start",
-              gap: "clamp(16px, 7vw, 40px)",
-              minHeight: row.large ? 34 : 20,
+              gap: "4px",
+              minHeight: "auto",
             }}
           >
             <span
               className="badge-label"
               style={{
-                width: 70,
-                flexShrink: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "11px",
+                fontSize: "10px",
                 color: tokens.color.muted,
-                lineHeight: tokens.leading.none,
-                opacity: 0.7,
-                paddingTop: row.large ? 4 : 0,
+                lineHeight: 1.2,
+                opacity: 0.65,
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
               }}
             >
               {row.label}
@@ -175,10 +161,10 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: row.large ? tokens.weight.medium : tokens.weight.light,
-                fontSize: row.large ? tokens.text.lg : tokens.text.sm,
+                fontSize: row.large ? "15px" : "13px",
                 letterSpacing: tokens.tracking.tight,
-                color: row.large ? tokens.color.muted : tokens.color.body,
-                lineHeight: row.large ? 1.2 : 1.5,
+                color: row.large ? tokens.color.ink : tokens.color.body,
+                lineHeight: row.large ? 1.3 : 1.4,
                 whiteSpace: "pre-line",
               }}
             >
@@ -195,9 +181,9 @@ const Badge: FC<BadgeProps> = ({
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: 0,
+          marginTop: 8,
           paddingTop: 0,
-          paddingBottom: 20,
+          paddingBottom: 0,
           width: "100%",
           boxSizing: "border-box",
           background: "none",
@@ -209,37 +195,38 @@ const Badge: FC<BadgeProps> = ({
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: 10,
-            borderRadius: tokens.radius.full,
-            border: `0.5px solid ${tokens.color.navActive}`,
-            padding: "12px 20px",
+            gap: 8,
+            borderRadius: "8px",
+            border: `1px solid ${tokens.color.cardBorder}`,
+            padding: "11px 18px",
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.light,
-            fontSize: tokens.text.md,
+            fontSize: "13px",
             color: tokens.color.ink,
-            lineHeight: 1,
-            opacity: hovered ? 0.6 : 1,
-            transition: "opacity 0.15s ease",
+            lineHeight: 1.2,
+            opacity: hovered ? 0.7 : 0.85,
+            transition: "opacity 0.2s ease, border-color 0.2s ease",
             pointerEvents: "auto",
+            backgroundColor: hovered ? "rgba(0, 0, 0, 0.02)" : "transparent",
           }}
         >
-          See my work
+          See work
           <span
             style={{
-              width: 14,
-              height: 14,
+              width: 12,
+              height: 12,
               borderRadius: "50%",
-              border: "0.5px solid #000",
+              border: "0.75px solid currentColor",
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
               flexShrink: 0,
               pointerEvents: "none",
-              transform: hovered ? "translateY(2px)" : "translateY(0)",
+              transform: hovered ? "translateY(1px)" : "translateY(0)",
               transition: "transform 0.15s ease",
             }}
           >
-            <svg width="8" height="9" viewBox="0 0 8.271 8.974" fill="currentColor">
+            <svg width="6" height="7" viewBox="0 0 8.271 8.974" fill="currentColor">
               <path
                 d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
                 fillRule="nonzero"
