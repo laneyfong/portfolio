@@ -239,7 +239,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div id="work-container" style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "0 clamp(32px, 7vw, 80px)", boxSizing: "border-box" }}>
+      <div id="work-container" style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"
