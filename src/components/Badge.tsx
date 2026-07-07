@@ -31,8 +31,8 @@ const Badge: FC<BadgeProps> = ({
 
   const rows: BadgeRow[] = [
     { label: "Name", value: name, large: true },
-    { label: "Location", value: location },
-    { label: "Description", value: description },
+    { label: "Location", value: location, large: true },
+    { label: "Description", value: description, large: true },
   ];
 
   const taglineParts = tagline.split(/(human-centered)/i);
@@ -157,8 +157,8 @@ const Badge: FC<BadgeProps> = ({
                 flexShrink: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: tokens.text.base,
-                color: tokens.color.body,
+                fontSize: tokens.text.sm,
+                color: tokens.color.muted,
                 lineHeight: tokens.leading.none,
                 paddingTop: row.large ? 8 : 0,
               }}
@@ -183,20 +183,30 @@ const Badge: FC<BadgeProps> = ({
         ))}
       </div>
 
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 18 }}>
-        <button
-          onClick={onCTAClick}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+      <button
+        onClick={onCTAClick}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 18,
+          padding: "16px 28px",
+          width: "100%",
+          boxSizing: "border-box",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        <div
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: 10,
-            padding: "12px 20px",
             borderRadius: tokens.radius.full,
             border: `0.5px solid ${tokens.color.navActive}`,
-            backgroundColor: "transparent",
-            cursor: "pointer",
+            padding: "12px 20px",
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.light,
             fontSize: tokens.text.md,
@@ -204,6 +214,7 @@ const Badge: FC<BadgeProps> = ({
             lineHeight: 1,
             opacity: hovered ? 0.6 : 1,
             transition: "opacity 0.15s ease",
+            pointerEvents: "auto",
           }}
         >
           View work
@@ -217,6 +228,7 @@ const Badge: FC<BadgeProps> = ({
               alignItems: "center",
               justifyContent: "center",
               flexShrink: 0,
+              pointerEvents: "none",
               transform: hovered ? "translateY(2px)" : "translateY(0)",
               transition: "transform 0.15s ease",
             }}
@@ -228,8 +240,8 @@ const Badge: FC<BadgeProps> = ({
               />
             </svg>
           </span>
-        </button>
-      </div>
+        </div>
+      </button>
     </div>
   );
 };

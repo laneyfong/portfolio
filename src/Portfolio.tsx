@@ -224,9 +224,9 @@ const Portfolio: FC = () => {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 64,
+            marginBottom: 16,
             marginTop: -40,
-            minHeight: "clamp(520px, 75vh, 95vh)",
+            minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
           }}
         >
@@ -260,7 +260,7 @@ const Portfolio: FC = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "377px 1fr",
-            gap: 12,
+            gap: 8,
             alignItems: "start",
             minWidth: 0,
           }}
