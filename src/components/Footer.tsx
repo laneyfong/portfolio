@@ -144,6 +144,7 @@ const Footer: FC = () => (
         {NAV_LINKS.map((label) => (
           <FooterLink key={label} label={label} />
         ))}
+      </div>
     </div>
   </footer>
 );
