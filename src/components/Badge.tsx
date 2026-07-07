@@ -43,10 +43,10 @@ const Badge: FC<BadgeProps> = ({
       style={{
         width: "clamp(280px, 82vw, 420px)",
         backgroundColor: tokens.color.white,
-        borderRadius: "14px",
+        borderRadius: "20px",
         boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
         border: "1px solid rgba(0, 0, 0, 0.06)",
-        padding: "48px 40px",
+        padding: "36px 32px",
         fontFamily: tokens.font.sans,
         position: "relative",
         boxSizing: "border-box",
@@ -60,19 +60,19 @@ const Badge: FC<BadgeProps> = ({
           .badge-label { font-size: 10px !important; }
           .badge-value { font-size: 12px !important; }
           .badge-container {
-            padding: 36px 28px !important;
+            padding: 28px 24px !important;
             width: clamp(260px, 85vw, 380px) !important;
           }
           .badge-photo {
             width: min(160px, 100%) !important;
-            margin: 0 auto 20px !important;
+            margin: 0 auto 18px !important;
           }
           .badge-rows {
-            gap: 12px !important;
-            margin-bottom: 24px !important;
+            gap: 10px !important;
+            margin-bottom: 18px !important;
           }
-          .badge-role-wrapper { margin-top: 28px !important; margin-bottom: 14px !important; }
-          .badge-tagline-wrapper { margin-bottom: 24px !important; }
+          .badge-role-wrapper { margin-top: 0 !important; margin-bottom: 8px !important; }
+          .badge-tagline-wrapper { margin-bottom: 18px !important; }
         }
       `}</style>
 
@@ -81,23 +81,23 @@ const Badge: FC<BadgeProps> = ({
         style={{
           width: "min(200px, 100%)",
           aspectRatio: "213 / 252",
-          margin: "0 auto 32px",
+          margin: "0 auto 24px",
           backgroundImage: photo ? `url(${photo})` : "none",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundColor: photo ? "transparent" : tokens.color.offWhite,
           boxShadow: "0 6px 16px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.6)",
-          borderRadius: "10px",
+          borderRadius: "14px",
         }}
       />
 
       <p
         className="badge-role badge-role-wrapper"
         style={{
-          margin: "0 0 10px",
+          margin: "0 0 8px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
-          fontSize: "16px",
+          fontSize: "19px",
           letterSpacing: tokens.tracking.tight,
           color: tokens.color.ink,
           lineHeight: 1.3,
@@ -109,7 +109,7 @@ const Badge: FC<BadgeProps> = ({
       <p
         className="badge-tagline badge-tagline-wrapper"
         style={{
-          margin: "0 0 32px",
+          margin: "0 0 24px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.light,
           fontSize: "13px",
@@ -129,7 +129,7 @@ const Badge: FC<BadgeProps> = ({
         )}
       </p>
 
-      <div className="badge-rows" style={{ marginTop: 0, display: "flex", flexDirection: "column", gap: 14, marginBottom: 28 }}>
+      <div className="badge-rows" style={{ marginTop: 0, display: "flex", flexDirection: "column", gap: 10, marginBottom: 20 }}>
         {rows.map((row) => (
           <div
             key={row.label}
@@ -161,7 +161,7 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: row.large ? tokens.weight.medium : tokens.weight.light,
-                fontSize: row.large ? "15px" : "13px",
+                fontSize: row.large ? "18px" : "13px",
                 letterSpacing: tokens.tracking.tight,
                 color: row.large ? tokens.color.ink : tokens.color.body,
                 lineHeight: row.large ? 1.3 : 1.4,
@@ -181,7 +181,7 @@ const Badge: FC<BadgeProps> = ({
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: 8,
+          marginTop: 4,
           paddingTop: 0,
           paddingBottom: 0,
           width: "100%",
@@ -196,7 +196,7 @@ const Badge: FC<BadgeProps> = ({
             display: "inline-flex",
             alignItems: "center",
             gap: 8,
-            borderRadius: "8px",
+            borderRadius: "10px",
             border: `1px solid ${tokens.color.cardBorder}`,
             padding: "11px 18px",
             fontFamily: tokens.font.sans,
