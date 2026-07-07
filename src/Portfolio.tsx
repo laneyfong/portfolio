@@ -14,7 +14,6 @@ import nvidiaLogo from "./assets/nvidia-logo.png";
 import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
 import platoHome from "./assets/plato-home.png";
 import platoItinerary from "./assets/plato-itinerary.png";
-import heroBgPattern from "./assets/hero-bg-pattern.svg";
 
 const ArrowIcon: FC = () => (
   <svg width="8" height="9" viewBox="0 0 8.271 8.974" fill="currentColor">
@@ -230,23 +229,6 @@ const Portfolio: FC = () => {
             alignItems: "center",
           }}
         >
-          <img
-            className="badge-bg-pattern"
-            src={heroBgPattern}
-            alt=""
-            aria-hidden
-            style={{
-              position: "absolute",
-              top: -10,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "min(1100px, 96vw)",
-              maxWidth: "none",
-              zIndex: 0,
-              pointerEvents: "none",
-              userSelect: "none",
-            }}
-          />
           <div style={{ position: "relative", zIndex: 1 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
