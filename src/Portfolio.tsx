@@ -216,7 +216,7 @@ const Portfolio: FC = () => {
 
       <Header />
 
-      <main style={{ maxWidth: 1320, margin: "0 auto 0 120px", padding: "64px 32px 96px" }}>
+      <main style={{ maxWidth: 1440, margin: "0 auto", marginLeft: 120, padding: "64px 32px 96px" }}>
         <div
           className="badge-section"
           style={{
