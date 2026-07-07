@@ -236,7 +236,7 @@ const Portfolio: FC = () => {
           </div>
         </div>
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%" }}>
+        <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"
             className="grid-cols work-grid"
