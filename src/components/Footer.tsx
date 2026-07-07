@@ -78,6 +78,8 @@ const Footer: FC = () => (
         maxWidth: 1450,
         margin: "0 auto",
         padding: "clamp(40px, 8vw, 70px) clamp(24px, 7vw, 64px)",
+        width: "100%",
+        boxSizing: "border-box",
       }}
     >
       <div>
