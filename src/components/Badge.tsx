@@ -41,11 +41,12 @@ const Badge: FC<BadgeProps> = ({
     <div
       className="badge-container"
       style={{
-        width: "clamp(260px, 82vw, 400px)",
+        width: "clamp(280px, 82vw, 420px)",
         backgroundColor: tokens.color.white,
-        borderRadius: tokens.radius.xl,
-        boxShadow: tokens.shadow.badge,
-        padding: "24px clamp(16px, 7vw, 38px) 40px",
+        borderRadius: "8px",
+        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.08)",
+        border: "1px solid rgba(0, 0, 0, 0.04)",
+        padding: "40px 36px",
         fontFamily: tokens.font.sans,
         position: "relative",
         boxSizing: "border-box",
@@ -53,50 +54,51 @@ const Badge: FC<BadgeProps> = ({
     >
       <style>{`
         @media (max-width: 640px) {
-          .badge-role { font-size: 22px !important; }
-          .badge-name { font-size: 22px !important; }
-          .badge-tagline { font-size: 14px !important; }
-          .badge-label { font-size: 13px !important; }
-          .badge-value { font-size: 13px !important; }
+          .badge-role { font-size: 18px !important; }
+          .badge-name { font-size: 18px !important; }
+          .badge-tagline { font-size: 12px !important; }
+          .badge-label { font-size: 10px !important; }
+          .badge-value { font-size: 12px !important; }
           .badge-container {
-            padding: 16px 20px 24px !important;
+            padding: 32px 24px !important;
+            width: clamp(260px, 85vw, 380px) !important;
           }
           .badge-photo {
-            width: min(140px, 100%) !important;
-            margin: 0 auto !important;
+            width: min(160px, 100%) !important;
+            margin: 0 auto 20px !important;
           }
           .badge-rows {
-            margin-top: 10px !important;
-            gap: 3px !important;
+            gap: 10px !important;
+            margin-bottom: 20px !important;
           }
-          .badge-role-wrapper { margin-top: 20px !important; margin-bottom: 2px !important; }
-          .badge-tagline-wrapper { margin-bottom: 12px !important; }
+          .badge-role-wrapper { margin-top: 36px !important; margin-bottom: 10px !important; }
+          .badge-tagline-wrapper { margin-bottom: 20px !important; }
         }
       `}</style>
       <div
         style={{
           position: "absolute",
-          top: 24,
+          top: 32,
           left: "50%",
           transform: "translateX(-50%)",
-          width: 24,
-          height: 24,
+          width: 32,
+          height: 32,
           borderRadius: "50%",
           backgroundColor: tokens.color.white,
-          boxShadow: tokens.shadow.insetCircle,
+          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.06)",
         }}
       />
 
       <p
         className="badge-role badge-role-wrapper"
         style={{
-          margin: "28px 0 4px",
+          margin: "48px 0 12px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
-          fontSize: tokens.text["2xl"],
+          fontSize: tokens.text.xl,
           letterSpacing: tokens.tracking.tight,
           color: tokens.color.muted,
-          lineHeight: tokens.leading.none,
+          lineHeight: tokens.leading.snug,
         }}
       >
         {role}
@@ -105,12 +107,12 @@ const Badge: FC<BadgeProps> = ({
       <p
         className="badge-tagline badge-tagline-wrapper"
         style={{
-          margin: "0 0 16px",
+          margin: "0 0 28px",
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.light,
-          fontSize: tokens.text.md,
+          fontSize: tokens.text.sm,
           color: tokens.color.body,
-          lineHeight: tokens.leading.normal,
+          lineHeight: 1.6,
         }}
       >
         {taglineParts.map((part, i) =>
@@ -127,18 +129,20 @@ const Badge: FC<BadgeProps> = ({
       <div
         className="badge-photo"
         style={{
-          width: "min(180px, 100%)",
+          width: "min(200px, 100%)",
           aspectRatio: "213 / 252",
           margin: "0 auto",
+          marginBottom: 28,
           backgroundImage: photo ? `url(${photo})` : "none",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundColor: photo ? "transparent" : tokens.color.offWhite,
-          boxShadow: tokens.shadow.imageFrame,
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+          borderRadius: "4px",
         }}
       />
 
-      <div className="badge-rows" style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 4 }}>
+      <div className="badge-rows" style={{ marginTop: 0, display: "flex", flexDirection: "column", gap: 12, marginBottom: 28 }}>
         {rows.map((row) => (
           <div
             key={row.label}
@@ -153,14 +157,15 @@ const Badge: FC<BadgeProps> = ({
             <span
               className="badge-label"
               style={{
-                width: 78,
+                width: 70,
                 flexShrink: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: tokens.text.sm,
+                fontSize: "11px",
                 color: tokens.color.muted,
                 lineHeight: tokens.leading.none,
-                paddingTop: row.large ? 8 : 0,
+                opacity: 0.7,
+                paddingTop: row.large ? 4 : 0,
               }}
             >
               {row.label}
@@ -170,10 +175,10 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: row.large ? tokens.weight.medium : tokens.weight.light,
-                fontSize: row.large ? tokens.text["2xl"] : tokens.text.md,
+                fontSize: row.large ? tokens.text.lg : tokens.text.sm,
                 letterSpacing: tokens.tracking.tight,
                 color: row.large ? tokens.color.muted : tokens.color.body,
-                lineHeight: row.large ? tokens.leading.none : tokens.leading.normal,
+                lineHeight: row.large ? 1.2 : 1.5,
                 whiteSpace: "pre-line",
               }}
             >
@@ -190,8 +195,9 @@ const Badge: FC<BadgeProps> = ({
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: 12,
-          padding: "16px 28px",
+          marginTop: 0,
+          paddingTop: 0,
+          paddingBottom: 20,
           width: "100%",
           boxSizing: "border-box",
           background: "none",

@@ -183,12 +183,12 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
           <div
             aria-hidden
             style={{
-              width: 5,
+              width: 7,
               height: stringHeight,
               margin: "0 auto",
-              borderRadius: "2px 2px 0 0",
-              background: "linear-gradient(to bottom, rgba(64, 66, 70, 0.55), rgba(64, 66, 70, 0.28))",
-              boxShadow: "0 0 0 0.5px rgba(0,0,0,0.05)",
+              borderRadius: "3px 3px 0 0",
+              background: "linear-gradient(to bottom, rgba(80, 82, 86, 0.6), rgba(60, 62, 66, 0.35))",
+              boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
             }}
           />
 
@@ -204,11 +204,11 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
               top: stringHeight,
               left: "50%",
               transform: "translateX(-50%)",
-              width: 13,
-              height: Math.max(0, holeCenterOffset - 8),
-              borderRadius: "0 0 3px 3px",
-              background: "linear-gradient(135deg, #e7e9eb, #a9adb3)",
-              boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
+              width: 20,
+              height: Math.max(0, holeCenterOffset - 4),
+              borderRadius: "0 0 4px 4px",
+              background: "linear-gradient(135deg, #f0f0f0, #d8d8d8)",
+              boxShadow: "0 2px 6px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.6)",
               zIndex: 2,
             }}
           />
@@ -217,16 +217,16 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
             aria-hidden
             style={{
               position: "absolute",
-              top: stringHeight + holeCenterOffset - 8,
+              top: stringHeight + holeCenterOffset - 12,
               left: "50%",
               transform: "translateX(-50%)",
-              width: 16,
-              height: 16,
+              width: 24,
+              height: 24,
               borderRadius: "50%",
-              border: "2.5px solid rgba(130, 134, 140, 0.95)",
+              border: "3px solid rgba(140, 140, 145, 0.9)",
               boxSizing: "border-box",
-              background: "transparent",
-              boxShadow: "0 1px 2px rgba(0,0,0,0.15)",
+              background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent 70%)",
+              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.3)",
               zIndex: 2,
             }}
           />
