@@ -81,7 +81,7 @@ const Badge: FC<BadgeProps> = ({
         style={{
           width: "min(200px, 100%)",
           aspectRatio: "213 / 252",
-          margin: "0 auto 24px",
+          margin: "12px auto 24px",
           backgroundImage: photo ? `url(${photo})` : "none",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -196,7 +196,7 @@ const Badge: FC<BadgeProps> = ({
             display: "inline-flex",
             alignItems: "center",
             gap: 8,
-            borderRadius: "10px",
+            borderRadius: "12px",
             border: `1px solid ${tokens.color.cardBorder}`,
             padding: "11px 18px",
             fontFamily: tokens.font.sans,
