@@ -26,22 +26,15 @@ const ArrowIcon: FC = () => (
 
 // Premium halftone texture pattern for hero section
 // Fine dots evenly spaced for editorial magazine aesthetic
+const HALFTONE_PATTERN = `
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="2" cy="2" r="1.2" fill="currentColor" opacity="0.6"/>
+  <circle cx="8" cy="8" r="1.2" fill="currentColor" opacity="0.6"/>
+</svg>
+`;
+
 const getHalftonePatternUrl = () => {
-  const size = 200; // Pattern tile size
-  const dotSpacing = 8; // Distance between dot centers
-  const dotRadius = 1.8; // Small, refined dots
-  let dots = '';
-
-  for (let y = 0; y < size; y += dotSpacing) {
-    for (let x = 0; x < size; x += dotSpacing) {
-      // Stagger every other row for natural halftone appearance
-      const offsetX = y % (dotSpacing * 2) === 0 ? 0 : dotSpacing / 2;
-      dots += `<circle cx="${x + offsetX}" cy="${y}" r="${dotRadius}" fill="rgba(0,0,0,0.15)" />`;
-    }
-  }
-
-  const svg = `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="white" />${dots}</svg>`;
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  return `data:image/svg+xml;base64,${btoa(HALFTONE_PATTERN)}`;
 };
 
 const ViewMoreCard: FC = () => {
