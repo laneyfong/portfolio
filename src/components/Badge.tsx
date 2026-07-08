@@ -78,7 +78,7 @@ const Badge: FC<BadgeProps> = ({
           }
           .badge-photo {
             width: clamp(120px, 58%, 200px) !important;
-            margin: 24px auto 14px !important;
+            margin: 32px auto 14px !important;
           }
           .badge-front-role { font-size: 20px !important; }
           .badge-front-name { font-size: 20px !important; }
@@ -95,7 +95,7 @@ const Badge: FC<BadgeProps> = ({
             style={{
               width: "clamp(135px, 62%, 225px)",
               aspectRatio: "213 / 252",
-              margin: "28px auto 16px",
+              margin: "36px auto 16px",
               backgroundImage: photo ? `url(${photo})` : "none",
               backgroundSize: "cover",
               backgroundPosition: "center",
