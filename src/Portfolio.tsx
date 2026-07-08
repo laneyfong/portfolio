@@ -193,8 +193,10 @@ const Portfolio: FC = () => {
         background: tokens.color.white,
         fontFamily: tokens.font.sans,
         color: tokens.color.body,
+        position: "relative",
       }}
     >
+      <div className="badge-ambient-gradient" />
       <style>{`
         @keyframes ambientGradientShift {
           0% {
@@ -226,16 +228,20 @@ const Portfolio: FC = () => {
 
         .badge-ambient-gradient {
           position: absolute;
-          inset: 0;
+          top: -200px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 200vw;
+          height: 150vh;
           background:
-            radial-gradient(ellipse 800px 600px at 50% 30%, rgba(200, 210, 255, 0.15) 0%, transparent 70%),
-            radial-gradient(ellipse 900px 500px at 30% 60%, rgba(240, 240, 245, 0.12) 0%, transparent 75%),
-            radial-gradient(ellipse 700px 400px at 70% 40%, rgba(245, 242, 238, 0.08) 0%, transparent 80%);
+            radial-gradient(ellipse 1400px 1000px at 50% 30%, rgba(200, 210, 255, 0.10) 0%, transparent 55%),
+            radial-gradient(ellipse 1600px 900px at 30% 60%, rgba(240, 240, 245, 0.08) 0%, transparent 65%),
+            radial-gradient(ellipse 1200px 700px at 70% 40%, rgba(245, 242, 238, 0.05) 0%, transparent 70%);
           background-size: 200% 200%, 250% 250%, 220% 220%;
           background-position: 0% 0%, 100% 100%, 50% 50%;
           animation: ambientGradientShift 35s ease-in-out infinite;
           pointer-events: none;
-          z-index: 0;
+          z-index: 1;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -278,11 +284,9 @@ const Portfolio: FC = () => {
             marginTop: -280,
             minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
-            overflow: "hidden",
           }}
         >
-          <div className="badge-ambient-gradient" />
-          <div style={{ position: "relative", zIndex: 1 }}>
+          <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
             </HangingCard>
