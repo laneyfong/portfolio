@@ -24,6 +24,26 @@ const ArrowIcon: FC = () => (
   </svg>
 );
 
+// Premium halftone texture pattern for hero section
+// Fine dots evenly spaced for editorial magazine aesthetic
+const getHalftonePatternUrl = () => {
+  const size = 200; // Pattern tile size
+  const dotSpacing = 8; // Distance between dot centers
+  const dotRadius = 1.8; // Small, refined dots
+  let dots = '';
+
+  for (let y = 0; y < size; y += dotSpacing) {
+    for (let x = 0; x < size; x += dotSpacing) {
+      // Stagger every other row for natural halftone appearance
+      const offsetX = y % (dotSpacing * 2) === 0 ? 0 : dotSpacing / 2;
+      dots += `<circle cx="${x + offsetX}" cy="${y}" r="${dotRadius}" fill="rgba(0,0,0,0.15)" />`;
+    }
+  }
+
+  const svg = `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="white" />${dots}</svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
+
 const ViewMoreCard: FC = () => {
   const [hovered, setHovered] = useState(false);
   return (
@@ -196,6 +216,27 @@ const Portfolio: FC = () => {
         position: "relative",
       }}
     >
+      {/* Premium halftone texture for hero section */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "1000px",
+          backgroundImage: `url('${getHalftonePatternUrl()}')`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 200px",
+          opacity: 0.035,
+          pointerEvents: "none",
+          zIndex: 1,
+          mixBlendMode: "multiply",
+          mask: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMask: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+        }}
+      />
+
       <style>{`
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
