@@ -136,7 +136,7 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
         const shadowBlur = 20 + Math.abs(angle / 10) * 4; // shadow softens more as badge tilts
 
         wrapperRef.current.style.transform = `translate(${m.tx.toFixed(2)}px, ${m.ty.toFixed(2)}px) rotate(${angle.toFixed(3)}deg)`;
-        wrapperRef.current.style.boxShadow = `${shadowX.toFixed(1)}px ${(8 + shadowY).toFixed(1)}px ${shadowBlur.toFixed(1)}px rgba(0, 0, 0, ${0.12 + Math.abs(angle / 50)})`;
+        wrapperRef.current.style.boxShadow = "none";
       }
       raf = requestAnimationFrame(tick);
     };
