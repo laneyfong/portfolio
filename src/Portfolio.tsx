@@ -27,9 +27,9 @@ const ArrowIcon: FC = () => (
 // Premium halftone texture pattern for hero section
 // Fine dots evenly spaced for editorial magazine aesthetic
 const HALFTONE_PATTERN = `
-<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="2" cy="2" r="1.2" fill="currentColor" opacity="0.6"/>
-  <circle cx="8" cy="8" r="1.2" fill="currentColor" opacity="0.6"/>
+<svg width="8" height="8" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="2" cy="2" r="0.6" fill="currentColor"/>
+  <circle cx="6" cy="6" r="0.6" fill="currentColor"/>
 </svg>
 `;
 
@@ -220,8 +220,8 @@ const Portfolio: FC = () => {
           height: "1000px",
           backgroundImage: `url('${getHalftonePatternUrl()}')`,
           backgroundRepeat: "repeat",
-          backgroundSize: "12px 12px",
-          opacity: 0.08,
+          backgroundSize: "8px 8px",
+          opacity: 0.12,
           pointerEvents: "none",
           zIndex: 1,
           mixBlendMode: "darken",
