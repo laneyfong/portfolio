@@ -24,34 +24,6 @@ const ArrowIcon: FC = () => (
   </svg>
 );
 
-// Premium halftone texture with wavy pattern and brand colors
-const HALFTONE_PATTERN = `
-<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="wave-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#8DC8E4;stop-opacity:0.02" />
-      <stop offset="50%" style="stop-color:#636363;stop-opacity:0.01" />
-      <stop offset="100%" style="stop-color:#636363;stop-opacity:0" />
-    </linearGradient>
-  </defs>
-
-  <!-- Halftone dots -->
-  <circle cx="6" cy="6" r="0.6" fill="#636363" opacity="0.4"/>
-  <circle cx="18" cy="6" r="0.6" fill="#636363" opacity="0.4"/>
-  <circle cx="6" cy="18" r="0.6" fill="#8DC8E4" opacity="0.25"/>
-  <circle cx="18" cy="18" r="0.6" fill="#636363" opacity="0.4"/>
-  <circle cx="12" cy="12" r="0.6" fill="#8DC8E4" opacity="0.25"/>
-
-  <!-- Subtle wavy lines -->
-  <path d="M 0 6 Q 6 4 12 6 T 24 6" stroke="#8DC8E4" stroke-width="0.3" fill="none" opacity="0.15"/>
-  <path d="M 0 18 Q 6 16 12 18 T 24 18" stroke="#8DC8E4" stroke-width="0.3" fill="none" opacity="0.1"/>
-</svg>
-`;
-
-const getHalftonePatternUrl = () => {
-  return `data:image/svg+xml;base64,${btoa(HALFTONE_PATTERN)}`;
-};
-
 const ViewMoreCard: FC = () => {
   const [hovered, setHovered] = useState(false);
   return (
@@ -224,27 +196,6 @@ const Portfolio: FC = () => {
         position: "relative",
       }}
     >
-      {/* Premium halftone texture with brand colors and wavy pattern */}
-      <div
-        aria-hidden
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: `url('${getHalftonePatternUrl()}')`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "24px 24px",
-          opacity: 0.1,
-          pointerEvents: "none",
-          zIndex: 1,
-          mixBlendMode: "darken",
-          maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)",
-        }}
-      />
-
       <style>{`
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
