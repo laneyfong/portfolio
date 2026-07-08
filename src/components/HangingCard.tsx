@@ -8,19 +8,19 @@ interface HangingCardProps {
   holeCenterOffset?: number;
 }
 
-// Realistic physics for a physical badge with mass
-// — inertia, gentle damping, no springiness
+// Realistic physics for a suspended physical badge with mass and momentum
+// — inertia, lag, subtle overshoot, smooth settling
 
-const PROXIMITY_RADIUS = 380; // px — how far the cursor's influence reaches (reduced, subtler)
-const MAX_ROTATION = 3.5; // degrees — tiny rotation (reduced from 6)
-const MAX_TRANSLATE = 4; // px — minimal movement (reduced from 9)
+const PROXIMITY_RADIUS = 500; // px — cursor influence from further away (badge responds from across hero)
+const MAX_ROTATION = 10; // degrees — realistic tilt toward cursor
+const MAX_TRANSLATE = 8; // px — noticeable but subtle movement
 const MAX_DT = 0.05; // clamp so a backgrounded tab doesn't cause a huge jump on return
 
-// Cursor-follow: heavily damped to feel like inertia, not spring physics.
-// The badge resists movement and settles slowly with real damping.
-// Damping ratio > 1.0 means overdamped (no oscillation, slow settling).
-const TILT_STIFFNESS = 80; // 1/s² — much lower = lethargic, heavy feeling
-const TILT_DAMPING = 2 * Math.sqrt(TILT_STIFFNESS) * 1.8; // ratio ~1.8 = heavily overdamped, no bounce
+// Cursor-follow: balanced to create momentum and lag
+// Damping ratio ~0.7–0.8 allows subtle overshoot when cursor changes direction
+// Badge feels suspended with inertia, slightly undershoots then settles smoothly
+const TILT_STIFFNESS = 60; // 1/s² — lower stiffness = more responsive lag
+const TILT_DAMPING = 2 * Math.sqrt(TILT_STIFFNESS) * 0.75; // ratio ~0.75 = undershoots slightly, feels like momentum
 
 // Nudge behavior: minimal, quick decay. Not a pendulum, just a tiny nudge.
 // When clicked, the badge barely moves and settles immediately.
@@ -128,7 +128,15 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
       const nudgeClamped = Math.max(-NUDGE_MAX_DEG, Math.min(NUDGE_MAX_DEG, m.pendulum));
 
       if (wrapperRef.current) {
-        wrapperRef.current.style.transform = `translate(${m.tx.toFixed(2)}px, ${m.ty.toFixed(2)}px) rotate(${(m.rot + nudgeClamped).toFixed(3)}deg)`;
+        const angle = m.rot + nudgeClamped;
+        // Dynamic shadow: shifts based on rotation, creating illusion of light source
+        // Shadow offset increases with rotation, suggesting movement in 3D space
+        const shadowX = (angle / 10) * 3; // shadow shifts with tilt
+        const shadowY = Math.abs(angle / 10) * 2; // shadow deepens with any tilt
+        const shadowBlur = 20 + Math.abs(angle / 10) * 4; // shadow softens more as badge tilts
+
+        wrapperRef.current.style.transform = `translate(${m.tx.toFixed(2)}px, ${m.ty.toFixed(2)}px) rotate(${angle.toFixed(3)}deg)`;
+        wrapperRef.current.style.boxShadow = `${shadowX.toFixed(1)}px ${(8 + shadowY).toFixed(1)}px ${shadowBlur.toFixed(1)}px rgba(0, 0, 0, ${0.12 + Math.abs(angle / 50)})`;
       }
       raf = requestAnimationFrame(tick);
     };
