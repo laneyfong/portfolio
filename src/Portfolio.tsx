@@ -196,61 +196,7 @@ const Portfolio: FC = () => {
         position: "relative",
       }}
     >
-      <div className="badge-ambient-gradient" />
       <style>{`
-        @keyframes ambientGradientShift {
-          0% {
-            background-position: 0% 0%, 100% 100%, 50% 50%;
-            transform: translate(0px, 0px) rotate(0deg);
-            opacity: 0.35;
-          }
-          25% {
-            background-position: 50% 30%, 80% 70%, 20% 80%;
-            transform: translate(8px, -6px) rotate(1.2deg);
-            opacity: 0.4;
-          }
-          50% {
-            background-position: 100% 50%, 30% 40%, 70% 20%;
-            transform: translate(0px, 4px) rotate(0deg);
-            opacity: 0.35;
-          }
-          75% {
-            background-position: 40% 70%, 70% 20%, 10% 60%;
-            transform: translate(-8px, -4px) rotate(-1.2deg);
-            opacity: 0.38;
-          }
-          100% {
-            background-position: 0% 0%, 100% 100%, 50% 50%;
-            transform: translate(0px, 0px) rotate(0deg);
-            opacity: 0.35;
-          }
-        }
-
-        .badge-ambient-gradient {
-          position: absolute;
-          top: -200px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100vw;
-          height: 150vh;
-          background:
-            radial-gradient(ellipse 1400px 1000px at 50% 30%, rgba(200, 210, 255, 0.10) 0%, transparent 55%),
-            radial-gradient(ellipse 1600px 900px at 30% 60%, rgba(240, 240, 245, 0.08) 0%, transparent 65%),
-            radial-gradient(ellipse 1200px 700px at 70% 40%, rgba(245, 242, 238, 0.05) 0%, transparent 70%);
-          background-size: 200% 200%, 250% 250%, 220% 220%;
-          background-position: 0% 0%, 100% 100%, 50% 50%;
-          animation: ambientGradientShift 35s ease-in-out infinite;
-          pointer-events: none;
-          z-index: 1;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .badge-ambient-gradient {
-            animation: none;
-            opacity: 0.35;
-          }
-        }
-
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
         }
