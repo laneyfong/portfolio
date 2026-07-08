@@ -96,7 +96,7 @@ const Badge: FC<BadgeProps> = ({
             style={{
               width: "min(200px, 100%)",
               aspectRatio: "213 / 252",
-              margin: "12px auto 20px",
+              margin: "16px auto 24px",
               backgroundImage: photo ? `url(${photo})` : "none",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -107,42 +107,44 @@ const Badge: FC<BadgeProps> = ({
             }}
           />
 
-          <p
-            className="badge-front-role"
-            style={{
-              margin: "0 0 6px",
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              fontSize: "22px",
-              letterSpacing: tokens.tracking.tight,
-              color: tokens.color.ink,
-              lineHeight: 1.3,
-              textAlign: "center",
-            }}
-          >
-            {role}
-          </p>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+            <p
+              className="badge-front-role"
+              style={{
+                margin: 0,
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "22px",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.ink,
+                lineHeight: 1.3,
+                textAlign: "center",
+              }}
+            >
+              {role}
+            </p>
 
-          <p
-            className="badge-front-name"
-            style={{
-              margin: "0 0 14px",
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              fontSize: "21px",
-              letterSpacing: tokens.tracking.tight,
-              color: tokens.color.ink,
-              lineHeight: 1.3,
-              textAlign: "center",
-            }}
-          >
-            {name}
-          </p>
+            <p
+              className="badge-front-name"
+              style={{
+                margin: 0,
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "21px",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.ink,
+                lineHeight: 1.3,
+                textAlign: "center",
+              }}
+            >
+              {name}
+            </p>
+          </div>
 
           <p
             className="badge-front-spec"
             style={{
-              margin: "0 auto",
+              margin: "16px auto 24px",
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.light,
               fontSize: "13px",
@@ -187,7 +189,7 @@ const Badge: FC<BadgeProps> = ({
           <div
             className="badge-back-section"
             style={{
-              marginBottom: 20,
+              marginBottom: 24,
               paddingBottom: 16,
               borderBottom: `1px solid rgba(0, 0, 0, 0.06)`,
             }}
@@ -203,7 +205,7 @@ const Badge: FC<BadgeProps> = ({
                 opacity: 0.65,
                 textTransform: "uppercase",
                 letterSpacing: "0.5px",
-                marginBottom: 6,
+                marginBottom: 8,
               }}
             >
               Location
@@ -225,7 +227,7 @@ const Badge: FC<BadgeProps> = ({
           <div
             className="badge-back-section"
             style={{
-              marginBottom: 20,
+              marginBottom: 24,
               paddingBottom: 16,
               borderBottom: `1px solid rgba(0, 0, 0, 0.06)`,
             }}
@@ -241,7 +243,7 @@ const Badge: FC<BadgeProps> = ({
                 opacity: 0.65,
                 textTransform: "uppercase",
                 letterSpacing: "0.5px",
-                marginBottom: 6,
+                marginBottom: 8,
               }}
             >
               Background
@@ -277,7 +279,7 @@ const Badge: FC<BadgeProps> = ({
                 opacity: 0.65,
                 textTransform: "uppercase",
                 letterSpacing: "0.5px",
-                marginBottom: 6,
+                marginBottom: 8,
               }}
             >
               Approach
