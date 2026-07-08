@@ -231,7 +231,7 @@ const Portfolio: FC = () => {
           top: -200px;
           left: 50%;
           transform: translateX(-50%);
-          width: 200vw;
+          width: 100vw;
           height: 150vh;
           background:
             radial-gradient(ellipse 1400px 1000px at 50% 30%, rgba(200, 210, 255, 0.10) 0%, transparent 55%),
