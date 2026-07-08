@@ -225,14 +225,15 @@ const Portfolio: FC = () => {
           left: 0,
           right: 0,
           height: "1000px",
-          backgroundImage: `url('${getHalftonePatternUrl()}'), linear-gradient(180deg, rgba(141,200,228,0.04) 0%, rgba(141,200,228,0.02) 30%, rgba(0,0,0,0) 100%)`,
-          backgroundRepeat: "repeat, no-repeat",
-          backgroundSize: "200px 200px, 100% 100%",
+          backgroundImage: `url('${getHalftonePatternUrl()}')`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 200px",
+          opacity: 0.08,
           pointerEvents: "none",
           zIndex: 1,
-          mixBlendMode: "multiply",
-          mask: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
-          WebkitMask: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+          mixBlendMode: "darken",
+          maskImage: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
         }}
       />
 
