@@ -129,12 +129,6 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
 
       if (wrapperRef.current) {
         const angle = m.rot + nudgeClamped;
-        // Dynamic shadow: shifts based on rotation, creating illusion of light source
-        // Shadow offset increases with rotation, suggesting movement in 3D space
-        const shadowX = (angle / 10) * 3; // shadow shifts with tilt
-        const shadowY = Math.abs(angle / 10) * 2; // shadow deepens with any tilt
-        const shadowBlur = 20 + Math.abs(angle / 10) * 4; // shadow softens more as badge tilts
-
         wrapperRef.current.style.transform = `translate(${m.tx.toFixed(2)}px, ${m.ty.toFixed(2)}px) rotate(${angle.toFixed(3)}deg)`;
         wrapperRef.current.style.boxShadow = "none";
       }
