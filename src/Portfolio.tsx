@@ -220,7 +220,7 @@ const Portfolio: FC = () => {
           height: "1000px",
           backgroundImage: `url('${getHalftonePatternUrl()}')`,
           backgroundRepeat: "repeat",
-          backgroundSize: "200px 200px",
+          backgroundSize: "12px 12px",
           opacity: 0.08,
           pointerEvents: "none",
           zIndex: 1,
