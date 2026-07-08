@@ -230,6 +230,7 @@ const Portfolio: FC = () => {
             marginTop: -280,
             minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
+            background: "transparent",
           }}
         >
           <div style={{ position: "relative", zIndex: 10 }}>
