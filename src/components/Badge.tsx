@@ -28,8 +28,8 @@ const Badge: FC<BadgeProps> = ({
       className="badge-container"
       onClick={() => setIsFlipped(!isFlipped)}
       style={{
-        width: "clamp(280px, 82vw, 420px)",
-        height: "clamp(380px, 120vw, 560px)",
+        width: "clamp(260px, 28vw, 400px)",
+        aspectRatio: "2.125 / 3.370",
         perspective: "1200px",
         fontFamily: tokens.font.sans,
         cursor: "pointer",
@@ -64,27 +64,26 @@ const Badge: FC<BadgeProps> = ({
             borderRadius: "20px",
             boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
             border: "1px solid rgba(0, 0, 0, 0.06)",
-            padding: "36px 32px",
+            padding: "20px 24px",
             boxSizing: "border-box",
           }}
         >
       <style>{`
         @media (max-width: 640px) {
           .badge-container {
-            width: clamp(260px, 85vw, 380px) !important;
-            height: clamp(350px, 120vw, 520px) !important;
+            width: clamp(240px, 85vw, 360px) !important;
           }
           .badge-front, .badge-back {
-            padding: 28px 24px !important;
+            padding: 16px 20px !important;
           }
           .badge-photo {
-            width: min(140px, 100%) !important;
-            margin: 8px auto 16px !important;
+            width: clamp(130px, 60%, 220px) !important;
+            margin: 10px auto 16px !important;
           }
-          .badge-front-role { font-size: 19px !important; }
-          .badge-front-name { font-size: 18px !important; }
-          .badge-front-spec { font-size: 12px !important; }
-          .badge-back-section { margin-bottom: 16px !important; }
+          .badge-front-role { font-size: 16px !important; }
+          .badge-front-name { font-size: 17px !important; }
+          .badge-front-spec { font-size: 11px !important; }
+          .badge-back-section { margin-bottom: 20px !important; }
           .badge-back-label { font-size: 9px !important; }
           .badge-back-value { font-size: 12px !important; }
         }
@@ -94,9 +93,9 @@ const Badge: FC<BadgeProps> = ({
           <div
             className="badge-photo"
             style={{
-              width: "min(200px, 100%)",
+              width: "clamp(150px, 65%, 250px)",
               aspectRatio: "213 / 252",
-              margin: "16px auto 24px",
+              margin: "12px auto 20px",
               backgroundImage: photo ? `url(${photo})` : "none",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -107,14 +106,14 @@ const Badge: FC<BadgeProps> = ({
             }}
           />
 
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
             <p
               className="badge-front-role"
               style={{
                 margin: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
-                fontSize: "22px",
+                fontSize: "18px",
                 letterSpacing: tokens.tracking.tight,
                 color: tokens.color.ink,
                 lineHeight: 1.3,
@@ -130,7 +129,7 @@ const Badge: FC<BadgeProps> = ({
                 margin: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
-                fontSize: "21px",
+                fontSize: "20px",
                 letterSpacing: tokens.tracking.tight,
                 color: tokens.color.ink,
                 lineHeight: 1.3,
@@ -144,13 +143,13 @@ const Badge: FC<BadgeProps> = ({
           <p
             className="badge-front-spec"
             style={{
-              margin: "16px auto 24px",
+              margin: "0 auto 16px",
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.light,
-              fontSize: "13px",
+              fontSize: "12px",
               color: tokens.color.body,
               lineHeight: 1.4,
-              opacity: 0.75,
+              opacity: 0.7,
               textAlign: "center",
               maxWidth: "90%",
             }}
@@ -179,7 +178,7 @@ const Badge: FC<BadgeProps> = ({
             borderRadius: "20px",
             boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
             border: "1px solid rgba(0, 0, 0, 0.06)",
-            padding: "36px 32px",
+            padding: "20px 24px",
             boxSizing: "border-box",
             transform: "rotateY(180deg)",
             overflowY: "auto",
