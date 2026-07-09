@@ -34,22 +34,22 @@ const LoadingDots: FC = () => {
         }
 
         .dot:nth-child(1) {
-          animation: hopToPosition1 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation: hopToPosition1 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
         }
 
         .dot:nth-child(2) {
-          animation: hopToPosition2 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-          animation-delay: -3s;
+          animation: hopToPosition2 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation-delay: -1.8s;
         }
 
         .dot:nth-child(3) {
-          animation: hopToPosition3 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-          animation-delay: -2s;
+          animation: hopToPosition3 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation-delay: -1.2s;
         }
 
         .dot:nth-child(4) {
-          animation: hopToPosition4 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-          animation-delay: -1s;
+          animation: hopToPosition4 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation-delay: -0.6s;
         }
 
         @media (prefers-reduced-motion: reduce) {
