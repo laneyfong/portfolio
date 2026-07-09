@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Badge from "./components/Badge";
@@ -177,8 +177,6 @@ const PlatoCard: FC = () => {
 };
 
 const Portfolio: FC = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   const scrollToWork = () => {
     const target = document.getElementById("work");
     if (!target) return;
@@ -187,12 +185,6 @@ const Portfolio: FC = () => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
   };
-
-  // Trigger loading animation on mount
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div
@@ -205,72 +197,6 @@ const Portfolio: FC = () => {
       }}
     >
       <style>{`
-        @keyframes fadeInText {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        @keyframes badgeEnter {
-          from {
-            opacity: 0;
-            transform: translateY(100px) rotateZ(1.5deg);
-          }
-          85% {
-            opacity: 1;
-            transform: translateY(-4px) rotateZ(0deg);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) rotateZ(0deg);
-          }
-        }
-
-        @keyframes shadowEnter {
-          from {
-            opacity: 0;
-            filter: blur(12px);
-          }
-          85% {
-            filter: blur(22px);
-          }
-          to {
-            filter: blur(20px);
-          }
-        }
-
-        @keyframes contentFadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        .badge-loading-text {
-          animation: fadeInText 0.25s ease-out forwards;
-        }
-
-        .badge-loading-container {
-          animation: badgeEnter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        .badge-loading-shadow {
-          animation: shadowEnter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        .page-content {
-          animation: contentFadeIn 0.3s ease-out 0.8s forwards;
-          opacity: 0;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .badge-loading-text,
-          .badge-loading-container,
-          .badge-loading-shadow,
-          .page-content {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-        }
-
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
         }
@@ -280,7 +206,7 @@ const Portfolio: FC = () => {
 
       <main style={{ width: "100%", padding: "80px clamp(32px, 7vw, 80px) 0", boxSizing: "border-box", marginTop: "64px" }}>
         <div
-          className={`badge-section ${isLoaded ? "badge-loading-container" : ""}`}
+          className="badge-section"
           style={{
             position: "relative",
             display: "flex",
@@ -293,14 +219,14 @@ const Portfolio: FC = () => {
           }}
         >
           <div style={{ position: "relative", zIndex: 10 }}>
-            <HangingCard stringHeight={280} holeCenterOffset={36} animating={isLoaded}>
+            <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
             </HangingCard>
           </div>
         </div>
       </main>
 
-      <div id="work-container" className={isLoaded ? "page-content" : ""} style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+      <div id="work-container" style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"
@@ -350,9 +276,7 @@ const Portfolio: FC = () => {
         </div>
       </div>
 
-      <div className={isLoaded ? "page-content" : ""} style={{ opacity: isLoaded ? 1 : 0 }}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
