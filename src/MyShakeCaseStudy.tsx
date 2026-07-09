@@ -30,6 +30,8 @@ import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakePinned from "./assets/myshake-pinned-locations.png";
+import myshakeUserScenario from "./assets/myshake-user-scenario.png";
+import myshakeOriginalFlow from "./assets/myshake-original-flow.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -413,6 +415,20 @@ const MyShakeCaseStudy: FC = () => {
         <Callout>Users want a way to get to critical information quickly in a short amount of time.</Callout>
 
         <Reveal>
+          <img
+            src={myshakeUserScenario}
+            alt="User scenario storyboard: Daniel checking his mom's location after an earthquake"
+            style={{
+              width: "100%",
+              maxWidth: 1200,
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 40,
+            }}
+          />
+        </Reveal>
+
+        <Reveal>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <FindingRow method="Competitive Analysis">
               Simplicity and a half-list/half-map layout won. Competitors also drew a clear line between CEN
@@ -634,6 +650,24 @@ const MyShakeCaseStudy: FC = () => {
           Transforming MyShake from a passive alert tool into an active earthquake companion, using simplified
           navigation to encourage frequent user interaction with readiness features.
         </Paragraph>
+
+        <Reveal>
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, marginBottom: 16 }}>
+              The original user flow (7+ steps to find a loved one's location)
+            </div>
+            <img
+              src={myshakeOriginalFlow}
+              alt="Original MyShake user flow showing 7+ steps to find a loved one's location"
+              style={{
+                width: "100%",
+                maxWidth: 1200,
+                height: "auto",
+                borderRadius: tokens.radius.md,
+              }}
+            />
+          </div>
+        </Reveal>
 
         <Reveal>
           <div
