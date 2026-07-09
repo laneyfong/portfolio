@@ -239,7 +239,7 @@ const Badge: FC<BadgeProps> = ({
             borderRadius: "20px",
             boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
             border: "1px solid rgba(0, 0, 0, 0.06)",
-            padding: "16px 20px",
+            padding: "66px 20px 16px 20px",
             boxSizing: "border-box",
             transform: "rotateY(180deg)",
             overflowY: "auto",
