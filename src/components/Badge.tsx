@@ -15,13 +15,36 @@ interface BadgeProps {
 const Badge: FC<BadgeProps> = ({
   name = "Laney Fong",
   role = "Product Designer",
-  specialization = "Accessible design at scale",
   location = "San Francisco Bay Area",
   description = "B.A. Cognitive Science @ UC Berkeley | M.S. HCI @ UCSC",
   photo,
   onCTAClick,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  // Dot pattern for badge accent
+  const DotPattern = () => (
+    <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ position: "absolute", inset: 0 }} aria-hidden>
+      {/* Outer ring dots */}
+      {[0, 60, 120, 180, 240, 300].map((angle) => {
+        const rad = (angle * Math.PI) / 180;
+        const x = 50 + 28 * Math.cos(rad);
+        const y = 50 + 28 * Math.sin(rad);
+        return <circle key={`outer-${angle}`} cx={x} cy={y} r="2.5" fill="#000" />;
+      })}
+
+      {/* Middle ring dots */}
+      {[30, 90, 150, 210, 270, 330].map((angle) => {
+        const rad = (angle * Math.PI) / 180;
+        const x = 50 + 18 * Math.cos(rad);
+        const y = 50 + 18 * Math.sin(rad);
+        return <circle key={`mid-${angle}`} cx={x} cy={y} r="1.8" fill="#000" />;
+      })}
+
+      {/* Center dot */}
+      <circle cx="50" cy="50" r="5" fill="#000" />
+    </svg>
+  );
 
   return (
     <div
@@ -58,14 +81,13 @@ const Badge: FC<BadgeProps> = ({
             WebkitBackfaceVisibility: "hidden",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
             backgroundColor: tokens.color.white,
-            borderRadius: "20px",
+            borderRadius: "24px",
             boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
             border: "1px solid rgba(0, 0, 0, 0.06)",
-            padding: "16px 20px",
+            padding: "16px 16px 24px 16px",
             boxSizing: "border-box",
+            overflow: "hidden",
           }}
         >
       <style>{`
@@ -74,91 +96,74 @@ const Badge: FC<BadgeProps> = ({
             width: clamp(215px, 80vw, 320px) !important;
           }
           .badge-front, .badge-back {
-            padding: 14px 18px !important;
+            padding: 14px 14px 20px 14px !important;
           }
-          .badge-photo {
-            width: clamp(120px, 58%, 200px) !important;
-            margin: 32px auto 14px !important;
-          }
-          .badge-front-role { font-size: 20px !important; }
-          .badge-front-name { font-size: 20px !important; }
-          .badge-front-spec { font-size: 10px !important; }
-          .badge-back-section { margin-bottom: 18px !important; }
-          .badge-back-label { font-size: 8px !important; }
-          .badge-back-value { font-size: 11px !important; }
         }
       `}</style>
 
-          {/* FRONT: Photo + Title + Name + Specialization */}
+          {/* FRONT: Blue accent area with image and dot pattern */}
           <div
-            className="badge-photo"
             style={{
-              width: "clamp(135px, 62%, 225px)",
-              aspectRatio: "213 / 252",
-              margin: "36px auto 16px",
-              backgroundImage: photo ? `url(${photo})` : "none",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundColor: photo ? "transparent" : tokens.color.offWhite,
-              boxShadow: "0 6px 16px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.6)",
-              borderRadius: "14px",
-              flexShrink: 0,
+              flex: 1,
+              backgroundColor: "#8DC8E4",
+              borderRadius: "16px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+              overflow: "hidden",
+              marginBottom: "16px",
             }}
-          />
+          >
+            {/* Photo/Image */}
+            {photo && (
+              <img
+                src={photo}
+                alt={name}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  position: "absolute",
+                  inset: 0,
+                }}
+              />
+            )}
 
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
-            <p
-              className="badge-front-role"
+            {/* Dot pattern overlay when no photo */}
+            {!photo && <DotPattern />}
+          </div>
+
+          {/* Bottom info section */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <h2
               style={{
                 margin: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
-                fontSize: "24px",
+                fontSize: "18px",
                 letterSpacing: tokens.tracking.tight,
                 color: tokens.color.ink,
                 lineHeight: 1.2,
-                textAlign: "center",
+              }}
+            >
+              {name}
+            </h2>
+
+            <p
+              style={{
+                margin: 0,
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.regular,
+                fontSize: "12px",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.body,
+                lineHeight: 1.3,
+                opacity: 0.7,
               }}
             >
               {role}
             </p>
-
-            <p
-              className="badge-front-name"
-              style={{
-                margin: 0,
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                fontSize: "24px",
-                letterSpacing: tokens.tracking.tight,
-                color: tokens.color.ink,
-                lineHeight: 1.2,
-                textAlign: "center",
-              }}
-            >
-              {name}
-            </p>
-          </div>
-
-          <p
-            className="badge-front-spec"
-            style={{
-              margin: "0 auto 12px",
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.light,
-              fontSize: "11px",
-              color: tokens.color.body,
-              lineHeight: 1.4,
-              opacity: 0.65,
-              textAlign: "center",
-              maxWidth: "90%",
-            }}
-          >
-            {specialization}
-          </p>
-
-          <div style={{ marginTop: "auto", textAlign: "center", fontSize: "12px", color: tokens.color.muted, opacity: 0.6 }}>
-            Click to explore →
           </div>
         </div>
 
