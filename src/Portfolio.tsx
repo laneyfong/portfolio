@@ -176,8 +176,15 @@ const Portfolio: FC = () => {
       }}
     >
       <style>{`
+        .work-grid > :last-child {
+          grid-column: 1 / -1;
+        }
+
         @media (max-width: 768px) {
           .work-grid { grid-template-columns: 1fr !important; }
+          .work-grid > :last-child {
+            grid-column: 1 / -1;
+          }
         }
 
         @keyframes elemFadeIn {
@@ -248,7 +255,7 @@ const Portfolio: FC = () => {
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
               gap: 12,
-              alignItems: "start",
+              alignItems: "stretch",
               minWidth: 0,
             }}
           >
