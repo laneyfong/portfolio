@@ -14,6 +14,7 @@ interface LabModuleProps {
   date: string;
   status?: "exploring" | "paused" | "archived";
   tags?: string[];
+  isLoading?: boolean;
 }
 
 const LabPage: FC = () => {
@@ -33,8 +34,9 @@ const LabPage: FC = () => {
       description: "Building a system that analyzes designs and provides structured feedback based on design principles.",
       experimentId: "EXP-2024-002",
       date: "Nov 2024",
-      status: "paused",
+      status: "exploring",
       tags: ["AI", "design-systems", "automation"],
+      isLoading: true,
     },
     {
       type: "interaction",

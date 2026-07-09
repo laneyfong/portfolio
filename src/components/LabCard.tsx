@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { useEffect, useRef } from "react";
 import { tokens } from "../tokens";
+import LoadingDots from "./LoadingDots";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility";
 
@@ -12,6 +13,7 @@ interface LabCardProps {
   date: string;
   status?: "exploring" | "paused" | "archived";
   tags?: string[];
+  isLoading?: boolean;
 }
 
 interface MotionState {
@@ -29,7 +31,7 @@ interface MotionState {
   targetLiftY: number;
 }
 
-const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, date, status, tags }) => {
+const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, date, status, tags, isLoading }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -272,20 +274,26 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
           {title}
         </h3>
 
-        {/* Description */}
-        <p
-          style={{
-            margin: "0 0 16px 0",
-            fontFamily: tokens.font.sans,
-            fontSize: "13px",
-            fontWeight: tokens.weight.regular,
-            color: tokens.color.body,
-            lineHeight: 1.5,
-            opacity: 0.8,
-          }}
-        >
-          {description}
-        </p>
+        {/* Description or Loading */}
+        {isLoading ? (
+          <div style={{ margin: "0 0 16px 0", minHeight: "40px", display: "flex", alignItems: "center" }}>
+            <LoadingDots />
+          </div>
+        ) : (
+          <p
+            style={{
+              margin: "0 0 16px 0",
+              fontFamily: tokens.font.sans,
+              fontSize: "13px",
+              fontWeight: tokens.weight.regular,
+              color: tokens.color.body,
+              lineHeight: 1.5,
+              opacity: 0.8,
+            }}
+          >
+            {description}
+          </p>
+        )}
 
         {/* Tags */}
         {tags && tags.length > 0 && (
