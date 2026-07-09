@@ -7,22 +7,22 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [messagePhase, setMessagePhase] = useState<"fadeIn" | "fadeOut">("fadeIn");
 
   useEffect(() => {
-    // Timeline (slower, more intentional):
-    // 0-1000ms: Message fades in slowly and smoothly
-    // 1000-2200ms: Message holds on screen (1200ms - longer pause)
-    // 2200-3000ms: Message fades out with upward motion (800ms - slow fade)
-    // ~3100ms: All done, complete callback
+    // Shorter, lighter welcome animation:
+    // 0-600ms: Message fades in
+    // 600-1500ms: Message holds on screen (900ms)
+    // 1500-2100ms: Message fades out with upward motion (600ms)
+    // ~2100ms: All done, complete callback
 
     // Phase 1: Hold text until it's time to fade out
     const fadeOutTimer = setTimeout(() => {
       setMessagePhase("fadeOut");
-    }, 2200);
+    }, 1500);
 
     // Phase 2: Hide message and trigger completion
     const completeTimer = setTimeout(() => {
       setShowMessage(false);
       onComplete();
-    }, 3100);
+    }, 2100);
 
     return () => {
       clearTimeout(fadeOutTimer);
@@ -68,11 +68,11 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
 
         .welcome-message {
           text-align: center;
-          animation: welcomeFadeIn 1s ease-in-out forwards;
+          animation: welcomeFadeIn 0.6s ease-in-out forwards;
         }
 
         .welcome-message.fade-out {
-          animation: welcomeFadeUp 0.8s ease-in-out forwards;
+          animation: welcomeFadeUp 0.6s ease-in-out forwards;
         }
 
         .welcome-line {
@@ -80,7 +80,7 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
           font-size: 28px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
-          color: ${tokens.color.ink};
+          color: ${tokens.color.body};
           line-height: 1.3;
           margin: 0;
         }
