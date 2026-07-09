@@ -281,7 +281,7 @@ const Portfolio: FC = () => {
               screenshot={myshakeApp}
               layout="portrait"
               height={760}
-              caption="Users couldn't find critical earthquake info fast. Restructured IA around safety first, not data visualization."
+              caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
               captionItalic="45% engagement increase"
               metrics={[
                 { value: "45%", label: "↑ engagement" },
@@ -300,8 +300,8 @@ const Portfolio: FC = () => {
               screenshot={uxAgentScreenshot}
               layout="landscape"
               height={506}
-              caption="Built an AI agent that autonomously tests product UX, catching issues researchers would miss—speeding up internal iteration cycles."
-              captionItalic="AI-powered usability testing"
+              caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
+              captionItalic="Autonomous UX validation"
               to="/nvidia-ai-ux-agent"
             />
             <PlatoCard />

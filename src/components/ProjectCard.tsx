@@ -150,39 +150,57 @@ const ProjectCard: FC<ProjectCardProps> = ({
             {captionParts[1]}
           </span>
 
-          {metrics && metrics.length > 0 && (
-            <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-              {metrics.map((metric) => (
-                <div key={metric.label}>
-                  <div
-                    style={{
-                      fontFamily: tokens.font.sans,
-                      fontWeight: tokens.weight.medium,
-                      fontSize: tokens.text.lg,
-                      letterSpacing: tokens.tracking.tight,
-                      color: tokens.color.ink,
-                      lineHeight: tokens.leading.none,
-                    }}
-                  >
-                    {metric.value}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+            {metrics && metrics.length > 0 && (
+              <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+                {metrics.map((metric) => (
+                  <div key={metric.label}>
+                    <div
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontWeight: tokens.weight.medium,
+                        fontSize: tokens.text.lg,
+                        letterSpacing: tokens.tracking.tight,
+                        color: tokens.color.ink,
+                        lineHeight: tokens.leading.none,
+                      }}
+                    >
+                      {metric.value}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: 2,
+                        fontFamily: tokens.font.sans,
+                        fontWeight: tokens.weight.regular,
+                        fontSize: tokens.text.sm,
+                        color: tokens.color.body,
+                        lineHeight: tokens.leading.none,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {metric.label}
+                    </div>
                   </div>
-                  <div
-                    style={{
-                      marginTop: 2,
-                      fontFamily: tokens.font.sans,
-                      fontWeight: tokens.weight.regular,
-                      fontSize: tokens.text.sm,
-                      color: tokens.color.body,
-                      lineHeight: tokens.leading.none,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
+            {to && (
+              <div
+                style={{
+                  opacity: hovered ? 1 : 0.4,
+                  transition: "opacity 0.22s ease, transform 0.22s ease",
+                  transform: hovered ? "translateX(3px)" : "translateX(0)",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 8.271 8.974" fill={tokens.color.body}>
+                  <path
+                    d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
+                    fillRule="nonzero"
+                  />
+                </svg>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
