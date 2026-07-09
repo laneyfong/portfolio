@@ -2,36 +2,53 @@ import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { tokens } from "../tokens";
 
-type Stage = "text" | "badge" | "done";
+type Stage = "cursor" | "frame" | "type" | "transition" | "hidden";
 
 const LoadingScreen: FC<{ onLoadingComplete: () => void }> = ({ onLoadingComplete }) => {
-  const [stage, setStage] = useState<Stage>("text");
+  const [stage, setStage] = useState<Stage>("cursor");
+  const [typedText, setTypedText] = useState("");
 
   useEffect(() => {
-    // Text phase: 400ms
-    // Badge enter: 500ms
-    // Total loading: ~1300ms
+    // Timeline:
+    // 0ms: cursor appears
+    // 300ms: frame starts appearing
+    // 600ms: frame complete, text starts typing
+    // 900ms: text complete
+    // 1100ms: frame scales and transitions
+    // 1900ms: transition complete, page visible
+    // 2000ms: loading screen removed
 
-    const textTimer = setTimeout(() => {
-      setStage("badge");
-    }, 400);
+    const stages: Array<{ time: number; stage: Stage }> = [
+      { time: 300, stage: "frame" },
+      { time: 600, stage: "type" },
+      { time: 1100, stage: "transition" },
+      { time: 1900, stage: "hidden" },
+    ];
 
-    const doneTimer = setTimeout(() => {
-      setStage("done");
-    }, 1250);
+    stages.forEach(({ time, stage: nextStage }) => {
+      setTimeout(() => setStage(nextStage), time);
+    });
 
-    const callbackTimer = setTimeout(() => {
+    // Typing animation
+    const fullText = "Designing intentionally.\nFor humans.";
+    let charIndex = 0;
+
+    const typeInterval = setInterval(() => {
+      if (charIndex <= fullText.length) {
+        setTypedText(fullText.slice(0, charIndex));
+        charIndex++;
+      }
+    }, 40); // Natural typing speed
+
+    setTimeout(() => {
+      clearInterval(typeInterval);
       onLoadingComplete();
-    }, 1300);
+    }, 2000);
 
-    return () => {
-      clearTimeout(textTimer);
-      clearTimeout(doneTimer);
-      clearTimeout(callbackTimer);
-    };
+    return () => clearInterval(typeInterval);
   }, [onLoadingComplete]);
 
-  if (stage === "done") return null;
+  if (stage === "hidden") return null;
 
   return (
     <div
@@ -43,116 +60,224 @@ const LoadingScreen: FC<{ onLoadingComplete: () => void }> = ({ onLoadingComplet
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        pointerEvents: stage !== "text" && stage !== "badge" ? "none" : "auto",
+        overflow: "hidden",
+        opacity: stage === "transition" ? 0 : 1,
+        transition: stage === "transition" ? "opacity 0.8s ease-out" : "none",
       }}
     >
       <style>{`
-        @keyframes textFadeIn {
+        @keyframes blink {
+          0%, 49%, 100% { opacity: 1; }
+          50%, 99% { opacity: 0; }
+        }
+
+        @keyframes frameAppear {
           from {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
             opacity: 0;
-            transform: translateY(8px);
           }
           to {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 0;
             opacity: 1;
-            transform: translateY(0);
           }
         }
 
-        @keyframes textFadeUpOut {
-          0% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-        }
-
-        @keyframes badgeEnter {
+        @keyframes frameScale {
           from {
-            opacity: 0;
-            transform: translateY(120px);
+            transform: scale(1);
+            opacity: 1;
           }
           to {
-            opacity: 1;
-            transform: translateY(0);
+            transform: scale(1.8);
+            opacity: 0;
           }
         }
 
-        .loading-text-container {
+        @keyframes textFadeOut {
+          from { opacity: 1; }
+          to { opacity: 0; }
+        }
+
+        .loading-cursor {
+          display: inline-block;
+          width: 2px;
+          height: 1em;
+          background: ${tokens.color.ink};
+          animation: blink 1s infinite;
+          margin-left: 4px;
+        }
+
+        .loading-frame-svg {
+          position: absolute;
+          animation: ${stage === "transition" ? "frameScale 0.8s ease-out forwards" : "none"};
+          animation-delay: ${stage === "transition" ? "0s" : "0s"};
+        }
+
+        .loading-frame-rect {
+          animation: ${stage === "frame" || stage === "type" || stage === "transition" ? "frameAppear 0.3s ease-out forwards" : "none"};
+          animation-delay: ${stage === "cursor" ? "-0.3s" : "0s"};
+        }
+
+        .loading-text {
+          position: absolute;
           text-align: center;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
+          white-space: pre-line;
+          animation: ${stage === "transition" ? "textFadeOut 0.6s ease-out forwards" : "none"};
+          animation-delay: ${stage === "transition" ? "0.2s" : "0s"};
         }
 
-        .loading-text-name {
+        .loading-text-line1 {
           font-family: ${tokens.font.sans};
-          font-size: 28px;
+          font-size: 18px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
           color: ${tokens.color.ink};
           margin: 0;
-          line-height: 1.2;
-          animation: textFadeIn 0.25s ease-out 0.05s both;
+          line-height: 1.4;
         }
 
-        .loading-text-role {
-          font-family: ${tokens.font.sans};
-          font-size: 16px;
-          font-weight: ${tokens.weight.regular};
-          letter-spacing: ${tokens.tracking.tight};
-          color: ${tokens.color.body};
-          margin: 0;
-          line-height: 1.2;
-          animation: textFadeIn 0.25s ease-out 0.1s both;
+        .loading-text-line2 {
+          margin-top: 4px;
         }
 
-        .loading-badge-placeholder {
-          width: 240px;
-          aspect-ratio: 2.125 / 3.370;
-          background: ${tokens.color.white};
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 20px;
-          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08);
-          animation: badgeEnter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-          animation-delay: 0.4s;
-        }
-
-        .loading-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0;
-          width: 100%;
-          height: 100%;
-          justify-content: center;
+        .loading-text-humans {
+          font-family: ${tokens.font.serifItalic};
+          font-style: italic;
+          font-weight: 400;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .loading-text-name,
-          .loading-text-role,
-          .loading-badge-placeholder {
+          .loading-cursor,
+          .loading-frame-svg,
+          .loading-frame-rect,
+          .loading-text {
             animation: none !important;
             opacity: 1 !important;
-            transform: none !important;
           }
         }
       `}</style>
 
-      <div className="loading-content">
-        {stage === "text" && (
-          <div className="loading-text-container">
-            <h1 className="loading-text-name">Laney Fong</h1>
-            <p className="loading-text-role">Product Designer</p>
+      {/* Stage 1: Cursor */}
+      {stage === "cursor" && (
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: 18,
+              fontWeight: tokens.weight.medium,
+              color: tokens.color.ink,
+              letterSpacing: tokens.tracking.tight,
+              height: 28,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <span className="loading-cursor" />
           </div>
-        )}
+        </div>
+      )}
 
-        {stage !== "text" && (
-          <div className="loading-badge-placeholder" />
-        )}
-      </div>
+      {/* Stage 2+: Frame with text */}
+      {(stage === "frame" || stage === "type" || stage === "transition") && (
+        <>
+          {/* Design Frame */}
+          <svg
+            className="loading-frame-svg"
+            width="480"
+            height="280"
+            viewBox="0 0 480 280"
+            style={{
+              maxWidth: "90vw",
+              maxHeight: "80vh",
+            }}
+          >
+            <rect
+              className="loading-frame-rect"
+              x="1"
+              y="1"
+              width="478"
+              height="278"
+              fill="none"
+              stroke={tokens.color.ink}
+              strokeWidth="1"
+              rx="12"
+              ry="12"
+            />
+          </svg>
+
+          {/* Text inside frame */}
+          {(stage === "type" || stage === "transition") && (
+            <div
+              className="loading-text"
+              style={{
+                width: 400,
+                lineHeight: 1.4,
+              }}
+            >
+              <div className="loading-text-line1">Designing intentionally.</div>
+              <div className="loading-text-line1 loading-text-line2">
+                For <span className="loading-text-humans">humans</span>.
+              </div>
+
+              {(stage === "type" || stage === "transition") && (
+                <div
+                  style={{
+                    display: "inline-block",
+                    marginLeft: 4,
+                    marginTop: 4,
+                  }}
+                >
+                  <span className="loading-cursor" />
+                </div>
+              )}
+
+              {/* Display typed text with blinking cursor */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  width: 400,
+                  margin: "0 auto",
+                  whiteSpace: "pre-line",
+                  minHeight: 60,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  opacity: stage === "transition" ? 0 : 1,
+                  transition: stage === "transition" ? "opacity 0.3s ease-out" : "none",
+                }}
+              >
+                <div>
+                  {typedText.split("\n").map((line, idx) => (
+                    <div
+                      key={idx}
+                      className={`loading-text-line1 ${idx === 1 ? "loading-text-line2" : ""}`}
+                    >
+                      {idx === 1 ? (
+                        <>
+                          For{" "}
+                          <span className="loading-text-humans">
+                            {line.replace("For ", "")}
+                          </span>
+                        </>
+                      ) : (
+                        line
+                      )}
+                    </div>
+                  ))}
+                  {typedText.length < "Designing intentionally.\nFor humans.".length && (
+                    <span className="loading-cursor" />
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };
