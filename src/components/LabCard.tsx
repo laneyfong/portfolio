@@ -64,16 +64,6 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
     return [nextPos, nextVel] as const;
   }
 
-  // Calculate dynamic shadow based on rotation
-  const calculateShadow = (rotX: number, rotY: number) => {
-    const shadowOffsetX = rotY * 1.5;
-    const shadowOffsetY = rotX * 1.5 + 8;
-    const shadowBlur = 20 + Math.abs(rotX) + Math.abs(rotY);
-    const shadowOpacity = 0.08 + Math.abs(rotX) * 0.01 + Math.abs(rotY) * 0.01;
-
-    return `${shadowOffsetX.toFixed(2)}px ${shadowOffsetY.toFixed(2)}px ${shadowBlur.toFixed(1)}px rgba(0, 0, 0, ${shadowOpacity})`;
-  };
-
   // Calculate edge highlight based on rotation
   const calculateHighlight = (rotX: number, rotY: number) => {
     const highlightOpacity = Math.max(0, 0.15 - Math.abs(rotX) * 0.02 - Math.abs(rotY) * 0.02);
@@ -132,11 +122,10 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
       [m.liftY, m.liftYV] = springTo(m.liftY, m.liftYV, m.targetLiftY, STIFFNESS, DAMPING, dt);
 
       if (containerRef.current) {
-        const shadow = calculateShadow(m.rotX, m.rotY);
         const highlightOpacity = calculateHighlight(m.rotX, m.rotY);
 
         containerRef.current.style.transform = `perspective(1200px) rotateX(${m.rotX.toFixed(3)}deg) rotateY(${m.rotY.toFixed(3)}deg) translateY(${(-m.liftY).toFixed(2)}px)`;
-        containerRef.current.style.boxShadow = shadow;
+        containerRef.current.style.boxShadow = "none";
         containerRef.current.style.setProperty("--highlight-opacity", highlightOpacity.toString());
       }
 
@@ -220,8 +209,8 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
           borderRadius: "24px",
           padding: "28px",
           cursor: isLoading ? "default" : "pointer",
-          willChange: "transform, box-shadow",
-          boxShadow: isLoading ? "none" : undefined,
+          willChange: "transform",
+          boxShadow: "none",
         }}
       >
         {/* Edge highlight for material depth */}
