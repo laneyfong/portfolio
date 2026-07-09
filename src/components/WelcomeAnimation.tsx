@@ -7,22 +7,22 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [messagePhase, setMessagePhase] = useState<"fadeIn" | "fadeOut">("fadeIn");
 
   useEffect(() => {
-    // Timeline:
-    // 0-700ms: Message fades in
-    // 700-1500ms: Message holds (800ms)
-    // 1500-2000ms: Message fades out (500ms) + homepage elements fade in
-    // ~2200ms: All done, complete callback
+    // Timeline (slower, more intentional):
+    // 0-1000ms: Message fades in slowly and smoothly
+    // 1000-2200ms: Message holds on screen (1200ms - longer pause)
+    // 2200-3000ms: Message fades out with upward motion (800ms - slow fade)
+    // ~3100ms: All done, complete callback
 
     // Phase 1: Hold text until it's time to fade out
     const fadeOutTimer = setTimeout(() => {
       setMessagePhase("fadeOut");
-    }, 1500);
+    }, 2200);
 
     // Phase 2: Hide message and trigger completion
     const completeTimer = setTimeout(() => {
       setShowMessage(false);
       onComplete();
-    }, 2000);
+    }, 3100);
 
     return () => {
       clearTimeout(fadeOutTimer);
@@ -68,11 +68,11 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
 
         .welcome-message {
           text-align: center;
-          animation: welcomeFadeIn 0.7s ease-out forwards;
+          animation: welcomeFadeIn 1s ease-in-out forwards;
         }
 
         .welcome-message.fade-out {
-          animation: welcomeFadeUp 0.5s ease-out forwards;
+          animation: welcomeFadeUp 0.8s ease-in-out forwards;
         }
 
         .welcome-line {

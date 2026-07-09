@@ -155,18 +155,18 @@ const Portfolio: FC = () => {
         }
 
         .badge-reveal {
-          animation: elemFadeIn 0.5s ease-out forwards;
-          animation-delay: 1600ms;
+          animation: elemFadeIn 0.8s ease-out forwards;
+          animation-delay: 2200ms;
         }
 
         .hero-reveal {
-          animation: elemFadeIn 0.5s ease-out forwards;
-          animation-delay: 1700ms;
+          animation: elemFadeIn 0.8s ease-out forwards;
+          animation-delay: 2300ms;
         }
 
         .content-reveal {
-          animation: elemFadeIn 0.5s ease-out forwards;
-          animation-delay: 1800ms;
+          animation: elemFadeIn 0.8s ease-out forwards;
+          animation-delay: 2400ms;
         }
 
         @media (prefers-reduced-motion: reduce) {
