@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
+import LabCard from "./components/LabCard";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility";
 
@@ -14,167 +15,6 @@ interface LabModuleProps {
   status?: "exploring" | "paused" | "archived";
   tags?: string[];
 }
-
-const LabModule: FC<LabModuleProps> = ({ type, title, description, experimentId, date, status, tags }) => {
-  const typeLabels: Record<ModuleType, string> = {
-    motion: "Motion Study",
-    ai: "AI Prototype",
-    interaction: "Interaction Experiment",
-    concept: "Concept Exploration",
-    system: "Visual System",
-    prototype: "Rapid Prototype",
-    generative: "Generative Design",
-    accessibility: "Accessibility Exploration",
-  };
-
-
-  return (
-    <div
-      style={{
-        position: "relative",
-        background: tokens.color.offWhite,
-        border: `1px solid ${tokens.color.cardBorder}`,
-        borderRadius: tokens.radius.sm,
-        padding: "32px",
-        cursor: "pointer",
-        transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        transform: "translateY(0) rotateZ(0deg)",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLDivElement).style.transform = "translateY(-8px) rotateZ(0.5deg)";
-        (e.currentTarget as HTMLDivElement).style.boxShadow = tokens.shadow.subtle;
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLDivElement).style.transform = "translateY(0) rotateZ(0deg)";
-        (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-      }}
-    >
-      {/* Experiment ID - Top Right */}
-      <div
-        style={{
-          position: "absolute",
-          top: 16,
-          right: 16,
-          fontSize: "11px",
-          fontFamily: tokens.font.sans,
-          fontWeight: tokens.weight.light,
-          color: tokens.color.muted,
-          letterSpacing: "0.5px",
-          textTransform: "uppercase",
-          opacity: 0.6,
-        }}
-      >
-        {experimentId}
-      </div>
-
-      {/* Type Badge */}
-      <div
-        style={{
-          display: "inline-block",
-          fontSize: "10px",
-          fontFamily: tokens.font.sans,
-          fontWeight: tokens.weight.medium,
-          color: tokens.color.body,
-          letterSpacing: "0.5px",
-          textTransform: "uppercase",
-          marginBottom: 16,
-          paddingBottom: 8,
-          borderBottom: `1px solid ${tokens.color.cardBorder}`,
-          paddingRight: 8,
-        }}
-      >
-        {typeLabels[type]}
-      </div>
-
-      {/* Status Indicator */}
-      {status && (
-        <div
-          style={{
-            position: "absolute",
-            top: 32,
-            right: 32,
-            fontSize: "9px",
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.regular,
-            color: status === "exploring" ? tokens.color.accent : tokens.color.muted,
-            textTransform: "capitalize",
-            opacity: 0.7,
-          }}
-        >
-          • {status}
-        </div>
-      )}
-
-      {/* Title */}
-      <h3
-        style={{
-          margin: "0 0 12px 0",
-          fontFamily: tokens.font.sans,
-          fontSize: "20px",
-          fontWeight: tokens.weight.medium,
-          color: tokens.color.ink,
-          lineHeight: 1.3,
-        }}
-      >
-        {title}
-      </h3>
-
-      {/* Description */}
-      <p
-        style={{
-          margin: "0 0 16px 0",
-          fontFamily: tokens.font.sans,
-          fontSize: "14px",
-          fontWeight: tokens.weight.regular,
-          color: tokens.color.body,
-          lineHeight: 1.5,
-          opacity: 0.8,
-        }}
-      >
-        {description}
-      </p>
-
-      {/* Tags */}
-      {tags && tags.length > 0 && (
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              style={{
-                fontSize: "11px",
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                color: tokens.color.body,
-                backgroundColor: tokens.color.white,
-                border: `1px solid ${tokens.color.cardBorder}`,
-                padding: "4px 8px",
-                borderRadius: "4px",
-                opacity: 0.7,
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
-      {/* Date - Bottom */}
-      <div
-        style={{
-          fontSize: "12px",
-          fontFamily: tokens.font.sans,
-          fontWeight: tokens.weight.light,
-          color: tokens.color.muted,
-          marginTop: "auto",
-          paddingTop: 12,
-          borderTop: `1px solid ${tokens.color.cardBorder}`,
-        }}
-      >
-        {date}
-      </div>
-    </div>
-  );
-};
 
 const LabPage: FC = () => {
   const experiments: LabModuleProps[] = [
@@ -334,8 +174,8 @@ const LabPage: FC = () => {
           }}
         >
           {experiments.map((exp, idx) => (
-            <div key={idx} className="lab-module">
-              <LabModule {...exp} />
+            <div key={idx} className="lab-module" style={{ height: "100%" }}>
+              <LabCard {...exp} />
             </div>
           ))}
         </div>
