@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Badge from "./components/Badge";
@@ -129,6 +129,41 @@ const Portfolio: FC = () => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
   };
+
+  // Auto-scroll animation on page load
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
+    // Start scroll animation after welcome animation completes (~3.5s)
+    const scrollTimer = setTimeout(() => {
+      const startTime = performance.now();
+      const duration = 2000; // 2 second smooth scroll
+      const startY = window.scrollY;
+      const targetY = window.innerHeight * 0.4; // Scroll to 40% of viewport height
+
+      const easeInOutCubic = (t: number) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = easeInOutCubic(progress);
+        const newY = startY + targetY * easeProgress;
+
+        window.scrollTo(0, newY);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    }, 3500); // Start after welcome animation completes
+
+    return () => clearTimeout(scrollTimer);
+  }, []);
 
   return (
     <div
