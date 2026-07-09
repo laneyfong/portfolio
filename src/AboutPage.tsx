@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { tokens } from "./tokens";
-import Header from "./components/Header";
+import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
@@ -231,10 +231,11 @@ const AboutPage: FC = () => {
           left: 20%;
           animation: float-3 2.2s ease-in-out infinite 0.6s;
         }
-        /* Tablet responsiveness */
-        @media (max-width: 900px) {
-          main { margin-left: 100px !important; width: calc(100% - 100px) !important; }
+        /* Main layout adjustments for top nav */
+        main {
+          margin-top: 64px !important;
         }
+
         /* Mobile responsiveness */
         @media (max-width: 760px) {
           .about-container {
@@ -275,7 +276,7 @@ const AboutPage: FC = () => {
         }
       `}</style>
 
-      <Header />
+      <TopNav />
 
       <main style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "64px clamp(32px, 7vw, 80px) 96px", boxSizing: "border-box" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", width: "100%" }}>
