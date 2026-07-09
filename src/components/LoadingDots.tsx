@@ -3,59 +3,59 @@ import { tokens } from "../tokens";
 
 const LoadingDots: FC = () => {
   return (
-    <div style={{ display: "flex", gap: "8px", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ display: "flex", gap: "28px", alignItems: "center", justifyContent: "center", minHeight: "80px" }}>
       <style>{`
-        @keyframes dot1Active {
-          0%, 25%, 100% { background-color: ${tokens.color.muted}; }
-          0.01%, 24.99% { background-color: #2a2a2a; }
+        @keyframes hopToPosition1 {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
         }
 
-        @keyframes dot2Active {
-          0%, 100% { background-color: ${tokens.color.muted}; }
-          25%, 49.99% { background-color: #2a2a2a; }
-          50%, 100% { background-color: ${tokens.color.muted}; }
+        @keyframes hopToPosition2 {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
         }
 
-        @keyframes dot3Active {
-          0%, 100% { background-color: ${tokens.color.muted}; }
-          50%, 74.99% { background-color: #2a2a2a; }
-          75%, 100% { background-color: ${tokens.color.muted}; }
+        @keyframes hopToPosition3 {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
         }
 
-        @keyframes dot4Active {
-          0%, 100% { background-color: ${tokens.color.muted}; }
-          75%, 99.99% { background-color: #2a2a2a; }
-          100% { background-color: ${tokens.color.muted}; }
+        @keyframes hopToPosition4 {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
         }
 
         .dot {
-          width: 8px;
-          height: 8px;
+          width: 12px;
+          height: 12px;
           border-radius: 50%;
           background-color: ${tokens.color.muted};
-          transition: background-color 0.1s ease;
+          opacity: 0.3;
         }
 
         .dot:nth-child(1) {
-          animation: dot1Active 4s steps(100, end) infinite;
+          animation: hopToPosition1 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
         }
 
         .dot:nth-child(2) {
-          animation: dot2Active 4s steps(100, end) infinite;
+          animation: hopToPosition2 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation-delay: -3s;
         }
 
         .dot:nth-child(3) {
-          animation: dot3Active 4s steps(100, end) infinite;
+          animation: hopToPosition3 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation-delay: -2s;
         }
 
         .dot:nth-child(4) {
-          animation: dot4Active 4s steps(100, end) infinite;
+          animation: hopToPosition4 4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation-delay: -1s;
         }
 
         @media (prefers-reduced-motion: reduce) {
           .dot {
             animation: none !important;
-            background-color: ${tokens.color.muted};
+            opacity: 0.4;
           }
         }
       `}</style>

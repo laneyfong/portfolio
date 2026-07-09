@@ -82,7 +82,7 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!cardRef.current) return;
+      if (!cardRef.current || isLoading) return;
 
       const rect = cardRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
@@ -105,8 +105,8 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
     };
 
     const handleMouseEnter = () => {
-      // Ensure we're tracking movement when hovering
-      if (cardRef.current) {
+      // Ensure we're tracking movement when hovering (only if not loading)
+      if (!isLoading && cardRef.current) {
         const rect = cardRef.current.getBoundingClientRect();
         if (rect.width > 0 && rect.height > 0) {
           // Just enable the lift effect to show it's interactive
@@ -151,7 +151,7 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
       cardRef.current?.removeEventListener("mouseleave", handleMouseLeave);
       cardRef.current?.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, []);
+  }, [isLoading]);
 
   const typeLabels: Record<ModuleType, string> = {
     motion: "Motion Study",
@@ -219,134 +219,141 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
           border: `1px solid ${tokens.color.cardBorder}`,
           borderRadius: "24px",
           padding: "28px",
-          cursor: "pointer",
+          cursor: isLoading ? "default" : "pointer",
           willChange: "transform, box-shadow",
+          boxShadow: isLoading ? "none" : undefined,
         }}
       >
         {/* Edge highlight for material depth */}
         <div className="lab-card-edge-highlight" />
 
-        {/* Experiment metadata */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
-          <div>
-            <div
+        {!isLoading && (
+          <>
+            {/* Experiment metadata */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+              <div>
+                <div
+                  style={{
+                    fontSize: "10px",
+                    fontFamily: tokens.font.sans,
+                    fontWeight: tokens.weight.medium,
+                    color: tokens.color.muted,
+                    letterSpacing: "0.8px",
+                    textTransform: "uppercase",
+                    opacity: 0.5,
+                    marginBottom: 6,
+                  }}
+                >
+                  {experimentId}
+                </div>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    fontFamily: tokens.font.sans,
+                    fontWeight: tokens.weight.medium,
+                    color: tokens.color.body,
+                    letterSpacing: "0.5px",
+                    textTransform: "uppercase",
+                    paddingBottom: 8,
+                  }}
+                >
+                  {typeLabels[type]}
+                </div>
+              </div>
+              {status && (
+                <div
+                  style={{
+                    fontSize: "9px",
+                    fontFamily: tokens.font.sans,
+                    fontWeight: tokens.weight.regular,
+                    color: status === "exploring" ? tokens.color.accent : tokens.color.muted,
+                    textTransform: "capitalize",
+                    opacity: 0.7,
+                  }}
+                >
+                  ● {status}
+                </div>
+              )}
+            </div>
+
+            {/* Title */}
+            <h3
               style={{
-                fontSize: "10px",
+                margin: "0 0 10px 0",
                 fontFamily: tokens.font.sans,
+                fontSize: "18px",
                 fontWeight: tokens.weight.medium,
-                color: tokens.color.muted,
-                letterSpacing: "0.8px",
-                textTransform: "uppercase",
-                opacity: 0.5,
-                marginBottom: 6,
+                color: tokens.color.ink,
+                lineHeight: 1.3,
               }}
             >
-              {experimentId}
-            </div>
+              {title}
+            </h3>
+          </>
+        )}
+
+        {/* Description or Loading */}
+        {isLoading ? (
+          <div style={{ margin: 0, minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <LoadingDots />
+          </div>
+        ) : (
+          <>
+            <p
+              style={{
+                margin: "0 0 16px 0",
+                fontFamily: tokens.font.sans,
+                fontSize: "13px",
+                fontWeight: tokens.weight.regular,
+                color: tokens.color.body,
+                lineHeight: 1.5,
+                opacity: 0.8,
+              }}
+            >
+              {description}
+            </p>
+
+            {/* Tags */}
+            {tags && tags.length > 0 && (
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 14 }}>
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontSize: "10px",
+                      fontFamily: tokens.font.sans,
+                      fontWeight: tokens.weight.regular,
+                      color: tokens.color.body,
+                      backgroundColor: tokens.color.white,
+                      border: `0.5px solid ${tokens.color.cardBorder}`,
+                      padding: "3px 7px",
+                      borderRadius: "4px",
+                      opacity: 0.6,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Date footer */}
             <div
               style={{
                 fontSize: "11px",
                 fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                color: tokens.color.body,
-                letterSpacing: "0.5px",
-                textTransform: "uppercase",
-                paddingBottom: 8,
+                fontWeight: tokens.weight.light,
+                color: tokens.color.muted,
+                marginTop: "auto",
+                paddingTop: 10,
+                borderTop: `0.5px solid ${tokens.color.cardBorder}`,
+                opacity: 0.6,
               }}
             >
-              {typeLabels[type]}
+              {date}
             </div>
-          </div>
-          {status && (
-            <div
-              style={{
-                fontSize: "9px",
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                color: status === "exploring" ? tokens.color.accent : tokens.color.muted,
-                textTransform: "capitalize",
-                opacity: 0.7,
-              }}
-            >
-              ● {status}
-            </div>
-          )}
-        </div>
-
-        {/* Title */}
-        <h3
-          style={{
-            margin: "0 0 10px 0",
-            fontFamily: tokens.font.sans,
-            fontSize: "18px",
-            fontWeight: tokens.weight.medium,
-            color: tokens.color.ink,
-            lineHeight: 1.3,
-          }}
-        >
-          {title}
-        </h3>
-
-        {/* Description or Loading */}
-        {isLoading ? (
-          <div style={{ margin: "0 0 16px 0", minHeight: "40px", display: "flex", alignItems: "center" }}>
-            <LoadingDots />
-          </div>
-        ) : (
-          <p
-            style={{
-              margin: "0 0 16px 0",
-              fontFamily: tokens.font.sans,
-              fontSize: "13px",
-              fontWeight: tokens.weight.regular,
-              color: tokens.color.body,
-              lineHeight: 1.5,
-              opacity: 0.8,
-            }}
-          >
-            {description}
-          </p>
+          </>
         )}
-
-        {/* Tags */}
-        {tags && tags.length > 0 && (
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 14 }}>
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  fontSize: "10px",
-                  fontFamily: tokens.font.sans,
-                  fontWeight: tokens.weight.regular,
-                  color: tokens.color.body,
-                  backgroundColor: tokens.color.white,
-                  border: `0.5px solid ${tokens.color.cardBorder}`,
-                  padding: "3px 7px",
-                  borderRadius: "4px",
-                  opacity: 0.6,
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {/* Date footer */}
-        <div
-          style={{
-            fontSize: "11px",
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.light,
-            color: tokens.color.muted,
-            marginTop: "auto",
-            paddingTop: 10,
-            borderTop: `0.5px solid ${tokens.color.cardBorder}`,
-            opacity: 0.6,
-          }}
-        >
-          {date}
-        </div>
       </div>
     </div>
   );
