@@ -210,11 +210,6 @@ const Portfolio: FC = () => {
           }
         }
 
-        .top-nav-reveal {
-          animation: elemFadeIn 0.5s ease-out forwards;
-          animation-delay: 1500ms;
-        }
-
         .badge-reveal {
           animation: elemFadeIn 0.5s ease-out forwards;
           animation-delay: 1600ms;
@@ -241,9 +236,7 @@ const Portfolio: FC = () => {
         }
       `}</style>
 
-      <div className="top-nav-reveal">
-        <TopNav />
-      </div>
+      <TopNav />
 
       <main style={{ width: "100%", padding: "80px clamp(32px, 7vw, 80px) 0", boxSizing: "border-box", marginTop: "64px" }}>
         <div
