@@ -141,10 +141,6 @@ const Portfolio: FC = () => {
       }}
     >
       <style>{`
-        @media (max-width: 1200px) {
-          .work-grid { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-
         @media (max-width: 768px) {
           .work-grid { grid-template-columns: 1fr !important; }
         }
@@ -215,7 +211,7 @@ const Portfolio: FC = () => {
             className="grid-cols work-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateColumns: "repeat(2, 1fr)",
               gap: 12,
               alignItems: "start",
               minWidth: 0,
