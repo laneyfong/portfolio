@@ -2,10 +2,8 @@ import type { FC, ReactNode } from "react";
 import { useState } from "react";
 import { tokens } from "../tokens";
 
-// TODO: replace with Laney's real LinkedIn profile URL.
-export const LINKEDIN_URL = "https://www.linkedin.com/in/TODO-laney-fong";
-// TODO: replace with Laney's real contact email address.
-export const CONTACT_EMAIL = "todo@example.com";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/laneyfong/?skipRedirect=true";
+export const CONTACT_EMAIL = "laneyrfong@gmail.com";
 
 export const LinkedInIcon: FC = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
