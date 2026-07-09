@@ -21,6 +21,7 @@ const Badge: FC<BadgeProps> = ({
   onCTAClick,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Dot pattern for badge accent
   const DotPattern = () => (
@@ -50,6 +51,8 @@ const Badge: FC<BadgeProps> = ({
     <div
       className="badge-container"
       onClick={() => setIsFlipped(!isFlipped)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       style={{
         width: "clamp(235px, 24vw, 360px)",
         aspectRatio: "2.125 / 3.370",
@@ -66,7 +69,11 @@ const Badge: FC<BadgeProps> = ({
           width: "100%",
           height: "100%",
           transformStyle: "preserve-3d",
-          transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+          transform: isFlipped
+            ? "rotateY(180deg)"
+            : isHovered
+            ? "rotateY(10deg)"
+            : "rotateY(0deg)",
           transition: "transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
         }}
       >
