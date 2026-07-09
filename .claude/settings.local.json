@@ -86,7 +86,13 @@
       "Bash(NODE_PATH=/Users/laneyfong/.npm/_npx/e41f203b7505f1fb/node_modules node -e ' *)",
       "Bash(npm run *)",
       "Bash(pkill -f \"npm run dev\")",
-      "Bash(git revert *)"
+      "Bash(git revert *)",
+      "Bash(grep -E \"\\\\.tsx$|^d\")",
+      "Bash(git reset *)",
+      "Bash(open http://localhost:5175)",
+      "Bash(npm list *)",
+      "Bash(xargs cat)",
+      "Bash(screencapture -C -x /tmp/portfolio_animation.png)"
     ]
   }
 }

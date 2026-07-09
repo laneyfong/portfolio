@@ -200,13 +200,54 @@ const Portfolio: FC = () => {
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
         }
+
+        @keyframes elemFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .top-nav-reveal {
+          animation: elemFadeIn 0.5s ease-out forwards;
+          animation-delay: 1500ms;
+        }
+
+        .badge-reveal {
+          animation: elemFadeIn 0.5s ease-out forwards;
+          animation-delay: 1600ms;
+        }
+
+        .hero-reveal {
+          animation: elemFadeIn 0.5s ease-out forwards;
+          animation-delay: 1700ms;
+        }
+
+        .content-reveal {
+          animation: elemFadeIn 0.5s ease-out forwards;
+          animation-delay: 1800ms;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .top-nav-reveal,
+          .badge-reveal,
+          .hero-reveal,
+          .content-reveal {
+            animation: none !important;
+            opacity: 1 !important;
+          }
+        }
       `}</style>
 
-      <TopNav />
+      <div className="top-nav-reveal">
+        <TopNav />
+      </div>
 
       <main style={{ width: "100%", padding: "80px clamp(32px, 7vw, 80px) 0", boxSizing: "border-box", marginTop: "64px" }}>
         <div
-          className="badge-section"
+          className="badge-section badge-reveal"
           style={{
             position: "relative",
             display: "flex",
@@ -226,7 +267,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div id="work-container" style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+      <div id="work-container" className="content-reveal" style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"
@@ -276,7 +317,9 @@ const Portfolio: FC = () => {
         </div>
       </div>
 
-      <Footer />
+      <div className="content-reveal">
+        <Footer />
+      </div>
     </div>
   );
 };

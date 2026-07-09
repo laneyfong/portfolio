@@ -5,7 +5,7 @@ import AboutPage from "./AboutPage";
 import MyShakeCaseStudy from "./MyShakeCaseStudy";
 import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
-import LoadingScreen from "./components/LoadingScreen";
+import WelcomeAnimation from "./components/WelcomeAnimation";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -27,7 +27,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <GlobalStyles />
-      {!loadingComplete && <LoadingScreen onLoadingComplete={() => setLoadingComplete(true)} />}
+      {!loadingComplete && <WelcomeAnimation onComplete={() => setLoadingComplete(true)} />}
       <Routes>
         <Route path="/" element={<Portfolio />} />
         <Route path="/about" element={<AboutPage />} />
