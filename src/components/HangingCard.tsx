@@ -6,6 +6,7 @@ interface HangingCardProps {
   stringHeight?: number;
   /** Distance from the card's top edge to the center of its hole/grommet — the lanyard clip threads through here. */
   holeCenterOffset?: number;
+  animating?: boolean;
 }
 
 // Realistic physics for a suspended physical badge with mass and momentum
@@ -51,7 +52,7 @@ interface MotionState {
   pendulumV: number;
 }
 
-const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCenterOffset = 42 }) => {
+const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCenterOffset = 42, animating = false }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const motion = useRef<MotionState>({
@@ -154,7 +155,7 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
 
   return (
     <div style={{ display: "flex", justifyContent: "center", paddingTop: 4 }}>
-      <div style={{ position: "relative" }}>
+      <div className={animating ? "badge-loading-shadow" : ""} style={{ position: "relative" }}>
         {/* mount pin, fixed at the pivot — where the lanyard attaches to the ceiling */}
         <div
           aria-hidden
