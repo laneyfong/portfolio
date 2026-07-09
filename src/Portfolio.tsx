@@ -28,7 +28,7 @@ const PlatoCard: FC = () => {
       onMouseLeave={() => setHovered(false)}
       style={{
         position: "relative",
-        height: 467,
+        minHeight: 467,
         borderRadius: tokens.radius.sm,
         cursor: "pointer",
         transition: "transform 0.22s ease, box-shadow 0.22s ease",

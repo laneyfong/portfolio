@@ -62,7 +62,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        height: cardHeight,
+        minHeight: cardHeight,
         borderRadius: tokens.radius.sm,
         cursor: to ? "pointer" : "default",
         transition: "transform 0.22s ease, box-shadow 0.22s ease",
