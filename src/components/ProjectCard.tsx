@@ -125,7 +125,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <div
           style={{
             position: "absolute",
-            bottom: isPortrait ? 48 : 100,
+            bottom: isPortrait ? 48 : 140,
             left: 23,
             width: 267,
             maxWidth: "calc(100% - 46px)",
