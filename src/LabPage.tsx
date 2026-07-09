@@ -3,8 +3,9 @@ import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
+import DayLightCard from "./components/DayLightCard";
 
-type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility";
+type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
 interface LabModuleProps {
   type: ModuleType;
@@ -15,10 +16,21 @@ interface LabModuleProps {
   status?: "exploring" | "paused" | "archived";
   tags?: string[];
   isLoading?: boolean;
+  isSpecial?: boolean;
 }
 
 const LabPage: FC = () => {
   const experiments: LabModuleProps[] = [
+    {
+      type: "daylight",
+      title: "Day/Night Light Simulation",
+      description: "Interactive time scroll wheel that simulates natural light changes throughout the day. Watch the interface adapt from bright daylight to dark night mode with stars.",
+      experimentId: "EXP-2024-000",
+      date: "Jan 2025",
+      status: "exploring",
+      tags: ["interaction", "time", "light", "ambient"],
+      isSpecial: true,
+    },
     {
       type: "motion",
       title: "Micro-interactions & Micro-delays",
@@ -115,14 +127,15 @@ const LabPage: FC = () => {
           animation: fadeInStagger 0.5s ease-out forwards;
         }
 
-        .lab-module:nth-child(1) { animation-delay: 200ms; }
-        .lab-module:nth-child(2) { animation-delay: 250ms; }
-        .lab-module:nth-child(3) { animation-delay: 300ms; }
-        .lab-module:nth-child(4) { animation-delay: 350ms; }
-        .lab-module:nth-child(5) { animation-delay: 400ms; }
-        .lab-module:nth-child(6) { animation-delay: 450ms; }
-        .lab-module:nth-child(7) { animation-delay: 500ms; }
-        .lab-module:nth-child(8) { animation-delay: 550ms; }
+        .lab-module:nth-child(1) { animation-delay: 150ms; }
+        .lab-module:nth-child(2) { animation-delay: 200ms; }
+        .lab-module:nth-child(3) { animation-delay: 250ms; }
+        .lab-module:nth-child(4) { animation-delay: 300ms; }
+        .lab-module:nth-child(5) { animation-delay: 350ms; }
+        .lab-module:nth-child(6) { animation-delay: 400ms; }
+        .lab-module:nth-child(7) { animation-delay: 450ms; }
+        .lab-module:nth-child(8) { animation-delay: 500ms; }
+        .lab-module:nth-child(9) { animation-delay: 550ms; }
 
         @media (prefers-reduced-motion: reduce) {
           .lab-module {
@@ -177,7 +190,20 @@ const LabPage: FC = () => {
         >
           {experiments.map((exp, idx) => (
             <div key={idx} className="lab-module" style={{ height: "100%" }}>
-              <LabCard {...exp} />
+              {exp.isSpecial ? (
+                <DayLightCard />
+              ) : (
+                <LabCard
+                  type={exp.type as Exclude<ModuleType, "daylight">}
+                  title={exp.title}
+                  description={exp.description}
+                  experimentId={exp.experimentId}
+                  date={exp.date}
+                  status={exp.status}
+                  tags={exp.tags}
+                  isLoading={exp.isLoading}
+                />
+              )}
             </div>
           ))}
         </div>
