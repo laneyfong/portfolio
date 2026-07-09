@@ -5,9 +5,27 @@ const LoadingDots: FC = () => {
   return (
     <div style={{ display: "flex", gap: "8px", alignItems: "center", justifyContent: "center" }}>
       <style>{`
-        @keyframes dotJump {
-          0% { opacity: 0.4; }
-          100% { opacity: 0.4; }
+        @keyframes dot1Active {
+          0%, 25%, 100% { background-color: ${tokens.color.muted}; }
+          0.01%, 24.99% { background-color: #2a2a2a; }
+        }
+
+        @keyframes dot2Active {
+          0%, 100% { background-color: ${tokens.color.muted}; }
+          25%, 49.99% { background-color: #2a2a2a; }
+          50%, 100% { background-color: ${tokens.color.muted}; }
+        }
+
+        @keyframes dot3Active {
+          0%, 100% { background-color: ${tokens.color.muted}; }
+          50%, 74.99% { background-color: #2a2a2a; }
+          75%, 100% { background-color: ${tokens.color.muted}; }
+        }
+
+        @keyframes dot4Active {
+          0%, 100% { background-color: ${tokens.color.muted}; }
+          75%, 99.99% { background-color: #2a2a2a; }
+          100% { background-color: ${tokens.color.muted}; }
         }
 
         .dot {
@@ -15,40 +33,34 @@ const LoadingDots: FC = () => {
           height: 8px;
           border-radius: 50%;
           background-color: ${tokens.color.muted};
+          transition: background-color 0.1s ease;
         }
 
-        .dot.active {
-          background-color: #2a2a2a;
-          animation: dotJump 4s steps(1, end) infinite;
+        .dot:nth-child(1) {
+          animation: dot1Active 4s steps(100, end) infinite;
         }
 
-        .dot:nth-child(1).active {
-          animation-delay: 0s;
+        .dot:nth-child(2) {
+          animation: dot2Active 4s steps(100, end) infinite;
         }
 
-        .dot:nth-child(2).active {
-          animation-delay: -3s;
+        .dot:nth-child(3) {
+          animation: dot3Active 4s steps(100, end) infinite;
         }
 
-        .dot:nth-child(3).active {
-          animation-delay: -2s;
-        }
-
-        .dot:nth-child(4).active {
-          animation-delay: -1s;
+        .dot:nth-child(4) {
+          animation: dot4Active 4s steps(100, end) infinite;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .dot.active {
-            animation: none;
-          }
-          .dot.active {
+          .dot {
+            animation: none !important;
             background-color: ${tokens.color.muted};
           }
         }
       `}</style>
 
-      <div className="dot active" />
+      <div className="dot" />
       <div className="dot" />
       <div className="dot" />
       <div className="dot" />

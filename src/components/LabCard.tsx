@@ -104,8 +104,20 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
       motionRef.current.targetLiftY = 0;
     };
 
+    const handleMouseEnter = () => {
+      // Ensure we're tracking movement when hovering
+      if (cardRef.current) {
+        const rect = cardRef.current.getBoundingClientRect();
+        if (rect.width > 0 && rect.height > 0) {
+          // Just enable the lift effect to show it's interactive
+          motionRef.current.targetLiftY = MAX_LIFT * 0.5;
+        }
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     cardRef.current?.addEventListener("mouseleave", handleMouseLeave);
+    cardRef.current?.addEventListener("mouseenter", handleMouseEnter);
 
     let raf = 0;
     let lastTime = performance.now();
@@ -137,6 +149,7 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", handleMouseMove);
       cardRef.current?.removeEventListener("mouseleave", handleMouseLeave);
+      cardRef.current?.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, []);
 
