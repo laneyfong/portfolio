@@ -36,7 +36,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const isPortrait = layout === "portrait";
-  const imageHeight = height ?? (isPortrait ? 320 : 280);
+  const cardHeight = height ?? (isPortrait ? 550 : 500);
+  const imageHeight = isPortrait ? 280 : 240;
 
   const captionParts = caption.split(captionItalic);
 
@@ -61,6 +62,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         display: "flex",
         flexDirection: "column",
         width: "100%",
+        height: cardHeight,
         borderRadius: tokens.radius.sm,
         cursor: to ? "pointer" : "default",
         transition: "transform 0.22s ease, box-shadow 0.22s ease",
@@ -69,47 +71,62 @@ const ProjectCard: FC<ProjectCardProps> = ({
         backgroundColor: tokens.color.offWhite,
         border: `1px solid ${tokens.color.cardBorder}`,
         overflow: "hidden",
+        position: "relative",
       }}
     >
-      {/* Logo positioned absolutely in top-left */}
-      <div style={{ position: "relative" }}>
+      {/* Logo - Top Left Corner */}
+      <div
+        style={{
+          position: "absolute",
+          top: 16,
+          left: 16,
+          zIndex: 10,
+        }}
+      >
         <img
           src={logo}
           alt={logoAlt}
           style={{
-            position: "absolute",
-            top: 12,
-            left: 16,
             height: logoHeight,
             width: "auto",
             objectFit: "contain",
-            zIndex: 10,
           }}
         />
+      </div>
 
-        {/* Screenshot Image */}
+      {/* Image Section - Centered */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "24px 16px",
+          overflow: "hidden",
+        }}
+      >
         <div
           style={{
             width: "100%",
             height: imageHeight,
             backgroundImage: `url(${screenshot})`,
-            backgroundSize: "cover",
-            backgroundPosition: "top center",
-            boxShadow: tokens.shadow.card,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
             transition: "transform 0.22s ease",
-            transform: hovered ? "translateY(-2px)" : "translateY(0)",
+            transform: hovered ? "scale(1.02)" : "scale(1)",
           }}
         />
       </div>
 
-      {/* Text Content - Below Image */}
+      {/* Text Content - Bottom */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: 14,
-          padding: "20px 20px",
-          flex: 1,
+          gap: 12,
+          padding: "16px 16px 20px 16px",
+          borderTop: `1px solid ${tokens.color.cardBorder}`,
         }}
       >
         <span
@@ -131,14 +148,14 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 12 }}>
           {metrics && metrics.length > 0 && (
-            <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               {metrics.map((metric) => (
                 <div key={metric.label}>
                   <div
                     style={{
                       fontFamily: tokens.font.sans,
                       fontWeight: tokens.weight.medium,
-                      fontSize: tokens.text.lg,
+                      fontSize: "14px",
                       letterSpacing: tokens.tracking.tight,
                       color: tokens.color.ink,
                       lineHeight: tokens.leading.none,
@@ -151,10 +168,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
                       marginTop: 2,
                       fontFamily: tokens.font.sans,
                       fontWeight: tokens.weight.regular,
-                      fontSize: tokens.text.sm,
+                      fontSize: "12px",
                       color: tokens.color.body,
                       lineHeight: tokens.leading.none,
                       whiteSpace: "nowrap",
+                      opacity: 0.7,
                     }}
                   >
                     {metric.label}

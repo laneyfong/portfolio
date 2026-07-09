@@ -223,7 +223,7 @@ const Portfolio: FC = () => {
               logoHeight={20}
               screenshot={myshakeApp}
               layout="portrait"
-              height={500}
+              height={550}
               caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
               captionItalic="45% engagement increase"
               metrics={[
