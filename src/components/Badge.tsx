@@ -135,7 +135,7 @@ const Badge: FC<BadgeProps> = ({
           </div>
 
           {/* Bottom info section */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             <h2
               style={{
                 margin: 0,
@@ -163,6 +163,38 @@ const Badge: FC<BadgeProps> = ({
               }}
             >
               {role}
+            </p>
+
+            <p
+              style={{
+                margin: "4px 0 0 0",
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.regular,
+                fontSize: "11px",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.body,
+                lineHeight: 1.3,
+                opacity: 0.65,
+                fontStyle: "italic",
+              }}
+            >
+              Research-backed design. Obsessive about accessibility.
+            </p>
+
+            <p
+              style={{
+                margin: "6px 0 0 0",
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.regular,
+                fontSize: "10px",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.muted,
+                lineHeight: 1.2,
+                opacity: 0.5,
+                textAlign: "center",
+              }}
+            >
+              ↻ Flip to explore
             </p>
           </div>
         </div>
