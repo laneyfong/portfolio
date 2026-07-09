@@ -220,7 +220,7 @@ const HangingCard: FC<HangingCardProps> = ({ children, stringHeight = 64, holeCe
               width: 24,
               height: 24,
               borderRadius: "50%",
-              border: "3px solid rgba(140, 140, 145, 0.9)",
+              border: "none",
               boxSizing: "border-box",
               background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent 70%)",
               boxShadow: "0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.3)",
