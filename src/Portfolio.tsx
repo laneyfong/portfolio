@@ -141,8 +141,12 @@ const Portfolio: FC = () => {
       }}
     >
       <style>{`
-        @media (max-width: 880px) {
-          .grid-cols { grid-template-columns: 1fr !important; }
+        @media (max-width: 1200px) {
+          .work-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+
+        @media (max-width: 768px) {
+          .work-grid { grid-template-columns: 1fr !important; }
         }
 
         @keyframes elemFadeIn {
@@ -211,20 +215,19 @@ const Portfolio: FC = () => {
             className="grid-cols work-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1.2fr",
+              gridTemplateColumns: "repeat(3, 1fr)",
               gap: 12,
               alignItems: "start",
               minWidth: 0,
             }}
           >
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, minWidth: 0 }}>
             <ProjectCard
               logo={myshakeLogo}
               logoAlt="MyShake"
               logoHeight={20}
               screenshot={myshakeApp}
               layout="portrait"
-              height={760}
+              height={500}
               caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
               captionItalic="45% engagement increase"
               metrics={[
@@ -233,22 +236,20 @@ const Portfolio: FC = () => {
               ]}
               to="/myshake-design"
             />
-          </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, minWidth: 0 }}>
             <ProjectCard
               logo={nvidiaLogo}
               logoAlt="NVIDIA"
               logoHeight={20}
               screenshot={uxAgentScreenshot}
               layout="landscape"
-              height={506}
+              height={500}
               caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
               captionItalic="Autonomous UX validation"
               to="/nvidia-ai-ux-agent"
             />
+
             <PlatoCard />
-          </div>
           </div>
         </div>
 
