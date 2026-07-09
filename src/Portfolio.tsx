@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useState } from "react";
 import { tokens } from "./tokens";
-import Header from "./components/Header";
+import TopNav from "./components/TopNav";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
@@ -200,26 +200,11 @@ const Portfolio: FC = () => {
         @media (max-width: 880px) {
           .grid-cols { grid-template-columns: 1fr !important; }
         }
-        /* Tablet responsiveness */
-        @media (max-width: 900px) {
-          main { margin-left: 100px !important; width: calc(100% - 100px) !important; }
-          div[id="work-container"] { margin-left: 100px !important; width: calc(100% - 100px) !important; }
-          .badge-section { min-height: clamp(420px, 65vh, 90vh) !important; margin-bottom: 96px !important; margin-top: -24px !important; }
-        }
-        /* Mobile responsiveness */
-        @media (max-width: 640px) {
-          main { margin-left: 0 !important; width: 100% !important; }
-          div[id="work-container"] { margin-left: 0 !important; width: 100% !important; }
-          .badge-section { min-height: clamp(350px, 55vh, 80vh) !important; margin-bottom: 40px !important; margin-top: -24px !important; }
-          .badge-bg-pattern { display: none !important; }
-          .work-grid > div:last-child { order: 1; }
-          .work-grid > div:first-child { order: 2; }
-        }
       `}</style>
 
-      <Header />
+      <TopNav />
 
-      <main style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "64px clamp(32px, 7vw, 80px) 0", boxSizing: "border-box" }}>
+      <main style={{ width: "100%", padding: "80px clamp(32px, 7vw, 80px) 0", boxSizing: "border-box", marginTop: "64px" }}>
         <div
           className="badge-section"
           style={{
@@ -241,7 +226,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div id="work-container" style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+      <div id="work-container" style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"

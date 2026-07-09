@@ -105,21 +105,21 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         .case-btn-press { transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
         .case-btn-press:active { transform: scale(0.94); }
         @media (min-width: 901px) {
-          /* Desktop: case study sidebar only (Header sidebar not rendered on case study pages) */
-          .case-main { margin-left: 220px !important; width: calc(100% - 220px) !important; }
+          /* Desktop: case study sidebar */
+          .case-main { margin-left: 220px !important; width: calc(100% - 220px) !important; margin-top: 64px !important; }
           .case-page-fade-in footer { margin-left: 220px !important; width: calc(100% - 220px) !important; }
         }
         @media (max-width: 900px) {
           .case-sidebar { display: none !important; }
           .case-mobile-back { display: flex !important; }
           .case-mobile-tabs { display: none !important; }
-          .case-main { margin-left: 100px !important; width: calc(100% - 100px) !important; }
+          .case-main { margin-left: 0 !important; width: 100% !important; margin-top: 64px !important; }
         }
         @media (max-width: 760px) {
           .case-grid-3 { grid-template-columns: 1fr !important; }
           .case-grid-2 { grid-template-columns: 1fr !important; }
           .case-intro-shots { grid-template-columns: 1fr !important; }
-          .case-main { margin-left: 0 !important; width: 100% !important; }
+          .case-main { margin-left: 0 !important; width: 100% !important; margin-top: 64px !important; }
         }
         /* Accessibility: Focus styles for keyboard navigation */
         a:focus-visible, button:focus-visible { outline: 2px solid #8DC8E4; outline-offset: 2px; }
