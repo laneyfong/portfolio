@@ -5,6 +5,7 @@ import TopNav from "./components/TopNav";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
+import MoreWorkSection from "./components/MoreWorkSection";
 import Footer from "./components/Footer";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
@@ -14,63 +15,6 @@ import nvidiaLogo from "./assets/nvidia-logo.png";
 import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
 import platoHome from "./assets/plato-home.png";
 import platoItinerary from "./assets/plato-itinerary.png";
-
-const ArrowIcon: FC = () => (
-  <svg width="8" height="9" viewBox="0 0 8.271 8.974" fill="currentColor">
-    <path
-      d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
-      fillRule="nonzero"
-    />
-  </svg>
-);
-
-const ViewMoreCard: FC = () => {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <a
-      href="#"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: 255,
-        backgroundColor: tokens.color.offWhite,
-        borderRadius: tokens.radius.md,
-        border: `1px solid ${tokens.color.cardBorder}`,
-        textDecoration: "none",
-        boxSizing: "border-box",
-        transition: "transform 0.22s ease, box-shadow 0.22s ease",
-        transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        boxShadow: hovered ? tokens.shadow.subtle : "none",
-      }}
-    >
-      <span
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 8,
-          fontFamily: tokens.font.sans,
-          fontWeight: tokens.weight.regular,
-          fontSize: tokens.text.base,
-          color: tokens.color.body,
-        }}
-      >
-        View more work
-        <span
-          style={{
-            display: "inline-flex",
-            transform: hovered ? "translateX(3px)" : "translateX(0)",
-            transition: "transform 0.15s ease",
-          }}
-        >
-          <ArrowIcon />
-        </span>
-      </span>
-    </a>
-  );
-};
 
 const PlatoCard: FC = () => {
   const [hovered, setHovered] = useState(false);
@@ -289,7 +233,6 @@ const Portfolio: FC = () => {
               ]}
               to="/myshake-design"
             />
-            <ViewMoreCard />
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12, minWidth: 0 }}>
@@ -308,6 +251,8 @@ const Portfolio: FC = () => {
           </div>
           </div>
         </div>
+
+        <MoreWorkSection />
       </div>
 
       <div className="content-reveal">
