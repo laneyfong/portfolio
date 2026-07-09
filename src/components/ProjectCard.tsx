@@ -36,7 +36,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const isPortrait = layout === "portrait";
-  const cardHeight = height ?? (isPortrait ? 717 : 506);
+  const imageHeight = height ?? (isPortrait ? 320 : 280);
 
   const captionParts = caption.split(captionItalic);
 
@@ -58,149 +58,128 @@ const ProjectCard: FC<ProjectCardProps> = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        position: "relative",
+        display: "flex",
+        flexDirection: "column",
         width: "100%",
-        height: cardHeight,
         borderRadius: tokens.radius.sm,
         cursor: to ? "pointer" : "default",
         transition: "transform 0.22s ease, box-shadow 0.22s ease",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        // box-shadow lives on this outer, overflow-visible box so the shadow isn't clipped
-        // by the inner content's overflow:hidden (needed for the rounded screenshot corners).
         boxShadow: hovered ? tokens.shadow.subtle : "none",
+        backgroundColor: tokens.color.offWhite,
+        border: `1px solid ${tokens.color.cardBorder}`,
+        overflow: "hidden",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundColor: tokens.color.offWhite,
-          borderRadius: tokens.radius.sm,
-          border: `1px solid ${tokens.color.cardBorder}`,
-          overflow: "hidden",
-          boxSizing: "border-box",
-        }}
-      >
+      {/* Logo positioned absolutely in top-left */}
+      <div style={{ position: "relative" }}>
         <img
           src={logo}
           alt={logoAlt}
           style={{
             position: "absolute",
-            top: 27,
-            left: 23,
+            top: 12,
+            left: 16,
             height: logoHeight,
             width: "auto",
             objectFit: "contain",
+            zIndex: 10,
           }}
         />
 
+        {/* Screenshot Image */}
         <div
           style={{
-            position: "absolute",
-            ...(isPortrait
-              ? {
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  top: 84,
-                  width: "min(233px, calc(100% - 48px))",
-                  height: 518,
-                  borderRadius: 30,
-                }
-              : {
-                  right: 27,
-                  top: 27,
-                  width: "58%",
-                  height: "calc(100% - 54px)",
-                  borderRadius: 16,
-                }),
+            width: "100%",
+            height: imageHeight,
             backgroundImage: `url(${screenshot})`,
             backgroundSize: "cover",
             backgroundPosition: "top center",
             boxShadow: tokens.shadow.card,
             transition: "transform 0.22s ease",
-            ...(hovered ? { transform: isPortrait ? "translateX(-50%) translateY(-4px)" : "translateY(-4px)" } : {}),
+            transform: hovered ? "translateY(-2px)" : "translateY(0)",
           }}
         />
+      </div>
 
-        <div
+      {/* Text Content - Below Image */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 14,
+          padding: "20px 20px",
+          flex: 1,
+        }}
+      >
+        <span
           style={{
-            position: "absolute",
-            bottom: isPortrait ? 48 : 140,
-            left: 23,
-            width: 267,
-            maxWidth: "calc(100% - 46px)",
-            display: "flex",
-            flexDirection: "column",
-            gap: 14,
+            fontFamily: tokens.font.sans,
+            fontWeight: tokens.weight.regular,
+            fontSize: "14px",
+            color: tokens.color.body,
+            lineHeight: tokens.leading.snug,
+            maxWidth: "100%",
           }}
         >
-          <span
-            style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.regular,
-              fontSize: tokens.text.md,
-              color: tokens.color.body,
-              lineHeight: tokens.leading.snug,
-            }}
-          >
-            {captionParts[0]}
-            <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
-              {captionItalic}
-            </em>
-            {captionParts[1]}
-          </span>
+          {captionParts[0]}
+          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
+            {captionItalic}
+          </em>
+          {captionParts[1]}
+        </span>
 
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-            {metrics && metrics.length > 0 && (
-              <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                {metrics.map((metric) => (
-                  <div key={metric.label}>
-                    <div
-                      style={{
-                        fontFamily: tokens.font.sans,
-                        fontWeight: tokens.weight.medium,
-                        fontSize: tokens.text.lg,
-                        letterSpacing: tokens.tracking.tight,
-                        color: tokens.color.ink,
-                        lineHeight: tokens.leading.none,
-                      }}
-                    >
-                      {metric.value}
-                    </div>
-                    <div
-                      style={{
-                        marginTop: 2,
-                        fontFamily: tokens.font.sans,
-                        fontWeight: tokens.weight.regular,
-                        fontSize: tokens.text.sm,
-                        color: tokens.color.body,
-                        lineHeight: tokens.leading.none,
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {metric.label}
-                    </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 12 }}>
+          {metrics && metrics.length > 0 && (
+            <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+              {metrics.map((metric) => (
+                <div key={metric.label}>
+                  <div
+                    style={{
+                      fontFamily: tokens.font.sans,
+                      fontWeight: tokens.weight.medium,
+                      fontSize: tokens.text.lg,
+                      letterSpacing: tokens.tracking.tight,
+                      color: tokens.color.ink,
+                      lineHeight: tokens.leading.none,
+                    }}
+                  >
+                    {metric.value}
                   </div>
-                ))}
-              </div>
-            )}
-            {to && (
-              <div
-                style={{
-                  opacity: hovered ? 1 : 0.4,
-                  transition: "opacity 0.22s ease, transform 0.22s ease",
-                  transform: hovered ? "translateX(3px)" : "translateX(0)",
-                }}
-              >
-                <svg width="16" height="16" viewBox="0 0 8.271 8.974" fill={tokens.color.body}>
-                  <path
-                    d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
-                    fillRule="nonzero"
-                  />
-                </svg>
-              </div>
-            )}
-          </div>
+                  <div
+                    style={{
+                      marginTop: 2,
+                      fontFamily: tokens.font.sans,
+                      fontWeight: tokens.weight.regular,
+                      fontSize: tokens.text.sm,
+                      color: tokens.color.body,
+                      lineHeight: tokens.leading.none,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          {to && (
+            <div
+              style={{
+                opacity: hovered ? 1 : 0.4,
+                transition: "opacity 0.22s ease, transform 0.22s ease",
+                transform: hovered ? "translateX(3px)" : "translateX(0)",
+                flexShrink: 0,
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 8.271 8.974" fill={tokens.color.body}>
+                <path
+                  d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
+                  fillRule="nonzero"
+                />
+              </svg>
+            </div>
+          )}
         </div>
       </div>
     </div>
