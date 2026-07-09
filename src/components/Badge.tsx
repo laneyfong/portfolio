@@ -182,10 +182,13 @@ const Badge: FC<BadgeProps> = ({
                 color: tokens.color.body,
                 lineHeight: 1.3,
                 opacity: 0.65,
-                fontStyle: "italic",
               }}
             >
-              Research-backed design. Obsessive about accessibility.
+              Designing for{" "}
+              <span style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
+                humans
+              </span>
+              .
             </p>
 
             <p
