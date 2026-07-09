@@ -94,9 +94,26 @@ const Badge: FC<BadgeProps> = ({
             border: "1px solid rgba(0, 0, 0, 0.06)",
             padding: "16px 16px 24px 16px",
             boxSizing: "border-box",
-            overflow: "hidden",
+            overflow: "visible",
           }}
         >
+          {/* Badge hole - see-through circular cutout at top */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              top: "-8px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "18px",
+              height: "18px",
+              borderRadius: "50%",
+              border: "2px solid rgba(0, 0, 0, 0.15)",
+              backgroundColor: "rgba(255, 255, 255, 0.3)",
+              boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.1)",
+              zIndex: 5,
+            }}
+          />
       <style>{`
         @media (max-width: 640px) {
           .badge-container {
