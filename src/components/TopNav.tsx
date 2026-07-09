@@ -62,7 +62,7 @@ const TopNav: FC = () => {
           font-size: 16px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
-          color: ${tokens.color.body};
+          color: #727272;
           text-decoration: none;
           cursor: pointer;
           flex-shrink: 0;
