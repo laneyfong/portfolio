@@ -8,21 +8,21 @@ const LoadingScreen: FC<{ onLoadingComplete: () => void }> = ({ onLoadingComplet
   const [stage, setStage] = useState<Stage>("text");
 
   useEffect(() => {
-    // Text phase: 300ms
-    // Badge enter: 350ms
-    // Total loading: ~900ms
+    // Text phase: 400ms
+    // Badge enter: 500ms
+    // Total loading: ~1300ms
 
     const textTimer = setTimeout(() => {
       setStage("badge");
-    }, 300);
+    }, 400);
 
     const doneTimer = setTimeout(() => {
       setStage("done");
-    }, 900);
+    }, 1250);
 
     const callbackTimer = setTimeout(() => {
       onLoadingComplete();
-    }, 950);
+    }, 1300);
 
     return () => {
       clearTimeout(textTimer);
@@ -116,8 +116,8 @@ const LoadingScreen: FC<{ onLoadingComplete: () => void }> = ({ onLoadingComplet
           border: 1px solid rgba(0, 0, 0, 0.06);
           border-radius: 20px;
           box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08);
-          animation: badgeEnter 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-          animation-delay: 0.3s;
+          animation: badgeEnter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation-delay: 0.4s;
         }
 
         .loading-content {
