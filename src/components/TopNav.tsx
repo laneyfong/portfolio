@@ -178,7 +178,6 @@ const TopNav: FC = () => {
         className={`top-nav ${isScrolled ? "scrolled" : ""}`}
         style={{
           backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.92)" : "transparent",
-          borderBottom: isScrolled ? "1px solid rgba(0, 0, 0, 0.05)" : "none",
         }}
       >
         <div className="top-nav-content">
