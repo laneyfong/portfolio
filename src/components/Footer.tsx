@@ -46,25 +46,10 @@ const Footer: FC = () => (
   <footer
     style={{
       backgroundColor: tokens.color.ink,
-      marginLeft: 120,
-      width: "calc(100% - 120px)",
+      width: "100%",
       boxSizing: "border-box",
     }}
   >
-    <style>{`
-      @media (max-width: 900px) {
-        footer {
-          margin-left: 100px !important;
-          width: calc(100% - 100px) !important;
-        }
-      }
-      @media (max-width: 640px) {
-        footer {
-          margin-left: 0 !important;
-          width: 100% !important;
-        }
-      }
-    `}</style>
     <div
       style={{
         display: "flex",
