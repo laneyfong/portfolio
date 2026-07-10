@@ -4,6 +4,7 @@ import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
+import ASCIIArtCard from "./components/ASCIIArtCard";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
@@ -17,6 +18,7 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
+  specialType?: "daylight" | "ascii-ripple";
 }
 
 const LabPage: FC = () => {
@@ -30,6 +32,18 @@ const LabPage: FC = () => {
       status: "exploring",
       tags: ["interaction", "time", "light", "ambient"],
       isSpecial: true,
+      specialType: "daylight",
+    },
+    {
+      type: "interaction",
+      title: "ASCII Ripple Effect",
+      description: "Click to create ripples. A water droplet interaction exploring how physics-based animations can bring ASCII art to life.",
+      experimentId: "EXP-2024-000A",
+      date: "Jan 2025",
+      status: "exploring",
+      tags: ["interaction", "animation", "ASCII", "ripple"],
+      isSpecial: true,
+      specialType: "ascii-ripple",
     },
     {
       type: "motion",
@@ -190,8 +204,10 @@ const LabPage: FC = () => {
         >
           {experiments.map((exp, idx) => (
             <div key={idx} className="lab-module" style={{ height: "100%" }}>
-              {exp.isSpecial ? (
+              {exp.specialType === "daylight" ? (
                 <DayLightCard />
+              ) : exp.specialType === "ascii-ripple" ? (
+                <ASCIIArtCard />
               ) : (
                 <LabCard
                   type={exp.type as Exclude<ModuleType, "daylight">}
