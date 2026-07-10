@@ -304,52 +304,16 @@ const AboutPage: FC = () => {
               onPhotoChange={(index) => setCurrentPhotoIndex(index)}
             />
 
-            {/* Side label with doodled arrow */}
+            {/* Side label */}
             <div
               style={{
                 position: "absolute",
                 right: -200,
                 top: -60,
-                display: "flex",
-                alignItems: "center",
-                gap: 16,
                 zIndex: 100,
                 pointerEvents: "none",
               }}
             >
-              {/* Doodled arrow SVG */}
-              <svg width="80" height="50" viewBox="0 0 80 50" style={{ flexShrink: 0 }}>
-                <defs>
-                  <style>{`
-                    @keyframes arrowWiggle {
-                      0%, 100% { transform: translateX(0) translateY(0); }
-                      25% { transform: translateX(2px) translateY(-2px); }
-                      50% { transform: translateX(-1px) translateY(1px); }
-                      75% { transform: translateX(1px) translateY(-1px); }
-                    }
-                    .arrow-line {
-                      animation: arrowWiggle 3s ease-in-out infinite;
-                      transform-origin: center;
-                    }
-                  `}</style>
-                </defs>
-                <g className="arrow-line">
-                  {/* Squiggly arrow line */}
-                  <path
-                    d="M 5 25 Q 15 15, 25 25 T 45 25"
-                    stroke={tokens.color.muted}
-                    strokeWidth="2"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                  {/* Arrow head */}
-                  <path
-                    d="M 45 25 L 50 22 L 48 25 L 50 28 Z"
-                    fill={tokens.color.muted}
-                  />
-                </g>
-              </svg>
-
               {/* Handwritten label */}
               <div
                 style={{
