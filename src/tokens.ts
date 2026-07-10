@@ -6,7 +6,7 @@ export const tokens = {
     ink: "#111111",
     textDark: "#3A3A3A",
     accent: "#8DC8E4",
-    body: "#373737",
+    body: "#111111",
     stroke: "#F1F0EE",
     dark: "#28292B",
     // Solid gray, not alpha-blended black — rgba(0,0,0,0.24) on white only hit ~1.8:1
