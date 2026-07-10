@@ -23,7 +23,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
   };
 
   // Calculate offset for peeking photos
-  const stackOffset = 8;
+  const stackOffset = 20;
   const stackRotation = 3;
 
   return (

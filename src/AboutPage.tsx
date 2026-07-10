@@ -10,7 +10,6 @@ import clubPic from "./assets/club-pic.jpg";
 import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import cursorDog from "./assets/cursor-dog.png";
-import coffeeMug from "./assets/coffee-mug.png";
 
 // TODO: link to a real hosted resume file once one exists.
 const RESUME_URL = "#";
@@ -35,7 +34,6 @@ const AboutPage: FC = () => {
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
   const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
   const [dogWaving, setDogWaving] = useState(false);
-  const [coffeeHovered, setCoffeeHovered] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -273,67 +271,6 @@ const AboutPage: FC = () => {
           {/* Contact panel — always visible, not gated behind the photo click */}
           <div className="about-right-panel" style={rightPanelStyle}>
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-              <div
-                style={{
-                  position: "relative",
-                  width: 80,
-                  height: 80,
-                }}
-                onMouseEnter={() => setCoffeeHovered(true)}
-                onMouseLeave={() => setCoffeeHovered(false)}
-              >
-                <img
-                  src={coffeeMug}
-                  alt="Black & White coffee mug"
-                  style={{
-                    width: 80,
-                    height: 80,
-                    objectFit: "contain",
-                    marginBottom: 4,
-                  }}
-                />
-                {/* Steam particles */}
-                {coffeeHovered && (
-                  <>
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 15,
-                        top: -10,
-                        fontSize: "12px",
-                        animation: "steamRise 2s ease-in-out infinite",
-                        "--offset": "-8px",
-                      } as any}
-                    >
-                      ☁️
-                    </div>
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 32,
-                        top: -5,
-                        fontSize: "14px",
-                        animation: "steamRise 2s ease-in-out 0.3s infinite",
-                        "--offset": "0px",
-                      } as any}
-                    >
-                      ☁️
-                    </div>
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 48,
-                        top: -8,
-                        fontSize: "12px",
-                        animation: "steamRise 2s ease-in-out 0.6s infinite",
-                        "--offset": "8px",
-                      } as any}
-                    >
-                      ☁️
-                    </div>
-                  </>
-                )}
-              </div>
               <h3
                 style={{
                   fontFamily: tokens.font.sans,
