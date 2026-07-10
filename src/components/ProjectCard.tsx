@@ -33,7 +33,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const [hovered, setHovered] = useState(false);
   const isPortrait = layout === "portrait";
   const cardHeight = height ?? (isPortrait ? 550 : 500);
-  const imageHeight = isPortrait ? 380 : 340;
 
   const captionParts = caption.split(captionItalic);
 
@@ -192,18 +191,17 @@ const ProjectCard: FC<ProjectCardProps> = ({
             minHeight: 0,
           }}
         >
-          <div
+          <img
+            src={screenshot}
+            alt="Project screenshot"
             style={{
               width: "100%",
-              height: imageHeight,
-              backgroundImage: `url(${screenshot})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
+              height: "100%",
+              objectFit: "contain",
+              borderRadius: "24px",
               transition: "transform 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
-              borderRadius: "24px",
-              overflow: "hidden",
+              display: "block",
             }}
           />
         </div>
