@@ -95,24 +95,13 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           to { opacity: 1; transform: translateY(0); }
         }
         .case-shot {
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.4s linear;
           position: relative;
-        }
-        .case-shot::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: rgba(17, 17, 17, 0);
-          transition: background 0.4s linear;
-          pointer-events: none;
-          border-radius: inherit;
-          z-index: 1;
+          filter: brightness(1) contrast(1);
         }
         .case-shot:hover {
           transform: translateY(-4px) scale(1.015);
-        }
-        .case-shot:hover::before {
-          background: rgba(17, 17, 17, 0.85);
+          filter: brightness(0.5) contrast(1.1);
         }
         .case-tabs-scroll::-webkit-scrollbar { display: none; }
         /* Tactile feedback for things that are actually clickable — nav buttons, tabs,
