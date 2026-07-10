@@ -123,19 +123,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 flexShrink: 0,
               }}
             >
-              <span
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontWeight: tokens.weight.regular,
-                  fontSize: "11px",
-                  color: hovered ? "#ffffff" : tokens.color.body,
-                  whiteSpace: "nowrap",
-                  transition: "color 0.5s ease",
-                  letterSpacing: tokens.tracking.tight,
-                }}
-              >
-                View
-              </span>
               <svg
                 width="24"
                 height="24"
