@@ -7,6 +7,7 @@ import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
 import MoreWorkSection from "./components/MoreWorkSection";
 import Footer from "./components/Footer";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
 import myshakeLogo from "./assets/myshake-logo.png";
@@ -121,6 +122,8 @@ const PlatoCard: FC = () => {
 };
 
 const Portfolio: FC = () => {
+  const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
+
   const scrollToWork = () => {
     const target = document.getElementById("work");
     if (!target) return;
@@ -153,12 +156,14 @@ const Portfolio: FC = () => {
           }
         }
 
-        @keyframes elemFadeIn {
+        @keyframes scrollFadeUp {
           from {
             opacity: 0;
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
+            transform: translateY(0);
           }
         }
 
@@ -174,13 +179,21 @@ const Portfolio: FC = () => {
           opacity: 1;
         }
 
+        .work-section-reveal {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: ${workVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .top-nav-reveal,
           .badge-reveal,
           .hero-reveal,
-          .content-reveal {
+          .content-reveal,
+          .work-section-reveal {
             animation: none !important;
             opacity: 1 !important;
+            transform: none !important;
           }
         }
       `}</style>
@@ -209,7 +222,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div id="work-container" className="content-reveal" style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
           <div
             id="work"

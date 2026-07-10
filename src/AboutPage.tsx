@@ -4,6 +4,7 @@ import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import PhotoStack from "./components/PhotoStack";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import clubPic from "./assets/club-pic.jpg";
@@ -34,6 +35,8 @@ const AboutPage: FC = () => {
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
   const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
   const [dogWaving, setDogWaving] = useState(false);
+  const { ref: bioSectionRef, isVisible: bioVisible } = useScrollReveal({ threshold: 0.3 });
+  const { ref: proudSectionRef, isVisible: proudVisible } = useScrollReveal({ threshold: 0.2 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -107,9 +110,32 @@ const AboutPage: FC = () => {
       />
 
       <style>{`
+        @keyframes scrollFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
         @keyframes aboutStoryFill {
           from { width: 0%; }
           to { width: 100%; }
+        }
+
+        .bio-section-reveal {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: ${bioVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+        }
+
+        .proud-section-reveal {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: ${proudVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.1s backwards" : "none"};
         }
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -221,6 +247,15 @@ const AboutPage: FC = () => {
             gap: 20px !important;
           }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+          .bio-section-reveal,
+          .proud-section-reveal {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
       `}</style>
 
       <TopNav />
@@ -299,7 +334,7 @@ const AboutPage: FC = () => {
         </div>
 
         {/* Bio copy */}
-        <div style={{ width: HERO_WIDTH, margin: "44px auto 0" }}>
+        <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "44px auto 0" }}>
           <p
             style={{
               fontFamily: tokens.font.sans,
@@ -356,7 +391,7 @@ const AboutPage: FC = () => {
         </div>
 
         {/* Things I am proud of */}
-        <div style={{ width: HERO_WIDTH, margin: "64px auto 0" }}>
+        <div ref={proudSectionRef} className="proud-section-reveal" style={{ width: HERO_WIDTH, margin: "64px auto 0" }}>
           <h2
             style={{
               fontFamily: tokens.font.sans,
