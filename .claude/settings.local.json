@@ -94,7 +94,8 @@
       "Bash(xargs cat)",
       "Bash(screencapture -C -x /tmp/portfolio_animation.png)",
       "Bash(grep -E \"\\(Page|App\\)\\\\.tsx$\")",
-      "Bash(grep -E \"\\\\.\\(jpg|jpeg|png|webp\\)$\")"
+      "Bash(grep -E \"\\\\.\\(jpg|jpeg|png|webp\\)$\")",
+      "Bash(vercel *)"
     ]
   }
 }
