@@ -62,32 +62,49 @@ const TopNav: FC = () => {
           font-size: 16px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
-          color: #727272;
+          color: #999999;
           text-decoration: none;
           cursor: pointer;
           flex-shrink: 0;
           position: relative;
+        }
+
+        .top-nav-brand::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
           background: linear-gradient(
             90deg,
-            #ff0000,
-            #ff7f00,
-            #ffff00,
-            #00ff00,
-            #0000ff,
-            #4b0082,
-            #9400d3,
-            #ff0000
+            #D9757D,
+            #E8A876,
+            #D4C266,
+            #B8D9A8,
+            #7FB3D4,
+            #8B9BC5,
+            #B899D6,
+            #D9757D
           );
           background-size: 200% 100%;
           background-position: 200% 0;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          transition: background-position 3s ease;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
         }
 
-        .top-nav-brand:hover {
-          background-position: -200% 0;
+        .top-nav-brand:hover::before {
+          opacity: 1;
+          animation: rainbowShine 5s ease infinite;
+        }
+
+        @keyframes rainbowShine {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
         }
 
         .top-nav-links {
