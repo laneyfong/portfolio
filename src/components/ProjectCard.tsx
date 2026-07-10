@@ -190,7 +190,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               width: "auto",
               height: "auto",
               objectFit: "contain",
-              borderRadius: "24px",
+              borderRadius: "14px",
               transition: "transform 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
               display: "block",
