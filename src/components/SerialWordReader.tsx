@@ -306,7 +306,6 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
         aria-label="Reading speed"
       >
         <SpeedButton
-          speed="normal"
           label="Regular Speed"
           color="#22c55e"
           isActive={speed === "normal"}
