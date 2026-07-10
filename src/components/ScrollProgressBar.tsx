@@ -5,6 +5,7 @@ import { tokens } from "../tokens";
 const ScrollProgressBar: FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Scroll progress indicator for case studies
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
