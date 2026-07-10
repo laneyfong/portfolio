@@ -175,7 +175,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             alignItems: "center",
             justifyContent: "center",
             paddingTop: "8px",
-            paddingBottom: "48px",
+            paddingBottom: "20px",
             paddingLeft: "12px",
             paddingRight: "12px",
             overflow: "hidden",
