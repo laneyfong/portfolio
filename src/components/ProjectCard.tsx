@@ -207,14 +207,14 @@ const ProjectCard: FC<ProjectCardProps> = ({
       <div
         style={{
           display: "grid",
-          gridTemplateRows: "24px 80px 1fr 70px",
-          gap: 12,
+          gridTemplateRows: "auto auto 1fr auto",
+          gap: 0,
           padding: "16px 16px 20px 16px",
           borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
           transition: "border-color 0.5s ease",
         }}
       >
-        {/* Row 1: Category label (fixed 24px) */}
+        {/* Row 1: Category label */}
         {roleOutcome ? (
           <span
             style={{
@@ -226,16 +226,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
               textTransform: "uppercase",
               lineHeight: tokens.leading.none,
               transition: "color 0.5s ease",
-              alignSelf: "start",
+              marginBottom: 8,
             }}
           >
             {roleOutcome}
           </span>
         ) : (
-          <div />
+          <div style={{ marginBottom: 8 }} />
         )}
 
-        {/* Row 2: Description (fixed 80px) */}
+        {/* Row 2: Description (max 2 lines) */}
         <span
           style={{
             fontFamily: tokens.font.sans,
@@ -245,7 +245,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
             lineHeight: tokens.leading.snug,
             maxWidth: "100%",
             transition: "color 0.32s ease",
-            alignSelf: "start",
+            marginBottom: 24,
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
             overflow: "hidden",
           }}
         >
@@ -259,9 +262,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
         {/* Row 3: Spacer (fills remaining space) */}
         <div />
 
-        {/* Row 4: Metrics (fixed 70px) */}
+        {/* Row 4: Metrics */}
         {metrics && metrics.length > 0 ? (
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignContent: "start" }}>
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginTop: 8 }}>
             {metrics.map((metric) => (
               <div key={metric.label}>
                 <div
