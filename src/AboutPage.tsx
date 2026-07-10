@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
+import PhotoStack from "./components/PhotoStack";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import clubPic from "./assets/club-pic.jpg";
@@ -27,35 +28,14 @@ const HERO_WIDTH = "min(820px, 90vw)";
 const IMAGE_WIDTH = "min(580px, 85vw)";
 const PANEL_WIDTH = 252;
 const ROW_GAP = 40;
-const PEEK_HEIGHT = 28;
-
-const STORY_SLIDES = [
-  { src: aboutStoryNewYork, caption: "I love traveling!" },
-  { src: aboutStoryFoodie, caption: "Huge foodie <3" },
-];
-const STORY_DURATION_MS = 6000;
 
 const AboutPage: FC = () => {
-  const [revealed, setRevealed] = useState(false);
-  const [reduceMotion, setReduceMotion] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
-  const [photoHovered, setPhotoHovered] = useState(false);
-  const [storySlide, setStorySlide] = useState(0);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [delayedPos, setDelayedPos] = useState({ x: 0, y: 0 });
-  const [storyHovered, setStoryHovered] = useState(false);
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
   const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
   const [dogWaving, setDogWaving] = useState(false);
   const [coffeeHovered, setCoffeeHovered] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -82,15 +62,6 @@ const AboutPage: FC = () => {
     return () => cancelAnimationFrame(rafId);
   }, [cursorPos]);
 
-  // Re-arms on every slide change (including manual taps), so a tap resets the clock.
-  useEffect(() => {
-    if (!revealed || reduceMotion) return;
-    const id = setTimeout(() => {
-      setStorySlide((s) => (s + 1) % STORY_SLIDES.length);
-    }, STORY_DURATION_MS);
-    return () => clearTimeout(id);
-  }, [storySlide, revealed, reduceMotion]);
-
   // Reset dog waving after animation completes
   useEffect(() => {
     if (!dogWaving) return;
@@ -104,28 +75,6 @@ const AboutPage: FC = () => {
     window.addEventListener("click", handleClick);
     return () => window.removeEventListener("click", handleClick);
   }, []);
-
-  const advanceStory = () => setStorySlide((s) => (s + 1) % STORY_SLIDES.length);
-
-  const panelTransition = reduceMotion
-    ? "none"
-    : "flex-basis 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), margin 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
-
-  // Only the "Life Outside of Design" panel is gated behind the photo click — contact
-  // info and the resume should always be reachable without needing to discover that
-  // interaction first. The row keeps a constant `gap`; the collapsed left panel cancels
-  // its share of that gap with a matching negative margin, then releases it on reveal.
-  const leftPanelStyle = {
-    flexBasis: revealed ? PANEL_WIDTH : 0,
-    width: revealed ? PANEL_WIDTH : 0,
-    minWidth: revealed ? 200 : 0,
-    opacity: revealed ? 1 : 0,
-    marginRight: revealed ? 0 : -ROW_GAP,
-    overflow: "hidden",
-    transition: panelTransition,
-    transform: revealed ? "translateX(0)" : "translateX(16px)",
-    alignSelf: "flex-start" as const,
-  };
 
   const rightPanelStyle = {
     flexBasis: PANEL_WIDTH,
@@ -304,219 +253,21 @@ const AboutPage: FC = () => {
             gap: ROW_GAP,
           }}
         >
-          {/* Life Outside of Design */}
-          <div className={`about-left-panel ${revealed ? "revealed" : ""}`} style={leftPanelStyle}>
-            <h3
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                fontSize: tokens.text.base,
-                color: tokens.color.body,
-                margin: 0,
-                whiteSpace: "nowrap",
-              }}
-            >
-              Life <Italic>Outside</Italic> of design
-            </h3>
-            <div style={{ height: 1, background: tokens.color.cardBorder, margin: "10px 0 12px" }} />
-            <div style={{ display: "flex", gap: 4, marginBottom: 8 }}>
-              {STORY_SLIDES.map((_, i) => {
-                const isPast = i < storySlide;
-                const isActive = i === storySlide;
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      flex: 1,
-                      height: 2,
-                      borderRadius: 1,
-                      background: tokens.color.cardBorder,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: "100%",
-                        background: tokens.color.body,
-                        width: isPast ? "100%" : isActive ? "100%" : "0%",
-                        animation: isActive && !reduceMotion ? `aboutStoryFill ${STORY_DURATION_MS}ms linear` : undefined,
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-            <div
-              role="button"
-              tabIndex={0}
-              aria-label="Next photo"
-              onClick={advanceStory}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  advanceStory();
-                }
-              }}
-              onMouseEnter={() => setStoryHovered(true)}
-              onMouseLeave={() => setStoryHovered(false)}
-              className="about-photo-card"
-              style={{
-                position: "relative",
-                height: 240,
-                borderRadius: tokens.radius.sm,
-                overflow: "hidden",
-                cursor: "pointer",
-                outline: "none",
-              }}
-            >
-              {STORY_SLIDES.map((slide, i) => (
-                <div
-                  key={i}
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    backgroundImage: `url(${slide.src})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    opacity: i === storySlide ? 1 : 0,
-                    transition: reduceMotion ? "none" : "opacity 0.5s ease",
-                  }}
-                />
-              ))}
-              {/* Hover doodles */}
-              {storyHovered && (
-                <>
-                  <div
-                    className="story-doodle story-doodle-1"
-                    style={{
-                      opacity: storyHovered ? 1 : 0,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  >
-                    ✨
-                  </div>
-                  <div
-                    className="story-doodle story-doodle-2"
-                    style={{
-                      opacity: storyHovered ? 1 : 0,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  >
-                    💫
-                  </div>
-                  <div
-                    className="story-doodle story-doodle-3"
-                    style={{
-                      opacity: storyHovered ? 1 : 0,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  >
-                    ⭐
-                  </div>
-                </>
-              )}
-            </div>
-            <p
-              style={{
-                marginTop: 10,
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.sm,
-                color: tokens.color.body,
-                transition: reduceMotion ? "none" : "opacity 0.3s ease",
-              }}
-            >
-              {STORY_SLIDES[storySlide].caption}
-            </p>
-          </div>
 
-          {/* Center bio photo — click to reveal the side panels */}
-          <div className="about-center-photo" style={{ width: IMAGE_WIDTH, flexShrink: 0 }}>
-            <div style={{ position: "relative" }}>
-              {/* Backdrop card — stays flat (0deg), peeks out below the rotated photo */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: -PEEK_HEIGHT,
-                  background: tokens.color.offWhite,
-                  borderRadius: 2,
-                  boxShadow: tokens.shadow.subtle,
-                  border: `1px solid ${tokens.color.cardBorder}`,
-                }}
-              >
-                <span
-                  style={{
-                    position: "absolute",
-                    left: "50%",
-                    bottom: 12,
-                    transform: "translateX(-50%)",
-                    fontFamily: tokens.font.sans,
-                    fontSize: tokens.text.sm,
-                    color: tokens.color.muted,
-                    opacity: revealed ? 0 : 1,
-                    transition: "opacity 0.3s ease",
-                    whiteSpace: "nowrap",
-                    pointerEvents: "none",
-                  }}
-                >
-                  Click to reveal
-                </span>
-              </div>
-
-              {/* Photo card — 3deg at rest, straightens to 0deg once revealed */}
-              <div
-                role="button"
-                tabIndex={0}
-                aria-pressed={revealed}
-                aria-label={revealed ? "Hide life outside of design" : "Show life outside of design"}
-                onClick={() => setRevealed((v) => !v)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setRevealed((v) => !v);
-                  }
-                }}
-                onMouseEnter={() => {
-                  setPhotoHovered(true);
-                  setBioPhotoHovered(true);
-                }}
-                onMouseLeave={() => {
-                  setPhotoHovered(false);
-                  setBioPhotoHovered(false);
-                }}
-                className="about-photo-card"
-                style={{
-                  position: "relative",
-                  cursor: "pointer",
-                  boxSizing: "border-box",
-                  outline: "none",
-                  border: "8px solid #ECE7D9",
-                  borderRadius: 2,
-                  overflow: "hidden",
-                  aspectRatio: "3 / 2",
-                  transformOrigin: "center center",
-                  transform: revealed ? "rotate(0deg)" : "rotate(3deg)",
-                  boxShadow: photoHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
-                  transition: reduceMotion
-                    ? "box-shadow 0.22s ease"
-                    : "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease",
-                }}
-              >
-                <img
-                  src={aboutBioPhoto}
-                  alt="Laney Fong in the SF Bay Area"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "50% 55%",
-                    display: "block",
-                  }}
-                />
-              </div>
-            </div>
+          {/* Center bio photo — interactive photo stack */}
+          <div
+            className="about-center-photo"
+            style={{ width: IMAGE_WIDTH, flexShrink: 0 }}
+            onMouseEnter={() => setBioPhotoHovered(true)}
+            onMouseLeave={() => setBioPhotoHovered(false)}
+          >
+            <PhotoStack
+              photos={[
+                { src: aboutBioPhoto, alt: "Laney Fong in the SF Bay Area" },
+                { src: aboutStoryNewYork, alt: "Travel - New York" },
+                { src: aboutStoryFoodie, alt: "Foodie adventures" },
+              ]}
+            />
           </div>
 
           {/* Contact panel — always visible, not gated behind the photo click */}
