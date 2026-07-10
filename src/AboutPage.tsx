@@ -5,6 +5,7 @@ import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import PhotoStack from "./components/PhotoStack";
+import ProudMomentsCarousel from "./components/ProudMomentsCarousel";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
@@ -14,6 +15,8 @@ import clubPicWebp from "./assets/club-pic.webp";
 import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
 import aboutStoryNewYorkWebp from "./assets/about-story-newyork.webp";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
+import aboutProudPhoto from "./assets/about-proud-photo.jpg";
+import aboutProudPhotoWebp from "./assets/about-proud-photo.webp";
 import cursorDog from "./assets/cursor-dog.png";
 
 // TODO: link to a real hosted resume file once one exists.
@@ -37,7 +40,6 @@ const AboutPage: FC = () => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [delayedPos, setDelayedPos] = useState({ x: 0, y: 0 });
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
-  const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
   const [dogWaving, setDogWaving] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const { ref: bioSectionRef, isVisible: bioVisible } = useScrollReveal({ threshold: 0.3 });
@@ -458,27 +460,22 @@ const AboutPage: FC = () => {
               club. My focus on member engagement and real-world project experience transformed the organization into
               a thriving, tight-knit professional community!
             </p>
-            <div
-              onMouseEnter={() => setProudPhotoHovered(true)}
-              onMouseLeave={() => setProudPhotoHovered(false)}
-              style={{ borderRadius: tokens.radius.sm, overflow: "hidden", cursor: "pointer" }}
-            >
-              <picture>
-                <source srcSet={clubPicWebp} type="image/webp" />
-                <img
-                  src={clubPic}
-                  alt="UC Berkeley UX club members celebrating together"
-                  style={{
-                    width: "100%",
-                    display: "block",
-                    filter: proudPhotoHovered
-                      ? "grayscale(0) brightness(1.1)"
-                      : "grayscale(1) brightness(1.15)",
-                    transition: "filter 0.3s ease",
-                  }}
-                />
-              </picture>
-            </div>
+            <ProudMomentsCarousel
+              moments={[
+                {
+                  src: clubPic,
+                  srcWebp: clubPicWebp,
+                  alt: "UC Berkeley UX club members celebrating together",
+                  label: "UC Berkeley UX Club",
+                },
+                {
+                  src: aboutProudPhoto,
+                  srcWebp: aboutProudPhotoWebp,
+                  alt: "Google Designathon",
+                  label: "Google Designathon",
+                },
+              ]}
+            />
           </div>
         </div>
         </ContentContainer>
