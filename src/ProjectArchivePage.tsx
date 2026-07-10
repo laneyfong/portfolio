@@ -38,17 +38,6 @@ const ProjectArchivePage: FC = () => {
       ],
     },
     {
-      title: "Job App Tracker",
-      description: "Designathon prototype for tracking job applications and managing the application pipeline.",
-      italic: "Application management",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23F5F5F5' width='400' height='300'/%3E%3Crect x='30' y='40' width='340' height='40' fill='%234A90E2' opacity='0.3'/%3E%3Crect x='30' y='100' width='340' height='30' fill='%234A90E2' opacity='0.2'/%3E%3Crect x='30' y='145' width='340' height='30' fill='%234A90E2' opacity='0.25'/%3E%3Crect x='30' y='190' width='340' height='30' fill='%234A90E2' opacity='0.2'/%3E%3C/svg%3E",
-      role: "UX/Product Design",
-      metrics: [
-        { value: "Designathon", label: "project" },
-        { value: "MVP", label: "status" },
-      ],
-    },
-    {
       title: "Butter - Physical Product Design",
       description: "Tactile design exploration for a physical product experience. Focus on material and user interaction.",
       italic: "Tactile interaction",
@@ -79,94 +68,6 @@ const ProjectArchivePage: FC = () => {
       metrics: [
         { value: "Physical", label: "prototype" },
         { value: "Exploratory", label: "research" },
-      ],
-    },
-    {
-      title: "Healthcare Dashboard Redesign",
-      description: "Simplified patient data visualization. Reduced cognitive load by 40%.",
-      italic: "40% cognitive reduction",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23E8F4F8' width='400' height='300'/%3E%3Crect x='40' y='30' width='160' height='120' fill='%2387CEEB' opacity='0.3'/%3E%3Crect x='220' y='30' width='160' height='120' fill='%2387CEEB' opacity='0.5'/%3E%3Crect x='40' y='170' width='160' height='120' fill='%2387CEEB' opacity='0.2'/%3E%3Crect x='220' y='170' width='160' height='120' fill='%2387CEEB' opacity='0.4'/%3E%3C/svg%3E",
-      role: "UX/UI Design",
-      metrics: [
-        { value: "6 months", label: "timeline" },
-        { value: "3 iterations", label: "cycles" },
-      ],
-    },
-    {
-      title: "Mobile Banking App",
-      description: "Accessible financial management for underbanked communities.",
-      italic: "Accessibility-first",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFF5E6' width='400' height='300'/%3E%3Crect x='80' y='20' width='240' height='260' fill='%23FFE4B5' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='40' fill='%23FF8C00' opacity='0.4'/%3E%3C/svg%3E",
-      role: "Product Design",
-      metrics: [
-        { value: "50K+ users", label: "adoption" },
-        { value: "4.8/5", label: "rating" },
-      ],
-    },
-    {
-      title: "Design System Components",
-      description: "Reusable component library with WCAG AAA compliance.",
-      italic: "WCAG AAA",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23F0E6F6' width='400' height='300'/%3E%3Crect x='30' y='40' width='80' height='80' fill='%23B19CD9' opacity='0.4'/%3E%3Crect x='140' y='40' width='80' height='80' fill='%23B19CD9' opacity='0.6'/%3E%3Crect x='250' y='40' width='80' height='80' fill='%23B19CD9' opacity='0.3'/%3E%3Crect x='30' y='160' width='80' height='80' fill='%23B19CD9' opacity='0.5'/%3E%3Crect x='140' y='160' width='80' height='80' fill='%23B19CD9' opacity='0.4'/%3E%3Crect x='250' y='160' width='80' height='80' fill='%23B19CD9' opacity='0.7'/%3E%3C/svg%3E",
-      role: "Design Systems",
-      metrics: [
-        { value: "45 components", label: "library" },
-        { value: "12 teams", label: "adopters" },
-      ],
-    },
-    {
-      title: "E-commerce Checkout Flow",
-      description: "Optimized purchase funnel that reduced cart abandonment by 35%.",
-      italic: "35% abandonment drop",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23E6F9E6' width='400' height='300'/%3E%3Crect x='50' y='50' width='300' height='200' fill='%2390EE90' opacity='0.2'/%3E%3Ccircle cx='100' cy='100' r='20' fill='%2332CD32' opacity='0.5'/%3E%3Ccircle cx='200' cy='100' r='20' fill='%2332CD32' opacity='0.4'/%3E%3Ccircle cx='300' cy='100' r='20' fill='%2332CD32' opacity='0.3'/%3E%3C/svg%3E",
-      role: "Conversion Design",
-      metrics: [
-        { value: "3 weeks", label: "sprint" },
-        { value: "$2.1M", label: "revenue gain" },
-      ],
-    },
-    {
-      title: "Voice UI for Smart Home",
-      description: "Natural language interaction design for voice-first devices.",
-      italic: "Voice interaction",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23F5E6FF' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23DA70D6' opacity='0.2'/%3E%3Cpath d='M200 100 Q180 80 200 60 Q220 80 200 100' fill='%23DA70D6' opacity='0.4'/%3E%3Cpath d='M200 110 Q170 70 200 30 Q230 70 200 110' fill='%23DA70D6' opacity='0.3'/%3E%3C/svg%3E",
-      role: "Interaction Design",
-      metrics: [
-        { value: "87% success", label: "voice clarity" },
-        { value: "15 intents", label: "supported" },
-      ],
-    },
-    {
-      title: "Mental Health App Redesign",
-      description: "Empathetic interface for mental wellness tracking and support.",
-      italic: "Empathy-driven",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFE6F0' width='400' height='300'/%3E%3Cpath d='M200 80 C190 70 180 75 180 85 C180 100 200 120 200 120 C200 120 220 100 220 85 C220 75 210 70 200 80 Z' fill='%23FF69B4' opacity='0.4'/%3E%3Ccircle cx='130' cy='180' r='35' fill='%23FFB6C1' opacity='0.3'/%3E%3Ccircle cx='270' cy='180' r='35' fill='%23FFB6C1' opacity='0.3'/%3E%3C/svg%3E",
-      role: "Product & UX",
-      metrics: [
-        { value: "92% retention", label: "30-day" },
-        { value: "500K users", label: "base" },
-      ],
-    },
-    {
-      title: "Real Estate Marketplace",
-      description: "Search and discovery platform for property browsing and investment.",
-      italic: "Real estate tech",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23F0E8D8' width='400' height='300'/%3E%3Cpolygon points='200,40 280,100 280,180 200,220 120,180 120,100' fill='%23CD853F' opacity='0.3'/%3E%3Crect x='150' y='120' width='30' height='30' fill='%238B7355' opacity='0.4'/%3E%3Crect x='220' y='120' width='30' height='30' fill='%238B7355' opacity='0.4'/%3E%3C/svg%3E",
-      role: "Marketplace Design",
-      metrics: [
-        { value: "$8B GMV", label: "volume" },
-        { value: "2.3M listings", label: "active" },
-      ],
-    },
-    {
-      title: "SaaS Onboarding Flow",
-      description: "Progressive disclosure onboarding that reduced drop-off by 28%.",
-      italic: "28% improved activation",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23E6F0FF' width='400' height='300'/%3E%3Crect x='40' y='80' width='60' height='60' fill='%234169E1' opacity='0.3'/%3E%3Crect x='130' y='60' width='60' height='80' fill='%234169E1' opacity='0.5'/%3E%3Crect x='220' y='40' width='60' height='100' fill='%234169E1' opacity='0.4'/%3E%3Crect x='310' y='100' width='60' height='40' fill='%234169E1' opacity='0.3'/%3E%3C/svg%3E",
-      role: "Growth Design",
-      metrics: [
-        { value: "5 minutes", label: "time-to-value" },
-        { value: "82% completion", label: "onboarding" },
       ],
     },
   ];
