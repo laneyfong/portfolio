@@ -32,7 +32,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
 
   // Calculate offset for peeking photos
   const stackOffset = 20;
-  const stackRotation = 3;
+  const peekRotations = [5, 8]; // Increasing rotation angles for peeking photos
 
   return (
     <div
@@ -48,6 +48,9 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
         const offset = index > currentIndex ? index - currentIndex : photos.length + index - currentIndex;
         if (offset > 2) return null; // Only show next 2 photos
 
+        // Get rotation angle based on offset position
+        const rotationAngle = peekRotations[offset - 1] || 8;
+
         return (
           <div
             key={index}
@@ -61,11 +64,13 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
               borderRadius: 2,
               overflow: "hidden",
               aspectRatio: "3 / 2",
-              transform: `rotate(${stackRotation * offset}deg)`,
+              transform: isTransitioning
+                ? `translate(${-stackOffset * offset}px, ${-stackOffset * offset}px) rotate(0deg)`
+                : `rotate(${rotationAngle}deg)`,
               zIndex: 1 - offset,
               opacity: 0.7 - offset * 0.2,
               pointerEvents: "none",
-              transition: isTransitioning ? "all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)" : "none",
+              transition: isTransitioning ? "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)" : "none",
             }}
           >
             <img
@@ -106,13 +111,17 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           borderRadius: 2,
           overflow: "hidden",
           boxShadow: isHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
-          transform: isTransitioning ? "rotateY(90deg) scale(0.95)" : isHovered ? "rotate(0deg)" : "rotate(3deg)",
+          transform: isTransitioning
+            ? "translate(40px, 40px) rotate(8deg) scale(0.9)"
+            : isHovered
+              ? "rotate(0deg)"
+              : "rotate(3deg)",
+          opacity: isTransitioning ? 0.3 : 1,
           transition: isTransitioning
-            ? "transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-            : "transform 0.3s ease, box-shadow 0.22s ease",
+            ? "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease"
+            : "transform 0.3s ease, box-shadow 0.22s ease, opacity 0.3s ease",
           zIndex: 10,
           backgroundColor: tokens.color.offWhite,
-          transformStyle: "preserve-3d",
         }}
       >
         <img
