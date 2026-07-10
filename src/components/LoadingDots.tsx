@@ -28,17 +28,17 @@ const LoadingDots: FC = () => {
 
         .dot:nth-child(2) {
           animation: pendulum 2.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
-          animation-delay: 0.15s;
+          animation-delay: 0.1s;
         }
 
         .dot:nth-child(3) {
           animation: pendulum 2.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
-          animation-delay: 0.3s;
+          animation-delay: 0.2s;
         }
 
         .dot:nth-child(4) {
           animation: pendulum 2.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
-          animation-delay: 0.45s;
+          animation-delay: 0.3s;
         }
 
         @media (prefers-reduced-motion: reduce) {
