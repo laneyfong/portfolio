@@ -6,7 +6,7 @@ import ContentContainer from "./components/ContentContainer";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
-import MoreWorkSection from "./components/MoreWorkSection";
+import WorkTransition from "./components/WorkTransition";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
@@ -265,8 +265,10 @@ const Portfolio: FC = () => {
 
             <PlatoCard />
           </div>
+        </ContentContainer>
 
-          <MoreWorkSection />
+        <ContentContainer>
+          <WorkTransition />
         </ContentContainer>
       </div>
 
