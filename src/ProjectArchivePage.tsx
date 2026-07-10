@@ -176,6 +176,19 @@ const ProjectArchivePage: FC = () => {
         color: tokens.color.body,
       }}
     >
+      <style>{`
+        @media (max-width: 1024px) {
+          .archive-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .archive-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
       <TopNav />
 
       <main style={{ width: "100%", padding: "80px 0", boxSizing: "border-box", marginTop: "64px" }}>
@@ -212,9 +225,10 @@ const ProjectArchivePage: FC = () => {
 
           {/* Grid of archive projects */}
           <div
+            className="archive-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gridTemplateColumns: "repeat(2, 1fr)",
               gap: 12,
               alignItems: "stretch",
               minWidth: 0,
