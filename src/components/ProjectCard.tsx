@@ -86,8 +86,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             justifyContent: "space-between",
             gap: 24,
             padding: "12px 12px 0px 12px",
-            flexShrink: 0,
-            flex: 3,
+            flex: "0 0 auto",
           }}
         >
           {/* Description */}
@@ -170,7 +169,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         {/* Image Section */}
         <div
           style={{
-            flex: 7,
+            flex: 1,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
