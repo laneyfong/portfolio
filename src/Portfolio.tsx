@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
@@ -14,7 +13,6 @@ import laneyPhoto from "./assets/laney-photo.jpg";
 import myshakeApp from "./assets/myshake-app.png";
 import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
 import platoHome from "./assets/plato-home.png";
-import platoItinerary from "./assets/plato-itinerary.png";
 
 // Preload hero image for faster initial render
 if (typeof window !== 'undefined') {
@@ -25,109 +23,6 @@ if (typeof window !== 'undefined') {
   document.head.appendChild(link);
 }
 
-const PlatoCard: FC = () => {
-  const [hovered, setHovered] = useState(false);
-  const caption = "A solution to decision fatigue and itinerary planning.";
-  const italic = "decision fatigue";
-  const [before, after] = caption.split(italic);
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        position: "relative",
-        minHeight: 467,
-        borderRadius: tokens.radius.sm,
-        cursor: "pointer",
-        transition: "transform 0.22s ease, box-shadow 0.22s ease",
-        transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        // box-shadow lives on this outer, overflow-visible box so the shadow isn't clipped
-        // by the inner content's overflow:hidden (needed for the peeking-phone effect).
-        boxShadow: hovered ? tokens.shadow.subtle : "none",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundColor: tokens.color.offWhite,
-          borderRadius: tokens.radius.sm,
-          border: `1px solid ${tokens.color.cardBorder}`,
-          overflow: "hidden",
-          boxSizing: "border-box",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            gap: 32,
-            padding: "36px 36px 0 36px",
-            overflowX: "auto",
-            WebkitOverflowScrolling: "touch",
-          }}
-        >
-          <div
-            style={{
-              width: 263,
-              height: 249,
-              borderRadius: tokens.radius.md,
-              backgroundImage: `url(${platoHome})`,
-              backgroundSize: "100% auto",
-              backgroundPosition: "0 -481px",
-              boxShadow: tokens.shadow.card,
-              flexShrink: 0,
-            }}
-          />
-          <div
-            style={{
-              width: 263,
-              height: 700,
-              borderRadius: "24px 24px 0 0",
-              backgroundImage: `url(${platoHome})`,
-              backgroundSize: "cover",
-              backgroundPosition: "top center",
-              boxShadow: tokens.shadow.card,
-              flexShrink: 0,
-            }}
-          />
-          <div
-            style={{
-              width: 263,
-              height: 700,
-              borderRadius: "24px 24px 0 0",
-              backgroundImage: `url(${platoItinerary})`,
-              backgroundSize: "cover",
-              backgroundPosition: "top center",
-              boxShadow: tokens.shadow.card,
-              flexShrink: 0,
-            }}
-          />
-        </div>
-
-        <span
-          style={{
-            position: "absolute",
-            bottom: 36,
-            left: 36,
-            width: 230,
-            maxWidth: "calc(100% - 72px)",
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.regular,
-            fontSize: tokens.text.md,
-            color: tokens.color.body,
-            lineHeight: tokens.leading.snug,
-          }}
-        >
-          {before}
-          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>{italic}</em>
-          {after}
-        </span>
-      </div>
-    </div>
-  );
-};
 
 const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
@@ -263,7 +158,14 @@ const Portfolio: FC = () => {
               to="/nvidia-ai-ux-agent"
             />
 
-            <PlatoCard />
+            <ProjectCard
+              screenshot={platoHome}
+              layout="landscape"
+              height={550}
+              roleOutcome="Travel Planning × Decision Design"
+              caption="A solution to decision fatigue and itinerary planning for travelers."
+              captionItalic="decision fatigue"
+            />
           </div>
         </ContentContainer>
 
