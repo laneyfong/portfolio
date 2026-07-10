@@ -44,23 +44,32 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const captionParts = caption.split(captionItalic);
 
   return (
-    <div
-      role={to ? "link" : undefined}
-      tabIndex={to ? 0 : undefined}
-      onClick={to ? () => navigate(to) : undefined}
-      onKeyDown={
-        to
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                navigate(to);
+    <>
+      <style>{`
+        @media (prefers-reduced-motion: reduce) {
+          .project-card {
+            transition: background-color 0s, border-color 0s, color 0s !important;
+          }
+        }
+      `}</style>
+      <div
+        className="project-card"
+        role={to ? "link" : undefined}
+        tabIndex={to ? 0 : undefined}
+        onClick={to ? () => navigate(to) : undefined}
+        onKeyDown={
+          to
+            ? (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  navigate(to);
+                }
               }
-            }
-          : undefined
-      }
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
+            : undefined
+        }
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
         display: "flex",
         flexDirection: "column",
         width: "100%",
@@ -68,7 +77,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         borderRadius: tokens.radius.sm,
         cursor: to ? "pointer" : "default",
         transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        transform: hovered ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
+        transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
         backgroundColor: hovered ? "#1a1a1a" : tokens.color.offWhite,
         border: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
         overflow: "hidden",
@@ -263,6 +272,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         )}
       </div>
     </div>
+    </>
   );
 };
 
