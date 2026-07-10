@@ -22,6 +22,8 @@ const MusicCard: FC<MusicCardProps> = ({
   const [duration, setDuration] = useState(0);
   const [auraScale, setAuraScale] = useState(1);
   const [auraOpacity, setAuraOpacity] = useState(0.3);
+  const [audioLoaded, setAudioLoaded] = useState(false);
+  const [audioError, setAudioError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
@@ -110,6 +112,8 @@ const MusicCard: FC<MusicCardProps> = ({
 
     const handleCanPlay = () => {
       console.log("Audio can play");
+      setAudioLoaded(true);
+      setAudioError(null);
     };
 
     const handleEnded = () => {
@@ -117,7 +121,10 @@ const MusicCard: FC<MusicCardProps> = ({
     };
 
     const handleError = () => {
-      console.error("Audio load error:", audio.error?.message);
+      const errorMsg = audio.error?.message || "Unknown error";
+      console.error("Audio load error:", errorMsg);
+      setAudioError(`Error loading audio: ${errorMsg}`);
+      setAudioLoaded(false);
       setIsPlaying(false);
     };
 
@@ -434,10 +441,36 @@ const MusicCard: FC<MusicCardProps> = ({
           </div>
 
           <div className="controls">
-            <button className="play-button" onClick={togglePlay}>
+            <button className="play-button" onClick={togglePlay} disabled={!audioLoaded && !audioError}>
               {isPlaying ? "⏸" : "▶"}
             </button>
           </div>
+
+          {audioError && (
+            <div
+              style={{
+                fontSize: "12px",
+                color: "#d32f2f",
+                textAlign: "center",
+                maxWidth: "200px",
+                marginTop: "8px",
+              }}
+            >
+              {audioError}
+            </div>
+          )}
+
+          {!audioLoaded && !audioError && (
+            <div
+              style={{
+                fontSize: "12px",
+                color: tokens.color.muted,
+                textAlign: "center",
+              }}
+            >
+              Loading...
+            </div>
+          )}
 
           <div className="progress-container">
             <span className="time-label">{formatTime(progress)}</span>
@@ -461,7 +494,12 @@ const MusicCard: FC<MusicCardProps> = ({
         </div>
       </div>
 
-      <audio ref={audioRef} src={previewUrl} crossOrigin="anonymous" />
+      <audio
+        ref={audioRef}
+        src={previewUrl}
+        crossOrigin="anonymous"
+        preload="auto"
+      />
     </>
   );
 };
