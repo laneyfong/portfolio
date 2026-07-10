@@ -2,6 +2,7 @@ import type { FC, ReactNode } from "react";
 import { tokens } from "../../tokens";
 import TopNav from "../TopNav";
 import Footer from "../Footer";
+import ScrollProgressBar from "../ScrollProgressBar";
 
 interface VisualCaseStudyShellProps {
   title: string;
@@ -29,6 +30,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
         color: tokens.color.body,
       }}
     >
+      <ScrollProgressBar />
       <TopNav />
 
       <main style={{ width: "100%", padding: "0", boxSizing: "border-box", marginTop: "64px" }}>
