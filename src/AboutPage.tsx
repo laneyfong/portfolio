@@ -15,8 +15,7 @@ import clubPicWebp from "./assets/club-pic.webp";
 import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
 import aboutStoryNewYorkWebp from "./assets/about-story-newyork.webp";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
-import aboutProudPhoto from "./assets/about-proud-photo.jpg";
-import aboutProudPhotoWebp from "./assets/about-proud-photo.webp";
+import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
 
 // TODO: link to a real hosted resume file once one exists.
@@ -469,9 +468,9 @@ const AboutPage: FC = () => {
                   label: "UC Berkeley UX Club",
                 },
                 {
-                  src: aboutProudPhoto,
-                  srcWebp: aboutProudPhotoWebp,
-                  alt: "Google Designathon",
+                  src: designathonWin,
+                  srcWebp: designathonWin,
+                  alt: "Google Designathon Win",
                   label: "Google Designathon",
                 },
               ]}
