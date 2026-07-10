@@ -92,14 +92,24 @@ const MusicCard: FC<MusicCardProps> = ({
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio) {
+      console.error("Audio element not found");
+      return;
+    }
+
+    console.log("Audio element initialized:", { src: audio.src });
 
     const handleTimeUpdate = () => {
       setProgress(audio.currentTime);
     };
 
     const handleLoadedMetadata = () => {
+      console.log("Audio metadata loaded:", audio.duration);
       setDuration(audio.duration);
+    };
+
+    const handleCanPlay = () => {
+      console.log("Audio can play");
     };
 
     const handleEnded = () => {
@@ -107,18 +117,20 @@ const MusicCard: FC<MusicCardProps> = ({
     };
 
     const handleError = () => {
-      console.error("Audio load error:", audio.error);
+      console.error("Audio load error:", audio.error?.message);
       setIsPlaying(false);
     };
 
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("canplay", handleCanPlay);
     audio.addEventListener("ended", handleEnded);
     audio.addEventListener("error", handleError);
 
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("canplay", handleCanPlay);
       audio.removeEventListener("ended", handleEnded);
       audio.removeEventListener("error", handleError);
     };
@@ -129,11 +141,14 @@ const MusicCard: FC<MusicCardProps> = ({
       if (isPlaying) {
         audioRef.current.pause();
         setIsPlaying(false);
+        console.log("Music paused");
       } else {
+        console.log("Attempting to play:", audioRef.current.src);
         const playPromise = audioRef.current.play();
         if (playPromise !== undefined) {
           playPromise
             .then(() => {
+              console.log("Music playing successfully");
               setIsPlaying(true);
             })
             .catch((error) => {
@@ -144,6 +159,8 @@ const MusicCard: FC<MusicCardProps> = ({
           setIsPlaying(true);
         }
       }
+    } else {
+      console.error("Audio ref not available");
     }
   };
 
