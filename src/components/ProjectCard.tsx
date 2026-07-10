@@ -207,14 +207,15 @@ const ProjectCard: FC<ProjectCardProps> = ({
       <div
         style={{
           display: "grid",
-          gridTemplateRows: "auto minmax(80px, auto) 1fr auto",
+          gridTemplateRows: "24px 80px 1fr 70px",
           gap: 12,
           padding: "16px 16px 20px 16px",
           borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
           transition: "border-color 0.5s ease",
         }}
       >
-        {roleOutcome && (
+        {/* Row 1: Category label (fixed 24px) */}
+        {roleOutcome ? (
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -225,11 +226,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
               textTransform: "uppercase",
               lineHeight: tokens.leading.none,
               transition: "color 0.5s ease",
+              alignSelf: "start",
             }}
           >
             {roleOutcome}
           </span>
+        ) : (
+          <div />
         )}
+
+        {/* Row 2: Description (fixed 80px) */}
         <span
           style={{
             fontFamily: tokens.font.sans,
@@ -239,6 +245,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
             lineHeight: tokens.leading.snug,
             maxWidth: "100%",
             transition: "color 0.32s ease",
+            alignSelf: "start",
+            overflow: "hidden",
           }}
         >
           {captionParts[0]}
@@ -248,10 +256,12 @@ const ProjectCard: FC<ProjectCardProps> = ({
           {captionParts[1]}
         </span>
 
+        {/* Row 3: Spacer (fills remaining space) */}
         <div />
 
-        {metrics && metrics.length > 0 && (
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+        {/* Row 4: Metrics (fixed 70px) */}
+        {metrics && metrics.length > 0 ? (
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignContent: "start" }}>
             {metrics.map((metric) => (
               <div key={metric.label}>
                 <div
@@ -285,6 +295,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
               </div>
             ))}
           </div>
+        ) : (
+          <div />
         )}
       </div>
     </div>
