@@ -111,7 +111,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           transform: translateY(-4px) scale(1.015);
         }
         .case-shot:hover::before {
-          background: rgba(17, 17, 17, 0.4);
+          background: rgba(17, 17, 17, 0.65);
         }
         .case-tabs-scroll::-webkit-scrollbar { display: none; }
         /* Tactile feedback for things that are actually clickable — nav buttons, tabs,
