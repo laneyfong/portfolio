@@ -66,6 +66,15 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
           }
         }
 
+        @keyframes textShine {
+          0% {
+            background-position: -1000px 0;
+          }
+          100% {
+            background-position: 1000px 0;
+          }
+        }
+
         .welcome-message {
           text-align: center;
           animation: welcomeFadeIn 0.6s ease-in-out forwards;
@@ -83,10 +92,29 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
           color: ${tokens.color.body};
           line-height: 1.3;
           margin: 0;
+          position: relative;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.8) 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.4) 75%,
+            transparent 100%
+          );
+          background-size: 1000px 100%;
+          background-position: -1000px 0;
+          background-clip: text;
+          -webkit-background-clip: text;
+          animation: textShine 2.4s ease-in-out infinite;
         }
 
         .welcome-line + .welcome-line {
           margin-top: 16px;
+        }
+
+        .welcome-message.fade-out .welcome-line {
+          animation: none !important;
+          background: none !important;
         }
 
         @media (max-width: 640px) {
@@ -104,6 +132,10 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
             animation: none !important;
             opacity: 1 !important;
             transform: none !important;
+          }
+          .welcome-line {
+            animation: none !important;
+            background: none !important;
           }
         }
       `}</style>
