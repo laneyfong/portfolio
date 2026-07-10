@@ -94,8 +94,22 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           from { opacity: 0; transform: translateY(4px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        .case-shot { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .case-shot:hover { transform: translateY(-4px) scale(1.015); }
+        .case-shot {
+          transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.4s ease;
+          position: relative;
+        }
+        .case-shot:hover {
+          transform: translateY(-4px) scale(1.015);
+          filter: brightness(0.85) saturate(1.1);
+        }
+        .case-shot:hover::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(17, 17, 17, 0.15);
+          pointer-events: none;
+          border-radius: inherit;
+        }
         .case-tabs-scroll::-webkit-scrollbar { display: none; }
         /* Tactile feedback for things that are actually clickable — nav buttons, tabs,
            toggles. Cards with no click action intentionally don't get this. */
