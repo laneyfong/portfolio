@@ -308,11 +308,12 @@ const AboutPage: FC = () => {
             <div
               style={{
                 position: "absolute",
-                right: -180,
-                top: 50,
+                right: -320,
+                top: "50%",
+                transform: "translateY(-50%)",
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
+                gap: 16,
                 zIndex: 100,
                 pointerEvents: "none",
               }}
@@ -337,7 +338,7 @@ const AboutPage: FC = () => {
                   {/* Squiggly arrow line */}
                   <path
                     d="M 5 25 Q 15 15, 25 25 T 45 25"
-                    stroke={tokens.color.body}
+                    stroke={tokens.color.muted}
                     strokeWidth="2"
                     fill="none"
                     strokeLinecap="round"
@@ -345,7 +346,7 @@ const AboutPage: FC = () => {
                   {/* Arrow head */}
                   <path
                     d="M 45 25 L 50 22 L 48 25 L 50 28 Z"
-                    fill={tokens.color.body}
+                    fill={tokens.color.muted}
                   />
                 </g>
               </svg>
@@ -354,12 +355,14 @@ const AboutPage: FC = () => {
               <div
                 style={{
                   fontFamily: "'Caveat', cursive",
-                  fontSize: "20px",
+                  fontSize: "22px",
                   fontWeight: 700,
-                  color: tokens.color.body,
-                  whiteSpace: "nowrap",
+                  color: tokens.color.muted,
                   transform: "rotate(-8deg)",
                   letterSpacing: "0.5px",
+                  maxWidth: "150px",
+                  lineHeight: 1.3,
+                  wordBreak: "break-word",
                 }}
               >
                 {["This is me!", "I love traveling <3", "Trying new restaurants is my hobby"][currentPhotoIndex]}
