@@ -64,10 +64,10 @@ const InteractiveTypography: FC = () => {
     canvas.height = height;
 
     // Configure font
-    const fontSize = 14;
+    const fontSize = 11;
     const fontFamily = "monospace";
     ctx.font = `${fontSize}px ${fontFamily}`;
-    ctx.fillStyle = tokens.color.ink;
+    ctx.fillStyle = "#D0D0D0";
     ctx.textBaseline = "top";
 
     // Create letter grid
@@ -110,10 +110,10 @@ const InteractiveTypography: FC = () => {
     lettersRef.current = newLetters;
 
     // Physics constants
-    const springStiffness = 0.2;
-    const damping = 0.92;
-    const maxDistance = 100;
-    const maxForce = 3;
+    const springStiffness = 0.18;
+    const damping = 0.88;
+    const maxDistance = 150;
+    const maxForce = 5.5;
 
     const applyRipple = (
       mouseX: number,
