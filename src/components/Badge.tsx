@@ -261,7 +261,7 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "13px",
+                fontSize: "16px",
                 color: tokens.color.body,
                 lineHeight: 1.4,
               }}
@@ -299,7 +299,7 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "13px",
+                fontSize: "16px",
                 color: tokens.color.body,
                 lineHeight: 1.4,
               }}
@@ -335,7 +335,7 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "13px",
+                fontSize: "16px",
                 color: tokens.color.body,
                 lineHeight: 1.4,
               }}

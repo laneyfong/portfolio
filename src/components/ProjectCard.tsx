@@ -94,7 +94,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.regular,
-              fontSize: "14px",
+              fontSize: "16px",
               color: hovered ? "#ffffff" : tokens.color.body,
               lineHeight: tokens.leading.snug,
               flex: 1,
