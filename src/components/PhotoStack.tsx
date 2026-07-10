@@ -112,7 +112,8 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           borderRight: "8px solid #ECE7D9",
           borderBottom: "28px solid #ECE7D9",
           borderRadius: 2,
-          overflow: "visible",
+          overflow: "hidden",
+          boxSizing: "border-box",
           boxShadow: isHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
           transform: isTransitioning ? "translateX(-100%)" : "translateX(0)",
           opacity: isTransitioning ? 0 : 1,
@@ -125,17 +126,28 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           flexDirection: "column",
         }}
       >
-        <img
-          src={photos[currentIndex].src}
-          alt={photos[currentIndex].alt}
+        <div
           style={{
-            width: "100%",
             flex: 1,
-            objectFit: "cover",
-            objectPosition: "50% 55%",
-            display: "block",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: 0,
+            overflow: "hidden",
           }}
-        />
+        >
+          <img
+            src={photos[currentIndex].src}
+            alt={photos[currentIndex].alt}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "50% 55%",
+              display: "block",
+            }}
+          />
+        </div>
 
         {/* Photo label in bottom border */}
         {photos[currentIndex].label && (
