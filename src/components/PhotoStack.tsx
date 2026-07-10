@@ -25,7 +25,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
     setTimeout(() => {
       setCurrentIndex(nextIndex);
       setIsTransitioning(false);
-    }, 350);
+    }, 400);
 
     onPhotoChange?.(nextIndex);
   };
@@ -115,15 +115,16 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           overflow: "hidden",
           boxSizing: "border-box",
           boxShadow: isHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
-          transform: isTransitioning ? "translateX(-100%)" : "translateX(0)",
+          transform: isTransitioning ? "translateY(-80px) rotateX(15deg)" : "translateY(0) rotateX(0)",
           opacity: isTransitioning ? 0 : 1,
           transition: isTransitioning
-            ? "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease-in"
+            ? "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease-in"
             : "transform 0.3s ease, box-shadow 0.22s ease",
           zIndex: 10,
           backgroundColor: "#ECE7D9",
           display: "flex",
           flexDirection: "column",
+          transformStyle: "preserve-3d",
         }}
       >
         <div

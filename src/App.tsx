@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Portfolio from "./Portfolio";
 import AboutPage from "./AboutPage";
 import LabPage from "./LabPage";
 import MyShakeCaseStudy from "./MyShakeCaseStudy";
 import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
-import WelcomeAnimation from "./components/WelcomeAnimation";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -22,13 +21,10 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [loadingComplete, setLoadingComplete] = useState(false);
-
   return (
     <BrowserRouter>
       <ScrollToTop />
       <GlobalStyles />
-      {!loadingComplete && <WelcomeAnimation onComplete={() => setLoadingComplete(true)} />}
       <Routes>
         <Route path="/" element={<Portfolio />} />
         <Route path="/about" element={<AboutPage />} />
