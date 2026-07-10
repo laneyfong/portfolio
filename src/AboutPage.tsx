@@ -140,7 +140,7 @@ const AboutPage: FC = () => {
         .proud-section-reveal {
           opacity: 0;
           transform: translateY(20px);
-          animation: ${proudVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.1s backwards" : "none"};
+          animation: ${proudVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards" : "none"};
         }
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
