@@ -33,7 +33,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const [hovered, setHovered] = useState(false);
   const isPortrait = layout === "portrait";
   const cardHeight = height ?? (isPortrait ? 550 : 500);
-  const imageHeight = isPortrait ? 340 : 300;
+  const imageHeight = isPortrait ? 380 : 340;
 
   const captionParts = caption.split(captionItalic);
 
@@ -187,7 +187,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "8px 16px",
+            padding: "4px 12px",
             overflow: "hidden",
             minHeight: 0,
           }}
