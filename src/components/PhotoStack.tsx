@@ -8,7 +8,7 @@ interface Photo {
 }
 
 interface PhotoStackProps {
-  photos: Photo[];
+  photos: (Photo & { label?: string })[];
   onPhotoChange?: (index: number) => void;
 }
 
@@ -21,11 +21,11 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
     setIsTransitioning(true);
     const nextIndex = (currentIndex + 1) % photos.length;
 
-    // Brief delay for the flip animation
+    // Longer delay for smooth shuffle animation
     setTimeout(() => {
       setCurrentIndex(nextIndex);
       setIsTransitioning(false);
-    }, 200);
+    }, 600);
 
     onPhotoChange?.(nextIndex);
   };
@@ -70,7 +70,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
               zIndex: 1 - offset,
               opacity: 0.7 - offset * 0.2,
               pointerEvents: "none",
-              transition: isTransitioning ? "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)" : "none",
+              transition: isTransitioning ? "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none",
             }}
           >
             <img
@@ -112,13 +112,11 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           overflow: "hidden",
           boxShadow: isHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
           transform: isTransitioning
-            ? "translate(40px, 40px) rotate(8deg) scale(0.9)"
-            : isHovered
-              ? "rotate(0deg)"
-              : "rotate(3deg)",
-          opacity: isTransitioning ? 0.3 : 1,
+            ? "translate(50px, 50px) rotate(12deg) scale(0.85)"
+            : "rotate(0deg)",
+          opacity: isTransitioning ? 0.2 : 1,
           transition: isTransitioning
-            ? "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease"
+            ? "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease"
             : "transform 0.3s ease, box-shadow 0.22s ease, opacity 0.3s ease",
           zIndex: 10,
           backgroundColor: tokens.color.offWhite,
@@ -135,6 +133,30 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
             display: "block",
           }}
         />
+
+        {/* Vintage photo label */}
+        {photos[currentIndex].label && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 16,
+              left: 16,
+              right: 16,
+              background: "rgba(255, 255, 255, 0.95)",
+              padding: "8px 12px",
+              borderRadius: 2,
+              fontFamily: "'Georgia', serif",
+              fontSize: "12px",
+              fontStyle: "italic",
+              color: "#666",
+              textAlign: "center",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+              pointerEvents: "none",
+            }}
+          >
+            {photos[currentIndex].label}
+          </div>
+        )}
       </div>
 
       {/* Click indicator */}

@@ -261,9 +261,9 @@ const AboutPage: FC = () => {
           >
             <PhotoStack
               photos={[
-                { src: aboutBioPhoto, alt: "Laney Fong in the SF Bay Area" },
-                { src: aboutStoryNewYork, alt: "Travel - New York" },
-                { src: aboutStoryFoodie, alt: "Foodie adventures" },
+                { src: aboutBioPhoto, alt: "Laney Fong in the SF Bay Area", label: "This is me!" },
+                { src: aboutStoryNewYork, alt: "Travel - New York", label: "I love traveling <3" },
+                { src: aboutStoryFoodie, alt: "Foodie adventures", label: "Trying new restaurants is my hobby" },
               ]}
             />
           </div>
