@@ -206,8 +206,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
       {/* Text Content - Bottom */}
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
+          display: "grid",
+          gridTemplateRows: "auto minmax(80px, auto) 1fr auto",
           gap: 12,
           padding: "16px 16px 20px 16px",
           borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
@@ -247,6 +247,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           </em>
           {captionParts[1]}
         </span>
+
+        <div />
 
         {metrics && metrics.length > 0 && (
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
