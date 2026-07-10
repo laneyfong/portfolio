@@ -5,24 +5,12 @@ const LoadingDots: FC = () => {
   return (
     <div style={{ display: "flex", gap: "28px", alignItems: "center", justifyContent: "center", minHeight: "80px" }}>
       <style>{`
-        @keyframes hopToPosition1 {
-          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
-        }
-
-        @keyframes hopToPosition2 {
-          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
-        }
-
-        @keyframes hopToPosition3 {
-          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
-        }
-
-        @keyframes hopToPosition4 {
-          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-          50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+        @keyframes pendulum {
+          0% { transform: translateX(0) rotateZ(0deg); opacity: 0.4; }
+          25% { transform: translateX(-12px) rotateZ(-8deg); opacity: 0.7; }
+          50% { transform: translateX(0) rotateZ(0deg); opacity: 1; }
+          75% { transform: translateX(12px) rotateZ(8deg); opacity: 0.7; }
+          100% { transform: translateX(0) rotateZ(0deg); opacity: 0.4; }
         }
 
         .dot {
@@ -30,26 +18,27 @@ const LoadingDots: FC = () => {
           height: 12px;
           border-radius: 50%;
           background-color: ${tokens.color.muted};
-          opacity: 0.3;
+          opacity: 0.4;
         }
 
         .dot:nth-child(1) {
-          animation: hopToPosition1 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+          animation: pendulum 2.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+          animation-delay: 0s;
         }
 
         .dot:nth-child(2) {
-          animation: hopToPosition2 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-          animation-delay: -1.8s;
+          animation: pendulum 2.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+          animation-delay: 0.15s;
         }
 
         .dot:nth-child(3) {
-          animation: hopToPosition3 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-          animation-delay: -1.2s;
+          animation: pendulum 2.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+          animation-delay: 0.3s;
         }
 
         .dot:nth-child(4) {
-          animation: hopToPosition4 2.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-          animation-delay: -0.6s;
+          animation: pendulum 2.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+          animation-delay: 0.45s;
         }
 
         @media (prefers-reduced-motion: reduce) {
