@@ -14,90 +14,71 @@ const DayLightCard: FC = () => {
   const startYRef = useRef(0);
   const scrollOffsetRef = useRef(0);
 
-  // Calculate lighting and colors based on time with smooth transitions
+  // Calculate if it's night mode based on time
   const calculateLighting = (hours: number) => {
-    // 8 AM to 8 PM progression
-    if (hours >= 8 && hours < 20) {
-      // 8 AM - 12 PM: Bright morning (8-12)
-      // 12 PM - 5 PM: Warm afternoon (12-17)
-      // 5 PM - 7 PM: Golden sunset (17-19)
-      // 7 PM - 8 PM: Deep orange sunset (19-20)
-
-      const progress = (hours - 8) / 12; // 0 to 1
-
-      // Brightness gradually decreases
-      const brightness = 1 - progress * 0.6; // 100% to 40%
-
-      // Warmth increases significantly for sunset effect
-      // 8-12 (morning): cool blues (warmth 0)
-      // 12-17 (afternoon): warming up (warmth 0 to 0.5)
-      // 17-19 (sunset): very warm (warmth 0.5 to 1)
-      // 19-20 (deep sunset): deepest orange (warmth 1)
-
-      let warmth = 0;
-      if (hours < 12) {
-        // Morning: 8-12, warmth stays cool
-        warmth = 0;
-      } else if (hours < 17) {
-        // Afternoon: 12-17, gradually warming
-        warmth = (hours - 12) / 5 * 0.5; // 0 to 0.5
-      } else if (hours < 19) {
-        // Sunset: 17-19, getting very warm
-        warmth = 0.5 + (hours - 17) / 2 * 0.5; // 0.5 to 1
-      } else {
-        // Deep sunset: 19-20, deepest warmth
-        warmth = 1;
-      }
-
-      return { brightness, warmth, isNight: false, progress };
-    } else {
-      // Night mode
-      return { brightness: 0.2, warmth: 0, isNight: true, progress: 1 };
-    }
+    return {
+      isNight: hours < 8 || hours >= 20,
+    };
   };
 
-  const { brightness, warmth, isNight } = calculateLighting(time.hours);
+  const { isNight } = calculateLighting(time.hours);
 
   const getBackgroundStyle = () => {
     if (isNight) {
       return {
-        background: `linear-gradient(135deg, #0a1428 0%, #1a2a4a 100%)`,
+        background: `linear-gradient(135deg, #0f1b3c 0%, #1a2d52 100%)`,
       };
     }
 
-    // Smooth color progression from cool blue (morning) to deep orange (sunset)
-    // 8 AM: Light sky blue
-    // 12 PM: Warm day blue
-    // 5 PM: Golden orange
-    // 7 PM: Deep orange/red
-    // 8 PM: Deep night
+    // Accurate real-world sky colors based on time of day
+    // 8 AM: Light periwinkle blue with pinkish tint
+    // 9-11 AM: Bright sky blue
+    // 12-4 PM: Deep saturated blue
+    // 5 PM: Light orange-peach
+    // 6 PM: Golden-orange
+    // 7 PM: Deep orange-red
+    // 8 PM: Purple-red transitioning to night
 
-    let baseHue = 200; // Start with sky blue
-    let saturation = 40;
-    let lightness = 80;
+    let topColor = "#87CEEB";
+    let bottomColor = "#E0F6FF";
 
-    if (warmth < 0.2) {
-      // Morning (8-12): Cool blue skies
-      baseHue = 200;
-      saturation = 35;
-      lightness = 85 - (1 - brightness) * 15;
-    } else if (warmth < 0.5) {
-      // Afternoon (12-17): Warmer tones
-      baseHue = 200 - (warmth - 0.2) / 0.3 * 40; // 200 to 160
-      saturation = 35 + (warmth - 0.2) / 0.3 * 15;
-      lightness = 80 - (1 - brightness) * 20;
-    } else if (warmth < 1) {
-      // Sunset (17-20): Golden to deep orange
-      baseHue = 160 - (warmth - 0.5) / 0.5 * 80; // 160 to 80
-      saturation = 50 + (warmth - 0.5) / 0.5 * 40;
-      lightness = 70 - (1 - brightness) * 25;
+    if (time.hours >= 8 && time.hours < 9) {
+      // 8 AM: Early morning, pale blue with pinkish horizon
+      topColor = "#9DB4D1";
+      bottomColor = "#FFB6D9";
+    } else if (time.hours >= 9 && time.hours < 11) {
+      // 9-11 AM: Clear morning sky, bright blue
+      topColor = "#87CEEB";
+      bottomColor = "#E0F6FF";
+    } else if (time.hours >= 11 && time.hours < 13) {
+      // 11 AM - 1 PM: Mid-morning to noon, very bright blue
+      topColor = "#4DB8FF";
+      bottomColor = "#B0E0FF";
+    } else if (time.hours >= 13 && time.hours < 16) {
+      // 1-4 PM: Afternoon, deep saturated blue
+      topColor = "#1E90FF";
+      bottomColor = "#6DB3FF";
+    } else if (time.hours >= 16 && time.hours < 17) {
+      // 4-5 PM: Late afternoon, sky begins warming
+      topColor = "#5BA3D0";
+      bottomColor = "#FFD699";
+    } else if (time.hours >= 17 && time.hours < 18) {
+      // 5-6 PM: Early sunset, peachy-orange
+      topColor = "#FFA500";
+      bottomColor = "#FFB347";
+    } else if (time.hours >= 18 && time.hours < 19) {
+      // 6-7 PM: Full sunset, golden-orange
+      topColor = "#FF8C00";
+      bottomColor = "#FF7F50";
+    } else if (time.hours >= 19 && time.hours < 20) {
+      // 7-8 PM: Deep sunset, red-orange
+      topColor = "#DC143C";
+      bottomColor = "#FF6347";
     }
 
     return {
-      background: `linear-gradient(135deg,
-        hsl(${baseHue}, ${saturation}%, ${lightness}%) 0%,
-        hsl(${baseHue - 20}, ${saturation - 10}%, ${lightness - 8}%) 100%)`,
-      transition: "background 0.15s ease",
+      background: `linear-gradient(135deg, ${topColor} 0%, ${bottomColor} 100%)`,
+      transition: "background 0.2s ease",
     };
   };
 
