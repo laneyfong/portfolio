@@ -4,6 +4,7 @@ import { tokens } from "../tokens";
 
 interface Photo {
   src: string;
+  srcWebp?: string;
   alt: string;
 }
 
@@ -73,17 +74,20 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
               transition: isTransitioning ? "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
             }}
           >
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "50% 55%",
-                display: "block",
-              }}
-            />
+            <picture>
+              {photo.srcWebp && <source srcSet={photo.srcWebp} type="image/webp" />}
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "50% 55%",
+                  display: "block",
+                }}
+              />
+            </picture>
           </div>
         );
       })}
@@ -136,17 +140,22 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
             overflow: "hidden",
           }}
         >
-          <img
-            src={photos[currentIndex].src}
-            alt={photos[currentIndex].alt}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "50% 55%",
-              display: "block",
-            }}
-          />
+          <picture>
+            {photos[currentIndex].srcWebp && (
+              <source srcSet={photos[currentIndex].srcWebp!} type="image/webp" />
+            )}
+            <img
+              src={photos[currentIndex].src}
+              alt={photos[currentIndex].alt}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "50% 55%",
+                display: "block",
+              }}
+            />
+          </picture>
         </div>
 
       </div>

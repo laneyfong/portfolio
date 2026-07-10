@@ -18,6 +18,15 @@ import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
 import platoHome from "./assets/plato-home.png";
 import platoItinerary from "./assets/plato-itinerary.png";
 
+// Preload hero image for faster initial render
+if (typeof window !== 'undefined') {
+  const link = document.createElement('link');
+  link.rel = 'preload';
+  link.as = 'image';
+  link.href = laneyPhoto;
+  document.head.appendChild(link);
+}
+
 const PlatoCard: FC = () => {
   const [hovered, setHovered] = useState(false);
   const caption = "A solution to decision fatigue and itinerary planning.";
@@ -274,9 +283,7 @@ const Portfolio: FC = () => {
       </div>
 
       <div className="content-reveal">
-        <ContentContainer>
-          <Footer />
-        </ContentContainer>
+        <Footer />
       </div>
     </div>
   );

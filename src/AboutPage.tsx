@@ -8,8 +8,11 @@ import PhotoStack from "./components/PhotoStack";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
+import aboutBioPhotoWebp from "./assets/about-bio-photo.webp";
 import clubPic from "./assets/club-pic.jpg";
+import clubPicWebp from "./assets/club-pic.webp";
 import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
+import aboutStoryNewYorkWebp from "./assets/about-story-newyork.webp";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import cursorDog from "./assets/cursor-dog.png";
 
@@ -298,8 +301,8 @@ const AboutPage: FC = () => {
           >
             <PhotoStack
               photos={[
-                { src: aboutBioPhoto, alt: "Laney Fong in the SF Bay Area", label: "This is me!" },
-                { src: aboutStoryNewYork, alt: "Travel - New York", label: "I love traveling <3" },
+                { src: aboutBioPhoto, srcWebp: aboutBioPhotoWebp, alt: "Laney Fong in the SF Bay Area", label: "This is me!" },
+                { src: aboutStoryNewYork, srcWebp: aboutStoryNewYorkWebp, alt: "Travel - New York", label: "I love traveling <3" },
                 { src: aboutStoryFoodie, alt: "Foodie adventures", label: "Trying new restaurants is my hobby" },
               ]}
               onPhotoChange={(index) => setCurrentPhotoIndex(index)}
@@ -460,27 +463,28 @@ const AboutPage: FC = () => {
               onMouseLeave={() => setProudPhotoHovered(false)}
               style={{ borderRadius: tokens.radius.sm, overflow: "hidden", cursor: "pointer" }}
             >
-              <img
-                src={clubPic}
-                alt="UC Berkeley UX club members celebrating together"
-                style={{
-                  width: "100%",
-                  display: "block",
-                  filter: proudPhotoHovered
-                    ? "grayscale(0) brightness(1.1)"
-                    : "grayscale(1) brightness(1.15)",
-                  transition: "filter 0.3s ease",
-                }}
-              />
+              <picture>
+                <source srcSet={clubPicWebp} type="image/webp" />
+                <img
+                  src={clubPic}
+                  alt="UC Berkeley UX club members celebrating together"
+                  style={{
+                    width: "100%",
+                    display: "block",
+                    filter: proudPhotoHovered
+                      ? "grayscale(0) brightness(1.1)"
+                      : "grayscale(1) brightness(1.15)",
+                    transition: "filter 0.3s ease",
+                  }}
+                />
+              </picture>
             </div>
           </div>
         </div>
         </ContentContainer>
       </main>
 
-      <ContentContainer>
-        <Footer />
-      </ContentContainer>
+      <Footer />
     </div>
   );
 };

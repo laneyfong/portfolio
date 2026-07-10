@@ -355,9 +355,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
       </main>
 
       <div className="case-footer-wrap" style={{ marginLeft: SIDEBAR_WIDTH }}>
-        <ContentContainer>
-          <Footer />
-        </ContentContainer>
+        <Footer />
       </div>
     </div>
   );
