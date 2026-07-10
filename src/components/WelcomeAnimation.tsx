@@ -75,18 +75,6 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
           }
         }
 
-        @keyframes breathe {
-          0% {
-            opacity: 0.6;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0.6;
-          }
-        }
-
         .welcome-message {
           text-align: center;
           animation: welcomeFadeIn 0.6s ease-in-out forwards;
@@ -121,7 +109,7 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
           background-position: -1000px 0;
           background-clip: text;
           -webkit-background-clip: text;
-          animation: textShine 4.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite, breathe 6s ease-in-out infinite;
+          animation: textShine 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         .welcome-line + .welcome-line {
