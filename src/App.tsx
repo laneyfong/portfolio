@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Portfolio from "./Portfolio";
 import AboutPage from "./AboutPage";
 import LabPage from "./LabPage";
+import ProjectArchivePage from "./ProjectArchivePage";
 import MyShakeCaseStudy from "./MyShakeCaseStudy";
 import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<Portfolio />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/lab" element={<LabPage />} />
+        <Route path="/archive" element={<ProjectArchivePage />} />
         <Route path="/myshake-design" element={<MyShakeCaseStudy />} />
         <Route path="/nvidia-ai-ux-agent" element={<NvidiaCaseStudy />} />
       </Routes>

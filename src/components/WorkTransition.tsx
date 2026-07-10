@@ -111,7 +111,7 @@ const WorkTransition: FC = () => {
 
           <button
             className="work-transition-cta"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/archive")}
           >
             Browse Project Archive
             <span className="work-transition-arrow">→</span>
