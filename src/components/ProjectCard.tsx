@@ -201,8 +201,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 8,
-            padding: "8px 12px 12px 12px",
+            gap: 12,
+            padding: "16px 12px 12px 12px",
             borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
             transition: "border-color 0.5s ease",
             flexShrink: 0,
