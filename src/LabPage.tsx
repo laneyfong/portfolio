@@ -6,8 +6,9 @@ import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
+import MusicCard from "./components/MusicCard";
 
-type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
+type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "music";
 
 interface LabModuleProps {
   type: ModuleType;
@@ -19,7 +20,7 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
-  specialType?: "daylight" | "ascii-ripple";
+  specialType?: "daylight" | "ascii-ripple" | "music";
 }
 
 const LabPage: FC = () => {
@@ -45,6 +46,17 @@ const LabPage: FC = () => {
       tags: ["interaction", "animation", "ASCII", "ripple"],
       isSpecial: true,
       specialType: "ascii-ripple",
+    },
+    {
+      type: "music",
+      title: "Music Aura Visualizer",
+      description: "Ambient aura lights that pulse with the mood of the song. Listen and feel the emotional resonance visualized in color.",
+      experimentId: "EXP-2024-000B",
+      date: "Jan 2025",
+      status: "exploring",
+      tags: ["interaction", "audio", "visualization", "mood"],
+      isSpecial: true,
+      specialType: "music",
     },
     {
       type: "motion",
@@ -209,9 +221,17 @@ const LabPage: FC = () => {
                   <DayLightCard />
                 ) : exp.specialType === "ascii-ripple" ? (
                   <InteractiveTypography />
+                ) : exp.specialType === "music" ? (
+                  <MusicCard
+                    title="Blinding Lights"
+                    artist="The Weeknd"
+                    albumArt="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23000' width='200' height='200'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23FF1654'/%3E%3C/svg%3E"
+                    previewUrl="https://p.scdn.co/mp3-preview/8f1190fbc37c5c40d1054e756b4c1de9cb92e6bb"
+                    mood="energetic"
+                  />
                 ) : (
                   <LabCard
-                    type={exp.type as Exclude<ModuleType, "daylight">}
+                    type={exp.type as Exclude<ModuleType, "daylight" | "music">}
                     title={exp.title}
                     description={exp.description}
                     experimentId={exp.experimentId}
