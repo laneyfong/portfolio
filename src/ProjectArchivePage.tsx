@@ -181,15 +181,43 @@ const ProjectArchivePage: FC = () => {
       }}
     >
       <style>{`
-        @media (max-width: 1024px) {
-          .archive-grid {
-            grid-template-columns: 1fr !important;
+        .bento-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+        }
+
+        .bento-featured {
+          grid-column: 1 / -1;
+        }
+
+        @media (min-width: 900px) {
+          .bento-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+
+          .bento-featured {
+            grid-column: 1 / -1;
           }
         }
 
-        @media (max-width: 640px) {
-          .archive-grid {
-            grid-template-columns: 1fr !important;
+        @media (max-width: 900px) and (min-width: 768px) {
+          .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .bento-featured {
+            grid-column: 1 / -1;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .bento-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bento-featured {
+            grid-column: 1;
           }
         }
       `}</style>
@@ -227,22 +255,14 @@ const ProjectArchivePage: FC = () => {
             </p>
           </div>
 
-          {/* Featured: DoorDash Designathon */}
-          <div style={{ marginBottom: 80 }}>
-            <DashDesignathonCarousel images={[dash1, dash2, dash3]} />
-          </div>
+          {/* Bento Grid */}
+          <div className="bento-grid">
+            {/* Featured: DoorDash Designathon - Full Width */}
+            <div className="bento-featured">
+              <DashDesignathonCarousel images={[dash1, dash2, dash3]} />
+            </div>
 
-          {/* Grid of archive projects */}
-          <div
-            className="archive-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: 12,
-              alignItems: "stretch",
-              minWidth: 0,
-            }}
-          >
+            {/* Project Cards */}
             {archiveProjects.map((project, idx) => (
               <ProjectCard
                 key={idx}
