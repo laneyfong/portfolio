@@ -46,9 +46,20 @@ const ProjectCard: FC<ProjectCardProps> = ({
   return (
     <>
       <style>{`
+        .project-card-image {
+          transition: filter 0.4s linear;
+          filter: brightness(1);
+        }
+        .project-card:hover .project-card-image {
+          filter: brightness(0.15);
+        }
         @media (prefers-reduced-motion: reduce) {
           .project-card {
             transition: background-color 0s, border-color 0s, color 0s !important;
+          }
+          .project-card-image {
+            transition: none !important;
+            filter: brightness(1) !important;
           }
         }
       `}</style>
@@ -180,6 +191,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
       {/* Image Section - Centered */}
       <div
+        className="project-card-image"
         style={{
           flex: 1,
           display: "flex",
