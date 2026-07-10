@@ -50,8 +50,10 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments }) => {
           width: 100%;
           height: 100%;
           display: block;
+          object-fit: cover;
           filter: grayscale(1) brightness(1.15);
           transition: filter 0.3s ease;
+          cursor: pointer;
         }
 
         .carousel-container:hover .carousel-image {
@@ -148,6 +150,7 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments }) => {
               src={currentMoment.src}
               alt={currentMoment.alt}
               className="carousel-image"
+              onClick={goToNext}
             />
           </picture>
 
