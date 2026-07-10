@@ -5,6 +5,11 @@ import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import ProjectCard from "./components/ProjectCard";
 
+import clearMind from "./assets/clearmind.gif";
+import butterThumb from "./assets/butter-thumb.png";
+import ahaDashThumb from "./assets/aha-dash-thumb.png";
+import fff1Mind from "./assets/fff1mind.png";
+
 interface ArchiveProject {
   title: string;
   description: string;
@@ -17,6 +22,61 @@ interface ArchiveProject {
 
 const ProjectArchivePage: FC = () => {
   const archiveProjects: ArchiveProject[] = [
+    {
+      title: "ClearMind",
+      description: "Designathon project focused on mental health and wellness. Interactive meditation and mood tracking experience.",
+      italic: "Mental wellness app",
+      image: clearMind,
+      role: "Product Design & Prototyping",
+      metrics: [
+        { value: "Designathon", label: "competition" },
+        { value: "Interactive", label: "prototype" },
+      ],
+    },
+    {
+      title: "Job App Tracker",
+      description: "Designathon prototype for tracking job applications and managing the application pipeline.",
+      italic: "Application management",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23F5F5F5' width='400' height='300'/%3E%3Crect x='30' y='40' width='340' height='40' fill='%234A90E2' opacity='0.3'/%3E%3Crect x='30' y='100' width='340' height='30' fill='%234A90E2' opacity='0.2'/%3E%3Crect x='30' y='145' width='340' height='30' fill='%234A90E2' opacity='0.25'/%3E%3Crect x='30' y='190' width='340' height='30' fill='%234A90E2' opacity='0.2'/%3E%3C/svg%3E",
+      role: "UX/Product Design",
+      metrics: [
+        { value: "Designathon", label: "project" },
+        { value: "MVP", label: "status" },
+      ],
+    },
+    {
+      title: "Butter - Physical Product Design",
+      description: "Tactile design exploration for a physical product experience. Focus on material and user interaction.",
+      italic: "Tactile interaction",
+      image: butterThumb,
+      role: "Physical Product Design",
+      metrics: [
+        { value: "Prototype", label: "stage" },
+        { value: "Material", label: "focused" },
+      ],
+    },
+    {
+      title: "AHA Dashboard",
+      description: "Data visualization dashboard for real-time analytics and insights.",
+      italic: "Real-time analytics",
+      image: ahaDashThumb,
+      role: "Data Visualization & UX",
+      metrics: [
+        { value: "Dashboard", label: "type" },
+        { value: "Real-time", label: "data" },
+      ],
+    },
+    {
+      title: "FFF1 Mind - Physical Prototype",
+      description: "Exploratory physical design project pushing boundaries of interaction design and materiality.",
+      italic: "Physical exploration",
+      image: fff1Mind,
+      role: "Experimental Design",
+      metrics: [
+        { value: "Physical", label: "prototype" },
+        { value: "Exploratory", label: "research" },
+      ],
+    },
     {
       title: "Healthcare Dashboard Redesign",
       description: "Simplified patient data visualization. Reduced cognitive load by 40%.",
