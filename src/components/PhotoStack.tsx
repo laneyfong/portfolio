@@ -149,27 +149,6 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           />
         </div>
 
-        {/* Photo label in bottom border */}
-        {photos[currentIndex].label && (
-          <div
-            style={{
-              padding: "4px 8px",
-              fontFamily: tokens.font.sans,
-              fontSize: "12px",
-              fontWeight: tokens.weight.regular,
-              color: tokens.color.body,
-              textAlign: "center",
-              pointerEvents: "none",
-              letterSpacing: "0.3px",
-              minHeight: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {photos[currentIndex].label}
-          </div>
-        )}
       </div>
 
       {/* Click indicator */}

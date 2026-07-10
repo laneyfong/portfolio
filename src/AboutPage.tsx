@@ -35,6 +35,7 @@ const AboutPage: FC = () => {
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
   const [proudPhotoHovered, setProudPhotoHovered] = useState(false);
   const [dogWaving, setDogWaving] = useState(false);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const { ref: bioSectionRef, isVisible: bioVisible } = useScrollReveal({ threshold: 0.3 });
   const { ref: proudSectionRef, isVisible: proudVisible } = useScrollReveal({ threshold: 0.2 });
 
@@ -290,7 +291,7 @@ const AboutPage: FC = () => {
           {/* Center bio photo — interactive photo stack */}
           <div
             className="about-center-photo"
-            style={{ width: IMAGE_WIDTH, flexShrink: 0 }}
+            style={{ width: IMAGE_WIDTH, flexShrink: 0, position: "relative" }}
             onMouseEnter={() => setBioPhotoHovered(true)}
             onMouseLeave={() => setBioPhotoHovered(false)}
           >
@@ -300,7 +301,68 @@ const AboutPage: FC = () => {
                 { src: aboutStoryNewYork, alt: "Travel - New York", label: "I love traveling <3" },
                 { src: aboutStoryFoodie, alt: "Foodie adventures", label: "Trying new restaurants is my hobby" },
               ]}
+              onPhotoChange={(index) => setCurrentPhotoIndex(index)}
             />
+
+            {/* Side label with doodled arrow */}
+            <div
+              style={{
+                position: "absolute",
+                right: -140,
+                top: 40,
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              {/* Doodled arrow SVG */}
+              <svg width="80" height="50" viewBox="0 0 80 50" style={{ flexShrink: 0 }}>
+                <defs>
+                  <style>{`
+                    @keyframes arrowWiggle {
+                      0%, 100% { transform: translateX(0) translateY(0); }
+                      25% { transform: translateX(2px) translateY(-2px); }
+                      50% { transform: translateX(-1px) translateY(1px); }
+                      75% { transform: translateX(1px) translateY(-1px); }
+                    }
+                    .arrow-line {
+                      animation: arrowWiggle 3s ease-in-out infinite;
+                      transform-origin: center;
+                    }
+                  `}</style>
+                </defs>
+                <g className="arrow-line">
+                  {/* Squiggly arrow line */}
+                  <path
+                    d="M 5 25 Q 15 15, 25 25 T 45 25"
+                    stroke={tokens.color.body}
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  {/* Arrow head */}
+                  <path
+                    d="M 45 25 L 50 22 L 48 25 L 50 28 Z"
+                    fill={tokens.color.body}
+                  />
+                </g>
+              </svg>
+
+              {/* Handwritten label */}
+              <div
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  color: tokens.color.body,
+                  whiteSpace: "nowrap",
+                  transform: "rotate(-8deg)",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                {["This is me!", "I love traveling <3", "Trying new restaurants is my hobby"][currentPhotoIndex]}
+              </div>
+            </div>
           </div>
 
           {/* Contact panel — always visible, not gated behind the photo click */}
