@@ -7,8 +7,9 @@ import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
 import MusicCard from "./components/MusicCard";
+import SerialWordReader from "./components/SerialWordReader";
 
-type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "music";
+type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "music" | "serial-reader";
 
 interface LabModuleProps {
   type: ModuleType;
@@ -20,11 +21,22 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
-  specialType?: "daylight" | "ascii-ripple" | "music";
+  specialType?: "daylight" | "ascii-ripple" | "music" | "serial-reader";
 }
 
 const LabPage: FC = () => {
   const experiments: LabModuleProps[] = [
+    {
+      type: "serial-reader",
+      title: "Cognitive-Friendly Text Reader",
+      description: "Word-by-word reading interface for people with cognitive load challenges. Adjustable speed and full keyboard navigation. WCAG AAA compliant.",
+      experimentId: "EXP-2025-000",
+      date: "Jan 2025",
+      status: "exploring",
+      tags: ["accessibility", "cognitive", "reading", "WCAG"],
+      isSpecial: true,
+      specialType: "serial-reader",
+    },
     {
       type: "daylight",
       title: "Day/Night Light Simulation",
@@ -163,6 +175,7 @@ const LabPage: FC = () => {
         .lab-module:nth-child(7) { animation-delay: 450ms; }
         .lab-module:nth-child(8) { animation-delay: 500ms; }
         .lab-module:nth-child(9) { animation-delay: 550ms; }
+        .lab-module:nth-child(10) { animation-delay: 600ms; }
 
         @media (max-width: 1024px) {
           .lab-grid {
@@ -230,7 +243,12 @@ const LabPage: FC = () => {
           >
             {experiments.map((exp, idx) => (
               <div key={idx} className="lab-module" style={{ height: "100%" }}>
-                {exp.specialType === "daylight" ? (
+                {exp.specialType === "serial-reader" ? (
+                  <SerialWordReader
+                    title="Cognitive-Friendly Reading"
+                    text="Designed for people with cognitive overload. Read word-by-word at your own pace. Use the speed controls to find your comfort level. Adjust reading speed with regular, slow, or pause options. Full keyboard navigation support for accessibility."
+                  />
+                ) : exp.specialType === "daylight" ? (
                   <DayLightCard />
                 ) : exp.specialType === "ascii-ripple" ? (
                   <InteractiveTypography />
@@ -244,7 +262,7 @@ const LabPage: FC = () => {
                   />
                 ) : (
                   <LabCard
-                    type={exp.type as Exclude<ModuleType, "daylight" | "music">}
+                    type={exp.type as Exclude<ModuleType, "daylight" | "music" | "serial-reader">}
                     title={exp.title}
                     description={exp.description}
                     experimentId={exp.experimentId}
