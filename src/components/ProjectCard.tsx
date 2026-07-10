@@ -9,9 +9,6 @@ interface ProjectMetric {
 }
 
 interface ProjectCardProps {
-  logo: string;
-  logoAlt: string;
-  logoHeight?: number;
   screenshot: string;
   caption: string;
   captionItalic: string;
@@ -23,9 +20,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
-  logo,
-  logoAlt,
-  logoHeight = 24,
   screenshot,
   caption,
   captionItalic,
@@ -85,26 +79,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
         color: hovered ? "#ffffff" : tokens.color.body,
       }}
     >
-      {/* Logo - Top Left Corner */}
-      <div
-        style={{
-          position: "absolute",
-          top: 16,
-          left: 16,
-          zIndex: 10,
-        }}
-      >
-        <img
-          src={logo}
-          alt={logoAlt}
-          style={{
-            height: logoHeight,
-            width: "auto",
-            objectFit: "contain",
-          }}
-        />
-      </div>
-
       {/* Arrow CTA - Top Right Corner */}
       {to && (
         <div
@@ -119,7 +93,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             gap: 8,
           }}
         >
-          {/* "View details" text - appears on hover */}
+          {/* "View details" text */}
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -127,8 +101,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               fontSize: "12px",
               color: hovered ? "#ffffff" : tokens.color.body,
               whiteSpace: "nowrap",
-              opacity: hovered ? 1 : 0,
-              transition: "opacity 0.5s ease, color 0.5s ease",
+              transition: "color 0.5s ease",
               letterSpacing: tokens.tracking.tight,
             }}
           >

@@ -11,9 +11,7 @@ import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
-import myshakeLogo from "./assets/myshake-logo.png";
 import myshakeApp from "./assets/myshake-app.png";
-import nvidiaLogo from "./assets/nvidia-logo.png";
 import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
 import platoHome from "./assets/plato-home.png";
 import platoItinerary from "./assets/plato-itinerary.png";
@@ -246,9 +244,6 @@ const Portfolio: FC = () => {
             }}
           >
             <ProjectCard
-              logo={myshakeLogo}
-              logoAlt="MyShake"
-              logoHeight={20}
               screenshot={myshakeApp}
               layout="portrait"
               height={650}
@@ -263,9 +258,6 @@ const Portfolio: FC = () => {
             />
 
             <ProjectCard
-              logo={nvidiaLogo}
-              logoAlt="NVIDIA"
-              logoHeight={20}
               screenshot={uxAgentScreenshot}
               layout="landscape"
               height={650}
