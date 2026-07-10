@@ -224,6 +224,7 @@ const DayLightCard: FC = () => {
           ...getBackgroundStyle(),
           transition: "background 0.2s ease",
           userSelect: "none",
+          overflow: "hidden",
         }}
         ref={wheelRef}
         onMouseDown={handleWheelStart}
@@ -231,6 +232,32 @@ const DayLightCard: FC = () => {
         onMouseUp={handleWheelEnd}
         onMouseLeave={handleWheelEnd}
       >
+        {/* Sunset circle - fades in during sunset, fades out into night */}
+        {!isNight && time.hours >= 17 && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: "-20%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "280px",
+              height: "280px",
+              borderRadius: "50%",
+              // Calculate sunset progression (17:00 to 20:00 = 5 PM to 8 PM)
+              // At 5 PM: yellow, full opacity
+              // At 8 PM: fades out, becomes red
+              background: `radial-gradient(circle at 30% 30%,
+                hsl(${45 - (time.hours - 17) * 10}, 100%, ${60 - (time.hours - 17) * 8}%) 0%,
+                hsl(${35 - (time.hours - 17) * 12}, 90%, ${50 - (time.hours - 17) * 10}%) 40%,
+                transparent 70%)`,
+              opacity: Math.max(0, 1 - (time.hours - 17) / 3), // Fades out from 17:00 to 20:00
+              filter: "blur(60px)",
+              pointerEvents: "none",
+              zIndex: 1,
+            }}
+          />
+        )}
+
         {/* Stars for night mode */}
         {isNight &&
           stars.map((star) => (
