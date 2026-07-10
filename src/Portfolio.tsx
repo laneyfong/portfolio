@@ -26,6 +26,10 @@ if (typeof window !== 'undefined') {
 
 const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
+  const { ref: card1Ref, isVisible: card1Visible } = useScrollReveal();
+  const { ref: card2Ref, isVisible: card2Visible } = useScrollReveal();
+  const { ref: card3Ref, isVisible: card3Visible } = useScrollReveal();
+  const { ref: transitionRef, isVisible: transitionVisible } = useScrollReveal();
 
   const scrollToWork = () => {
     const target = document.getElementById("work");
@@ -88,6 +92,29 @@ const Portfolio: FC = () => {
           animation: ${workVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
+        .card-reveal {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        .card-1-reveal {
+          animation: ${card1Visible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+        }
+
+        .card-2-reveal {
+          animation: ${card2Visible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards" : "none"};
+        }
+
+        .card-3-reveal {
+          animation: ${card3Visible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards" : "none"};
+        }
+
+        .transition-reveal {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: ${transitionVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .top-nav-reveal,
           .badge-reveal,
@@ -138,39 +165,47 @@ const Portfolio: FC = () => {
               minWidth: 0,
             }}
           >
-            <ProjectCard
-              screenshot={myshakeApp}
-              layout="portrait"
-              height={650}
-              roleOutcome="Mobile Design × Crisis Response"
-              caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
-              captionItalic="45% engagement increase"
-              to="/myshake-design"
-            />
+            <div ref={card1Ref} className="card-reveal card-1-reveal">
+              <ProjectCard
+                screenshot={myshakeApp}
+                layout="portrait"
+                height={650}
+                roleOutcome="Mobile Design × Crisis Response"
+                caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
+                captionItalic="45% engagement increase"
+                to="/myshake-design"
+              />
+            </div>
 
-            <ProjectCard
-              screenshot={uxAgentScreenshot}
-              layout="landscape"
-              height={650}
-              roleOutcome="AI Design × Automation"
-              caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
-              captionItalic="Autonomous UX validation"
-              to="/nvidia-ai-ux-agent"
-            />
+            <div ref={card2Ref} className="card-reveal card-2-reveal">
+              <ProjectCard
+                screenshot={uxAgentScreenshot}
+                layout="landscape"
+                height={650}
+                roleOutcome="AI Design × Automation"
+                caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
+                captionItalic="Autonomous UX validation"
+                to="/nvidia-ai-ux-agent"
+              />
+            </div>
 
-            <ProjectCard
-              screenshot={platoHome}
-              layout="landscape"
-              height={550}
-              roleOutcome="Travel Planning × Decision Design"
-              caption="A solution to decision fatigue and itinerary planning for travelers."
-              captionItalic="decision fatigue"
-            />
+            <div ref={card3Ref} className="card-reveal card-3-reveal">
+              <ProjectCard
+                screenshot={platoHome}
+                layout="landscape"
+                height={550}
+                roleOutcome="Travel Planning × Decision Design"
+                caption="A solution to decision fatigue and itinerary planning for travelers."
+                captionItalic="decision fatigue"
+              />
+            </div>
           </div>
         </ContentContainer>
 
         <ContentContainer>
-          <WorkTransition />
+          <div ref={transitionRef} className="transition-reveal">
+            <WorkTransition />
+          </div>
         </ContentContainer>
       </div>
 
