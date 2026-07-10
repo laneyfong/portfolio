@@ -174,7 +174,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "12px",
+            paddingTop: "24px",
+            paddingBottom: "32px",
+            paddingLeft: "12px",
+            paddingRight: "12px",
             overflow: "hidden",
             minHeight: 0,
           }}
@@ -202,11 +205,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
             display: "flex",
             flexDirection: "column",
             gap: 12,
-            padding: "12px 12px 12px 12px",
+            padding: "12px 12px 16px 12px",
             borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
             transition: "border-color 0.5s ease",
-            flex: 1,
-            justifyContent: "center",
+            flexShrink: 0,
           }}
         >
           {/* Category Label */}
