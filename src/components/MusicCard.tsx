@@ -20,7 +20,13 @@ const MusicCard: FC<MusicCardProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [auraScale, setAuraScale] = useState(1);
+  const [auraOpacity, setAuraOpacity] = useState(0.3);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const dataArrayRef = useRef<Uint8Array | null>(null);
+  const animationIdRef = useRef<number | null>(null);
 
   const moodColors = {
     energetic: ["#FF6B35", "#FF8C42", "#FFA500", "#FFB347"],
@@ -30,6 +36,59 @@ const MusicCard: FC<MusicCardProps> = ({
   };
 
   const colors = moodColors[mood];
+
+  // Initialize audio analyzer
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !isPlaying) return;
+
+    try {
+      if (!audioContextRef.current) {
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+
+        const source = (audioContext as any).createMediaElementAudioSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
+
+        audioContextRef.current = audioContext;
+        analyserRef.current = analyser;
+        dataArrayRef.current = new Uint8Array(analyser.frequencyBinCount) as any;
+      }
+
+      const analyzeAudio = () => {
+        if (!analyserRef.current || !dataArrayRef.current) return;
+
+        analyserRef.current.getByteFrequencyData(dataArrayRef.current as any);
+        const dataArray = dataArrayRef.current;
+
+        // Calculate energy across frequency ranges
+        const bass = dataArray.slice(0, Math.floor(dataArray.length * 0.1)).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.1);
+        const mid = dataArray.slice(Math.floor(dataArray.length * 0.3), Math.floor(dataArray.length * 0.6)).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.3);
+        const treble = dataArray.slice(Math.floor(dataArray.length * 0.7), dataArray.length).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.3);
+
+        // Normalized energy (0-1)
+        const avgEnergy = (bass + mid + treble) / (3 * 255);
+        const normalizedEnergy = Math.min(avgEnergy * 2, 1);
+
+        setAuraScale(1 + normalizedEnergy * 0.3);
+        setAuraOpacity(0.2 + normalizedEnergy * 0.6);
+
+        animationIdRef.current = requestAnimationFrame(analyzeAudio);
+      };
+
+      analyzeAudio();
+    } catch (e) {
+      console.error("Audio context error:", e);
+    }
+
+    return () => {
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
+    };
+  }, [isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -91,7 +150,7 @@ const MusicCard: FC<MusicCardProps> = ({
           border-radius: ${tokens.radius.md};
           background: ${tokens.color.offWhite};
           border: 1px solid ${tokens.color.cardBorder};
-          overflow: visible;
+          overflow: hidden;
         }
 
         .aura {
@@ -107,7 +166,6 @@ const MusicCard: FC<MusicCardProps> = ({
           height: 280px;
           top: -40px;
           left: -40px;
-          animation: float-aura-1 6s ease-in-out infinite;
         }
 
         .aura-2 {
@@ -115,7 +173,6 @@ const MusicCard: FC<MusicCardProps> = ({
           height: 320px;
           bottom: -60px;
           right: -60px;
-          animation: float-aura-2 7s ease-in-out infinite 1s;
         }
 
         .aura-3 {
@@ -123,7 +180,6 @@ const MusicCard: FC<MusicCardProps> = ({
           height: 260px;
           top: 50%;
           right: -50px;
-          animation: float-aura-3 8s ease-in-out infinite 2s;
         }
 
         .aura-4 {
@@ -131,6 +187,22 @@ const MusicCard: FC<MusicCardProps> = ({
           height: 300px;
           bottom: -40px;
           left: -50px;
+        }
+
+        /* Animations only apply when not playing */
+        .music-card-container:not(:has(audio[playing])) .aura-1 {
+          animation: float-aura-1 6s ease-in-out infinite;
+        }
+
+        .music-card-container:not(:has(audio[playing])) .aura-2 {
+          animation: float-aura-2 7s ease-in-out infinite 1s;
+        }
+
+        .music-card-container:not(:has(audio[playing])) .aura-3 {
+          animation: float-aura-3 8s ease-in-out infinite 2s;
+        }
+
+        .music-card-container:not(:has(audio[playing])) .aura-4 {
           animation: float-aura-4 9s ease-in-out infinite 0.5s;
         }
 
@@ -277,10 +349,42 @@ const MusicCard: FC<MusicCardProps> = ({
 
       <div className="music-card-container">
         {/* Aura lights */}
-        <div className="aura aura-1" style={{ background: colors[0] }} />
-        <div className="aura aura-2" style={{ background: colors[1] }} />
-        <div className="aura aura-3" style={{ background: colors[2] }} />
-        <div className="aura aura-4" style={{ background: colors[3] }} />
+        <div
+          className="aura aura-1"
+          style={{
+            background: colors[0],
+            opacity: auraOpacity,
+            transform: `scale(${auraScale})`,
+            transition: isPlaying ? "none" : "all 0.2s ease",
+          }}
+        />
+        <div
+          className="aura aura-2"
+          style={{
+            background: colors[1],
+            opacity: auraOpacity,
+            transform: `scale(${auraScale * 0.95})`,
+            transition: isPlaying ? "none" : "all 0.2s ease",
+          }}
+        />
+        <div
+          className="aura aura-3"
+          style={{
+            background: colors[2],
+            opacity: auraOpacity,
+            transform: `scale(${auraScale * 1.05})`,
+            transition: isPlaying ? "none" : "all 0.2s ease",
+          }}
+        />
+        <div
+          className="aura aura-4"
+          style={{
+            background: colors[3],
+            opacity: auraOpacity,
+            transform: `scale(${auraScale})`,
+            transition: isPlaying ? "none" : "all 0.2s ease",
+          }}
+        />
 
         {/* Content */}
         <div className="music-content">
