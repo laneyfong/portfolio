@@ -67,13 +67,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
         minHeight: cardHeight,
         borderRadius: tokens.radius.sm,
         cursor: to ? "pointer" : "default",
-        transition: "transform 0.22s ease, box-shadow 0.22s ease",
-        transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        boxShadow: hovered ? tokens.shadow.subtle : "none",
-        backgroundColor: tokens.color.offWhite,
-        border: `1px solid ${tokens.color.cardBorder}`,
+        transition: "all 0.32s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
+        backgroundColor: hovered ? "#1a1a1a" : tokens.color.offWhite,
+        border: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
         overflow: "hidden",
         position: "relative",
+        color: hovered ? "#ffffff" : tokens.color.body,
       }}
     >
       {/* Logo - Top Left Corner */}
@@ -124,11 +124,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
               cx="16"
               cy="16"
               r="14"
-              fill={hovered ? tokens.color.body : "none"}
-              stroke={tokens.color.body}
+              fill={hovered ? "#ffffff" : "none"}
+              stroke={hovered ? "#ffffff" : tokens.color.body}
               strokeWidth="1.5"
               style={{
-                transition: "fill 0.22s ease",
+                transition: "fill 0.32s ease, stroke 0.32s ease",
               }}
             />
             {/* Arrow pointing right, rotates on hover */}
@@ -136,18 +136,18 @@ const ProjectCard: FC<ProjectCardProps> = ({
               style={{
                 transform: `rotate(${hovered ? -45 : 0}deg)`,
                 transformOrigin: "16px 16px",
-                transition: "transform 0.22s ease",
+                transition: "transform 0.32s ease",
               }}
             >
               <path
                 d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                stroke={hovered ? "#fff" : tokens.color.body}
+                stroke={hovered ? "#1a1a1a" : tokens.color.body}
                 strokeWidth="1.5"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 style={{
-                  transition: "stroke 0.22s ease",
+                  transition: "stroke 0.32s ease",
                 }}
               />
             </g>
@@ -187,7 +187,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           flexDirection: "column",
           gap: 12,
           padding: "16px 16px 20px 16px",
-          borderTop: `1px solid ${tokens.color.cardBorder}`,
+          borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
+          transition: "border-color 0.32s ease",
         }}
       >
         {roleOutcome && (
@@ -196,10 +197,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: "12px",
-              color: tokens.color.muted,
+              color: hovered ? "rgba(255, 255, 255, 0.7)" : tokens.color.muted,
               letterSpacing: tokens.tracking.tight,
               textTransform: "uppercase",
               lineHeight: tokens.leading.none,
+              transition: "color 0.32s ease",
             }}
           >
             {roleOutcome}
@@ -210,9 +212,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.regular,
             fontSize: "18px",
-            color: tokens.color.body,
+            color: hovered ? "#ffffff" : tokens.color.body,
             lineHeight: tokens.leading.snug,
             maxWidth: "100%",
+            transition: "color 0.32s ease",
           }}
         >
           {captionParts[0]}
@@ -232,8 +235,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     fontWeight: tokens.weight.medium,
                     fontSize: "14px",
                     letterSpacing: tokens.tracking.tight,
-                    color: tokens.color.ink,
+                    color: hovered ? "#ffffff" : tokens.color.ink,
                     lineHeight: tokens.leading.none,
+                    transition: "color 0.32s ease",
                   }}
                 >
                   {metric.value}
@@ -244,10 +248,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     fontFamily: tokens.font.sans,
                     fontWeight: tokens.weight.regular,
                     fontSize: "12px",
-                    color: tokens.color.body,
+                    color: hovered ? "rgba(255, 255, 255, 0.7)" : tokens.color.body,
                     lineHeight: tokens.leading.none,
                     whiteSpace: "nowrap",
                     opacity: 0.7,
+                    transition: "color 0.32s ease",
                   }}
                 >
                   {metric.label}
