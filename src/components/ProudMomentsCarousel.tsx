@@ -71,6 +71,7 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments }) => {
           color: white;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
           z-index: 5;
+          line-height: 1.5;
         }
 
         .carousel-nav {

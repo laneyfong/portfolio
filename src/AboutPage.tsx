@@ -471,7 +471,7 @@ const AboutPage: FC = () => {
                   src: designathonWin,
                   srcWebp: designathonWin,
                   alt: "Google Designathon Win",
-                  label: "Google Designathon",
+                  label: "We won first place in the Google Designathon building an app that connects unhoused individuals to resources. Shout out to my amazing team members Kaiwen, Hribav, Andrew, and Gabriel!",
                 },
               ]}
             />
