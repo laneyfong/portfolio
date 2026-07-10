@@ -228,7 +228,8 @@ const Portfolio: FC = () => {
               logoHeight={20}
               screenshot={myshakeApp}
               layout="portrait"
-              height={550}
+              height={650}
+              roleOutcome="Mobile Design × Crisis Response"
               caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
               captionItalic="45% engagement increase"
               metrics={[
@@ -244,7 +245,8 @@ const Portfolio: FC = () => {
               logoHeight={20}
               screenshot={uxAgentScreenshot}
               layout="landscape"
-              height={500}
+              height={650}
+              roleOutcome="AI Design × Automation"
               caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
               captionItalic="Autonomous UX validation"
               to="/nvidia-ai-ux-agent"

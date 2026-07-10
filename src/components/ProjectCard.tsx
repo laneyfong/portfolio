@@ -19,6 +19,7 @@ interface ProjectCardProps {
   height?: number;
   metrics?: ProjectMetric[];
   to?: string;
+  roleOutcome?: string;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -32,6 +33,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   height,
   metrics,
   to,
+  roleOutcome,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -129,6 +131,21 @@ const ProjectCard: FC<ProjectCardProps> = ({
           borderTop: `1px solid ${tokens.color.cardBorder}`,
         }}
       >
+        {roleOutcome && (
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "12px",
+              color: tokens.color.muted,
+              letterSpacing: tokens.tracking.tight,
+              textTransform: "uppercase",
+              lineHeight: tokens.leading.none,
+            }}
+          >
+            {roleOutcome}
+          </span>
+        )}
         <span
           style={{
             fontFamily: tokens.font.sans,
