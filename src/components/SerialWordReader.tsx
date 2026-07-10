@@ -315,7 +315,6 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           shortcut="1"
         />
         <SpeedButton
-          speed="slow"
           label="Slow Speed"
           color="#eab308"
           isActive={speed === "slow"}
@@ -325,7 +324,6 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           shortcut="2"
         />
         <SpeedButton
-          speed="stop"
           label="Pause"
           color="#ef4444"
           isActive={speed === "stop"}
