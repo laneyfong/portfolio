@@ -21,11 +21,11 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
     setIsTransitioning(true);
     const nextIndex = (currentIndex + 1) % photos.length;
 
-    // Longer delay for smooth shuffle animation
+    // Delay for shuffle animation
     setTimeout(() => {
       setCurrentIndex(nextIndex);
       setIsTransitioning(false);
-    }, 600);
+    }, 350);
 
     onPhotoChange?.(nextIndex);
   };
@@ -65,12 +65,12 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
               overflow: "hidden",
               aspectRatio: "3 / 2",
               transform: isTransitioning
-                ? `translate(${-stackOffset * offset}px, ${-stackOffset * offset}px) rotate(0deg)`
+                ? `translate(${-stackOffset * (offset - 1)}px, ${-stackOffset * (offset - 1)}px) rotate(0deg)`
                 : `rotate(${rotationAngle}deg)`,
               zIndex: 1 - offset,
-              opacity: 0.7 - offset * 0.2,
+              opacity: isTransitioning ? (0.7 - offset * 0.2) : (0.7 - offset * 0.2),
               pointerEvents: "none",
-              transition: isTransitioning ? "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none",
+              transition: isTransitioning ? "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
             }}
           >
             <img
@@ -111,13 +111,11 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           borderRadius: 2,
           overflow: "hidden",
           boxShadow: isHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
-          transform: isTransitioning
-            ? "translate(50px, 50px) rotate(12deg) scale(0.85)"
-            : "rotate(0deg)",
-          opacity: isTransitioning ? 0.2 : 1,
+          transform: isTransitioning ? "translateX(-100%)" : "translateX(0)",
+          opacity: isTransitioning ? 0 : 1,
           transition: isTransitioning
-            ? "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease"
-            : "transform 0.3s ease, box-shadow 0.22s ease, opacity 0.3s ease",
+            ? "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease-in"
+            : "transform 0.3s ease, box-shadow 0.22s ease",
           zIndex: 10,
           backgroundColor: tokens.color.offWhite,
         }}
@@ -134,24 +132,20 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           }}
         />
 
-        {/* Vintage photo label */}
+        {/* Digital camera photo label */}
         {photos[currentIndex].label && (
           <div
             style={{
               position: "absolute",
-              bottom: 16,
-              left: 16,
-              right: 16,
-              background: "rgba(255, 255, 255, 0.95)",
-              padding: "8px 12px",
-              borderRadius: 2,
-              fontFamily: "'Georgia', serif",
-              fontSize: "12px",
-              fontStyle: "italic",
-              color: "#666",
-              textAlign: "center",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+              top: 12,
+              left: 12,
+              fontFamily: tokens.font.sans,
+              fontSize: "11px",
+              fontWeight: tokens.weight.regular,
+              color: "rgba(255, 255, 255, 0.85)",
+              textShadow: "0 1px 3px rgba(0, 0, 0, 0.4)",
               pointerEvents: "none",
+              letterSpacing: "0.3px",
             }}
           >
             {photos[currentIndex].label}
