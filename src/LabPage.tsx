@@ -5,7 +5,7 @@ import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
-import ASCIIArtCard from "./components/ASCIIArtCard";
+import InteractiveTypography from "./components/InteractiveTypography";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
@@ -208,7 +208,7 @@ const LabPage: FC = () => {
                 {exp.specialType === "daylight" ? (
                   <DayLightCard />
                 ) : exp.specialType === "ascii-ripple" ? (
-                  <ASCIIArtCard />
+                  <InteractiveTypography />
                 ) : (
                   <LabCard
                     type={exp.type as Exclude<ModuleType, "daylight">}
