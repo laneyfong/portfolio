@@ -14,15 +14,45 @@ const DayLightCard: FC = () => {
   const startYRef = useRef(0);
   const scrollOffsetRef = useRef(0);
 
-  // Calculate lighting based on time
+  // Calculate lighting and colors based on time with smooth transitions
   const calculateLighting = (hours: number) => {
+    // 8 AM to 8 PM progression
     if (hours >= 8 && hours < 20) {
-      const progress = (hours - 8) / 12;
-      const brightness = 1 - progress * 0.3;
-      const warmth = 1 - progress * 0.5;
-      return { brightness, warmth, isNight: false };
+      // 8 AM - 12 PM: Bright morning (8-12)
+      // 12 PM - 5 PM: Warm afternoon (12-17)
+      // 5 PM - 7 PM: Golden sunset (17-19)
+      // 7 PM - 8 PM: Deep orange sunset (19-20)
+
+      const progress = (hours - 8) / 12; // 0 to 1
+
+      // Brightness gradually decreases
+      const brightness = 1 - progress * 0.6; // 100% to 40%
+
+      // Warmth increases significantly for sunset effect
+      // 8-12 (morning): cool blues (warmth 0)
+      // 12-17 (afternoon): warming up (warmth 0 to 0.5)
+      // 17-19 (sunset): very warm (warmth 0.5 to 1)
+      // 19-20 (deep sunset): deepest orange (warmth 1)
+
+      let warmth = 0;
+      if (hours < 12) {
+        // Morning: 8-12, warmth stays cool
+        warmth = 0;
+      } else if (hours < 17) {
+        // Afternoon: 12-17, gradually warming
+        warmth = (hours - 12) / 5 * 0.5; // 0 to 0.5
+      } else if (hours < 19) {
+        // Sunset: 17-19, getting very warm
+        warmth = 0.5 + (hours - 17) / 2 * 0.5; // 0.5 to 1
+      } else {
+        // Deep sunset: 19-20, deepest warmth
+        warmth = 1;
+      }
+
+      return { brightness, warmth, isNight: false, progress };
     } else {
-      return { brightness: 0.2, warmth: 0, isNight: true };
+      // Night mode
+      return { brightness: 0.2, warmth: 0, isNight: true, progress: 1 };
     }
   };
 
@@ -34,14 +64,40 @@ const DayLightCard: FC = () => {
         background: `linear-gradient(135deg, #0a1428 0%, #1a2a4a 100%)`,
       };
     }
-    const baseHue = 200 + warmth * 30;
-    const saturation = 30 + warmth * 20;
-    const lightness = 85 - (1 - brightness) * 30;
+
+    // Smooth color progression from cool blue (morning) to deep orange (sunset)
+    // 8 AM: Light sky blue
+    // 12 PM: Warm day blue
+    // 5 PM: Golden orange
+    // 7 PM: Deep orange/red
+    // 8 PM: Deep night
+
+    let baseHue = 200; // Start with sky blue
+    let saturation = 40;
+    let lightness = 80;
+
+    if (warmth < 0.2) {
+      // Morning (8-12): Cool blue skies
+      baseHue = 200;
+      saturation = 35;
+      lightness = 85 - (1 - brightness) * 15;
+    } else if (warmth < 0.5) {
+      // Afternoon (12-17): Warmer tones
+      baseHue = 200 - (warmth - 0.2) / 0.3 * 40; // 200 to 160
+      saturation = 35 + (warmth - 0.2) / 0.3 * 15;
+      lightness = 80 - (1 - brightness) * 20;
+    } else if (warmth < 1) {
+      // Sunset (17-20): Golden to deep orange
+      baseHue = 160 - (warmth - 0.5) / 0.5 * 80; // 160 to 80
+      saturation = 50 + (warmth - 0.5) / 0.5 * 40;
+      lightness = 70 - (1 - brightness) * 25;
+    }
 
     return {
       background: `linear-gradient(135deg,
         hsl(${baseHue}, ${saturation}%, ${lightness}%) 0%,
-        hsl(${baseHue - 10}, ${saturation - 10}%, ${lightness - 5}%) 100%)`,
+        hsl(${baseHue - 20}, ${saturation - 10}%, ${lightness - 8}%) 100%)`,
+      transition: "background 0.15s ease",
     };
   };
 
@@ -219,61 +275,66 @@ const DayLightCard: FC = () => {
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
+            gap: 0,
           }}
         >
           <div
             style={{
               position: "relative",
               height: 240,
-              width: "100%",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "flex-end",
+              flex: 1,
             }}
           >
-            {/* Hours display */}
+            {/* Hours display (scrollable) */}
             {visibleHours.map((h) => (
               <div
                 key={h.value}
                 className={h.offset === 0 ? "hour-number selected" : "hour-number"}
                 style={{
+                  position: "absolute",
                   color: isNight ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)",
                   opacity: h.offset === 0 ? 1 : 0.3,
                   transform: `translateY(${h.offset * 70}px)`,
                   letterSpacing: "-2px",
+                  right: "25%",
                 }}
               >
                 {String(h.value).padStart(2, "0")}
               </div>
             ))}
+          </div>
 
-            {/* Colon separator */}
-            <div
-              style={{
-                position: "absolute",
-                right: "35%",
-                fontSize: 48,
-                fontWeight: 500,
-                color: isNight ? "rgba(255, 255, 255, 0.4)" : "rgba(0, 0, 0, 0.2)",
-                letterSpacing: "-2px",
-              }}
-            >
-              :
-            </div>
+          {/* Colon separator */}
+          <div
+            style={{
+              fontSize: 48,
+              fontWeight: 500,
+              color: isNight ? "rgba(255, 255, 255, 0.4)" : "rgba(0, 0, 0, 0.2)",
+              letterSpacing: "-2px",
+              padding: "0 8px",
+              flexShrink: 0,
+            }}
+          >
+            :
+          </div>
 
-            {/* Minutes (fixed at 00) */}
-            <div
-              style={{
-                position: "absolute",
-                left: "35%",
-                fontSize: 56,
-                fontWeight: 500,
-                color: isNight ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)",
-                letterSpacing: "-2px",
-              }}
-            >
-              00
-            </div>
+          {/* Minutes (fixed at 00) - on the right side, not overlapping */}
+          <div
+            style={{
+              fontSize: 56,
+              fontWeight: 500,
+              color: isNight ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.85)",
+              letterSpacing: "-2px",
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          >
+            00
           </div>
         </div>
       </div>
