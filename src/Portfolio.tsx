@@ -250,10 +250,6 @@ const Portfolio: FC = () => {
               roleOutcome="Mobile Design × Crisis Response"
               caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
               captionItalic="45% engagement increase"
-              metrics={[
-                { value: "45%", label: "↑ engagement" },
-                { value: "7→3", label: "steps to check loved ones" },
-              ]}
               to="/myshake-design"
             />
 
