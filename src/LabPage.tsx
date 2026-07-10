@@ -238,7 +238,7 @@ const LabPage: FC = () => {
                   <MusicCard
                     title="Blinding Lights"
                     artist="The Weeknd"
-                    albumArt="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23000' width='200' height='200'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23FF1654'/%3E%3C/svg%3E"
+                    albumArt="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF1654;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%23FF6B9D;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23000080;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='200' height='200'/%3E%3Ccircle cx='100' cy='100' r='50' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E"
                     previewUrl="https://p.scdn.co/mp3-preview/8f1190fbc37c5c40d1054e756b4c1de9cb92e6bb"
                     mood="energetic"
                   />

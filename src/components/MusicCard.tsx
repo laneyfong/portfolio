@@ -106,14 +106,21 @@ const MusicCard: FC<MusicCardProps> = ({
       setIsPlaying(false);
     };
 
+    const handleError = () => {
+      console.error("Audio load error:", audio.error);
+      setIsPlaying(false);
+    };
+
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
     audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("error", handleError);
 
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
       audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("error", handleError);
     };
   }, []);
 
@@ -121,10 +128,22 @@ const MusicCard: FC<MusicCardProps> = ({
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play();
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsPlaying(true);
+            })
+            .catch((error) => {
+              console.error("Play error:", error);
+              setIsPlaying(false);
+            });
+        } else {
+          setIsPlaying(true);
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
