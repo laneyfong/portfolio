@@ -89,21 +89,21 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
           font-size: 28px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
-          color: ${tokens.color.body};
+          color: transparent;
           line-height: 1.3;
           margin: 0;
           position: relative;
           background: linear-gradient(
             90deg,
-            transparent 0%,
-            rgb(255, 0, 0) 12%,
-            rgb(255, 127, 0) 25%,
-            rgb(255, 255, 0) 37%,
-            rgb(0, 255, 0) 50%,
-            rgb(0, 0, 255) 62%,
-            rgb(75, 0, 130) 75%,
-            rgb(148, 0, 211) 87%,
-            transparent 100%
+            ${tokens.color.body} 0%,
+            rgb(255, 0, 0) 8%,
+            rgb(255, 127, 0) 20%,
+            rgb(255, 255, 0) 32%,
+            rgb(0, 200, 0) 44%,
+            rgb(0, 0, 255) 56%,
+            rgb(75, 0, 130) 68%,
+            rgb(148, 0, 211) 80%,
+            ${tokens.color.body} 100%
           );
           background-size: 1000px 100%;
           background-position: -1000px 0;
