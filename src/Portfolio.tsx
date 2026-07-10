@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
+import ContentContainer from "./components/ContentContainer";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
@@ -200,7 +201,7 @@ const Portfolio: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "80px clamp(32px, 7vw, 80px) 0", boxSizing: "border-box", marginTop: "64px" }}>
+      <main style={{ width: "100%", padding: "80px 0 0", boxSizing: "border-box", marginTop: "64px" }}>
         <div
           className="badge-section badge-reveal"
           style={{
@@ -222,8 +223,8 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", padding: "0 clamp(32px, 7vw, 80px) clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
-        <div style={{ maxWidth: 1450, margin: "0 auto", width: "100%" }}>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(80px, 12vw, 150px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+        <ContentContainer>
           <div
             id="work"
             className="grid-cols work-grid"
@@ -267,13 +268,15 @@ const Portfolio: FC = () => {
 
             <PlatoCard />
           </div>
-        </div>
 
-        <MoreWorkSection />
+          <MoreWorkSection />
+        </ContentContainer>
       </div>
 
       <div className="content-reveal">
-        <Footer />
+        <ContentContainer>
+          <Footer />
+        </ContentContainer>
       </div>
     </div>
   );

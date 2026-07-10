@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
+import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
@@ -162,89 +163,90 @@ const LabPage: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "80px clamp(32px, 7vw, 80px)", boxSizing: "border-box", marginTop: "64px" }}>
-        {/* Header */}
-        <div style={{ marginBottom: 72 }}>
-          <h1
+      <main style={{ width: "100%", padding: "80px 0", boxSizing: "border-box", marginTop: "64px" }}>
+        <ContentContainer>
+          {/* Header */}
+          <div style={{ marginBottom: 72 }}>
+            <h1
+              style={{
+                margin: "0 0 16px 0",
+                fontFamily: tokens.font.sans,
+                fontSize: "44px",
+                fontWeight: tokens.weight.medium,
+                color: tokens.color.ink,
+                lineHeight: 1.2,
+              }}
+            >
+              Lab
+            </h1>
+            <p
+              style={{
+                margin: 0,
+                maxWidth: 600,
+                fontFamily: tokens.font.sans,
+                fontSize: "16px",
+                fontWeight: tokens.weight.regular,
+                color: tokens.color.body,
+                lineHeight: 1.6,
+                opacity: 0.8,
+              }}
+            >
+              Experiments in motion, interaction, accessibility, and AI. A glimpse into how I think, explore, and push boundaries beyond finished work.
+            </p>
+          </div>
+
+          {/* Grid */}
+          <div
             style={{
-              margin: "0 0 16px 0",
-              fontFamily: tokens.font.sans,
-              fontSize: "44px",
-              fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
-              lineHeight: 1.2,
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "20px",
             }}
           >
-            Lab
-          </h1>
-          <p
+            {experiments.map((exp, idx) => (
+              <div key={idx} className="lab-module" style={{ height: "100%" }}>
+                {exp.specialType === "daylight" ? (
+                  <DayLightCard />
+                ) : exp.specialType === "ascii-ripple" ? (
+                  <ASCIIArtCard />
+                ) : (
+                  <LabCard
+                    type={exp.type as Exclude<ModuleType, "daylight">}
+                    title={exp.title}
+                    description={exp.description}
+                    experimentId={exp.experimentId}
+                    date={exp.date}
+                    status={exp.status}
+                    tags={exp.tags}
+                    isLoading={exp.isLoading}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Footer Note */}
+          <div
             style={{
-              margin: 0,
-              maxWidth: 600,
+              marginTop: 80,
+              paddingTop: 40,
+              borderTop: `1px solid ${tokens.color.cardBorder}`,
+              fontSize: "13px",
               fontFamily: tokens.font.sans,
-              fontSize: "16px",
               fontWeight: tokens.weight.regular,
-              color: tokens.color.body,
+              color: tokens.color.muted,
+              opacity: 0.6,
               lineHeight: 1.6,
-              opacity: 0.8,
             }}
           >
-            Experiments in motion, interaction, accessibility, and AI. A glimpse into how I think, explore, and push boundaries beyond finished work.
-          </p>
-        </div>
-
-        {/* Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "20px",
-            maxWidth: 1450,
-          }}
-        >
-          {experiments.map((exp, idx) => (
-            <div key={idx} className="lab-module" style={{ height: "100%" }}>
-              {exp.specialType === "daylight" ? (
-                <DayLightCard />
-              ) : exp.specialType === "ascii-ripple" ? (
-                <ASCIIArtCard />
-              ) : (
-                <LabCard
-                  type={exp.type as Exclude<ModuleType, "daylight">}
-                  title={exp.title}
-                  description={exp.description}
-                  experimentId={exp.experimentId}
-                  date={exp.date}
-                  status={exp.status}
-                  tags={exp.tags}
-                  isLoading={exp.isLoading}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Footer Note */}
-        <div
-          style={{
-            marginTop: 80,
-            paddingTop: 40,
-            borderTop: `1px solid ${tokens.color.cardBorder}`,
-            fontSize: "13px",
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.regular,
-            color: tokens.color.muted,
-            opacity: 0.6,
-            lineHeight: 1.6,
-          }}
-        >
-          <p>
-            This Lab is ever-evolving. Experiments get paused, refined, or combined into larger explorations. Some become production features. Others teach me what <em>not</em> to do.
-          </p>
-          <p>
-            Curious about a specific experiment? Ideas for collaboration? <a href="mailto:laneyrfong@gmail.com" style={{ color: "inherit", textDecoration: "underline" }}>Let's talk</a>.
-          </p>
-        </div>
+            <p>
+              This Lab is ever-evolving. Experiments get paused, refined, or combined into larger explorations. Some become production features. Others teach me what <em>not</em> to do.
+            </p>
+            <p>
+              Curious about a specific experiment? Ideas for collaboration? <a href="mailto:laneyrfong@gmail.com" style={{ color: "inherit", textDecoration: "underline" }}>Let's talk</a>.
+            </p>
+          </div>
+        </ContentContainer>
       </main>
 
       <Footer />

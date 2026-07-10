@@ -92,7 +92,8 @@
       "Bash(open http://localhost:5175)",
       "Bash(npm list *)",
       "Bash(xargs cat)",
-      "Bash(screencapture -C -x /tmp/portfolio_animation.png)"
+      "Bash(screencapture -C -x /tmp/portfolio_animation.png)",
+      "Bash(grep -E \"\\(Page|App\\)\\\\.tsx$\")"
     ]
   }
 }

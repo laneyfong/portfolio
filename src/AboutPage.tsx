@@ -2,6 +2,7 @@ import type { FC, ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
+import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import PhotoStack from "./components/PhotoStack";
 import { useScrollReveal } from "./hooks/useScrollReveal";
@@ -261,8 +262,8 @@ const AboutPage: FC = () => {
 
       <TopNav />
 
-      <main style={{ marginLeft: 120, width: "calc(100% - 120px)", padding: "64px clamp(32px, 7vw, 80px) 96px", boxSizing: "border-box" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", width: "100%" }}>
+      <main style={{ width: "100%", padding: "64px 0 96px", boxSizing: "border-box", marginTop: "64px" }}>
+        <ContentContainer>
         <div style={{ width: HERO_WIDTH, margin: "0 auto 20px" }}>
           <h1
             style={{
@@ -474,10 +475,12 @@ const AboutPage: FC = () => {
             </div>
           </div>
         </div>
-        </div>
+        </ContentContainer>
       </main>
 
-      <Footer />
+      <ContentContainer>
+        <Footer />
+      </ContentContainer>
     </div>
   );
 };

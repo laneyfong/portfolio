@@ -2,6 +2,7 @@ import type { FC, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../../tokens";
+import ContentContainer from "../ContentContainer";
 import Footer from "../Footer";
 import { BackArrowIcon, ChevronIcon } from "./CaseStudyKit";
 
@@ -344,16 +345,19 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         className="case-main"
         style={{
           marginLeft: SIDEBAR_WIDTH,
-          maxWidth: 940,
-          padding: "80px clamp(24px, 6vw, 64px) 0",
+          padding: "80px 0 0",
           boxSizing: "border-box",
         }}
       >
-        {children}
+        <ContentContainer>
+          {children}
+        </ContentContainer>
       </main>
 
       <div className="case-footer-wrap" style={{ marginLeft: SIDEBAR_WIDTH }}>
-        <Footer />
+        <ContentContainer>
+          <Footer />
+        </ContentContainer>
       </div>
     </div>
   );
