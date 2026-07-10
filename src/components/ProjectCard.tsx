@@ -67,8 +67,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
         minHeight: cardHeight,
         borderRadius: tokens.radius.sm,
         cursor: to ? "pointer" : "default",
-        transition: "all 0.32s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
+        transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        transform: hovered ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
         backgroundColor: hovered ? "#1a1a1a" : tokens.color.offWhite,
         border: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
         overflow: "hidden",
@@ -128,7 +128,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               stroke={hovered ? "#ffffff" : tokens.color.body}
               strokeWidth="1.5"
               style={{
-                transition: "fill 0.32s ease, stroke 0.32s ease",
+                transition: "fill 0.5s ease, stroke 0.5s ease",
               }}
             />
             {/* Arrow pointing right, rotates on hover */}
@@ -136,7 +136,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               style={{
                 transform: `rotate(${hovered ? -45 : 0}deg)`,
                 transformOrigin: "16px 16px",
-                transition: "transform 0.32s ease",
+                transition: "transform 0.5s ease",
               }}
             >
               <path
@@ -147,7 +147,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 style={{
-                  transition: "stroke 0.32s ease",
+                  transition: "stroke 0.5s ease",
                 }}
               />
             </g>
@@ -188,7 +188,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           gap: 12,
           padding: "16px 16px 20px 16px",
           borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
-          transition: "border-color 0.32s ease",
+          transition: "border-color 0.5s ease",
         }}
       >
         {roleOutcome && (
@@ -201,7 +201,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               letterSpacing: tokens.tracking.tight,
               textTransform: "uppercase",
               lineHeight: tokens.leading.none,
-              transition: "color 0.32s ease",
+              transition: "color 0.5s ease",
             }}
           >
             {roleOutcome}
@@ -237,7 +237,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     letterSpacing: tokens.tracking.tight,
                     color: hovered ? "#ffffff" : tokens.color.ink,
                     lineHeight: tokens.leading.none,
-                    transition: "color 0.32s ease",
+                    transition: "color 0.5s ease",
                   }}
                 >
                   {metric.value}
@@ -252,7 +252,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                     lineHeight: tokens.leading.none,
                     whiteSpace: "nowrap",
                     opacity: 0.7,
-                    transition: "color 0.32s ease",
+                    transition: "color 0.5s ease",
                   }}
                 >
                   {metric.label}
