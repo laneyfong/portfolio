@@ -85,7 +85,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "space-between",
-            gap: 12,
+            gap: 24,
             padding: "16px 16px 12px 16px",
             flexShrink: 0,
           }}
