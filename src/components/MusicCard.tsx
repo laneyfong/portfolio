@@ -39,51 +39,40 @@ const MusicCard: FC<MusicCardProps> = ({
 
   const colors = moodColors[mood];
 
-  // Initialize audio analyzer
+  // Analyze audio and update visuals
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio || !isPlaying) return;
+    if (!isPlaying || !analyserRef.current || !dataArrayRef.current) return;
 
-    try {
-      if (!audioContextRef.current) {
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const analyser = audioContext.createAnalyser();
-        analyser.fftSize = 256;
+    const analyzeAudio = () => {
+      if (!analyserRef.current || !dataArrayRef.current) return;
 
-        const source = (audioContext as any).createMediaElementAudioSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
+      analyserRef.current.getByteFrequencyData(dataArrayRef.current as any);
+      const dataArray = dataArrayRef.current;
 
-        audioContextRef.current = audioContext;
-        analyserRef.current = analyser;
-        dataArrayRef.current = new Uint8Array(analyser.frequencyBinCount) as any;
+      // Calculate energy across frequency ranges
+      const bass = dataArray.slice(0, Math.floor(dataArray.length * 0.1)).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.1);
+      const mid = dataArray.slice(Math.floor(dataArray.length * 0.3), Math.floor(dataArray.length * 0.6)).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.3);
+      const treble = dataArray.slice(Math.floor(dataArray.length * 0.7), dataArray.length).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.3);
+
+      // Normalized energy (0-1)
+      const avgEnergy = (bass + mid + treble) / (3 * 255);
+      const normalizedEnergy = Math.min(avgEnergy * 2, 1);
+
+      setAuraScale(1 + normalizedEnergy * 0.3);
+      setAuraOpacity(0.2 + normalizedEnergy * 0.6);
+
+      // Simulate progress (30 second loop)
+      const audioContext = audioContextRef.current;
+      if (audioContext) {
+        const elapsed = audioContext.currentTime - ((audioContext as any).startTime || 0);
+        setProgress(elapsed % 30);
+        setDuration(30);
       }
 
-      const analyzeAudio = () => {
-        if (!analyserRef.current || !dataArrayRef.current) return;
+      animationIdRef.current = requestAnimationFrame(analyzeAudio);
+    };
 
-        analyserRef.current.getByteFrequencyData(dataArrayRef.current as any);
-        const dataArray = dataArrayRef.current;
-
-        // Calculate energy across frequency ranges
-        const bass = dataArray.slice(0, Math.floor(dataArray.length * 0.1)).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.1);
-        const mid = dataArray.slice(Math.floor(dataArray.length * 0.3), Math.floor(dataArray.length * 0.6)).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.3);
-        const treble = dataArray.slice(Math.floor(dataArray.length * 0.7), dataArray.length).reduce((a, b) => a + b, 0) / Math.floor(dataArray.length * 0.3);
-
-        // Normalized energy (0-1)
-        const avgEnergy = (bass + mid + treble) / (3 * 255);
-        const normalizedEnergy = Math.min(avgEnergy * 2, 1);
-
-        setAuraScale(1 + normalizedEnergy * 0.3);
-        setAuraOpacity(0.2 + normalizedEnergy * 0.6);
-
-        animationIdRef.current = requestAnimationFrame(analyzeAudio);
-      };
-
-      analyzeAudio();
-    } catch (e) {
-      console.error("Audio context error:", e);
-    }
+    analyzeAudio();
 
     return () => {
       if (animationIdRef.current) {
@@ -144,30 +133,64 @@ const MusicCard: FC<MusicCardProps> = ({
   }, []);
 
   const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-        console.log("Music paused");
-      } else {
-        console.log("Attempting to play:", audioRef.current.src);
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              console.log("Music playing successfully");
-              setIsPlaying(true);
-            })
-            .catch((error) => {
-              console.error("Play error:", error);
-              setIsPlaying(false);
-            });
-        } else {
-          setIsPlaying(true);
+    if (isPlaying) {
+      // Stop synthesized audio
+      if (analyserRef.current?.context) {
+        const gainNode = (analyserRef.current?.context as any).gainNode;
+        if (gainNode) {
+          gainNode.gain.setValueAtTime(0, (analyserRef.current.context as any).currentTime);
         }
       }
+      setIsPlaying(false);
+      setProgress(0);
+      console.log("Synth audio stopped");
     } else {
-      console.error("Audio ref not available");
+      // Start synthesized audio
+      try {
+        if (!audioContextRef.current) {
+          const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+          const analyser = audioContext.createAnalyser();
+          analyser.fftSize = 256;
+
+          // Create oscillators for audio synthesis
+          const osc1 = audioContext.createOscillator();
+          const osc2 = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+
+          osc1.type = "sine";
+          osc2.type = "triangle";
+          osc1.frequency.value = 440;
+          osc2.frequency.value = 220;
+
+          gainNode.gain.value = 0.3;
+
+          osc1.connect(gainNode);
+          osc2.connect(gainNode);
+          gainNode.connect(analyser);
+          analyser.connect(audioContext.destination);
+
+          osc1.start();
+          osc2.start();
+
+          audioContextRef.current = audioContext;
+          analyserRef.current = analyser;
+          dataArrayRef.current = new Uint8Array(analyser.frequencyBinCount) as any;
+          (audioContext as any).gainNode = gainNode;
+          (audioContext as any).osc1 = osc1;
+          (audioContext as any).osc2 = osc2;
+          (audioContext as any).startTime = audioContext.currentTime;
+        }
+
+        setAudioLoaded(true);
+        setAudioError(null);
+        setIsPlaying(true);
+        setProgress(0);
+        console.log("Synth audio started");
+      } catch (error) {
+        console.error("Audio synthesis error:", error);
+        setAudioError("Unable to start audio");
+        setIsPlaying(false);
+      }
     }
   };
 
