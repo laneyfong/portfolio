@@ -66,6 +66,28 @@ const TopNav: FC = () => {
           text-decoration: none;
           cursor: pointer;
           flex-shrink: 0;
+          position: relative;
+          background: linear-gradient(
+            90deg,
+            #ff0000,
+            #ff7f00,
+            #ffff00,
+            #00ff00,
+            #0000ff,
+            #4b0082,
+            #9400d3,
+            #ff0000
+          );
+          background-size: 200% 100%;
+          background-position: 200% 0;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          transition: background-position 3s ease;
+        }
+
+        .top-nav-brand:hover {
+          background-position: -200% 0;
         }
 
         .top-nav-links {
