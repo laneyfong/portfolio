@@ -304,16 +304,16 @@ const AboutPage: FC = () => {
               onPhotoChange={(index) => setCurrentPhotoIndex(index)}
             />
 
-            {/* Label above contact section */}
+            {/* Side label with doodled arrow */}
             <div
               style={{
                 position: "absolute",
-                right: 0,
-                bottom: -100,
+                right: -200,
+                top: -60,
                 display: "flex",
                 alignItems: "center",
                 gap: 16,
-                zIndex: 10,
+                zIndex: 100,
                 pointerEvents: "none",
               }}
             >
