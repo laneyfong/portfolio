@@ -67,7 +67,7 @@ const InteractiveTypography: FC = () => {
     const fontSize = 11;
     const fontFamily = "monospace";
     ctx.font = `${fontSize}px ${fontFamily}`;
-    ctx.fillStyle = "#D0D0D0";
+    ctx.fillStyle = "#999999";
     ctx.textBaseline = "top";
 
     // Create letter grid
