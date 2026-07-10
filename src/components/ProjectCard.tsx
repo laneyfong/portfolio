@@ -78,8 +78,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
         cursor: to ? "pointer" : "default",
         transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
         transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
-        backgroundColor: hovered ? "#1a1a1a" : tokens.color.offWhite,
-        border: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
+        backgroundColor: hovered ? "#2a2a2a" : tokens.color.offWhite,
+        border: `1px solid ${hovered ? "#3a3a3a" : tokens.color.cardBorder}`,
         overflow: "hidden",
         position: "relative",
         color: hovered ? "#ffffff" : tokens.color.body,
@@ -150,7 +150,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             >
               <path
                 d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                stroke={hovered ? "#1a1a1a" : tokens.color.body}
+                stroke={hovered ? "#2a2a2a" : tokens.color.body}
                 strokeWidth="1.5"
                 fill="none"
                 strokeLinecap="round"
