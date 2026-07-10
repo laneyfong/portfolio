@@ -202,10 +202,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
             display: "flex",
             flexDirection: "column",
             gap: 12,
-            padding: "16px 12px 12px 12px",
+            padding: "12px 12px 12px 12px",
             borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
             transition: "border-color 0.5s ease",
-            flexShrink: 0,
+            flex: 1,
+            justifyContent: "center",
           }}
         >
           {/* Category Label */}
