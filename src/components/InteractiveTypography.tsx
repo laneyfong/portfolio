@@ -144,7 +144,7 @@ const InteractiveTypography: FC = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.font = `${fontSize}px ${fontFamily}`;
-      ctx.fillStyle = tokens.color.ink;
+      ctx.fillStyle = "#FFFFFF";
       ctx.textBaseline = "top";
 
       lettersRef.current.forEach((letter) => {
@@ -216,8 +216,8 @@ const InteractiveTypography: FC = () => {
       ref={containerRef}
       style={{
         width: "100%",
-        background: tokens.color.offWhite,
-        border: `1px solid ${tokens.color.cardBorder}`,
+        background: "#1F1F1F",
+        border: "1px solid #333333",
         borderRadius: tokens.radius.md,
         padding: 0,
         overflow: "hidden",
