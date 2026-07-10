@@ -164,6 +164,18 @@ const LabPage: FC = () => {
         .lab-module:nth-child(8) { animation-delay: 500ms; }
         .lab-module:nth-child(9) { animation-delay: 550ms; }
 
+        @media (max-width: 1024px) {
+          .lab-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .lab-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .lab-module {
             animation: none !important;
@@ -209,9 +221,10 @@ const LabPage: FC = () => {
 
           {/* Grid */}
           <div
+            className="lab-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gridTemplateColumns: "repeat(3, 1fr)",
               gap: "20px",
             }}
           >
