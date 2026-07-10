@@ -202,6 +202,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
               backgroundRepeat: "no-repeat",
               transition: "transform 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
+              borderRadius: tokens.radius.sm,
+              overflow: "hidden",
             }}
           />
         </div>
