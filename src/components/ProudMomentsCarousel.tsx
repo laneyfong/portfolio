@@ -39,7 +39,7 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments }) => {
         .carousel-image-wrapper {
           position: relative;
           width: 100%;
-          padding-bottom: 100%;
+          padding-bottom: 50%;
           background: ${tokens.color.offWhite};
           overflow: hidden;
         }
