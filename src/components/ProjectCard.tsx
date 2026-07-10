@@ -186,7 +186,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "4px 12px",
+            padding: "16px",
             overflow: "hidden",
             minHeight: 0,
           }}
@@ -202,6 +202,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               transition: "transform 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
               display: "block",
+              maxHeight: "280px",
             }}
           />
         </div>
