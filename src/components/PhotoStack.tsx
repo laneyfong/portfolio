@@ -107,9 +107,12 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           width: "100%",
           height: "100%",
           cursor: "pointer",
-          border: "8px solid #ECE7D9",
+          borderTop: "8px solid #ECE7D9",
+          borderLeft: "8px solid #ECE7D9",
+          borderRight: "8px solid #ECE7D9",
+          borderBottom: "28px solid #ECE7D9",
           borderRadius: 2,
-          overflow: "hidden",
+          overflow: "visible",
           boxShadow: isHovered ? tokens.shadow.cardHoverLarge : tokens.shadow.card,
           transform: isTransitioning ? "translateX(-100%)" : "translateX(0)",
           opacity: isTransitioning ? 0 : 1,
@@ -117,7 +120,9 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
             ? "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease-in"
             : "transform 0.3s ease, box-shadow 0.22s ease",
           zIndex: 10,
-          backgroundColor: tokens.color.offWhite,
+          backgroundColor: "#ECE7D9",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <img
@@ -125,27 +130,29 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           alt={photos[currentIndex].alt}
           style={{
             width: "100%",
-            height: "100%",
+            flex: 1,
             objectFit: "cover",
             objectPosition: "50% 55%",
             display: "block",
           }}
         />
 
-        {/* Digital camera photo label */}
+        {/* Photo label in bottom border */}
         {photos[currentIndex].label && (
           <div
             style={{
-              position: "absolute",
-              top: 12,
-              left: 12,
+              padding: "4px 8px",
               fontFamily: tokens.font.sans,
-              fontSize: "11px",
+              fontSize: "12px",
               fontWeight: tokens.weight.regular,
-              color: "rgba(255, 255, 255, 0.85)",
-              textShadow: "0 1px 3px rgba(0, 0, 0, 0.4)",
+              color: tokens.color.body,
+              textAlign: "center",
               pointerEvents: "none",
               letterSpacing: "0.3px",
+              minHeight: "20px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             {photos[currentIndex].label}
