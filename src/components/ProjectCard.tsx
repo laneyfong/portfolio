@@ -150,7 +150,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           style={{
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.regular,
-            fontSize: "14px",
+            fontSize: "18px",
             color: tokens.color.body,
             lineHeight: tokens.leading.snug,
             maxWidth: "100%",
@@ -201,17 +201,54 @@ const ProjectCard: FC<ProjectCardProps> = ({
           {to && (
             <div
               style={{
-                opacity: hovered ? 1 : 0.4,
-                transition: "opacity 0.22s ease, transform 0.22s ease",
-                transform: hovered ? "translateX(3px)" : "translateX(0)",
                 flexShrink: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 32,
+                height: 32,
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 8.271 8.974" fill={tokens.color.body}>
-                <path
-                  d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
-                  fillRule="nonzero"
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                style={{
+                  transition: "all 0.22s ease",
+                }}
+              >
+                {/* Outlined circle - fills on hover */}
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="14"
+                  fill={hovered ? tokens.color.body : "none"}
+                  stroke={tokens.color.body}
+                  strokeWidth="1.5"
+                  style={{
+                    transition: "fill 0.22s ease",
+                  }}
                 />
+                {/* Arrow pointing right, rotates on hover */}
+                <g
+                  style={{
+                    transform: `rotate(${hovered ? -45 : 0}deg)`,
+                    transformOrigin: "16px 16px",
+                    transition: "transform 0.22s ease",
+                  }}
+                >
+                  <path
+                    d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                    stroke={hovered ? "#fff" : tokens.color.body}
+                    strokeWidth="1.5"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{
+                      transition: "stroke 0.22s ease",
+                    }}
+                  />
+                </g>
               </svg>
             </div>
           )}
