@@ -31,7 +31,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
   const [active, setActive] = useState(sections[0]?.id ?? "");
   const [highlightsOpen, setHighlightsOpen] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [showScrollUp, setShowScrollUp] = useState(false);
   const navListRef = useRef<HTMLDivElement>(null);
   const [indicatorTop, setIndicatorTop] = useState(0);
 
@@ -63,8 +62,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
       setProgress(Math.min(100, Math.max(0, pct)));
-      // Show scroll-up button after scrolling past 300px
-      setShowScrollUp(window.scrollY > 300);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -104,64 +101,17 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
            toggles. Cards with no click action intentionally don't get this. */
         .case-btn-press { transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
         .case-btn-press:active { transform: scale(0.94); }
-        @media (min-width: 901px) {
-          /* Desktop: case study sidebar */
-          .case-main { margin-left: 220px !important; width: calc(100% - 220px) !important; margin-top: 64px !important; }
-          .case-page-fade-in footer { margin-left: 220px !important; width: calc(100% - 220px) !important; }
-        }
         @media (max-width: 900px) {
           .case-sidebar { display: none !important; }
           .case-mobile-back { display: flex !important; }
-          .case-mobile-tabs { display: none !important; }
-          .case-main { margin-left: 0 !important; width: 100% !important; margin-top: 64px !important; }
+          .case-mobile-tabs { display: flex !important; }
+          .case-main, .case-footer-wrap { margin-left: 0 !important; }
+          .case-main { padding-top: 132px !important; }
         }
         @media (max-width: 760px) {
           .case-grid-3 { grid-template-columns: 1fr !important; }
           .case-grid-2 { grid-template-columns: 1fr !important; }
           .case-intro-shots { grid-template-columns: 1fr !important; }
-          .case-main { margin-left: 0 !important; width: 100% !important; margin-top: 64px !important; }
-        }
-        /* Accessibility: Focus styles for keyboard navigation */
-        a:focus-visible, button:focus-visible { outline: 2px solid #8DC8E4; outline-offset: 2px; }
-        /* Ensure sufficient color contrast and readability */
-        @media (prefers-contrast: more) {
-          body { letter-spacing: -0.01em; }
-        }
-        /* Touch target sizes (minimum 44x44px for mobile) */
-        @media (max-width: 900px) {
-          .case-btn-press { min-width: 44px !important; min-height: 44px !important; }
-          button { min-height: 44px; }
-        }
-        /* Responsive typography on mobile */
-        @media (max-width: 760px) {
-          h2 { font-size: 20px !important; }
-          p { font-size: 15px !important; }
-        }
-        @media (max-width: 640px) {
-          h2 { font-size: 18px !important; }
-          p { font-size: 14px !important; }
-        }
-        /* Mobile tabs: center content and remove background */
-        @media (max-width: 900px) {
-          .case-mobile-tabs {
-            justify-content: center !important;
-            background: transparent !important;
-            border-bottom: none !important;
-            box-shadow: none !important;
-          }
-        }
-        /* Hide scroll-up button on desktop */
-        @media (min-width: 901px) {
-          button[aria-label="Scroll to top"] {
-            display: none !important;
-          }
-        }
-        /* UserJourney responsive: vertical layout on mobile */
-        @media (max-width: 760px) {
-          .user-journey-stages {
-            flex-direction: column !important;
-            gap: 16px !important;
-          }
         }
         ${extraStyle}
       `}</style>
@@ -394,64 +344,17 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         className="case-main"
         style={{
           marginLeft: SIDEBAR_WIDTH,
-          width: `calc(100% - ${SIDEBAR_WIDTH}px)`,
-          padding: "80px clamp(32px, 7vw, 80px) 0",
+          maxWidth: 940,
+          padding: "80px clamp(24px, 6vw, 64px) 0",
           boxSizing: "border-box",
         }}
       >
-        <div style={{ maxWidth: 1100, margin: "0 auto", width: "100%" }}>
-          {children}
-        </div>
+        {children}
       </main>
 
-      {/* Mobile scroll-up button */}
-      {showScrollUp && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Scroll to top"
-          style={{
-            position: "fixed",
-            bottom: 32,
-            right: 20,
-            width: 48,
-            height: 48,
-            borderRadius: "50%",
-            background: tokens.color.ink,
-            color: tokens.color.white,
-            border: "none",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: tokens.shadow.subtle,
-            zIndex: 50,
-            transition: "transform 0.2s ease, box-shadow 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-4px)";
-            e.currentTarget.style.boxShadow = tokens.shadow.cardHoverLarge;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = tokens.shadow.subtle;
-          }}
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="18 15 12 9 6 15" />
-          </svg>
-        </button>
-      )}
-
-      <Footer />
+      <div className="case-footer-wrap" style={{ marginLeft: SIDEBAR_WIDTH }}>
+        <Footer />
+      </div>
     </div>
   );
 };
