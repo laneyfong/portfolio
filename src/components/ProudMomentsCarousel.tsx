@@ -11,17 +11,22 @@ interface ProudMoment {
 
 interface ProudMomentsCarouselProps {
   moments: ProudMoment[];
+  onIndexChange?: (index: number) => void;
 }
 
-const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments }) => {
+const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % moments.length);
+    const newIndex = (currentIndex + 1) % moments.length;
+    setCurrentIndex(newIndex);
+    onIndexChange?.(newIndex);
   };
 
   const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + moments.length) % moments.length);
+    const newIndex = (currentIndex - 1 + moments.length) % moments.length;
+    setCurrentIndex(newIndex);
+    onIndexChange?.(newIndex);
   };
 
   const currentMoment = moments[currentIndex];
@@ -184,7 +189,10 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments }) => {
                 <button
                   key={idx}
                   className={`carousel-indicator ${idx === currentIndex ? "active" : ""}`}
-                  onClick={() => setCurrentIndex(idx)}
+                  onClick={() => {
+                    setCurrentIndex(idx);
+                    onIndexChange?.(idx);
+                  }}
                   aria-label={`Go to image ${idx + 1}`}
                 />
               ))}

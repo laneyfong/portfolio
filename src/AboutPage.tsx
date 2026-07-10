@@ -41,6 +41,7 @@ const AboutPage: FC = () => {
   const [bioPhotoHovered, setBioPhotoHovered] = useState(false);
   const [dogWaving, setDogWaving] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [proudMomentIndex, setProudMomentIndex] = useState(0);
   const { ref: bioSectionRef, isVisible: bioVisible } = useScrollReveal({ threshold: 0.3 });
   const { ref: proudSectionRef, isVisible: proudVisible } = useScrollReveal({ threshold: 0.2 });
 
@@ -455,11 +456,12 @@ const AboutPage: FC = () => {
                 margin: "0 0 20px",
               }}
             >
-              As president, I revitalized UC Berkeley's dedication to user experience by restructuring its primary UX
-              club. My focus on member engagement and real-world project experience transformed the organization into
-              a thriving, tight-knit professional community!
+              {proudMomentIndex === 0
+                ? "As president, I revitalized UC Berkeley's dedication to user experience by restructuring its primary UX club. My focus on member engagement and real-world project experience transformed the organization into a thriving, tight-knit professional community!"
+                : "We won first place in the Google Designathon building an app that connects unhoused individuals to resources. Shout out to my amazing team members Kaiwen, Hribav, Andrew, and Gabriel!"}
             </p>
             <ProudMomentsCarousel
+              onIndexChange={setProudMomentIndex}
               moments={[
                 {
                   src: clubPic,
