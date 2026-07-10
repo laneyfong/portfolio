@@ -46,20 +46,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
   return (
     <>
       <style>{`
-        .project-card-image {
-          transition: filter 0.4s linear;
-          filter: brightness(1);
-        }
-        .project-card:hover .project-card-image {
-          filter: brightness(0.15);
-        }
         @media (prefers-reduced-motion: reduce) {
           .project-card {
             transition: background-color 0s, border-color 0s, color 0s !important;
-          }
-          .project-card-image {
-            transition: none !important;
-            filter: brightness(1) !important;
           }
         }
       `}</style>
@@ -89,8 +78,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
         cursor: to ? "pointer" : "default",
         transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
         transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
-        backgroundColor: hovered ? "#2a2a2a" : tokens.color.offWhite,
-        border: `1px solid ${hovered ? "#3a3a3a" : tokens.color.cardBorder}`,
+        backgroundColor: hovered ? "#111111" : tokens.color.offWhite,
+        border: `1px solid ${hovered ? "#111111" : tokens.color.cardBorder}`,
         overflow: "hidden",
         position: "relative",
         color: hovered ? "#ffffff" : tokens.color.body,
@@ -191,7 +180,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
       {/* Image Section - Centered */}
       <div
-        className="project-card-image"
         style={{
           flex: 1,
           display: "flex",
