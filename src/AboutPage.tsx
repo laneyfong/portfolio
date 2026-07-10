@@ -308,11 +308,13 @@ const AboutPage: FC = () => {
             <div
               style={{
                 position: "absolute",
-                right: -140,
-                top: 40,
+                right: -180,
+                top: 50,
                 display: "flex",
                 alignItems: "center",
                 gap: 12,
+                zIndex: 100,
+                pointerEvents: "none",
               }}
             >
               {/* Doodled arrow SVG */}
