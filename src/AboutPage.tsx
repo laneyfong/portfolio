@@ -308,13 +308,13 @@ const AboutPage: FC = () => {
             <div
               style={{
                 position: "absolute",
-                right: -320,
+                right: -420,
                 top: "50%",
                 transform: "translateY(-50%)",
                 display: "flex",
                 alignItems: "center",
                 gap: 16,
-                zIndex: 100,
+                zIndex: 1,
                 pointerEvents: "none",
               }}
             >
