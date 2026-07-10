@@ -96,9 +96,13 @@ const WelcomeAnimation: FC<{ onComplete: () => void }> = ({ onComplete }) => {
           background: linear-gradient(
             90deg,
             transparent 0%,
-            rgba(255, 255, 255, 0.8) 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.4) 75%,
+            rgb(255, 0, 0) 12%,
+            rgb(255, 127, 0) 25%,
+            rgb(255, 255, 0) 37%,
+            rgb(0, 255, 0) 50%,
+            rgb(0, 0, 255) 62%,
+            rgb(75, 0, 130) 75%,
+            rgb(148, 0, 211) 87%,
             transparent 100%
           );
           background-size: 1000px 100%;
