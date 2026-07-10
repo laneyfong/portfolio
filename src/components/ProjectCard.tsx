@@ -85,8 +85,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
             alignItems: "flex-start",
             justifyContent: "space-between",
             gap: 24,
-            padding: "16px 16px 12px 16px",
+            padding: "12px 12px 8px 12px",
             flexShrink: 0,
+            flex: 3,
           }}
         >
           {/* Description */}
@@ -169,11 +170,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
         {/* Image Section */}
         <div
           style={{
-            flex: 1,
+            flex: 7,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "16px",
+            padding: "12px",
             overflow: "hidden",
             minHeight: 0,
           }}
@@ -189,7 +190,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
               transition: "transform 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
               display: "block",
-              maxHeight: "280px",
             }}
           />
         </div>
@@ -199,8 +199,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 12,
-            padding: "12px 16px 16px 16px",
+            gap: 8,
+            padding: "8px 12px 12px 12px",
             borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
             transition: "border-color 0.5s ease",
             flexShrink: 0,
