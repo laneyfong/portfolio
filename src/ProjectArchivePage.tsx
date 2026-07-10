@@ -4,11 +4,15 @@ import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import ProjectCard from "./components/ProjectCard";
+import DashDesignathonCarousel from "./components/DashDesignathonCarousel";
 
 import clearMind from "./assets/clearmind.gif";
 import butterThumb from "./assets/butter-thumb.png";
 import ahaDashThumb from "./assets/aha-dash-thumb.png";
 import fff1Mind from "./assets/fff1mind.png";
+import dash1 from "./assets/dash1.png";
+import dash2 from "./assets/dash2.png";
+import dash3 from "./assets/dash3.png";
 
 interface ArchiveProject {
   title: string;
@@ -221,6 +225,11 @@ const ProjectArchivePage: FC = () => {
             >
               A collection of additional projects, experiments, and explorations beyond the main case studies. Each represents a unique challenge solved with intentional design and rigorous thinking.
             </p>
+          </div>
+
+          {/* Featured: DoorDash Designathon */}
+          <div style={{ marginBottom: 80 }}>
+            <DashDesignathonCarousel images={[dash1, dash2, dash3]} />
           </div>
 
           {/* Grid of archive projects */}
