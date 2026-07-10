@@ -17,7 +17,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState<Speed>("normal");
   const [hoveredButton, setHoveredButton] = useState<Speed | null>(null);
-  const animationIdRef = useRef<NodeJS.Timeout | null>(null);
+  const animationIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const words = text.split(/\s+/).filter((w) => w.length > 0);
@@ -354,7 +354,6 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
 };
 
 interface SpeedButtonProps {
-  speed: Speed;
   label: string;
   color: string;
   isActive: boolean;
@@ -365,7 +364,6 @@ interface SpeedButtonProps {
 }
 
 const SpeedButton: FC<SpeedButtonProps> = ({
-  speed,
   label,
   color,
   isActive,
