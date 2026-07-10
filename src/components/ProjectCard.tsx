@@ -205,9 +205,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
       {/* Text Content - Bottom */}
       <div
         style={{
-          flex: 1,
           display: "grid",
-          gridTemplateRows: "auto auto 1fr auto",
+          gridTemplateRows: "auto auto auto",
           gap: 0,
           padding: "16px 16px 20px 16px",
           borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
@@ -259,11 +258,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           {captionParts[1]}
         </span>
 
-        {/* Row 3: Spacer (fills remaining space) */}
-        <div />
-
-        {/* Row 4: Metrics */}
-        {metrics && metrics.length > 0 ? (
+        {/* Row 3: Metrics */}
+        {metrics && metrics.length > 0 && (
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginTop: 8 }}>
             {metrics.map((metric) => (
               <div key={metric.label}>
@@ -298,8 +294,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
               </div>
             ))}
           </div>
-        ) : (
-          <div />
         )}
       </div>
     </div>
