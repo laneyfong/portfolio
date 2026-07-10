@@ -96,6 +96,65 @@ const ProjectCard: FC<ProjectCardProps> = ({
         />
       </div>
 
+      {/* Arrow CTA - Top Right Corner */}
+      {to && (
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            right: 16,
+            zIndex: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 32,
+            height: 32,
+          }}
+        >
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            style={{
+              transition: "all 0.22s ease",
+            }}
+          >
+            {/* Outlined circle - fills on hover */}
+            <circle
+              cx="16"
+              cy="16"
+              r="14"
+              fill={hovered ? tokens.color.body : "none"}
+              stroke={tokens.color.body}
+              strokeWidth="1.5"
+              style={{
+                transition: "fill 0.22s ease",
+              }}
+            />
+            {/* Arrow pointing right, rotates on hover */}
+            <g
+              style={{
+                transform: `rotate(${hovered ? -45 : 0}deg)`,
+                transformOrigin: "16px 16px",
+                transition: "transform 0.22s ease",
+              }}
+            >
+              <path
+                d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                stroke={hovered ? "#fff" : tokens.color.body}
+                strokeWidth="1.5"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{
+                  transition: "stroke 0.22s ease",
+                }}
+              />
+            </g>
+          </svg>
+        </div>
+      )}
+
       {/* Image Section - Centered */}
       <div
         style={{
@@ -163,96 +222,40 @@ const ProjectCard: FC<ProjectCardProps> = ({
           {captionParts[1]}
         </span>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 12 }}>
-          {metrics && metrics.length > 0 && (
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              {metrics.map((metric) => (
-                <div key={metric.label}>
-                  <div
-                    style={{
-                      fontFamily: tokens.font.sans,
-                      fontWeight: tokens.weight.medium,
-                      fontSize: "14px",
-                      letterSpacing: tokens.tracking.tight,
-                      color: tokens.color.ink,
-                      lineHeight: tokens.leading.none,
-                    }}
-                  >
-                    {metric.value}
-                  </div>
-                  <div
-                    style={{
-                      marginTop: 2,
-                      fontFamily: tokens.font.sans,
-                      fontWeight: tokens.weight.regular,
-                      fontSize: "12px",
-                      color: tokens.color.body,
-                      lineHeight: tokens.leading.none,
-                      whiteSpace: "nowrap",
-                      opacity: 0.7,
-                    }}
-                  >
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          {to && (
-            <div
-              style={{
-                flexShrink: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 32,
-                height: 32,
-              }}
-            >
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                style={{
-                  transition: "all 0.22s ease",
-                }}
-              >
-                {/* Outlined circle - fills on hover */}
-                <circle
-                  cx="16"
-                  cy="16"
-                  r="14"
-                  fill={hovered ? tokens.color.body : "none"}
-                  stroke={tokens.color.body}
-                  strokeWidth="1.5"
+        {metrics && metrics.length > 0 && (
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            {metrics.map((metric) => (
+              <div key={metric.label}>
+                <div
                   style={{
-                    transition: "fill 0.22s ease",
-                  }}
-                />
-                {/* Arrow pointing right, rotates on hover */}
-                <g
-                  style={{
-                    transform: `rotate(${hovered ? -45 : 0}deg)`,
-                    transformOrigin: "16px 16px",
-                    transition: "transform 0.22s ease",
+                    fontFamily: tokens.font.sans,
+                    fontWeight: tokens.weight.medium,
+                    fontSize: "14px",
+                    letterSpacing: tokens.tracking.tight,
+                    color: tokens.color.ink,
+                    lineHeight: tokens.leading.none,
                   }}
                 >
-                  <path
-                    d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                    stroke={hovered ? "#fff" : tokens.color.body}
-                    strokeWidth="1.5"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{
-                      transition: "stroke 0.22s ease",
-                    }}
-                  />
-                </g>
-              </svg>
-            </div>
-          )}
-        </div>
+                  {metric.value}
+                </div>
+                <div
+                  style={{
+                    marginTop: 2,
+                    fontFamily: tokens.font.sans,
+                    fontWeight: tokens.weight.regular,
+                    fontSize: "12px",
+                    color: tokens.color.body,
+                    lineHeight: tokens.leading.none,
+                    whiteSpace: "nowrap",
+                    opacity: 0.7,
+                  }}
+                >
+                  {metric.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
