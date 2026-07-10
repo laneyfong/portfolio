@@ -213,6 +213,54 @@ const DayLightCard: FC = () => {
         onMouseUp={handleWheelEnd}
         onMouseLeave={handleWheelEnd}
       >
+        {/* Bottom glow effect - changes from yellow sunrise to sunset glow */}
+        {!isNight && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "40%",
+              background: (() => {
+                // Determine glow color based on time
+                let glowColor = "#FFD700"; // Default yellow
+                let glowColorFade = "#FFD70099"; // Default with transparency
+
+                if (time.hours >= 8 && time.hours < 12) {
+                  // Morning (8-12): Bright yellow glow
+                  glowColor = "#FFD700";
+                  glowColorFade = "#FFD70099";
+                } else if (time.hours >= 12 && time.hours < 17) {
+                  // Afternoon (12-17): Fade yellow to orange
+                  const progress = (time.hours - 12) / 5;
+                  // Interpolate between yellow and orange
+                  const r = Math.round(255 - progress * 85); // 255 to 170
+                  const g = Math.round(215 - progress * 30); // 215 to 185
+                  const b = Math.round(0 - progress * 0); // 0 to 0
+                  glowColor = `rgb(${r}, ${g}, ${b})`;
+                  glowColorFade = `rgba(${r}, ${g}, ${b}, 0.6)`;
+                } else if (time.hours >= 17 && time.hours < 20) {
+                  // Sunset (17-20): Orange to deep red with yellow mixed
+                  const progress = (time.hours - 17) / 3;
+                  // Start with orange, move to red
+                  const r = Math.round(255 - progress * 50); // 255 to 205
+                  const g = Math.round(165 + progress * -120); // 165 to 45
+                  const b = Math.round(0 + progress * 20); // 0 to 20
+                  glowColor = `rgb(${r}, ${g}, ${b})`;
+                  glowColorFade = `rgba(${r}, ${g}, ${b}, 0.6)`;
+                }
+
+                return `radial-gradient(ellipse 120% 100% at 50% 100%, ${glowColor} 0%, ${glowColorFade} 30%, transparent 70%)`;
+              })(),
+              pointerEvents: "none",
+              zIndex: 2,
+              opacity: 0.7,
+              transition: "background 0.3s ease",
+            }}
+          />
+        )}
+
         {/* Sunset circle - fades in during sunset, fades out into night */}
         {!isNight && time.hours >= 17 && (
           <div
