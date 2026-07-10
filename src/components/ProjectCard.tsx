@@ -181,12 +181,12 @@ const ProjectCard: FC<ProjectCardProps> = ({
       {/* Image Section - Centered */}
       <div
         style={{
-          flex: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           padding: "24px 16px",
           overflow: "hidden",
+          height: imageHeight + 48,
         }}
       >
         <div
