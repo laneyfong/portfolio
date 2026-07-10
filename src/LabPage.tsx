@@ -236,10 +236,10 @@ const LabPage: FC = () => {
                   <InteractiveTypography />
                 ) : exp.specialType === "music" ? (
                   <MusicCard
-                    title="Blinding Lights"
-                    artist="The Weeknd"
+                    title="Audio Visualization"
+                    artist="Synthesized Tone"
                     albumArt="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF1654;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%23FF6B9D;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23000080;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='200' height='200'/%3E%3Ccircle cx='100' cy='100' r='50' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E"
-                    previewUrl="https://assets.codepen.io/3685267/Ayo_Adeleke_-_Bottle.mp3"
+                    previewUrl=""
                     mood="energetic"
                   />
                 ) : (
