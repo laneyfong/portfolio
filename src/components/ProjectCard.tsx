@@ -115,11 +115,25 @@ const ProjectCard: FC<ProjectCardProps> = ({
             zIndex: 10,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            width: 32,
-            height: 32,
+            justifyContent: "flex-end",
+            gap: 8,
           }}
         >
+          {/* "View details" text - appears on hover */}
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.regular,
+              fontSize: "12px",
+              color: hovered ? "#ffffff" : tokens.color.body,
+              whiteSpace: "nowrap",
+              opacity: hovered ? 1 : 0,
+              transition: "opacity 0.5s ease, color 0.5s ease",
+              letterSpacing: tokens.tracking.tight,
+            }}
+          >
+            View details
+          </span>
           <svg
             width="32"
             height="32"
