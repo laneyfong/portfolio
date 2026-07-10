@@ -97,11 +97,11 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         .case-shot {
           transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.4s linear;
           position: relative;
-          filter: brightness(1) contrast(1);
+          filter: brightness(0.65) contrast(1.05) saturate(1.1);
         }
         .case-shot:hover {
           transform: translateY(-4px) scale(1.015);
-          filter: brightness(0.5) contrast(1.1);
+          filter: brightness(0.5) contrast(1.1) saturate(1.15);
         }
         .case-tabs-scroll::-webkit-scrollbar { display: none; }
         /* Tactile feedback for things that are actually clickable — nav buttons, tabs,
