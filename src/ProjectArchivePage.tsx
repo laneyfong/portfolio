@@ -93,7 +93,7 @@ const ProjectArchivePage: FC = () => {
         }
 
         .bento-featured {
-          grid-column: 1 / -1;
+          grid-column: 1 / 3;
         }
 
         @media (min-width: 900px) {
@@ -102,7 +102,7 @@ const ProjectArchivePage: FC = () => {
           }
 
           .bento-featured {
-            grid-column: 1 / -1;
+            grid-column: 1 / 3;
           }
         }
 
