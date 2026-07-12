@@ -70,75 +70,6 @@ const LabPage: FC = () => {
       isSpecial: true,
       specialType: "music",
     },
-    {
-      type: "motion",
-      title: "Micro-interactions & Micro-delays",
-      description: "Exploring how tiny 40-120ms animations change perceived responsiveness and delight.",
-      experimentId: "EXP-2024-001",
-      date: "Dec 2024",
-      status: "exploring",
-      tags: ["animation", "timing", "UX"],
-    },
-    {
-      type: "ai",
-      title: "AI-Powered Design Critique",
-      description: "Building a system that analyzes designs and provides structured feedback based on design principles.",
-      experimentId: "EXP-2024-002",
-      date: "Nov 2024",
-      status: "exploring",
-      tags: ["AI", "design-systems", "automation"],
-      isLoading: true,
-    },
-    {
-      type: "interaction",
-      title: "Gesture-Based Navigation",
-      description: "Testing swipe, long-press, and multi-touch patterns for context-aware app navigation.",
-      experimentId: "EXP-2024-003",
-      date: "Oct 2024",
-      tags: ["interaction", "mobile", "gestures"],
-    },
-    {
-      type: "concept",
-      title: "Invisible Design in Crisis UI",
-      description: "How to design interfaces that disappear during moments of acute stress or urgency.",
-      experimentId: "EXP-2024-004",
-      date: "Sep 2024",
-      tags: ["psychology", "crisis-design", "minimalism"],
-    },
-    {
-      type: "system",
-      title: "Dynamic Spacing System v3",
-      description: "Experimenting with fluid typography and spacing based on viewport and content.",
-      experimentId: "EXP-2024-005",
-      date: "Aug 2024",
-      status: "archived",
-      tags: ["design-systems", "css", "typography"],
-    },
-    {
-      type: "prototype",
-      title: "Accessibility-First Component Library",
-      description: "Building reusable components with WCAG AAA compliance from the ground up.",
-      experimentId: "EXP-2024-006",
-      date: "Jul 2024",
-      tags: ["accessibility", "components", "WCAG"],
-    },
-    {
-      type: "generative",
-      title: "Generative Color Palettes",
-      description: "Algorithm-driven color palette generation that respects contrast and cultural context.",
-      experimentId: "EXP-2024-007",
-      date: "Jun 2024",
-      status: "exploring",
-      tags: ["generative", "color", "AI"],
-    },
-    {
-      type: "accessibility",
-      title: "Haptic Feedback in Web Experiences",
-      description: "Exploring how haptic patterns can enhance navigation and confirmation for sighted and blind users.",
-      experimentId: "EXP-2024-008",
-      date: "May 2024",
-      tags: ["accessibility", "haptics", "inclusion"],
-    },
   ];
 
   return (
@@ -170,12 +101,6 @@ const LabPage: FC = () => {
         .lab-module:nth-child(2) { animation-delay: 200ms; }
         .lab-module:nth-child(3) { animation-delay: 250ms; }
         .lab-module:nth-child(4) { animation-delay: 300ms; }
-        .lab-module:nth-child(5) { animation-delay: 350ms; }
-        .lab-module:nth-child(6) { animation-delay: 400ms; }
-        .lab-module:nth-child(7) { animation-delay: 450ms; }
-        .lab-module:nth-child(8) { animation-delay: 500ms; }
-        .lab-module:nth-child(9) { animation-delay: 550ms; }
-        .lab-module:nth-child(10) { animation-delay: 600ms; }
 
         @media (max-width: 1024px) {
           .lab-grid {
@@ -237,7 +162,7 @@ const LabPage: FC = () => {
             className="lab-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateColumns: "repeat(2, 1fr)",
               gap: "20px",
             }}
           >
