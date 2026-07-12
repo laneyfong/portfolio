@@ -94,7 +94,7 @@ const ProjectArchivePage: FC = () => {
 
         @media (min-width: 900px) {
           .bento-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
           }
 
           .bento-featured {

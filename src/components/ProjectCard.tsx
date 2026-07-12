@@ -71,8 +71,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           cursor: to ? "pointer" : "default",
           transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
           transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
-          backgroundColor: hovered ? "#111111" : tokens.color.offWhite,
-          border: `1px solid ${hovered ? "#111111" : tokens.color.cardBorder}`,
+          backgroundColor: tokens.color.offWhite,
+          border: `1px solid ${tokens.color.cardBorder}`,
           overflow: "hidden",
           position: "relative",
           color: hovered ? "#ffffff" : tokens.color.body,
@@ -95,7 +95,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.regular,
               fontSize: "16px",
-              color: hovered ? "#ffffff" : tokens.color.body,
+              color: tokens.color.body,
               lineHeight: tokens.leading.snug,
               flex: 1,
               transition: "color 0.32s ease",
@@ -135,8 +135,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
                   cx="16"
                   cy="16"
                   r="14"
-                  fill={hovered ? "#ffffff" : "none"}
-                  stroke={hovered ? "#ffffff" : tokens.color.body}
+                  fill="none"
+                  stroke={tokens.color.body}
                   strokeWidth="1.5"
                   style={{
                     transition: "fill 0.5s ease, stroke 0.5s ease",
@@ -144,14 +144,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 />
                 <g
                   style={{
-                    transform: `rotate(${hovered ? -45 : 0}deg)`,
                     transformOrigin: "16px 16px",
                     transition: "transform 0.5s ease",
                   }}
                 >
                   <path
                     d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                    stroke={hovered ? "#2a2a2a" : tokens.color.body}
+                    stroke={tokens.color.body}
                     strokeWidth="1.5"
                     fill="none"
                     strokeLinecap="round"
@@ -205,7 +204,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             flexDirection: "column",
             gap: 12,
             padding: "12px 12px 16px 12px",
-            borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
+            borderTop: `1px solid ${tokens.color.cardBorder}`,
             transition: "border-color 0.5s ease",
             flexShrink: 0,
           }}
@@ -217,7 +216,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
                 fontSize: "12px",
-                color: hovered ? "rgba(255, 255, 255, 0.7)" : tokens.color.muted,
+                color: tokens.color.muted,
                 letterSpacing: tokens.tracking.tight,
                 textTransform: "uppercase",
                 lineHeight: tokens.leading.none,
@@ -239,7 +238,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                       fontWeight: tokens.weight.medium,
                       fontSize: "14px",
                       letterSpacing: tokens.tracking.tight,
-                      color: hovered ? "#ffffff" : tokens.color.ink,
+                      color: tokens.color.ink,
                       lineHeight: tokens.leading.none,
                       transition: "color 0.5s ease",
                     }}
@@ -252,7 +251,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                       fontFamily: tokens.font.sans,
                       fontWeight: tokens.weight.regular,
                       fontSize: "12px",
-                      color: hovered ? "rgba(255, 255, 255, 0.7)" : tokens.color.body,
+                      color: tokens.color.body,
                       lineHeight: tokens.leading.none,
                       whiteSpace: "nowrap",
                       opacity: 0.7,
