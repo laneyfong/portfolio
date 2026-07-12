@@ -1,10 +1,12 @@
 import type { FC } from "react";
+import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import ProjectCard from "./components/ProjectCard";
 import DashDesignathonCarousel from "./components/DashDesignathonCarousel";
+import ImageModal from "./components/ImageModal";
 
 import clearMind from "./assets/clearmind.gif";
 import butterThumb from "./assets/butter-thumb.png";
@@ -25,6 +27,8 @@ interface ArchiveProject {
 }
 
 const ProjectArchivePage: FC = () => {
+  const [expandedImage, setExpandedImage] = useState<{ image: string; alt: string; title: string } | null>(null);
+
   const archiveProjects: ArchiveProject[] = [
     {
       title: "ClearMind",
@@ -165,16 +169,27 @@ const ProjectArchivePage: FC = () => {
 
             {/* Project Cards */}
             {archiveProjects.map((project, idx) => (
-              <ProjectCard
+              <div
                 key={idx}
-                screenshot={project.image}
-                layout="portrait"
-                height={550}
-                caption={project.description}
-                captionItalic={project.italic}
-                roleOutcome={project.role}
-                metrics={project.metrics}
-              />
+                onClick={() =>
+                  setExpandedImage({
+                    image: project.image,
+                    alt: project.title,
+                    title: project.title,
+                  })
+                }
+                style={{ cursor: "pointer" }}
+              >
+                <ProjectCard
+                  screenshot={project.image}
+                  layout="portrait"
+                  height={550}
+                  caption={project.description}
+                  captionItalic={project.italic}
+                  roleOutcome={project.role}
+                  metrics={project.metrics}
+                />
+              </div>
             ))}
           </div>
 
@@ -217,6 +232,15 @@ const ProjectArchivePage: FC = () => {
       </main>
 
       <Footer />
+
+      {expandedImage && (
+        <ImageModal
+          image={expandedImage.image}
+          alt={expandedImage.alt}
+          title={expandedImage.title}
+          onClose={() => setExpandedImage(null)}
+        />
+      )}
     </div>
   );
 };
