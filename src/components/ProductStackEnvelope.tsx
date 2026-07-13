@@ -1,41 +1,62 @@
 import type { FC } from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { tokens } from "../tokens";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-interface ProductStackItem {
+interface ToolCard {
   name: string;
-  icon: string;
+  symbol: string;
+  description: string;
   color: string;
 }
 
 const ProductStackEnvelope: FC = () => {
   const { ref: containerRef, isVisible } = useScrollReveal();
-  const svgRef = useRef<SVGSVGElement>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const stack: ProductStackItem[] = [
+  const tools: ToolCard[] = [
     {
       name: "Figma",
-      icon: "◆",
+      symbol: "◆",
+      description: "Design Systems & Prototyping",
       color: "#A259FF",
     },
     {
       name: "Claude",
-      icon: "◈",
-      color: "#FFA500",
+      symbol: "◈",
+      description: "AI Collaboration & Rapid Ideation",
+      color: "#FF9500",
     },
     {
       name: "Miro",
-      icon: "●",
+      symbol: "●",
+      description: "Research & Journey Mapping",
       color: "#FFD700",
     },
     {
       name: "GitHub",
-      icon: "◆",
-      color: "#000000",
+      symbol: "◆",
+      description: "Version Control & Development",
+      color: "#111111",
     },
   ];
 
+  // Calculate stagger offset and fan angle for each card
+  const getCardStyle = (index: number) => {
+    const baseOffsetY = isVisible ? -240 : 0; // How far up they travel
+    const staggerDelay = index * 0.12; // 120ms stagger
+    const fanAngle = (index - 1.5) * 8; // Slight fan effect (-12, -4, 4, 12 degrees)
+    const horizontalShift = (index - 1.5) * 16; // Slight horizontal spread
+    const stackOffset = index * 12; // Initial stacked offset
+
+    return {
+      transform: isVisible
+        ? `translateY(${baseOffsetY}px) translateX(${horizontalShift}px) rotateZ(${fanAngle * 0.3}deg)`
+        : `translateY(0) translateX(${stackOffset}px)`,
+      transitionDelay: isVisible ? `${staggerDelay}s` : "0s",
+      zIndex: tools.length - index,
+    };
+  };
 
   return (
     <div
@@ -44,221 +65,220 @@ const ProductStackEnvelope: FC = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 32,
-        padding: "60px 0",
+        gap: 64,
+        padding: "80px 0",
       }}
     >
       <style>{`
-        @keyframes envelopeFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-
-        @keyframes logoReveal {
+        @keyframes cardReveal {
           from {
             opacity: 0;
-            transform: translate(0, 0) scale(0.8);
+            transform: translateY(0) translateX(var(--sx, 0));
           }
           to {
             opacity: 1;
-            transform: translate(var(--tx), var(--ty)) scale(1);
+            transform: translateY(var(--ty, 0)) translateX(var(--tx, 0)) rotateZ(var(--r, 0deg));
           }
         }
 
-        .envelope-container {
-          animation: ${isVisible ? "envelopeFloat 3s ease-in-out infinite" : "none"};
+        .tool-card {
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          ${isVisible ? "animation: cardReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;" : ""}
         }
 
-        .logo-item {
-          animation: ${isVisible ? "logoReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards" : "none"};
+        .envelope-container {
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .envelope-container,
-          .logo-item {
+          .tool-card,
+          .envelope-container {
             animation: none !important;
+            transition: none !important;
           }
         }
       `}</style>
 
       {/* Header */}
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", maxWidth: 600 }}>
         <h2
           style={{
             margin: "0 0 12px 0",
             fontFamily: tokens.font.sans,
-            fontSize: "28px",
+            fontSize: "32px",
             fontWeight: tokens.weight.medium,
             color: tokens.color.ink,
+            letterSpacing: "-0.5px",
           }}
         >
-          Tools I Design With
+          My Product Stack
         </h2>
         <p
           style={{
             margin: 0,
             fontFamily: tokens.font.sans,
-            fontSize: "14px",
-            color: tokens.color.muted,
+            fontSize: "16px",
+            color: tokens.color.body,
+            lineHeight: "1.6",
             opacity: 0.7,
           }}
         >
-          A glimpse into my design stack
+          The essential tools that power my design process. Scroll to discover what's inside.
         </p>
       </div>
 
-      {/* Envelope with SVG */}
-      <div className="envelope-container" style={{ position: "relative", width: 300, height: 300 }}>
-        {/* Envelope SVG */}
-        <svg
-          ref={svgRef}
-          viewBox="0 0 100 100"
-          style={{
-            width: "100%",
-            height: "100%",
-            filter: "drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08))",
-          }}
-        >
-          {/* Envelope body */}
-          <rect x="10" y="30" width="80" height="50" fill="white" stroke={tokens.color.ink} strokeWidth="1.5" rx="2" />
-
-          {/* Envelope flap */}
-          <path
-            d="M 10 30 L 50 55 L 90 30"
-            fill="none"
-            stroke={tokens.color.ink}
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Left flap side */}
-          <path
-            d="M 10 30 L 50 55"
-            fill="none"
-            stroke={tokens.color.ink}
-            strokeWidth="1.5"
-            opacity="0.5"
-          />
-
-          {/* Right flap side */}
-          <path
-            d="M 90 30 L 50 55"
-            fill="none"
-            stroke={tokens.color.ink}
-            strokeWidth="1.5"
-            opacity="0.5"
-          />
-        </svg>
-
-        {/* Logo items positioned around envelope */}
-        {stack.map((item, index) => {
-          const distance = isVisible ? 120 : 20;
-          const angle = [45, 135, 225, 315][index];
-          const rad = (angle * Math.PI) / 180;
-          const tx = distance * Math.cos(rad);
-          const ty = distance * Math.sin(rad);
-
-          return (
-            <div
-              key={item.name}
-              className="logo-item"
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                width: 60,
-                height: 60,
-                marginLeft: -30,
-                marginTop: -30,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "white",
-                border: `2px solid ${item.color}`,
-                borderRadius: "12px",
-                fontSize: "32px",
-                fontWeight: "bold",
-                color: item.color,
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-                // @ts-ignore
-                "--tx": `${tx}px`,
-                "--ty": `${ty}px`,
-              } as React.CSSProperties}
-              title={item.name}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.transform = "scale(1.15)";
-                el.style.boxShadow = `0 8px 24px ${item.color}40`;
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.transform = "scale(1)";
-                el.style.boxShadow = "none";
-              }}
-            >
-              {item.icon}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Stack labels */}
+      {/* Premium Envelope Container */}
       <div
+        className="envelope-container"
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 20,
-          marginTop: 20,
+          position: "relative",
+          width: "100%",
+          maxWidth: 500,
+          height: 320,
+          backgroundColor: "white",
+          borderRadius: 16,
+          border: "1px solid rgba(0, 0, 0, 0.04)",
+          overflow: "hidden",
+          background: "linear-gradient(135deg, #fafafa 0%, #ffffff 100%)",
         }}
       >
-        {stack.map((item) => (
+        {/* Envelope subtle texture/detail */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.01) 2px, rgba(0,0,0,.01) 4px)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Tool Cards Stack */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "100%",
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "center",
+            padding: "0 32px 32px",
+            perspective: "1000px",
+          }}
+        >
+          {tools.map((tool, index) => {
+            const cardStyle = getCardStyle(index);
+            const isHovered = hoveredIndex === index;
+
+            return (
+              <div
+                key={tool.name}
+                className="tool-card"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  maxWidth: 280,
+                  padding: 24,
+                  backgroundColor: "white",
+                  borderRadius: 12,
+                  border: "1px solid rgba(0, 0, 0, 0.05)",
+                  boxShadow: isHovered
+                    ? "0 12px 32px rgba(0, 0, 0, 0.12)"
+                    : "0 4px 12px rgba(0, 0, 0, 0.06)",
+                  transform: cardStyle.transform as string,
+                  transitionDelay: cardStyle.transitionDelay as string,
+                  zIndex: cardStyle.zIndex,
+                  cursor: "pointer",
+                  backgroundColor: isHovered ? "rgba(245, 245, 245, 0.5)" : "white",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                {/* Tool Symbol/Logo Area */}
+                <div
+                  style={{
+                    width: 48,
+                    height: 48,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: `${tool.color}12`,
+                    borderRadius: 8,
+                    fontSize: 24,
+                    fontWeight: "bold",
+                    color: tool.color,
+                    marginBottom: 16,
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  {tool.symbol}
+                </div>
+
+                {/* Tool Name */}
+                <h3
+                  style={{
+                    margin: "0 0 6px 0",
+                    fontFamily: tokens.font.sans,
+                    fontSize: "16px",
+                    fontWeight: tokens.weight.medium,
+                    color: tokens.color.ink,
+                    letterSpacing: "-0.3px",
+                  }}
+                >
+                  {tool.name}
+                </h3>
+
+                {/* Tool Description */}
+                <p
+                  style={{
+                    margin: 0,
+                    fontFamily: tokens.font.sans,
+                    fontSize: "13px",
+                    color: tokens.color.body,
+                    opacity: 0.65,
+                    lineHeight: "1.5",
+                  }}
+                >
+                  {tool.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Card Peek Indicator (before scroll) */}
+        {!isVisible && (
           <div
-            key={item.name}
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "8px 16px",
-              borderRadius: "8px",
-              backgroundColor: `${item.color}08`,
-              border: `1px solid ${item.color}20`,
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "20%",
+              background: "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))",
+              pointerEvents: "none",
+              opacity: 0.6,
             }}
-          >
-            <div
-              style={{
-                width: 12,
-                height: 12,
-                borderRadius: "50%",
-                backgroundColor: item.color,
-              }}
-            />
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "13px",
-                fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
-              }}
-            >
-              {item.name}
-            </span>
-          </div>
-        ))}
+          />
+        )}
       </div>
 
-      {/* Scroll hint */}
+      {/* Scroll Hint */}
       {!isVisible && (
         <div
           style={{
-            fontSize: "12px",
+            textAlign: "center",
+            fontSize: "13px",
             color: tokens.color.muted,
-            opacity: 0.6,
-            marginTop: 8,
+            opacity: 0.5,
+            transition: "opacity 0.6s ease",
           }}
         >
-          ↓ Scroll to reveal
+          ↓ Keep scrolling to reveal
         </div>
       )}
     </div>
