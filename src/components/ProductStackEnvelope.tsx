@@ -41,23 +41,6 @@ const ProductStackEnvelope: FC = () => {
     },
   ];
 
-  // Calculate stagger offset and fan angle for each card
-  const getCardStyle = (index: number) => {
-    const baseOffsetY = isVisible ? -240 : 0; // How far up they travel
-    const staggerDelay = index * 0.12; // 120ms stagger
-    const fanAngle = (index - 1.5) * 8; // Slight fan effect (-12, -4, 4, 12 degrees)
-    const horizontalShift = (index - 1.5) * 16; // Slight horizontal spread
-    const stackOffset = index * 12; // Initial stacked offset
-
-    return {
-      transform: isVisible
-        ? `translateY(${baseOffsetY}px) translateX(${horizontalShift}px) rotateZ(${fanAngle * 0.3}deg)`
-        : `translateY(0) translateX(${stackOffset}px)`,
-      transitionDelay: isVisible ? `${staggerDelay}s` : "0s",
-      zIndex: tools.length - index,
-    };
-  };
-
   return (
     <div
       ref={containerRef}
@@ -70,32 +53,46 @@ const ProductStackEnvelope: FC = () => {
       }}
     >
       <style>{`
-        @keyframes cardReveal {
+        @keyframes cardSlideUp {
           from {
             opacity: 0;
-            transform: translateY(0) translateX(var(--sx, 0));
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
-            transform: translateY(var(--ty, 0)) translateX(var(--tx, 0)) rotateZ(var(--r, 0deg));
+            transform: translateY(0);
           }
         }
 
         .tool-card {
-          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-          ${isVisible ? "animation: cardReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;" : ""}
+          will-change: transform, opacity, box-shadow;
         }
 
-        .envelope-container {
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        .tool-card.reveal {
+          animation: cardSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .tool-card.reveal:nth-child(1) {
+          animation-delay: 0ms;
+        }
+
+        .tool-card.reveal:nth-child(2) {
+          animation-delay: 120ms;
+        }
+
+        .tool-card.reveal:nth-child(3) {
+          animation-delay: 240ms;
+        }
+
+        .tool-card.reveal:nth-child(4) {
+          animation-delay: 360ms;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .tool-card,
-          .envelope-container {
+          .tool-card {
             animation: none !important;
-            transition: none !important;
+            opacity: 1 !important;
+            transform: none !important;
           }
         }
       `}</style>
@@ -130,7 +127,6 @@ const ProductStackEnvelope: FC = () => {
 
       {/* Premium Envelope Container */}
       <div
-        className="envelope-container"
         style={{
           position: "relative",
           width: "100%",
@@ -141,6 +137,7 @@ const ProductStackEnvelope: FC = () => {
           border: "1px solid rgba(0, 0, 0, 0.04)",
           overflow: "hidden",
           background: "linear-gradient(135deg, #fafafa 0%, #ffffff 100%)",
+          boxShadow: "0 20px 60px rgba(0, 0, 0, 0.06)",
         }}
       >
         {/* Envelope subtle texture/detail */}
@@ -166,17 +163,17 @@ const ProductStackEnvelope: FC = () => {
             alignItems: "flex-end",
             justifyContent: "center",
             padding: "0 32px 32px",
-            perspective: "1000px",
           }}
         >
           {tools.map((tool, index) => {
-            const cardStyle = getCardStyle(index);
             const isHovered = hoveredIndex === index;
+            const stackOffset = index * 12;
+            const horizontalShift = (index - 1.5) * 8;
 
             return (
               <div
                 key={tool.name}
-                className="tool-card"
+                className={`tool-card ${isVisible ? "reveal" : ""}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
@@ -186,15 +183,25 @@ const ProductStackEnvelope: FC = () => {
                   padding: 24,
                   borderRadius: 12,
                   border: "1px solid rgba(0, 0, 0, 0.05)",
+                  backgroundColor: isHovered ? "rgba(245, 245, 245, 0.5)" : "white",
                   boxShadow: isHovered
                     ? "0 12px 32px rgba(0, 0, 0, 0.12)"
                     : "0 4px 12px rgba(0, 0, 0, 0.06)",
-                  transform: cardStyle.transform as string,
-                  transitionDelay: cardStyle.transitionDelay as string,
-                  zIndex: cardStyle.zIndex,
                   cursor: "pointer",
-                  backgroundColor: isHovered ? "rgba(245, 245, 245, 0.5)" : "white",
                   backdropFilter: "blur(8px)",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  // Stack position before reveal
+                  ...(isVisible
+                    ? {
+                        bottom: `${(tools.length - index) * 60}px`,
+                        left: `50%`,
+                        transform: `translateX(-50%) translateX(${horizontalShift}px)`,
+                      }
+                    : {
+                        bottom: `${32 + stackOffset}px`,
+                        left: `50%`,
+                        transform: `translateX(-50%)`,
+                      }),
                 }}
               >
                 {/* Tool Symbol/Logo Area */}
@@ -211,7 +218,6 @@ const ProductStackEnvelope: FC = () => {
                     fontWeight: "bold",
                     color: tool.color,
                     marginBottom: 16,
-                    transition: "all 0.3s ease",
                   }}
                 >
                   {tool.symbol}
