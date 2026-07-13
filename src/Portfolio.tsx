@@ -154,6 +154,24 @@ const Portfolio: FC = () => {
 
       <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(80px, 12vw, 150px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <ContentContainer>
+          {/* Section Header */}
+          <div style={{ marginBottom: 60 }}>
+            <h2
+              style={{
+                margin: 0,
+                fontFamily: tokens.font.sans,
+                fontSize: "14px",
+                fontWeight: tokens.weight.medium,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: tokens.color.muted,
+                lineHeight: tokens.leading.none,
+              }}
+            >
+              Featured Work
+            </h2>
+          </div>
+
           <div
             id="work"
             className="grid-cols work-grid"
