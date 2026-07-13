@@ -165,7 +165,6 @@ const ProductStackEnvelope: FC = () => {
 
         {/* Logo items positioned around envelope */}
         {stack.map((item, index) => {
-          const { x, y } = getLogoPosition(index);
           const distance = isVisible ? 120 : 20;
           const angle = [45, 135, 225, 315][index];
           const rad = (angle * Math.PI) / 180;
