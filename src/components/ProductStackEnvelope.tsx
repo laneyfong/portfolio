@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { tokens } from "../tokens";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
@@ -184,7 +184,6 @@ const ProductStackEnvelope: FC = () => {
                   width: "100%",
                   maxWidth: 280,
                   padding: 24,
-                  backgroundColor: "white",
                   borderRadius: 12,
                   border: "1px solid rgba(0, 0, 0, 0.05)",
                   boxShadow: isHovered
