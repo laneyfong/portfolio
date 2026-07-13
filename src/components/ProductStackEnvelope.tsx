@@ -36,18 +36,6 @@ const ProductStackEnvelope: FC = () => {
     },
   ];
 
-  // Calculate positions for logos around the envelope
-  const getLogoPosition = (index: number) => {
-    const angles = [45, 135, 225, 315]; // Top-right, top-left, bottom-left, bottom-right
-    const angle = angles[index];
-    const rad = (angle * Math.PI) / 180;
-    const distance = isVisible ? 120 : 20;
-    const centerX = 50;
-    const centerY = 50;
-    const x = centerX + distance * Math.cos(rad);
-    const y = centerY + distance * Math.sin(rad);
-    return { x, y, angle };
-  };
 
   return (
     <div
