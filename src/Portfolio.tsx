@@ -174,6 +174,7 @@ const Portfolio: FC = () => {
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
                 captionItalic="45% engagement increase"
                 to="/myshake-design"
+                darkHoverMode={true}
               />
             </div>
 
@@ -186,6 +187,7 @@ const Portfolio: FC = () => {
                 caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
                 captionItalic="Autonomous UX validation"
                 to="/nvidia-ai-ux-agent"
+                darkHoverMode={true}
               />
             </div>
 
@@ -197,6 +199,7 @@ const Portfolio: FC = () => {
                 roleOutcome="Travel Planning × Decision Design"
                 caption="A solution to decision fatigue and itinerary planning for travelers."
                 captionItalic="decision fatigue"
+                darkHoverMode={true}
               />
             </div>
           </div>

@@ -17,6 +17,7 @@ interface ProjectCardProps {
   metrics?: ProjectMetric[];
   to?: string;
   roleOutcome?: string;
+  darkHoverMode?: boolean;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -28,6 +29,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   metrics,
   to,
   roleOutcome,
+  darkHoverMode = false,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -71,8 +73,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           cursor: to ? "pointer" : "default",
           transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
           transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
-          backgroundColor: tokens.color.offWhite,
-          border: `1px solid ${tokens.color.cardBorder}`,
+          backgroundColor: darkHoverMode && hovered ? "#111111" : tokens.color.offWhite,
+          border: `1px solid ${darkHoverMode && hovered ? "#111111" : tokens.color.cardBorder}`,
           overflow: "hidden",
           position: "relative",
           color: hovered ? "#ffffff" : tokens.color.body,
@@ -95,7 +97,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.regular,
               fontSize: "16px",
-              color: tokens.color.body,
+              color: darkHoverMode && hovered ? "#ffffff" : tokens.color.body,
               lineHeight: tokens.leading.snug,
               flex: 1,
               transition: "color 0.32s ease",
@@ -135,8 +137,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
                   cx="16"
                   cy="16"
                   r="14"
-                  fill="none"
-                  stroke={tokens.color.body}
+                  fill={darkHoverMode && hovered ? "#ffffff" : "none"}
+                  stroke={darkHoverMode && hovered ? "#ffffff" : tokens.color.body}
                   strokeWidth="1.5"
                   style={{
                     transition: "fill 0.5s ease, stroke 0.5s ease",
@@ -144,13 +146,14 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 />
                 <g
                   style={{
+                    transform: darkHoverMode && hovered ? "rotate(-45deg)" : "rotate(0deg)",
                     transformOrigin: "16px 16px",
                     transition: "transform 0.5s ease",
                   }}
                 >
                   <path
                     d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                    stroke={tokens.color.body}
+                    stroke={darkHoverMode && hovered ? "#2a2a2a" : tokens.color.body}
                     strokeWidth="1.5"
                     fill="none"
                     strokeLinecap="round"
@@ -204,7 +207,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             flexDirection: "column",
             gap: 12,
             padding: "12px 12px 16px 12px",
-            borderTop: `1px solid ${tokens.color.cardBorder}`,
+            borderTop: `1px solid ${darkHoverMode && hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
             transition: "border-color 0.5s ease",
             flexShrink: 0,
           }}
@@ -216,7 +219,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
                 fontSize: "12px",
-                color: tokens.color.muted,
+                color: darkHoverMode && hovered ? "rgba(255, 255, 255, 0.7)" : tokens.color.muted,
                 letterSpacing: tokens.tracking.tight,
                 textTransform: "uppercase",
                 lineHeight: tokens.leading.none,
@@ -238,7 +241,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                       fontWeight: tokens.weight.medium,
                       fontSize: "14px",
                       letterSpacing: tokens.tracking.tight,
-                      color: tokens.color.ink,
+                      color: darkHoverMode && hovered ? "#ffffff" : tokens.color.ink,
                       lineHeight: tokens.leading.none,
                       transition: "color 0.5s ease",
                     }}
@@ -251,7 +254,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                       fontFamily: tokens.font.sans,
                       fontWeight: tokens.weight.regular,
                       fontSize: "12px",
-                      color: tokens.color.body,
+                      color: darkHoverMode && hovered ? "rgba(255, 255, 255, 0.7)" : tokens.color.body,
                       lineHeight: tokens.leading.none,
                       whiteSpace: "nowrap",
                       opacity: 0.7,
