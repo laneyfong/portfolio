@@ -189,7 +189,6 @@ const Portfolio: FC = () => {
                 to="/nvidia-ai-ux-agent"
                 darkHoverMode={true}
                 wipLabel="WIP"
-                invertOnHover={true}
               />
             </div>
 
