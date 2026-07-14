@@ -11,7 +11,7 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
 import myshakeApp from "./assets/myshake-app.png";
-import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
+import nvidiaLogo from "./assets/nvidia-logo.png";
 import platoHome from "./assets/plato-home.png";
 
 // Preload hero image for faster initial render
@@ -180,7 +180,7 @@ const Portfolio: FC = () => {
 
             <div ref={card2Ref} className="card-reveal card-2-reveal">
               <ProjectCard
-                screenshot={uxAgentScreenshot}
+                screenshot={nvidiaLogo}
                 layout="landscape"
                 height={650}
                 roleOutcome="AI Design × Automation"
