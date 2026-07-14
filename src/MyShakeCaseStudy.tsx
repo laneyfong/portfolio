@@ -31,7 +31,6 @@ import EffortImpactMatrix from "./components/caseStudy/EffortImpactMatrix";
 import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeDashboard from "./assets/myshake-dashboard.png";
-import myshakePinned from "./assets/myshake-pinned-locations.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
 import myshakeDesignSystem from "./assets/myshake-design-system.png";
 import myshakeStoryboard from "./assets/myshake-storyboard.png";
