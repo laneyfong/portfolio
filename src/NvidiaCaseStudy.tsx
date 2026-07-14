@@ -19,13 +19,11 @@ import {
   FlaskIcon,
   CheckIcon,
   ClockIcon,
-  UserJourney,
   ProcessFlow,
 } from "./components/caseStudy/CaseStudyKit";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import ResearchThemes from "./components/caseStudy/ResearchThemes";
 import DesignChallenges from "./components/caseStudy/DesignChallenges";
-import IconHighlight from "./components/caseStudy/IconHighlight";
 import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
 
 const SECTIONS: CaseSection[] = [
