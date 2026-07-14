@@ -24,7 +24,7 @@ import {
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import ResearchThemes from "./components/caseStudy/ResearchThemes";
 import DesignChallenges from "./components/caseStudy/DesignChallenges";
-import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
+import nvidiaLogo from "./assets/nvidia-logo.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -122,12 +122,28 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal delay={100}>
-          <img
-            src={uxAgentScreenshot}
-            alt="Early concept dashboard for the AI UX agent, showing a usability score and flagged findings"
-            className="case-shot"
-            style={{ width: "100%", display: "block", borderRadius: tokens.radius.md, boxShadow: tokens.shadow.card, marginBottom: 40 }}
-          />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "60px 20px",
+              borderRadius: tokens.radius.md,
+              backgroundColor: tokens.color.offWhite,
+              border: `1px solid ${tokens.color.cardBorder}`,
+              marginBottom: 40,
+            }}
+          >
+            <img
+              src={nvidiaLogo}
+              alt="NVIDIA Logo"
+              style={{
+                maxWidth: "280px",
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </div>
         </Reveal>
 
         <Paragraph>
