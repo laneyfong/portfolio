@@ -349,9 +349,19 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           boxSizing: "border-box",
         }}
       >
-        <ContentContainer>
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "clamp(320px, 90vw, 900px)",
+            marginLeft: "auto",
+            marginRight: "auto",
+            paddingLeft: "clamp(20px, 3.5%, 48px)",
+            paddingRight: "clamp(20px, 3.5%, 48px)",
+            boxSizing: "border-box",
+          }}
+        >
           {children}
-        </ContentContainer>
+        </div>
       </main>
 
       <div className="case-footer-wrap" style={{ marginLeft: SIDEBAR_WIDTH }}>
