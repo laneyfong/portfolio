@@ -31,6 +31,8 @@ import EffortImpactMatrix from "./components/caseStudy/EffortImpactMatrix";
 import ResearchInsights from "./components/caseStudy/ResearchInsights";
 import SolutionBreakdown from "./components/caseStudy/SolutionBreakdown";
 import StepsComparison from "./components/caseStudy/StepsComparison";
+import IconHighlight from "./components/caseStudy/IconHighlight";
+import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeDashboard from "./assets/myshake-dashboard.png";
@@ -582,48 +584,30 @@ const MyShakeCaseStudy: FC = () => {
         <Callout>Restructuring the landing page to minimize time-to-task for essential safety information.</Callout>
 
         <Callout>Design principles: From data tool to safety companion.</Callout>
-        <Paragraph>
-          We established four core principles to guide the redesign and ensure the app served users in high-stakes moments.
-        </Paragraph>
         <Reveal>
-          <UserJourney
-            stages={[
-              {
-                label: "Speed",
-                description: "Minimize taps and cognitive load to find critical info instantly",
-                color: "#FF6B6B",
-              },
-              {
-                label: "Clarity",
-                description: "Make the app's purpose clear — safety, not data visualization",
-                color: "#6BCB77",
-              },
-              {
-                label: "Reassurance",
-                description: "Provide immediate visual confirmation of loved ones' safety status",
-                color: "#4D96FF",
-              },
-              {
-                label: "Accessibility",
-                description: "Design for all users, not just data enthusiasts or scientists",
-                color: "#FFB84D",
-              },
-            ]}
-          />
+          <DesignPrinciples />
         </Reveal>
 
         <Callout>Balancing color accessibility with visual hierarchy</Callout>
-        <Paragraph>
-          Color for magnitude badges needed to be visually distinct and accessible for color blindness. We explored four variations to find the right saturation and hue balance.
-        </Paragraph>
+        <Reveal>
+          <IconHighlight
+            icon="🎨"
+            title="Color Strategy"
+            description="Magnitude badges needed to be visually distinct and accessible for color blindness. We explored four variations to find the right saturation and hue balance."
+          />
+        </Reveal>
         <Reveal>
           <ColorVariationGrid />
         </Reveal>
 
         <Callout>Choosing a font that balances brand and accessibility.</Callout>
-        <Paragraph>
-          Tested Helvetica Neue against Plus Jakarta Sans. Plus Jakarta Sans won for its welcoming letterforms without sacrificing clarity at small sizes.
-        </Paragraph>
+        <Reveal>
+          <IconHighlight
+            icon="🔤"
+            title="Typography Selection"
+            description="Tested Helvetica Neue against Plus Jakarta Sans. Plus Jakarta Sans won for its welcoming letterforms without sacrificing clarity at small sizes."
+          />
+        </Reveal>
         <Reveal>
           <TypeCompare />
         </Reveal>
@@ -633,9 +617,13 @@ const MyShakeCaseStudy: FC = () => {
           <EffortImpactMatrix />
         </Reveal>
 
-        <Paragraph>
-          I authored MyShake's first design system — standardizing components, typography, and color scales. Every component was WCAG-compliant and designed for clarity in high-stress moments.
-        </Paragraph>
+        <Reveal>
+          <IconHighlight
+            icon="📐"
+            title="Design System"
+            description="Authored MyShake's first design system — standardizing components, typography, and color scales. Every component was WCAG-compliant and designed for clarity in high-stress moments."
+          />
+        </Reveal>
         <Reveal>
           <img
             src={myshakeDesignSystem}
