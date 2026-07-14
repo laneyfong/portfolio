@@ -28,6 +28,9 @@ import {
 } from "./components/caseStudy/CaseStudyKit";
 import ColorVariationGrid from "./components/caseStudy/ColorVariationGrid";
 import EffortImpactMatrix from "./components/caseStudy/EffortImpactMatrix";
+import ResearchInsights from "./components/caseStudy/ResearchInsights";
+import SolutionBreakdown from "./components/caseStudy/SolutionBreakdown";
+import StepsComparison from "./components/caseStudy/StepsComparison";
 import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeDashboard from "./assets/myshake-dashboard.png";
@@ -461,10 +464,12 @@ const MyShakeCaseStudy: FC = () => {
           </Reveal>
         </div>
 
+        <Callout>Key research findings at a glance</Callout>
+        <Reveal>
+          <ResearchInsights />
+        </Reveal>
+
         <Callout>User journey: From awareness to churn.</Callout>
-        <Paragraph>
-          Research revealed a critical problem: users were downloading the app out of concern but had no reason to keep it.
-        </Paragraph>
         <Reveal>
           <UserJourney
             stages={[
@@ -503,18 +508,7 @@ const MyShakeCaseStudy: FC = () => {
         <Callout>The Problem: 7 steps to find a loved one.</Callout>
 
         <Reveal>
-          <ProcessFlow
-            direction="vertical"
-            steps={[
-              { title: "Launch app", description: "User opens MyShake in panic", color: "#FF6B6B", icon: "1" },
-              { title: "Navigate to search", description: "Find the search feature buried in menu", color: "#FF8C42", icon: "2" },
-              { title: "Enter name", description: "Type loved one's name or number", color: "#FFA500", icon: "3" },
-              { title: "Wait for results", description: "Slow API returns fuzzy matches", color: "#FFB84D", icon: "4" },
-              { title: "Verify location", description: "Check if result matches the right person", color: "#FFC870", icon: "5" },
-              { title: "Get status", description: "Finally see if they're safe", color: "#FFD93D", icon: "6" },
-              { title: "Relief", description: "7+ steps to get critical information", color: "#A8A8A8", icon: "7" },
-            ]}
-          />
+          <StepsComparison />
         </Reveal>
 
         <Callout>Empathizing with users to find the most intuitive flow.</Callout>
@@ -666,54 +660,9 @@ const MyShakeCaseStudy: FC = () => {
           <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
         </Reveal>
 
+        <Callout>Core features of the redesign</Callout>
         <Reveal>
-          <div
-            style={{
-              margin: "32px 0",
-              background: tokens.color.offWhite,
-              border: `2px dashed ${tokens.color.cardBorder}`,
-              borderRadius: tokens.radius.md,
-              padding: 60,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              gap: 12,
-            }}
-          >
-            <div
-              style={{
-                fontSize: "48px",
-                marginBottom: 8,
-              }}
-            >
-              ▶️
-            </div>
-            <div
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                fontSize: "18px",
-                color: tokens.color.textDark,
-                marginBottom: 4,
-              }}
-            >
-              Interactive Product Demo
-            </div>
-            <p
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "14px",
-                color: tokens.color.body,
-                margin: 0,
-                maxWidth: 400,
-                lineHeight: tokens.leading.normal,
-              }}
-            >
-              Try the redesigned app flow: Open dashboard → Tap a contact → See safety status in 3 steps
-            </p>
-          </div>
+          <SolutionBreakdown />
         </Reveal>
 
         <Reveal>
