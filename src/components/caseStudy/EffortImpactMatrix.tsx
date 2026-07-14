@@ -12,16 +12,16 @@ interface MatrixItem {
 
 const EffortImpactMatrix: FC = () => {
   const items: MatrixItem[] = [
-    { label: "Gamified safety instructions", shortLabel: "Gamified safety", color: "#22C55E", icon: "✓", x: 20, y: 85 },
-    { label: "Better EEW vs CEN differentiation", shortLabel: "Alert clarity", color: "#22C55E", icon: "✓", x: 25, y: 80 },
-    { label: "Map shown first", shortLabel: "Map-first layout", color: "#22C55E", icon: "✓", x: 15, y: 75 },
-    { label: "News section", shortLabel: "News section", color: "#3B82F6", icon: "◆", x: 65, y: 70 },
-    { label: "User-submitted photos", shortLabel: "Photo feed", color: "#3B82F6", icon: "◆", x: 70, y: 65 },
-    { label: "Sharing location", shortLabel: "Location sharing", color: "#3B82F6", icon: "◆", x: 60, y: 75 },
-    { label: "Remove 'MyLog'", shortLabel: "Remove MyLog", color: "#FBBF24", icon: "◇", x: 30, y: 35 },
-    { label: "Logo & icons", shortLabel: "Rebrand", color: "#FBBF24", icon: "◇", x: 40, y: 40 },
-    { label: "Dark mode", shortLabel: "Dark mode", color: "#FBBF24", icon: "◇", x: 35, y: 30 },
-    { label: "3D earthquake map", shortLabel: "3D map", color: "#F87171", icon: "○", x: 80, y: 45 },
+    { label: "Gamified safety instructions", shortLabel: "Gamified safety", color: "#22C55E", icon: "✓", x: 12, y: 88 },
+    { label: "Better EEW vs CEN differentiation", shortLabel: "Alert clarity", color: "#22C55E", icon: "✓", x: 22, y: 78 },
+    { label: "Map shown first", shortLabel: "Map-first layout", color: "#22C55E", icon: "✓", x: 12, y: 68 },
+    { label: "News section", shortLabel: "News section", color: "#3B82F6", icon: "◆", x: 72, y: 75 },
+    { label: "User-submitted photos", shortLabel: "Photo feed", color: "#3B82F6", icon: "◆", x: 82, y: 62 },
+    { label: "Sharing location", shortLabel: "Location sharing", color: "#3B82F6", icon: "◆", x: 62, y: 65 },
+    { label: "Remove 'MyLog'", shortLabel: "Remove MyLog", color: "#FBBF24", icon: "◇", x: 18, y: 42 },
+    { label: "Logo & icons", shortLabel: "Rebrand", color: "#FBBF24", icon: "◇", x: 32, y: 38 },
+    { label: "Dark mode", shortLabel: "Dark mode", color: "#FBBF24", icon: "◇", x: 24, y: 25 },
+    { label: "3D earthquake map", shortLabel: "3D map", color: "#F87171", icon: "○", x: 82, y: 38 },
   ];
 
   const matrixSize = 640;
