@@ -656,9 +656,8 @@ const MyShakeCaseStudy: FC = () => {
           />
         </Reveal>
 
-        <Callout>Leading the design system</Callout>
         <Paragraph>
-          I authored the brand's first component library — a WCAG-compliant design system that standardized typography, grids, buttons, inputs, and color scales across the app. The system balanced accessibility with welcoming visual language, ensuring every component served a clear purpose in high-stress navigation.
+          I authored the brand's first component library — standardizing typography, grids, buttons, inputs, and color scales across the app. The system was WCAG-compliant and balanced accessibility with welcoming visual language, ensuring every component served a clear purpose in high-stress navigation.
         </Paragraph>
         <Reveal>
           <img
