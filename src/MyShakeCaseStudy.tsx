@@ -32,6 +32,7 @@ import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakePinned from "./assets/myshake-pinned-locations.png";
 import effortImpactMatrix from "./assets/myshake-effort-impact-matrix.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
+import myshakeColorExploration from "./assets/myshake-color-exploration.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -623,6 +624,24 @@ const MyShakeCaseStudy: FC = () => {
                 color: "#FFB84D",
               },
             ]}
+          />
+        </Reveal>
+
+        <Callout>Balancing color accessibility with visual hierarchy</Callout>
+        <Paragraph>
+          One of our biggest design challenges was choosing color for the magnitude badges. We needed them to be instantly recognizable and visually distinct, but also accessible for users with color blindness. We explored four variations, testing different saturation levels and hue ranges to find the sweet spot where color works as a visual signal without relying on it as the only differentiator.
+        </Paragraph>
+        <Reveal>
+          <img
+            src={myshakeColorExploration}
+            alt="Color exploration variations for earthquake magnitude badges: four iterations showing different saturation and hue treatments to balance accessibility with visual impact"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 32,
+            }}
           />
         </Reveal>
 
