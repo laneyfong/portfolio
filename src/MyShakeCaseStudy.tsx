@@ -340,20 +340,20 @@ const MyShakeCaseStudy: FC = () => {
 
         <Reveal delay={100}>
           <ShakeOnView>
-            <div className="case-intro-shots" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 16, marginBottom: 32 }}>
-              <img
-                src={myshakeDashboard}
-                alt="MyShake dashboard with pinned locations and earthquake education cards"
-                className="case-shot"
-                style={{ width: "100%", display: "block", borderRadius: tokens.radius.md, boxShadow: tokens.shadow.card }}
-              />
-              <img
-                src={myshakePinned}
-                alt="MyShake pinned locations and earthquake details screens"
-                className="case-shot"
-                style={{ width: "100%", display: "block", borderRadius: tokens.radius.md, boxShadow: tokens.shadow.card }}
-              />
-            </div>
+            <img
+              src={myshakeDashboard}
+              alt="MyShake dashboard: the redesigned app showing pinned family locations for quick access to loved ones' safety status during earthquakes"
+              className="case-shot"
+              style={{
+                width: "100%",
+                display: "block",
+                borderRadius: tokens.radius.md,
+                boxShadow: tokens.shadow.card,
+                marginBottom: 32,
+                maxWidth: "100%",
+                height: "auto"
+              }}
+            />
           </ShakeOnView>
         </Reveal>
 
