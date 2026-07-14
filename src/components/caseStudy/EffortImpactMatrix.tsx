@@ -3,6 +3,7 @@ import { tokens } from "../../tokens";
 
 interface MatrixItem {
   label: string;
+  shortLabel: string;
   color: string;
   icon: string;
   x: number; // 0-100, effort
@@ -11,20 +12,20 @@ interface MatrixItem {
 
 const EffortImpactMatrix: FC = () => {
   const items: MatrixItem[] = [
-    { label: "Gamified safety instructions", color: "#22C55E", icon: "✓", x: 20, y: 85 },
-    { label: "Better EEW vs CEN differentiation", color: "#22C55E", icon: "✓", x: 25, y: 80 },
-    { label: "Map shown first", color: "#22C55E", icon: "✓", x: 15, y: 75 },
-    { label: "News section", color: "#3B82F6", icon: "◆", x: 65, y: 70 },
-    { label: "User-submitted photo feed", color: "#3B82F6", icon: "◆", x: 70, y: 65 },
-    { label: "Sharing location feature", color: "#3B82F6", icon: "◆", x: 60, y: 75 },
-    { label: "Remove 'MyLog' page", color: "#FBBF24", icon: "◇", x: 30, y: 35 },
-    { label: "Updated logo & iconography", color: "#FBBF24", icon: "◇", x: 40, y: 40 },
-    { label: "Dark mode", color: "#FBBF24", icon: "◇", x: 35, y: 30 },
-    { label: "Interactive 3D earthquake map", color: "#F87171", icon: "○", x: 80, y: 45 },
+    { label: "Gamified safety instructions", shortLabel: "Gamified safety", color: "#22C55E", icon: "✓", x: 20, y: 85 },
+    { label: "Better EEW vs CEN differentiation", shortLabel: "Alert clarity", color: "#22C55E", icon: "✓", x: 25, y: 80 },
+    { label: "Map shown first", shortLabel: "Map-first layout", color: "#22C55E", icon: "✓", x: 15, y: 75 },
+    { label: "News section", shortLabel: "News section", color: "#3B82F6", icon: "◆", x: 65, y: 70 },
+    { label: "User-submitted photos", shortLabel: "Photo feed", color: "#3B82F6", icon: "◆", x: 70, y: 65 },
+    { label: "Sharing location", shortLabel: "Location sharing", color: "#3B82F6", icon: "◆", x: 60, y: 75 },
+    { label: "Remove 'MyLog'", shortLabel: "Remove MyLog", color: "#FBBF24", icon: "◇", x: 30, y: 35 },
+    { label: "Logo & icons", shortLabel: "Rebrand", color: "#FBBF24", icon: "◇", x: 40, y: 40 },
+    { label: "Dark mode", shortLabel: "Dark mode", color: "#FBBF24", icon: "◇", x: 35, y: 30 },
+    { label: "3D earthquake map", shortLabel: "3D map", color: "#F87171", icon: "○", x: 80, y: 45 },
   ];
 
-  const matrixSize = 500;
-  const padding = 60;
+  const matrixSize = 640;
+  const padding = 80;
   const innerWidth = matrixSize - padding * 2;
   const innerHeight = matrixSize - padding * 2;
 
@@ -33,7 +34,7 @@ const EffortImpactMatrix: FC = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: 24,
+        gap: 32,
         marginBottom: 32,
       }}
     >
@@ -52,6 +53,7 @@ const EffortImpactMatrix: FC = () => {
           style={{
             maxWidth: "100%",
             height: "auto",
+            filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.06))",
           }}
         >
           {/* Quadrant backgrounds */}
@@ -61,7 +63,7 @@ const EffortImpactMatrix: FC = () => {
             width={innerWidth / 2}
             height={innerHeight / 2}
             fill="#22C55E"
-            opacity="0.06"
+            opacity="0.08"
           />
           <rect
             x={padding + innerWidth / 2}
@@ -69,7 +71,7 @@ const EffortImpactMatrix: FC = () => {
             width={innerWidth / 2}
             height={innerHeight / 2}
             fill="#3B82F6"
-            opacity="0.06"
+            opacity="0.08"
           />
           <rect
             x={padding}
@@ -77,7 +79,7 @@ const EffortImpactMatrix: FC = () => {
             width={innerWidth / 2}
             height={innerHeight / 2}
             fill="#FBBF24"
-            opacity="0.06"
+            opacity="0.08"
           />
           <rect
             x={padding + innerWidth / 2}
@@ -85,8 +87,58 @@ const EffortImpactMatrix: FC = () => {
             width={innerWidth / 2}
             height={innerHeight / 2}
             fill="#F87171"
-            opacity="0.06"
+            opacity="0.08"
           />
+
+          {/* Quadrant labels */}
+          <text
+            x={padding + innerWidth / 4}
+            y={padding + 24}
+            fontFamily={tokens.font.sans}
+            fontSize="13"
+            fontWeight={tokens.weight.medium}
+            fill="#22C55E"
+            textAnchor="middle"
+            opacity="0.6"
+          >
+            Do First
+          </text>
+          <text
+            x={padding + (innerWidth * 3) / 4}
+            y={padding + 24}
+            fontFamily={tokens.font.sans}
+            fontSize="13"
+            fontWeight={tokens.weight.medium}
+            fill="#3B82F6"
+            textAnchor="middle"
+            opacity="0.6"
+          >
+            Plan Ahead
+          </text>
+          <text
+            x={padding + innerWidth / 4}
+            y={padding + innerHeight + 32}
+            fontFamily={tokens.font.sans}
+            fontSize="13"
+            fontWeight={tokens.weight.medium}
+            fill="#FBBF24"
+            textAnchor="middle"
+            opacity="0.6"
+          >
+            Fill In
+          </text>
+          <text
+            x={padding + (innerWidth * 3) / 4}
+            y={padding + innerHeight + 32}
+            fontFamily={tokens.font.sans}
+            fontSize="13"
+            fontWeight={tokens.weight.medium}
+            fill="#F87171"
+            textAnchor="middle"
+            opacity="0.6"
+          >
+            Avoid
+          </text>
 
           {/* Grid lines */}
           <line
@@ -96,7 +148,7 @@ const EffortImpactMatrix: FC = () => {
             y2={padding + innerHeight / 2}
             stroke={tokens.color.cardBorder}
             strokeWidth="1"
-            opacity="0.5"
+            opacity="0.4"
           />
           <line
             x1={padding + innerWidth / 2}
@@ -105,7 +157,7 @@ const EffortImpactMatrix: FC = () => {
             y2={padding + innerHeight}
             stroke={tokens.color.cardBorder}
             strokeWidth="1"
-            opacity="0.5"
+            opacity="0.4"
           />
 
           {/* Axes */}
@@ -115,7 +167,7 @@ const EffortImpactMatrix: FC = () => {
             x2={padding + innerWidth}
             y2={padding + innerHeight}
             stroke={tokens.color.ink}
-            strokeWidth="2"
+            strokeWidth="2.5"
           />
           <line
             x1={padding}
@@ -123,7 +175,7 @@ const EffortImpactMatrix: FC = () => {
             x2={padding}
             y2={padding + innerHeight}
             stroke={tokens.color.ink}
-            strokeWidth="2"
+            strokeWidth="2.5"
           />
 
           {/* Axis arrows */}
@@ -138,28 +190,28 @@ const EffortImpactMatrix: FC = () => {
 
           {/* Axis labels */}
           <text
-            x={padding + innerWidth + 12}
-            y={padding + innerHeight + 6}
+            x={padding + innerWidth + 16}
+            y={padding + innerHeight + 8}
             fontFamily={tokens.font.sans}
-            fontSize="12"
+            fontSize="13"
             fontWeight={tokens.weight.medium}
             fill={tokens.color.ink}
           >
-            Effort
+            Effort →
           </text>
           <text
-            x={padding - 38}
-            y={padding - 8}
+            x={padding - 20}
+            y={padding - 12}
             fontFamily={tokens.font.sans}
-            fontSize="12"
+            fontSize="13"
             fontWeight={tokens.weight.medium}
             fill={tokens.color.ink}
             textAnchor="end"
           >
-            Impact
+            ↑ Impact
           </text>
 
-          {/* Data points */}
+          {/* Data points with labels */}
           {items.map((item, idx) => {
             const px = padding + (item.x / 100) * innerWidth;
             const py = padding + innerHeight - (item.y / 100) * innerHeight;
@@ -169,17 +221,17 @@ const EffortImpactMatrix: FC = () => {
                 <circle
                   cx={px}
                   cy={py}
-                  r="14"
+                  r="16"
                   fill={item.color}
-                  opacity="0.85"
+                  opacity="0.9"
                   style={{ cursor: "pointer" }}
                 />
                 {/* Icon */}
                 <text
                   x={px}
-                  y={py}
+                  y={py - 1}
                   fontFamily={tokens.font.sans}
-                  fontSize="16"
+                  fontSize="18"
                   fontWeight="bold"
                   fill="white"
                   textAnchor="middle"
@@ -188,185 +240,223 @@ const EffortImpactMatrix: FC = () => {
                 >
                   {item.icon}
                 </text>
+                {/* Label */}
+                <text
+                  x={px}
+                  y={py + 28}
+                  fontFamily={tokens.font.sans}
+                  fontSize="11"
+                  fontWeight={tokens.weight.medium}
+                  fill={tokens.color.ink}
+                  textAnchor="middle"
+                  pointerEvents="none"
+                  style={{ maxWidth: 60 }}
+                >
+                  {item.shortLabel}
+                </text>
               </g>
             );
           })}
         </svg>
       </div>
 
-      {/* Legend */}
+      {/* Legend with full descriptions */}
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 12,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 24,
         }}
       >
+        {/* High Impact / Low Effort */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 16,
+            padding: 20,
+            borderRadius: tokens.radius.sm,
+            border: `1px solid #22C55E40`,
+            backgroundColor: "#22C55E08",
           }}
         >
-          {/* High Impact / Low Effort */}
-          <div>
-            <div
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "12px",
-                fontWeight: tokens.weight.medium,
-                color: "#22C55E",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: 8,
-              }}
-            >
-              Do First
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 6,
-              }}
-            >
-              {items
-                .filter((item) => item.color === "#22C55E")
-                .map((item) => (
-                  <div
-                    key={item.label}
-                    style={{
-                      fontFamily: tokens.font.sans,
-                      fontSize: "13px",
-                      color: tokens.color.ink,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item.icon} {item.label}
-                  </div>
-                ))}
-            </div>
+          <div
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: "12px",
+              fontWeight: tokens.weight.medium,
+              color: "#22C55E",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+              marginBottom: 12,
+            }}
+          >
+            Quick Wins
           </div>
-
-          {/* High Impact / High Effort */}
-          <div>
-            <div
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "12px",
-                fontWeight: tokens.weight.medium,
-                color: "#3B82F6",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: 8,
-              }}
-            >
-              Plan Ahead
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 6,
-              }}
-            >
-              {items
-                .filter((item) => item.color === "#3B82F6")
-                .map((item) => (
-                  <div
-                    key={item.label}
-                    style={{
-                      fontFamily: tokens.font.sans,
-                      fontSize: "13px",
-                      color: tokens.color.ink,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item.icon} {item.label}
-                  </div>
-                ))}
-            </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+            }}
+          >
+            {items
+              .filter((item) => item.color === "#22C55E")
+              .map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "13px",
+                    color: tokens.color.ink,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <span style={{ marginRight: 6 }}>{item.icon}</span>
+                  {item.label}
+                </div>
+              ))}
           </div>
+        </div>
 
-          {/* Low Impact / Low Effort */}
-          <div>
-            <div
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "12px",
-                fontWeight: tokens.weight.medium,
-                color: "#FBBF24",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: 8,
-              }}
-            >
-              Fill In
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 6,
-              }}
-            >
-              {items
-                .filter((item) => item.color === "#FBBF24")
-                .map((item) => (
-                  <div
-                    key={item.label}
-                    style={{
-                      fontFamily: tokens.font.sans,
-                      fontSize: "13px",
-                      color: tokens.color.ink,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item.icon} {item.label}
-                  </div>
-                ))}
-            </div>
+        {/* High Impact / High Effort */}
+        <div
+          style={{
+            padding: 20,
+            borderRadius: tokens.radius.sm,
+            border: `1px solid #3B82F6` + "40",
+            backgroundColor: "#3B82F6" + "08",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: "12px",
+              fontWeight: tokens.weight.medium,
+              color: "#3B82F6",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+              marginBottom: 12,
+            }}
+          >
+            Strategic Bets
           </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+            }}
+          >
+            {items
+              .filter((item) => item.color === "#3B82F6")
+              .map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "13px",
+                    color: tokens.color.ink,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <span style={{ marginRight: 6 }}>{item.icon}</span>
+                  {item.label}
+                </div>
+              ))}
+          </div>
+        </div>
 
-          {/* Low Impact / High Effort */}
-          <div>
-            <div
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "12px",
-                fontWeight: tokens.weight.medium,
-                color: "#F87171",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: 8,
-              }}
-            >
-              Avoid
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 6,
-              }}
-            >
-              {items
-                .filter((item) => item.color === "#F87171")
-                .map((item) => (
-                  <div
-                    key={item.label}
-                    style={{
-                      fontFamily: tokens.font.sans,
-                      fontSize: "13px",
-                      color: tokens.color.ink,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item.icon} {item.label}
-                  </div>
-                ))}
-            </div>
+        {/* Low Impact / Low Effort */}
+        <div
+          style={{
+            padding: 20,
+            borderRadius: tokens.radius.sm,
+            border: `1px solid #FBBF24` + "40",
+            backgroundColor: "#FBBF24" + "08",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: "12px",
+              fontWeight: tokens.weight.medium,
+              color: "#FBBF24",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+              marginBottom: 12,
+            }}
+          >
+            Nice to Have
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+            }}
+          >
+            {items
+              .filter((item) => item.color === "#FBBF24")
+              .map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "13px",
+                    color: tokens.color.ink,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <span style={{ marginRight: 6 }}>{item.icon}</span>
+                  {item.label}
+                </div>
+              ))}
+          </div>
+        </div>
+
+        {/* Low Impact / High Effort */}
+        <div
+          style={{
+            padding: 20,
+            borderRadius: tokens.radius.sm,
+            border: `1px solid #F87171` + "40",
+            backgroundColor: "#F87171" + "08",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: "12px",
+              fontWeight: tokens.weight.medium,
+              color: "#F87171",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+              marginBottom: 12,
+            }}
+          >
+            Pass
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+            }}
+          >
+            {items
+              .filter((item) => item.color === "#F87171")
+              .map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "13px",
+                    color: tokens.color.ink,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <span style={{ marginRight: 6 }}>{item.icon}</span>
+                  {item.label}
+                </div>
+              ))}
           </div>
         </div>
       </div>
