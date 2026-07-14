@@ -23,6 +23,9 @@ import {
   ProcessFlow,
 } from "./components/caseStudy/CaseStudyKit";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
+import ResearchThemes from "./components/caseStudy/ResearchThemes";
+import DesignChallenges from "./components/caseStudy/DesignChallenges";
+import IconHighlight from "./components/caseStudy/IconHighlight";
 import uxAgentScreenshot from "./assets/ux-agent-screenshot.png";
 
 const SECTIONS: CaseSection[] = [
@@ -87,7 +90,7 @@ const NvidiaCaseStudy: FC = () => {
   return (
     <CaseStudyShell sections={SECTIONS} highlights={HIGHLIGHTS}>
       {/* Intro */}
-      <section id="intro" style={{ paddingBottom: 96 }}>
+      <section id="intro" style={{ paddingBottom: 96 }} className="section-reveal">
         <Kicker>Engineering-heavy teams, late-stage discovery.</Kicker>
         <h1
           style={{
@@ -155,7 +158,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Research */}
-      <section id="research" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="research" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Research</SectionHeading>
           <SkillRow items={["Semi-structured Interviews", "Survey Design", "Secondary Research"]} />
@@ -183,35 +186,8 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Callout>Key research themes from engineer interviews.</Callout>
-        <Paragraph>
-          Four critical patterns emerged that would shape the design of an AI UX agent that engineers would actually trust and use.
-        </Paragraph>
-
         <Reveal>
-          <UserJourney
-            stages={[
-              {
-                label: "Trust & Transparency",
-                description: "Engineers need to verify AI findings and understand where accountability sits",
-                color: "#FF6B6B",
-              },
-              {
-                label: "Data Collection Gap",
-                description: "Teams lack structured feedback — relying on Slack and feedback buttons instead",
-                color: "#FFA500",
-              },
-              {
-                label: "Engineering Priorities",
-                description: "Code-breaking bugs and timelines crowd out usability fixes",
-                color: "#FFD93D",
-              },
-              {
-                label: "Simple Tools Win",
-                description: "Engineers want zero onboarding — the tool must replace manual work seamlessly",
-                color: "#6BCB77",
-              },
-            ]}
-          />
+          <ResearchThemes />
         </Reveal>
 
         <Reveal>
@@ -278,16 +254,16 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Synthesis */}
-      <section id="synthesis" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="synthesis" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Insight Framing", "How Might We"]} />
         </Reveal>
 
-        <Paragraph>
-          The say/do gap pointed at something more specific than "make the tool easier to use." We turned the four
-          themes into two design questions worth building toward.
-        </Paragraph>
+        <Callout>The core challenge: Say/Do Gap</Callout>
+        <Reveal>
+          <DesignChallenges />
+        </Reveal>
 
         <div style={{ marginBottom: 40 }}>
           <Kicker>Design Question 1: Prioritization</Kicker>
@@ -374,7 +350,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Status */}
-      <section id="status" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="status" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Status</SectionHeading>
         </Reveal>
@@ -453,7 +429,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
         </Reveal>
