@@ -30,6 +30,7 @@ import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakePinned from "./assets/myshake-pinned-locations.png";
+import effortImpactMatrix from "./assets/myshake-effort-impact-matrix.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -614,6 +615,24 @@ const MyShakeCaseStudy: FC = () => {
         </Paragraph>
         <Reveal>
           <TypeCompare />
+        </Reveal>
+
+        <Callout>Prioritizing features through effort-impact analysis</Callout>
+        <Paragraph>
+          To maximize impact with limited resources, we mapped all proposed features on an effort-impact matrix. This helped us identify the high-impact, low-effort wins that would have the most meaningful impact on user safety — like gamified safety instructions, better differentiation between EEW and CEN alerts, and showing the map first. We focused our energy on these strategic priorities rather than getting caught up in complex, resource-intensive features that didn't move the needle.
+        </Paragraph>
+        <Reveal>
+          <img
+            src={effortImpactMatrix}
+            alt="Effort-Impact Matrix: Feature prioritization showing high impact/low effort (green), high impact/high effort (blue), low impact/low effort (yellow), and low impact/high effort (coral) quadrants"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 32,
+            }}
+          />
         </Reveal>
 
         <Callout>Design System</Callout>
