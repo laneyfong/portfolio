@@ -33,6 +33,7 @@ import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakePinned from "./assets/myshake-pinned-locations.png";
 import effortImpactMatrix from "./assets/myshake-effort-impact-matrix.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
+import myshakeDesignSystem from "./assets/myshake-design-system.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -655,10 +656,24 @@ const MyShakeCaseStudy: FC = () => {
           />
         </Reveal>
 
-        <Callout>Design System</Callout>
+        <Callout>Leading the design system</Callout>
         <Paragraph>
-          I authored the brand's first component library — a WCAG-compliant design system that standardized typography, grids, and UI elements across the app. This reduced cognitive load and accelerated access to critical features.
+          I authored the brand's first component library — a WCAG-compliant design system that standardized typography, grids, buttons, inputs, and color scales across the app. The system balanced accessibility with welcoming visual language, ensuring every component served a clear purpose in high-stress navigation.
         </Paragraph>
+        <Reveal>
+          <img
+            src={myshakeDesignSystem}
+            alt="MyShake design system showing components, radius options, input states, color palette, and earthquake magnitude scale"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 32,
+              display: "block",
+            }}
+          />
+        </Reveal>
       </section>
 
       {/* Solution */}
