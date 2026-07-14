@@ -331,7 +331,7 @@ const MyShakeCaseStudy: FC = () => {
               access to pinned family locations and critical safety status.
             </FeatureCard>
             <FeatureCard title="Result">
-              45% increase in user engagement by evolving MyShake into an all-in-one earthquake care package.
+              Users now have instant access to loved ones' safety status — transforming MyShake from a curiosity app into a trusted safety companion they return to regularly.
             </FeatureCard>
           </div>
         </Reveal>
