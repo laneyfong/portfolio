@@ -256,22 +256,22 @@ const EffortImpactMatrix: FC = () => {
                   </filter>
                 </defs>
                 <rect
-                  x={px - 55}
-                  y={isTopHalf ? py + 18 : py - 46}
-                  width="110"
-                  height="32"
+                  x={px - 48}
+                  y={isTopHalf ? py + 20 : py - 44}
+                  width="96"
+                  height="24"
                   fill={tokens.color.white}
-                  rx="5"
+                  rx="3"
                   pointerEvents="none"
                   stroke={item.darkColor}
-                  strokeWidth="1.5"
+                  strokeWidth="0.75"
                   opacity="1"
                   filter={`url(#shadow-${idx})`}
                 />
                 {/* Label text */}
                 <text
                   x={px}
-                  y={isTopHalf ? py + 39 : py - 30}
+                  y={isTopHalf ? py + 32 : py - 32}
                   fontFamily={tokens.font.sans}
                   fontSize="12"
                   fontWeight={tokens.weight.medium}
