@@ -170,26 +170,26 @@ const EffortImpactMatrix: FC = () => {
             y1={padding + innerHeight}
             x2={padding + innerWidth}
             y2={padding + innerHeight}
-            stroke={tokens.color.ink}
-            strokeWidth="2.5"
+            stroke="#9CA3AF"
+            strokeWidth="1.5"
           />
           <line
             x1={padding}
             y1={padding}
             x2={padding}
             y2={padding + innerHeight}
-            stroke={tokens.color.ink}
-            strokeWidth="2.5"
+            stroke="#9CA3AF"
+            strokeWidth="1.5"
           />
 
           {/* Axis arrows */}
           <polygon
             points={`${padding + innerWidth},${padding + innerHeight} ${padding + innerWidth - 8},${padding + innerHeight - 4} ${padding + innerWidth - 8},${padding + innerHeight + 4}`}
-            fill={tokens.color.ink}
+            fill="#9CA3AF"
           />
           <polygon
             points={`${padding},${padding} ${padding - 4},${padding + 8} ${padding + 4},${padding + 8}`}
-            fill={tokens.color.ink}
+            fill="#9CA3AF"
           />
 
           {/* Axis labels */}
@@ -199,7 +199,7 @@ const EffortImpactMatrix: FC = () => {
             fontFamily={tokens.font.sans}
             fontSize="13"
             fontWeight={tokens.weight.medium}
-            fill={tokens.color.ink}
+            fill="#9CA3AF"
           >
             Effort →
           </text>
@@ -209,7 +209,7 @@ const EffortImpactMatrix: FC = () => {
             fontFamily={tokens.font.sans}
             fontSize="13"
             fontWeight={tokens.weight.medium}
-            fill={tokens.color.ink}
+            fill="#9CA3AF"
             textAnchor="end"
           >
             ↑ Impact
