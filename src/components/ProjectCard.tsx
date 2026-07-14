@@ -19,6 +19,7 @@ interface ProjectCardProps {
   roleOutcome?: string;
   darkHoverMode?: boolean;
   wipLabel?: string;
+  invertOnHover?: boolean;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -32,6 +33,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   roleOutcome,
   darkHoverMode = false,
   wipLabel,
+  invertOnHover = false,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -225,8 +227,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
               height: "auto",
               objectFit: "contain",
               borderRadius: "14px",
-              transition: "transform 0.22s ease",
+              transition: "transform 0.22s ease, filter 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
+              filter: invertOnHover && hovered ? "invert(1)" : "invert(0)",
               display: "block",
             }}
           />

@@ -24,7 +24,7 @@ import {
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import ResearchThemes from "./components/caseStudy/ResearchThemes";
 import DesignChallenges from "./components/caseStudy/DesignChallenges";
-import nvidiaLogo from "./assets/nvidia-logo.png";
+import nvidiaLogo from "./assets/nvidia-logo.webp";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },

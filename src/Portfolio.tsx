@@ -11,7 +11,7 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
 import myshakeApp from "./assets/myshake-app.png";
-import nvidiaLogo from "./assets/nvidia-logo.png";
+import nvidiaLogo from "./assets/nvidia-logo.webp";
 import platoHome from "./assets/plato-home.png";
 
 // Preload hero image for faster initial render
@@ -189,6 +189,7 @@ const Portfolio: FC = () => {
                 to="/nvidia-ai-ux-agent"
                 darkHoverMode={true}
                 wipLabel="WIP"
+                invertOnHover={true}
               />
             </div>
 
