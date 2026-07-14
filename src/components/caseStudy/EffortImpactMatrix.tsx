@@ -220,17 +220,8 @@ const EffortImpactMatrix: FC = () => {
             const px = padding + (item.x / 100) * innerWidth;
             const py = padding + innerHeight - (item.y / 100) * innerHeight;
 
-            // Smart label positioning to avoid overlaps
+            // Determine label position based on quadrant to avoid overlaps
             const isTopHalf = item.y > 50;
-
-            let labelY, labelBoxY;
-            if (isTopHalf) {
-              labelBoxY = py + 24;
-              labelY = py + 38;
-            } else {
-              labelBoxY = py - 32;
-              labelY = py - 18;
-            }
 
             return (
               <g key={idx} role="img" aria-label={`${item.label}: ${item.quadrant}`}>
@@ -243,7 +234,7 @@ const EffortImpactMatrix: FC = () => {
                   opacity="0.85"
                   style={{ cursor: "pointer" }}
                 />
-                {/* Icon */}
+                {/* Icon - centered in dot */}
                 <text
                   x={px}
                   y={py}
@@ -252,7 +243,7 @@ const EffortImpactMatrix: FC = () => {
                   fontWeight="bold"
                   fill="white"
                   textAnchor="middle"
-                  dominantBaseline="central"
+                  dominantBaseline="middle"
                   pointerEvents="none"
                   aria-hidden="true"
                 >
@@ -260,9 +251,9 @@ const EffortImpactMatrix: FC = () => {
                 </text>
                 {/* Label background box */}
                 <rect
-                  x={px - 50}
-                  y={labelBoxY - 14}
-                  width="100"
+                  x={px - 45}
+                  y={isTopHalf ? py + 20 : py - 48}
+                  width="90"
                   height="28"
                   fill={tokens.color.white}
                   rx="4"
@@ -274,13 +265,13 @@ const EffortImpactMatrix: FC = () => {
                 {/* Label text */}
                 <text
                   x={px}
-                  y={labelY}
+                  y={isTopHalf ? py + 37 : py - 31}
                   fontFamily={tokens.font.sans}
-                  fontSize="11"
+                  fontSize="12"
                   fontWeight={tokens.weight.medium}
                   fill={item.darkColor}
                   textAnchor="middle"
-                  dominantBaseline="central"
+                  dominantBaseline="middle"
                   pointerEvents="none"
                   aria-hidden="true"
                 >
