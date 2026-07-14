@@ -498,10 +498,12 @@ const MyShakeCaseStudy: FC = () => {
             alt="MyShake existing screens: Map view with earthquake search, earthquake list view, and safety information pages"
             style={{
               width: "100%",
-              maxWidth: "100%",
+              maxWidth: "640px",
               height: "auto",
               borderRadius: tokens.radius.md,
               marginBottom: 32,
+              display: "block",
+              margin: "0 auto 32px",
             }}
           />
         </Reveal>
@@ -637,10 +639,12 @@ const MyShakeCaseStudy: FC = () => {
             alt="Color exploration variations for earthquake magnitude badges: four iterations showing different saturation and hue treatments to balance accessibility with visual impact"
             style={{
               width: "100%",
-              maxWidth: "100%",
+              maxWidth: "560px",
               height: "auto",
               borderRadius: tokens.radius.md,
               marginBottom: 32,
+              display: "block",
+              margin: "0 auto 32px",
             }}
           />
         </Reveal>
@@ -665,10 +669,12 @@ const MyShakeCaseStudy: FC = () => {
             alt="Effort-Impact Matrix: Feature prioritization showing high impact/low effort (green), high impact/high effort (blue), low impact/low effort (yellow), and low impact/high effort (coral) quadrants"
             style={{
               width: "100%",
-              maxWidth: "100%",
+              maxWidth: "680px",
               height: "auto",
               borderRadius: tokens.radius.md,
               marginBottom: 32,
+              display: "block",
+              margin: "0 auto 32px",
             }}
           />
         </Reveal>
