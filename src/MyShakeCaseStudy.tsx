@@ -31,6 +31,7 @@ import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStu
 import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakePinned from "./assets/myshake-pinned-locations.png";
 import effortImpactMatrix from "./assets/myshake-effort-impact-matrix.png";
+import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -485,7 +486,25 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
+          <Callout>The existing experience: A data-first tool, not a safety companion</Callout>
         </Reveal>
+        <Paragraph>
+          The current MyShake app prioritized earthquake data presentation over actionable safety guidance. Users had to navigate through multiple screens to find relevant information during high-stress moments. The navigation structure was designed for data enthusiasts rather than people in crisis who needed quick, clear answers.
+        </Paragraph>
+        <Reveal>
+          <img
+            src={myshakeBeforeScreens}
+            alt="MyShake existing screens: Map view with earthquake search, earthquake list view, and safety information pages"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 32,
+            }}
+          />
+        </Reveal>
+
         <Paragraph>
           Having identified core user needs, we pivoted to prioritizing high-impact solutions that could
           realistically be delivered within our timeframe.
