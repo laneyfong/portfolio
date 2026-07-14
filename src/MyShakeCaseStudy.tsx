@@ -401,6 +401,23 @@ const MyShakeCaseStudy: FC = () => {
           I asked our client for any existing user research. Their answer: just the active-user rate, and it was low. The core problem: the app leaned on data visualization instead of utility during a crisis. Users opened it out of curiosity, not need.
         </Paragraph>
 
+        <Callout>The existing experience: A data-first tool, not a safety companion</Callout>
+        <Reveal>
+          <img
+            src={myshakeBeforeScreens}
+            alt="MyShake existing screens: Map view with earthquake search, earthquake list view, and safety information pages"
+            style={{
+              width: "100%",
+              maxWidth: "640px",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 32,
+              display: "block",
+              margin: "0 auto 32px",
+            }}
+          />
+        </Reveal>
+
         <PullQuote dark attribution="Stakeholder, kickoff meeting">
           Skip research, just redesign.
         </PullQuote>
@@ -482,25 +499,6 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
-          <Callout>The existing experience: A data-first tool, not a safety companion</Callout>
-        </Reveal>
-        <Paragraph>
-          The current MyShake app prioritized earthquake data presentation over actionable safety guidance. Users had to navigate through multiple screens to find relevant information during high-stress moments. The navigation structure was designed for data enthusiasts rather than people in crisis who needed quick, clear answers.
-        </Paragraph>
-        <Reveal>
-          <img
-            src={myshakeBeforeScreens}
-            alt="MyShake existing screens: Map view with earthquake search, earthquake list view, and safety information pages"
-            style={{
-              width: "100%",
-              maxWidth: "640px",
-              height: "auto",
-              borderRadius: tokens.radius.md,
-              marginBottom: 32,
-              display: "block",
-              margin: "0 auto 32px",
-            }}
-          />
         </Reveal>
 
         <Callout>The Problem: 7 steps to find a loved one.</Callout>
