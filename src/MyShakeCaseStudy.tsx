@@ -398,12 +398,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <PullQuote>The only existing research we have is the active user rate.</PullQuote>
         <Paragraph>
-          I asked our client for any existing user research. Their answer: just the active-user rate, and it was
-          low. My job was to find out why.
-        </Paragraph>
-        <Paragraph>
-          The core problem: the app leaned on data visualization — maps of past earthquakes — instead of utility
-          during a crisis. Users opened it out of curiosity, not need.
+          I asked our client for any existing user research. Their answer: just the active-user rate, and it was low. The core problem: the app leaned on data visualization instead of utility during a crisis. Users opened it out of curiosity, not need.
         </Paragraph>
 
         <PullQuote dark attribution="Stakeholder, kickoff meeting">
@@ -507,11 +502,6 @@ const MyShakeCaseStudy: FC = () => {
             }}
           />
         </Reveal>
-
-        <Paragraph>
-          Having identified core user needs, we pivoted to prioritizing high-impact solutions that could
-          realistically be delivered within our timeframe.
-        </Paragraph>
 
         <Callout>The Problem: 7 steps to find a loved one.</Callout>
         <Paragraph>
@@ -669,10 +659,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <Callout>Design System</Callout>
         <Paragraph>
-          I designed a universally accessible UI that maintains an authoritative presence while removing visual
-          barriers for a general audience — an accessible, WCAG-compliant design system that reduced cognitive load
-          and accelerated access to vital features. I also authored the brand's first component library,
-          standardizing typography, grids, and UI elements across the experience.
+          I authored the brand's first component library — a WCAG-compliant design system that standardized typography, grids, and UI elements across the app. This reduced cognitive load and accelerated access to critical features.
         </Paragraph>
       </section>
 
@@ -681,12 +668,8 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal dramatic>
           <SectionHeading>Solution</SectionHeading>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
-          <Callout>An all-in-one earthquake care package, built for high-stakes navigation.</Callout>
+          <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
         </Reveal>
-        <Paragraph>
-          Transforming MyShake from a passive alert tool into an active earthquake companion, using simplified
-          navigation to encourage frequent user interaction with readiness features.
-        </Paragraph>
 
         <Reveal>
           <div
