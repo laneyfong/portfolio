@@ -2,7 +2,6 @@ import type { FC, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../../tokens";
-import ContentContainer from "../ContentContainer";
 import Footer from "../Footer";
 import { BackArrowIcon, ChevronIcon } from "./CaseStudyKit";
 
