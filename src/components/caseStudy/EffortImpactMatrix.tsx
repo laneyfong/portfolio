@@ -5,23 +5,25 @@ interface MatrixItem {
   label: string;
   shortLabel: string;
   color: string;
+  darkColor: string;
   icon: string;
   x: number; // 0-100, effort
   y: number; // 0-100, impact
+  quadrant: string;
 }
 
 const EffortImpactMatrix: FC = () => {
   const items: MatrixItem[] = [
-    { label: "Gamified safety instructions", shortLabel: "Gamified safety", color: "#22C55E", icon: "✓", x: 12, y: 88 },
-    { label: "Better EEW vs CEN differentiation", shortLabel: "Alert clarity", color: "#22C55E", icon: "✓", x: 22, y: 78 },
-    { label: "Map shown first", shortLabel: "Map-first layout", color: "#22C55E", icon: "✓", x: 12, y: 68 },
-    { label: "News section", shortLabel: "News section", color: "#3B82F6", icon: "◆", x: 72, y: 75 },
-    { label: "User-submitted photos", shortLabel: "Photo feed", color: "#3B82F6", icon: "◆", x: 82, y: 62 },
-    { label: "Sharing location", shortLabel: "Location sharing", color: "#3B82F6", icon: "◆", x: 62, y: 65 },
-    { label: "Remove 'MyLog'", shortLabel: "Remove MyLog", color: "#FBBF24", icon: "◇", x: 18, y: 42 },
-    { label: "Logo & icons", shortLabel: "Rebrand", color: "#FBBF24", icon: "◇", x: 32, y: 38 },
-    { label: "Dark mode", shortLabel: "Dark mode", color: "#FBBF24", icon: "◇", x: 24, y: 25 },
-    { label: "3D earthquake map", shortLabel: "3D map", color: "#F87171", icon: "○", x: 82, y: 38 },
+    { label: "Gamified safety instructions", shortLabel: "Gamified safety", color: "#22C55E", darkColor: "#16A34A", icon: "✓", x: 12, y: 88, quadrant: "Do First" },
+    { label: "Better EEW vs CEN differentiation", shortLabel: "Alert clarity", color: "#22C55E", darkColor: "#16A34A", icon: "✓", x: 22, y: 78, quadrant: "Do First" },
+    { label: "Map shown first", shortLabel: "Map-first layout", color: "#22C55E", darkColor: "#16A34A", icon: "✓", x: 12, y: 68, quadrant: "Do First" },
+    { label: "News section", shortLabel: "News section", color: "#3B82F6", darkColor: "#1D4ED8", icon: "◆", x: 72, y: 75, quadrant: "Plan Ahead" },
+    { label: "User-submitted photos", shortLabel: "Photo feed", color: "#3B82F6", darkColor: "#1D4ED8", icon: "◆", x: 82, y: 62, quadrant: "Plan Ahead" },
+    { label: "Sharing location", shortLabel: "Location sharing", color: "#3B82F6", darkColor: "#1D4ED8", icon: "◆", x: 62, y: 65, quadrant: "Plan Ahead" },
+    { label: "Remove 'MyLog'", shortLabel: "Remove MyLog", color: "#F59E0B", darkColor: "#D97706", icon: "◇", x: 18, y: 42, quadrant: "Nice to Have" },
+    { label: "Logo & icons", shortLabel: "Rebrand", color: "#F59E0B", darkColor: "#D97706", icon: "◇", x: 32, y: 38, quadrant: "Nice to Have" },
+    { label: "Dark mode", shortLabel: "Dark mode", color: "#F59E0B", darkColor: "#D97706", icon: "◇", x: 24, y: 25, quadrant: "Nice to Have" },
+    { label: "3D earthquake map", shortLabel: "3D map", color: "#DC2626", darkColor: "#B91C1C", icon: "○", x: 82, y: 38, quadrant: "Pass" },
   ];
 
   const matrixSize = 640;
@@ -55,6 +57,8 @@ const EffortImpactMatrix: FC = () => {
             height: "auto",
             filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.06))",
           }}
+          role="img"
+          aria-label="Impact-Effort Matrix showing feature prioritization by quadrant"
         >
           {/* Quadrant backgrounds */}
           <rect
@@ -62,7 +66,7 @@ const EffortImpactMatrix: FC = () => {
             y={padding}
             width={innerWidth / 2}
             height={innerHeight / 2}
-            fill="#22C55E"
+            fill="#16A34A"
             opacity="0.08"
           />
           <rect
@@ -70,7 +74,7 @@ const EffortImpactMatrix: FC = () => {
             y={padding}
             width={innerWidth / 2}
             height={innerHeight / 2}
-            fill="#3B82F6"
+            fill="#1D4ED8"
             opacity="0.08"
           />
           <rect
@@ -78,7 +82,7 @@ const EffortImpactMatrix: FC = () => {
             y={padding + innerHeight / 2}
             width={innerWidth / 2}
             height={innerHeight / 2}
-            fill="#FBBF24"
+            fill="#D97706"
             opacity="0.08"
           />
           <rect
@@ -86,7 +90,7 @@ const EffortImpactMatrix: FC = () => {
             y={padding + innerHeight / 2}
             width={innerWidth / 2}
             height={innerHeight / 2}
-            fill="#F87171"
+            fill="#B91C1C"
             opacity="0.08"
           />
 
@@ -97,9 +101,9 @@ const EffortImpactMatrix: FC = () => {
             fontFamily={tokens.font.sans}
             fontSize="13"
             fontWeight={tokens.weight.medium}
-            fill="#22C55E"
+            fill="#16A34A"
             textAnchor="middle"
-            opacity="0.6"
+            opacity="0.75"
           >
             Do First
           </text>
@@ -109,9 +113,9 @@ const EffortImpactMatrix: FC = () => {
             fontFamily={tokens.font.sans}
             fontSize="13"
             fontWeight={tokens.weight.medium}
-            fill="#3B82F6"
+            fill="#1D4ED8"
             textAnchor="middle"
-            opacity="0.6"
+            opacity="0.75"
           >
             Plan Ahead
           </text>
@@ -121,9 +125,9 @@ const EffortImpactMatrix: FC = () => {
             fontFamily={tokens.font.sans}
             fontSize="13"
             fontWeight={tokens.weight.medium}
-            fill="#FBBF24"
+            fill="#D97706"
             textAnchor="middle"
-            opacity="0.6"
+            opacity="0.75"
           >
             Fill In
           </text>
@@ -133,11 +137,11 @@ const EffortImpactMatrix: FC = () => {
             fontFamily={tokens.font.sans}
             fontSize="13"
             fontWeight={tokens.weight.medium}
-            fill="#F87171"
+            fill="#B91C1C"
             textAnchor="middle"
-            opacity="0.6"
+            opacity="0.75"
           >
-            Avoid
+            Pass
           </text>
 
           {/* Grid lines */}
@@ -216,14 +220,14 @@ const EffortImpactMatrix: FC = () => {
             const px = padding + (item.x / 100) * innerWidth;
             const py = padding + innerHeight - (item.y / 100) * innerHeight;
             return (
-              <g key={idx}>
+              <g key={idx} role="img" aria-label={`${item.label}: ${item.quadrant}`}>
                 {/* Dot */}
                 <circle
                   cx={px}
                   cy={py}
                   r="16"
-                  fill={item.color}
-                  opacity="0.9"
+                  fill={item.darkColor}
+                  opacity="0.85"
                   style={{ cursor: "pointer" }}
                 />
                 {/* Icon */}
@@ -237,6 +241,7 @@ const EffortImpactMatrix: FC = () => {
                   textAnchor="middle"
                   dominantBaseline="middle"
                   pointerEvents="none"
+                  aria-hidden="true"
                 >
                   {item.icon}
                 </text>
@@ -249,8 +254,8 @@ const EffortImpactMatrix: FC = () => {
                   fill={tokens.color.white}
                   rx="4"
                   pointerEvents="none"
-                  stroke={item.color}
-                  strokeWidth="1"
+                  stroke={item.darkColor}
+                  strokeWidth="1.5"
                   opacity="0.95"
                 />
                 {/* Label text */}
@@ -260,10 +265,11 @@ const EffortImpactMatrix: FC = () => {
                   fontFamily={tokens.font.sans}
                   fontSize="12"
                   fontWeight={tokens.weight.medium}
-                  fill={item.color}
+                  fill={item.darkColor}
                   textAnchor="middle"
                   dominantBaseline="middle"
                   pointerEvents="none"
+                  aria-hidden="true"
                 >
                   {item.shortLabel}
                 </text>
@@ -286,8 +292,8 @@ const EffortImpactMatrix: FC = () => {
           style={{
             padding: 20,
             borderRadius: tokens.radius.sm,
-            border: `1px solid #22C55E40`,
-            backgroundColor: "#22C55E08",
+            border: `2px solid #16A34A`,
+            backgroundColor: "#16A34A0D",
           }}
         >
           <div
@@ -295,7 +301,7 @@ const EffortImpactMatrix: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "12px",
               fontWeight: tokens.weight.medium,
-              color: "#22C55E",
+              color: "#16A34A",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
               marginBottom: 12,
@@ -334,8 +340,8 @@ const EffortImpactMatrix: FC = () => {
           style={{
             padding: 20,
             borderRadius: tokens.radius.sm,
-            border: `1px solid #3B82F6` + "40",
-            backgroundColor: "#3B82F6" + "08",
+            border: `2px solid #1D4ED8`,
+            backgroundColor: "#1D4ED80D",
           }}
         >
           <div
@@ -343,7 +349,7 @@ const EffortImpactMatrix: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "12px",
               fontWeight: tokens.weight.medium,
-              color: "#3B82F6",
+              color: "#1D4ED8",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
               marginBottom: 12,
@@ -382,8 +388,8 @@ const EffortImpactMatrix: FC = () => {
           style={{
             padding: 20,
             borderRadius: tokens.radius.sm,
-            border: `1px solid #FBBF24` + "40",
-            backgroundColor: "#FBBF24" + "08",
+            border: `2px solid #D97706`,
+            backgroundColor: "#D977060D",
           }}
         >
           <div
@@ -391,7 +397,7 @@ const EffortImpactMatrix: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "12px",
               fontWeight: tokens.weight.medium,
-              color: "#FBBF24",
+              color: "#D97706",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
               marginBottom: 12,
@@ -430,8 +436,8 @@ const EffortImpactMatrix: FC = () => {
           style={{
             padding: 20,
             borderRadius: tokens.radius.sm,
-            border: `1px solid #F87171` + "40",
-            backgroundColor: "#F87171" + "08",
+            border: `2px solid #B91C1C`,
+            backgroundColor: "#B91C1C0D",
           }}
         >
           <div
@@ -439,7 +445,7 @@ const EffortImpactMatrix: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "12px",
               fontWeight: tokens.weight.medium,
-              color: "#F87171",
+              color: "#B91C1C",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
               marginBottom: 12,
