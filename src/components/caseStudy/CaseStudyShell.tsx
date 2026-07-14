@@ -119,19 +119,27 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           to { opacity: 1; transform: translateY(0); }
         }
         @keyframes section-fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         .section-reveal {
           opacity: 0;
+          transform: translateY(40px);
         }
         .section-reveal-animate {
-          animation: section-fade-in 0.8s ease-out forwards;
+          animation: section-fade-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
         @media (prefers-reduced-motion: reduce) {
           .section-reveal-animate {
             animation: none;
             opacity: 1;
+            transform: translateY(0);
           }
         }
         .case-shot { transition: transform 0.3s ease, box-shadow 0.3s ease; }
