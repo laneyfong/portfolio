@@ -26,6 +26,7 @@ import {
   UserJourney,
   ProcessFlow,
 } from "./components/caseStudy/CaseStudyKit";
+import ColorVariationGrid from "./components/caseStudy/ColorVariationGrid";
 import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeDashboard from "./assets/myshake-dashboard.png";
@@ -634,19 +635,7 @@ const MyShakeCaseStudy: FC = () => {
           One of our biggest design challenges was choosing color for the magnitude badges. We needed them to be instantly recognizable and visually distinct, but also accessible for users with color blindness. We explored four variations, testing different saturation levels and hue ranges to find the sweet spot where color works as a visual signal without relying on it as the only differentiator.
         </Paragraph>
         <Reveal>
-          <img
-            src={myshakeColorExploration}
-            alt="Color exploration variations for earthquake magnitude badges: four iterations showing different saturation and hue treatments to balance accessibility with visual impact"
-            style={{
-              width: "100%",
-              maxWidth: "560px",
-              height: "auto",
-              borderRadius: tokens.radius.md,
-              marginBottom: 32,
-              display: "block",
-              margin: "0 auto 32px",
-            }}
-          />
+          <ColorVariationGrid />
         </Reveal>
 
         <Callout>Choosing a font that balances brand and accessibility.</Callout>
