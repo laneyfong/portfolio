@@ -12,7 +12,6 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 import laneyPhoto from "./assets/laney-photo.jpg";
 import myshakeApp from "./assets/myshake-app.png";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
-import platoHome from "./assets/plato-home.png";
 
 // Preload hero image for faster initial render
 if (typeof window !== 'undefined') {
@@ -180,27 +179,28 @@ const Portfolio: FC = () => {
 
             <div ref={card2Ref} className="card-reveal card-2-reveal">
               <ProjectCard
-                screenshot={nvidiaLogo}
+                screenshot="🏆"
                 layout="landscape"
                 height={650}
+                roleOutcome="Social Impact × Accessibility"
+                caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours."
+                captionItalic="First place winner"
+                to="/idbridge-design"
+                darkHoverMode={true}
+              />
+            </div>
+
+            <div ref={card3Ref} className="card-reveal card-3-reveal">
+              <ProjectCard
+                screenshot={nvidiaLogo}
+                layout="landscape"
+                height={550}
                 roleOutcome="AI Design × Automation"
                 caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
                 captionItalic="Autonomous UX validation"
                 to="/nvidia-ai-ux-agent"
                 darkHoverMode={true}
                 wipLabel="WIP"
-              />
-            </div>
-
-            <div ref={card3Ref} className="card-reveal card-3-reveal">
-              <ProjectCard
-                screenshot={platoHome}
-                layout="landscape"
-                height={550}
-                roleOutcome="Travel Planning × Decision Design"
-                caption="A solution to decision fatigue and itinerary planning for travelers."
-                captionItalic="decision fatigue"
-                darkHoverMode={true}
               />
             </div>
           </div>

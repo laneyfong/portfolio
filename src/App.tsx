@@ -5,6 +5,7 @@ import AboutPage from "./AboutPage";
 import LabPage from "./LabPage";
 import ProjectArchivePage from "./ProjectArchivePage";
 import MyShakeCaseStudy from "./MyShakeCaseStudy";
+import IDBridgeCaseStudy from "./IDBridgeCaseStudy";
 import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/lab" element={<LabPage />} />
         <Route path="/archive" element={<ProjectArchivePage />} />
         <Route path="/myshake-design" element={<MyShakeCaseStudy />} />
+        <Route path="/idbridge-design" element={<IDBridgeCaseStudy />} />
         <Route path="/nvidia-ai-ux-agent" element={<NvidiaCaseStudy />} />
       </Routes>
     </BrowserRouter>
