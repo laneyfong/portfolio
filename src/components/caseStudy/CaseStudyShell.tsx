@@ -72,6 +72,30 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
     };
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("section-reveal-animate");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const sections = document.querySelectorAll(".section-reveal");
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -93,6 +117,22 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         @keyframes case-fade-in {
           from { opacity: 0; transform: translateY(4px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes section-fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .section-reveal {
+          opacity: 0;
+        }
+        .section-reveal-animate {
+          animation: section-fade-in 0.8s ease-out forwards;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .section-reveal-animate {
+            animation: none;
+            opacity: 1;
+          }
         }
         .case-shot { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .case-shot:hover { transform: translateY(-4px) scale(1.015); }

@@ -283,7 +283,7 @@ const MyShakeCaseStudy: FC = () => {
   return (
     <CaseStudyShell sections={SECTIONS} highlights={HIGHLIGHTS} extraStyle={MYSHAKE_EXTRA_STYLE}>
       {/* Intro */}
-      <section id="intro" style={{ paddingBottom: 96 }}>
+      <section id="intro" style={{ paddingBottom: 96 }} className="section-reveal">
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
           <EpicenterPulse />
           <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted }}>
@@ -391,7 +391,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Research */}
-      <section id="research" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="research" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Research</SectionHeading>
           <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
@@ -494,7 +494,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Synthesis */}
-      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
@@ -539,7 +539,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Ideation */}
-      <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Ideation</SectionHeading>
           <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
@@ -659,7 +659,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Solution */}
-      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Solution</SectionHeading>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
@@ -773,7 +773,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
           <PullQuote>This is my proudest work.</PullQuote>
@@ -793,7 +793,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Next Case Study */}
-      <section style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
             <div>
