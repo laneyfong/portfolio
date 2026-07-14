@@ -40,7 +40,7 @@ const ResearchInsights: FC = () => {
           style={{
             padding: 24,
             borderRadius: tokens.radius.md,
-            border: `2px solid ${insight.color}`,
+            border: `1px solid ${insight.color}`,
             backgroundColor: `${insight.color}08`,
             textAlign: "center",
             display: "flex",

@@ -108,7 +108,7 @@ const StepsComparison: FC = () => {
                 padding: "12px 16px",
                 borderRadius: tokens.radius.sm,
                 backgroundColor: "#22C55E20",
-                border: `2px solid #22C55E`,
+                border: `1px solid #22C55E`,
               }}
             >
               <div
