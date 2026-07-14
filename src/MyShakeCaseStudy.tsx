@@ -33,7 +33,6 @@ import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakePinned from "./assets/myshake-pinned-locations.png";
 import effortImpactMatrix from "./assets/myshake-effort-impact-matrix.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
-import myshakeColorExploration from "./assets/myshake-color-exploration.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
