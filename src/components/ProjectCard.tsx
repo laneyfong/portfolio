@@ -18,6 +18,7 @@ interface ProjectCardProps {
   to?: string;
   roleOutcome?: string;
   darkHoverMode?: boolean;
+  wipLabel?: string;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -30,6 +31,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   to,
   roleOutcome,
   darkHoverMode = false,
+  wipLabel,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -113,6 +115,36 @@ const ProjectCard: FC<ProjectCardProps> = ({
             </em>
             {captionParts[1]}
           </span>
+
+          {/* WIP Badge */}
+          {wipLabel && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "4px 12px",
+                borderRadius: tokens.radius.full,
+                backgroundColor: darkHoverMode && hovered ? "rgba(255, 255, 255, 0.2)" : tokens.color.offWhite,
+                border: `1px solid ${darkHoverMode && hovered ? "rgba(255, 255, 255, 0.3)" : tokens.color.cardBorder}`,
+                flexShrink: 0,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: "12px",
+                  fontWeight: tokens.weight.medium,
+                  color: darkHoverMode && hovered ? "#ffffff" : tokens.color.muted,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                  transition: "color 0.32s ease",
+                }}
+              >
+                {wipLabel}
+              </span>
+            </div>
+          )}
 
           {/* View Details Button */}
           {to && (

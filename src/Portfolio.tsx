@@ -188,6 +188,7 @@ const Portfolio: FC = () => {
                 captionItalic="Autonomous UX validation"
                 to="/nvidia-ai-ux-agent"
                 darkHoverMode={true}
+                wipLabel="WIP"
               />
             </div>
 
