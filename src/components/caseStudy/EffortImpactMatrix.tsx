@@ -249,23 +249,29 @@ const EffortImpactMatrix: FC = () => {
                 >
                   {item.icon}
                 </text>
-                {/* Label background box */}
+                {/* Label background box with shadow */}
+                <defs>
+                  <filter id={`shadow-${idx}`} x="-50%" y="-50%" width="200%" height="200%">
+                    <feDropShadow dx="0" dy="1" stdDeviation="2" floodOpacity="0.15" />
+                  </filter>
+                </defs>
                 <rect
-                  x={px - 45}
-                  y={isTopHalf ? py + 20 : py - 48}
-                  width="90"
-                  height="28"
+                  x={px - 55}
+                  y={isTopHalf ? py + 18 : py - 46}
+                  width="110"
+                  height="32"
                   fill={tokens.color.white}
-                  rx="4"
+                  rx="5"
                   pointerEvents="none"
                   stroke={item.darkColor}
                   strokeWidth="1.5"
-                  opacity="0.95"
+                  opacity="1"
+                  filter={`url(#shadow-${idx})`}
                 />
                 {/* Label text */}
                 <text
                   x={px}
-                  y={isTopHalf ? py + 37 : py - 31}
+                  y={isTopHalf ? py + 39 : py - 30}
                   fontFamily={tokens.font.sans}
                   fontSize="12"
                   fontWeight={tokens.weight.medium}
