@@ -391,7 +391,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Research */}
-      <section id="research" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="research" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Research</SectionHeading>
           <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
@@ -399,7 +399,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <PullQuote>The only existing research we have is the active user rate.</PullQuote>
         <Paragraph>
-          I asked our client for any existing user research. Their answer: just the active-user rate, and it was low. The core problem: the app leaned on data visualization instead of utility during a crisis. Users opened it out of curiosity, not need.
+          No existing user research existed. The app leaned on data visualization instead of utility during a crisis.
         </Paragraph>
 
         <Callout>The existing experience: A data-first tool, not a safety companion</Callout>
@@ -423,9 +423,7 @@ const MyShakeCaseStudy: FC = () => {
           Skip research, just redesign.
         </PullQuote>
         <Paragraph>
-          We didn't agree at first. I walked through what redesigning on assumptions alone would risk — wasted
-          engineering time on the wrong fix — and we landed on a middle ground: three lightweight studies, run in
-          parallel, scoped to fit inside the three-month timeline.
+          I advocated for a middle ground: three scoped studies run in parallel within the timeline, rather than redesigning on assumptions.
         </Paragraph>
 
         <Callout>Users want a way to get to critical information quickly in a short amount of time.</Callout>
@@ -496,16 +494,13 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Synthesis */}
-      <section id="synthesis" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
         </Reveal>
 
         <Callout>The Problem: 7 steps to find a loved one.</Callout>
-        <Paragraph>
-          In a high-stakes moment, users had to navigate through too many steps to get critical information. Each step added friction and cognitive load during a crisis.
-        </Paragraph>
 
         <Reveal>
           <ProcessFlow
@@ -530,22 +525,13 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Ideation */}
-      <section id="ideation" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Ideation</SectionHeading>
           <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
         </Reveal>
-        <Paragraph>
-          We used a bento-grid framework to create a clear hierarchy for high-stakes user actions, drawing from
-          Uber's high-frequency navigation patterns to build a layout optimized for immediate access to critical
-          features.
-        </Paragraph>
 
         <Callout>A/B Testing</Callout>
-        <Paragraph>
-          We employed A/B testing to quantitatively validate our design hypotheses and converge on a data-backed
-          final solution. Toggle between the two variations we tested:
-        </Paragraph>
 
         <div style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, border: `1px solid ${tokens.color.cardBorder}`, marginBottom: 20 }}>
           {AB_VARIATIONS.map((v, i) => (
@@ -620,7 +606,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <Callout>Balancing color accessibility with visual hierarchy</Callout>
         <Paragraph>
-          One of our biggest design challenges was choosing color for the magnitude badges. We needed them to be instantly recognizable and visually distinct, but also accessible for users with color blindness. We explored four variations, testing different saturation levels and hue ranges to find the sweet spot where color works as a visual signal without relying on it as the only differentiator.
+          Color for magnitude badges needed to be visually distinct and accessible for color blindness. We explored four variations to find the right saturation and hue balance.
         </Paragraph>
         <Reveal>
           <ColorVariationGrid />
@@ -628,24 +614,19 @@ const MyShakeCaseStudy: FC = () => {
 
         <Callout>Choosing a font that balances brand and accessibility.</Callout>
         <Paragraph>
-          I tested Helvetica Neue against Plus Jakarta Sans to find the right balance of authority and
-          approachability. Plus Jakarta Sans won — rounder, more welcoming letterforms without losing clarity at
-          small sizes.
+          Tested Helvetica Neue against Plus Jakarta Sans. Plus Jakarta Sans won for its welcoming letterforms without sacrificing clarity at small sizes.
         </Paragraph>
         <Reveal>
           <TypeCompare />
         </Reveal>
 
         <Callout>Prioritizing features through effort-impact analysis</Callout>
-        <Paragraph>
-          To maximize impact with limited resources, we mapped all proposed features on an effort-impact matrix. This helped us identify the high-impact, low-effort wins that would have the most meaningful impact on user safety. We focused our energy on these strategic priorities rather than getting caught up in complex, resource-intensive features that didn't move the needle.
-        </Paragraph>
         <Reveal>
           <EffortImpactMatrix />
         </Reveal>
 
         <Paragraph>
-          I authored the brand's first component library — standardizing typography, grids, buttons, inputs, and color scales across the app. The system was WCAG-compliant and balanced accessibility with welcoming visual language, ensuring every component served a clear purpose in high-stress navigation.
+          I authored MyShake's first design system — standardizing components, typography, and color scales. Every component was WCAG-compliant and designed for clarity in high-stress moments.
         </Paragraph>
         <Reveal>
           <img
@@ -664,7 +645,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Solution */}
-      <section id="solution" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Solution</SectionHeading>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
@@ -778,27 +759,20 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
-        <Paragraph>
-          My team and I were genuinely invested in making MyShake the #1 app in its category — and a lot of late
-          nights went into it. Two things I'd want a hiring team to take from this project:
-        </Paragraph>
         <Bullets
           items={[
             <>
               <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>Design advocacy: </strong>
-              our client wanted to skip straight to redesigning. We talked through the risk together, agreed on a
-              scoped-down research plan instead, and the findings ended up reshaping the entire information
-              architecture.
+              negotiated a scoped research plan against the urge to skip straight to redesign. The research findings reshaped the entire IA.
             </>,
             <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>With more time: </strong>
-              I'd scale the research further, add an earthquake news feed, and layer in more micro-interactions to
-              round out the experience.
+              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>What's next: </strong>
+              scale research further, add earthquake news feeds, and layer in more micro-interactions.
             </>,
           ]}
         />

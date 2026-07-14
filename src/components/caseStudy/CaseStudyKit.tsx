@@ -82,7 +82,7 @@ export const Callout: FC<{ children: ReactNode }> = ({ children }) => (
       fontSize: "18px",
       color: tokens.color.textDark,
       lineHeight: tokens.leading.snug,
-      margin: "24px 0 16px",
+      margin: "40px 0 24px",
     }}
   >
     {children}
@@ -96,7 +96,7 @@ export const Paragraph: FC<{ children: ReactNode }> = ({ children }) => (
       fontSize: "16px",
       lineHeight: tokens.leading.normal,
       color: tokens.color.body,
-      margin: "0 0 16px",
+      margin: "0 0 24px",
       maxWidth: 720,
     }}
   >
