@@ -34,6 +34,7 @@ import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakePinned from "./assets/myshake-pinned-locations.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
 import myshakeDesignSystem from "./assets/myshake-design-system.png";
+import myshakeStoryboard from "./assets/myshake-storyboard.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -522,6 +523,20 @@ const MyShakeCaseStudy: FC = () => {
           We storyboarded the ideal emergency flow end-to-end, drawing on our competitive analysis and interview
           findings to map the fastest path from "something happened" to "my people are safe."
         </Paragraph>
+        <Reveal>
+          <img
+            src={myshakeStoryboard}
+            alt="User storyboard: Daniel clicks on his Mom's pinned location to quickly view the area, sees the bad earthquake in her region, clicks on the map to expand the view, and finds out she is unharmed and okay."
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 32,
+              display: "block",
+            }}
+          />
+        </Reveal>
       </section>
 
       {/* Ideation */}
