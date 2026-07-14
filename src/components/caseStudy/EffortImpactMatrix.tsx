@@ -240,17 +240,30 @@ const EffortImpactMatrix: FC = () => {
                 >
                   {item.icon}
                 </text>
-                {/* Label */}
+                {/* Label background box */}
+                <rect
+                  x={px - 45}
+                  y={py + 20}
+                  width="90"
+                  height="28"
+                  fill={tokens.color.white}
+                  rx="4"
+                  pointerEvents="none"
+                  stroke={item.color}
+                  strokeWidth="1"
+                  opacity="0.95"
+                />
+                {/* Label text */}
                 <text
                   x={px}
-                  y={py + 28}
+                  y={py + 37}
                   fontFamily={tokens.font.sans}
-                  fontSize="11"
+                  fontSize="12"
                   fontWeight={tokens.weight.medium}
-                  fill={tokens.color.ink}
+                  fill={item.color}
                   textAnchor="middle"
+                  dominantBaseline="middle"
                   pointerEvents="none"
-                  style={{ maxWidth: 60 }}
                 >
                   {item.shortLabel}
                 </text>
