@@ -19,41 +19,12 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
   const [displayText, setDisplayText] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const words = text.split(/\s+/).filter((w) => w.length > 0);
-
   const speedSettings: Record<Speed, number> = {
     fast: 2.0,
     normal: 1.0,
     slow: 0.5,
     pause: 0,
   };
-
-  useEffect(() => {
-    if (!isPlaying || speed === "pause") {
-      return;
-    }
-
-    const duration = (words.length * 0.5) / speedSettings[speed];
-    let animationFrameId: number;
-    let startTime = Date.now();
-
-    const animate = () => {
-      const elapsed = (Date.now() - startTime) / 1000;
-      const progress = (elapsed % duration) / duration;
-
-      const displayCount = Math.floor(progress * words.length);
-      const visibleWords = words.slice(0, Math.min(displayCount + 3, words.length));
-      setDisplayText(visibleWords.join(" "));
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-    };
-  }, [isPlaying, speed, words, speedSettings]);
 
   useEffect(() => {
     if (!isPlaying || speed === "pause") {
@@ -87,10 +58,10 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
       <style>{`
         @keyframes scroll-text {
           from {
-            transform: translateX(100%);
+            transform: translateX(100vw);
           }
           to {
-            transform: translateX(-100%);
+            transform: translateX(calc(-100% - 100px));
           }
         }
 
@@ -98,12 +69,16 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           overflow: hidden;
           white-space: nowrap;
           position: relative;
+          width: 100%;
         }
 
         .scroll-text {
           display: inline-block;
           animation: scroll-text linear infinite;
-          padding-right: 100px;
+        }
+
+        .scroll-text.paused {
+          animation-play-state: paused;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -152,9 +127,19 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           borderRadius: "12px",
           border: `1px solid ${tokens.color.cardBorder}`,
           position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div className="scroll-container" style={{ width: "100%", height: "100%" }}>
+        <div
+          className="scroll-container"
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
+          }}
+        >
           {speed === "pause" || !isPlaying ? (
             <div
               style={{
@@ -178,10 +163,12 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
                 fontSize: "18px",
                 fontWeight: tokens.weight.regular,
                 color: tokens.color.body,
-                animationDuration: `${(words.length * 0.5) / speedSettings[speed]}s`,
+                animationDuration: `${(text.length * 0.08) / speedSettings[speed]}s`,
+                whiteSpace: "nowrap",
               }}
             >
-              {displayText || text}
+              {text}
+              <span style={{ marginLeft: "100px" }}>{text}</span>
             </div>
           )}
         </div>
