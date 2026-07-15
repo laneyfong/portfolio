@@ -5,7 +5,6 @@ import ContentContainer from "./components/ContentContainer";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
-import WorkTransition from "./components/WorkTransition";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
@@ -28,7 +27,6 @@ const Portfolio: FC = () => {
   const { ref: card1Ref, isVisible: card1Visible } = useScrollReveal();
   const { ref: card2Ref, isVisible: card2Visible } = useScrollReveal();
   const { ref: card3Ref, isVisible: card3Visible } = useScrollReveal();
-  const { ref: transitionRef, isVisible: transitionVisible } = useScrollReveal();
 
   const scrollToWork = () => {
     const target = document.getElementById("work");
@@ -106,12 +104,6 @@ const Portfolio: FC = () => {
 
         .card-3-reveal {
           animation: ${card3Visible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards" : "none"};
-        }
-
-        .transition-reveal {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: ${transitionVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -203,12 +195,6 @@ const Portfolio: FC = () => {
                 wipLabel="WIP"
               />
             </div>
-          </div>
-        </ContentContainer>
-
-        <ContentContainer>
-          <div ref={transitionRef} className="transition-reveal">
-            <WorkTransition />
           </div>
         </ContentContainer>
       </div>
