@@ -6,10 +6,10 @@ import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
-import MusicCard from "./components/MusicCard";
+import PendulumAnimation from "./components/PendulumAnimation";
 import SerialWordReader from "./components/SerialWordReader";
 
-type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "music" | "serial-reader";
+type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "pendulum" | "serial-reader";
 
 interface LabModuleProps {
   type: ModuleType;
@@ -21,7 +21,7 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
-  specialType?: "daylight" | "ascii-ripple" | "music" | "serial-reader";
+  specialType?: "daylight" | "ascii-ripple" | "pendulum" | "serial-reader";
 }
 
 const LabPage: FC = () => {
@@ -60,15 +60,15 @@ const LabPage: FC = () => {
       specialType: "ascii-ripple",
     },
     {
-      type: "music",
-      title: "Music Aura Visualizer",
-      description: "Ambient aura lights that pulse with the mood of the song. Listen and feel the emotional resonance visualized in color.",
-      experimentId: "EXP-2024-000B",
-      date: "Jan 2025",
+      type: "motion",
+      title: "Pendulum Loading Animation",
+      description: "A physics-based pendulum swing that creates a mesmerizing loading state. Explores how simple oscillation can make waiting feel intentional.",
+      experimentId: "EXP-2025-001",
+      date: "Feb 2025",
       status: "exploring",
-      tags: ["interaction", "audio", "visualization", "mood"],
+      tags: ["motion", "physics", "animation", "loading"],
       isSpecial: true,
-      specialType: "music",
+      specialType: "pendulum",
     },
   ];
 
@@ -177,17 +177,11 @@ const LabPage: FC = () => {
                   <DayLightCard />
                 ) : exp.specialType === "ascii-ripple" ? (
                   <InteractiveTypography />
-                ) : exp.specialType === "music" ? (
-                  <MusicCard
-                    title="Audio Visualization"
-                    artist="Synthesized Tone"
-                    albumArt="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF1654;stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:%23FF6B9D;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23000080;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='200' height='200'/%3E%3Ccircle cx='100' cy='100' r='50' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E"
-                    previewUrl=""
-                    mood="energetic"
-                  />
+                ) : exp.specialType === "pendulum" ? (
+                  <PendulumAnimation title="Pendulum Loading Experiment" />
                 ) : (
                   <LabCard
-                    type={exp.type as Exclude<ModuleType, "daylight" | "music" | "serial-reader">}
+                    type={exp.type as Exclude<ModuleType, "daylight" | "pendulum" | "serial-reader">}
                     title={exp.title}
                     description={exp.description}
                     experimentId={exp.experimentId}
