@@ -7,87 +7,72 @@ interface SerialWordReaderProps {
   title?: string;
 }
 
-type Speed = "stop" | "slow" | "normal";
+type Speed = "pause" | "slow" | "normal" | "fast";
 
 const SerialWordReader: FC<SerialWordReaderProps> = ({
-  text = "Click to start reading. Use the speed controls to adjust. Cognitive friendly reading experience.",
-  title = "Serial Word Reader",
+  text = "Words flow across your screen like captions. Adjust the speed with the buttons below. Green for faster, yellow for normal, red to pause. Your reading pace, your control.",
+  title = "Cognitive-Friendly Reading",
 }) => {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [speed, setSpeed] = useState<Speed>("normal");
   const [hoveredButton, setHoveredButton] = useState<Speed | null>(null);
-  const animationIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [displayText, setDisplayText] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
 
   const words = text.split(/\s+/).filter((w) => w.length > 0);
-  const currentWord = words[currentWordIndex] || "";
 
-  const speedMs = {
-    normal: 300,
-    slow: 600,
-    stop: Infinity,
+  const speedSettings: Record<Speed, number> = {
+    fast: 2.0,
+    normal: 1.0,
+    slow: 0.5,
+    pause: 0,
   };
 
   useEffect(() => {
-    if (!isPlaying || speed === "stop") {
-      if (animationIdRef.current) clearTimeout(animationIdRef.current);
+    if (!isPlaying || speed === "pause") {
       return;
     }
 
-    animationIdRef.current = setTimeout(() => {
-      setCurrentWordIndex((prev) => {
-        if (prev >= words.length - 1) {
-          setIsPlaying(false);
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, speedMs[speed]);
+    const duration = (words.length * 0.5) / speedSettings[speed];
+    let animationFrameId: number;
+    let startTime = Date.now();
+
+    const animate = () => {
+      const elapsed = (Date.now() - startTime) / 1000;
+      const progress = (elapsed % duration) / duration;
+
+      const displayCount = Math.floor(progress * words.length);
+      const visibleWords = words.slice(0, Math.min(displayCount + 3, words.length));
+      setDisplayText(visibleWords.join(" "));
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
-      if (animationIdRef.current) clearTimeout(animationIdRef.current);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
-  }, [isPlaying, speed, words.length]);
+  }, [isPlaying, speed, words, speedSettings]);
+
+  useEffect(() => {
+    if (!isPlaying || speed === "pause") {
+      setDisplayText("");
+    }
+  }, [isPlaying, speed]);
 
   const handleSpeedChange = (newSpeed: Speed) => {
     setSpeed(newSpeed);
-    if (newSpeed === "stop") {
+    if (newSpeed === "pause") {
       setIsPlaying(false);
+    } else {
+      setIsPlaying(true);
     }
   };
-
-  const handlePlayPause = () => {
-    if (speed === "stop") {
-      setSpeed("normal");
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  const handleReset = () => {
-    setCurrentWordIndex(0);
-    setIsPlaying(false);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === " ") {
-      e.preventDefault();
-      handlePlayPause();
-    } else if (e.key === "ArrowRight") {
-      setCurrentWordIndex((prev) => Math.min(prev + 1, words.length - 1));
-    } else if (e.key === "ArrowLeft") {
-      setCurrentWordIndex((prev) => Math.max(prev - 1, 0));
-    } else if (e.key === "r" || e.key === "R") {
-      handleReset();
-    }
-  };
-
-  const progressPercent = words.length > 0 ? (currentWordIndex / (words.length - 1)) * 100 : 0;
 
   return (
     <div
       ref={containerRef}
-      onKeyDown={handleKeyDown}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -96,22 +81,34 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
         borderRadius: tokens.radius.sm,
         backgroundColor: tokens.color.offWhite,
         border: `1px solid ${tokens.color.cardBorder}`,
-        minHeight: "300px",
+        minHeight: "350px",
       }}
     >
       <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes scroll-text {
+          from {
+            transform: translateX(100%);
+          }
+          to {
+            transform: translateX(-100%);
+          }
         }
 
-        .word-display {
-          animation: fadeIn 0.2s ease-out;
+        .scroll-container {
+          overflow: hidden;
+          white-space: nowrap;
+          position: relative;
+        }
+
+        .scroll-text {
+          display: inline-block;
+          animation: scroll-text linear infinite;
+          padding-right: 100px;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .word-display {
-            animation: none;
+          .scroll-text {
+            animation: none !important;
           }
         }
       `}</style>
@@ -138,160 +135,56 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
             opacity: 0.6,
           }}
         >
-          Word-by-word reading for reduced cognitive load
+          Captions scroll at your pace. Adjust speed or pause anytime.
         </p>
       </div>
 
-      {/* Word Display */}
+      {/* Scrolling Text Display */}
       <div
         style={{
           flex: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: 120,
-          padding: "20px",
+          minHeight: 140,
+          padding: "32px 20px",
           backgroundColor: tokens.color.white,
           borderRadius: "12px",
           border: `1px solid ${tokens.color.cardBorder}`,
+          position: "relative",
         }}
       >
-        <div
-          className="word-display"
-          role="status"
-          aria-live="polite"
-          aria-label={`Currently reading word ${currentWordIndex + 1} of ${words.length}: ${currentWord}`}
-          style={{
-            fontSize: "32px",
-            fontWeight: tokens.weight.medium,
-            color: tokens.color.ink,
-            textAlign: "center",
-            minHeight: "48px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            maxWidth: "90%",
-            wordBreak: "break-word",
-          }}
-        >
-          {currentWord}
+        <div className="scroll-container" style={{ width: "100%", height: "100%" }}>
+          {speed === "pause" || !isPlaying ? (
+            <div
+              style={{
+                fontSize: "18px",
+                fontWeight: tokens.weight.regular,
+                color: tokens.color.body,
+                textAlign: "center",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {displayText || "Press play to start reading..."}
+            </div>
+          ) : (
+            <div
+              className="scroll-text"
+              style={{
+                fontSize: "18px",
+                fontWeight: tokens.weight.regular,
+                color: tokens.color.body,
+                animationDuration: `${(words.length * 0.5) / speedSettings[speed]}s`,
+              }}
+            >
+              {displayText || text}
+            </div>
+          )}
         </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div
-        style={{
-          width: "100%",
-          height: "4px",
-          backgroundColor: "#e0e0e0",
-          borderRadius: "2px",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            height: "100%",
-            width: `${progressPercent}%`,
-            backgroundColor: tokens.color.ink,
-            transition: "width 0.1s linear",
-          }}
-        />
-      </div>
-
-      {/* Word Count */}
-      <div
-        style={{
-          fontSize: "12px",
-          color: tokens.color.muted,
-          textAlign: "center",
-        }}
-      >
-        Word {currentWordIndex + 1} of {words.length}
-      </div>
-
-      {/* Controls */}
-      <div
-        style={{
-          display: "flex",
-          gap: 12,
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-        role="group"
-        aria-label="Speed controls and playback"
-      >
-        {/* Play/Pause Button */}
-        <button
-          onClick={handlePlayPause}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handlePlayPause();
-          }}
-          aria-label={isPlaying ? "Pause reading" : "Start reading"}
-          aria-pressed={isPlaying}
-          style={{
-            padding: "10px 20px",
-            borderRadius: "8px",
-            border: "1px solid #111",
-            backgroundColor: tokens.color.ink,
-            color: "white",
-            fontFamily: tokens.font.sans,
-            fontSize: "14px",
-            fontWeight: tokens.weight.medium,
-            cursor: "pointer",
-            transition: "all 0.2s ease",
-            outline: "none",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.opacity = "0.85";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.opacity = "1";
-          }}
-          onFocus={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 0 3px rgba(17, 17, 17, 0.1)";
-          }}
-          onBlur={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-          }}
-        >
-          {isPlaying ? "⏸ Pause" : "▶ Play"}
-        </button>
-
-        {/* Reset Button */}
-        <button
-          onClick={handleReset}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleReset();
-          }}
-          aria-label="Reset to beginning (R)"
-          style={{
-            padding: "10px 20px",
-            borderRadius: "8px",
-            border: `1px solid ${tokens.color.cardBorder}`,
-            backgroundColor: tokens.color.white,
-            color: tokens.color.ink,
-            fontFamily: tokens.font.sans,
-            fontSize: "14px",
-            fontWeight: tokens.weight.medium,
-            cursor: "pointer",
-            transition: "all 0.2s ease",
-            outline: "none",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#f5f5f5";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor = tokens.color.white;
-          }}
-          onFocus={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 0 3px rgba(17, 17, 17, 0.1)";
-          }}
-          onBlur={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-          }}
-        >
-          ↻ Reset
-        </button>
       </div>
 
       {/* Speed Controls */}
@@ -306,45 +199,49 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
         aria-label="Reading speed"
       >
         <SpeedButton
-          label="Regular Speed"
+          label="Fast"
           color="#22c55e"
+          isActive={speed === "fast"}
+          isHovered={hoveredButton === "fast"}
+          onHover={(h) => setHoveredButton(h ? "fast" : null)}
+          onClick={() => handleSpeedChange("fast")}
+        />
+        <SpeedButton
+          label="Normal"
+          color="#eab308"
           isActive={speed === "normal"}
           isHovered={hoveredButton === "normal"}
           onHover={(h) => setHoveredButton(h ? "normal" : null)}
           onClick={() => handleSpeedChange("normal")}
-          shortcut="1"
         />
         <SpeedButton
-          label="Slow Speed"
-          color="#eab308"
+          label="Slow"
+          color="#3b82f6"
           isActive={speed === "slow"}
           isHovered={hoveredButton === "slow"}
           onHover={(h) => setHoveredButton(h ? "slow" : null)}
           onClick={() => handleSpeedChange("slow")}
-          shortcut="2"
         />
         <SpeedButton
           label="Pause"
           color="#ef4444"
-          isActive={speed === "stop"}
-          isHovered={hoveredButton === "stop"}
-          onHover={(h) => setHoveredButton(h ? "stop" : null)}
-          onClick={() => handleSpeedChange("stop")}
-          shortcut="3"
+          isActive={speed === "pause"}
+          isHovered={hoveredButton === "pause"}
+          onHover={(h) => setHoveredButton(h ? "pause" : null)}
+          onClick={() => handleSpeedChange("pause")}
         />
       </div>
 
-      {/* Keyboard Hints */}
+      {/* Info */}
       <div
         style={{
-          fontSize: "11px",
+          fontSize: "12px",
           color: tokens.color.muted,
           textAlign: "center",
           opacity: 0.6,
-          lineHeight: "1.4",
         }}
       >
-        Keyboard: <kbd>Space</kbd> to play/pause • <kbd>←</kbd> <kbd>→</kbd> to move words • <kbd>R</kbd> to reset
+        {isPlaying && speed !== "pause" ? "Reading in progress..." : "Paused"}
       </div>
     </div>
   );
@@ -357,7 +254,6 @@ interface SpeedButtonProps {
   isHovered: boolean;
   onHover: (hovered: boolean) => void;
   onClick: () => void;
-  shortcut: string;
 }
 
 const SpeedButton: FC<SpeedButtonProps> = ({
@@ -367,7 +263,6 @@ const SpeedButton: FC<SpeedButtonProps> = ({
   isHovered,
   onHover,
   onClick,
-  shortcut,
 }) => (
   <button
     onClick={onClick}
@@ -381,16 +276,16 @@ const SpeedButton: FC<SpeedButtonProps> = ({
     onMouseLeave={() => onHover(false)}
     onFocus={() => onHover(true)}
     onBlur={() => onHover(false)}
-    aria-label={`${label} (${shortcut})`}
+    aria-label={label}
     aria-pressed={isActive}
     style={{
-      padding: "10px 16px",
+      padding: "10px 20px",
       borderRadius: "8px",
       border: `2px solid ${color}`,
       backgroundColor: isActive ? color : "white",
       color: isActive ? "white" : color,
       fontFamily: tokens.font.sans,
-      fontSize: "13px",
+      fontSize: "14px",
       fontWeight: tokens.weight.medium,
       cursor: "pointer",
       transition: "all 0.2s ease",
