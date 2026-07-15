@@ -6,9 +6,8 @@ import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
-import BudgetSlider from "./components/BudgetSlider";
 
-type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "budget";
+type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
 interface LabModuleProps {
   type: ModuleType;
@@ -20,7 +19,7 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
-  specialType?: "daylight" | "ascii-ripple" | "budget";
+  specialType?: "daylight" | "ascii-ripple";
 }
 
 const LabPage: FC = () => {
@@ -46,17 +45,6 @@ const LabPage: FC = () => {
       tags: ["interaction", "animation", "ASCII", "ripple"],
       isSpecial: true,
       specialType: "ascii-ripple",
-    },
-    {
-      type: "budget",
-      title: "Budget Explorer",
-      description: "Interactive slider that visualizes budget allocation with animated cash emojis. Watch as you slide from lean to unlimited budgets.",
-      experimentId: "EXP-2025-002",
-      date: "Feb 2025",
-      status: "exploring",
-      tags: ["interaction", "animation", "economics", "slider"],
-      isSpecial: true,
-      specialType: "budget",
     },
   ];
 
@@ -160,11 +148,9 @@ const LabPage: FC = () => {
                   <DayLightCard />
                 ) : exp.specialType === "ascii-ripple" ? (
                   <InteractiveTypography />
-                ) : exp.specialType === "budget" ? (
-                  <BudgetSlider />
                 ) : (
                   <LabCard
-                    type={exp.type as Exclude<ModuleType, "daylight" | "budget">}
+                    type={exp.type as Exclude<ModuleType, "daylight">}
                     title={exp.title}
                     description={exp.description}
                     experimentId={exp.experimentId}
