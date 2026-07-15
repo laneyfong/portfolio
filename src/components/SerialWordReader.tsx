@@ -58,10 +58,10 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
       <style>{`
         @keyframes scroll-text {
           from {
-            transform: translateX(100vw);
+            transform: translateX(100%);
           }
           to {
-            transform: translateX(calc(-100% - 100px));
+            transform: translateX(-100%);
           }
         }
 
@@ -70,11 +70,15 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           white-space: nowrap;
           position: relative;
           width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
         }
 
         .scroll-text {
           display: inline-block;
           animation: scroll-text linear infinite;
+          flex-shrink: 0;
         }
 
         .scroll-text.paused {
@@ -128,35 +132,39 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           border: `1px solid ${tokens.color.cardBorder}`,
           position: "relative",
           overflow: "hidden",
+          width: "100%",
+          boxSizing: "border-box",
         }}
       >
-        <div
-          className="scroll-container"
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-start",
-          }}
-        >
-          {speed === "pause" || !isPlaying ? (
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: tokens.weight.regular,
-                color: tokens.color.body,
-                textAlign: "center",
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {displayText || "Press play to start reading..."}
-            </div>
-          ) : (
+        {speed === "pause" || !isPlaying ? (
+          <div
+            style={{
+              fontSize: "18px",
+              fontWeight: tokens.weight.regular,
+              color: tokens.color.body,
+              textAlign: "center",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {displayText || "Press play to start reading..."}
+          </div>
+        ) : (
+          <div
+            className="scroll-container"
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              overflow: "hidden",
+              position: "relative",
+            }}
+          >
             <div
               className="scroll-text"
               style={{
@@ -165,13 +173,14 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
                 color: tokens.color.body,
                 animationDuration: `${(text.length * 0.08) / speedSettings[speed]}s`,
                 whiteSpace: "nowrap",
+                display: "inline-block",
+                paddingRight: "100px",
               }}
             >
               {text}
-              <span style={{ marginLeft: "100px" }}>{text}</span>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Speed Controls */}
