@@ -7,9 +7,9 @@ import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
 import PendulumAnimation from "./components/PendulumAnimation";
-import SerialWordReader from "./components/SerialWordReader";
+import BudgetSlider from "./components/BudgetSlider";
 
-type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "pendulum" | "serial-reader";
+type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "pendulum" | "budget";
 
 interface LabModuleProps {
   type: ModuleType;
@@ -21,22 +21,11 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
-  specialType?: "daylight" | "ascii-ripple" | "pendulum" | "serial-reader";
+  specialType?: "daylight" | "ascii-ripple" | "pendulum" | "budget";
 }
 
 const LabPage: FC = () => {
   const experiments: LabModuleProps[] = [
-    {
-      type: "serial-reader",
-      title: "Cognitive-Friendly Text Reader",
-      description: "Word-by-word reading interface for people with cognitive load challenges. Adjustable speed and full keyboard navigation. WCAG AAA compliant.",
-      experimentId: "EXP-2025-000",
-      date: "Jan 2025",
-      status: "exploring",
-      tags: ["accessibility", "cognitive", "reading", "WCAG"],
-      isSpecial: true,
-      specialType: "serial-reader",
-    },
     {
       type: "daylight",
       title: "Day/Night Light Simulation",
@@ -69,6 +58,17 @@ const LabPage: FC = () => {
       tags: ["motion", "physics", "animation", "loading"],
       isSpecial: true,
       specialType: "pendulum",
+    },
+    {
+      type: "budget",
+      title: "Budget Explorer",
+      description: "Interactive slider that visualizes budget allocation with animated cash emojis. Watch as you slide from lean to unlimited budgets.",
+      experimentId: "EXP-2025-002",
+      date: "Feb 2025",
+      status: "exploring",
+      tags: ["interaction", "animation", "economics", "slider"],
+      isSpecial: true,
+      specialType: "budget",
     },
   ];
 
@@ -168,20 +168,17 @@ const LabPage: FC = () => {
           >
             {experiments.map((exp, idx) => (
               <div key={idx} className="lab-module" style={{ height: "100%" }}>
-                {exp.specialType === "serial-reader" ? (
-                  <SerialWordReader
-                    title="Cognitive-Friendly Reading"
-                    text="Designed for people with cognitive overload. Read word-by-word at your own pace. Use the speed controls to find your comfort level. Adjust reading speed with regular, slow, or pause options. Full keyboard navigation support for accessibility."
-                  />
-                ) : exp.specialType === "daylight" ? (
+                {exp.specialType === "daylight" ? (
                   <DayLightCard />
                 ) : exp.specialType === "ascii-ripple" ? (
                   <InteractiveTypography />
                 ) : exp.specialType === "pendulum" ? (
                   <PendulumAnimation title="Pendulum Loading Experiment" />
+                ) : exp.specialType === "budget" ? (
+                  <BudgetSlider />
                 ) : (
                   <LabCard
-                    type={exp.type as Exclude<ModuleType, "daylight" | "pendulum" | "serial-reader">}
+                    type={exp.type as Exclude<ModuleType, "daylight" | "pendulum" | "budget">}
                     title={exp.title}
                     description={exp.description}
                     experimentId={exp.experimentId}
