@@ -47,9 +47,9 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
           width: 12px;
           height: 12px;
           backgroundColor: ${tokens.color.ink};
-          borderRadius: "50%";
+          border-radius: 50%;
           transform: translateX(-50%);
-          zIndex: 10;
+          z-index: 10;
         }
 
         .pendulum-rod {
@@ -59,7 +59,7 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
           width: 2px;
           height: 180px;
           backgroundColor: ${tokens.color.ink};
-          transformOrigin: "top center";
+          transform-origin: top center;
           animation: swing 2s cubic-bezier(0.42, 0, 0.58, 1) infinite;
         }
 
@@ -70,9 +70,9 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
           width: 32px;
           height: 32px;
           backgroundColor: ${tokens.color.accent};
-          borderRadius: "50%";
+          border-radius: 50%;
           transform: translateX(-50%);
-          boxShadow: 0 4px 12px rgba(255, 22, 84, 0.2);
+          box-shadow: 0 4px 12px rgba(255, 22, 84, 0.2);
         }
 
         @keyframes swing {
@@ -85,27 +85,27 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
         }
 
         .pendulum-text {
-          fontFamily: ${tokens.font.sans};
-          fontSize: 14px;
-          fontWeight: ${tokens.weight.medium};
+          font-family: ${tokens.font.sans};
+          font-size: 14px;
+          font-weight: ${tokens.weight.medium};
           color: ${tokens.color.muted};
-          textTransform: uppercase;
-          letterSpacing: 1.5px;
-          textAlign: center;
-          marginBottom: 16px;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          text-align: center;
+          margin-bottom: 16px;
         }
 
         .loading-dots {
           display: flex;
           gap: 4px;
-          justifyContent: center;
+          justify-content: center;
         }
 
         .dot {
           width: 4px;
           height: 4px;
-          borderRadius: "50%";
-          backgroundColor: ${tokens.color.accent};
+          border-radius: 50%;
+          background-color: ${tokens.color.accent};
           animation: pulse 1.4s ease-in-out infinite;
         }
 
@@ -133,12 +133,12 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
         }
 
         .completion-message {
-          fontFamily: ${tokens.font.sans};
-          fontSize: 14px;
-          fontWeight: ${tokens.weight.regular};
+          font-family: ${tokens.font.sans};
+          font-size: 14px;
+          font-weight: ${tokens.weight.regular};
           color: ${tokens.color.body};
-          textAlign: center;
-          marginTop: 12px;
+          text-align: center;
+          margin-top: 12px;
           opacity: 0;
           animation: fadeIn 0.6s ease-out forwards;
         }
