@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { tokens } from "../tokens";
 
 interface SerialWordReaderProps {
@@ -13,44 +13,21 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
   text = "Words flow across your screen like captions. Adjust the speed with the buttons below. Green for faster, yellow for normal, red to pause. Your reading pace, your control.",
   title = "Cognitive-Friendly Reading",
 }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
   const [speed, setSpeed] = useState<Speed>("normal");
   const [hoveredButton, setHoveredButton] = useState<Speed | null>(null);
-  const [wordIndex, setWordIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const words = text.split(/\s+/).filter((w) => w.length > 0);
-  const currentWord = words[wordIndex] || "";
-
   const speedSettings: Record<Speed, number> = {
-    fast: 200,
-    normal: 400,
-    slow: 800,
+    fast: 40,
+    normal: 60,
+    slow: 100,
     pause: 0,
   };
 
-  useEffect(() => {
-    if (!isPlaying || speed === "pause") {
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
-    }, speedSettings[speed]);
-
-    return () => clearTimeout(timer);
-  }, [isPlaying, speed, words.length]);
-
-  const handleSpeedChange = (newSpeed: Speed) => {
-    setSpeed(newSpeed);
-    if (newSpeed === "pause") {
-      setIsPlaying(false);
-    } else {
-      setIsPlaying(true);
-    }
+  const getDuration = () => {
+    const baseDuration = (text.length / speedSettings[speed]) * 1000;
+    return Math.max(baseDuration, 2000);
   };
-
-  const progressPercent = words.length > 0 ? (wordIndex / words.length) * 100 : 0;
 
   return (
     <div
@@ -70,6 +47,32 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
         overflow: "hidden",
       }}
     >
+      <style>{`
+        @keyframes reveal-text {
+          0% {
+            clip-path: inset(0 100% 0 0);
+          }
+          100% {
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        .caption-text {
+          animation: reveal-text linear forwards;
+        }
+
+        .caption-text.paused {
+          animation-play-state: paused;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .caption-text {
+            animation: none !important;
+            clip-path: inset(0 0 0 0);
+          }
+        }
+      `}</style>
+
       {/* Header */}
       <div>
         <h2
@@ -92,11 +95,11 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
             opacity: 0.6,
           }}
         >
-          Word-by-word reading for reduced cognitive load
+          Captions flow at your reading pace
         </p>
       </div>
 
-      {/* Word Display */}
+      {/* Caption Display */}
       <div
         style={{
           flex: 1,
@@ -104,7 +107,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           alignItems: "center",
           justifyContent: "center",
           minHeight: 120,
-          padding: "20px",
+          padding: "24px",
           backgroundColor: tokens.color.white,
           borderRadius: "12px",
           border: `1px solid ${tokens.color.cardBorder}`,
@@ -115,61 +118,25 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
         }}
       >
         <div
-          role="status"
-          aria-live="polite"
-          aria-label={`Word ${wordIndex + 1} of ${words.length}: ${currentWord}`}
+          className={`caption-text ${speed === "pause" ? "paused" : ""}`}
           style={{
-            fontSize: "32px",
-            fontWeight: tokens.weight.medium,
-            color: tokens.color.ink,
+            fontSize: "18px",
+            fontWeight: tokens.weight.regular,
+            color: tokens.color.body,
             textAlign: "center",
-            minHeight: "48px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            maxWidth: "90%",
-            wordBreak: "break-word",
+            lineHeight: 1.6,
             margin: 0,
             padding: 0,
+            width: "100%",
+            animationDuration: `${getDuration()}ms`,
+            animationPlayState: speed === "pause" ? "paused" : "running",
           }}
+          role="status"
+          aria-live="polite"
+          aria-label="Reading text flowing at selected speed"
         >
-          {currentWord}
+          {text}
         </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div
-        style={{
-          width: "100%",
-          height: "4px",
-          backgroundColor: "#e0e0e0",
-          borderRadius: "2px",
-          overflow: "hidden",
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        <div
-          style={{
-            height: "100%",
-            width: `${progressPercent}%`,
-            backgroundColor: tokens.color.ink,
-            transition: "width 0.1s linear",
-          }}
-        />
-      </div>
-
-      {/* Word Count */}
-      <div
-        style={{
-          fontSize: "12px",
-          color: tokens.color.muted,
-          textAlign: "center",
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        Word {wordIndex + 1} of {words.length}
       </div>
 
       {/* Speed Controls */}
@@ -191,7 +158,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           isActive={speed === "fast"}
           isHovered={hoveredButton === "fast"}
           onHover={(h) => setHoveredButton(h ? "fast" : null)}
-          onClick={() => handleSpeedChange("fast")}
+          onClick={() => setSpeed("fast")}
         />
         <SpeedButton
           label="Normal"
@@ -199,7 +166,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           isActive={speed === "normal"}
           isHovered={hoveredButton === "normal"}
           onHover={(h) => setHoveredButton(h ? "normal" : null)}
-          onClick={() => handleSpeedChange("normal")}
+          onClick={() => setSpeed("normal")}
         />
         <SpeedButton
           label="Slow"
@@ -207,7 +174,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           isActive={speed === "slow"}
           isHovered={hoveredButton === "slow"}
           onHover={(h) => setHoveredButton(h ? "slow" : null)}
-          onClick={() => handleSpeedChange("slow")}
+          onClick={() => setSpeed("slow")}
         />
         <SpeedButton
           label="Pause"
@@ -215,7 +182,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           isActive={speed === "pause"}
           isHovered={hoveredButton === "pause"}
           onHover={(h) => setHoveredButton(h ? "pause" : null)}
-          onClick={() => handleSpeedChange("pause")}
+          onClick={() => setSpeed("pause")}
         />
       </div>
 
@@ -230,7 +197,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           padding: 0,
         }}
       >
-        {isPlaying && speed !== "pause" ? "Reading in progress..." : "Paused"}
+        {speed === "pause" ? "Paused" : `Reading at ${speed} speed...`}
       </div>
     </div>
   );
