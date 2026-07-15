@@ -16,21 +16,30 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
   const [isPlaying, setIsPlaying] = useState(true);
   const [speed, setSpeed] = useState<Speed>("normal");
   const [hoveredButton, setHoveredButton] = useState<Speed | null>(null);
-  const [displayText, setDisplayText] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const words = text.split(/\s+/).filter((w) => w.length > 0);
+  const currentWord = words[wordIndex] || "";
+
   const speedSettings: Record<Speed, number> = {
-    fast: 2.0,
-    normal: 1.0,
-    slow: 0.5,
+    fast: 200,
+    normal: 400,
+    slow: 800,
     pause: 0,
   };
 
   useEffect(() => {
     if (!isPlaying || speed === "pause") {
-      setDisplayText("");
+      return;
     }
-  }, [isPlaying, speed]);
+
+    const timer = setTimeout(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, speedSettings[speed]);
+
+    return () => clearTimeout(timer);
+  }, [isPlaying, speed, words.length]);
 
   const handleSpeedChange = (newSpeed: Speed) => {
     setSpeed(newSpeed);
@@ -40,6 +49,8 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
       setIsPlaying(true);
     }
   };
+
+  const progressPercent = words.length > 0 ? (wordIndex / words.length) * 100 : 0;
 
   return (
     <div
@@ -53,48 +64,12 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
         backgroundColor: tokens.color.offWhite,
         border: `1px solid ${tokens.color.cardBorder}`,
         minHeight: "350px",
+        width: "100%",
+        boxSizing: "border-box",
+        margin: 0,
+        overflow: "hidden",
       }}
     >
-      <style>{`
-        @keyframes scroll-text {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% - 0px));
-          }
-        }
-
-        .scroll-container {
-          overflow: hidden;
-          white-space: nowrap;
-          position: relative;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          margin: 0;
-          padding: 0;
-        }
-
-        .scroll-text {
-          display: inline-block;
-          animation: scroll-text linear infinite;
-          flex-shrink: 0;
-          margin: 0;
-          padding: 0;
-        }
-
-        .scroll-text.paused {
-          animation-play-state: paused;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .scroll-text {
-            animation: none !important;
-          }
-        }
-      `}</style>
-
       {/* Header */}
       <div>
         <h2
@@ -117,74 +92,84 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
             opacity: 0.6,
           }}
         >
-          Captions scroll at your pace. Adjust speed or pause anytime.
+          Word-by-word reading for reduced cognitive load
         </p>
       </div>
 
-      {/* Scrolling Text Display */}
+      {/* Word Display */}
       <div
         style={{
           flex: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: 140,
-          padding: "32px 20px",
+          minHeight: 120,
+          padding: "20px",
           backgroundColor: tokens.color.white,
           borderRadius: "12px",
           border: `1px solid ${tokens.color.cardBorder}`,
-          position: "relative",
-          overflow: "hidden",
           width: "100%",
           boxSizing: "border-box",
           margin: 0,
+          overflow: "hidden",
         }}
       >
-        {speed === "pause" || !isPlaying ? (
-          <div
-            style={{
-              fontSize: "18px",
-              fontWeight: tokens.weight.regular,
-              color: tokens.color.body,
-              textAlign: "center",
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {displayText || "Press play to start reading..."}
-          </div>
-        ) : (
-          <div
-            className="scroll-container"
-            style={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              overflow: "hidden",
-              position: "relative",
-              margin: 0,
-              padding: 0,
-            }}
-          >
-            <div
-              className="scroll-text"
-              style={{
-                fontSize: "18px",
-                fontWeight: tokens.weight.regular,
-                color: tokens.color.body,
-                animationDuration: `${(text.length * 0.08) / speedSettings[speed]}s`,
-                whiteSpace: "nowrap",
-                display: "inline-block",
-                margin: 0,
-                padding: 0,
-              }}
-            >
-              {text}
-            </div>
-          </div>
-        )}
+        <div
+          role="status"
+          aria-live="polite"
+          aria-label={`Word ${wordIndex + 1} of ${words.length}: ${currentWord}`}
+          style={{
+            fontSize: "32px",
+            fontWeight: tokens.weight.medium,
+            color: tokens.color.ink,
+            textAlign: "center",
+            minHeight: "48px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            maxWidth: "90%",
+            wordBreak: "break-word",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          {currentWord}
+        </div>
+      </div>
+
+      {/* Progress Bar */}
+      <div
+        style={{
+          width: "100%",
+          height: "4px",
+          backgroundColor: "#e0e0e0",
+          borderRadius: "2px",
+          overflow: "hidden",
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <div
+          style={{
+            height: "100%",
+            width: `${progressPercent}%`,
+            backgroundColor: tokens.color.ink,
+            transition: "width 0.1s linear",
+          }}
+        />
+      </div>
+
+      {/* Word Count */}
+      <div
+        style={{
+          fontSize: "12px",
+          color: tokens.color.muted,
+          textAlign: "center",
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        Word {wordIndex + 1} of {words.length}
       </div>
 
       {/* Speed Controls */}
@@ -194,6 +179,8 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           gap: 12,
           justifyContent: "center",
           flexWrap: "wrap",
+          margin: 0,
+          padding: 0,
         }}
         role="group"
         aria-label="Reading speed"
@@ -239,6 +226,8 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           color: tokens.color.muted,
           textAlign: "center",
           opacity: 0.6,
+          margin: 0,
+          padding: 0,
         }}
       >
         {isPlaying && speed !== "pause" ? "Reading in progress..." : "Paused"}
@@ -293,6 +282,7 @@ const SpeedButton: FC<SpeedButtonProps> = ({
       opacity: isHovered || isActive ? 1 : 0.8,
       transform: isHovered || isActive ? "scale(1.05)" : "scale(1)",
       boxShadow: isActive ? `0 0 0 3px ${color}40` : "none",
+      margin: 0,
     }}
   >
     {label}
