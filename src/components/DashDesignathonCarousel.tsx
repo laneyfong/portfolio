@@ -24,11 +24,13 @@ const DashDesignathonCarousel: FC<DashDesignathonCarouselProps> = ({ images }) =
           position: relative;
           border-radius: ${tokens.radius.sm};
           overflow: hidden;
-          background: ${tokens.color.offWhite};
+          background: ${tokens.color.white};
           border: 1px solid ${tokens.color.cardBorder};
           display: flex;
           flex-direction: column;
           height: 550px;
+          box-sizing: border-box;
+          margin: 0;
         }
 
         .dash-carousel-wrapper {
@@ -45,7 +47,7 @@ const DashDesignathonCarousel: FC<DashDesignathonCarouselProps> = ({ images }) =
           height: 100%;
           object-fit: contain;
           display: block;
-          background: ${tokens.color.offWhite};
+          background: ${tokens.color.white};
         }
 
         .dash-carousel-nav {
@@ -115,35 +117,44 @@ const DashDesignathonCarousel: FC<DashDesignathonCarouselProps> = ({ images }) =
         }
 
         .dash-carousel-info {
-          padding: 32px;
-          background: white;
+          padding: 24px;
+          background: ${tokens.color.white};
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex: 0 0 auto;
         }
 
         .dash-carousel-title {
           font-family: ${tokens.font.sans};
-          font-size: 24px;
+          font-size: 18px;
           font-weight: ${tokens.weight.medium};
           color: ${tokens.color.ink};
-          margin: 0 0 12px 0;
+          margin: 0 0 8px 0;
+          line-height: ${tokens.leading.snug};
         }
 
         .dash-carousel-subtitle {
           font-family: ${tokens.font.sans};
-          font-size: 14px;
-          font-weight: ${tokens.weight.regular};
+          font-size: 12px;
+          font-weight: ${tokens.weight.medium};
           color: ${tokens.color.muted};
-          margin: 0 0 16px 0;
+          margin: 0 0 12px 0;
           text-transform: uppercase;
-          letter-spacing: 0.05em;
+          letter-spacing: ${tokens.tracking.tight};
         }
 
         .dash-carousel-description {
           font-family: ${tokens.font.sans};
-          font-size: 16px;
+          font-size: 14px;
           font-weight: ${tokens.weight.regular};
           color: ${tokens.color.body};
           line-height: ${tokens.leading.normal};
           margin: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         @media (prefers-reduced-motion: reduce) {
