@@ -57,11 +57,11 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
     >
       <style>{`
         @keyframes scroll-text {
-          from {
-            transform: translateX(100%);
+          0% {
+            transform: translateX(0);
           }
-          to {
-            transform: translateX(-100%);
+          100% {
+            transform: translateX(calc(-100% - 0px));
           }
         }
 
@@ -70,15 +70,18 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           white-space: nowrap;
           position: relative;
           width: 100%;
-          height: 100%;
           display: flex;
           align-items: center;
+          margin: 0;
+          padding: 0;
         }
 
         .scroll-text {
           display: inline-block;
           animation: scroll-text linear infinite;
           flex-shrink: 0;
+          margin: 0;
+          padding: 0;
         }
 
         .scroll-text.paused {
@@ -134,6 +137,7 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
           overflow: "hidden",
           width: "100%",
           boxSizing: "border-box",
+          margin: 0,
         }}
       >
         {speed === "pause" || !isPlaying ? (
@@ -144,7 +148,6 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
               color: tokens.color.body,
               textAlign: "center",
               width: "100%",
-              height: "100%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -157,12 +160,12 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
             className="scroll-container"
             style={{
               width: "100%",
-              height: "100%",
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-start",
               overflow: "hidden",
               position: "relative",
+              margin: 0,
+              padding: 0,
             }}
           >
             <div
@@ -174,7 +177,8 @@ const SerialWordReader: FC<SerialWordReaderProps> = ({
                 animationDuration: `${(text.length * 0.08) / speedSettings[speed]}s`,
                 whiteSpace: "nowrap",
                 display: "inline-block",
-                paddingRight: "100px",
+                margin: 0,
+                padding: 0,
               }}
             >
               {text}
