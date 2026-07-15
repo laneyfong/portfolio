@@ -2,12 +2,19 @@ import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
+import { RESUME_URL } from "./SocialIcons";
 
-const NAV_ITEMS = [
+interface NavItem {
+  label: string;
+  path: string;
+  external?: boolean;
+}
+
+const NAV_ITEMS: NavItem[] = [
   { label: "Work", path: "/" },
   { label: "About", path: "/about" },
   { label: "Lab", path: "/lab" },
-  { label: "Resume", path: "/resume" },
+  { label: "Resume", path: RESUME_URL, external: true },
 ];
 
 const TopNav: FC = () => {
@@ -240,11 +247,15 @@ const TopNav: FC = () => {
               <li key={item.label}>
                 <a
                   href={item.path}
-                  className={`top-nav-link ${isActive(item.path) ? "active" : ""}`}
+                  className={`top-nav-link ${!item.external && isActive(item.path) ? "active" : ""}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    navigate(item.path);
-                    setMobileMenuOpen(false);
+                    if (item.external) {
+                      window.open(item.path, "_blank");
+                    } else {
+                      navigate(item.path);
+                      setMobileMenuOpen(false);
+                    }
                   }}
                 >
                   {item.label}
@@ -270,10 +281,14 @@ const TopNav: FC = () => {
             <li key={item.label}>
               <a
                 href={item.path}
-                className={`mobile-menu-item ${isActive(item.path) ? "active" : ""}`}
+                className={`mobile-menu-item ${!item.external && isActive(item.path) ? "active" : ""}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate(item.path);
+                  if (item.external) {
+                    window.open(item.path, "_blank");
+                  } else {
+                    navigate(item.path);
+                  }
                   setMobileMenuOpen(false);
                 }}
               >

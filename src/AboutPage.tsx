@@ -8,7 +8,7 @@ import PhotoStack from "./components/PhotoStack";
 import ProudMomentsCarousel from "./components/ProudMomentsCarousel";
 import ProductStackEnvelope from "./components/ProductStackEnvelope";
 import { useScrollReveal } from "./hooks/useScrollReveal";
-import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./components/SocialIcons";
+import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL, RESUME_URL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import aboutBioPhotoWebp from "./assets/about-bio-photo.webp";
 import clubPic from "./assets/club-pic.jpg";
@@ -18,9 +18,6 @@ import aboutStoryNewYorkWebp from "./assets/about-story-newyork.webp";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
-
-// TODO: link to a real hosted resume file once one exists.
-const RESUME_URL = "#";
 
 const Italic: FC<{ children: string; color?: string }> = ({ children, color }) => (
   <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400, color }}>{children}</em>
@@ -362,7 +359,7 @@ const AboutPage: FC = () => {
                 <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
                   <EmailIcon />
                 </SocialIconLink>
-                <SocialIconLink href={RESUME_URL} label="Download resume" variant="light">
+                <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
                   <ResumeIcon />
                 </SocialIconLink>
               </div>

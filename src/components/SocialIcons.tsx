@@ -4,6 +4,7 @@ import { tokens } from "../tokens";
 
 export const LINKEDIN_URL = "https://www.linkedin.com/in/laneyfong/?skipRedirect=true";
 export const CONTACT_EMAIL = "laneyrfong@gmail.com";
+export const RESUME_URL = "/LaneyFongResume-ProductDesigner.pdf";
 
 export const LinkedInIcon: FC = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

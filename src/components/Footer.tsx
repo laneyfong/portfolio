@@ -2,27 +2,36 @@ import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import nameLogoCharacter from "../../NameLogoFull_Character.svg";
-import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL } from "./SocialIcons";
+import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL, RESUME_URL } from "./SocialIcons";
 
 const NAV_LINKS = ["Work", "About", "Lab", "Resume"];
 
-// Mirrors Header.tsx's ROUTES — "Lab" and "Resume" have no page yet, so they're left
-// as inert labels for now rather than linking somewhere fake.
+// Mirrors Header.tsx's ROUTES
 const ROUTES: Record<string, string> = {
   Work: "/",
   About: "/about",
+  Resume: RESUME_URL,
 };
 
 const FooterLink: FC<{ label: string }> = ({ label }) => {
   const navigate = useNavigate();
   const path = ROUTES[label];
+  const isExternal = label === "Resume";
 
   return (
     <a
       href={path ?? undefined}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       onClick={(e) => {
         e.preventDefault();
-        if (path) navigate(path);
+        if (path) {
+          if (isExternal) {
+            window.open(path, "_blank");
+          } else {
+            navigate(path);
+          }
+        }
       }}
       style={{
         fontFamily: tokens.font.sans,
