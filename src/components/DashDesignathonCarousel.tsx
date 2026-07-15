@@ -26,12 +26,15 @@ const DashDesignathonCarousel: FC<DashDesignathonCarouselProps> = ({ images }) =
           overflow: hidden;
           background: ${tokens.color.offWhite};
           border: 1px solid ${tokens.color.cardBorder};
+          display: flex;
+          flex-direction: column;
+          height: 550px;
         }
 
         .dash-carousel-wrapper {
           position: relative;
           width: 100%;
-          padding-bottom: 75%;
+          flex: 1;
           overflow: hidden;
         }
 

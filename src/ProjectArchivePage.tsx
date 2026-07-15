@@ -88,41 +88,13 @@ const ProjectArchivePage: FC = () => {
       <style>{`
         .bento-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          grid-template-columns: repeat(2, 1fr);
           gap: 20px;
         }
 
-        .bento-featured {
-          grid-column: 1 / 3;
-        }
-
-        @media (min-width: 900px) {
-          .bento-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .bento-featured {
-            grid-column: 1 / 3;
-          }
-        }
-
-        @media (max-width: 900px) and (min-width: 768px) {
-          .bento-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .bento-featured {
-            grid-column: 1 / -1;
-          }
-        }
-
-        @media (max-width: 767px) {
+        @media (max-width: 900px) {
           .bento-grid {
             grid-template-columns: 1fr;
-          }
-
-          .bento-featured {
-            grid-column: 1;
           }
         }
       `}</style>
@@ -162,8 +134,8 @@ const ProjectArchivePage: FC = () => {
 
           {/* Bento Grid */}
           <div className="bento-grid">
-            {/* Featured: DoorDash Designathon - Full Width */}
-            <div className="bento-featured">
+            {/* DoorDash Designathon */}
+            <div>
               <DashDesignathonCarousel images={[dash1, dash2, dash3]} />
             </div>
 
