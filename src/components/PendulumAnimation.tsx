@@ -33,11 +33,7 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
     >
       <style>{`
         .pendulum-container {
-          perspective: 1200px;
-          width: 200px;
-          height: 240px;
-          position: relative;
-          margin-bottom: 24px;
+          display: none;
         }
 
         .pendulum-pivot {
@@ -97,13 +93,14 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
 
         .loading-dots {
           display: flex;
-          gap: 4px;
+          gap: 10px;
           justify-content: center;
+          align-items: center;
         }
 
         .dot {
-          width: 4px;
-          height: 4px;
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
           background-color: ${tokens.color.accent};
           animation: pulse 1.4s ease-in-out infinite;
@@ -119,6 +116,10 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
 
         .dot:nth-child(3) {
           animation-delay: 0.4s;
+        }
+
+        .dot:nth-child(4) {
+          animation-delay: 0.6s;
         }
 
         @keyframes pulse {
@@ -185,8 +186,9 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
 
         {isLoading ? (
           <>
-            <div className="pendulum-text">Loading...</div>
+            <div className="pendulum-text">Loading</div>
             <div className="loading-dots">
+              <div className="dot" />
               <div className="dot" />
               <div className="dot" />
               <div className="dot" />
@@ -194,7 +196,7 @@ const PendulumAnimation: FC<PendulumAnimationProps> = ({ title = "Pendulum Loadi
           </>
         ) : (
           <div className="completion-message">
-            Pendulum motion complete. Physics in motion, captured in code.
+            Animation complete. Observe the pattern.
           </div>
         )}
       </div>
