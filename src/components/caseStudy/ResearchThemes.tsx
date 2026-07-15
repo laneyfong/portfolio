@@ -1,25 +1,26 @@
 import type { FC } from "react";
 import { tokens } from "../../tokens";
+import { LockIcon, AnalyticsIcon, ClockIcon, SettingsIcon } from "../icons/CaseStudyIcons";
 
 const ResearchThemes: FC = () => {
   const themes = [
     {
-      icon: "🔒",
+      icon: LockIcon,
       title: "Trust & Transparency",
       description: "Engineers need to verify AI findings and understand accountability",
     },
     {
-      icon: "📊",
+      icon: AnalyticsIcon,
       title: "Data Collection Gap",
       description: "Teams lack structured feedback — relying on Slack instead",
     },
     {
-      icon: "⏰",
+      icon: ClockIcon,
       title: "Engineering Priorities",
       description: "Code-breaking bugs crowd out usability fixes",
     },
     {
-      icon: "⚙️",
+      icon: SettingsIcon,
       title: "Simple Tools Win",
       description: "Engineers want zero onboarding — seamless workflow replacement",
     },
@@ -49,11 +50,15 @@ const ResearchThemes: FC = () => {
         >
           <div
             style={{
-              fontSize: "32px",
-              lineHeight: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 40,
+              height: 40,
+              color: tokens.color.accent,
             }}
           >
-            {theme.icon}
+            <theme.icon size={24} />
           </div>
           <div
             style={{

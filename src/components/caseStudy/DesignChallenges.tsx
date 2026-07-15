@@ -1,28 +1,29 @@
 import type { FC } from "react";
 import { tokens } from "../../tokens";
+import { QuestionIcon, ClockIcon, NotesIcon, SearchIcon } from "../icons/CaseStudyIcons";
 
 const DesignChallenges: FC = () => {
   const challenges = [
     {
-      icon: "🤔",
+      icon: QuestionIcon,
       title: "The Gap",
       metric: "What engineers say ≠ What they do",
       color: "#FF6B6B",
     },
     {
-      icon: "⏳",
+      icon: ClockIcon,
       title: "Time Pressure",
       metric: "Timelines drive priorities",
       color: "#FFA500",
     },
     {
-      icon: "📝",
+      icon: NotesIcon,
       title: "No Feedback Loop",
       metric: "Post-launch Slack messages",
       color: "#FFD93D",
     },
     {
-      icon: "🔍",
+      icon: SearchIcon,
       title: "Verification Needed",
       metric: "Can't trust black boxes",
       color: "#6BCB77",
@@ -53,11 +54,15 @@ const DesignChallenges: FC = () => {
         >
           <div
             style={{
-              fontSize: "28px",
-              lineHeight: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 40,
+              height: 40,
+              color: challenge.color,
             }}
           >
-            {challenge.icon}
+            <challenge.icon size={24} />
           </div>
           <div
             style={{

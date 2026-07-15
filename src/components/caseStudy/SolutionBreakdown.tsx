@@ -1,28 +1,29 @@
 import type { FC } from "react";
 import { tokens } from "../../tokens";
+import { PinIcon, SpeedIcon, MapIcon, AlertIcon } from "../icons/CaseStudyIcons";
 
 const SolutionBreakdown: FC = () => {
   const features = [
     {
-      icon: "📍",
+      icon: PinIcon,
       title: "Pinned Locations",
       description: "Instant access to family",
       color: "#22C55E",
     },
     {
-      icon: "⚡",
+      icon: SpeedIcon,
       title: "Quick Safety Check",
       description: "Status in 3 taps",
       color: "#3B82F6",
     },
     {
-      icon: "🗺",
+      icon: MapIcon,
       title: "Map-First Layout",
       description: "Visual context first",
       color: "#F59E0B",
     },
     {
-      icon: "🎯",
+      icon: AlertIcon,
       title: "Clear Alerts",
       description: "EEW vs CEN distinction",
       color: "#DC2626",
@@ -53,11 +54,15 @@ const SolutionBreakdown: FC = () => {
         >
           <div
             style={{
-              fontSize: "32px",
-              lineHeight: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 40,
+              height: 40,
+              color: feature.color,
             }}
           >
-            {feature.icon}
+            <feature.icon size={24} />
           </div>
           <div
             style={{

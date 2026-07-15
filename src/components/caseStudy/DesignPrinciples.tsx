@@ -1,25 +1,26 @@
 import type { FC } from "react";
 import { tokens } from "../../tokens";
+import { SpeedIcon, ClarityIcon, CheckIcon, AccessibilityIcon } from "../icons/CaseStudyIcons";
 
 const DesignPrinciples: FC = () => {
   const principles = [
     {
-      icon: "⚡",
+      icon: SpeedIcon,
       title: "Speed",
       description: "Minimize taps and cognitive load to find critical info instantly",
     },
     {
-      icon: "🎯",
+      icon: ClarityIcon,
       title: "Clarity",
       description: "Make the app's purpose clear — safety, not data visualization",
     },
     {
-      icon: "✓",
+      icon: CheckIcon,
       title: "Reassurance",
       description: "Provide immediate visual confirmation of loved ones' safety status",
     },
     {
-      icon: "♿",
+      icon: AccessibilityIcon,
       title: "Accessibility",
       description: "Design for all users, not just data enthusiasts or scientists",
     },
@@ -49,11 +50,15 @@ const DesignPrinciples: FC = () => {
         >
           <div
             style={{
-              fontSize: "32px",
-              lineHeight: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 40,
+              height: 40,
+              color: tokens.color.accent,
             }}
           >
-            {principle.icon}
+            <principle.icon size={24} />
           </div>
           <div
             style={{
