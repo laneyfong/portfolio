@@ -6,10 +6,9 @@ import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
-import PendulumAnimation from "./components/PendulumAnimation";
 import BudgetSlider from "./components/BudgetSlider";
 
-type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "pendulum" | "budget";
+type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight" | "budget";
 
 interface LabModuleProps {
   type: ModuleType;
@@ -21,7 +20,7 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
-  specialType?: "daylight" | "ascii-ripple" | "pendulum" | "budget";
+  specialType?: "daylight" | "ascii-ripple" | "budget";
 }
 
 const LabPage: FC = () => {
@@ -47,17 +46,6 @@ const LabPage: FC = () => {
       tags: ["interaction", "animation", "ASCII", "ripple"],
       isSpecial: true,
       specialType: "ascii-ripple",
-    },
-    {
-      type: "motion",
-      title: "Pendulum Loading Animation",
-      description: "A physics-based pendulum swing that creates a mesmerizing loading state. Explores how simple oscillation can make waiting feel intentional.",
-      experimentId: "EXP-2025-001",
-      date: "Feb 2025",
-      status: "exploring",
-      tags: ["motion", "physics", "animation", "loading"],
-      isSpecial: true,
-      specialType: "pendulum",
     },
     {
       type: "budget",
@@ -172,13 +160,11 @@ const LabPage: FC = () => {
                   <DayLightCard />
                 ) : exp.specialType === "ascii-ripple" ? (
                   <InteractiveTypography />
-                ) : exp.specialType === "pendulum" ? (
-                  <PendulumAnimation title="Pendulum Loading Experiment" />
                 ) : exp.specialType === "budget" ? (
                   <BudgetSlider />
                 ) : (
                   <LabCard
-                    type={exp.type as Exclude<ModuleType, "daylight" | "pendulum" | "budget">}
+                    type={exp.type as Exclude<ModuleType, "daylight" | "budget">}
                     title={exp.title}
                     description={exp.description}
                     experimentId={exp.experimentId}
