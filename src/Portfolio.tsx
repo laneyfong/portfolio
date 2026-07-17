@@ -13,6 +13,7 @@ import laneyPhoto from "./assets/laney-photo.jpg";
 import myshakeDefault from "./assets/myshake-default.png";
 import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
+import idbridgeThumbnail from "./assets/idbridge-thumbnail.png";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
 
 // Preload hero image for faster initial render
@@ -173,7 +174,7 @@ const Portfolio: FC = () => {
 
             <div ref={card2Ref} className="card-reveal card-2-reveal">
               <ProjectCard
-                screenshot="🏆"
+                screenshot={idbridgeThumbnail}
                 layout="landscape"
                 height={650}
                 roleOutcome="Social Impact × Accessibility"
