@@ -260,6 +260,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               transform: hovered ? "scale(1.02)" : "scale(1)",
               filter: invertOnHover && hovered ? "invert(1)" : "invert(0)",
               display: "block",
+              boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)",
             }}
           />
         </div>
