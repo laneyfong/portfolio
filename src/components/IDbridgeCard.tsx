@@ -129,9 +129,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: #e8e8e8;
-          border: 1px solid #d0d0d0;
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+          background: transparent;
+          border: 0.5px solid rgba(40, 41, 43, 0.08);
           gap: ${hovered ? "8px" : "1px"};
           transition: gap 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -276,8 +275,6 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
             flexDirection: "column",
             gap: 12,
             padding: "12px 12px 16px 12px",
-            borderTop: `1px solid ${tokens.color.cardBorder}`,
-            transition: "border-color 0.5s ease",
             flex: "0 0 auto",
             position: "relative",
             zIndex: 10,

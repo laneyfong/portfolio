@@ -101,9 +101,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: #e8e8e8;
-          border: 1px solid #d0d0d0;
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+          background: transparent;
+          border: 0.5px solid rgba(40, 41, 43, 0.08);
           gap: 0px;
         }
 
@@ -240,8 +239,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             flexDirection: "column",
             gap: 12,
             padding: "12px 12px 16px 12px",
-            borderTop: `1px solid ${tokens.color.cardBorder}`,
-            transition: "border-color 0.5s ease",
             flex: "0 0 auto",
             position: "relative",
             zIndex: 10,

@@ -238,12 +238,12 @@ const ProjectCard: FC<ProjectCardProps> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "100px",
-            paddingBottom: "100px",
-            paddingLeft: "12px",
-            paddingRight: "12px",
+            padding: "60px 0px",
+            margin: "16px 12px 0px 12px",
             overflow: "hidden",
             minHeight: 0,
+            borderRadius: tokens.radius.md,
+            border: "0.5px solid rgba(40, 41, 43, 0.08)",
           }}
         >
           <img
@@ -271,8 +271,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
             flexDirection: "column",
             gap: 12,
             padding: "12px 12px 16px 12px",
-            borderTop: `1px solid ${darkHoverMode && hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
-            transition: "border-color 0.5s ease",
             flexShrink: 0,
           }}
         >
