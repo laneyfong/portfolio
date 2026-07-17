@@ -124,11 +124,13 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 100px 12px;
+          padding: 60px 12px;
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: #f8f8f8;
+          background: #e8e8e8;
+          border: 1px solid #d0d0d0;
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
           gap: 1px;
         }
 
