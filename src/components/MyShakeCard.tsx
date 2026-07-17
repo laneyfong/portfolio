@@ -100,7 +100,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: ${tokens.color.offWhite};
+          background: transparent;
           gap: 2px;
         }
 
@@ -110,6 +110,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           object-fit: contain;
           border-radius: 14px;
           transition: transform 0.22s ease;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
         }
 
         .myshake-left-screen {
@@ -218,7 +219,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         <div className="myshake-image-section">
           {/* Left Alert Screen - Always in Layout, Hidden by Default */}
           <div className="myshake-left-screen">
-            <img src={alertImage} alt="MyShake earthquake alert" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px" }} />
+            <img src={alertImage} alt="MyShake earthquake alert" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px", boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)" }} />
           </div>
 
           {/* Center Screen - Always Visible */}
@@ -226,7 +227,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
           {/* Right Details Screen - Always in Layout, Hidden by Default */}
           <div className="myshake-right-screen">
-            <img src={detailsImage} alt="MyShake earthquake details" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px" }} />
+            <img src={detailsImage} alt="MyShake earthquake details" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px", boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)" }} />
           </div>
         </div>
 
