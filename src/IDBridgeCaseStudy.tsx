@@ -108,9 +108,6 @@ const IDBridgeCaseStudy: FC = () => {
             }
 
             .carousel-wrapper {
-              display: flex;
-              align-items: center;
-              justify-content: center;
               margin-bottom: 40px;
             }
 
@@ -121,11 +118,11 @@ const IDBridgeCaseStudy: FC = () => {
               border-radius: 14px;
               display: flex;
               align-items: center;
-              justify-content: space-between;
-              gap: 60px;
+              justify-content: center;
               min-height: 500px;
               position: relative;
               overflow: hidden;
+              gap: 80px;
             }
 
             .carousel-container {
@@ -171,18 +168,14 @@ const IDBridgeCaseStudy: FC = () => {
             .carousel-notes {
               display: flex;
               flex-direction: column;
-              gap: 16px;
+              gap: 20px;
               flex: 1;
-              min-width: 0;
+              max-width: 350px;
             }
 
             .carousel-note {
               opacity: 0;
               animation: textFadeIn 10s infinite;
-              padding: 20px;
-              border-radius: 12px;
-              background: rgba(255, 255, 255, 0.8);
-              border: 1px solid ${tokens.color.cardBorder};
             }
 
             .carousel-note:nth-child(1) {
@@ -204,14 +197,15 @@ const IDBridgeCaseStudy: FC = () => {
             .carousel-note-title {
               font-family: ${tokens.font.sans};
               font-weight: ${tokens.weight.medium};
-              font-size: 14px;
+              font-size: 16px;
               color: ${tokens.color.ink};
-              margin-bottom: 8px;
+              margin-bottom: 6px;
+              line-height: ${tokens.leading.snug};
             }
 
             .carousel-note-description {
               font-family: ${tokens.font.sans};
-              font-size: 13px;
+              font-size: 14px;
               color: ${tokens.color.body};
               line-height: ${tokens.leading.normal};
             }
@@ -219,11 +213,11 @@ const IDBridgeCaseStudy: FC = () => {
             @media (max-width: 968px) {
               .carousel-background {
                 flex-direction: column;
-                gap: 20px;
+                gap: 40px;
               }
 
               .carousel-notes {
-                width: 100%;
+                max-width: 100%;
               }
             }
           `}</style>
