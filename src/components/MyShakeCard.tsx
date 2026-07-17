@@ -98,8 +98,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           left: 12px;
           top: 50%;
           transform: translateY(-50%);
-          width: 28%;
-          max-height: 75%;
+          width: 18%;
+          max-height: 60%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -112,8 +112,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           right: 12px;
           top: 50%;
           transform: translateY(-50%);
-          width: 32%;
-          max-height: 75%;
+          width: 26%;
+          max-height: 70%;
           display: flex;
           align-items: center;
           justify-content: center;
