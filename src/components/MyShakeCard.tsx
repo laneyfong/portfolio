@@ -73,7 +73,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           position: relative;
           border-radius: 14px;
           background: ${tokens.color.offWhite};
-          gap: 4px;
+          gap: 2px;
         }
 
         .myshake-center-image {
