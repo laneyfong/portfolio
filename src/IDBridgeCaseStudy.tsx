@@ -166,16 +166,20 @@ const IDBridgeCaseStudy: FC = () => {
             }
 
             .carousel-notes {
-              position: relative;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
               flex: 1;
               max-width: 350px;
-              min-height: 200px;
             }
 
             .carousel-note {
-              position: absolute;
               opacity: 0;
               animation: textFadeIn 10s infinite;
+              padding: 20px;
+              border-radius: 12px;
+              background: rgba(255, 255, 255, 0.6);
+              backdrop-filter: blur(10px);
             }
 
             .carousel-note:nth-child(1) {
