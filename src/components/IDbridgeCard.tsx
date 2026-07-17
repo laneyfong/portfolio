@@ -213,19 +213,63 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
             zIndex: 10,
           }}
         >
-          <span
+          <div
             style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              fontSize: "11px",
-              color: tokens.color.muted,
-              letterSpacing: "0.5px",
-              textTransform: "uppercase",
-              lineHeight: tokens.leading.none,
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+              gap: 12,
             }}
           >
-            {context}
-          </span>
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "11px",
+                color: tokens.color.muted,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                lineHeight: tokens.leading.none,
+              }}
+            >
+              {context}
+            </span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 32 32"
+              style={{
+                transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+                flexShrink: 0,
+              }}
+            >
+              <circle
+                cx="16"
+                cy="16"
+                r="14"
+                fill="none"
+                stroke={tokens.color.body}
+                strokeWidth="1.5"
+                style={{
+                  transition: "stroke 0.5s ease",
+                }}
+              />
+              <g>
+                <path
+                  d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                  stroke={tokens.color.body}
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    transition: "stroke 0.5s ease",
+                  }}
+                />
+              </g>
+            </svg>
+          </div>
           <span
             style={{
               fontFamily: tokens.font.sans,
