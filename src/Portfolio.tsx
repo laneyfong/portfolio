@@ -6,6 +6,7 @@ import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
 import MyShakeCard from "./components/MyShakeCard";
+import IDbridgeCard from "./components/IDbridgeCard";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
@@ -14,6 +15,9 @@ import myshakeDefault from "./assets/myshake-default.png";
 import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
 import idbridgeThumbnail from "./assets/idbridge-thumbnail.png";
+import idbridgeDocuments from "./assets/idbridge-documents.png";
+import idbridgeHistory from "./assets/idbridge-history.png";
+import idbridgeMap from "./assets/idbridge-map.png";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
 
 // Preload hero image for faster initial render
@@ -173,15 +177,15 @@ const Portfolio: FC = () => {
             </div>
 
             <div ref={card2Ref} className="card-reveal card-2-reveal">
-              <ProjectCard
-                screenshot={idbridgeThumbnail}
-                layout="landscape"
-                height={650}
+              <IDbridgeCard
+                defaultImage={idbridgeThumbnail}
+                documentsImage={idbridgeDocuments}
+                historyImage={idbridgeHistory}
+                mapImage={idbridgeMap}
                 roleOutcome="Social Impact × Accessibility"
                 caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours."
                 captionItalic="First place winner"
                 to="/idbridge-design"
-                darkHoverMode={true}
               />
             </div>
 
