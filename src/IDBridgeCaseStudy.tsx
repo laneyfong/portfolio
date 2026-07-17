@@ -88,6 +88,44 @@ const IDBridgeCaseStudy: FC = () => {
             </FeatureCard>
           </div>
         </Reveal>
+
+        <Reveal delay={100}>
+          <img
+            src={idbridgeThumbnail}
+            alt="IDbridge app screens showing home, documents, history, and map"
+            className="case-shot"
+            style={{
+              width: "100%",
+              display: "block",
+              borderRadius: tokens.radius.md,
+              boxShadow: tokens.shadow.card,
+              marginBottom: 40,
+              maxWidth: "100%",
+              height: "auto"
+            }}
+          />
+        </Reveal>
+
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Home</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeDocuments} alt="Documents screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Documents</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeHistory} alt="History screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>History</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeMap} alt="Map screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Map</span>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* Context */}
@@ -504,28 +542,6 @@ const IDBridgeCaseStudy: FC = () => {
               <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: 1.5 }}>
                 Bus routes and maps work without data connection.
               </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <Callout>Design Screens</Callout>
-        <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Home</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeDocuments} alt="Documents screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Documents</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeHistory} alt="History screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>History</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeMap} alt="Map screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Map</span>
             </div>
           </div>
         </Reveal>
