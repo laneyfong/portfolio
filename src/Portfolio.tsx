@@ -5,6 +5,7 @@ import ContentContainer from "./components/ContentContainer";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
+import MyShakeCard from "./components/MyShakeCard";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
@@ -158,16 +159,13 @@ const Portfolio: FC = () => {
             }}
           >
             <div ref={card1Ref} className="card-reveal card-1-reveal">
-              <ProjectCard
-                screenshot={myshakeDefault}
-                hoverScreenshot={myshakeHover}
-                layout="portrait"
-                height={650}
+              <MyShakeCard
+                defaultImage={myshakeDefault}
+                hoverImage={myshakeHover}
                 roleOutcome="Mobile Design × Crisis Response"
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
                 captionItalic="45% engagement increase"
                 to="/myshake-design"
-                darkHoverMode={true}
               />
             </div>
 
