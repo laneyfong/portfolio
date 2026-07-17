@@ -69,10 +69,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           position: relative;
           border-radius: 14px;
           background: ${tokens.color.offWhite};
+          gap: 8px;
         }
 
         .myshake-center-image {
-          width: 100%;
+          flex: 1;
+          max-width: 55%;
           height: 100%;
           object-fit: contain;
           border-radius: 14px;
@@ -80,25 +82,26 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         }
 
         .myshake-hover-overlay {
+          display: ${hovered ? "flex" : "none"};
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          pointer-events: none;
+          overflow: visible;
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          pointer-events: none;
-          overflow: hidden;
-          border-radius: 14px;
+          width: 100%;
+          height: 100%;
+          padding: 48px 12px;
+          box-sizing: border-box;
         }
 
         .myshake-left-screen {
-          position: absolute;
-          right: calc(50% + 8px);
-          top: 50%;
-          transform: translateY(-50%);
           width: 18%;
+          height: 100%;
           max-height: 60%;
           display: flex;
           align-items: center;
@@ -108,11 +111,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         }
 
         .myshake-right-screen {
-          position: absolute;
-          left: calc(50% + 8px);
-          top: 50%;
-          transform: translateY(-50%);
           width: 26%;
+          height: 100%;
           max-height: 70%;
           display: flex;
           align-items: center;
@@ -192,16 +192,18 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         {/* Image Section with Hover Overlay */}
         <div className="myshake-image-section">
-          {/* Center Screen - Always Visible */}
-          <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />
+          {!hovered && <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />}
 
-          {/* Side Screens - Appear on Hover */}
+          {/* All Screens in Flex Layout */}
           {hovered && (
             <div className="myshake-hover-overlay">
               {/* Left Alert Screen */}
               <div className="myshake-left-screen">
                 <img src={alertImage} alt="MyShake earthquake alert" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               </div>
+
+              {/* Center Screen */}
+              <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />
 
               {/* Right Details Screen */}
               <div className="myshake-right-screen">
