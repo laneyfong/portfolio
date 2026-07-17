@@ -90,176 +90,22 @@ const IDBridgeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal delay={100}>
-          <style>{`
-            @keyframes smoothFade {
-              0% { opacity: 1; }
-              22% { opacity: 1; }
-              25% { opacity: 0; }
-              100% { opacity: 0; }
-            }
-
-            @keyframes textFadeIn {
-              0% { opacity: 0; }
-              22% { opacity: 0; }
-              25% { opacity: 1; }
-              48% { opacity: 1; }
-              50% { opacity: 0; }
-              100% { opacity: 0; }
-            }
-
-            .carousel-wrapper {
-              margin-bottom: 40px;
-            }
-
-            .carousel-background {
-              width: 100%;
-              background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-              padding: 60px 40px;
-              border-radius: 14px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              min-height: 500px;
-              position: relative;
-              overflow: hidden;
-              gap: 80px;
-            }
-
-            .carousel-container {
-              position: relative;
-              width: 100%;
-              max-width: 320px;
-              height: 620px;
-              flex-shrink: 0;
-            }
-
-            .carousel-slide {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              animation: smoothFade 10s infinite;
-            }
-
-            .carousel-slide:nth-child(1) {
-              animation-delay: 0s;
-            }
-
-            .carousel-slide:nth-child(2) {
-              animation-delay: 2.5s;
-            }
-
-            .carousel-slide:nth-child(3) {
-              animation-delay: 5s;
-            }
-
-            .carousel-slide:nth-child(4) {
-              animation-delay: 7.5s;
-            }
-
-            .carousel-slide img {
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-            }
-
-            .carousel-notes {
-              display: flex;
-              flex-direction: column;
-              gap: 20px;
-              flex: 1;
-              max-width: 350px;
-            }
-
-            .carousel-note {
-              opacity: 0;
-              animation: textFadeIn 10s infinite;
-              padding: 20px;
-              border-radius: 12px;
-              background: rgba(255, 255, 255, 0.6);
-              backdrop-filter: blur(10px);
-            }
-
-            .carousel-note:nth-child(1) {
-              animation-delay: 0s;
-            }
-
-            .carousel-note:nth-child(2) {
-              animation-delay: 2.5s;
-            }
-
-            .carousel-note:nth-child(3) {
-              animation-delay: 5s;
-            }
-
-            .carousel-note:nth-child(4) {
-              animation-delay: 7.5s;
-            }
-
-            .carousel-note-title {
-              font-family: ${tokens.font.sans};
-              font-weight: ${tokens.weight.medium};
-              font-size: 16px;
-              color: ${tokens.color.ink};
-              margin-bottom: 6px;
-              line-height: ${tokens.leading.snug};
-            }
-
-            .carousel-note-description {
-              font-family: ${tokens.font.sans};
-              font-size: 14px;
-              color: ${tokens.color.body};
-              line-height: ${tokens.leading.normal};
-            }
-
-            @media (max-width: 968px) {
-              .carousel-background {
-                flex-direction: column;
-                gap: 40px;
-              }
-
-              .carousel-notes {
-                max-width: 100%;
-              }
-            }
-          `}</style>
-
-          <div className="carousel-wrapper">
-            <div className="carousel-background">
-              <div className="carousel-container">
-                <div className="carousel-slide">
-                  <img src={idbridgeThumbnail} alt="Home screen" />
-                </div>
-                <div className="carousel-slide">
-                  <img src={idbridgeDocuments} alt="Documents screen" />
-                </div>
-                <div className="carousel-slide">
-                  <img src={idbridgeHistory} alt="History screen" />
-                </div>
-                <div className="carousel-slide">
-                  <img src={idbridgeMap} alt="Map screen" />
-                </div>
-              </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
+              <img src={idbridgeThumbnail} alt="Home screen - Verify Identity" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Verify Identity</span>
             </div>
-            <div className="carousel-notes">
-              <div className="carousel-note">
-                <div className="carousel-note-title">Verify Identity</div>
-                <div className="carousel-note-description">Build a verified document trail with QR codes and referrals.</div>
-              </div>
-              <div className="carousel-note">
-                <div className="carousel-note-title">Upload Documents</div>
-                <div className="carousel-note-description">Securely store and organize all verification documents in one place.</div>
-              </div>
-              <div className="carousel-note">
-                <div className="carousel-note-title">Track Progress</div>
-                <div className="carousel-note-description">View your verification history and eligibility status in real-time.</div>
-              </div>
-              <div className="carousel-note">
-                <div className="carousel-note-title">Find Shelter</div>
-                <div className="carousel-note-description">Discover available shelters with real-time bed counts offline.</div>
-              </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
+              <img src={idbridgeDocuments} alt="Documents screen - Upload Documents" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Upload Documents</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
+              <img src={idbridgeHistory} alt="History screen - Track Progress" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Track Progress</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
+              <img src={idbridgeMap} alt="Map screen - Find Shelter" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Find Shelter</span>
             </div>
           </div>
         </Reveal>
