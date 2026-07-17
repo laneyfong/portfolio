@@ -120,7 +120,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .myshake-left-notifications,
+          .myshake-left-screen,
           .myshake-right-screen {
             animation: none !important;
             opacity: ${hovered ? 1 : 0};
