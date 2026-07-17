@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
-import myshakeApp from "./assets/myshake-app.png";
+import myshakeThumbnail from "./assets/myshake-thumbnail.png";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
 
 // Preload hero image for faster initial render
@@ -158,7 +158,7 @@ const Portfolio: FC = () => {
           >
             <div ref={card1Ref} className="card-reveal card-1-reveal">
               <ProjectCard
-                screenshot={myshakeApp}
+                screenshot={myshakeThumbnail}
                 layout="portrait"
                 height={650}
                 roleOutcome="Mobile Design × Crisis Response"
