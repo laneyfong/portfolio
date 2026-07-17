@@ -64,7 +64,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 12px;
+          padding: 48px 12px;
           overflow: hidden;
           position: relative;
           border-radius: 14px;
@@ -95,10 +95,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         .myshake-left-screen {
           position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: 40%;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 28%;
+          max-height: 75%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -108,10 +109,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         .myshake-right-screen {
           position: absolute;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          width: 40%;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 32%;
+          max-height: 75%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -196,12 +198,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             <div className="myshake-hover-overlay">
               {/* Left Alert Screen */}
               <div className="myshake-left-screen">
-                <img src={alertImage} alt="MyShake earthquake alert" style={{ height: "100%", objectFit: "contain" }} />
+                <img src={alertImage} alt="MyShake earthquake alert" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               </div>
 
               {/* Right Details Screen */}
               <div className="myshake-right-screen">
-                <img src={detailsImage} alt="MyShake earthquake details" style={{ height: "100%", objectFit: "contain" }} />
+                <img src={detailsImage} alt="MyShake earthquake details" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               </div>
             </div>
           )}
