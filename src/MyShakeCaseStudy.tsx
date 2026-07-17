@@ -354,7 +354,6 @@ const MyShakeCaseStudy: FC = () => {
                 width: "100%",
                 display: "block",
                 borderRadius: tokens.radius.md,
-                boxShadow: tokens.shadow.card,
                 marginBottom: 32,
                 maxWidth: "100%",
                 height: "auto"
