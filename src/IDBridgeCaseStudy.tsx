@@ -91,16 +91,34 @@ const IDBridgeCaseStudy: FC = () => {
 
         <Reveal delay={100}>
           <style>{`
-            @keyframes fadeCarousel {
-              0% { opacity: 1; }
-              22% { opacity: 1; }
-              25% { opacity: 0; }
-              48% { opacity: 0; }
-              50% { opacity: 1; }
-              72% { opacity: 1; }
-              75% { opacity: 0; }
-              98% { opacity: 0; }
-              100% { opacity: 1; }
+            @keyframes zoomInHome {
+              0% { opacity: 1; transform: scale(1); }
+              22% { opacity: 1; transform: scale(1); }
+              25% { opacity: 0; transform: scale(1.1); }
+              100% { opacity: 0; transform: scale(1.1); }
+            }
+
+            @keyframes zoomDocuments {
+              0% { opacity: 0; transform: scale(0.95); }
+              25% { opacity: 1; transform: scale(0.95); }
+              48% { opacity: 1; transform: scale(1.05); }
+              50% { opacity: 0; transform: scale(1.05); }
+              100% { opacity: 0; transform: scale(1.05); }
+            }
+
+            @keyframes zoomHistory {
+              0% { opacity: 0; transform: scale(0.95); }
+              50% { opacity: 1; transform: scale(0.95); }
+              72% { opacity: 1; transform: scale(1.08); }
+              75% { opacity: 0; transform: scale(1.08); }
+              100% { opacity: 0; transform: scale(1.08); }
+            }
+
+            @keyframes zoomMap {
+              0% { opacity: 0; transform: scale(0.95); }
+              75% { opacity: 1; transform: scale(0.95); }
+              98% { opacity: 1; transform: scale(1.06); }
+              100% { opacity: 0; transform: scale(1); }
             }
 
             .carousel-background {
@@ -113,6 +131,8 @@ const IDBridgeCaseStudy: FC = () => {
               justify-content: center;
               min-height: 500px;
               margin-bottom: 40px;
+              position: relative;
+              overflow: hidden;
             }
 
             .carousel-container {
@@ -129,29 +149,87 @@ const IDBridgeCaseStudy: FC = () => {
               display: flex;
               align-items: center;
               justify-content: center;
-              animation: fadeCarousel 10s infinite;
             }
 
             .carousel-slide:nth-child(1) {
-              animation-delay: 0s;
+              animation: zoomInHome 10s infinite;
             }
 
             .carousel-slide:nth-child(2) {
-              animation-delay: 2.5s;
+              animation: zoomDocuments 10s infinite;
             }
 
             .carousel-slide:nth-child(3) {
-              animation-delay: 5s;
+              animation: zoomHistory 10s infinite;
             }
 
             .carousel-slide:nth-child(4) {
-              animation-delay: 7.5s;
+              animation: zoomMap 10s infinite;
             }
 
             .carousel-slide img {
               width: 100%;
               height: 100%;
               object-fit: contain;
+              will-change: transform;
+            }
+
+            .carousel-label {
+              position: absolute;
+              bottom: 20px;
+              left: 50%;
+              transform: translateX(-50%);
+              background: rgba(0, 0, 0, 0.7);
+              color: white;
+              padding: 8px 16px;
+              border-radius: 20px;
+              font-family: 'Manrope', sans-serif;
+              font-size: 12px;
+              font-weight: 500;
+              letter-spacing: 0.5px;
+              text-transform: uppercase;
+              opacity: 0;
+              animation: labelFade 10s infinite;
+              z-index: 5;
+            }
+
+            @keyframes labelFade {
+              0% { opacity: 0; }
+              10% { opacity: 1; }
+              22% { opacity: 1; }
+              25% { opacity: 0; }
+              100% { opacity: 0; }
+            }
+
+            .carousel-label:nth-of-type(1) { animation-delay: 0s; }
+            .carousel-label:nth-of-type(2) { animation-delay: 2.5s; animation: labelFade2 10s infinite; }
+            .carousel-label:nth-of-type(3) { animation-delay: 5s; animation: labelFade3 10s infinite; }
+            .carousel-label:nth-of-type(4) { animation-delay: 7.5s; animation: labelFade4 10s infinite; }
+
+            @keyframes labelFade2 {
+              0% { opacity: 0; }
+              25% { opacity: 0; }
+              27% { opacity: 1; }
+              48% { opacity: 1; }
+              50% { opacity: 0; }
+              100% { opacity: 0; }
+            }
+
+            @keyframes labelFade3 {
+              0% { opacity: 0; }
+              50% { opacity: 0; }
+              52% { opacity: 1; }
+              72% { opacity: 1; }
+              75% { opacity: 0; }
+              100% { opacity: 0; }
+            }
+
+            @keyframes labelFade4 {
+              0% { opacity: 0; }
+              75% { opacity: 0; }
+              77% { opacity: 1; }
+              98% { opacity: 1; }
+              100% { opacity: 0; }
             }
           `}</style>
 
@@ -169,6 +247,10 @@ const IDBridgeCaseStudy: FC = () => {
               <div className="carousel-slide">
                 <img src={idbridgeMap} alt="Map screen" />
               </div>
+              <div className="carousel-label">Verify Identity</div>
+              <div className="carousel-label">Upload Documents</div>
+              <div className="carousel-label">Track Progress</div>
+              <div className="carousel-label">Find Shelter</div>
             </div>
           </div>
         </Reveal>
