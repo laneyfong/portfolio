@@ -115,7 +115,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         .idbridge-screen {
           width: 22%;
           height: 100%;
-          display: flex;
+          display: ${hovered ? "flex" : "none"};
           align-items: center;
           justify-content: center;
           opacity: 0;
