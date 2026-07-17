@@ -36,6 +36,8 @@ import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeThumbnail from "./assets/myshake-thumbnail.png";
+import myshakeAlert from "./assets/myshake-alert.png";
+import myshakeDetails from "./assets/myshake-details.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
 import myshakeDesignSystem from "./assets/myshake-design-system.png";
 import myshakeStoryboard from "./assets/myshake-storyboard.png";
@@ -707,6 +709,24 @@ const MyShakeCaseStudy: FC = () => {
           This strategic change guarantees a seamless, life-critical experience and meaningfully lowers stress
           during a crisis.
         </Paragraph>
+
+        <Callout>Design Screens</Callout>
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 32 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={myshakeThumbnail} alt="Pinned locations screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Pinned Locations</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={myshakeAlert} alt="Earthquake alert screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Alert Notifications</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={myshakeDetails} alt="Detailed information screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Details</span>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* Reflection */}

@@ -98,7 +98,16 @@
       "Bash(vercel *)",
       "Bash(gh api *)",
       "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/7.png /Users/laneyfong/portfolio/src/assets/myshake-hover.png)",
-      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/8.png /Users/laneyfong/portfolio/src/assets/myshake-default.png)"
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/8.png /Users/laneyfong/portfolio/src/assets/myshake-default.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/9.png /Users/laneyfong/portfolio/src/assets/myshake-details.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/10.png /Users/laneyfong/portfolio/src/assets/myshake-alert.png)",
+      "Bash(gh deployment *)",
+      "Bash(git ls-remote *)",
+      "Bash(git check-ignore *)",
+      "Bash(git restore *)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/16.png /Users/laneyfong/portfolio/src/assets/idbridge-documents.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/17.png /Users/laneyfong/portfolio/src/assets/idbridge-history.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/18.png /Users/laneyfong/portfolio/src/assets/idbridge-map.png)"
     ]
   }
 }

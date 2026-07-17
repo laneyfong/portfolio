@@ -16,6 +16,10 @@ import {
 } from "./components/caseStudy/CaseStudyKit";
 import IconHighlight from "./components/caseStudy/IconHighlight";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
+import idbridgeThumbnail from "./assets/idbridge-thumbnail.png";
+import idbridgeDocuments from "./assets/idbridge-documents.png";
+import idbridgeHistory from "./assets/idbridge-history.png";
+import idbridgeMap from "./assets/idbridge-map.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -500,6 +504,28 @@ const IDBridgeCaseStudy: FC = () => {
               <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: 1.5 }}>
                 Bus routes and maps work without data connection.
               </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Callout>Design Screens</Callout>
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Home</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeDocuments} alt="Documents screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Documents</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeHistory} alt="History screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>History</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeMap} alt="Map screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Map</span>
             </div>
           </div>
         </Reveal>
