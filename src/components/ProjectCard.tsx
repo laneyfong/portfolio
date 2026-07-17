@@ -243,7 +243,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
             overflow: "hidden",
             minHeight: 0,
             borderRadius: tokens.radius.md,
+            background: "#FAFAFA",
             border: "0.5px solid rgba(40, 41, 43, 0.08)",
+            boxShadow: "inset 0 0 0 1px rgba(40, 41, 43, 0.04)",
           }}
         >
           <img
