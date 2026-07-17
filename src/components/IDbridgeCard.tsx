@@ -128,7 +128,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: transparent;
+          background: #f8f8f8;
           gap: 1px;
         }
 

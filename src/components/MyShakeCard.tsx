@@ -100,7 +100,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: transparent;
+          background: #f8f8f8;
           gap: 0px;
         }
 
