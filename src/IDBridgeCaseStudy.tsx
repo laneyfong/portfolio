@@ -90,19 +90,87 @@ const IDBridgeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal delay={100}>
-          <img
-            src={idbridgeThumbnail}
-            alt="IDbridge app screens showing home, documents, history, and map"
-            className="case-shot"
-            style={{
-              width: "100%",
-              display: "block",
-              borderRadius: tokens.radius.md,
-              marginBottom: 40,
-              maxWidth: "100%",
-              height: "auto"
-            }}
-          />
+          <style>{`
+            @keyframes screenFadeIn {
+              0% { opacity: 0; }
+              10% { opacity: 1; }
+              85% { opacity: 1; }
+              100% { opacity: 0; }
+            }
+
+            .device-frame {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              max-width: 320px;
+              margin: 0 auto 40px;
+              aspect-ratio: 9 / 19.5;
+              background: #111111;
+              border-radius: 40px;
+              padding: 12px;
+              box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+              position: relative;
+              border: 8px solid #1a1a1a;
+            }
+
+            .device-frame::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 28px;
+              background: #111111;
+              border-radius: 0 0 30px 30px;
+              z-index: 10;
+            }
+
+            .device-screen {
+              width: 100%;
+              height: 100%;
+              border-radius: 32px;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: #ffffff;
+            }
+
+            .device-screen img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              animation: screenFadeIn 12s ease-in-out infinite;
+            }
+
+            .device-screen img:nth-child(1) {
+              animation-delay: 0s;
+            }
+
+            .device-screen img:nth-child(2) {
+              animation-delay: 3s;
+            }
+
+            .device-screen img:nth-child(3) {
+              animation-delay: 6s;
+            }
+
+            .device-screen img:nth-child(4) {
+              animation-delay: 9s;
+            }
+          `}</style>
+
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className="device-frame">
+              <div className="device-screen">
+                <img src={idbridgeThumbnail} alt="Home screen" />
+                <img src={idbridgeDocuments} alt="Documents screen" />
+                <img src={idbridgeHistory} alt="History screen" />
+                <img src={idbridgeMap} alt="Map screen" />
+              </div>
+            </div>
+          </div>
         </Reveal>
 
         <Reveal>
