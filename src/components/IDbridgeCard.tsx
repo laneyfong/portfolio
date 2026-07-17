@@ -138,7 +138,6 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           object-fit: contain;
           border-radius: 14px;
           transition: width ${hovered ? "0.5s" : "1.2s"} cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.22s ease;
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
         }
 
         .idbridge-screen {
@@ -252,17 +251,17 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
 
           {/* Documents Screen */}
           <div className="idbridge-screen idbridge-doc-screen">
-            <img src={documentsImage} alt="IDbridge documents" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px", boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)" }} />
+            <img src={documentsImage} alt="IDbridge documents" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px" }} />
           </div>
 
           {/* History Screen */}
           <div className="idbridge-screen idbridge-history-screen">
-            <img src={historyImage} alt="IDbridge history" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px", boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)" }} />
+            <img src={historyImage} alt="IDbridge history" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px" }} />
           </div>
 
           {/* Map Screen */}
           <div className="idbridge-screen idbridge-map-screen">
-            <img src={mapImage} alt="IDbridge map" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px", boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)" }} />
+            <img src={mapImage} alt="IDbridge map" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px" }} />
           </div>
         </div>
 
