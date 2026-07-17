@@ -334,32 +334,49 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal delay={100}>
-          <div style={{
-            background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
-            padding: "60px 40px",
-            borderRadius: "14px",
-            marginBottom: 40
-          }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "center" }}>
-              <div>
-                <div style={{ textAlign: "center", marginBottom: 20 }}>
-                  <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>Before</span>
-                </div>
-                <img src={myshakeBeforeScreens} alt="Old MyShake design - data-focused dashboard" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
-                <div style={{ marginTop: 16, textAlign: "center" }}>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                    7 steps to check on a loved one · Data-focused, not people-focused
+          <div style={{ marginBottom: 40 }}>
+            <div style={{
+              background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+              padding: "60px 40px",
+              borderRadius: "14px",
+              marginBottom: 40,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}>
+              <img src={myshakeThumbnail} alt="MyShake redesigned app - the new safety-focused design" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 400, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+            </div>
+
+            <div style={{
+              background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+              padding: "60px 40px",
+              borderRadius: "14px",
+              marginBottom: 40
+            }}>
+              <div style={{ marginBottom: 32 }}>
+                <Kicker>The Transformation</Kicker>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "center" }}>
+                <div>
+                  <div style={{ textAlign: "center", marginBottom: 20 }}>
+                    <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>Before</span>
+                  </div>
+                  <img src={myshakeBeforeScreens} alt="Old MyShake design - data-focused dashboard" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+                  <div style={{ marginTop: 16, textAlign: "center" }}>
+                    <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                      <strong>7 steps</strong> to check on a loved one<br/>Data-focused, overwhelming
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <div style={{ textAlign: "center", marginBottom: 20 }}>
-                  <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>After</span>
-                </div>
-                <img src={myshakeThumbnail} alt="New MyShake design - safety-focused with pinned loved ones" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
-                <div style={{ marginTop: 16, textAlign: "center" }}>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                    3 steps to check on a loved one · Safety-focused, people-first design
+                <div>
+                  <div style={{ textAlign: "center", marginBottom: 20 }}>
+                    <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>After</span>
+                  </div>
+                  <img src={myshakeThumbnail} alt="New MyShake design - safety-focused with pinned loved ones" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+                  <div style={{ marginTop: 16, textAlign: "center" }}>
+                    <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                      <strong>3 steps</strong> to check on a loved one<br/>Safety-focused, people-first
+                    </div>
                   </div>
                 </div>
               </div>
