@@ -795,6 +795,63 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
       </section>
 
+      {/* UI Details */}
+      <section style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+        <Reveal dramatic>
+          <SectionHeading>Key Design Details</SectionHeading>
+          <SkillRow items={["Micro-interactions", "Accessibility", "User Testing Refinements"]} />
+        </Reveal>
+
+        <Callout>Designing every screen with intention</Callout>
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+            <div style={{ padding: 24, borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}`, backgroundColor: tokens.color.offWhite }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
+                Pinned Locations Hub
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                The dashboard prioritizes loved ones above all else. Pinned contacts appear instantly with real-time safety status—no digging through menus.
+              </div>
+            </div>
+
+            <div style={{ padding: 24, borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}`, backgroundColor: tokens.color.offWhite }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
+                Alert Differentiation
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                EEW (early warning) and CEN (post-earthquake) alerts look distinctly different. Users know instantly what type of alert they're seeing and how to respond.
+              </div>
+            </div>
+
+            <div style={{ padding: 24, borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}`, backgroundColor: tokens.color.offWhite }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
+                Information Hierarchy
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                Critical safety info is front-and-center. Exploratory content (maps, data) lives secondary—never competing for attention during emergencies.
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginTop: 40 }}>
+            <div>
+              <img src={myshakeAlert} alt="Alert notification screens showing differentiation" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body }}>
+                Alert Flows
+              </div>
+            </div>
+            <div>
+              <img src={myshakeDetails} alt="Detailed information screens with content hierarchy" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body }}>
+                Detail Screens
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Reflection */}
       <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
