@@ -73,8 +73,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         }
 
         .myshake-center-image {
-          flex: 1;
-          max-width: 55%;
+          width: 40%;
           height: 100%;
           object-fit: contain;
           border-radius: 14px;
@@ -100,9 +99,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         }
 
         .myshake-left-screen {
-          width: 18%;
+          width: 22%;
           height: 100%;
-          max-height: 60%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -113,7 +111,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         .myshake-right-screen {
           width: 26%;
           height: 100%;
-          max-height: 70%;
           display: flex;
           align-items: center;
           justify-content: center;
