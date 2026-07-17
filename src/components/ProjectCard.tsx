@@ -20,6 +20,7 @@ interface ProjectCardProps {
   darkHoverMode?: boolean;
   wipLabel?: string;
   invertOnHover?: boolean;
+  hoverScreenshot?: string;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -34,6 +35,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   darkHoverMode = false,
   wipLabel,
   invertOnHover = false,
+  hoverScreenshot,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -218,7 +220,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           }}
         >
           <img
-            src={screenshot}
+            src={hovered && hoverScreenshot ? hoverScreenshot : screenshot}
             alt="Project screenshot"
             style={{
               maxWidth: "100%",

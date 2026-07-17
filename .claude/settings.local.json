@@ -96,7 +96,9 @@
       "Bash(grep -E \"\\(Page|App\\)\\\\.tsx$\")",
       "Bash(grep -E \"\\\\.\\(jpg|jpeg|png|webp\\)$\")",
       "Bash(vercel *)",
-      "Bash(gh api *)"
+      "Bash(gh api *)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/7.png /Users/laneyfong/portfolio/src/assets/myshake-hover.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/8.png /Users/laneyfong/portfolio/src/assets/myshake-default.png)"
     ]
   }
 }
