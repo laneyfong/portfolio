@@ -163,6 +163,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             gap: 24,
             padding: "12px 12px 0px 12px",
             flex: "0 0 auto",
+            position: "relative",
+            zIndex: 10,
           }}
         >
           <span
@@ -170,7 +172,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.regular,
               fontSize: "16px",
-              color: hovered ? "#ffffff" : tokens.color.body,
+              color: tokens.color.body,
               lineHeight: tokens.leading.snug,
               flex: 1,
               transition: "color 0.32s ease",
@@ -216,9 +218,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             flexDirection: "column",
             gap: 12,
             padding: "12px 12px 16px 12px",
-            borderTop: `1px solid ${hovered ? "#2a2a2a" : tokens.color.cardBorder}`,
+            borderTop: `1px solid ${tokens.color.cardBorder}`,
             transition: "border-color 0.5s ease",
             flex: "0 0 auto",
+            position: "relative",
+            zIndex: 10,
           }}
         >
           <span
@@ -226,7 +230,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: "12px",
-              color: hovered ? "rgba(255, 255, 255, 0.7)" : tokens.color.muted,
+              color: tokens.color.muted,
               letterSpacing: tokens.tracking.tight,
               textTransform: "uppercase",
               lineHeight: tokens.leading.none,
