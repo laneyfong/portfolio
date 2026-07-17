@@ -84,6 +84,32 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           }
         }
 
+        @keyframes softRetractLeft {
+          from {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+          }
+          to {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(8px);
+          }
+        }
+
+        @keyframes softRetractRight {
+          from {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+          }
+          to {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-8px);
+          }
+        }
+
         .idbridge-card-container {
           position: relative;
           height: 650px;
@@ -109,7 +135,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           height: 100%;
           object-fit: contain;
           border-radius: 14px;
-          transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.22s ease;
+          transition: width ${hovered ? "0.5s" : "0.75s"} cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.22s ease;
         }
 
         .idbridge-screen {
@@ -123,15 +149,15 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         }
 
         .idbridge-doc-screen {
-          animation: ${hovered ? "slideOutRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "slideInRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
+          animation: ${hovered ? "slideOutRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "softRetractRight 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
         }
 
         .idbridge-history-screen {
-          animation: ${hovered ? "slideOutRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s forwards" : "slideInRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
+          animation: ${hovered ? "slideOutRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s forwards" : "softRetractRight 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
         }
 
         .idbridge-map-screen {
-          animation: ${hovered ? "slideOutRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards" : "slideInRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
+          animation: ${hovered ? "slideOutRightIdbridge 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards" : "softRetractRight 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
         }
 
         @media (prefers-reduced-motion: reduce) {
