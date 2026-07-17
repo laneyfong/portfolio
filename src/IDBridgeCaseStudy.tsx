@@ -91,11 +91,16 @@ const IDBridgeCaseStudy: FC = () => {
 
         <Reveal delay={100}>
           <style>{`
-            @keyframes screenFadeIn {
-              0% { opacity: 0; }
-              10% { opacity: 1; }
-              85% { opacity: 1; }
-              100% { opacity: 0; }
+            @keyframes slideCarousel {
+              0% { transform: translateX(0); }
+              23% { transform: translateX(0); }
+              25% { transform: translateX(-100%); }
+              48% { transform: translateX(-100%); }
+              50% { transform: translateX(-200%); }
+              73% { transform: translateX(-200%); }
+              75% { transform: translateX(-300%); }
+              98% { transform: translateX(-300%); }
+              100% { transform: translateX(0); }
             }
 
             .device-frame {
@@ -103,71 +108,78 @@ const IDBridgeCaseStudy: FC = () => {
               align-items: center;
               justify-content: center;
               width: 100%;
-              max-width: 320px;
+              max-width: 280px;
               margin: 0 auto 40px;
               aspect-ratio: 9 / 19.5;
-              background: #111111;
-              border-radius: 40px;
-              padding: 12px;
+              background: #000000;
+              border-radius: 35px;
+              padding: 10px;
               box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
               position: relative;
-              border: 8px solid #1a1a1a;
+              border: 10px solid #1a1a1a;
             }
 
             .device-frame::before {
               content: '';
               position: absolute;
               top: 0;
-              left: 0;
-              right: 0;
-              height: 28px;
-              background: #111111;
-              border-radius: 0 0 30px 30px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 40%;
+              height: 25px;
+              background: #000000;
+              border-radius: 0 0 25px 25px;
               z-index: 10;
             }
 
             .device-screen {
               width: 100%;
               height: 100%;
-              border-radius: 32px;
+              border-radius: 30px;
               overflow: hidden;
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              position: relative;
               background: #ffffff;
             }
 
-            .device-screen img {
+            .carousel-container {
+              display: flex;
               width: 100%;
               height: 100%;
-              object-fit: cover;
-              animation: screenFadeIn 12s ease-in-out infinite;
+              animation: slideCarousel 16s infinite;
             }
 
-            .device-screen img:nth-child(1) {
-              animation-delay: 0s;
+            .carousel-slide {
+              min-width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
 
-            .device-screen img:nth-child(2) {
-              animation-delay: 3s;
-            }
-
-            .device-screen img:nth-child(3) {
-              animation-delay: 6s;
-            }
-
-            .device-screen img:nth-child(4) {
-              animation-delay: 9s;
+            .carousel-slide img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
             }
           `}</style>
 
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="device-frame">
               <div className="device-screen">
-                <img src={idbridgeThumbnail} alt="Home screen" />
-                <img src={idbridgeDocuments} alt="Documents screen" />
-                <img src={idbridgeHistory} alt="History screen" />
-                <img src={idbridgeMap} alt="Map screen" />
+                <div className="carousel-container">
+                  <div className="carousel-slide">
+                    <img src={idbridgeThumbnail} alt="Home screen" />
+                  </div>
+                  <div className="carousel-slide">
+                    <img src={idbridgeDocuments} alt="Documents screen" />
+                  </div>
+                  <div className="carousel-slide">
+                    <img src={idbridgeHistory} alt="History screen" />
+                  </div>
+                  <div className="carousel-slide">
+                    <img src={idbridgeMap} alt="Map screen" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
