@@ -30,10 +30,10 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   return (
     <>
       <style>{`
-        @keyframes slideInLeft {
+        @keyframes slideOutLeft {
           from {
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateX(12px);
           }
           to {
             opacity: 1;
@@ -41,10 +41,10 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           }
         }
 
-        @keyframes slideInRight {
+        @keyframes slideOutRight {
           from {
             opacity: 0;
-            transform: translateX(30px);
+            transform: translateX(-12px);
           }
           to {
             opacity: 1;
@@ -95,7 +95,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         .myshake-left-screen {
           position: absolute;
-          left: 12px;
+          right: calc(50% + 8px);
           top: 50%;
           transform: translateY(-50%);
           width: 18%;
@@ -104,12 +104,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           align-items: center;
           justify-content: center;
           opacity: 0;
-          animation: ${hovered ? "slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          animation: ${hovered ? "slideOutLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
         .myshake-right-screen {
           position: absolute;
-          right: 12px;
+          left: calc(50% + 8px);
           top: 50%;
           transform: translateY(-50%);
           width: 26%;
@@ -118,7 +118,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           align-items: center;
           justify-content: center;
           opacity: 0;
-          animation: ${hovered ? "slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          animation: ${hovered ? "slideOutRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
         @media (prefers-reduced-motion: reduce) {
