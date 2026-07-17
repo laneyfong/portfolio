@@ -201,8 +201,8 @@ const Portfolio: FC = () => {
                 captionItalic="Autonomous UX validation"
                 context="Capstone Project"
                 to="/nvidia-ai-ux-agent"
-                darkHoverMode={true}
                 wipLabel="WIP"
+                hoverDetails={["Internal tools for IT team", "AI-powered usability testing", "Real-time friction detection"]}
               />
             </div>
           </div>

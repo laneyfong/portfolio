@@ -22,6 +22,7 @@ interface ProjectCardProps {
   invertOnHover?: boolean;
   hoverScreenshot?: string;
   context?: string;
+  hoverDetails?: string[];
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -38,6 +39,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   invertOnHover = false,
   hoverScreenshot,
   context,
+  hoverDetails,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -246,6 +248,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             background: "#F0F0F0",
             border: "0.5px solid rgba(40, 41, 43, 0.08)",
             boxShadow: "inset 0 0 0 1px rgba(40, 41, 43, 0.04)",
+            position: "relative",
           }}
         >
           <img
@@ -258,12 +261,53 @@ const ProjectCard: FC<ProjectCardProps> = ({
               height: "auto",
               objectFit: "contain",
               borderRadius: "14px",
-              transition: "transform 0.22s ease, filter 0.22s ease",
+              transition: "transform 0.22s ease, filter 0.22s ease, opacity 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
               filter: invertOnHover && hovered ? "invert(1)" : "invert(0)",
               display: "block",
+              opacity: hovered && hoverDetails ? 0.3 : 1,
             }}
           />
+          {hoverDetails && (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                opacity: hovered ? 1 : 0,
+                visibility: hovered ? "visible" : "hidden",
+                transition: "opacity 0.22s ease, visibility 0.22s ease",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {hoverDetails.map((detail) => (
+                  <div
+                    key={detail}
+                    style={{
+                      fontFamily: tokens.font.sans,
+                      fontSize: "14px",
+                      fontWeight: tokens.weight.medium,
+                      color: tokens.color.ink,
+                      textAlign: "center",
+                      maxWidth: "80%",
+                    }}
+                  >
+                    {detail}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Bottom Section: Category + Metrics */}
