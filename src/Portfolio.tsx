@@ -202,7 +202,6 @@ const Portfolio: FC = () => {
                 context="Capstone Project"
                 to="/nvidia-ai-ux-agent"
                 wipLabel="WIP"
-                hoverDetails={["Internal tools for IT team", "AI-powered usability testing", "Real-time friction detection"]}
               />
             </div>
           </div>
