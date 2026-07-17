@@ -93,13 +93,13 @@ const IDBridgeCaseStudy: FC = () => {
           <style>{`
             @keyframes fadeCarousel {
               0% { opacity: 1; }
-              24% { opacity: 1; }
+              22% { opacity: 1; }
               25% { opacity: 0; }
-              49% { opacity: 0; }
+              48% { opacity: 0; }
               50% { opacity: 1; }
-              74% { opacity: 1; }
+              72% { opacity: 1; }
               75% { opacity: 0; }
-              99% { opacity: 0; }
+              98% { opacity: 0; }
               100% { opacity: 1; }
             }
 
@@ -107,7 +107,7 @@ const IDBridgeCaseStudy: FC = () => {
               width: 100%;
               background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
               padding: 60px 20px;
-              border-radius: tokens.radius.md;
+              border-radius: 14px;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -119,7 +119,7 @@ const IDBridgeCaseStudy: FC = () => {
               position: relative;
               width: 100%;
               max-width: 320px;
-              height: 600px;
+              height: 620px;
             }
 
             .carousel-slide {
@@ -129,7 +129,7 @@ const IDBridgeCaseStudy: FC = () => {
               display: flex;
               align-items: center;
               justify-content: center;
-              animation: fadeCarousel 16s infinite;
+              animation: fadeCarousel 10s infinite;
             }
 
             .carousel-slide:nth-child(1) {
@@ -137,15 +137,15 @@ const IDBridgeCaseStudy: FC = () => {
             }
 
             .carousel-slide:nth-child(2) {
-              animation-delay: 4s;
+              animation-delay: 2.5s;
             }
 
             .carousel-slide:nth-child(3) {
-              animation-delay: 8s;
+              animation-delay: 5s;
             }
 
             .carousel-slide:nth-child(4) {
-              animation-delay: 12s;
+              animation-delay: 7.5s;
             }
 
             .carousel-slide img {
@@ -169,27 +169,6 @@ const IDBridgeCaseStudy: FC = () => {
               <div className="carousel-slide">
                 <img src={idbridgeMap} alt="Map screen" />
               </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Home</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeDocuments} alt="Documents screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Documents</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeHistory} alt="History screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>History</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeMap} alt="Map screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Map</span>
             </div>
           </div>
         </Reveal>
@@ -609,6 +588,28 @@ const IDBridgeCaseStudy: FC = () => {
               <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: 1.5 }}>
                 Bus routes and maps work without data connection.
               </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Callout>Design Screens</Callout>
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Home</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeDocuments} alt="Documents screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Documents</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeHistory} alt="History screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>History</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <img src={idbridgeMap} alt="Map screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Map</span>
             </div>
           </div>
         </Reveal>
