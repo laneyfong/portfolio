@@ -105,11 +105,11 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         }
 
         .idbridge-center-image {
-          width: 22%;
+          width: ${hovered ? "22%" : "40%"};
           height: 100%;
           object-fit: contain;
           border-radius: 14px;
-          transition: transform 0.22s ease;
+          transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.22s ease;
         }
 
         .idbridge-screen {
