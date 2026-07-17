@@ -111,23 +111,21 @@ const IDBridgeCaseStudy: FC = () => {
               display: flex;
               align-items: center;
               justify-content: center;
-              gap: 40px;
               margin-bottom: 40px;
             }
 
             .carousel-background {
               width: 100%;
               background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-              padding: 60px 20px;
+              padding: 60px 40px;
               border-radius: 14px;
               display: flex;
               align-items: center;
-              justify-content: center;
+              justify-content: space-between;
+              gap: 60px;
               min-height: 500px;
               position: relative;
               overflow: hidden;
-              flex: 1;
-              max-width: 400px;
             }
 
             .carousel-container {
@@ -135,6 +133,7 @@ const IDBridgeCaseStudy: FC = () => {
               width: 100%;
               max-width: 320px;
               height: 620px;
+              flex-shrink: 0;
             }
 
             .carousel-slide {
@@ -170,10 +169,11 @@ const IDBridgeCaseStudy: FC = () => {
             }
 
             .carousel-notes {
-              flex: 0 0 300px;
               display: flex;
               flex-direction: column;
               gap: 16px;
+              flex: 1;
+              min-width: 0;
             }
 
             .carousel-note {
@@ -181,7 +181,7 @@ const IDBridgeCaseStudy: FC = () => {
               animation: textFadeIn 10s infinite;
               padding: 20px;
               border-radius: 12px;
-              background: ${tokens.color.offWhite};
+              background: rgba(255, 255, 255, 0.8);
               border: 1px solid ${tokens.color.cardBorder};
             }
 
@@ -216,16 +216,14 @@ const IDBridgeCaseStudy: FC = () => {
               line-height: ${tokens.leading.normal};
             }
 
-            @media (max-width: 768px) {
-              .carousel-wrapper {
+            @media (max-width: 968px) {
+              .carousel-background {
                 flex-direction: column;
                 gap: 20px;
               }
 
               .carousel-notes {
-                flex: 1;
                 width: 100%;
-                max-width: 100%;
               }
             }
           `}</style>
