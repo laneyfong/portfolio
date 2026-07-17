@@ -90,22 +90,88 @@ const IDBridgeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal delay={100}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
-              <img src={idbridgeThumbnail} alt="Home screen - Verify Identity" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Verify Identity</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
-              <img src={idbridgeDocuments} alt="Documents screen - Upload Documents" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Upload Documents</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
-              <img src={idbridgeHistory} alt="History screen - Track Progress" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Track Progress</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
-              <img src={idbridgeMap} alt="Map screen - Find Shelter" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 280 }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Find Shelter</span>
+          <div style={{
+            background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+            padding: "60px 40px",
+            borderRadius: "14px",
+            marginBottom: 40
+          }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
+                <div style={{
+                  width: "100%",
+                  borderRadius: tokens.radius.md,
+                  overflow: "hidden",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)"
+                }}>
+                  <img src={idbridgeThumbnail} alt="Home screen - Verify Identity" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                    Verify Identity
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal, maxWidth: "100%" }}>
+                    Build trust with QR codes and verified referrals
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
+                <div style={{
+                  width: "100%",
+                  borderRadius: tokens.radius.md,
+                  overflow: "hidden",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)"
+                }}>
+                  <img src={idbridgeDocuments} alt="Documents screen - Upload Documents" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                    Upload Documents
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal, maxWidth: "100%" }}>
+                    Organize all verification papers in one place
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
+                <div style={{
+                  width: "100%",
+                  borderRadius: tokens.radius.md,
+                  overflow: "hidden",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)"
+                }}>
+                  <img src={idbridgeHistory} alt="History screen - Track Progress" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                    Track Progress
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal, maxWidth: "100%" }}>
+                    See verification history and eligibility status
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
+                <div style={{
+                  width: "100%",
+                  borderRadius: tokens.radius.md,
+                  overflow: "hidden",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)"
+                }}>
+                  <img src={idbridgeMap} alt="Map screen - Find Shelter" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                    Find Shelter
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal, maxWidth: "100%" }}>
+                    Discover beds with real-time counts offline
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>
