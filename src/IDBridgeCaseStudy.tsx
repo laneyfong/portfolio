@@ -612,7 +612,12 @@ const IDBridgeCaseStudy: FC = () => {
                 backgroundColor: tokens.color.offWhite,
               }}
             >
-              <div style={{ fontSize: "28px", marginBottom: 12 }}>🆔</div>
+              <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
+                <rect x="4" y="6" width="20" height="14" rx="2" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+                <circle cx="10" cy="11" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+                <path d="M 4 18 L 16 18" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M 4 21 L 12 21" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
                 ID Verification
               </div>
@@ -629,7 +634,14 @@ const IDBridgeCaseStudy: FC = () => {
                 backgroundColor: tokens.color.offWhite,
               }}
             >
-              <div style={{ fontSize: "28px", marginBottom: 12 }}>👥</div>
+              <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
+                <circle cx="8" cy="9" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+                <circle cx="20" cy="9" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+                <path d="M 4 14 C 4 12 6 11 8 11 C 10 11 12 12 12 14" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M 16 14 C 16 12 18 11 20 11 C 22 11 24 12 24 14" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="14" cy="17" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+                <path d="M 10 22 C 10 20 11.8 19 14 19 C 16.2 19 18 20 18 22" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
                 Social Worker Connect
               </div>
@@ -646,7 +658,11 @@ const IDBridgeCaseStudy: FC = () => {
                 backgroundColor: tokens.color.offWhite,
               }}
             >
-              <div style={{ fontSize: "28px", marginBottom: 12 }}>🏠</div>
+              <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
+                <path d="M 4 16 L 14 6 L 24 16" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <rect x="5" y="16" width="18" height="9" rx="1" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+                <rect x="11" y="19" width="6" height="6" rx="0.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+              </svg>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
                 Shelter Listings
               </div>
@@ -663,7 +679,10 @@ const IDBridgeCaseStudy: FC = () => {
                 backgroundColor: tokens.color.offWhite,
               }}
             >
-              <div style={{ fontSize: "28px", marginBottom: 12 }}>📍</div>
+              <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
+                <path d="M 14 4 C 9.6 4 6 7.6 6 12 C 6 16 10 22 14 26 C 18 22 22 16 22 12 C 22 7.6 18.4 4 14 4 Z" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="14" cy="12" r="2" fill={tokens.color.ink}/>
+              </svg>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
                 Offline Navigation
               </div>
