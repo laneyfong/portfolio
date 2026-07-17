@@ -98,12 +98,21 @@ const IDBridgeCaseStudy: FC = () => {
               100% { opacity: 0; }
             }
 
-            @keyframes slideInLeft {
-              0% { opacity: 0; transform: translateX(-20px); }
-              25% { opacity: 1; transform: translateX(0); }
-              48% { opacity: 1; transform: translateX(0); }
-              50% { opacity: 0; transform: translateX(20px); }
-              100% { opacity: 0; transform: translateX(20px); }
+            @keyframes textFadeIn {
+              0% { opacity: 0; }
+              22% { opacity: 0; }
+              25% { opacity: 1; }
+              48% { opacity: 1; }
+              50% { opacity: 0; }
+              100% { opacity: 0; }
+            }
+
+            .carousel-wrapper {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 40px;
+              margin-bottom: 40px;
             }
 
             .carousel-background {
@@ -115,9 +124,10 @@ const IDBridgeCaseStudy: FC = () => {
               align-items: center;
               justify-content: center;
               min-height: 500px;
-              margin-bottom: 40px;
               position: relative;
               overflow: hidden;
+              flex: 1;
+              max-width: 400px;
             }
 
             .carousel-container {
@@ -159,59 +169,101 @@ const IDBridgeCaseStudy: FC = () => {
               object-fit: contain;
             }
 
-            .carousel-label {
-              position: absolute;
-              bottom: 20px;
-              left: 50%;
-              transform: translateX(-50%);
-              background: rgba(0, 0, 0, 0.7);
-              color: white;
-              padding: 8px 16px;
-              border-radius: 20px;
-              font-family: 'Manrope', sans-serif;
-              font-size: 12px;
-              font-weight: 500;
-              letter-spacing: 0.5px;
-              text-transform: uppercase;
-              animation: slideInLeft 10s infinite;
-              z-index: 5;
+            .carousel-notes {
+              flex: 0 0 300px;
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
             }
 
-            .carousel-label:nth-of-type(1) {
+            .carousel-note {
+              opacity: 0;
+              animation: textFadeIn 10s infinite;
+              padding: 20px;
+              border-radius: 12px;
+              background: ${tokens.color.offWhite};
+              border: 1px solid ${tokens.color.cardBorder};
+            }
+
+            .carousel-note:nth-child(1) {
               animation-delay: 0s;
             }
 
-            .carousel-label:nth-of-type(2) {
+            .carousel-note:nth-child(2) {
               animation-delay: 2.5s;
             }
 
-            .carousel-label:nth-of-type(3) {
+            .carousel-note:nth-child(3) {
               animation-delay: 5s;
             }
 
-            .carousel-label:nth-of-type(4) {
+            .carousel-note:nth-child(4) {
               animation-delay: 7.5s;
+            }
+
+            .carousel-note-title {
+              font-family: ${tokens.font.sans};
+              font-weight: ${tokens.weight.medium};
+              font-size: 14px;
+              color: ${tokens.color.ink};
+              margin-bottom: 8px;
+            }
+
+            .carousel-note-description {
+              font-family: ${tokens.font.sans};
+              font-size: 13px;
+              color: ${tokens.color.body};
+              line-height: ${tokens.leading.normal};
+            }
+
+            @media (max-width: 768px) {
+              .carousel-wrapper {
+                flex-direction: column;
+                gap: 20px;
+              }
+
+              .carousel-notes {
+                flex: 1;
+                width: 100%;
+                max-width: 100%;
+              }
             }
           `}</style>
 
-          <div className="carousel-background">
-            <div className="carousel-container">
-              <div className="carousel-slide">
-                <img src={idbridgeThumbnail} alt="Home screen" />
+          <div className="carousel-wrapper">
+            <div className="carousel-background">
+              <div className="carousel-container">
+                <div className="carousel-slide">
+                  <img src={idbridgeThumbnail} alt="Home screen" />
+                </div>
+                <div className="carousel-slide">
+                  <img src={idbridgeDocuments} alt="Documents screen" />
+                </div>
+                <div className="carousel-slide">
+                  <img src={idbridgeHistory} alt="History screen" />
+                </div>
+                <div className="carousel-slide">
+                  <img src={idbridgeMap} alt="Map screen" />
+                </div>
               </div>
-              <div className="carousel-slide">
-                <img src={idbridgeDocuments} alt="Documents screen" />
+            </div>
+            <div className="carousel-notes">
+              <div className="carousel-note">
+                <div className="carousel-note-title">Verify Identity</div>
+                <div className="carousel-note-description">Build a verified document trail with QR codes and referrals.</div>
               </div>
-              <div className="carousel-slide">
-                <img src={idbridgeHistory} alt="History screen" />
+              <div className="carousel-note">
+                <div className="carousel-note-title">Upload Documents</div>
+                <div className="carousel-note-description">Securely store and organize all verification documents in one place.</div>
               </div>
-              <div className="carousel-slide">
-                <img src={idbridgeMap} alt="Map screen" />
+              <div className="carousel-note">
+                <div className="carousel-note-title">Track Progress</div>
+                <div className="carousel-note-description">View your verification history and eligibility status in real-time.</div>
               </div>
-              <div className="carousel-label">Verify Identity</div>
-              <div className="carousel-label">Upload Documents</div>
-              <div className="carousel-label">Track Progress</div>
-              <div className="carousel-label">Find Shelter</div>
+              <div className="carousel-note">
+                <div className="carousel-note-title">Find Shelter</div>
+                <div className="carousel-note-description">Discover available shelters with real-time bed counts offline.</div>
+              </div>
             </div>
           </div>
         </Reveal>
