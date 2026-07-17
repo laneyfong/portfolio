@@ -98,7 +98,6 @@ const IDBridgeCaseStudy: FC = () => {
               width: "100%",
               display: "block",
               borderRadius: tokens.radius.md,
-              boxShadow: tokens.shadow.card,
               marginBottom: 40,
               maxWidth: "100%",
               height: "auto"
@@ -109,7 +108,7 @@ const IDBridgeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Home</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
