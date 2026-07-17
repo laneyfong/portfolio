@@ -754,6 +754,47 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
       </section>
 
+      {/* Design Iterations & Impact */}
+      <section style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+        <Reveal dramatic>
+          <SectionHeading>Design Iterations</SectionHeading>
+          <SkillRow items={["Rapid Prototyping", "User Testing", "Iteration Cycles"]} />
+        </Reveal>
+
+        <Callout>From concept to shipped design</Callout>
+        <Paragraph>
+          Multiple rounds of iteration and testing refined the design. Each screen shows a different approach to the core challenge: how to make safety information instantly accessible without overwhelming the user.
+        </Paragraph>
+
+        <Reveal>
+          <img src={myshakeStoryboard} alt="MyShake design iteration storyboard showing evolution of screens" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 40 }} />
+        </Reveal>
+
+        <Callout>The Impact</Callout>
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginBottom: 40 }}>
+            <div style={{ padding: 32, background: "linear-gradient(135deg, #8DC8E4 0%, #6BB3D9 100%)", borderRadius: tokens.radius.md, color: "white" }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "48px", fontWeight: tokens.weight.medium, marginBottom: 12, lineHeight: 1 }}>
+                45%
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", lineHeight: tokens.leading.normal }}>
+                <strong>Engagement Increase</strong><br/>
+                Restructuring the information architecture around personal safety (not data visualization) drove a 45% lift in user engagement.
+              </div>
+            </div>
+            <div style={{ padding: 32, background: "linear-gradient(135deg, #6BCB77 0%, #52B788 100%)", borderRadius: tokens.radius.md, color: "white" }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "48px", fontWeight: tokens.weight.medium, marginBottom: 12, lineHeight: 1 }}>
+                7 → 3
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", lineHeight: tokens.leading.normal }}>
+                <strong>Steps Eliminated</strong><br/>
+                Reduced the path to check on a loved one from 7 taps to just 3. A multi-screen search became two intuitive taps.
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Reflection */}
       <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
         <Reveal dramatic>
