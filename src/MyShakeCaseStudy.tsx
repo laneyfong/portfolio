@@ -35,7 +35,7 @@ import IconHighlight from "./components/caseStudy/IconHighlight";
 import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
-import myshakeDashboard from "./assets/myshake-dashboard.png";
+import myshakeThumbnail from "./assets/myshake-thumbnail.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
 import myshakeDesignSystem from "./assets/myshake-design-system.png";
 import myshakeStoryboard from "./assets/myshake-storyboard.png";
@@ -345,8 +345,8 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal delay={100}>
           <ShakeOnView>
             <img
-              src={myshakeDashboard}
-              alt="MyShake dashboard: the redesigned app showing pinned family locations for quick access to loved ones' safety status during earthquakes"
+              src={myshakeThumbnail}
+              alt="MyShake redesigned app screens showing pinned locations, earthquake details, and safety features"
               className="case-shot"
               style={{
                 width: "100%",
