@@ -10,6 +10,7 @@ interface MyShakeCardProps {
   caption: string;
   captionItalic: string;
   roleOutcome: string;
+  context: string;
   to: string;
 }
 
@@ -20,6 +21,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   caption,
   captionItalic,
   roleOutcome,
+  context,
   to,
 }) => {
   const navigate = useNavigate();
@@ -169,9 +171,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         <div
           style={{
             display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: 24,
+            flexDirection: "column",
+            gap: 6,
             padding: "12px 12px 0px 12px",
             flex: "0 0 auto",
             position: "relative",
@@ -181,11 +182,23 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           <span
             style={{
               fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "11px",
+              color: tokens.color.muted,
+              letterSpacing: "0.5px",
+              textTransform: "uppercase",
+              lineHeight: tokens.leading.none,
+            }}
+          >
+            {context}
+          </span>
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.regular,
               fontSize: "16px",
               color: tokens.color.body,
               lineHeight: tokens.leading.snug,
-              flex: 1,
               transition: "color 0.32s ease",
               display: "-webkit-box",
               WebkitLineClamp: 2,

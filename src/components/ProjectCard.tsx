@@ -21,6 +21,7 @@ interface ProjectCardProps {
   wipLabel?: string;
   invertOnHover?: boolean;
   hoverScreenshot?: string;
+  context?: string;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -36,6 +37,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   wipLabel,
   invertOnHover = false,
   hoverScreenshot,
+  context,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -90,37 +92,61 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <div
           style={{
             display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: 24,
+            flexDirection: "column",
+            gap: 6,
             padding: "12px 12px 0px 12px",
             flex: "0 0 auto",
           }}
         >
+          {/* Context Label */}
+          {context && (
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "11px",
+                color: darkHoverMode && hovered ? "rgba(255, 255, 255, 0.6)" : tokens.color.muted,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                lineHeight: tokens.leading.none,
+                transition: "color 0.32s ease",
+              }}
+            >
+              {context}
+            </span>
+          )}
           {/* Description */}
-          <span
+          <div
             style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.regular,
-              fontSize: "16px",
-              color: darkHoverMode && hovered ? "#ffffff" : tokens.color.body,
-              lineHeight: tokens.leading.snug,
-              flex: 1,
-              transition: "color 0.32s ease",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+              gap: 24,
             }}
           >
-            {captionParts[0]}
-            <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
-              {captionItalic}
-            </em>
-            {captionParts[1]}
-          </span>
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.regular,
+                fontSize: "16px",
+                color: darkHoverMode && hovered ? "#ffffff" : tokens.color.body,
+                lineHeight: tokens.leading.snug,
+                flex: 1,
+                transition: "color 0.32s ease",
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+            >
+              {captionParts[0]}
+              <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
+                {captionItalic}
+              </em>
+              {captionParts[1]}
+            </span>
 
-          {/* WIP Badge */}
+            {/* WIP Badge */}
           {wipLabel && (
             <div
               style={{
@@ -202,6 +228,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               </svg>
             </div>
           )}
+          </div>
         </div>
 
         {/* Image Section */}

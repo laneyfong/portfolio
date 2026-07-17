@@ -172,6 +172,7 @@ const Portfolio: FC = () => {
                 roleOutcome="Mobile Design × Crisis Response"
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
                 captionItalic="45% engagement increase"
+                context="Internship"
                 to="/myshake-design"
               />
             </div>
@@ -185,6 +186,7 @@ const Portfolio: FC = () => {
                 roleOutcome="Social Impact × Accessibility"
                 caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours."
                 captionItalic="First place winner"
+                context="Designathon"
                 to="/idbridge-design"
               />
             </div>
@@ -197,6 +199,7 @@ const Portfolio: FC = () => {
                 roleOutcome="AI Design × Automation"
                 caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
                 captionItalic="Autonomous UX validation"
+                context="Capstone Project"
                 to="/nvidia-ai-ux-agent"
                 darkHoverMode={true}
                 wipLabel="WIP"
