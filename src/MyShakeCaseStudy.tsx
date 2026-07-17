@@ -35,6 +35,7 @@ import IconHighlight from "./components/caseStudy/IconHighlight";
 import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeThumbnail from "./assets/myshake-thumbnail.png";
+import myshakeFinalScreens from "./assets/myshake-final-screens.png";
 import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
@@ -345,7 +346,7 @@ const MyShakeCaseStudy: FC = () => {
               justifyContent: "center",
               minHeight: 400
             }}>
-              <img src={myshakeThumbnail} alt="MyShake redesigned app - the new safety-focused design showing all screens" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+              <img src={myshakeFinalScreens} alt="MyShake redesigned app - final design showing dashboard, earthquake feed, and education screens" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
             </div>
 
             <div style={{
