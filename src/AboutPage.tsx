@@ -6,7 +6,6 @@ import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import PhotoStack from "./components/PhotoStack";
 import ProudMomentsCarousel from "./components/ProudMomentsCarousel";
-import ProductStackEnvelope from "./components/ProductStackEnvelope";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL, RESUME_URL } from "./components/SocialIcons";
 import aboutBioPhoto from "./assets/about-bio-photo.jpg";
@@ -478,10 +477,6 @@ const AboutPage: FC = () => {
           </div>
         </div>
 
-        {/* Product Stack Envelope */}
-        <div style={{ marginTop: 120, paddingTop: 60, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
-          <ProductStackEnvelope />
-        </div>
         </ContentContainer>
       </main>
 
