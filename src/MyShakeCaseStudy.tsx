@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { FC } from "react";
 import { useState } from "react";
 import { tokens } from "./tokens";
 import {
@@ -33,13 +33,13 @@ import SolutionBreakdown from "./components/caseStudy/SolutionBreakdown";
 import StepsComparison from "./components/caseStudy/StepsComparison";
 import IconHighlight from "./components/caseStudy/IconHighlight";
 import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
-import { useInView } from "./components/caseStudy/useInView";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import myshakeThumbnail from "./assets/myshake-thumbnail.png";
 import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
 import myshakeDesignSystem from "./assets/myshake-design-system.png";
+import myshakeColorExploration from "./assets/myshake-color-exploration.png";
 import myshakeStoryboard from "./assets/myshake-storyboard.png";
 
 const SECTIONS: CaseSection[] = [
@@ -172,17 +172,6 @@ const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
   </div>
 );
 
-// A brief tremor on the hero screenshots the first time they scroll into view — the one
-// place on the page where "shaking" is the literal, on-brand gesture rather than a
-// generic entrance animation.
-const ShakeOnView: FC<{ children: ReactNode }> = ({ children }) => {
-  const [ref, inView] = useInView<HTMLDivElement>(0.3);
-  return (
-    <div ref={ref} className={inView ? "case-shake-in" : undefined}>
-      {children}
-    </div>
-  );
-};
 
 // Small epicenter-ping icon — two expanding rings around a dot, like a radar/seismic
 // pulse. Sits next to the opening kicker line as a one-glance "this is an earthquake
@@ -345,21 +334,37 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal delay={100}>
-          <ShakeOnView>
-            <img
-              src={myshakeThumbnail}
-              alt="MyShake redesigned app screens showing pinned locations, earthquake details, and safety features"
-              className="case-shot"
-              style={{
-                width: "100%",
-                display: "block",
-                borderRadius: tokens.radius.md,
-                marginBottom: 32,
-                maxWidth: "100%",
-                height: "auto"
-              }}
-            />
-          </ShakeOnView>
+          <div style={{
+            background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+            padding: "60px 40px",
+            borderRadius: "14px",
+            marginBottom: 40
+          }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "center" }}>
+              <div>
+                <div style={{ textAlign: "center", marginBottom: 20 }}>
+                  <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>Before</span>
+                </div>
+                <img src={myshakeBeforeScreens} alt="Old MyShake design - data-focused dashboard" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+                <div style={{ marginTop: 16, textAlign: "center" }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                    7 steps to check on a loved one · Data-focused, not people-focused
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div style={{ textAlign: "center", marginBottom: 20 }}>
+                  <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>After</span>
+                </div>
+                <img src={myshakeThumbnail} alt="New MyShake design - safety-focused with pinned loved ones" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+                <div style={{ marginTop: 16, textAlign: "center" }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                    3 steps to check on a loved one · Safety-focused, people-first design
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </Reveal>
 
         <SeismicWave />
@@ -725,6 +730,27 @@ const MyShakeCaseStudy: FC = () => {
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Details</span>
             </div>
           </div>
+        </Reveal>
+      </section>
+
+      {/* Design System */}
+      <section style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+        <Reveal dramatic>
+          <SectionHeading>Design System</SectionHeading>
+          <SkillRow items={["Visual Design", "Design Systems", "Component Architecture"]} />
+        </Reveal>
+
+        <Callout>Built for consistency and scale</Callout>
+        <Paragraph>
+          A comprehensive design system that extends beyond the app — establishing clear patterns for typography, color, spacing, and components that any team member can implement.
+        </Paragraph>
+
+        <Reveal>
+          <img src={myshakeDesignSystem} alt="MyShake design system showing colors, typography, and components" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 40 }} />
+        </Reveal>
+
+        <Reveal>
+          <img src={myshakeColorExploration} alt="MyShake color exploration and palette development" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
         </Reveal>
       </section>
 
