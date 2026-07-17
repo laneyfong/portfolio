@@ -11,7 +11,8 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
 import myshakeDefault from "./assets/myshake-default.png";
-import myshakeHover from "./assets/myshake-hover.png";
+import myshakeAlert from "./assets/myshake-alert.png";
+import myshakeDetails from "./assets/myshake-details.png";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
 
 // Preload hero image for faster initial render
@@ -161,7 +162,8 @@ const Portfolio: FC = () => {
             <div ref={card1Ref} className="card-reveal card-1-reveal">
               <MyShakeCard
                 defaultImage={myshakeDefault}
-                hoverImage={myshakeHover}
+                alertImage={myshakeAlert}
+                detailsImage={myshakeDetails}
                 roleOutcome="Mobile Design × Crisis Response"
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
                 captionItalic="45% engagement increase"

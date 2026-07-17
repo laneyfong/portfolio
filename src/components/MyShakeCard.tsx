@@ -5,7 +5,8 @@ import { tokens } from "../tokens";
 
 interface MyShakeCardProps {
   defaultImage: string;
-  hoverImage: string;
+  alertImage: string;
+  detailsImage: string;
   caption: string;
   captionItalic: string;
   roleOutcome: string;
@@ -14,7 +15,8 @@ interface MyShakeCardProps {
 
 const MyShakeCard: FC<MyShakeCardProps> = ({
   defaultImage,
-  hoverImage,
+  alertImage,
+  detailsImage,
   caption,
   captionItalic,
   roleOutcome,
@@ -91,19 +93,17 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           border-radius: 14px;
         }
 
-        .myshake-left-notifications {
+        .myshake-left-screen {
           position: absolute;
           left: 0;
           top: 0;
           bottom: 0;
-          width: 35%;
+          width: 40%;
           display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          gap: 12px;
-          padding: 16px;
+          align-items: center;
+          justify-content: center;
           opacity: 0;
-          animation: ${hovered ? "slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards" : "none"};
+          animation: ${hovered ? "slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
         .myshake-right-screen {
@@ -111,24 +111,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           right: 0;
           top: 0;
           bottom: 0;
-          width: 45%;
+          width: 40%;
           display: flex;
           align-items: center;
           justify-content: center;
           opacity: 0;
-          animation: ${hovered ? "slideInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards" : "none"};
-        }
-
-        .myshake-notification-item {
-          background: rgba(255, 255, 255, 0.95);
-          border-radius: 12px;
-          padding: 12px 14px;
-          font-size: 12px;
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-          font-family: ${tokens.font.sans};
-          color: ${tokens.color.body};
-          line-height: 1.4;
+          animation: ${hovered ? "slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -200,25 +188,20 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         {/* Image Section with Hover Overlay */}
         <div className="myshake-image-section">
+          {/* Center Screen - Always Visible */}
           <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />
 
+          {/* Side Screens - Appear on Hover */}
           {hovered && (
             <div className="myshake-hover-overlay">
-              {/* Left Notifications */}
-              <div className="myshake-left-notifications">
-                <div className="myshake-notification-item">
-                  <strong style={{ color: "#DC2626" }}>🔴 Earthquake Alert!</strong>
-                  <div>Magnitude 4.2 detected in your area.</div>
-                </div>
-                <div className="myshake-notification-item">
-                  <strong style={{ color: "#F59E0B" }}>⚠️ EEW Warning</strong>
-                  <div>Seconds before shaking starts.</div>
-                </div>
+              {/* Left Alert Screen */}
+              <div className="myshake-left-screen">
+                <img src={alertImage} alt="MyShake earthquake alert" style={{ height: "100%", objectFit: "contain" }} />
               </div>
 
-              {/* Right Screen */}
+              {/* Right Details Screen */}
               <div className="myshake-right-screen">
-                <img src={hoverImage} alt="MyShake details" style={{ height: "100%", objectFit: "contain" }} />
+                <img src={detailsImage} alt="MyShake earthquake details" style={{ height: "100%", objectFit: "contain" }} />
               </div>
             </div>
           )}
