@@ -337,14 +337,15 @@ const MyShakeCaseStudy: FC = () => {
           <div style={{ marginBottom: 40 }}>
             <div style={{
               background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
-              padding: "60px 40px",
+              padding: "40px",
               borderRadius: "14px",
               marginBottom: 40,
               display: "flex",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              minHeight: 400
             }}>
-              <img src={myshakeThumbnail} alt="MyShake redesigned app - the new safety-focused design" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, maxWidth: 400, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+              <img src={myshakeThumbnail} alt="MyShake redesigned app - the new safety-focused design showing all screens" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
             </div>
 
             <div style={{
