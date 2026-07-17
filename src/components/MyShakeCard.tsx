@@ -43,6 +43,19 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           }
         }
 
+        @keyframes slideInLeft {
+          from {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+          }
+          to {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(12px);
+          }
+        }
+
         @keyframes slideOutRight {
           from {
             opacity: 0;
@@ -53,6 +66,19 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             opacity: 1;
             visibility: visible;
             transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInRight {
+          from {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+          }
+          to {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-12px);
           }
         }
 
@@ -92,7 +118,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           justify-content: center;
           opacity: 0;
           visibility: hidden;
-          animation: ${hovered ? "slideOutLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          animation: ${hovered ? "slideOutLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
         }
 
         .myshake-right-screen {
@@ -103,7 +129,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           justify-content: center;
           opacity: 0;
           visibility: hidden;
-          animation: ${hovered ? "slideOutRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          animation: ${hovered ? "slideOutRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
         }
 
         @media (prefers-reduced-motion: reduce) {
