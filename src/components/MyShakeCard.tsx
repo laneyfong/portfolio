@@ -33,10 +33,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         @keyframes slideOutLeft {
           from {
             opacity: 0;
+            visibility: visible;
             transform: translateX(12px);
           }
           to {
             opacity: 1;
+            visibility: visible;
             transform: translateX(0);
           }
         }
@@ -44,10 +46,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         @keyframes slideOutRight {
           from {
             opacity: 0;
+            visibility: visible;
             transform: translateX(-12px);
           }
           to {
             opacity: 1;
+            visibility: visible;
             transform: translateX(0);
           }
         }
@@ -69,7 +73,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           position: relative;
           border-radius: 14px;
           background: ${tokens.color.offWhite};
-          gap: 8px;
+          gap: 4px;
         }
 
         .myshake-center-image {
@@ -80,24 +84,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           transition: transform 0.22s ease;
         }
 
-        .myshake-hover-overlay {
-          display: ${hovered ? "flex" : "none"};
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          pointer-events: none;
-          overflow: visible;
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 100%;
-          height: 100%;
-          padding: 48px 12px;
-          box-sizing: border-box;
-        }
-
         .myshake-left-screen {
           width: 22%;
           height: 100%;
@@ -105,6 +91,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           align-items: center;
           justify-content: center;
           opacity: 0;
+          visibility: hidden;
           animation: ${hovered ? "slideOutLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
@@ -115,6 +102,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           align-items: center;
           justify-content: center;
           opacity: 0;
+          visibility: hidden;
           animation: ${hovered ? "slideOutRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
         }
 
@@ -187,27 +175,20 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           </span>
         </div>
 
-        {/* Image Section with Hover Overlay */}
+        {/* Image Section with Consistent Flex Layout */}
         <div className="myshake-image-section">
-          {!hovered && <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />}
+          {/* Left Alert Screen - Always in Layout, Hidden by Default */}
+          <div className="myshake-left-screen">
+            <img src={alertImage} alt="MyShake earthquake alert" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+          </div>
 
-          {/* All Screens in Flex Layout */}
-          {hovered && (
-            <div className="myshake-hover-overlay">
-              {/* Left Alert Screen */}
-              <div className="myshake-left-screen">
-                <img src={alertImage} alt="MyShake earthquake alert" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
-              </div>
+          {/* Center Screen - Always Visible */}
+          <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />
 
-              {/* Center Screen */}
-              <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />
-
-              {/* Right Details Screen */}
-              <div className="myshake-right-screen">
-                <img src={detailsImage} alt="MyShake earthquake details" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
-              </div>
-            </div>
-          )}
+          {/* Right Details Screen - Always in Layout, Hidden by Default */}
+          <div className="myshake-right-screen">
+            <img src={detailsImage} alt="MyShake earthquake details" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+          </div>
         </div>
 
         {/* Bottom Section */}
