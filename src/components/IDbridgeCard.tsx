@@ -132,7 +132,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           background: #e8e8e8;
           border: 1px solid #d0d0d0;
           box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-          gap: 1px;
+          gap: ${hovered ? "8px" : "1px"};
+          transition: gap 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .idbridge-center-image {
