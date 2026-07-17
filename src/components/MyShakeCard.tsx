@@ -94,7 +94,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 48px 12px;
+          padding: 100px 12px;
           overflow: hidden;
           position: relative;
           border-radius: 14px;
