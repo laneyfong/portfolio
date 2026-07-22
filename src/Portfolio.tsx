@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { useState, useRef, useEffect } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
@@ -35,6 +36,22 @@ const Portfolio: FC = () => {
   const { ref: card1Ref, isVisible: card1Visible } = useScrollReveal();
   const { ref: card2Ref, isVisible: card2Visible } = useScrollReveal();
   const { ref: card3Ref, isVisible: card3Visible } = useScrollReveal();
+
+  const halftoneRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!halftoneRef.current) return;
+      const rect = halftoneRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setMousePos({ x, y });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const scrollToWork = () => {
     const target = document.getElementById("work");
@@ -131,36 +148,22 @@ const Portfolio: FC = () => {
 
       <main style={{ width: "100%", padding: "80px 0 0", boxSizing: "border-box", marginTop: "64px" }}>
         <style>{`
-          @keyframes halftoneFlow {
-            0% {
-              transform: scale(1) translateY(0);
-              opacity: 0.15;
-            }
-            50% {
-              transform: scale(1.02) translateY(-20px);
-              opacity: 0.2;
-            }
-            100% {
-              transform: scale(1) translateY(0);
-              opacity: 0.15;
-            }
-          }
-
           .halftone-bg {
             position: absolute;
             inset: 0;
             background-image:
-              radial-gradient(circle, #000 0%, #000 1px, transparent 1px),
-              radial-gradient(circle, #000 0%, #000 1.5px, transparent 1.5px),
-              radial-gradient(circle, #000 0%, #000 0.8px, transparent 0.8px);
-            background-size: 40px 40px, 60px 60px, 25px 25px;
-            background-position: 0 0, 20px 20px, 10px 10px;
-            animation: halftoneFlow 8s ease-in-out infinite;
+              radial-gradient(circle, #000 0%, #000 2px, transparent 2px),
+              radial-gradient(circle, #000 0%, #000 2.5px, transparent 2.5px),
+              radial-gradient(circle, #000 0%, #000 1.5px, transparent 1.5px);
+            background-size: 30px 30px, 50px 50px, 20px 20px;
             pointer-events: none;
             z-index: 0;
+            opacity: 0.4;
+            will-change: background-position;
           }
         `}</style>
         <div
+          ref={halftoneRef}
           className="badge-section badge-reveal"
           style={{
             position: "relative",
@@ -174,7 +177,12 @@ const Portfolio: FC = () => {
             overflow: "hidden",
           }}
         >
-          <div className="halftone-bg" />
+          <div
+            className="halftone-bg"
+            style={{
+              backgroundPosition: `${mousePos.x * 0.3}px ${mousePos.y * 0.3}px, ${mousePos.x * 0.5}px ${mousePos.y * 0.5}px, ${mousePos.x * 0.2}px ${mousePos.y * 0.2}px`,
+            }}
+          />
           <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
