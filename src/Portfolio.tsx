@@ -130,6 +130,36 @@ const Portfolio: FC = () => {
       <TopNav />
 
       <main style={{ width: "100%", padding: "80px 0 0", boxSizing: "border-box", marginTop: "64px" }}>
+        <style>{`
+          @keyframes halftoneFlow {
+            0% {
+              transform: scale(1) translateY(0);
+              opacity: 0.15;
+            }
+            50% {
+              transform: scale(1.02) translateY(-20px);
+              opacity: 0.2;
+            }
+            100% {
+              transform: scale(1) translateY(0);
+              opacity: 0.15;
+            }
+          }
+
+          .halftone-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+              radial-gradient(circle, #000 0%, #000 1px, transparent 1px),
+              radial-gradient(circle, #000 0%, #000 1.5px, transparent 1.5px),
+              radial-gradient(circle, #000 0%, #000 0.8px, transparent 0.8px);
+            background-size: 40px 40px, 60px 60px, 25px 25px;
+            background-position: 0 0, 20px 20px, 10px 10px;
+            animation: halftoneFlow 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+          }
+        `}</style>
         <div
           className="badge-section badge-reveal"
           style={{
@@ -141,8 +171,10 @@ const Portfolio: FC = () => {
             minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
             background: "transparent",
+            overflow: "hidden",
           }}
         >
+          <div className="halftone-bg" />
           <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
