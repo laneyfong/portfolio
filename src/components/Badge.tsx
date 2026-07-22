@@ -122,6 +122,33 @@ const Badge: FC<BadgeProps> = ({
               marginBottom: "16px",
             }}
           >
+            <style>{`
+              @keyframes grainShift {
+                0% { background-position: 0% 0%; opacity: 0.08; }
+                25% { opacity: 0.12; }
+                50% { background-position: 100% 100%; opacity: 0.08; }
+                75% { opacity: 0.1; }
+                100% { background-position: 0% 0%; opacity: 0.08; }
+              }
+
+              .badge-texture-overlay {
+                position: absolute;
+                inset: 0;
+                background-image:
+                  radial-gradient(circle at 20% 30%, rgba(0,0,0,0.15) 1px, transparent 1px),
+                  radial-gradient(circle at 60% 70%, rgba(255,255,255,0.2) 1.5px, transparent 1.5px),
+                  radial-gradient(circle at 80% 10%, rgba(0,0,0,0.1) 0.5px, transparent 0.5px),
+                  radial-gradient(circle at 40% 80%, rgba(255,255,255,0.15) 1px, transparent 1px),
+                  radial-gradient(circle at 90% 40%, rgba(0,0,0,0.12) 1.2px, transparent 1.2px),
+                  linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.03) 75%, transparent 75%, transparent);
+                background-size: 200px 200px, 150px 150px, 180px 180px, 220px 220px, 160px 160px, 100px 100px;
+                background-position: 0 0, 20px 20px, 40px 40px, 60px 60px, 80px 80px, 0 0;
+                pointer-events: none;
+                animation: grainShift 8s ease-in-out infinite;
+                border-radius: 16px;
+              }
+            `}</style>
+
             {/* Photo/Image */}
             {photo && (
               <img
@@ -139,6 +166,9 @@ const Badge: FC<BadgeProps> = ({
 
             {/* Dot pattern overlay when no photo */}
             {!photo && <DotPattern />}
+
+            {/* Animated texture overlay */}
+            <div className="badge-texture-overlay" />
           </div>
 
           {/* Bottom info section */}
