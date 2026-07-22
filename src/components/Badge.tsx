@@ -123,29 +123,40 @@ const Badge: FC<BadgeProps> = ({
             }}
           >
             <style>{`
-              @keyframes grainShift {
-                0% { background-position: 0% 0%; opacity: 0.08; }
-                25% { opacity: 0.12; }
-                50% { background-position: 100% 100%; opacity: 0.08; }
-                75% { opacity: 0.1; }
-                100% { background-position: 0% 0%; opacity: 0.08; }
+              @keyframes grainFlow {
+                0% {
+                  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+                }
+                25% {
+                  background-position: 10px 10px, 15px 15px, 5px 5px, 20px 20px, 8px 8px, 10px 10px;
+                }
+                50% {
+                  background-position: 20px 20px, 30px 30px, 10px 10px, 40px 40px, 16px 16px, 20px 20px;
+                }
+                75% {
+                  background-position: 10px 10px, 15px 15px, 5px 5px, 20px 20px, 8px 8px, 10px 10px;
+                }
+                100% {
+                  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+                }
               }
 
               .badge-texture-overlay {
                 position: absolute;
                 inset: 0;
                 background-image:
-                  radial-gradient(circle at 20% 30%, rgba(0,0,0,0.15) 1px, transparent 1px),
-                  radial-gradient(circle at 60% 70%, rgba(255,255,255,0.2) 1.5px, transparent 1.5px),
-                  radial-gradient(circle at 80% 10%, rgba(0,0,0,0.1) 0.5px, transparent 0.5px),
-                  radial-gradient(circle at 40% 80%, rgba(255,255,255,0.15) 1px, transparent 1px),
-                  radial-gradient(circle at 90% 40%, rgba(0,0,0,0.12) 1.2px, transparent 1.2px),
-                  linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.03) 75%, transparent 75%, transparent);
-                background-size: 200px 200px, 150px 150px, 180px 180px, 220px 220px, 160px 160px, 100px 100px;
-                background-position: 0 0, 20px 20px, 40px 40px, 60px 60px, 80px 80px, 0 0;
+                  radial-gradient(circle at 15% 25%, rgba(0,0,0,0.25) 2px, transparent 2px),
+                  radial-gradient(circle at 55% 65%, rgba(0,0,0,0.2) 2.5px, transparent 2.5px),
+                  radial-gradient(circle at 75% 15%, rgba(0,0,0,0.22) 1.5px, transparent 1.5px),
+                  radial-gradient(circle at 35% 75%, rgba(0,0,0,0.28) 2px, transparent 2px),
+                  radial-gradient(circle at 85% 45%, rgba(0,0,0,0.24) 1.8px, transparent 1.8px),
+                  radial-gradient(circle at 45% 50%, rgba(0,0,0,0.2) 2px, transparent 2px);
+                background-size: 80px 80px, 120px 120px, 100px 100px, 110px 110px, 90px 90px, 140px 140px;
+                background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
                 pointer-events: none;
-                animation: grainShift 8s ease-in-out infinite;
+                animation: grainFlow 6s ease-in-out infinite;
                 border-radius: 16px;
+                opacity: 0.7;
               }
             `}</style>
 
