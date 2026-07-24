@@ -8,7 +8,7 @@ interface HalftoneFieldProps {
 
 const HalftoneField: FC<HalftoneFieldProps> = ({ width, height }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number>(0);
   const dotsRef = useRef<Array<{ x: number; y: number; baseY: number; baseX: number }>>([]);
   const mouseRef = useRef({ x: width / 2, y: height / 2, active: false });
   const timeRef = useRef(0);
@@ -63,7 +63,7 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ width, height }) => {
     canvas.addEventListener("click", handleClick);
 
     // Animation loop
-    const animate = () => {
+    const animate: FrameRequestCallback = () => {
       timeRef.current += 0.016; // ~60fps
       const t = timeRef.current;
 
