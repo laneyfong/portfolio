@@ -1,11 +1,12 @@
 import type { FC } from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import ProjectCard from "./components/ProjectCard";
+import HalftoneField from "./components/HalftoneField";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
 import Footer from "./components/Footer";
@@ -37,20 +38,19 @@ const Portfolio: FC = () => {
   const { ref: card2Ref, isVisible: card2Visible } = useScrollReveal();
   const { ref: card3Ref, isVisible: card3Visible } = useScrollReveal();
 
-  const halftoneRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [dimensions, setDimensions] = useState({ width: 1200, height: 600 });
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!halftoneRef.current) return;
-      const rect = halftoneRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      setMousePos({ x, y });
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: 600,
+      });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const scrollToWork = () => {
@@ -147,23 +147,7 @@ const Portfolio: FC = () => {
       <TopNav />
 
       <main style={{ width: "100%", padding: "80px 0 0", boxSizing: "border-box", marginTop: "64px" }}>
-        <style>{`
-          .halftone-bg {
-            position: absolute;
-            inset: 0;
-            background-image:
-              radial-gradient(circle, #000 0%, #000 2px, transparent 2px),
-              radial-gradient(circle, #000 0%, #000 2.5px, transparent 2.5px),
-              radial-gradient(circle, #000 0%, #000 1.5px, transparent 1.5px);
-            background-size: 30px 30px, 50px 50px, 20px 20px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.4;
-            will-change: background-position;
-          }
-        `}</style>
         <div
-          ref={halftoneRef}
           className="badge-section badge-reveal"
           style={{
             position: "relative",
@@ -173,16 +157,11 @@ const Portfolio: FC = () => {
             marginTop: -280,
             minHeight: "clamp(400px, 50vh, 70vh)",
             alignItems: "center",
-            background: "transparent",
+            background: "white",
             overflow: "hidden",
           }}
         >
-          <div
-            className="halftone-bg"
-            style={{
-              backgroundPosition: `${mousePos.x * 0.3}px ${mousePos.y * 0.3}px, ${mousePos.x * 0.5}px ${mousePos.y * 0.5}px, ${mousePos.x * 0.2}px ${mousePos.y * 0.2}px`,
-            }}
-          />
+          <HalftoneField width={dimensions.width} height={dimensions.height} />
           <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
