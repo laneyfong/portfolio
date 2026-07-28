@@ -14,8 +14,8 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ width, height }) => {
   const timeRef = useRef(0);
   const rippleRef = useRef<{ x: number; y: number; radius: number; maxRadius: number } | null>(null);
 
-  const DOT_RADIUS = 1.5;
-  const DOT_SPACING = 20;
+  const DOT_RADIUS = 0.6;
+  const DOT_SPACING = 35;
   const INFLUENCE_RADIUS = 120;
 
   useEffect(() => {
@@ -136,7 +136,7 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ width, height }) => {
         const maxDist = Math.max(width, height) * 0.7;
         const opacity = Math.max(0, 1 - centerDist / maxDist);
 
-        ctx.globalAlpha = opacity * 0.5;
+        ctx.globalAlpha = opacity * 0.15;
         ctx.beginPath();
         ctx.arc(x, y, DOT_RADIUS, 0, Math.PI * 2);
         ctx.fill();

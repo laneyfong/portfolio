@@ -38,13 +38,13 @@ const Portfolio: FC = () => {
   const { ref: card2Ref, isVisible: card2Visible } = useScrollReveal();
   const { ref: card3Ref, isVisible: card3Visible } = useScrollReveal();
 
-  const [dimensions, setDimensions] = useState({ width: 1200, height: 600 });
+  const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
 
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
         width: window.innerWidth,
-        height: 600,
+        height: window.innerHeight,
       });
     };
 
