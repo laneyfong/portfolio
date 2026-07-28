@@ -130,8 +130,6 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           position: relative;
           border-radius: 14px;
           background: #F0F0F0;
-          border: 0.5px solid rgba(40, 41, 43, 0.08);
-          box-shadow: inset 0 0 0 1px rgba(40, 41, 43, 0.04);
           gap: ${hovered ? "8px" : "1px"};
           transition: gap 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
