@@ -146,17 +146,17 @@ const Portfolio: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "80px 0 0", boxSizing: "border-box", marginTop: "64px" }}>
+      <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "24px" }}>
         <div
           className="badge-section badge-reveal"
           style={{
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 120,
-            marginTop: -280,
-            minHeight: "clamp(400px, 50vh, 70vh)",
-            paddingBottom: 80,
+            marginBottom: 80,
+            marginTop: -180,
+            minHeight: "clamp(300px, 40vh, 60vh)",
+            paddingBottom: 60,
             alignItems: "center",
             background: "white",
             overflow: "visible",
@@ -171,7 +171,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(80px, 12vw, 150px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(40px, 8vw, 100px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <ContentContainer>
           <div
             id="work"
