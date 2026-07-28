@@ -380,8 +380,6 @@ const MyShakeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <SeismicWave />
-
         <Paragraph>
           MyShake notifies users of nearby earthquakes — but it was conflating two very different kinds of alerts
           under one undifferentiated UI:
