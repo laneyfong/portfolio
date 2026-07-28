@@ -372,7 +372,6 @@ const NvidiaCaseStudy: FC = () => {
             style={{
               margin: "32px 0",
               background: tokens.color.offWhite,
-              border: `2px dashed ${tokens.color.cardBorder}`,
               borderRadius: tokens.radius.md,
               padding: 60,
               display: "flex",
