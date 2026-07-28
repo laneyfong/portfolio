@@ -178,7 +178,7 @@ const IDBridgeCaseStudy: FC = () => {
       </section>
 
       {/* Context */}
-      <section id="context" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="context" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Context</SectionHeading>
           <SkillRow items={["User Research", "Problem Definition", "Empathy Mapping"]} />
@@ -293,7 +293,7 @@ const IDBridgeCaseStudy: FC = () => {
       </section>
 
       {/* Research */}
-      <section id="research" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Research</SectionHeading>
           <SkillRow items={["Literature Review", "Reddit Research", "AI-Assisted Synthesis"]} />
@@ -414,7 +414,7 @@ const IDBridgeCaseStudy: FC = () => {
       </section>
 
       {/* Synthesis */}
-      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Rapid Ideation", "Feature Prioritization", "Information Architecture"]} />
@@ -505,7 +505,7 @@ const IDBridgeCaseStudy: FC = () => {
       </section>
 
       {/* Solution */}
-      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Solution</SectionHeading>
           <SkillRow items={["Product Design", "Prototyping", "Accessibility"]} />
@@ -638,7 +638,7 @@ const IDBridgeCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
         </Reveal>

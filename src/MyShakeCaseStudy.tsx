@@ -416,7 +416,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Research */}
-      <section id="research" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Research</SectionHeading>
           <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
@@ -521,7 +521,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Synthesis */}
-      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
@@ -555,7 +555,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Ideation */}
-      <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Ideation</SectionHeading>
           <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
@@ -661,7 +661,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Solution */}
-      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Solution</SectionHeading>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
@@ -748,7 +748,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Design System */}
-      <section style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Design System</SectionHeading>
           <SkillRow items={["Visual Design", "Design Systems", "Component Architecture"]} />
@@ -769,7 +769,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Design Iterations & Impact */}
-      <section style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Design Iterations</SectionHeading>
           <SkillRow items={["Rapid Prototyping", "User Testing", "Iteration Cycles"]} />
@@ -810,7 +810,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* UI Details */}
-      <section style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Key Design Details</SectionHeading>
           <SkillRow items={["Micro-interactions", "Accessibility", "User Testing Refinements"]} />
@@ -867,7 +867,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
           <PullQuote>This is my proudest work.</PullQuote>
@@ -887,7 +887,7 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Next Case Study */}
-      <section style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section style={{ paddingTop: 96, paddingBottom: 100 }} className="section-reveal">
         <Reveal dramatic>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
             <div>

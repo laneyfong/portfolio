@@ -172,7 +172,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Research */}
-      <section id="research" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="research" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Research</SectionHeading>
           <SkillRow items={["Semi-structured Interviews", "Survey Design", "Secondary Research"]} />
@@ -268,7 +268,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Synthesis */}
-      <section id="synthesis" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="synthesis" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Synthesis</SectionHeading>
           <SkillRow items={["Insight Framing", "How Might We"]} />
@@ -364,7 +364,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Status */}
-      <section id="status" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="status" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Status</SectionHeading>
         </Reveal>
@@ -443,7 +443,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Reflection */}
-      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96, borderTop: `1px solid ${tokens.color.cardBorder}` }} className="section-reveal">
+      <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Reflection</SectionHeading>
         </Reveal>
@@ -467,7 +467,7 @@ const NvidiaCaseStudy: FC = () => {
       </section>
 
       {/* Back to Portfolio */}
-      <section style={{ paddingTop: 96, paddingBottom: 100, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+      <section style={{ paddingTop: 96, paddingBottom: 100 }}>
         <Reveal dramatic>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
             <div>
