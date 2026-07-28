@@ -69,11 +69,16 @@ const TopNav: FC = () => {
           font-size: 16px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
-          color: #999999;
+          color: #ffffff;
           text-decoration: none;
           cursor: pointer;
           flex-shrink: 0;
           position: relative;
+          transition: color 0.3s ease;
+        }
+
+        .top-nav.scrolled .top-nav-brand {
+          color: ${tokens.color.ink};
         }
 
         .top-nav-brand::before {

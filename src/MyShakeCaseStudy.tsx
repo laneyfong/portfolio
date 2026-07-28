@@ -224,35 +224,10 @@ const SEISMIC_POINTS_DOUBLE = [
   }),
 ].join(" ");
 
-// A continuously-scrolling seismograph line — ambient, not scroll-triggered, since a
-// live-reading instrument is the visual metaphor.
-const SeismicWave: FC = () => (
-  <div style={{ width: "100%", height: 36, overflow: "hidden", margin: "8px 0 44px" }} aria-hidden>
-    <svg
-      width="200%"
-      height="36"
-      viewBox={`0 0 ${SEISMIC_UNIT_WIDTH * 2} 36`}
-      preserveAspectRatio="none"
-      className="case-seismic-svg"
-      style={{ display: "block" }}
-    >
-      <polyline
-        points={SEISMIC_POINTS_DOUBLE}
-        fill="none"
-        stroke={tokens.color.accent}
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-    </svg>
-  </div>
-);
-
 const MYSHAKE_EXTRA_STYLE = `
   @media (prefers-reduced-motion: no-preference) {
     .case-shake-in { animation: case-shake-in 0.7s ease; }
     .case-pulse-ring { animation: case-pulse 2.2s ease-out infinite; }
-    .case-seismic-svg { animation: case-seismic-scroll 9s linear infinite; }
   }
   @keyframes case-shake-in {
     0% { transform: translate(0, 0) rotate(0deg); }
@@ -266,10 +241,6 @@ const MYSHAKE_EXTRA_STYLE = `
   @keyframes case-pulse {
     0% { transform: scale(0.6); opacity: 0.7; }
     100% { transform: scale(2.6); opacity: 0; }
-  }
-  @keyframes case-seismic-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
   }
 `;
 
