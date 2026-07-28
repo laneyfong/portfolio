@@ -38,8 +38,8 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
           objectFit: "cover",
           pointerEvents: "none",
           zIndex: 1,
-          opacity: videoLoaded ? 0.45 : 0,
-          filter: "brightness(1.3) blur(3px) saturate(1.1) hue-rotate(-10deg)",
+          opacity: videoLoaded ? 0.65 : 0,
+          filter: "brightness(1.25) blur(3px) saturate(1.6) hue-rotate(-10deg)",
           transition: "opacity 0.6s ease-out",
         }}
       >
@@ -49,7 +49,7 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
         style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(255, 255, 255, 0.45)",
+          background: "rgba(255, 255, 255, 0.32)",
           pointerEvents: "none",
           zIndex: 2,
         }}
