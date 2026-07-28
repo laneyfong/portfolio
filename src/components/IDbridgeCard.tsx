@@ -125,13 +125,13 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           align-items: center;
           justify-content: center;
           padding: 60px 0px;
-          margin: 16px 12px 0px 12px;
+          margin: 24px 16px 0px 16px;
           overflow: hidden;
           position: relative;
           border-radius: 14px;
           background: #F0F0F0;
           gap: ${hovered ? "8px" : "1px"};
-          transition: gap 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transition: gap 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .idbridge-center-image {
@@ -190,12 +190,13 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
-          borderRadius: tokens.radius.sm,
+          borderRadius: 20,
           cursor: "pointer",
           backgroundColor: tokens.color.offWhite,
           color: tokens.color.body,
-          transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-          transform: hovered ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
+          transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+          transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
+          boxShadow: hovered ? "0 12px 32px rgba(0, 0, 0, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.04)",
         }}
       >
         {/* Header */}
@@ -203,8 +204,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 6,
-            padding: "12px 12px 0px 12px",
+            gap: 8,
+            padding: "16px 16px 0px 16px",
             flex: "0 0 auto",
             position: "relative",
             zIndex: 10,
@@ -315,8 +316,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 12,
-            padding: "12px 12px 16px 12px",
+            gap: 14,
+            padding: "16px 16px 20px 16px",
             flex: "0 0 auto",
             position: "relative",
             zIndex: 10,

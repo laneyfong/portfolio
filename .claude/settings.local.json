@@ -107,7 +107,22 @@
       "Bash(git restore *)",
       "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/16.png /Users/laneyfong/portfolio/src/assets/idbridge-documents.png)",
       "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/17.png /Users/laneyfong/portfolio/src/assets/idbridge-history.png)",
-      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/18.png /Users/laneyfong/portfolio/src/assets/idbridge-map.png)"
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/18.png /Users/laneyfong/portfolio/src/assets/idbridge-map.png)",
+      "Bash(perl -i -pe 's/, borderTop: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/MyShakeCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, borderTop: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/IDBridgeCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, borderTop: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/NvidiaCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, border: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/MyShakeCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, border: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/IDBridgeCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, border: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/NvidiaCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, border: `1px solid \\\\$\\\\{state === \"active\" \\\\? tokens\\\\.color\\\\.ink : tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/NvidiaCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, border: `1px solid #22C55E40`//g' src/IDBridgeCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/border: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`\\\\,//g' src/IDBridgeCaseStudy.tsx)",
+      "Bash(perl -i -pe 's/, border: `1px solid #F87171\" \\\\+ \"40`//g' src/IDBridgeCaseStudy.tsx)",
+      "Bash(grep -c \"border: \\\\`1px solid\" src/IDBridgeCaseStudy.tsx src/NvidiaCaseStudy.tsx)",
+      "Bash(grep -n \"border: \\\\`1px solid\" src/IDBridgeCaseStudy.tsx)",
+      "Bash(grep -n \"border: \\\\`1px solid\" src/NvidiaCaseStudy.tsx)",
+      "Bash(grep -c \"border: \\\\`1px solid\" src/MyShakeCaseStudy.tsx src/IDBridgeCaseStudy.tsx src/NvidiaCaseStudy.tsx)",
+      "Bash(grep *)"
     ]
   }
 }

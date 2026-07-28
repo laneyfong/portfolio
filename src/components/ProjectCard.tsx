@@ -79,11 +79,12 @@ const ProjectCard: FC<ProjectCardProps> = ({
           flexDirection: "column",
           width: "100%",
           height: cardHeight,
-          borderRadius: tokens.radius.sm,
+          borderRadius: 20,
           cursor: to ? "pointer" : "default",
-          transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-          transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
+          transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+          transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
           backgroundColor: darkHoverMode && hovered ? "#111111" : tokens.color.offWhite,
+          boxShadow: hovered ? "0 12px 32px rgba(0, 0, 0, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.04)",
           overflow: "hidden",
           position: "relative",
           color: hovered ? "#ffffff" : tokens.color.body,
@@ -94,8 +95,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 6,
-            padding: "12px 12px 0px 12px",
+            gap: 8,
+            padding: "16px 16px 0px 16px",
             flex: "0 0 auto",
           }}
         >
@@ -240,10 +241,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
             alignItems: "center",
             justifyContent: "center",
             padding: "60px 0px",
-            margin: "16px 12px 0px 12px",
+            margin: "24px 16px 0px 16px",
             overflow: "hidden",
             minHeight: 0,
-            borderRadius: tokens.radius.md,
+            borderRadius: 14,
             background: "#F0F0F0",
             position: "relative",
           }}
@@ -312,8 +313,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 12,
-            padding: "12px 12px 16px 12px",
+            gap: 14,
+            padding: "16px 16px 20px 16px",
             flexShrink: 0,
           }}
         >
