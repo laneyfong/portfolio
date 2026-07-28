@@ -153,15 +153,16 @@ const Portfolio: FC = () => {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 72,
+            marginBottom: 120,
             marginTop: -280,
             minHeight: "clamp(400px, 50vh, 70vh)",
+            paddingBottom: 80,
             alignItems: "center",
             background: "white",
-            overflow: "hidden",
+            overflow: "visible",
           }}
         >
-          <HalftoneField width={dimensions.width} height={dimensions.height} />
+          <HalftoneField width={dimensions.width} height={dimensions.height * 1.2} />
           <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />

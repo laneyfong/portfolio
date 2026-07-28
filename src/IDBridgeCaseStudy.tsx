@@ -197,7 +197,7 @@ const IDBridgeCaseStudy: FC = () => {
                 style={{
                   padding: "20px 24px",
                   borderRadius: tokens.radius.md,
-                  border: `1px solid ${tokens.color.cardBorder}`,
+                  
                   backgroundColor: tokens.color.offWhite,
                 }}
               >
@@ -242,7 +242,7 @@ const IDBridgeCaseStudy: FC = () => {
                 style={{
                   padding: "20px 24px",
                   borderRadius: tokens.radius.md,
-                  border: `1px solid ${tokens.color.cardBorder}`,
+                  
                   backgroundColor: tokens.color.offWhite,
                 }}
               >
@@ -333,7 +333,6 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 20,
                 borderRadius: tokens.radius.md,
-                border: `1px solid #22C55E40`,
                 backgroundColor: "#22C55E08",
               }}
             >
@@ -373,7 +372,6 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 20,
                 borderRadius: tokens.radius.md,
-                border: `1px solid #F87171` + "40",
                 backgroundColor: "#F87171" + "08",
               }}
             >
@@ -453,7 +451,7 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 16,
                 borderRadius: tokens.radius.md,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 backgroundColor: tokens.color.offWhite,
                 textAlign: "center",
               }}
@@ -470,7 +468,7 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 16,
                 borderRadius: tokens.radius.md,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 backgroundColor: tokens.color.offWhite,
                 textAlign: "center",
               }}
@@ -487,7 +485,7 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 16,
                 borderRadius: tokens.radius.md,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 backgroundColor: tokens.color.offWhite,
                 textAlign: "center",
               }}
@@ -529,7 +527,7 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 24,
                 borderRadius: tokens.radius.md,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 backgroundColor: tokens.color.offWhite,
               }}
             >
@@ -551,7 +549,7 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 24,
                 borderRadius: tokens.radius.md,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 backgroundColor: tokens.color.offWhite,
               }}
             >
@@ -575,7 +573,7 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 24,
                 borderRadius: tokens.radius.md,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 backgroundColor: tokens.color.offWhite,
               }}
             >
@@ -596,7 +594,7 @@ const IDBridgeCaseStudy: FC = () => {
               style={{
                 padding: 24,
                 borderRadius: tokens.radius.md,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 backgroundColor: tokens.color.offWhite,
               }}
             >

@@ -70,7 +70,6 @@ const StagePill: FC<{ label: string; state: "done" | "active" | "next" }> = ({ l
       gap: 6,
       padding: "6px 14px",
       borderRadius: tokens.radius.full,
-      border: `1px solid ${state === "active" ? tokens.color.ink : tokens.color.cardBorder}`,
       background: state === "active" ? tokens.color.ink : tokens.color.offWhite,
       color: state === "active" ? tokens.color.white : tokens.color.body,
       fontFamily: tokens.font.sans,
@@ -130,7 +129,6 @@ const NvidiaCaseStudy: FC = () => {
               padding: "60px 20px",
               borderRadius: tokens.radius.md,
               backgroundColor: tokens.color.offWhite,
-              border: `1px solid ${tokens.color.cardBorder}`,
               marginBottom: 40,
             }}
           >

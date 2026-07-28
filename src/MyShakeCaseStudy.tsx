@@ -117,7 +117,6 @@ const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
     style={{
       height: 200,
       borderRadius: tokens.radius.md,
-      border: `1px solid ${tokens.color.cardBorder}`,
       background: tokens.color.white,
       padding: 12,
       display: "flex",
@@ -563,7 +562,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <Callout>A/B Testing</Callout>
 
-        <div style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, border: `1px solid ${tokens.color.cardBorder}`, marginBottom: 20 }}>
+        <div style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, marginBottom: 20 }}>
           {AB_VARIATIONS.map((v, i) => (
             <button
               key={v.label}
@@ -732,15 +731,15 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 32 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={myshakeThumbnail} alt="Pinned locations screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <img src={myshakeThumbnail} alt="Pinned locations screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Pinned Locations</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={myshakeAlert} alt="Earthquake alert screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <img src={myshakeAlert} alt="Earthquake alert screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Alert Notifications</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={myshakeDetails} alt="Detailed information screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}` }} />
+              <img src={myshakeDetails} alt="Detailed information screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Details</span>
             </div>
           </div>
@@ -819,7 +818,7 @@ const MyShakeCaseStudy: FC = () => {
         <Callout>Designing every screen with intention</Callout>
         <Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-            <div style={{ padding: 24, borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}`, backgroundColor: tokens.color.offWhite }}>
+            <div style={{ padding: 24, borderRadius: tokens.radius.md, backgroundColor: tokens.color.offWhite }}>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
                 Pinned Locations Hub
               </div>
@@ -828,7 +827,7 @@ const MyShakeCaseStudy: FC = () => {
               </div>
             </div>
 
-            <div style={{ padding: 24, borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}`, backgroundColor: tokens.color.offWhite }}>
+            <div style={{ padding: 24, borderRadius: tokens.radius.md, backgroundColor: tokens.color.offWhite }}>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
                 Alert Differentiation
               </div>
@@ -837,7 +836,7 @@ const MyShakeCaseStudy: FC = () => {
               </div>
             </div>
 
-            <div style={{ padding: 24, borderRadius: tokens.radius.md, border: `1px solid ${tokens.color.cardBorder}`, backgroundColor: tokens.color.offWhite }}>
+            <div style={{ padding: 24, borderRadius: tokens.radius.md, backgroundColor: tokens.color.offWhite }}>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
                 Information Hierarchy
               </div>
