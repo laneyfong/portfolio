@@ -34,6 +34,8 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
         position: "absolute",
         inset: 0,
         animation: "gradientFadeIn 2s ease-out forwards",
+        maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%)",
+        WebkitMaskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%)",
       }}
     >
       <style>{`
