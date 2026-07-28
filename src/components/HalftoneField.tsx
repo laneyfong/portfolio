@@ -22,8 +22,8 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
           objectFit: "cover",
           pointerEvents: "none",
           zIndex: 0,
-          opacity: 0.7,
-          filter: "brightness(1.1) blur(1px)",
+          opacity: 0.45,
+          filter: "brightness(1.25) blur(2px)",
         }}
       >
         <source src={gradientVideo} type="video/mp4" />
@@ -32,7 +32,7 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
         style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(255, 255, 255, 0.15)",
+          background: "rgba(255, 255, 255, 0.35)",
           pointerEvents: "none",
           zIndex: 1,
         }}
