@@ -84,7 +84,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
           transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
           transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
           backgroundColor: darkHoverMode && hovered ? "#111111" : tokens.color.offWhite,
-          border: `1px solid ${darkHoverMode && hovered ? "#111111" : tokens.color.cardBorder}`,
           overflow: "hidden",
           position: "relative",
           color: hovered ? "#ffffff" : tokens.color.body,

@@ -195,7 +195,6 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           borderRadius: tokens.radius.sm,
           cursor: "pointer",
           backgroundColor: tokens.color.offWhite,
-          border: `1px solid ${tokens.color.cardBorder}`,
           color: tokens.color.body,
           transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
           transform: hovered ? "translateY(-2px) scale(1.005)" : "translateY(0) scale(1)",
