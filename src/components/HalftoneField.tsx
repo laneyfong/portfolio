@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { useState } from "react";
 import gradientVideo from "../assets/gradient-background.mp4";
 
 interface HalftoneFieldProps {
