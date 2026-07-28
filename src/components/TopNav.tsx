@@ -45,6 +45,9 @@ const TopNav: FC = () => {
           right: 0;
           z-index: 100;
           transition: all 0.3s ease;
+          background-color: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
         }
 
         .top-nav.scrolled {
@@ -69,7 +72,7 @@ const TopNav: FC = () => {
           font-size: 16px;
           font-weight: ${tokens.weight.medium};
           letter-spacing: ${tokens.tracking.tight};
-          color: #888888;
+          color: #555555;
           text-decoration: none;
           cursor: pointer;
           flex-shrink: 0;
