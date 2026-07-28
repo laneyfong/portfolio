@@ -70,7 +70,7 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ width, height }) => {
       ctx.fillRect(0, 0, width, height);
 
       // Draw floating orbs with blur
-      orbs.forEach((orb, index) => {
+      orbs.forEach((orb) => {
         // Organic floating motion using sine/cosine waves
         const offsetX = Math.sin(t * 0.3 + orb.phase) * 40 + Math.sin(t * 0.15 + orb.phase * 0.7) * 20;
         const offsetY = Math.cos(t * 0.35 + orb.phase) * 40 + Math.cos(t * 0.12 + orb.phase * 0.9) * 20;
