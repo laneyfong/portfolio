@@ -196,34 +196,6 @@ const EpicenterPulse: FC = () => (
   </span>
 );
 
-const SEISMIC_UNIT_WIDTH = 800;
-
-// Two sine components plus an occasional sharp spike, all at frequencies that complete
-// a whole number of cycles across SEISMIC_UNIT_WIDTH — so the waveform's value (and
-// slope) at x=0 and x=SEISMIC_UNIT_WIDTH match exactly, and the looped animation has no
-// visible seam.
-function buildSeismicUnit(baseline: number, amplitude: number) {
-  const points: string[] = [];
-  const k1 = (2 * Math.PI * 3) / SEISMIC_UNIT_WIDTH;
-  const k2 = (2 * Math.PI * 7) / SEISMIC_UNIT_WIDTH;
-  const kSpike = (2 * Math.PI * 11) / SEISMIC_UNIT_WIDTH;
-  for (let x = 0; x <= SEISMIC_UNIT_WIDTH; x += 8) {
-    const spike = Math.sin(x * kSpike) > 0.94 ? amplitude * 0.9 : 0;
-    const y = baseline + Math.sin(x * k1) * amplitude * 0.4 + Math.sin(x * k2) * amplitude * 0.25 + spike;
-    points.push(`${x},${y.toFixed(1)}`);
-  }
-  return points;
-}
-
-const SEISMIC_UNIT = buildSeismicUnit(18, 13);
-const SEISMIC_POINTS_DOUBLE = [
-  ...SEISMIC_UNIT,
-  ...SEISMIC_UNIT.map((p) => {
-    const [x, y] = p.split(",");
-    return `${Number(x) + SEISMIC_UNIT_WIDTH},${y}`;
-  }),
-].join(" ");
-
 const MYSHAKE_EXTRA_STYLE = `
   @media (prefers-reduced-motion: no-preference) {
     .case-shake-in { animation: case-shake-in 0.7s ease; }
