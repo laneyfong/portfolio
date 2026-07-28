@@ -173,33 +173,9 @@ const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
 );
 
 
-// Small epicenter-ping icon — two expanding rings around a dot, like a radar/seismic
-// pulse. Sits next to the opening kicker line as a one-glance "this is an earthquake
-// app" signal before any copy is read.
-const EpicenterPulse: FC = () => (
-  <span style={{ position: "relative", display: "inline-flex", width: 10, height: 10, flexShrink: 0 }} aria-hidden>
-    <span
-      className="case-pulse-ring"
-      style={{ position: "absolute", inset: 0, borderRadius: "50%", border: `1.5px solid ${tokens.color.accent}` }}
-    />
-    <span
-      className="case-pulse-ring"
-      style={{
-        position: "absolute",
-        inset: 0,
-        borderRadius: "50%",
-        border: `1.5px solid ${tokens.color.accent}`,
-        animationDelay: "1.1s",
-      }}
-    />
-    <span style={{ position: "relative", width: 6, height: 6, margin: 2, borderRadius: "50%", background: tokens.color.accent }} />
-  </span>
-);
-
 const MYSHAKE_EXTRA_STYLE = `
   @media (prefers-reduced-motion: no-preference) {
     .case-shake-in { animation: case-shake-in 0.7s ease; }
-    .case-pulse-ring { animation: case-pulse 2.2s ease-out infinite; }
   }
   @keyframes case-shake-in {
     0% { transform: translate(0, 0) rotate(0deg); }
@@ -210,10 +186,6 @@ const MYSHAKE_EXTRA_STYLE = `
     75% { transform: translate(-2px, 1px) rotate(-0.2deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
   }
-  @keyframes case-pulse {
-    0% { transform: scale(0.6); opacity: 0.7; }
-    100% { transform: scale(2.6); opacity: 0; }
-  }
 `;
 
 const MyShakeCaseStudy: FC = () => {
@@ -223,8 +195,7 @@ const MyShakeCaseStudy: FC = () => {
     <CaseStudyShell sections={SECTIONS} highlights={HIGHLIGHTS} extraStyle={MYSHAKE_EXTRA_STYLE}>
       {/* Intro */}
       <section id="intro" style={{ paddingBottom: 96 }} className="section-reveal">
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-          <EpicenterPulse />
+        <div style={{ marginBottom: 12 }}>
           <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted }}>
             High anxiety. Low clarity.
           </span>
