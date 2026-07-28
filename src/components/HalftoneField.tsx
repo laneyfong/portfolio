@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { useEffect, useRef } from "react";
 import gradientVideo from "../assets/gradient-background.mp4";
 
 interface HalftoneFieldProps {
@@ -7,8 +8,44 @@ interface HalftoneFieldProps {
 }
 
 const HalftoneField: FC<HalftoneFieldProps> = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (containerRef.current) {
+        // Trigger animation when tab becomes visible
+        if (document.hidden === false) {
+          containerRef.current.style.animation = "none";
+          // Trigger reflow to restart animation
+          void containerRef.current.offsetHeight;
+          containerRef.current.style.animation = "gradientFadeIn 2s ease-out forwards";
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
+
   return (
-    <>
+    <div
+      ref={containerRef}
+      style={{
+        position: "absolute",
+        inset: 0,
+        animation: "gradientFadeIn 2s ease-out forwards",
+      }}
+    >
+      <style>{`
+        @keyframes gradientFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      `}</style>
       <video
         autoPlay
         muted
@@ -38,7 +75,7 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
           zIndex: 1,
         }}
       />
-    </>
+    </div>
   );
 };
 
