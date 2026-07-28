@@ -49,7 +49,7 @@ export const TagPill: FC<{ children: string }> = ({ children }) => (
       display: "inline-flex",
       padding: "6px 14px",
       borderRadius: tokens.radius.full,
-      border: `1px solid ${tokens.color.cardBorder}`,
+      
       fontFamily: tokens.font.sans,
       fontSize: tokens.text.sm,
       color: tokens.color.body,
@@ -137,7 +137,7 @@ export const SnapshotBar: FC<{ items: { label: string; value: ReactNode }[] }> =
           flex: "1 1 150px",
           padding: "16px 20px",
           borderRadius: tokens.radius.md,
-          border: `1px solid ${tokens.color.cardBorder}`,
+          
           background: tokens.color.offWhite,
         }}
       >
@@ -178,7 +178,7 @@ export const FeatureCard: FC<{ title: string; children: ReactNode }> = ({ title,
     <div
       style={{
         background: tokens.color.offWhite,
-        border: `1px solid ${tokens.color.cardBorder}`,
+        
         borderRadius: tokens.radius.md,
         padding: 20,
       }}
@@ -217,7 +217,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
       onMouseLeave={() => setHovered(false)}
       style={{
         background: tokens.color.offWhite,
-        border: `1px solid ${hovered ? tokens.color.ink : tokens.color.cardBorder}`,
+        
         borderRadius: tokens.radius.md,
         padding: 24,
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
@@ -231,7 +231,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
           height: 36,
           borderRadius: "50%",
           background: hovered ? tokens.color.accent : tokens.color.white,
-          border: `1px solid ${tokens.color.cardBorder}`,
+          
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -294,7 +294,7 @@ export const FindingRow: FC<{ method: string; children: ReactNode }> = ({ method
       <div
         style={{
           background: tokens.color.offWhite,
-          border: `1px solid ${tokens.color.cardBorder}`,
+          
           borderRadius: tokens.radius.md,
           padding: "20px 22px",
         }}
@@ -377,7 +377,7 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
       ref={ref}
       style={{
         background: tokens.color.offWhite,
-        border: `1px solid ${tokens.color.cardBorder}`,
+        
         borderRadius: tokens.radius.md,
         padding: 28,
         margin: "32px 0",
@@ -466,7 +466,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
                 height: 30,
                 borderRadius: tokens.radius.sm,
                 background: tokens.color.offWhite,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                
                 overflow: "hidden",
               }}
             >
@@ -630,7 +630,7 @@ export const TypeCompare: FC<{ options?: { name: string; family: string }[] }> =
         key={opt.name}
         style={{
           background: tokens.color.offWhite,
-          border: `1px solid ${tokens.color.cardBorder}`,
+          
           borderRadius: tokens.radius.md,
           padding: 24,
         }}
@@ -789,7 +789,7 @@ export const UserJourney: FC<{
       style={{
         margin: "20px 0 24px",
         background: tokens.color.offWhite,
-        border: `1px solid ${tokens.color.cardBorder}`,
+        
         borderRadius: tokens.radius.md,
         padding: 20,
       }}
@@ -861,7 +861,7 @@ export const ProcessFlow: FC<{
         style={{
           margin: "20px 0 24px",
           background: tokens.color.offWhite,
-          border: `1px solid ${tokens.color.cardBorder}`,
+          
           borderRadius: tokens.radius.md,
           padding: 20,
         }}
@@ -951,7 +951,7 @@ export const ProcessFlow: FC<{
       style={{
         margin: "20px 0 24px",
         background: tokens.color.offWhite,
-        border: `1px solid ${tokens.color.cardBorder}`,
+        
         borderRadius: tokens.radius.md,
         padding: 20,
       }}
