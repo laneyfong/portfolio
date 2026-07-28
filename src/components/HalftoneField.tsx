@@ -64,7 +64,7 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
           zIndex: 0,
           backgroundColor: "#ffffff",
           opacity: 0.62,
-          filter: "brightness(1.22) blur(3px) saturate(1.5) hue-rotate(-10deg)",
+          filter: "brightness(1.28) blur(3px) saturate(1.7) hue-rotate(5deg)",
         }}
       >
         <source src={gradientVideo} type="video/mp4" />
