@@ -37,8 +37,7 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
         position: "absolute",
         inset: 0,
         animation: "gradientFadeIn 1.2s ease-out 0.1s forwards",
-        background: "linear-gradient(135deg, #e6d5ff 0%, #d4e6ff 20%, #ffe6cc 40%, #e6ffe6 60%, #ffd4e6 80%, #e6d9ff 100%)",
-        filter: "brightness(1.2) saturate(1.5) hue-rotate(3deg) blur(0.5px)",
+        background: "linear-gradient(135deg, #9966ff 0%, #3399ff 25%, #ffcc00 50%, #33ff99 75%, #ff66cc 100%)",
         maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
         WebkitMaskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
       }}
