@@ -448,22 +448,22 @@ const DashboardWalkthrough: FC<{
     {
       threshold: 0.15,
       side: "right",
-      title: "Pinned Locations",
-      description: "Carousel map lets users select different locations at the top. See your loved ones' safety status at a glance.",
+      title: "Carousel map",
+      description: "Allows users to click on different locations at the top. Default will always be on your location.",
       image: annotation1,
     },
     {
       threshold: 0.5,
       side: "left",
       title: "Earthquakes near you",
-      description: "Horizontal scroll surfaces earthquakes near you with the highest magnitude. Tap to see more details.",
+      description: "Horizontal scroll of earthquakes that are near you with the highest magnitude.",
       image: annotation2,
     },
     {
       threshold: 0.8,
       side: "right",
-      title: "Safety Information",
-      description: "Essential safety information to inform users of earthquake procedures and what to do in an emergency.",
+      title: "Safety information",
+      description: "Informs users of earthquake procedures.",
       image: annotation3,
     },
   ];
