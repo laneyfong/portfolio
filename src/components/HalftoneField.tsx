@@ -36,7 +36,8 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
       style={{
         position: "absolute",
         inset: 0,
-        animation: "gradientFadeIn 1.2s ease-out 0.1s forwards",
+        animation: "gradientFadeIn 1.2s ease-out 0.1s forwards, gradientFlow 8s ease-in-out infinite",
+        backgroundSize: "200% 200%",
         background: "linear-gradient(135deg, #9966ff 0%, #3399ff 25%, #ffcc00 50%, #33ff99 75%, #ff66cc 100%)",
         maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
         WebkitMaskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -49,6 +50,21 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
           }
           to {
             opacity: 1;
+          }
+        }
+
+        @keyframes gradientFlow {
+          0% {
+            background-position: 0% 0%;
+            filter: hue-rotate(0deg);
+          }
+          50% {
+            background-position: 100% 100%;
+            filter: hue-rotate(15deg);
+          }
+          100% {
+            background-position: 0% 0%;
+            filter: hue-rotate(0deg);
           }
         }
       `}</style>
