@@ -201,12 +201,18 @@ const MYSHAKE_EXTRA_STYLE = `
   }
 `;
 
-const DashboardWalkthrough: FC<{
+interface AnnotationConfig {
+  threshold: number;
+  side: "left" | "right";
+  title: string;
+  description: string;
+  image: string;
+}
+
+const ScrollDrivenProductShowcase: FC<{
   dashboardImage: string;
-  annotation1: string;
-  annotation2: string;
-  annotation3: string;
-}> = ({ dashboardImage, annotation1, annotation2, annotation3 }) => {
+  annotations: AnnotationConfig[];
+}> = ({ dashboardImage, annotations }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -230,42 +236,68 @@ const DashboardWalkthrough: FC<{
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getAnnotationStyle = (threshold: number, isLeft: boolean) => {
-    const isVisible = scrollProgress > threshold;
-    const progress = Math.max(0, Math.min(1, (scrollProgress - threshold) / 0.15));
+  const getAnnotationState = (annotation: AnnotationConfig) => {
+    const transitionWindow = 0.15;
+    const threshold = annotation.threshold;
+    const entryStart = threshold - 0.02;
+    const entryEnd = threshold + transitionWindow;
+    const exitStart = threshold + transitionWindow;
+    const exitEnd = threshold + transitionWindow * 2;
 
-    return {
-      opacity: isVisible ? Math.min(1, progress * 1.5) : 0,
-      transform: isLeft
-        ? `translateX(${-40 * (1 - progress)}px)`
-        : `translateX(${40 * (1 - progress)}px)`,
-      transition: "opacity 0.3s ease, transform 0.3s ease",
-    };
+    let opacity = 0;
+    let progress = 0;
+
+    if (scrollProgress >= entryStart && scrollProgress < entryEnd) {
+      progress = (scrollProgress - entryStart) / transitionWindow;
+      opacity = progress;
+    } else if (scrollProgress >= exitStart && scrollProgress < exitEnd) {
+      progress = 1 - (scrollProgress - exitStart) / transitionWindow;
+      opacity = progress;
+    }
+
+    const offset = annotation.side === "left"
+      ? -32 * (1 - Math.max(opacity, 0))
+      : 32 * (1 - Math.max(opacity, 0));
+
+    return { opacity: Math.max(0, Math.min(1, opacity)), offset };
   };
 
   return (
-    <section style={{ paddingTop: 120, paddingBottom: 600, position: "relative" }} className="section-reveal" ref={containerRef}>
+    <section
+      style={{ paddingTop: 120, paddingBottom: 400, position: "relative" }}
+      className="section-reveal"
+      ref={containerRef}
+    >
       <Reveal dramatic>
         <SectionHeading>How it works</SectionHeading>
       </Reveal>
 
-      <div style={{ position: "relative", minHeight: "300vh" }}>
-        {/* Sticky Dashboard Container */}
+      <div style={{ position: "relative", minHeight: "350vh" }}>
+        {/* Sticky Product Container */}
         <div
           style={{
             position: "sticky",
-            bottom: "-120px",
+            top: 0,
             height: "100vh",
             display: "flex",
-            alignItems: "flex-end",
+            alignItems: "center",
             justifyContent: "center",
             zIndex: 10,
             pointerEvents: "none",
-            overflow: "hidden",
+            overflow: "visible",
           }}
         >
-          {/* Dashboard */}
-          <div style={{ maxWidth: "400px", width: "100%", pointerEvents: "auto" }}>
+          {/* Central Product */}
+          <div
+            style={{
+              maxWidth: "420px",
+              width: "100%",
+              pointerEvents: "auto",
+              zIndex: 20,
+              padding: "0 20px",
+              boxSizing: "border-box",
+            }}
+          >
             <img
               src={dashboardImage}
               alt="MyShake dashboard showing pinned locations and earthquakes"
@@ -273,7 +305,7 @@ const DashboardWalkthrough: FC<{
                 width: "100%",
                 height: "auto",
                 borderRadius: "20px",
-                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15)",
+                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.12)",
                 display: "block",
               }}
             />
@@ -288,93 +320,155 @@ const DashboardWalkthrough: FC<{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              padding: "0 40px",
+              padding: "0 20px",
             }}
           >
-            {/* Right Annotation 1 - Carousel */}
-            <div
-              className="annotation-right-1"
-              style={{
-                position: "absolute",
-                right: 0,
-                width: "35%",
-                ...getAnnotationStyle(0.1, false),
-              }}
-            >
-              <img
-                src={annotation1}
-                alt="Carousel annotation - map that allows users to click on different locations"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "12px",
-                }}
-              />
-            </div>
+            {annotations.map((annotation, idx) => {
+              const { opacity, offset } = getAnnotationState(annotation);
+              const isVisible = opacity > 0.01;
 
-            {/* Left Annotation 2 - Prepare */}
-            <div
-              className="annotation-left-2"
-              style={{
-                position: "absolute",
-                left: 0,
-                width: "35%",
-                ...getAnnotationStyle(0.45, true),
-              }}
-            >
-              <img
-                src={annotation2}
-                alt="Prepare annotation - horizontal scroll of earthquakes"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "12px",
-                }}
-              />
-            </div>
+              return (
+                <div
+                  key={idx}
+                  style={{
+                    position: "absolute",
+                    [annotation.side]: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "min(340px, 28vw)",
+                    pointerEvents: isVisible ? "auto" : "none",
+                    padding: annotation.side === "left" ? "0 30px 0 0" : "0 0 0 30px",
+                  }}
+                >
+                  <div
+                    style={{
+                      opacity,
+                      transform: `translateX(${offset}px)`,
+                      transition:
+                        "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      willChange: "opacity, transform",
+                    }}
+                  >
+                    {/* Connecting Line */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        [annotation.side]: "calc(100% - 1px)",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        width: "28px",
+                        height: "1px",
+                        background: `linear-gradient(to ${annotation.side === "left" ? "left" : "right"}, ${tokens.color.muted} 0%, transparent 100%)`,
+                        opacity: opacity * 0.6,
+                      }}
+                    />
 
-            {/* Right Annotation 3 - Notifications */}
-            <div
-              className="annotation-right-3"
-              style={{
-                position: "absolute",
-                right: 0,
-                width: "35%",
-                ...getAnnotationStyle(0.75, false),
-              }}
-            >
-              <img
-                src={annotation3}
-                alt="Notifications annotation - safety information"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "12px",
-                }}
-              />
-            </div>
+                    {/* Annotation Card */}
+                    <div
+                      style={{
+                        background: tokens.color.white,
+                        padding: "20px",
+                        borderRadius: "12px",
+                        border: `1px solid ${tokens.color.cardBorder}`,
+                        boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                      }}
+                    >
+                      <h3
+                        style={{
+                          fontFamily: tokens.font.sans,
+                          fontSize: "16px",
+                          fontWeight: tokens.weight.medium,
+                          color: tokens.color.textDark,
+                          margin: "0 0 8px",
+                          lineHeight: tokens.leading.snug,
+                        }}
+                      >
+                        {annotation.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: tokens.font.sans,
+                          fontSize: "14px",
+                          color: tokens.color.body,
+                          margin: 0,
+                          lineHeight: tokens.leading.normal,
+                        }}
+                      >
+                        {annotation.description}
+                      </p>
+                    </div>
+
+                    {/* Reference Image */}
+                    <div style={{ marginTop: 12 }}>
+                      <img
+                        src={annotation.image}
+                        alt={annotation.title}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          borderRadius: "8px",
+                          border: `1px solid ${tokens.color.cardBorder}`,
+                          display: "block",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         <style>{`
-          @media (max-width: 1024px) {
-            .annotation-right-1,
-            .annotation-left-2,
-            .annotation-right-3 {
-              display: none;
-            }
+          @media (max-width: 1200px) {
+            /* Hide annotations on smaller screens */
           }
 
           @media (prefers-reduced-motion: reduce) {
-            .annotation-note {
+            div[style*="transform"] {
               animation: none !important;
-              opacity: 1;
+              opacity: 1 !important;
+              transform: none !important;
             }
           }
         `}</style>
       </div>
     </section>
   );
+};
+
+const DashboardWalkthrough: FC<{
+  dashboardImage: string;
+  annotation1: string;
+  annotation2: string;
+  annotation3: string;
+}> = ({ dashboardImage, annotation1, annotation2, annotation3 }) => {
+  const annotations: AnnotationConfig[] = [
+    {
+      threshold: 0.15,
+      side: "right",
+      title: "Pinned Locations",
+      description: "Carousel map lets users select different locations at the top. See your loved ones' safety status at a glance.",
+      image: annotation1,
+    },
+    {
+      threshold: 0.5,
+      side: "left",
+      title: "Earthquakes near you",
+      description: "Horizontal scroll surfaces earthquakes near you with the highest magnitude. Tap to see more details.",
+      image: annotation2,
+    },
+    {
+      threshold: 0.8,
+      side: "right",
+      title: "Safety Information",
+      description: "Essential safety information to inform users of earthquake procedures and what to do in an emergency.",
+      image: annotation3,
+    },
+  ];
+
+  return <ScrollDrivenProductShowcase dashboardImage={dashboardImage} annotations={annotations} />;
 };
 
 const MyShakeCaseStudy: FC = () => {
