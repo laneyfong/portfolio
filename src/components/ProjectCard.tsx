@@ -259,11 +259,12 @@ const ProjectCard: FC<ProjectCardProps> = ({
               height: "auto",
               objectFit: "contain",
               borderRadius: "14px",
-              transition: "transform 0.22s ease, filter 0.22s ease, opacity 0.22s ease",
+              transition: "transform 0.22s ease, filter 0.22s ease, opacity 0.22s ease, box-shadow 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
               filter: invertOnHover && hovered ? "invert(1)" : "invert(0)",
               display: "block",
               opacity: hovered && hoverDetails ? 0.3 : 1,
+              boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
             }}
           />
           {hoverDetails && (
