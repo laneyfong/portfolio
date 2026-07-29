@@ -589,19 +589,28 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <img
-            src={myshakeHomeExplanation}
-            alt="MyShake app features and interaction design"
+          <div
             style={{
-              width: "100%",
-              maxWidth: "640px",
-              height: "auto",
+              background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+              padding: "60px 40px",
               borderRadius: tokens.radius.md,
+              display: "flex",
+              justifyContent: "center",
               marginBottom: 32,
-              display: "block",
-              margin: "0 auto 32px",
             }}
-          />
+          >
+            <img
+              src={myshakeHomeExplanation}
+              alt="MyShake app features and interaction design"
+              style={{
+                width: "100%",
+                maxWidth: "640px",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                display: "block",
+              }}
+            />
+          </div>
         </Reveal>
 
         <Callout>Core features of the redesign</Callout>
