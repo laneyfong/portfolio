@@ -47,7 +47,8 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
       style={{
         position: "absolute",
         inset: 0,
-        animation: "gradientFadeIn 2s ease-out forwards",
+        animation: "gradientFadeIn 1.2s ease-out 0.1s forwards",
+        opacity: 0,
         maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
         WebkitMaskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
       }}
@@ -68,7 +69,7 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         style={{
           position: "absolute",
           inset: 0,
