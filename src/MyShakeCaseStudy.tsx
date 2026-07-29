@@ -264,14 +264,10 @@ const ScrollDrivenProductShowcase: FC<{
 
   return (
     <section
-      style={{ paddingTop: 60, paddingBottom: 400, position: "relative" }}
+      style={{ paddingTop: 0, paddingBottom: 400, position: "relative" }}
       className="section-reveal"
       ref={containerRef}
     >
-      <Reveal dramatic>
-        <SectionHeading>How it works</SectionHeading>
-      </Reveal>
-
       <div style={{ position: "relative", minHeight: "350vh" }}>
         {/* Sticky Container - Three Column Layout */}
         <div
