@@ -43,6 +43,7 @@ import myshakeDesignSystem from "./assets/myshake-design-system.png";
 import myshakeColorExploration from "./assets/myshake-color-exploration.png";
 import myshakeStoryboard from "./assets/myshake-storyboard.png";
 import myshakeFinalSolution from "./assets/myshake-final-solution.png";
+import myshakeHomeExplanation from "./assets/myshake-home-explanation.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -889,6 +890,16 @@ const MyShakeCaseStudy: FC = () => {
             marginBottom: 40
           }}>
             <img src={myshakeFinalSolution} alt="MyShake final solution - complete app screens" style={{ width: "100%", height: "auto", borderRadius: "14px" }} />
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div style={{
+            background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+            padding: "60px 40px",
+            borderRadius: "14px"
+          }}>
+            <img src={myshakeHomeExplanation} alt="MyShake app features and explanation" style={{ width: "100%", height: "auto", borderRadius: "14px" }} />
           </div>
         </Reveal>
       </section>

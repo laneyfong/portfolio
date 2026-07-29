@@ -21,7 +21,6 @@ import idbridgeDocuments from "./assets/idbridge-documents.png";
 import idbridgeHistory from "./assets/idbridge-history.png";
 import idbridgeMap from "./assets/idbridge-map.png";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
-import myshakeHomeExplanation from "./assets/myshake-home-explanation.png";
 
 // Preload hero image for faster initial render
 if (typeof window !== 'undefined') {
@@ -225,14 +224,6 @@ const Portfolio: FC = () => {
                 wipLabel="WIP"
               />
             </div>
-          </div>
-        </ContentContainer>
-      </div>
-
-      <div style={{ width: "100%", paddingTop: "clamp(80px, 12vw, 150px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
-        <ContentContainer>
-          <div style={{ marginBottom: 40 }}>
-            <img src={myshakeHomeExplanation} alt="MyShake app explanation - features and details" style={{ width: "100%", height: "auto", borderRadius: "16px" }} />
           </div>
         </ContentContainer>
       </div>
