@@ -216,21 +216,22 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           <BackArrowIcon />
         </button>
 
-        <nav style={{ position: "relative", paddingLeft: 14 }}>
+        <nav style={{ position: "relative", paddingLeft: 10 }}>
           <div
             aria-hidden
             style={{
               position: "absolute",
               left: 0,
-              top: indicatorTop + 2,
-              width: 2,
-              height: 13,
+              top: indicatorTop + 4,
+              width: 1,
+              height: 10,
               borderRadius: tokens.radius.full,
               background: tokens.color.accent,
+              opacity: 0.6,
               transition: "top 0.25s ease",
             }}
           />
-          <div ref={navListRef} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div ref={navListRef} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {sections.map((s) => (
               <button
                 key={s.id}
@@ -243,11 +244,12 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                   cursor: "pointer",
                   padding: 0,
                   fontFamily: tokens.font.sans,
-                  fontSize: 14,
-                  lineHeight: 1.2,
-                  color: active === s.id ? tokens.color.white : "rgba(255, 255, 255, 0.45)",
-                  fontWeight: active === s.id ? tokens.weight.medium : tokens.weight.regular,
+                  fontSize: 13,
+                  lineHeight: 1.3,
+                  color: active === s.id ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0.35)",
+                  fontWeight: tokens.weight.regular,
                   transition: "color 0.2s ease",
+                  letterSpacing: "-0.3px",
                 }}
               >
                 {s.label}
@@ -257,7 +259,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         </nav>
 
         {highlights.length > 0 && (
-          <div style={{ marginTop: "auto", paddingTop: 24, borderTop: "1px solid rgba(255, 255, 255, 0.12)" }}>
+          <div style={{ marginTop: "auto", paddingTop: 20, borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
             <button
               onClick={() => setHighlightsOpen((open) => !open)}
               aria-expanded={highlightsOpen}
@@ -272,10 +274,11 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                 cursor: "pointer",
                 padding: 0,
                 fontFamily: tokens.font.sans,
-                fontSize: 14,
+                fontSize: 12,
                 lineHeight: 1.2,
-                fontWeight: tokens.weight.medium,
-                color: tokens.color.white,
+                fontWeight: tokens.weight.regular,
+                color: "rgba(255, 255, 255, 0.5)",
+                letterSpacing: "-0.3px",
               }}
             >
               Highlights
