@@ -112,69 +112,6 @@ const WireMap: FC<{ flex: number }> = ({ flex }) => (
   </div>
 );
 
-const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
-  <div
-    key={variant}
-    className="case-fade-in"
-    style={{
-      height: 200,
-      borderRadius: tokens.radius.md,
-      background: tokens.color.white,
-      padding: 12,
-      display: "flex",
-      gap: 8,
-      boxSizing: "border-box",
-    }}
-    aria-hidden
-  >
-    {variant === 0 ? (
-      <>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14, justifyContent: "center" }}>
-          <WireListRow />
-          <WireListRow />
-          <WireListRow />
-          <WireListRow />
-        </div>
-        <WireMap flex={1.2} />
-      </>
-    ) : (
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1.3fr 1fr", gridTemplateRows: "1fr 1fr", gap: 8 }}>
-        <div style={{ gridRow: "1 / 3", height: "100%" }}>
-          <WireMap flex={1} />
-        </div>
-        <div
-          style={{
-            borderRadius: tokens.radius.xs,
-            background: tokens.color.offWhite,
-            display: "flex",
-            flexDirection: "column",
-            gap: 6,
-            justifyContent: "center",
-            padding: "0 10px",
-          }}
-        >
-          <div style={{ height: 4, width: "60%", borderRadius: 2, background: tokens.color.cardBorder }} />
-          <div style={{ height: 4, width: "40%", borderRadius: 2, background: tokens.color.stroke }} />
-        </div>
-        <div
-          style={{
-            borderRadius: tokens.radius.xs,
-            background: tokens.color.offWhite,
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "0 10px",
-          }}
-        >
-          <div style={{ width: 16, height: 16, borderRadius: 4, background: tokens.color.accent, flexShrink: 0 }} />
-          <div style={{ height: 4, width: "50%", borderRadius: 2, background: tokens.color.cardBorder }} />
-        </div>
-      </div>
-    )}
-  </div>
-);
-
-
 const MYSHAKE_EXTRA_STYLE = `
   @media (prefers-reduced-motion: no-preference) {
     .case-shake-in { animation: case-shake-in 0.7s ease; }
