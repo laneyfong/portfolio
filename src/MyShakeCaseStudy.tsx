@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { tokens } from "./tokens";
 import {
   Reveal,
@@ -200,6 +200,180 @@ const MYSHAKE_EXTRA_STYLE = `
     100% { transform: translate(0, 0) rotate(0deg); }
   }
 `;
+
+const DashboardWalkthrough: FC<{
+  dashboardImage: string;
+  annotation1: string;
+  annotation2: string;
+  annotation3: string;
+}> = ({ dashboardImage, annotation1, annotation2, annotation3 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const rect = container.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const scrolled = windowHeight - rect.top;
+        const totalHeight = rect.height;
+        const progress = Math.max(0, Math.min(1, scrolled / totalHeight));
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getAnnotationStyle = (threshold: number, isLeft: boolean) => {
+    const isVisible = scrollProgress > threshold;
+    const progress = Math.max(0, Math.min(1, (scrollProgress - threshold) / 0.15));
+
+    return {
+      opacity: isVisible ? Math.min(1, progress * 1.5) : 0,
+      transform: isLeft
+        ? `translateX(${-40 * (1 - progress)}px)`
+        : `translateX(${40 * (1 - progress)}px)`,
+      transition: "opacity 0.3s ease, transform 0.3s ease",
+    };
+  };
+
+  return (
+    <section style={{ paddingTop: 120, paddingBottom: 600, position: "relative" }} className="section-reveal" ref={containerRef}>
+      <Reveal dramatic>
+        <SectionHeading>How it works</SectionHeading>
+      </Reveal>
+
+      <div style={{ position: "relative", minHeight: "300vh" }}>
+        {/* Sticky Dashboard Container */}
+        <div
+          style={{
+            position: "sticky",
+            bottom: 0,
+            height: "100vh",
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "center",
+            zIndex: 10,
+            pointerEvents: "none",
+          }}
+        >
+          {/* Dashboard */}
+          <div style={{ maxWidth: "400px", width: "100%", paddingBottom: 40, pointerEvents: "auto" }}>
+            <img
+              src={dashboardImage}
+              alt="MyShake dashboard showing pinned locations and earthquakes"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "20px",
+                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15)",
+              }}
+            />
+          </div>
+
+          {/* Annotations Container */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0 40px",
+            }}
+          >
+            {/* Right Annotation 1 - Carousel */}
+            <div
+              className="annotation-right-1"
+              style={{
+                position: "absolute",
+                right: 0,
+                width: "35%",
+                ...getAnnotationStyle(0.1, false),
+              }}
+            >
+              <img
+                src={annotation1}
+                alt="Carousel annotation - map that allows users to click on different locations"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "12px",
+                }}
+              />
+            </div>
+
+            {/* Left Annotation 2 - Prepare */}
+            <div
+              className="annotation-left-2"
+              style={{
+                position: "absolute",
+                left: 0,
+                width: "35%",
+                ...getAnnotationStyle(0.45, true),
+              }}
+            >
+              <img
+                src={annotation2}
+                alt="Prepare annotation - horizontal scroll of earthquakes"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "12px",
+                }}
+              />
+            </div>
+
+            {/* Right Annotation 3 - Notifications */}
+            <div
+              className="annotation-right-3"
+              style={{
+                position: "absolute",
+                right: 0,
+                width: "35%",
+                ...getAnnotationStyle(0.75, false),
+              }}
+            >
+              <img
+                src={annotation3}
+                alt="Notifications annotation - safety information"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "12px",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 1024px) {
+            .annotation-right-1,
+            .annotation-left-2,
+            .annotation-right-3 {
+              display: none;
+            }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .annotation-note {
+              animation: none !important;
+              opacity: 1;
+            }
+          }
+        `}</style>
+      </div>
+    </section>
+  );
+};
 
 const MyShakeCaseStudy: FC = () => {
   const [abVariant, setAbVariant] = useState<0 | 1>(0);
@@ -697,168 +871,12 @@ const MyShakeCaseStudy: FC = () => {
       </section>
 
       {/* Interactive Dashboard Walkthrough */}
-      <section style={{ paddingTop: 120, paddingBottom: 600, position: "relative" }} className="section-reveal">
-        <Reveal dramatic>
-          <SectionHeading>How it works</SectionHeading>
-        </Reveal>
-
-        <div style={{ position: "relative", minHeight: "300vh" }}>
-          {/* Sticky Dashboard Container */}
-          <div
-            style={{
-              position: "sticky",
-              bottom: 0,
-              height: "100vh",
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "center",
-              zIndex: 10,
-              pointerEvents: "none",
-            }}
-          >
-            {/* Dashboard */}
-            <div style={{ maxWidth: "400px", width: "100%", paddingBottom: 40, pointerEvents: "auto" }}>
-              <img
-                src={myshakeDashboard}
-                alt="MyShake dashboard showing pinned locations and earthquakes"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "20px",
-                  boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15)",
-                }}
-              />
-            </div>
-
-            {/* Annotations Container */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                pointerEvents: "none",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "0 40px",
-              }}
-            >
-              {/* Right Annotation 1 - Carousel */}
-              <div
-                className="annotation-right-1"
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  width: "35%",
-                  opacity: 0,
-                  transform: "translateX(40px)",
-                  transition: "opacity 0.8s ease, transform 0.8s ease",
-                  animation: "annotationSlideIn 0.8s ease forwards",
-                  animationDelay: "0s",
-                }}
-              >
-                <img
-                  src={myshakeCarouselNote}
-                  alt="Carousel annotation - map that allows users to click on different locations"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "12px",
-                  }}
-                />
-              </div>
-
-              {/* Left Annotation 2 - Prepare */}
-              <div
-                className="annotation-left-2"
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  width: "35%",
-                  opacity: 0,
-                  transform: "translateX(-40px)",
-                  transition: "opacity 0.8s ease, transform 0.8s ease",
-                  animation: "annotationSlideInLeft 0.8s ease forwards",
-                  animationDelay: "6s",
-                }}
-              >
-                <img
-                  src={myshakePrepareNote}
-                  alt="Prepare annotation - horizontal scroll of earthquakes"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "12px",
-                  }}
-                />
-              </div>
-
-              {/* Right Annotation 3 - Notifications */}
-              <div
-                className="annotation-right-3"
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  width: "35%",
-                  opacity: 0,
-                  transform: "translateX(40px)",
-                  transition: "opacity 0.8s ease, transform 0.8s ease",
-                  animation: "annotationSlideIn 0.8s ease forwards",
-                  animationDelay: "12s",
-                }}
-              >
-                <img
-                  src={myshakeNotificationsNote}
-                  alt="Notifications annotation - safety information"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "12px",
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-
-          <style>{`
-            @keyframes annotationSlideIn {
-              from {
-                opacity: 0;
-                transform: translateX(40px);
-              }
-              to {
-                opacity: 1;
-                transform: translateX(0);
-              }
-            }
-
-            @keyframes annotationSlideInLeft {
-              from {
-                opacity: 0;
-                transform: translateX(-40px);
-              }
-              to {
-                opacity: 1;
-                transform: translateX(0);
-              }
-            }
-
-            @media (max-width: 1024px) {
-              .annotation-right-1,
-              .annotation-left-2,
-              .annotation-right-3 {
-                display: none;
-              }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-              .annotation-note {
-                animation: none !important;
-                opacity: 1;
-              }
-            }
-          `}</style>
-        </div>
-      </section>
+      <DashboardWalkthrough
+        dashboardImage={myshakeDashboard}
+        annotation1={myshakeCarouselNote}
+        annotation2={myshakePrepareNote}
+        annotation3={myshakeNotificationsNote}
+      />
 
       {/* UI Details */}
       <section style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
