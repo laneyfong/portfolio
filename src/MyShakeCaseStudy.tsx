@@ -369,7 +369,7 @@ const ScrollDrivenProductShowcase: FC<{
                     <div
                       style={{
                         background: tokens.color.white,
-                        padding: "20px",
+                        padding: "24px",
                         borderRadius: "12px",
                         border: `1px solid ${tokens.color.cardBorder}`,
                         boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
@@ -378,10 +378,10 @@ const ScrollDrivenProductShowcase: FC<{
                       <h3
                         style={{
                           fontFamily: tokens.font.sans,
-                          fontSize: "16px",
+                          fontSize: "18px",
                           fontWeight: tokens.weight.medium,
                           color: tokens.color.textDark,
-                          margin: "0 0 8px",
+                          margin: "0 0 12px",
                           lineHeight: tokens.leading.snug,
                         }}
                       >
@@ -391,7 +391,7 @@ const ScrollDrivenProductShowcase: FC<{
                       <p
                         style={{
                           fontFamily: tokens.font.sans,
-                          fontSize: "14px",
+                          fontSize: "15px",
                           color: tokens.color.body,
                           margin: 0,
                           lineHeight: tokens.leading.normal,
@@ -399,21 +399,6 @@ const ScrollDrivenProductShowcase: FC<{
                       >
                         {annotation.description}
                       </p>
-                    </div>
-
-                    {/* Reference Image */}
-                    <div style={{ marginTop: 12 }}>
-                      <img
-                        src={annotation.image}
-                        alt={annotation.title}
-                        style={{
-                          width: "100%",
-                          height: "auto",
-                          borderRadius: "8px",
-                          border: `1px solid ${tokens.color.cardBorder}`,
-                          display: "block",
-                        }}
-                      />
                     </div>
                   </div>
                 </div>
