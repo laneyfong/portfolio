@@ -164,8 +164,8 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         ${extraStyle}
       `}</style>
 
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 4, zIndex: 20, background: "transparent" }}>
-        <div style={{ height: "100%", width: `${progress}%`, background: tokens.color.accent }} />
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 2, zIndex: 20, background: "transparent", opacity: 0.6 }}>
+        <div style={{ height: "100%", width: `${progress}%`, background: tokens.color.accent, transition: "width 0.1s ease-out" }} />
       </div>
 
       {/* Desktop sidebar */}
