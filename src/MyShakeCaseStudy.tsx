@@ -264,7 +264,7 @@ const ScrollDrivenProductShowcase: FC<{
 
   return (
     <section
-      style={{ paddingTop: 120, paddingBottom: 400, position: "relative" }}
+      style={{ paddingTop: 60, paddingBottom: 400, position: "relative" }}
       className="section-reveal"
       ref={containerRef}
     >
@@ -280,12 +280,12 @@ const ScrollDrivenProductShowcase: FC<{
             top: 0,
             height: "100vh",
             display: "flex",
-            alignItems: "flex-end",
+            alignItems: "center",
             justifyContent: "center",
             gap: "40px",
             zIndex: 10,
             pointerEvents: "none",
-            padding: "60px 40px 40px",
+            padding: "60px 40px",
             boxSizing: "border-box",
           }}
         >
