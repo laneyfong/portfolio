@@ -273,7 +273,7 @@ const ScrollDrivenProductShowcase: FC<{
       </Reveal>
 
       <div style={{ position: "relative", minHeight: "350vh" }}>
-        {/* Sticky Product Container */}
+        {/* Sticky Container - Three Column Layout */}
         <div
           style={{
             position: "sticky",
@@ -282,21 +282,75 @@ const ScrollDrivenProductShowcase: FC<{
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "center",
+            gap: "40px",
             zIndex: 10,
             pointerEvents: "none",
-            overflow: "visible",
-            paddingBottom: "40px",
+            padding: "60px 40px 40px",
+            boxSizing: "border-box",
           }}
         >
-          {/* Central Product */}
+          {/* LEFT ANNOTATIONS COLUMN */}
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px" }}>
+            {annotations
+              .filter((a) => a.side === "left")
+              .map((annotation, idx) => {
+                const { opacity, offset } = getAnnotationState(annotation);
+
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      opacity,
+                      transform: `translateX(${offset}px)`,
+                      transition:
+                        "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      willChange: "opacity, transform",
+                      background: tokens.color.white,
+                      padding: "20px",
+                      borderRadius: "12px",
+                      border: `1px solid ${tokens.color.cardBorder}`,
+                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "16px",
+                        fontWeight: tokens.weight.medium,
+                        color: tokens.color.textDark,
+                        margin: "0 0 10px",
+                        lineHeight: tokens.leading.snug,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "14px",
+                        color: tokens.color.body,
+                        margin: 0,
+                        lineHeight: tokens.leading.normal,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.description}
+                    </p>
+                  </div>
+                );
+              })}
+          </div>
+
+          {/* CENTER PRODUCT COLUMN */}
           <div
             style={{
-              maxWidth: "340px",
+              maxWidth: "300px",
               width: "100%",
               pointerEvents: "auto",
               zIndex: 20,
-              padding: "0 20px",
-              boxSizing: "border-box",
+              flexShrink: 0,
             }}
           >
             <img
@@ -313,135 +367,58 @@ const ScrollDrivenProductShowcase: FC<{
             />
           </div>
 
-          {/* Annotations Container */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              pointerEvents: "none",
-              display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "space-between",
-              padding: "60px 0px",
-            }}
-          >
-            {/* Left Annotations */}
-            <div style={{ width: "380px", paddingLeft: "20px", paddingRight: "40px" }}>
-              {annotations
-                .filter((a) => a.side === "left")
-                .map((annotation, idx) => {
-                  const { opacity, offset } = getAnnotationState(annotation);
-                  const isVisible = opacity > 0.01;
+          {/* RIGHT ANNOTATIONS COLUMN */}
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px" }}>
+            {annotations
+              .filter((a) => a.side === "right")
+              .map((annotation, idx) => {
+                const { opacity, offset } = getAnnotationState(annotation);
 
-                  return (
-                    <div key={idx} style={{ pointerEvents: isVisible ? "auto" : "none" }}>
-                      <div
-                        style={{
-                          opacity,
-                          transform: `translateX(${offset}px)`,
-                          transition:
-                            "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                          willChange: "opacity, transform",
-                        }}
-                      >
-                        <div
-                          style={{
-                            background: tokens.color.white,
-                            padding: "24px",
-                            borderRadius: "12px",
-                            border: `1px solid ${tokens.color.cardBorder}`,
-                            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
-                          }}
-                        >
-                          <h3
-                            style={{
-                              fontFamily: tokens.font.sans,
-                              fontSize: "18px",
-                              fontWeight: tokens.weight.medium,
-                              color: tokens.color.textDark,
-                              margin: "0 0 12px",
-                              lineHeight: tokens.leading.snug,
-                            }}
-                          >
-                            {annotation.title}
-                          </h3>
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      opacity,
+                      transform: `translateX(${-offset}px)`,
+                      transition:
+                        "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      willChange: "opacity, transform",
+                      background: tokens.color.white,
+                      padding: "20px",
+                      borderRadius: "12px",
+                      border: `1px solid ${tokens.color.cardBorder}`,
+                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "16px",
+                        fontWeight: tokens.weight.medium,
+                        color: tokens.color.textDark,
+                        margin: "0 0 10px",
+                        lineHeight: tokens.leading.snug,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.title}
+                    </h3>
 
-                          <p
-                            style={{
-                              fontFamily: tokens.font.sans,
-                              fontSize: "15px",
-                              color: tokens.color.body,
-                              margin: 0,
-                              lineHeight: tokens.leading.normal,
-                            }}
-                          >
-                            {annotation.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
-
-            {/* Right Annotations */}
-            <div style={{ width: "380px", paddingRight: "20px", paddingLeft: "40px" }}>
-              {annotations
-                .filter((a) => a.side === "right")
-                .map((annotation, idx) => {
-                  const { opacity, offset } = getAnnotationState(annotation);
-                  const isVisible = opacity > 0.01;
-
-                  return (
-                    <div key={idx} style={{ pointerEvents: isVisible ? "auto" : "none" }}>
-                      <div
-                        style={{
-                          opacity,
-                          transform: `translateX(${-offset}px)`,
-                          transition:
-                            "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                          willChange: "opacity, transform",
-                        }}
-                      >
-                        <div
-                          style={{
-                            background: tokens.color.white,
-                            padding: "24px",
-                            borderRadius: "12px",
-                            border: `1px solid ${tokens.color.cardBorder}`,
-                            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
-                          }}
-                        >
-                          <h3
-                            style={{
-                              fontFamily: tokens.font.sans,
-                              fontSize: "18px",
-                              fontWeight: tokens.weight.medium,
-                              color: tokens.color.textDark,
-                              margin: "0 0 12px",
-                              lineHeight: tokens.leading.snug,
-                            }}
-                          >
-                            {annotation.title}
-                          </h3>
-
-                          <p
-                            style={{
-                              fontFamily: tokens.font.sans,
-                              fontSize: "15px",
-                              color: tokens.color.body,
-                              margin: 0,
-                              lineHeight: tokens.leading.normal,
-                            }}
-                          >
-                            {annotation.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
+                    <p
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "14px",
+                        color: tokens.color.body,
+                        margin: 0,
+                        lineHeight: tokens.leading.normal,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.description}
+                    </p>
+                  </div>
+                );
+              })}
           </div>
         </div>
 
