@@ -77,41 +77,6 @@ const HIGHLIGHTS = [
   "Talked through a no-research mandate with the client and landed on a scoped study plan that shaped every decision.",
 ];
 
-// ---------- MyShake-only visuals ----------
-
-const WireListRow: FC = () => (
-  <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "0 10px" }}>
-    <div style={{ width: 10, height: 10, borderRadius: "50%", background: tokens.color.accent, flexShrink: 0 }} />
-    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
-      <div style={{ height: 4, width: "70%", borderRadius: 2, background: tokens.color.cardBorder }} />
-      <div style={{ height: 4, width: "40%", borderRadius: 2, background: tokens.color.stroke }} />
-    </div>
-  </div>
-);
-
-// A bit of road/pin texture so this reads as a deliberate low-fidelity wireframe rather
-// than an unfinished placeholder block.
-const WireMap: FC<{ flex: number }> = ({ flex }) => (
-  <div
-    style={{
-      position: "relative",
-      flex,
-      height: "100%",
-      width: "100%",
-      borderRadius: tokens.radius.sm,
-      background: "#EAF1EC",
-      overflow: "hidden",
-    }}
-  >
-    <svg width="100%" height="100%" viewBox="0 0 120 100" preserveAspectRatio="none" style={{ position: "absolute", inset: 0 }}>
-      <path d="M0 72 Q 40 52 62 64 T 120 38" stroke="#D3E2D8" strokeWidth="3" fill="none" />
-      <path d="M8 12 Q 48 30 78 20 T 120 32" stroke="#D3E2D8" strokeWidth="3" fill="none" />
-    </svg>
-    <div style={{ position: "absolute", top: "32%", left: "42%", width: 10, height: 10, borderRadius: "50%", background: tokens.color.accent }} />
-    <div style={{ position: "absolute", top: "58%", left: "66%", width: 8, height: 8, borderRadius: "50%", background: tokens.color.ink }} />
-  </div>
-);
-
 const MYSHAKE_EXTRA_STYLE = `
   @media (prefers-reduced-motion: no-preference) {
     .case-shake-in { animation: case-shake-in 0.7s ease; }
