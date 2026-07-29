@@ -290,7 +290,7 @@ const ScrollDrivenProductShowcase: FC<{
           }}
         >
           {/* LEFT ANNOTATIONS COLUMN */}
-          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
             {annotations
               .filter((a) => a.side === "left")
               .map((annotation, idx) => {
@@ -368,7 +368,7 @@ const ScrollDrivenProductShowcase: FC<{
           </div>
 
           {/* RIGHT ANNOTATIONS COLUMN */}
-          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
             {annotations
               .filter((a) => a.side === "right")
               .map((annotation, idx) => {
