@@ -56,19 +56,6 @@ const SECTIONS: CaseSection[] = [
 
 const TAGS = ["Product/UX Design", "Design Systems", "Product Strategy", "Shipped"];
 
-const AB_VARIATIONS = [
-  {
-    label: "Variation 1",
-    title: "Half-list + half-map",
-    description: "A split landing page: a list of nearby earthquakes on one side, a live map on the other.",
-  },
-  {
-    label: "Variation 2",
-    title: "Bento-style dashboard",
-    description: "A bento grid surfacing pinned locations, nearby earthquakes, and education cards at a glance.",
-  },
-];
-
 // Restates facts already established elsewhere on the page (engagement lift, step
 // reduction, research pushback) — not new claims, just a scannable summary.
 const HIGHLIGHTS = [
@@ -112,69 +99,6 @@ const WireMap: FC<{ flex: number }> = ({ flex }) => (
   </div>
 );
 
-const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
-  <div
-    key={variant}
-    className="case-fade-in"
-    style={{
-      height: 200,
-      borderRadius: tokens.radius.md,
-      background: tokens.color.white,
-      padding: 12,
-      display: "flex",
-      gap: 8,
-      boxSizing: "border-box",
-    }}
-    aria-hidden
-  >
-    {variant === 0 ? (
-      <>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14, justifyContent: "center" }}>
-          <WireListRow />
-          <WireListRow />
-          <WireListRow />
-          <WireListRow />
-        </div>
-        <WireMap flex={1.2} />
-      </>
-    ) : (
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1.3fr 1fr", gridTemplateRows: "1fr 1fr", gap: 8 }}>
-        <div style={{ gridRow: "1 / 3", height: "100%" }}>
-          <WireMap flex={1} />
-        </div>
-        <div
-          style={{
-            borderRadius: tokens.radius.xs,
-            background: tokens.color.offWhite,
-            display: "flex",
-            flexDirection: "column",
-            gap: 6,
-            justifyContent: "center",
-            padding: "0 10px",
-          }}
-        >
-          <div style={{ height: 4, width: "60%", borderRadius: 2, background: tokens.color.cardBorder }} />
-          <div style={{ height: 4, width: "40%", borderRadius: 2, background: tokens.color.stroke }} />
-        </div>
-        <div
-          style={{
-            borderRadius: tokens.radius.xs,
-            background: tokens.color.offWhite,
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "0 10px",
-          }}
-        >
-          <div style={{ width: 16, height: 16, borderRadius: 4, background: tokens.color.accent, flexShrink: 0 }} />
-          <div style={{ height: 4, width: "50%", borderRadius: 2, background: tokens.color.cardBorder }} />
-        </div>
-      </div>
-    )}
-  </div>
-);
-
-
 const MYSHAKE_EXTRA_STYLE = `
   @media (prefers-reduced-motion: no-preference) {
     .case-shake-in { animation: case-shake-in 0.7s ease; }
@@ -191,7 +115,6 @@ const MYSHAKE_EXTRA_STYLE = `
 `;
 
 const MyShakeCaseStudy: FC = () => {
-  const [abVariant, setAbVariant] = useState<0 | 1>(0);
 
   return (
     <CaseStudyShell sections={SECTIONS} highlights={HIGHLIGHTS} extraStyle={MYSHAKE_EXTRA_STYLE}>
@@ -474,46 +397,6 @@ const MyShakeCaseStudy: FC = () => {
           <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
         </Reveal>
 
-        <Callout>A/B Testing</Callout>
-
-        <div style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, marginBottom: 20 }}>
-          {AB_VARIATIONS.map((v, i) => (
-            <button
-              key={v.label}
-              onClick={() => setAbVariant(i as 0 | 1)}
-              aria-pressed={abVariant === i}
-              className="case-btn-press"
-              style={{
-                padding: "8px 18px",
-                borderRadius: tokens.radius.full,
-                border: "none",
-                cursor: "pointer",
-                background: abVariant === i ? tokens.color.ink : "transparent",
-                color: abVariant === i ? tokens.color.white : tokens.color.body,
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.sm,
-                fontWeight: tokens.weight.medium,
-              }}
-            >
-              {v.label}
-            </button>
-          ))}
-        </div>
-
-        <Reveal>
-          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "center", marginBottom: 32 }}>
-            <ABWireframe variant={abVariant} />
-            <div key={abVariant} className="case-fade-in">
-              <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
-                {AB_VARIATIONS[abVariant].title}
-              </div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                {AB_VARIATIONS[abVariant].description}
-              </p>
-            </div>
-          </div>
-        </Reveal>
-
         <Callout>Restructuring the landing page to minimize time-to-task for essential safety information.</Callout>
 
         <Callout>Design principles: From data tool to safety companion.</Callout>
@@ -579,6 +462,17 @@ const MyShakeCaseStudy: FC = () => {
           <SectionHeading>Solution</SectionHeading>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
           <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
+        </Reveal>
+
+        <Reveal>
+          <div style={{
+            background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+            padding: "60px 40px",
+            borderRadius: "14px",
+            marginBottom: 40
+          }}>
+            <img src={myshakeHomeExplanation} alt="MyShake app features and explanation" style={{ width: "100%", height: "auto", borderRadius: "14px" }} />
+          </div>
         </Reveal>
 
         <Callout>Core features of the redesign</Callout>
@@ -890,16 +784,6 @@ const MyShakeCaseStudy: FC = () => {
             marginBottom: 40
           }}>
             <img src={myshakeFinalSolution} alt="MyShake final solution - complete app screens" style={{ width: "100%", height: "auto", borderRadius: "14px" }} />
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div style={{
-            background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
-            padding: "60px 40px",
-            borderRadius: "14px"
-          }}>
-            <img src={myshakeHomeExplanation} alt="MyShake app features and explanation" style={{ width: "100%", height: "auto", borderRadius: "14px" }} />
           </div>
         </Reveal>
       </section>
