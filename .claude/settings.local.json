@@ -122,7 +122,15 @@
       "Bash(grep -n \"border: \\\\`1px solid\" src/IDBridgeCaseStudy.tsx)",
       "Bash(grep -n \"border: \\\\`1px solid\" src/NvidiaCaseStudy.tsx)",
       "Bash(grep -c \"border: \\\\`1px solid\" src/MyShakeCaseStudy.tsx src/IDBridgeCaseStudy.tsx src/NvidiaCaseStudy.tsx)",
-      "Bash(grep *)"
+      "Bash(grep *)",
+      "Bash(perl -i -pe 's/, border: `1px solid \\\\$\\\\{tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/components/caseStudy/CaseStudyKit.tsx)",
+      "Bash(perl -i -pe 's/, border: `1px solid \\\\$\\\\{hovered \\\\? tokens\\\\.color\\\\.ink : tokens\\\\.color\\\\.cardBorder\\\\}`//g' src/components/caseStudy/CaseStudyKit.tsx)",
+      "Bash(perl -i -pe 's/border: `1px solid \\\\$\\\\{.*?\\\\}`,//g' src/components/caseStudy/CaseStudyKit.tsx)",
+      "Bash(git stash *)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/27.png /Users/laneyfong/portfolio/src/assets/myshake-dashboard.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/29.png /Users/laneyfong/portfolio/src/assets/myshake-carousel-note.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/30.png /Users/laneyfong/portfolio/src/assets/myshake-prepare-note.png)",
+      "Bash(cp /Users/laneyfong/.claude/image-cache/9fa2a42f-9f67-46bb-bab5-ad39c4a84e1d/31.png /Users/laneyfong/portfolio/src/assets/myshake-notifications-note.png)"
     ]
   }
 }
