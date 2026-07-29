@@ -280,11 +280,12 @@ const ScrollDrivenProductShowcase: FC<{
             top: 0,
             height: "100vh",
             display: "flex",
-            alignItems: "center",
+            alignItems: "flex-end",
             justifyContent: "center",
             zIndex: 10,
             pointerEvents: "none",
             overflow: "visible",
+            paddingBottom: "40px",
           }}
         >
           {/* Central Product */}
@@ -304,7 +305,7 @@ const ScrollDrivenProductShowcase: FC<{
               style={{
                 width: "100%",
                 height: "auto",
-                borderRadius: "20px",
+                borderRadius: "0",
                 boxShadow: "0 20px 60px rgba(0, 0, 0, 0.12)",
                 display: "block",
               }}
@@ -318,9 +319,10 @@ const ScrollDrivenProductShowcase: FC<{
               inset: 0,
               pointerEvents: "none",
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-start",
               justifyContent: "space-between",
-              padding: "0 20px",
+              padding: "60px 20px",
+              paddingBottom: "380px",
             }}
           >
             {annotations.map((annotation, idx) => {
@@ -333,8 +335,8 @@ const ScrollDrivenProductShowcase: FC<{
                   style={{
                     position: "absolute",
                     [annotation.side]: 0,
-                    top: "50%",
-                    transform: "translateY(-50%)",
+                    top: "60px",
+                    transform: "translateY(0)",
                     width: "min(340px, 28vw)",
                     pointerEvents: isVisible ? "auto" : "none",
                     padding: annotation.side === "left" ? "0 30px 0 0" : "0 0 0 30px",
