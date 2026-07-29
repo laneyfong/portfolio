@@ -5,7 +5,7 @@ import { tokens } from "../../tokens";
 import Footer from "../Footer";
 import { BackArrowIcon, ChevronIcon } from "./CaseStudyKit";
 
-export const SIDEBAR_WIDTH = 220;
+export const SIDEBAR_WIDTH = 160;
 
 export interface CaseSection {
   id: string;
@@ -177,10 +177,10 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           left: 0,
           bottom: 0,
           width: SIDEBAR_WIDTH,
-          background: tokens.color.ink,
+          background: "transparent",
           display: "flex",
           flexDirection: "column",
-          padding: "32px 28px",
+          padding: "32px 20px",
           zIndex: 10,
           boxSizing: "border-box",
         }}
@@ -193,9 +193,9 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             width: 40,
             height: 40,
             borderRadius: "50%",
-            border: "1px solid rgba(255, 255, 255, 0.3)",
+            border: `1px solid ${tokens.color.cardBorder}`,
             background: "transparent",
-            color: tokens.color.white,
+            color: tokens.color.textDark,
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -205,12 +205,12 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             transition: "all 0.2s ease",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+            e.currentTarget.style.background = tokens.color.offWhite;
             e.currentTarget.style.borderColor = tokens.color.accent;
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)";
+            e.currentTarget.style.borderColor = tokens.color.cardBorder;
           }}
         >
           <BackArrowIcon />
@@ -246,7 +246,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                   fontFamily: tokens.font.sans,
                   fontSize: 13,
                   lineHeight: 1.3,
-                  color: active === s.id ? "rgba(255, 255, 255, 0.8)" : "rgba(255, 255, 255, 0.35)",
+                  color: active === s.id ? tokens.color.textDark : tokens.color.muted,
                   fontWeight: tokens.weight.regular,
                   transition: "color 0.2s ease",
                   letterSpacing: "-0.3px",
@@ -259,7 +259,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         </nav>
 
         {highlights.length > 0 && (
-          <div style={{ marginTop: "auto", paddingTop: 20, borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+          <div style={{ marginTop: "auto", paddingTop: 20, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
             <button
               onClick={() => setHighlightsOpen((open) => !open)}
               aria-expanded={highlightsOpen}
@@ -277,7 +277,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                 fontSize: 12,
                 lineHeight: 1.2,
                 fontWeight: tokens.weight.regular,
-                color: "rgba(255, 255, 255, 0.5)",
+                color: tokens.color.muted,
                 letterSpacing: "-0.3px",
               }}
             >
@@ -297,7 +297,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                       fontFamily: tokens.font.sans,
                       fontSize: 12.5,
                       lineHeight: 1.4,
-                      color: "rgba(255, 255, 255, 0.65)",
+                      color: tokens.color.body,
                       animationDelay: `${i * 80}ms`,
                     }}
                   >
@@ -309,7 +309,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                         width: 4,
                         height: 4,
                         borderRadius: "50%",
-                        background: "rgba(255, 255, 255, 0.45)",
+                        background: tokens.color.muted,
                       }}
                     />
                     {item}
