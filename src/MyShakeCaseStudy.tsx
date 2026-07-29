@@ -40,7 +40,6 @@ import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
 import myshakeDesignSystem from "./assets/myshake-design-system.png";
-import myshakeColorExploration from "./assets/myshake-color-exploration.png";
 import myshakeStoryboard from "./assets/myshake-storyboard.png";
 import myshakeFinalSolution from "./assets/myshake-final-solution.png";
 import myshakeHomeExplanation from "./assets/myshake-home-explanation.png";
@@ -76,6 +75,112 @@ const HIGHLIGHTS = [
   "Cut the steps to check on a loved one from 7 to 3 — from a multi-screen search to two taps.",
   "Talked through a no-research mandate with the client and landed on a scoped study plan that shaped every decision.",
 ];
+
+const WireListRow: FC = () => (
+  <div
+    style={{
+      height: 12,
+      borderRadius: tokens.radius.xs,
+      background: tokens.color.stroke,
+      width: "100%",
+    }}
+    aria-hidden
+  />
+);
+
+const WireMap: FC<{ flex: number }> = ({ flex }) => (
+  <div
+    style={{
+      flex,
+      borderRadius: tokens.radius.md,
+      background: tokens.color.offWhite,
+      display: "flex",
+      flexDirection: "column",
+      gap: 8,
+      padding: 12,
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+    aria-hidden
+  >
+    <div
+      style={{
+        width: 60,
+        height: 60,
+        borderRadius: 50,
+        background: tokens.color.cardBorder,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div style={{ width: 30, height: 30, borderRadius: 50, background: tokens.color.accent, opacity: 0.6 }} />
+    </div>
+    <div style={{ height: 4, width: "70%", borderRadius: 2, background: tokens.color.stroke }} />
+  </div>
+);
+
+const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
+  <div
+    key={variant}
+    className="case-fade-in"
+    style={{
+      height: 200,
+      borderRadius: tokens.radius.md,
+      background: tokens.color.white,
+      padding: 12,
+      display: "flex",
+      gap: 8,
+      boxSizing: "border-box",
+    }}
+    aria-hidden
+  >
+    {variant === 0 ? (
+      <>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14, justifyContent: "center" }}>
+          <WireListRow />
+          <WireListRow />
+          <WireListRow />
+          <WireListRow />
+        </div>
+        <WireMap flex={1.2} />
+      </>
+    ) : (
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1.3fr 1fr", gridTemplateRows: "1fr 1fr", gap: 8 }}>
+        <div style={{ gridRow: "1 / 3", height: "100%" }}>
+          <WireMap flex={1} />
+        </div>
+        <div
+          style={{
+            borderRadius: tokens.radius.xs,
+            background: tokens.color.offWhite,
+            display: "flex",
+            flexDirection: "column",
+            gap: 6,
+            justifyContent: "center",
+            padding: "0 10px",
+          }}
+        >
+          <div style={{ height: 4, width: "60%", borderRadius: 2, background: tokens.color.cardBorder }} />
+          <div style={{ height: 4, width: "40%", borderRadius: 2, background: tokens.color.stroke }} />
+        </div>
+        <div
+          style={{
+            borderRadius: tokens.radius.xs,
+            background: tokens.color.offWhite,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "0 10px",
+          }}
+        >
+          <div style={{ width: 16, height: 16, borderRadius: 4, background: tokens.color.accent, flexShrink: 0 }} />
+          <div style={{ height: 4, width: "50%", borderRadius: 2, background: tokens.color.cardBorder }} />
+        </div>
+      </div>
+    )}
+  </div>
+);
 
 const MYSHAKE_EXTRA_STYLE = `
   @media (prefers-reduced-motion: no-preference) {
@@ -403,13 +508,16 @@ const MyShakeCaseStudy: FC = () => {
         </div>
 
         <Reveal>
-          <div key={abVariant} className="case-fade-in">
-            <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
-              {AB_VARIATIONS[abVariant].title}
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "center", marginBottom: 32 }}>
+            <ABWireframe variant={abVariant} />
+            <div key={abVariant} className="case-fade-in">
+              <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
+                {AB_VARIATIONS[abVariant].title}
+              </div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                {AB_VARIATIONS[abVariant].description}
+              </p>
             </div>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-              {AB_VARIATIONS[abVariant].description}
-            </p>
           </div>
         </Reveal>
 
@@ -478,6 +586,22 @@ const MyShakeCaseStudy: FC = () => {
           <SectionHeading>Solution</SectionHeading>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
           <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
+        </Reveal>
+
+        <Reveal>
+          <img
+            src={myshakeHomeExplanation}
+            alt="MyShake app features and interaction design"
+            style={{
+              width: "100%",
+              maxWidth: "640px",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginBottom: 32,
+              display: "block",
+              margin: "0 auto 32px",
+            }}
+          />
         </Reveal>
 
         <Callout>Core features of the redesign</Callout>
@@ -556,27 +680,6 @@ const MyShakeCaseStudy: FC = () => {
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Details</span>
             </div>
           </div>
-        </Reveal>
-      </section>
-
-      {/* Design System */}
-      <section style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
-        <Reveal dramatic>
-          <SectionHeading>Design System</SectionHeading>
-          <SkillRow items={["Visual Design", "Design Systems", "Component Architecture"]} />
-        </Reveal>
-
-        <Callout>Built for consistency and scale</Callout>
-        <Paragraph>
-          A comprehensive design system that extends beyond the app — establishing clear patterns for typography, color, spacing, and components that any team member can implement.
-        </Paragraph>
-
-        <Reveal>
-          <img src={myshakeDesignSystem} alt="MyShake design system showing colors, typography, and components" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 40 }} />
-        </Reveal>
-
-        <Reveal>
-          <img src={myshakeColorExploration} alt="MyShake color exploration and palette development" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
         </Reveal>
       </section>
 
