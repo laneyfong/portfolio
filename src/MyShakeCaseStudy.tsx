@@ -501,16 +501,13 @@ const MyShakeCaseStudy: FC = () => {
         </div>
 
         <Reveal>
-          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "center", marginBottom: 32 }}>
-            <ABWireframe variant={abVariant} />
-            <div key={abVariant} className="case-fade-in">
-              <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
-                {AB_VARIATIONS[abVariant].title}
-              </div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                {AB_VARIATIONS[abVariant].description}
-              </p>
+          <div key={abVariant} className="case-fade-in">
+            <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
+              {AB_VARIATIONS[abVariant].title}
             </div>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+              {AB_VARIATIONS[abVariant].description}
+            </p>
           </div>
         </Reveal>
 
