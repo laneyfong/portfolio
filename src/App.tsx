@@ -22,11 +22,26 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+function PageFadeInWrapper() {
+  const { pathname } = useLocation();
+
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <GlobalStyles />
+    <div
+      key={pathname}
+      style={{
+        animation: "pageFadeIn 1.2s ease-out forwards",
+      }}
+    >
+      <style>{`
+        @keyframes pageFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      `}</style>
       <Routes>
         <Route path="/" element={<Portfolio />} />
         <Route path="/about" element={<AboutPage />} />
@@ -36,6 +51,16 @@ function App() {
         <Route path="/idbridge-design" element={<IDBridgeCaseStudy />} />
         <Route path="/nvidia-ai-ux-agent" element={<NvidiaCaseStudy />} />
       </Routes>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <GlobalStyles />
+      <PageFadeInWrapper />
     </BrowserRouter>
   );
 }
