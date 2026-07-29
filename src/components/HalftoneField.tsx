@@ -5,10 +5,24 @@ import gradientVideo from "../assets/gradient-background.mp4";
 interface HalftoneFieldProps {
   width: number;
   height: number;
+  onVideoReady?: () => void;
 }
 
-const HalftoneField: FC<HalftoneFieldProps> = () => {
+const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlay = () => {
+      onVideoReady?.();
+    };
+
+    video.addEventListener("canplay", handleCanPlay);
+    return () => video.removeEventListener("canplay", handleCanPlay);
+  }, [onVideoReady]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
@@ -49,11 +63,12 @@ const HalftoneField: FC<HalftoneFieldProps> = () => {
         }
       `}</style>
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         style={{
           position: "absolute",
           inset: 0,

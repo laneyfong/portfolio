@@ -39,6 +39,7 @@ const Portfolio: FC = () => {
   const { ref: card3Ref, isVisible: card3Visible } = useScrollReveal();
 
   const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -109,9 +110,10 @@ const Portfolio: FC = () => {
         }
 
         .work-section-reveal {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: ${workVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          opacity: ${videoReady ? 1 : 0};
+          transform: ${videoReady ? "translateY(0)" : "translateY(20px)"};
+          animation: ${videoReady && workVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          transition: ${!videoReady ? "opacity 0.4s ease-out" : "none"};
         }
 
         .card-reveal {
@@ -162,7 +164,7 @@ const Portfolio: FC = () => {
             overflow: "visible",
           }}
         >
-          <HalftoneField width={dimensions.width} height={dimensions.height * 1.2} />
+          <HalftoneField width={dimensions.width} height={dimensions.height * 1.2} onVideoReady={() => setVideoReady(true)} />
           <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
