@@ -254,17 +254,18 @@ const DashboardWalkthrough: FC<{
         <div
           style={{
             position: "sticky",
-            bottom: 0,
+            bottom: "-120px",
             height: "100vh",
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "center",
             zIndex: 10,
             pointerEvents: "none",
+            overflow: "hidden",
           }}
         >
           {/* Dashboard */}
-          <div style={{ maxWidth: "400px", width: "100%", paddingBottom: 40, pointerEvents: "auto" }}>
+          <div style={{ maxWidth: "400px", width: "100%", pointerEvents: "auto" }}>
             <img
               src={dashboardImage}
               alt="MyShake dashboard showing pinned locations and earthquakes"
@@ -273,6 +274,7 @@ const DashboardWalkthrough: FC<{
                 height: "auto",
                 borderRadius: "20px",
                 boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15)",
+                display: "block",
               }}
             />
           </div>
