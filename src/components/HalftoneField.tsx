@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import { useEffect, useRef } from "react";
-import gradientVideo from "../assets/gradient-background.mp4";
 
 interface HalftoneFieldProps {
   width: number;
@@ -10,29 +9,19 @@ interface HalftoneFieldProps {
 
 const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleCanPlay = () => {
-      onVideoReady?.();
-    };
-
-    video.addEventListener("canplay", handleCanPlay);
-    return () => video.removeEventListener("canplay", handleCanPlay);
+    // CSS gradient loads instantly
+    onVideoReady?.();
   }, [onVideoReady]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (containerRef.current) {
-        // Trigger animation when tab becomes visible
         if (document.hidden === false) {
           containerRef.current.style.animation = "none";
-          // Trigger reflow to restart animation
           void containerRef.current.offsetHeight;
-          containerRef.current.style.animation = "gradientFadeIn 2s ease-out forwards";
+          containerRef.current.style.animation = "gradientFadeIn 1.2s ease-out 0.1s forwards";
         }
       }
     };
@@ -49,6 +38,8 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
         inset: 0,
         animation: "gradientFadeIn 1.2s ease-out 0.1s forwards",
         opacity: 0,
+        background: "linear-gradient(135deg, #fef5ff 0%, #f0f5ff 20%, #fffaf0 40%, #f5fff5 60%, #fff0f8 80%, #f8f5ff 100%)",
+        filter: "brightness(1.28) saturate(1.7) hue-rotate(5deg)",
         maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
         WebkitMaskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.3) 85%, rgba(0, 0, 0, 0) 100%)",
       }}
@@ -63,30 +54,6 @@ const HalftoneField: FC<HalftoneFieldProps> = ({ onVideoReady }) => {
           }
         }
       `}</style>
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          pointerEvents: "none",
-          zIndex: 0,
-          backgroundColor: "#ffffff",
-          opacity: 0.62,
-          filter: "brightness(1.28) blur(1.5px) saturate(1.7) hue-rotate(5deg)",
-          willChange: "transform",
-          transform: "translateZ(0)",
-        }}
-      >
-        <source src={gradientVideo} type="video/mp4" />
-      </video>
       <div
         style={{
           position: "absolute",
