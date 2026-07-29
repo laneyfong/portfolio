@@ -291,7 +291,7 @@ const ScrollDrivenProductShowcase: FC<{
           {/* Central Product */}
           <div
             style={{
-              maxWidth: "420px",
+              maxWidth: "340px",
               width: "100%",
               pointerEvents: "auto",
               zIndex: 20,
@@ -337,9 +337,9 @@ const ScrollDrivenProductShowcase: FC<{
                     [annotation.side]: 0,
                     top: "60px",
                     transform: "translateY(0)",
-                    width: "min(340px, 28vw)",
+                    width: "clamp(280px, 35vw, 380px)",
                     pointerEvents: isVisible ? "auto" : "none",
-                    padding: annotation.side === "left" ? "0 30px 0 0" : "0 0 0 30px",
+                    padding: annotation.side === "left" ? "0 40px 0 20px" : "0 20px 0 40px",
                   }}
                 >
                   <div
