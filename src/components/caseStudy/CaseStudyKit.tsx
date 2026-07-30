@@ -119,7 +119,7 @@ export const Kicker: FC<{ children: ReactNode }> = ({ children }) => (
 );
 
 export const SkillRow: FC<{ items: string[] }> = ({ items }) => (
-  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28, padding: "16px 20px", borderRadius: tokens.radius.md, background: tokens.color.offWhite }}>
+  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28, padding: "6px 0" }}>
     {items.map((item) => (
       <TagPill key={item}>{item}</TagPill>
     ))}
