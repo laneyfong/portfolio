@@ -633,66 +633,66 @@ const MyShakeCaseStudy: FC = () => {
           ]} />
         </Reveal>
 
-        <PullQuote>The only existing research we have is the active user rate.</PullQuote>
-        <img
-          src={myshakeBeforeScreens}
-          alt="MyShake existing screens: Map view with earthquake search, earthquake list view, and safety information pages"
-          style={{
-            width: "100%",
-            maxWidth: "640px",
-            height: "auto",
-            borderRadius: tokens.radius.md,
-            marginBottom: 48,
-            display: "block",
-            margin: "0 auto 48px",
-          }}
-        />
-
         <Reveal>
-          <InsightCard number={1} color="#FF6B6B" insight={<>Users prioritize <Emphasis>personal & family safety</Emphasis> above all</>} detail="In 5 interviews and usability testing, safety concerns ranked first—not property damage, not data." />
-          <InsightCard number={2} color="#4D96FF" insight={<>Competitors <Emphasis>distinguish alert types</Emphasis> visually</>} detail="3 apps analyzed separated early warnings from post-earthquake alerts. MyShake conflated them." />
-          <InsightCard number={3} color="#FFB84D" insight={<>Users demand <Emphasis>speed to critical information</Emphasis></>} detail="From 50+ survey responses: users want status in 2–3 taps, not through maps or dashboards." />
+          <div style={{ marginBottom: 60 }}>
+            <img
+              src={myshakeBeforeScreens}
+              alt="MyShake existing screens showing data-first approach"
+              style={{
+                width: "100%",
+                maxWidth: "640px",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                marginBottom: 24,
+                display: "block",
+                margin: "0 auto 24px",
+              }}
+            />
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.muted, textAlign: "center", margin: 0 }}>
+              The existing app prioritized earthquake data over personal safety.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal>
-          <div style={{ marginTop: 48, marginBottom: 32 }}>
-            <Kicker>Top priorities, in order</Kicker>
+          <div style={{ marginBottom: 60 }}>
+            <Kicker>What users actually want</Kicker>
             <RankedBars title="" items={["Personal Safety", "Family Safety", "Property Damage"]} />
           </div>
         </Reveal>
 
-        <Callout>Key research findings at a glance</Callout>
         <Reveal>
           <ResearchInsights />
         </Reveal>
 
-        <Callout>User journey: From awareness to churn.</Callout>
-        <Reveal>
-          <UserJourney
+        <div style={{ marginTop: 60 }}>
+          <Reveal>
+            <UserJourney
             stages={[
               {
                 label: "Awareness",
-                description: "Users feel concerned about earthquake risk in their area and want timely alerts",
+                description: "Users worry about earthquake safety and want timely alerts",
                 color: "#FF6B6B",
               },
               {
                 label: "Evaluation",
-                description: "They research available apps but are unsure if MyShake is better than alternatives",
+                description: "They search for apps but aren't sure which one is worth trusting",
                 color: "#FFA500",
               },
               {
                 label: "Adoption",
-                description: "Users download but engagement is low due to confusing UX and unclear value",
+                description: "Downloaded, but the confusing interface means they don't come back",
                 color: "#FFD93D",
               },
               {
                 label: "Churn",
-                description: "Without a crisis moment, users quickly uninstall—the app feels like a novelty",
+                description: "Without a real earthquake, it's just another app they'll uninstall",
                 color: "#A8A8A8",
               },
             ]}
-          />
-        </Reveal>
+            />
+          </Reveal>
+        </div>
       </section>
 
       {/* Synthesis */}
@@ -702,26 +702,27 @@ const MyShakeCaseStudy: FC = () => {
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
         </Reveal>
 
-        <Callout>The Problem: 7 steps to find a loved one.</Callout>
+        <div style={{ marginBottom: 60 }}>
+          <Reveal>
+            <StepsComparison />
+          </Reveal>
+        </div>
 
-        <Reveal>
-          <StepsComparison />
-        </Reveal>
-
-        <Reveal>
-          <HMWStatement>How might we help users find <Emphasis>a loved one's safety status</Emphasis> in under <Emphasis>3 taps</Emphasis>?</HMWStatement>
-        </Reveal>
+        <div style={{ marginBottom: 60 }}>
+          <Reveal>
+            <HMWStatement>How might we help users find <Emphasis>a loved one's safety status</Emphasis> in under <Emphasis>3 taps</Emphasis>?</HMWStatement>
+          </Reveal>
+        </div>
 
         <Reveal>
           <img
             src={myshakeStoryboard}
-            alt="User storyboard: Daniel clicks on his Mom's pinned location to quickly view the area, sees the bad earthquake in her region, clicks on the map to expand the view, and finds out she is unharmed and okay."
+            alt="User storyboard showing the ideal emergency flow"
             style={{
               width: "100%",
               maxWidth: "100%",
               height: "auto",
               borderRadius: tokens.radius.md,
-              marginBottom: 32,
               display: "block",
             }}
           />
@@ -761,83 +762,112 @@ const MyShakeCaseStudy: FC = () => {
           ))}
         </div>
 
-        <Reveal>
-          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "center", marginBottom: 48 }}>
-            <ABWireframe variant={abVariant} />
-            <div key={abVariant} className="case-fade-in">
-              <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
-                {AB_VARIATIONS[abVariant].title}
+        <div style={{ marginBottom: 80 }}>
+          <Reveal>
+            <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
+              <ABWireframe variant={abVariant} />
+              <div key={abVariant} className="case-fade-in">
+                <div style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, marginBottom: 24 }}>
+                  {AB_VARIATIONS.map((v, i) => (
+                    <button
+                      key={v.label}
+                      onClick={() => setAbVariant(i as 0 | 1)}
+                      aria-pressed={abVariant === i}
+                      className="case-btn-press"
+                      style={{
+                        padding: "8px 18px",
+                        borderRadius: tokens.radius.full,
+                        border: "none",
+                        cursor: "pointer",
+                        background: abVariant === i ? tokens.color.ink : "transparent",
+                        color: abVariant === i ? tokens.color.white : tokens.color.body,
+                        fontFamily: tokens.font.sans,
+                        fontSize: tokens.text.sm,
+                        fontWeight: tokens.weight.medium,
+                      }}
+                    >
+                      {v.label}
+                    </button>
+                  ))}
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
+                  {AB_VARIATIONS[abVariant].title}
+                </div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  {AB_VARIATIONS[abVariant].description}
+                </p>
               </div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                {AB_VARIATIONS[abVariant].description}
-              </p>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
-        <Reveal>
-          <DesignPrinciples />
-        </Reveal>
+        <div style={{ marginBottom: 100 }}>
+          <Reveal>
+            <div>
+              <div style={{ marginBottom: 48 }}>
+                <Kicker>Design principles</Kicker>
+              </div>
+              <DesignPrinciples />
+            </div>
+          </Reveal>
+        </div>
 
-        <div style={{ marginTop: 48 }}>
+        <div style={{ marginBottom: 100 }}>
           <Reveal>
             <IconHighlight
               icon="🎨"
               title="Color Strategy"
-              description="Tested four color variations to balance visual distinction with color-blind accessibility."
+              description="We tested four color variations to make magnitude badges visually distinct while remaining accessible for color blindness."
             />
-          </Reveal>
-          <Reveal>
-            <div style={{ marginTop: 32 }}>
+            <div style={{ marginTop: 48 }}>
               <ColorVariationGrid />
             </div>
           </Reveal>
         </div>
 
-        <div style={{ marginTop: 48 }}>
+        <div style={{ marginBottom: 100 }}>
           <Reveal>
             <IconHighlight
               icon="🔤"
-              title="Typography Selection"
-              description="Plus Jakarta Sans won—welcoming letterforms with clarity at small sizes beat Helvetica Neue."
+              title="Typography"
+              description="Plus Jakarta Sans gave us welcoming letterforms without sacrificing clarity at small sizes."
             />
-          </Reveal>
-          <Reveal>
-            <div style={{ marginTop: 32 }}>
+            <div style={{ marginTop: 48 }}>
               <TypeCompare />
             </div>
           </Reveal>
         </div>
 
-        <div style={{ marginTop: 48 }}>
+        <div style={{ marginBottom: 100 }}>
           <Reveal>
-            <EffortImpactMatrix />
+            <div>
+              <div style={{ marginBottom: 48 }}>
+                <Kicker>What gets built</Kicker>
+              </div>
+              <EffortImpactMatrix />
+            </div>
           </Reveal>
         </div>
 
-        <div style={{ marginTop: 48 }}>
-          <Reveal>
-            <IconHighlight
-              icon="📐"
-              title="Design System"
-              description="Created MyShake's first design system—WCAG-compliant, standardized components designed for clarity during crises."
-            />
-          </Reveal>
-          <Reveal>
-            <img
-              src={myshakeDesignSystem}
-              alt="MyShake design system showing components, radius options, input states, color palette, and earthquake magnitude scale"
-              style={{
-                width: "100%",
-                maxWidth: "100%",
-                height: "auto",
-                borderRadius: tokens.radius.md,
-                marginTop: 32,
-                display: "block",
-              }}
-            />
-          </Reveal>
-        </div>
+        <Reveal>
+          <IconHighlight
+            icon="📐"
+            title="Design System"
+            description="We created MyShake's first design system—every component WCAG-compliant and stress-tested for moments when users need clarity most."
+          />
+          <img
+            src={myshakeDesignSystem}
+            alt="MyShake design system"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              marginTop: 48,
+              display: "block",
+            }}
+          />
+        </Reveal>
       </section>
 
       {/* Solution */}
@@ -956,8 +986,8 @@ const MyShakeCaseStudy: FC = () => {
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
         <Reveal>
-          <InsightCard number={1} color="#6BCB77" insight={<><Emphasis>Research advocacy</Emphasis> shaped the entire IA</>} detail="Negotiated a scoped research plan against pressure to redesign without data. Those findings became the foundation." />
-          <InsightCard number={2} color="#4D96FF" insight={<><Emphasis>Design systems</Emphasis> enable scale</>} detail="Built the first design system for MyShake. Every component WCAG-compliant and stress-tested for crisis UX." />
+          <InsightCard number={1} color="#6BCB77" insight={<>The power of saying <Emphasis>no to pressure</Emphasis></>} detail="The client wanted to redesign immediately. I advocated for research instead. Those 5 interviews and surveys reshaped the entire IA." />
+          <InsightCard number={2} color="#4D96FF" insight={<>Design systems aren't <Emphasis>just nice to have</Emphasis></>} detail="Building the first system for MyShake meant every component was battle-tested for crisis moments. That foundation shipped with confidence." />
         </Reveal>
       </section>
 
