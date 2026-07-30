@@ -45,7 +45,6 @@ const SolutionBreakdown: FC = () => {
           style={{
             padding: 24,
             borderRadius: tokens.radius.md,
-            border: `1px solid ${feature.color}`,
             backgroundColor: `${feature.color}08`,
             display: "flex",
             flexDirection: "column",
