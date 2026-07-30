@@ -1045,11 +1045,15 @@ export const ProcessFlow: FC<{
 
 // ---------- New visual-first components ----------
 
-export const StatRow: FC<{ items: { icon: string; value: string; label: string }[] }> = ({ items }) => (
+export const StatRow: FC<{ items: { icon?: ReactNode; value: string; label: string }[] }> = ({ items }) => (
   <div style={{ display: "flex", gap: 40, justifyContent: "center", marginBottom: 48, flexWrap: "wrap" }}>
     {items.map((item, i) => (
       <div key={i} style={{ textAlign: "center", flex: "0 1 140px" }}>
-        <div style={{ fontSize: "36px", marginBottom: 8 }}>{item.icon}</div>
+        {item.icon && (
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
+            {item.icon}
+          </div>
+        )}
         <div style={{ fontFamily: tokens.font.sans, fontSize: "32px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 4 }}>
           {item.value}
         </div>

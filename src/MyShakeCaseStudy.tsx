@@ -31,6 +31,7 @@ import StepsComparison from "./components/caseStudy/StepsComparison";
 import IconHighlight from "./components/caseStudy/IconHighlight";
 import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
+import { NotesIcon, TargetIcon, AlertIcon, PinIcon } from "./components/icons/CaseStudyIcons";
 import myshakeThumbnail from "./assets/myshake-thumbnail.png";
 import myshakeFinalScreens from "./assets/myshake-final-screens.png";
 import myshakeAlert from "./assets/myshake-alert.png";
@@ -575,7 +576,9 @@ const MyShakeCaseStudy: FC = () => {
           <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
               <div style={{ textAlign: "center" }}>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: "32px", marginBottom: 12 }}>🔔</div>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
+                  <AlertIcon size={28} />
+                </div>
                 <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
                   EEW (Early Warning)
                 </div>
@@ -584,10 +587,12 @@ const MyShakeCaseStudy: FC = () => {
                 </div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                <div style={{ fontSize: "20px", opacity: 0.6 }}>→</div>
+                <div style={{ fontSize: "20px", opacity: 0.3, color: tokens.color.ink }}>→</div>
               </div>
               <div style={{ textAlign: "center" }}>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: "32px", marginBottom: 12 }}>📍</div>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
+                  <PinIcon size={28} />
+                </div>
                 <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
                   CEN (Post-Earthquake)
                 </div>
@@ -622,9 +627,9 @@ const MyShakeCaseStudy: FC = () => {
 
         <Reveal>
           <StatRow items={[
-            { icon: "👥", value: "5", label: "User Interviews" },
-            { icon: "📋", value: "50+", label: "Survey Responses" },
-            { icon: "🔍", value: "3", label: "Competitors Analyzed" },
+            { icon: <NotesIcon size={28} />, value: "5", label: "User Interviews" },
+            { icon: <NotesIcon size={28} />, value: "50+", label: "Survey Responses" },
+            { icon: <TargetIcon size={28} />, value: "3", label: "Competitors Analyzed" },
           ]} />
         </Reveal>
 
