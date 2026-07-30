@@ -7,24 +7,20 @@ import {
   TagPill,
   SectionHeading,
   Callout,
-  Paragraph,
   Kicker,
   SkillRow,
   SnapshotBar,
   FeatureCard,
-  IconCard,
-  FindingRow,
   PullQuote,
   BarCompare,
   RankedBars,
-  RadialStat,
   TypeCompare,
-  Bullets,
-  SearchIcon,
-  BellIcon,
-  ThumbsDownIcon,
   UserJourney,
   ProcessFlow,
+  StatRow,
+  InsightCard,
+  BigImpactStat,
+  HMWStatement,
 } from "./components/caseStudy/CaseStudyKit";
 import ColorVariationGrid from "./components/caseStudy/ColorVariationGrid";
 import EffortImpactMatrix from "./components/caseStudy/EffortImpactMatrix";
@@ -574,26 +570,36 @@ const MyShakeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Paragraph>
-          MyShake notifies users of nearby earthquakes — but it was conflating two very different kinds of alerts
-          under one undifferentiated UI:
-        </Paragraph>
-
         <Reveal>
-          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 40 }}>
-            <FeatureCard title="CEN">Informs users with a notification once an earthquake has occurred.</FeatureCard>
-            <FeatureCard title="EEW — Early Warning">
-              A government alert, available in CA, OR, and WA, that can notify users a few seconds before shaking starts.
-            </FeatureCard>
+          <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "32px", marginBottom: 12 }}>🔔</div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                  EEW (Early Warning)
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                  Seconds before shaking starts
+                </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                <div style={{ fontSize: "20px", opacity: 0.6 }}>→</div>
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "32px", marginBottom: 12 }}>📍</div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                  CEN (Post-Earthquake)
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                  Notification after shaking detected
+                </div>
+              </div>
+            </div>
           </div>
         </Reveal>
 
         <div style={{ marginBottom: 40 }}>
-          <Kicker>The Challenge</Kicker>
-          <Paragraph>
-            MyShake wanted to be the #1 earthquake app in the market by increasing engagement and growing the
-            active-user rate from 5% to 12.5%, while navigating a tight 3-month timeline and data privacy restrictions.
-          </Paragraph>
+          <Kicker>The Challenge: Grow from 5% to 12.5% active users in 3 months</Kicker>
           <Reveal>
             <BarCompare
               title="Engagement goal"
@@ -613,69 +619,41 @@ const MyShakeCaseStudy: FC = () => {
           <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
         </Reveal>
 
+        <Reveal>
+          <StatRow items={[
+            { icon: "👥", value: "5", label: "User Interviews" },
+            { icon: "📋", value: "50+", label: "Survey Responses" },
+            { icon: "🔍", value: "3", label: "Competitors Analyzed" },
+          ]} />
+        </Reveal>
+
         <PullQuote>The only existing research we have is the active user rate.</PullQuote>
-        <Paragraph>
-          No prior research existed. The app prioritized data visualization over crisis utility.
-        </Paragraph>
-
-        <Callout>The existing experience: A data-first tool, not a safety companion</Callout>
-        <Reveal>
-          <img
-            src={myshakeBeforeScreens}
-            alt="MyShake existing screens: Map view with earthquake search, earthquake list view, and safety information pages"
-            style={{
-              width: "100%",
-              maxWidth: "640px",
-              height: "auto",
-              borderRadius: tokens.radius.md,
-              marginBottom: 32,
-              display: "block",
-              margin: "0 auto 32px",
-            }}
-          />
-        </Reveal>
-
-        <PullQuote dark attribution="Stakeholder, kickoff meeting">
-          Skip research, just redesign.
-        </PullQuote>
-        <Paragraph>
-          I advocated for a middle ground: three scoped studies run in parallel within the timeline, rather than redesigning on assumptions.
-        </Paragraph>
-
-        <Callout>Users want a way to get to critical information quickly in a short amount of time.</Callout>
+        <img
+          src={myshakeBeforeScreens}
+          alt="MyShake existing screens: Map view with earthquake search, earthquake list view, and safety information pages"
+          style={{
+            width: "100%",
+            maxWidth: "640px",
+            height: "auto",
+            borderRadius: tokens.radius.md,
+            marginBottom: 48,
+            display: "block",
+            margin: "0 auto 48px",
+          }}
+        />
 
         <Reveal>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <FindingRow method="Competitive Analysis">
-              Simplicity and a half-list/half-map layout won. Competitors also drew a clear line between CEN
-              (crowdsourced alerts) and EEW (early-warning alerts) — something MyShake didn't do.
-            </FindingRow>
-            <FindingRow method="Usability Testing + User Interviews">
-              <RankedBars title="Top priorities, in order" items={["Personal Safety", "Family Safety", "Property Damage"]} />
-            </FindingRow>
-            <FindingRow method="User Survey">
-              Users didn't see the value in downloading the app at all — they felt they could just search for the
-              same information elsewhere.
-            </FindingRow>
-          </div>
+          <InsightCard number={1} color="#FF6B6B" insight="Users prioritize personal & family safety above all" detail="In 5 interviews and usability testing, safety concerns ranked first—not property damage, not data." />
+          <InsightCard number={2} color="#4D96FF" insight="Competitors distinguish alert types visually" detail="3 apps analyzed separated early warnings from post-earthquake alerts. MyShake conflated them." />
+          <InsightCard number={3} color="#FFB84D" insight="Users demand speed to critical information" detail="From 50+ survey responses: users want status in 2–3 taps, not through maps or dashboards." />
         </Reveal>
 
-        <div style={{ marginTop: 40 }}>
-          <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, marginBottom: 16 }}>
-            More of what surfaced from interviews
+        <Reveal>
+          <div style={{ marginTop: 48, marginBottom: 32 }}>
+            <Kicker>Top priorities, in order</Kicker>
+            <RankedBars title="" items={["Personal Safety", "Family Safety", "Property Damage"]} />
           </div>
-          <Reveal>
-            <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-              <IconCard icon={<SearchIcon />} title="What users wanted" items={["Earthquake Tracking", "Information Access", "Reporting"]} />
-              <IconCard icon={<BellIcon />} title="What users expected" items={["Early Alert", "Safety & Communication"]} />
-              <IconCard
-                icon={<ThumbsDownIcon />}
-                title="What users disliked"
-                items={["Poor UI aesthetics", "The confusing I felt shake button", "Lack of color on the map"]}
-              />
-            </div>
-          </Reveal>
-        </div>
+        </Reveal>
 
         <Callout>Key research findings at a glance</Callout>
         <Reveal>
@@ -724,10 +702,10 @@ const MyShakeCaseStudy: FC = () => {
           <StepsComparison />
         </Reveal>
 
-        <Callout>Empathizing with users to find the most intuitive flow.</Callout>
-        <Paragraph>
-          Storyboarded the ideal emergency flow: from "something happened" to "my people are safe."
-        </Paragraph>
+        <Reveal>
+          <HMWStatement>How might we help users find a loved one's safety status in under 3 taps?</HMWStatement>
+        </Reveal>
+
         <Reveal>
           <img
             src={myshakeStoryboard}
@@ -778,7 +756,7 @@ const MyShakeCaseStudy: FC = () => {
         </div>
 
         <Reveal>
-          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "center", marginBottom: 32 }}>
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "center", marginBottom: 48 }}>
             <ABWireframe variant={abVariant} />
             <div key={abVariant} className="case-fade-in">
               <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
@@ -791,63 +769,69 @@ const MyShakeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>Restructuring the landing page to minimize time-to-task for essential safety information.</Callout>
-
-        <Callout>Design principles: From data tool to safety companion.</Callout>
         <Reveal>
           <DesignPrinciples />
         </Reveal>
 
-        <Callout>Balancing color accessibility with visual hierarchy</Callout>
-        <Reveal>
-          <IconHighlight
-            icon="🎨"
-            title="Color Strategy"
-            description="Tested four color variations to balance visual distinction with color-blind accessibility."
-          />
-        </Reveal>
-        <Reveal>
-          <ColorVariationGrid />
-        </Reveal>
+        <div style={{ marginTop: 48 }}>
+          <Reveal>
+            <IconHighlight
+              icon="🎨"
+              title="Color Strategy"
+              description="Tested four color variations to balance visual distinction with color-blind accessibility."
+            />
+          </Reveal>
+          <Reveal>
+            <div style={{ marginTop: 32 }}>
+              <ColorVariationGrid />
+            </div>
+          </Reveal>
+        </div>
 
-        <Callout>Choosing a font that balances brand and accessibility.</Callout>
-        <Reveal>
-          <IconHighlight
-            icon="🔤"
-            title="Typography Selection"
-            description="Plus Jakarta Sans won—welcoming letterforms with clarity at small sizes beat Helvetica Neue."
-          />
-        </Reveal>
-        <Reveal>
-          <TypeCompare />
-        </Reveal>
+        <div style={{ marginTop: 48 }}>
+          <Reveal>
+            <IconHighlight
+              icon="🔤"
+              title="Typography Selection"
+              description="Plus Jakarta Sans won—welcoming letterforms with clarity at small sizes beat Helvetica Neue."
+            />
+          </Reveal>
+          <Reveal>
+            <div style={{ marginTop: 32 }}>
+              <TypeCompare />
+            </div>
+          </Reveal>
+        </div>
 
-        <Callout>Prioritizing features through effort-impact analysis</Callout>
-        <Reveal>
-          <EffortImpactMatrix />
-        </Reveal>
+        <div style={{ marginTop: 48 }}>
+          <Reveal>
+            <EffortImpactMatrix />
+          </Reveal>
+        </div>
 
-        <Reveal>
-          <IconHighlight
-            icon="📐"
-            title="Design System"
-            description="Created MyShake's first design system—WCAG-compliant, standardized components designed for clarity during crises."
-          />
-        </Reveal>
-        <Reveal>
-          <img
-            src={myshakeDesignSystem}
-            alt="MyShake design system showing components, radius options, input states, color palette, and earthquake magnitude scale"
-            style={{
-              width: "100%",
-              maxWidth: "100%",
-              height: "auto",
-              borderRadius: tokens.radius.md,
-              marginBottom: 32,
-              display: "block",
-            }}
-          />
-        </Reveal>
+        <div style={{ marginTop: 48 }}>
+          <Reveal>
+            <IconHighlight
+              icon="📐"
+              title="Design System"
+              description="Created MyShake's first design system—WCAG-compliant, standardized components designed for clarity during crises."
+            />
+          </Reveal>
+          <Reveal>
+            <img
+              src={myshakeDesignSystem}
+              alt="MyShake design system showing components, radius options, input states, color palette, and earthquake magnitude scale"
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                marginTop: 32,
+                display: "block",
+              }}
+            />
+          </Reveal>
+        </div>
       </section>
 
       {/* Solution */}
@@ -889,13 +873,10 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <RadialStat percent={45} label="Increase in user engagement, driven by the restructured information architecture." />
+          <BigImpactStat value="45%" label="Increase in user engagement" color={tokens.color.accent} />
         </Reveal>
 
         <Callout>The Solution: 3 steps instead of 7.</Callout>
-        <Paragraph>
-          Restructuring IA around personal safety—not data—cut critical information access from 7 steps to 3.
-        </Paragraph>
 
         <Reveal>
           <ProcessFlow
@@ -921,26 +902,6 @@ const MyShakeCaseStudy: FC = () => {
             ]}
           />
         </Reveal>
-
-        <Reveal>
-          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, margin: "32px 0" }}>
-            <FeatureCard title="Personal Safety">
-              Nearby earthquakes and pinned locations first — a movable map prioritizing loved ones and yourself.
-            </FeatureCard>
-            <FeatureCard title="Education & Engagement">
-              Safety information on what to do in an emergency, with gamified features to increase engagement.
-            </FeatureCard>
-            <FeatureCard title="Accessible Design">
-              Designed for all users and age groups — data made digestible, not just for scientists.
-            </FeatureCard>
-          </div>
-        </Reveal>
-        <div style={{ display: "inline-flex", marginBottom: 20 }}>
-          <TagPill>Goal: find a loved one in two taps</TagPill>
-        </div>
-        <Paragraph>
-          This shift guarantees a seamless experience and lower stress during crises.
-        </Paragraph>
       </section>
 
       {/* Interactive Dashboard Walkthrough */}
@@ -958,50 +919,24 @@ const MyShakeCaseStudy: FC = () => {
           <SkillRow items={["Micro-interactions", "Accessibility", "User Testing Refinements"]} />
         </Reveal>
 
-        <Callout>Designing every screen with intention</Callout>
         <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-            <div style={{ padding: 24, borderRadius: tokens.radius.md, backgroundColor: tokens.color.offWhite }}>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
-                Pinned Locations Hub
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                Pinned contacts appear instantly with real-time safety status—no menu digging needed.
-              </div>
-            </div>
-
-            <div style={{ padding: 24, borderRadius: tokens.radius.md, backgroundColor: tokens.color.offWhite }}>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
-                Alert Differentiation
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                EEW and CEN alerts look distinctly different, so users instantly know how to respond.
-              </div>
-            </div>
-
-            <div style={{ padding: 24, borderRadius: tokens.radius.md, backgroundColor: tokens.color.offWhite }}>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 12 }}>
-                Information Hierarchy
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                Critical safety info front-and-center. Maps and data secondary—never distracting during emergencies.
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginTop: 40 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
             <div>
-              <img src={myshakeAlert} alt="Alert notification screens showing differentiation" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body }}>
+              <img src={myshakeAlert} alt="Alert notification screens showing EEW vs CEN differentiation" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.textDark, marginBottom: 4 }}>
                 Alert Flows
               </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                EEW and CEN alerts visually distinct
+              </div>
             </div>
             <div>
-              <img src={myshakeDetails} alt="Detailed information screens with content hierarchy" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body }}>
+              <img src={myshakeDetails} alt="Detailed information screens with optimized content hierarchy" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.textDark, marginBottom: 4 }}>
                 Detail Screens
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                Information hierarchy optimized for crisis moments
               </div>
             </div>
           </div>
@@ -1014,18 +949,10 @@ const MyShakeCaseStudy: FC = () => {
           <SectionHeading>Reflection</SectionHeading>
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
-        <Bullets
-          items={[
-            <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>Design advocacy: </strong>
-              negotiated a scoped research plan against the urge to skip straight to redesign. The research findings reshaped the entire IA.
-            </>,
-            <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>What's next: </strong>
-              scale research further, add earthquake news feeds, and layer in more micro-interactions.
-            </>,
-          ]}
-        />
+        <Reveal>
+          <InsightCard number={1} color="#6BCB77" insight="Research advocacy shaped the entire IA" detail="Negotiated a scoped research plan against pressure to redesign without data. Those findings became the foundation." />
+          <InsightCard number={2} color="#4D96FF" insight="Design systems enable scale" detail="Built the first design system for MyShake. Every component WCAG-compliant and stress-tested for crisis UX." />
+        </Reveal>
       </section>
 
       {/* Next Case Study */}

@@ -1038,3 +1038,71 @@ export const ProcessFlow: FC<{
     </div>
   );
 };
+
+// ---------- New visual-first components ----------
+
+export const StatRow: FC<{ items: { icon: string; value: string; label: string }[] }> = ({ items }) => (
+  <div style={{ display: "flex", gap: 40, justifyContent: "center", marginBottom: 48, flexWrap: "wrap" }}>
+    {items.map((item, i) => (
+      <div key={i} style={{ textAlign: "center", flex: "0 1 140px" }}>
+        <div style={{ fontSize: "36px", marginBottom: 8 }}>{item.icon}</div>
+        <div style={{ fontFamily: tokens.font.sans, fontSize: "32px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 4 }}>
+          {item.value}
+        </div>
+        <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.muted, fontWeight: tokens.weight.regular }}>
+          {item.label}
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+export const InsightCard: FC<{ number: number; insight: string; detail?: string; color?: string }> = ({ number, insight, detail, color = tokens.color.accent }) => (
+  <div
+    style={{
+      display: "flex",
+      gap: 20,
+      marginBottom: 28,
+      paddingLeft: 20,
+      borderLeft: `4px solid ${color}`,
+      paddingTop: 12,
+      paddingBottom: 12,
+    }}
+  >
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "24px", fontWeight: tokens.weight.medium, color, flexShrink: 0 }}>
+      {number}
+    </div>
+    <div>
+      <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 4, lineHeight: tokens.leading.snug }}>
+        {insight}
+      </div>
+      {detail && (
+        <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+          {detail}
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+export const BigImpactStat: FC<{ value: string; label: string; color?: string }> = ({ value, label, color = tokens.color.accent }) => (
+  <div style={{ textAlign: "center", marginBottom: 48, padding: "40px 0" }}>
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "84px", fontWeight: tokens.weight.medium, color: tokens.color.ink, lineHeight: 1, marginBottom: 16 }}>
+      {value}
+    </div>
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", color: tokens.color.body, fontWeight: tokens.weight.regular, marginBottom: 12 }}>
+      {label}
+    </div>
+    <div style={{ width: "80px", height: "2px", background: color, margin: "0 auto", opacity: 0.6 }} />
+  </div>
+);
+
+export const HMWStatement: FC<{ children: ReactNode }> = ({ children }) => (
+  <div style={{ textAlign: "center", marginBottom: 48, paddingTop: 32, paddingBottom: 32 }}>
+    <div style={{ width: "60px", height: "1px", background: tokens.color.cardBorder, margin: "0 auto 24px" }} />
+    <div style={{ fontFamily: tokens.font.serifItalic, fontSize: "20px", fontStyle: "italic", color: tokens.color.textDark, maxWidth: 600, margin: "0 auto", lineHeight: tokens.leading.snug }}>
+      {children}
+    </div>
+    <div style={{ width: "60px", height: "1px", background: tokens.color.cardBorder, margin: "24px auto 0" }} />
+  </div>
+);
