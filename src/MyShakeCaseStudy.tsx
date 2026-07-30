@@ -519,11 +519,10 @@ const MyShakeCaseStudy: FC = () => {
               reason to return.
             </FeatureCard>
             <FeatureCard title="Solution">
-              Redesigned MyShake from a passive information tool into a high-stakes navigation utility, with instant
-              access to pinned family locations and critical safety status.
+              Redesigned MyShake from passive info tool into a safety-first utility for checking loved ones instantly.
             </FeatureCard>
             <FeatureCard title="Result">
-              Users now have instant access to loved ones' safety status — transforming MyShake from a curiosity app into a trusted safety companion they return to regularly.
+              Users now instantly access loved ones' safety status, transforming MyShake into a trusted companion.
             </FeatureCard>
           </div>
         </Reveal>
@@ -616,7 +615,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <PullQuote>The only existing research we have is the active user rate.</PullQuote>
         <Paragraph>
-          No existing user research existed. The app leaned on data visualization instead of utility during a crisis.
+          No prior research existed. The app prioritized data visualization over crisis utility.
         </Paragraph>
 
         <Callout>The existing experience: A data-first tool, not a safety companion</Callout>
@@ -727,8 +726,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <Callout>Empathizing with users to find the most intuitive flow.</Callout>
         <Paragraph>
-          We storyboarded the ideal emergency flow end-to-end, drawing on our competitive analysis and interview
-          findings to map the fastest path from "something happened" to "my people are safe."
+          Storyboarded the ideal emergency flow: from "something happened" to "my people are safe."
         </Paragraph>
         <Reveal>
           <img
@@ -805,7 +803,7 @@ const MyShakeCaseStudy: FC = () => {
           <IconHighlight
             icon="🎨"
             title="Color Strategy"
-            description="Magnitude badges needed to be visually distinct and accessible for color blindness. We explored four variations to find the right saturation and hue balance."
+            description="Tested four color variations to balance visual distinction with color-blind accessibility."
           />
         </Reveal>
         <Reveal>
@@ -817,7 +815,7 @@ const MyShakeCaseStudy: FC = () => {
           <IconHighlight
             icon="🔤"
             title="Typography Selection"
-            description="Tested Helvetica Neue against Plus Jakarta Sans. Plus Jakarta Sans won for its welcoming letterforms without sacrificing clarity at small sizes."
+            description="Plus Jakarta Sans won—welcoming letterforms with clarity at small sizes beat Helvetica Neue."
           />
         </Reveal>
         <Reveal>
@@ -833,7 +831,7 @@ const MyShakeCaseStudy: FC = () => {
           <IconHighlight
             icon="📐"
             title="Design System"
-            description="Authored MyShake's first design system — standardizing components, typography, and color scales. Every component was WCAG-compliant and designed for clarity in high-stress moments."
+            description="Created MyShake's first design system—WCAG-compliant, standardized components designed for clarity during crises."
           />
         </Reveal>
         <Reveal>
@@ -896,7 +894,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <Callout>The Solution: 3 steps instead of 7.</Callout>
         <Paragraph>
-          By restructuring the information architecture around personal safety instead of data visualization, we reduced the time-to-critical-information from 7 steps to just 3.
+          Restructuring IA around personal safety—not data—cut critical information access from 7 steps to 3.
         </Paragraph>
 
         <Reveal>
@@ -941,8 +939,7 @@ const MyShakeCaseStudy: FC = () => {
           <TagPill>Goal: find a loved one in two taps</TagPill>
         </div>
         <Paragraph>
-          This strategic change guarantees a seamless, life-critical experience and meaningfully lowers stress
-          during a crisis.
+          This shift guarantees a seamless experience and lower stress during crises.
         </Paragraph>
       </section>
 
@@ -969,7 +966,7 @@ const MyShakeCaseStudy: FC = () => {
                 Pinned Locations Hub
               </div>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                The dashboard prioritizes loved ones above all else. Pinned contacts appear instantly with real-time safety status—no digging through menus.
+                Pinned contacts appear instantly with real-time safety status—no menu digging needed.
               </div>
             </div>
 
@@ -978,7 +975,7 @@ const MyShakeCaseStudy: FC = () => {
                 Alert Differentiation
               </div>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                EEW (early warning) and CEN (post-earthquake) alerts look distinctly different. Users know instantly what type of alert they're seeing and how to respond.
+                EEW and CEN alerts look distinctly different, so users instantly know how to respond.
               </div>
             </div>
 
@@ -987,7 +984,7 @@ const MyShakeCaseStudy: FC = () => {
                 Information Hierarchy
               </div>
               <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                Critical safety info is front-and-center. Exploratory content (maps, data) lives secondary—never competing for attention during emergencies.
+                Critical safety info front-and-center. Maps and data secondary—never distracting during emergencies.
               </div>
             </div>
           </div>
