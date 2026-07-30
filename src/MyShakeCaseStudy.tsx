@@ -512,21 +512,6 @@ const MyShakeCaseStudy: FC = () => {
           />
         </Reveal>
 
-        <Reveal>
-          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
-            <FeatureCard title="Problem">
-              The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no
-              reason to return.
-            </FeatureCard>
-            <FeatureCard title="Solution">
-              Redesigned MyShake from passive info tool into a safety-first utility for checking loved ones instantly.
-            </FeatureCard>
-            <FeatureCard title="Result">
-              Users now instantly access loved ones' safety status, transforming MyShake into a trusted companion.
-            </FeatureCard>
-          </div>
-        </Reveal>
-
         <Reveal delay={100}>
           <div style={{
             background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
@@ -539,6 +524,21 @@ const MyShakeCaseStudy: FC = () => {
             minHeight: 400
           }}>
             <img src={myshakeThumbnail} alt="MyShake redesigned app - the new safety-focused design" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)" }} />
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
+            <FeatureCard title="Problem">
+              The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no
+              reason to return.
+            </FeatureCard>
+            <FeatureCard title="Solution">
+              Redesigned MyShake from passive info tool into a safety-first utility for checking loved ones instantly.
+            </FeatureCard>
+            <FeatureCard title="Result">
+              Users now instantly access loved ones' safety status, transforming MyShake into a trusted companion.
+            </FeatureCard>
           </div>
         </Reveal>
 
