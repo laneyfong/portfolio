@@ -43,6 +43,10 @@ export const Italic: FC<{ children: ReactNode }> = ({ children }) => (
   <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>{children}</em>
 );
 
+export const Emphasis: FC<{ children: ReactNode }> = ({ children }) => (
+  <span style={{ fontFamily: tokens.font.serifItalic, fontStyle: "normal", fontWeight: 500 }}>{children}</span>
+);
+
 export const TagPill: FC<{ children: string }> = ({ children }) => (
   <span
     style={{
@@ -1057,7 +1061,7 @@ export const StatRow: FC<{ items: { icon: string; value: string; label: string }
   </div>
 );
 
-export const InsightCard: FC<{ number: number; insight: string; detail?: string; color?: string }> = ({ number, insight, detail, color = tokens.color.accent }) => (
+export const InsightCard: FC<{ number: number; insight: ReactNode; detail?: ReactNode; color?: string }> = ({ number, insight, detail, color = tokens.color.accent }) => (
   <div
     style={{
       display: "flex",

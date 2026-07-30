@@ -4,6 +4,7 @@ import { tokens } from "./tokens";
 import {
   Reveal,
   Italic,
+  Emphasis,
   TagPill,
   SectionHeading,
   Callout,
@@ -643,9 +644,9 @@ const MyShakeCaseStudy: FC = () => {
         />
 
         <Reveal>
-          <InsightCard number={1} color="#FF6B6B" insight="Users prioritize personal & family safety above all" detail="In 5 interviews and usability testing, safety concerns ranked first—not property damage, not data." />
-          <InsightCard number={2} color="#4D96FF" insight="Competitors distinguish alert types visually" detail="3 apps analyzed separated early warnings from post-earthquake alerts. MyShake conflated them." />
-          <InsightCard number={3} color="#FFB84D" insight="Users demand speed to critical information" detail="From 50+ survey responses: users want status in 2–3 taps, not through maps or dashboards." />
+          <InsightCard number={1} color="#FF6B6B" insight={<>Users prioritize <Emphasis>personal & family safety</Emphasis> above all</>} detail="In 5 interviews and usability testing, safety concerns ranked first—not property damage, not data." />
+          <InsightCard number={2} color="#4D96FF" insight={<>Competitors <Emphasis>distinguish alert types</Emphasis> visually</>} detail="3 apps analyzed separated early warnings from post-earthquake alerts. MyShake conflated them." />
+          <InsightCard number={3} color="#FFB84D" insight={<>Users demand <Emphasis>speed to critical information</Emphasis></>} detail="From 50+ survey responses: users want status in 2–3 taps, not through maps or dashboards." />
         </Reveal>
 
         <Reveal>
@@ -703,7 +704,7 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <HMWStatement>How might we help users find a loved one's safety status in under 3 taps?</HMWStatement>
+          <HMWStatement>How might we help users find <Emphasis>a loved one's safety status</Emphasis> in under <Emphasis>3 taps</Emphasis>?</HMWStatement>
         </Reveal>
 
         <Reveal>
@@ -950,8 +951,8 @@ const MyShakeCaseStudy: FC = () => {
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
         <Reveal>
-          <InsightCard number={1} color="#6BCB77" insight="Research advocacy shaped the entire IA" detail="Negotiated a scoped research plan against pressure to redesign without data. Those findings became the foundation." />
-          <InsightCard number={2} color="#4D96FF" insight="Design systems enable scale" detail="Built the first design system for MyShake. Every component WCAG-compliant and stress-tested for crisis UX." />
+          <InsightCard number={1} color="#6BCB77" insight={<><Emphasis>Research advocacy</Emphasis> shaped the entire IA</>} detail="Negotiated a scoped research plan against pressure to redesign without data. Those findings became the foundation." />
+          <InsightCard number={2} color="#4D96FF" insight={<><Emphasis>Design systems</Emphasis> enable scale</>} detail="Built the first design system for MyShake. Every component WCAG-compliant and stress-tested for crisis UX." />
         </Reveal>
       </section>
 
