@@ -508,7 +508,7 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 720 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
             I led the design with 2 engineers, starting mobile-first then expanding to tablet. The app needed to feel fast and intuitive during high-stress moments — every tap counted.
           </p>
         </Reveal>
@@ -578,7 +578,7 @@ const MyShakeCaseStudy: FC = () => {
         <div style={{ marginBottom: 40 }}>
           <Kicker>The Challenge: Grow from 5% to 12.5% active users in 3 months</Kicker>
           <Reveal>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 620 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
               With only 5% of MyShake's 3.8M users actively engaging with the app during earthquakes, the team needed to increase engagement to 12.5%. The current interface's data-heavy approach and confusing alert system meant users weren't finding the information they needed when seconds mattered most.
             </p>
           </Reveal>
@@ -633,7 +633,7 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ marginBottom: 60 }}>
             <Kicker>What users actually want</Kicker>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 620 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 440 }}>
               From 5 interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision. Family safety ranked second—users wanted to check on loved ones in seconds, not minutes. Alert type confusion (reported by 2 of 5 users) meant we needed to visually distinguish between EEW and CEN notifications.
             </p>
             <ExpandableRankedList items={[
@@ -687,7 +687,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <div style={{ marginBottom: 60 }}>
           <Reveal>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 620 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
               The old flow required users to navigate through 7 screens just to check on a single loved one: launch app → navigate to search → enter name → wait for results → verify location → check status → confirm safety. During an earthquake, this friction meant users gave up. Our redesign cuts this to 3 steps by putting pinned loved ones on the dashboard and making status checks instant.
             </p>
             <StepsComparison />
@@ -1004,10 +1004,10 @@ const MyShakeCaseStudy: FC = () => {
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 720 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
             The most important moment was saying no to immediate redesign pressure and advocating for research instead. Those 5 interviews and 50+ survey responses fundamentally shaped the information architecture. We built MyShake's first design system—every component battle-tested for crisis moments. Cutting user friction from 7 steps to 3, increasing engagement by 45%, and seeing the app shipped with our foundation meant everything.
           </p>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 720 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
             I'm deeply proud of what we took as a win together. This redesign shipped because my two engineering partners believed in user research, ruthless iteration, and accessibility-first thinking. To the team: thank you for building something that helps people stay safe during earthquakes.
           </p>
         </Reveal>

@@ -444,10 +444,10 @@ const NvidiaCaseStudy: FC = () => {
           <SectionHeading>This project taught me about designing for technical complexity and trust</SectionHeading>
         </Reveal>
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 720 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
             The biggest insight from leading research across a 4-person team was recognizing when data wasn't working—we cut the survey when response rates showed it wouldn't be usable, rather than forcing it to a finish line. But the real breakthrough was understanding that engineers' gap between what they want (trustworthy AI, simple tools) and what they actually do (rely on Slack threads and feedback buttons) is a workflow-trust problem, not a screen redesign. That reframing is what's guiding everything next.
           </p>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 720 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
             I'm incredibly proud of the win we're taking together. To the research, design, and engineering team: thank you for believing that understanding engineers deeply would change how we build AI that they can trust. This collaboration is what made the difference.
           </p>
         </Reveal>

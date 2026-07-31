@@ -640,7 +640,7 @@ const IDBridgeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <div style={{ maxWidth: 440, margin: "0 auto" }}>
             <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, margin: 0 }}>
               The most important lesson: design cannot be replaced with AI—it lacks the empathy one human has for another. AI accelerated our research and ideation, but we had to manually verify every AI-sourced insight against lived experience to avoid mixing false authority with truth. In six hours, we learned that ruthless prioritization reveals what actually matters: verification + connection. The most resonant ideas emerged when we stepped back from AI suggestions and centered the voices of the people we were designing for.
             </p>
