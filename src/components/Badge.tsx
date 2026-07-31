@@ -108,21 +108,11 @@ const Badge: FC<BadgeProps> = ({
         }
       `}</style>
 
-          {/* FRONT: Blue accent area with animated texture background */}
+          {/* FRONT: Blue accent area */}
           <div
             style={{
               flex: 1,
               background: "#8DC8E4",
-              backgroundImage: `
-                radial-gradient(circle at 15% 25%, rgba(0,0,0,0.25) 2px, transparent 2px),
-                radial-gradient(circle at 55% 65%, rgba(0,0,0,0.2) 2.5px, transparent 2.5px),
-                radial-gradient(circle at 75% 15%, rgba(0,0,0,0.22) 1.5px, transparent 1.5px),
-                radial-gradient(circle at 35% 75%, rgba(0,0,0,0.28) 2px, transparent 2px),
-                radial-gradient(circle at 85% 45%, rgba(0,0,0,0.24) 1.8px, transparent 1.8px),
-                radial-gradient(circle at 45% 50%, rgba(0,0,0,0.2) 2px, transparent 2px)
-              `,
-              backgroundSize: "80px 80px, 120px 120px, 100px 100px, 110px 110px, 90px 90px, 140px 140px",
-              backgroundPosition: "0 0, 0 0, 0 0, 0 0, 0 0, 0 0",
               borderRadius: "16px",
               display: "flex",
               alignItems: "center",
@@ -130,28 +120,8 @@ const Badge: FC<BadgeProps> = ({
               position: "relative",
               overflow: "hidden",
               marginBottom: "16px",
-              animation: "grainFlow 6s ease-in-out infinite",
             }}
           >
-            <style>{`
-              @keyframes grainFlow {
-                0% {
-                  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
-                }
-                25% {
-                  background-position: 10px 10px, 15px 15px, 5px 5px, 20px 20px, 8px 8px, 10px 10px;
-                }
-                50% {
-                  background-position: 20px 20px, 30px 30px, 10px 10px, 40px 40px, 16px 16px, 20px 20px;
-                }
-                75% {
-                  background-position: 10px 10px, 15px 15px, 5px 5px, 20px 20px, 8px 8px, 10px 10px;
-                }
-                100% {
-                  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
-                }
-              }
-            `}</style>
 
             {/* Photo/Image */}
             {photo && (
