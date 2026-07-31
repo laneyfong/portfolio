@@ -3,8 +3,8 @@ export const tokens = {
   color: {
     white: "#FFFFFF",
     offWhite: "#FAFAFB",
-    ink: "#626262",
-    textDark: "#626262",
+    ink: "#2D2D2D",
+    textDark: "#2D2D2D",
     accent: "#8DC8E4",
     body: "#626262",
     stroke: "#F1F0EE",
@@ -13,7 +13,7 @@ export const tokens = {
     // contrast, failing WCAG AA (needs 4.5:1 for text). #636363 clears 4.5:1 even
     // against the translucent nav-pill background (~#EAEAEA), the lightest surface
     // this color sits on, while still reading as "de-emphasized" next to body/ink.
-    muted: "#848484",
+    muted: "#757575",
     navBg: "rgba(40, 41, 43, 0.10)",
     navActive: "rgba(40, 41, 43, 0.80)",
     cardBorder: "rgba(40, 41, 43, 0.05)",
