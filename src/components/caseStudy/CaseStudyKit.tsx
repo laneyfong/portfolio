@@ -1166,7 +1166,7 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
                 {item.title}
               </div>
             </div>
-            <div style={{ fontSize: "18px", color: tokens.color.accent, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center" }}>
+            <div style={{ fontSize: "24px", color: tokens.color.muted, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", width: "32px" }}>
               ⌄
             </div>
           </button>
