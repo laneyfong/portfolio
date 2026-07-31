@@ -1016,7 +1016,8 @@ const MyShakeCaseStudy: FC = () => {
               style={{
                 width: "100%",
                 maxWidth: "100%",
-                height: "auto",
+                aspectRatio: "16/9",
+                objectFit: "cover",
                 borderRadius: tokens.radius.md,
                 display: "block",
               }}
