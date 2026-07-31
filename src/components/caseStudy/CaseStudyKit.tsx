@@ -1103,7 +1103,7 @@ export const BigImpactStat: FC<{ value: string; label: string; color?: string }>
 export const HMWStatement: FC<{ children: ReactNode }> = ({ children }) => (
   <div style={{ textAlign: "center", marginBottom: 48, paddingTop: 32, paddingBottom: 32 }}>
     <div style={{ width: "60px", height: "1px", background: tokens.color.cardBorder, margin: "0 auto 24px" }} />
-    <div style={{ fontFamily: tokens.font.serifItalic, fontSize: "20px", fontStyle: "italic", color: tokens.color.textDark, maxWidth: 600, margin: "0 auto", lineHeight: tokens.leading.snug }}>
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "20px", color: tokens.color.textDark, maxWidth: 600, margin: "0 auto", lineHeight: tokens.leading.snug }}>
       {children}
     </div>
     <div style={{ width: "60px", height: "1px", background: tokens.color.cardBorder, margin: "24px auto 0" }} />
