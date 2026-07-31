@@ -1109,3 +1109,57 @@ export const HMWStatement: FC<{ children: ReactNode }> = ({ children }) => (
     <div style={{ width: "60px", height: "1px", background: tokens.color.cardBorder, margin: "24px auto 0" }} />
   </div>
 );
+
+export const ExpandableRankedList: FC<{ items: { rank: number; title: string; detail: string }[] }> = ({ items }) => {
+  const [expanded, setExpanded] = useState<number | null>(null);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+      {items.map((item) => (
+        <button
+          key={item.rank}
+          onClick={() => setExpanded(expanded === item.rank ? null : item.rank)}
+          style={{
+            width: "100%",
+            textAlign: "left",
+            padding: "20px 0",
+            borderBottom: `1px solid ${tokens.color.cardBorder}`,
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontFamily: tokens.font.sans,
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = tokens.color.offWhite;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "transparent";
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
+            <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.muted, minWidth: "24px" }}>
+              {item.rank}
+            </div>
+            <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>
+              {item.title}
+            </div>
+          </div>
+          <div style={{ fontSize: "18px", color: tokens.color.muted, transition: "transform 0.2s ease", transform: expanded === item.rank ? "rotate(180deg)" : "rotate(0deg)" }}>
+            ↓
+          </div>
+        </button>
+      ))}
+      {expanded !== null && (
+        <div style={{ padding: "20px 40px", background: tokens.color.offWhite, borderBottom: `1px solid ${tokens.color.cardBorder}` }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+            {items.find((i) => i.rank === expanded)?.detail}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};

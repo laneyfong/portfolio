@@ -14,7 +14,6 @@ import {
   FeatureCard,
   PullQuote,
   BarCompare,
-  RankedBars,
   TypeCompare,
   UserJourney,
   ProcessFlow,
@@ -22,6 +21,7 @@ import {
   InsightCard,
   BigImpactStat,
   HMWStatement,
+  ExpandableRankedList,
 } from "./components/caseStudy/CaseStudyKit";
 import ColorVariationGrid from "./components/caseStudy/ColorVariationGrid";
 import EffortImpactMatrix from "./components/caseStudy/EffortImpactMatrix";
@@ -657,7 +657,11 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ marginBottom: 60 }}>
             <Kicker>What users actually want</Kicker>
-            <RankedBars title="" items={["Personal Safety", "Family Safety", "Property Damage"]} />
+            <ExpandableRankedList items={[
+              { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do." },
+              { rank: 2, title: "Family Safety", detail: "After personal safety, knowing that loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes." },
+              { rank: 3, title: "Property Damage", detail: "While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first." },
+            ]} />
           </div>
         </Reveal>
 
