@@ -44,6 +44,7 @@ import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakeCarouselNote from "./assets/myshake-carousel-note.png";
 import myshakePrepareNote from "./assets/myshake-prepare-note.png";
 import myshakeNotificationsNote from "./assets/myshake-notifications-note.png";
+import myshakeTeam from "./assets/myshake-team.jpg";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -1005,6 +1006,22 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <InsightCard number={1} color="#6BCB77" insight={<>The power of saying <Emphasis>no to pressure</Emphasis></>} detail="The client wanted to redesign immediately. I advocated for research instead. Those 5 interviews and surveys reshaped the entire IA." />
           <InsightCard number={2} color="#4D96FF" insight={<>Design systems aren't <Emphasis>just nice to have</Emphasis></>} detail="Building the first system for MyShake meant every component was battle-tested for crisis moments. That foundation shipped with confidence." />
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginTop: 80 }}>
+            <img
+              src={myshakeTeam}
+              alt="MyShake team celebrating the project launch"
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                display: "block",
+              }}
+            />
+          </div>
         </Reveal>
       </section>
 
