@@ -599,7 +599,7 @@ const MyShakeCaseStudy: FC = () => {
       {/* Research */}
       <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Research</SectionHeading>
+          <SectionHeading>I started with direct user research to understand the core problem</SectionHeading>
           <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
         </Reveal>
 
@@ -680,7 +680,7 @@ const MyShakeCaseStudy: FC = () => {
       {/* Synthesis */}
       <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Synthesis</SectionHeading>
+          <SectionHeading>I synthesized insights into a user-centered solution</SectionHeading>
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
         </Reveal>
 
@@ -717,7 +717,7 @@ const MyShakeCaseStudy: FC = () => {
       {/* Ideation */}
       <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Ideation</SectionHeading>
+          <SectionHeading>I explored multiple design directions and tested with users</SectionHeading>
           <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
         </Reveal>
 
@@ -832,7 +832,7 @@ const MyShakeCaseStudy: FC = () => {
       {/* Solution */}
       <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Solution</SectionHeading>
+          <SectionHeading>The final design prioritizes safety and clarity during emergencies</SectionHeading>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
           <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
         </Reveal>
@@ -999,7 +999,7 @@ const MyShakeCaseStudy: FC = () => {
       {/* Reflection */}
       <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Reflection</SectionHeading>
+          <SectionHeading>This project taught me the power of saying no and advocating for research</SectionHeading>
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
         <Reveal>
