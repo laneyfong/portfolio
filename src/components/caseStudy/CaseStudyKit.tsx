@@ -1046,18 +1046,13 @@ export const ProcessFlow: FC<{
 // ---------- New visual-first components ----------
 
 export const StatRow: FC<{ items: { icon?: ReactNode; value: string; label: string }[] }> = ({ items }) => (
-  <div style={{ display: "flex", gap: 40, justifyContent: "center", marginBottom: 48, flexWrap: "wrap" }}>
+  <div style={{ display: "grid", gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 24, marginBottom: 48 }}>
     {items.map((item, i) => (
-      <div key={i} style={{ textAlign: "center", flex: "0 1 140px" }}>
-        {item.icon && (
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
-            {item.icon}
-          </div>
-        )}
-        <div style={{ fontFamily: tokens.font.sans, fontSize: "32px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 4 }}>
+      <div key={i} style={{ textAlign: "center", padding: "28px 24px", borderRadius: tokens.radius.md, background: tokens.color.offWhite }}>
+        <div style={{ fontFamily: tokens.font.sans, fontSize: "48px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8, lineHeight: 1 }}>
           {item.value}
         </div>
-        <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.muted, fontWeight: tokens.weight.regular }}>
+        <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, fontWeight: tokens.weight.regular, lineHeight: tokens.leading.snug }}>
           {item.label}
         </div>
       </div>
