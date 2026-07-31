@@ -37,8 +37,7 @@ const StepsComparison: FC = () => {
                 gap: 12,
                 padding: "12px 16px",
                 borderRadius: tokens.radius.sm,
-                backgroundColor: tokens.color.offWhite,
-                border: `1px solid ${tokens.color.cardBorder}`,
+                backgroundColor: "#ECECEC",
               }}
             >
               <div
@@ -107,8 +106,7 @@ const StepsComparison: FC = () => {
                 gap: 12,
                 padding: "12px 16px",
                 borderRadius: tokens.radius.sm,
-                backgroundColor: "#22C55E20",
-                border: `1px solid #22C55E`,
+                backgroundColor: "#22C55E30",
               }}
             >
               <div
