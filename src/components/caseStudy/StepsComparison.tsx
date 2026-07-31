@@ -9,7 +9,7 @@ const StepsComparison: FC = () => {
         gridTemplateColumns: "1fr 1fr",
         gap: 40,
         marginBottom: 32,
-        alignItems: "center",
+        alignItems: "flex-start",
       }}
     >
       {/* Before */}
