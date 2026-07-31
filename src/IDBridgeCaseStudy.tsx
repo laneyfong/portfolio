@@ -640,12 +640,14 @@ const IDBridgeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 720 }}>
-            The most important lesson: design cannot be replaced with AI—it lacks the empathy one human has for another. AI accelerated our research and ideation, but we had to manually verify every AI-sourced insight against lived experience to avoid mixing false authority with truth. In six hours, we learned that ruthless prioritization reveals what actually matters: verification + connection. The most resonant ideas emerged when we stepped back from AI suggestions and centered the voices of the people we were designing for.
-          </p>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 720 }}>
-            I'm proud of the impact we created together in an incredibly tight window. To my team: thank you for approaching this work with care, integrity, and a genuine commitment to building with the underbanked community, not for them. That human-centered approach is what made this redesign possible.
-          </p>
+          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, margin: 0 }}>
+              The most important lesson: design cannot be replaced with AI—it lacks the empathy one human has for another. AI accelerated our research and ideation, but we had to manually verify every AI-sourced insight against lived experience to avoid mixing false authority with truth. In six hours, we learned that ruthless prioritization reveals what actually matters: verification + connection. The most resonant ideas emerged when we stepped back from AI suggestions and centered the voices of the people we were designing for.
+            </p>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 0, marginTop: 32 }}>
+              I'm proud of the impact we created together in an incredibly tight window. To my team: thank you for approaching this work with care, integrity, and a genuine commitment to building with the underbanked community, not for them. That human-centered approach is what made this redesign possible.
+            </p>
+          </div>
         </Reveal>
       </section>
     </CaseStudyShell>
