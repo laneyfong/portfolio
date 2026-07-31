@@ -31,7 +31,7 @@ import StepsComparison from "./components/caseStudy/StepsComparison";
 import IconHighlight from "./components/caseStudy/IconHighlight";
 import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
-import { NotesIcon, TargetIcon, AlertIcon, PinIcon } from "./components/icons/CaseStudyIcons";
+import { AlertIcon, PinIcon } from "./components/icons/CaseStudyIcons";
 import myshakeThumbnail from "./assets/myshake-thumbnail.png";
 import myshakeFinalScreens from "./assets/myshake-final-screens.png";
 import myshakeAlert from "./assets/myshake-alert.png";
