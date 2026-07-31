@@ -33,7 +33,6 @@ import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import { AlertIcon, PinIcon } from "./components/icons/CaseStudyIcons";
 import myshakeThumbnail from "./assets/myshake-thumbnail.png";
-import myshakeFinalScreens from "./assets/myshake-final-screens.png";
 import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
@@ -49,6 +48,7 @@ import myshakeNotificationsNote from "./assets/myshake-notifications-note.png";
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
   { id: "research", label: "Research" },
+  { id: "design-decisions", label: "Design Decisions" },
   { id: "synthesis", label: "Synthesis" },
   { id: "ideation", label: "Ideation" },
   { id: "solution", label: "Solution" },
@@ -510,6 +510,12 @@ const MyShakeCaseStudy: FC = () => {
           />
         </Reveal>
 
+        <Reveal>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 720 }}>
+            I led the design with 2 engineers, starting mobile-first then expanding to tablet. The app needed to feel fast and intuitive during high-stress moments — every tap counted.
+          </p>
+        </Reveal>
+
         <Reveal delay={100}>
           <div style={{
             background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
@@ -537,38 +543,6 @@ const MyShakeCaseStudy: FC = () => {
             <FeatureCard title="Result">
               Users now instantly access loved ones' safety status, transforming MyShake into a trusted companion.
             </FeatureCard>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div style={{ marginBottom: 40 }}>
-            <div style={{ marginBottom: 32 }}>
-              <Kicker>The Transformation</Kicker>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "center" }}>
-              <div>
-                <div style={{ textAlign: "center", marginBottom: 20 }}>
-                  <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>Before</span>
-                </div>
-                <img src={myshakeBeforeScreens} alt="Old MyShake design - data-focused dashboard" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
-                <div style={{ marginTop: 16, textAlign: "center" }}>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                    <strong>7 steps</strong> to check on a loved one<br/>Data-focused, overwhelming
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div style={{ textAlign: "center", marginBottom: 20 }}>
-                  <span style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: "0.5px" }}>After</span>
-                </div>
-                <img src={myshakeFinalScreens} alt="New MyShake design - final redesigned screens" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
-                <div style={{ marginTop: 16, textAlign: "center" }}>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                    <strong>3 steps</strong> to check on a loved one<br/>Safety-focused, people-first
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </Reveal>
 
@@ -695,6 +669,66 @@ const MyShakeCaseStudy: FC = () => {
               },
             ]}
             />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Design Decisions */}
+      <section id="design-decisions" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal dramatic>
+          <SectionHeading>Design Decisions</SectionHeading>
+          <SkillRow items={["Information Architecture", "Mobile-First Design", "Visual Hierarchy"]} />
+        </Reveal>
+
+        <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+          {/* Decision 1 */}
+          <Reveal>
+            <div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                Dashboard-First Layout
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                Pinned loved ones appear instantly on launch. No search, no navigation layers. In an earthquake, every second matters—users shouldn't have to dig.
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Decision 2 */}
+          <Reveal>
+            <div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                Two-Alert System
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                EEW alerts arrive seconds after shaking starts; CEN notifications come after. Distinct visual treatment (color, language) helps users understand timing and urgency without thinking.
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+          {/* Decision 3 */}
+          <Reveal>
+            <div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                Gesture Design for Mobile
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                Tap-to-expand locations and swipe between pinned contacts. Designed for one-handed use during stressful moments, minimizing the mental load of complex interactions.
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Decision 4 */}
+          <Reveal>
+            <div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                Responsive Grid System
+              </div>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                Mobile uses single-column stacking; tablet expands to a 2-column layout with the map on left and content on right. The grid adapts layout without rethinking information hierarchy.
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
