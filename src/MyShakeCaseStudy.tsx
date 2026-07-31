@@ -949,7 +949,7 @@ const MyShakeCaseStudy: FC = () => {
       />
 
       {/* UI Details */}
-      <section style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+      <section style={{ paddingTop: 60, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Key Design Details</SectionHeading>
           <SkillRow items={["Micro-interactions", "Accessibility", "User Testing Refinements"]} />
