@@ -48,7 +48,6 @@ import myshakeNotificationsNote from "./assets/myshake-notifications-note.png";
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
   { id: "research", label: "Research" },
-  { id: "design-decisions", label: "Design Decisions" },
   { id: "synthesis", label: "Synthesis" },
   { id: "ideation", label: "Ideation" },
   { id: "solution", label: "Solution" },
@@ -673,66 +672,6 @@ const MyShakeCaseStudy: FC = () => {
         </div>
       </section>
 
-      {/* Design Decisions */}
-      <section id="design-decisions" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
-        <Reveal dramatic>
-          <SectionHeading>Design Decisions</SectionHeading>
-          <SkillRow items={["Information Architecture", "Mobile-First Design", "Visual Hierarchy"]} />
-        </Reveal>
-
-        <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
-          {/* Decision 1 */}
-          <Reveal>
-            <div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
-                Dashboard-First Layout
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
-                Pinned loved ones appear instantly on launch. No search, no navigation layers. In an earthquake, every second matters—users shouldn't have to dig.
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Decision 2 */}
-          <Reveal>
-            <div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
-                Two-Alert System
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
-                EEW alerts arrive seconds after shaking starts; CEN notifications come after. Distinct visual treatment (color, language) helps users understand timing and urgency without thinking.
-              </div>
-            </div>
-          </Reveal>
-        </div>
-
-        <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
-          {/* Decision 3 */}
-          <Reveal>
-            <div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
-                Gesture Design for Mobile
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
-                Tap-to-expand locations and swipe between pinned contacts. Designed for one-handed use during stressful moments, minimizing the mental load of complex interactions.
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Decision 4 */}
-          <Reveal>
-            <div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
-                Responsive Grid System
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
-                Mobile uses single-column stacking; tablet expands to a 2-column layout with the map on left and content on right. The grid adapts layout without rethinking information hierarchy.
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Synthesis */}
       <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
@@ -898,7 +837,7 @@ const MyShakeCaseStudy: FC = () => {
               borderRadius: tokens.radius.md,
               display: "flex",
               justifyContent: "center",
-              marginBottom: 32,
+              marginBottom: 16,
             }}
           >
             <img
@@ -950,6 +889,64 @@ const MyShakeCaseStudy: FC = () => {
             ]}
           />
         </Reveal>
+
+        <div style={{ marginTop: 80 }}>
+          <Reveal dramatic>
+            <Callout>Design Decisions</Callout>
+          </Reveal>
+
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+            {/* Decision 1 */}
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Dashboard-First Layout
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  Pinned loved ones appear instantly on launch. No search, no navigation layers. In an earthquake, every second matters—users shouldn't have to dig.
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Decision 2 */}
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Two-Alert System
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  EEW alerts arrive seconds after shaking starts; CEN notifications come after. Distinct visual treatment (color, language) helps users understand timing and urgency without thinking.
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+            {/* Decision 3 */}
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Gesture Design for Mobile
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  Tap-to-expand locations and swipe between pinned contacts. Designed for one-handed use during stressful moments, minimizing the mental load of complex interactions.
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Decision 4 */}
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Responsive Grid System
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  Mobile uses single-column stacking; tablet expands to a 2-column layout with the map on left and content on right. The grid adapts layout without rethinking information hierarchy.
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </section>
 
       {/* Interactive Dashboard Walkthrough */}
@@ -961,14 +958,14 @@ const MyShakeCaseStudy: FC = () => {
       />
 
       {/* UI Details */}
-      <section style={{ paddingTop: 60, paddingBottom: 120 }} className="section-reveal">
+      <section style={{ paddingTop: 60, paddingBottom: 60 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>Key Design Details</SectionHeading>
           <SkillRow items={["Micro-interactions", "Accessibility", "User Testing Refinements"]} />
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
             <div>
               <img src={myshakeAlert} alt="Alert notification screens showing EEW vs CEN differentiation" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
               <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.textDark, marginBottom: 4 }}>
