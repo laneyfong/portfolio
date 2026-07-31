@@ -172,7 +172,7 @@ const NvidiaCaseStudy: FC = () => {
       {/* Research */}
       <section id="research" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Research</SectionHeading>
+          <SectionHeading>I started with deep user research to understand AI UX challenges</SectionHeading>
           <SkillRow items={["Semi-structured Interviews", "Survey Design", "Secondary Research"]} />
         </Reveal>
 
@@ -268,7 +268,7 @@ const NvidiaCaseStudy: FC = () => {
       {/* Synthesis */}
       <section id="synthesis" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Synthesis</SectionHeading>
+          <SectionHeading>I synthesized insights into a collaborative AI design system</SectionHeading>
           <SkillRow items={["Insight Framing", "How Might We"]} />
         </Reveal>
 
@@ -364,7 +364,7 @@ const NvidiaCaseStudy: FC = () => {
       {/* Status */}
       <section id="status" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Status</SectionHeading>
+          <SectionHeading>The redesign builds trust between engineers and AI agents</SectionHeading>
         </Reveal>
 
         <Reveal>
@@ -442,7 +442,7 @@ const NvidiaCaseStudy: FC = () => {
       {/* Reflection */}
       <section id="reflection" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Reflection</SectionHeading>
+          <SectionHeading>This project taught me about designing for technical complexity and trust</SectionHeading>
         </Reveal>
         <Paragraph>Two things worth pulling out from the research phase so far:</Paragraph>
         <Bullets

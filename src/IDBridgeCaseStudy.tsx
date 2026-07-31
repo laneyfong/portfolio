@@ -180,7 +180,7 @@ const IDBridgeCaseStudy: FC = () => {
       {/* Context */}
       <section id="context" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Context</SectionHeading>
+          <SectionHeading>I joined a mission to make identity verification accessible for underbanked communities</SectionHeading>
           <SkillRow items={["User Research", "Problem Definition", "Empathy Mapping"]} />
         </Reveal>
 
@@ -295,7 +295,7 @@ const IDBridgeCaseStudy: FC = () => {
       {/* Research */}
       <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Research</SectionHeading>
+          <SectionHeading>I started with research into what makes identity verification accessible and secure</SectionHeading>
           <SkillRow items={["Literature Review", "Reddit Research", "AI-Assisted Synthesis"]} />
         </Reveal>
 
@@ -414,7 +414,7 @@ const IDBridgeCaseStudy: FC = () => {
       {/* Synthesis */}
       <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Synthesis</SectionHeading>
+          <SectionHeading>I synthesized insights into a streamlined verification flow</SectionHeading>
           <SkillRow items={["Rapid Ideation", "Feature Prioritization", "Information Architecture"]} />
         </Reveal>
 
@@ -505,7 +505,7 @@ const IDBridgeCaseStudy: FC = () => {
       {/* Solution */}
       <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Solution</SectionHeading>
+          <SectionHeading>The redesign makes identity verification accessible, secure, and human-centered</SectionHeading>
           <SkillRow items={["Product Design", "Prototyping", "Accessibility"]} />
         </Reveal>
 
@@ -638,7 +638,7 @@ const IDBridgeCaseStudy: FC = () => {
       {/* Reflection */}
       <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <SectionHeading>Reflection</SectionHeading>
+          <SectionHeading>This project taught me about designing for impact and building with communities, not for them</SectionHeading>
         </Reveal>
 
         <PullQuote>Design cannot be replaced with AI — it lacks the empathy a human has for other humans.</PullQuote>
