@@ -580,6 +580,11 @@ const MyShakeCaseStudy: FC = () => {
         <div style={{ marginBottom: 40 }}>
           <Kicker>The Challenge: Grow from 5% to 12.5% active users in 3 months</Kicker>
           <Reveal>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 620 }}>
+              With only 5% of MyShake's 3.8M users actively engaging with the app during earthquakes, the team needed to increase engagement to 12.5%. The current interface's data-heavy approach and confusing alert system meant users weren't finding the information they needed when seconds mattered most.
+            </p>
+          </Reveal>
+          <Reveal>
             <BarCompare
               title="Engagement goal"
               bars={[
@@ -631,9 +636,9 @@ const MyShakeCaseStudy: FC = () => {
           <div style={{ marginBottom: 60 }}>
             <Kicker>What users actually want</Kicker>
             <ExpandableRankedList items={[
-              { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do." },
-              { rank: 2, title: "Family Safety", detail: "After personal safety, knowing that loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes." },
-              { rank: 3, title: "Property Damage", detail: "While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first." },
+              { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do. This insight shaped the dashboard-first design, putting personal location and alerts at the top of the experience." },
+              { rank: 2, title: "Family Safety", detail: "After personal safety, knowing loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes—often requiring just 1-3 taps. This led to the pinned contacts feature and the 2-alert system (EEW vs CEN) to clarify communication timing." },
+              { rank: 3, title: "Property Damage", detail: "While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first. However, 2 of 5 users mentioned confusion between alert types, requiring clearer visual distinction in the design." },
             ]} />
           </div>
         </Reveal>
@@ -681,6 +686,9 @@ const MyShakeCaseStudy: FC = () => {
 
         <div style={{ marginBottom: 60 }}>
           <Reveal>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 620 }}>
+              The old flow required users to navigate through 7 screens just to check on a single loved one: launch app → navigate to search → enter name → wait for results → verify location → check status → confirm safety. During an earthquake, this friction meant users gave up. Our redesign cuts this to 3 steps by putting pinned loved ones on the dashboard and making status checks instant.
+            </p>
             <StepsComparison />
           </Reveal>
         </div>
