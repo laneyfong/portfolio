@@ -301,8 +301,7 @@ const ScrollDrivenProductShowcase: FC<{
                       background: tokens.color.white,
                       padding: "20px",
                       borderRadius: "12px",
-                      border: `1px solid ${tokens.color.cardBorder}`,
-                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                                            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3
@@ -379,8 +378,7 @@ const ScrollDrivenProductShowcase: FC<{
                       background: tokens.color.white,
                       padding: "20px",
                       borderRadius: "12px",
-                      border: `1px solid ${tokens.color.cardBorder}`,
-                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                                            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                   >
                     <h3
@@ -635,6 +633,9 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ marginBottom: 60 }}>
             <Kicker>What users actually want</Kicker>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 620 }}>
+              From 5 interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision. Family safety ranked second—users wanted to check on loved ones in seconds, not minutes. Alert type confusion (reported by 2 of 5 users) meant we needed to visually distinguish between EEW and CEN notifications.
+            </p>
             <ExpandableRankedList items={[
               { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do. This insight shaped the dashboard-first design, putting personal location and alerts at the top of the experience." },
               { rank: 2, title: "Family Safety", detail: "After personal safety, knowing loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes—often requiring just 1-3 taps. This led to the pinned contacts feature and the 2-alert system (EEW vs CEN) to clarify communication timing." },
