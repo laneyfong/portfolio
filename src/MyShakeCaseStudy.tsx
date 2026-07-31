@@ -18,7 +18,6 @@ import {
   UserJourney,
   ProcessFlow,
   StatRow,
-  InsightCard,
   BigImpactStat,
   HMWStatement,
   ExpandableRankedList,
@@ -1004,8 +1003,12 @@ const MyShakeCaseStudy: FC = () => {
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
         <Reveal>
-          <InsightCard number={1} color="#6BCB77" insight={<>The power of saying <Emphasis>no to pressure</Emphasis></>} detail="The client wanted to redesign immediately. I advocated for research instead. Those 5 interviews and surveys reshaped the entire IA." />
-          <InsightCard number={2} color="#4D96FF" insight={<>Design systems aren't <Emphasis>just nice to have</Emphasis></>} detail="Building the first system for MyShake meant every component was battle-tested for crisis moments. That foundation shipped with confidence." />
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 720 }}>
+            The most important moment was saying no to immediate redesign pressure and advocating for research instead. Those 5 interviews and 50+ survey responses fundamentally shaped the information architecture. We built MyShake's first design system—every component battle-tested for crisis moments. Cutting user friction from 7 steps to 3, increasing engagement by 45%, and seeing the app shipped with our foundation meant everything.
+          </p>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 720 }}>
+            I'm deeply proud of what we took as a win together. This redesign shipped because my two engineering partners believed in user research, ruthless iteration, and accessibility-first thinking. To the team: thank you for building something that helps people stay safe during earthquakes.
+          </p>
         </Reveal>
 
         <Reveal>

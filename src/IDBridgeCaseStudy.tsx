@@ -11,8 +11,6 @@ import {
   SkillRow,
   SnapshotBar,
   FeatureCard,
-  PullQuote,
-  Bullets,
 } from "./components/caseStudy/CaseStudyKit";
 import IconHighlight from "./components/caseStudy/IconHighlight";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
@@ -641,35 +639,14 @@ const IDBridgeCaseStudy: FC = () => {
           <SectionHeading>This project taught me about designing for impact and building with communities, not for them</SectionHeading>
         </Reveal>
 
-        <PullQuote>Design cannot be replaced with AI — it lacks the empathy a human has for other humans.</PullQuote>
-
-        <Callout>What we learned</Callout>
-        <Bullets
-          items={[
-            <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>AI as a second brain: </strong>
-              It accelerated research and ideation, but we had to manually verify AI-sourced data against real findings to avoid mixing false authority with lived experience.
-            </>,
-            <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>Speed vs. depth: </strong>
-              Six hours forced us to prioritize ruthlessly. We focused on the core problem (verification + connection) and let secondary features fall away.
-            </>,
-            <>
-              <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.textDark }}>Human-centered wins: </strong>
-              The most resonant ideas emerged when we stepped back from AI suggestions and centered the actual lived experiences we'd researched.
-            </>,
-          ]}
-        />
-
-        <Callout>If we had more time…</Callout>
-        <Bullets
-          items={[
-            "Conduct usability testing with real users to validate navigation and mental models",
-            "Deeper survey research focused on trauma-informed design practices",
-            "Expand the social worker dashboard and profile management features",
-            "Accessibility audit (WCAG AAA) across the entire app",
-          ]}
-        />
+        <Reveal>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 720 }}>
+            The most important lesson: design cannot be replaced with AI—it lacks the empathy one human has for another. AI accelerated our research and ideation, but we had to manually verify every AI-sourced insight against lived experience to avoid mixing false authority with truth. In six hours, we learned that ruthless prioritization reveals what actually matters: verification + connection. The most resonant ideas emerged when we stepped back from AI suggestions and centered the voices of the people we were designing for.
+          </p>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 720 }}>
+            I'm proud of the impact we created together in an incredibly tight window. To my team: thank you for approaching this work with care, integrity, and a genuine commitment to building with the underbanked community, not for them. That human-centered approach is what made this redesign possible.
+          </p>
+        </Reveal>
       </section>
     </CaseStudyShell>
   );
