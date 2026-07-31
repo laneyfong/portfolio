@@ -28,16 +28,24 @@ const StepsComparison: FC = () => {
           Before
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {[1, 2, 3, 4, 5, 6, 7].map((step) => (
+          {[
+            { step: 1, label: "Launch app", desc: "Open the application" },
+            { step: 2, label: "Navigate to search", desc: "Find the search feature" },
+            { step: 3, label: "Enter name", desc: "Type loved one's name" },
+            { step: 4, label: "Wait for results", desc: "Results load on screen" },
+            { step: 5, label: "Verify location", desc: "Confirm their location" },
+            { step: 6, label: "Get status", desc: "Find safety status" },
+            { step: 7, label: "Confirm safety", desc: "Verify they're safe" },
+          ].map((item) => (
             <div
-              key={step}
+              key={item.step}
               style={{
                 display: "flex",
-                alignItems: "center",
+                alignItems: "flex-start",
                 gap: 12,
                 padding: "12px 16px",
                 borderRadius: tokens.radius.sm,
-                backgroundColor: "#ECECEC",
+                backgroundColor: tokens.color.offWhite,
               }}
             >
               <div
@@ -53,24 +61,31 @@ const StepsComparison: FC = () => {
                   fontWeight: "bold",
                   fontSize: "12px",
                   flexShrink: 0,
+                  marginTop: 2,
                 }}
               >
-                {step}
+                {item.step}
               </div>
-              <div
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontSize: "13px",
-                  color: tokens.color.body,
-                }}
-              >
-                {step === 1 && "Launch app"}
-                {step === 2 && "Navigate to search"}
-                {step === 3 && "Enter name"}
-                {step === 4 && "Wait for results"}
-                {step === 5 && "Verify location"}
-                {step === 6 && "Get status"}
-                {step === 7 && "Confirm safety"}
+              <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <div
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "13px",
+                    fontWeight: tokens.weight.medium,
+                    color: tokens.color.ink,
+                  }}
+                >
+                  {item.label}
+                </div>
+                <div
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "12px",
+                    color: tokens.color.muted,
+                  }}
+                >
+                  {item.desc}
+                </div>
               </div>
             </div>
           ))}
@@ -94,15 +109,15 @@ const StepsComparison: FC = () => {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {[
-            { step: 1, label: "Open dashboard" },
-            { step: 2, label: "Tap pinned location" },
-            { step: 3, label: "See safety status" },
+            { step: 1, label: "Open dashboard", desc: "See pinned loved ones instantly" },
+            { step: 2, label: "Tap pinned location", desc: "Access one person's status" },
+            { step: 3, label: "See safety status", desc: "Get instant confirmation" },
           ].map((item) => (
             <div
               key={item.step}
               style={{
                 display: "flex",
-                alignItems: "center",
+                alignItems: "flex-start",
                 gap: 12,
                 padding: "12px 16px",
                 borderRadius: tokens.radius.sm,
@@ -122,19 +137,31 @@ const StepsComparison: FC = () => {
                   fontWeight: "bold",
                   fontSize: "12px",
                   flexShrink: 0,
+                  marginTop: 2,
                 }}
               >
                 {item.step}
               </div>
-              <div
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontSize: "13px",
-                  color: tokens.color.ink,
-                  fontWeight: tokens.weight.medium,
-                }}
-              >
-                {item.label}
+              <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <div
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "13px",
+                    fontWeight: tokens.weight.medium,
+                    color: tokens.color.ink,
+                  }}
+                >
+                  {item.label}
+                </div>
+                <div
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "12px",
+                    color: tokens.color.muted,
+                  }}
+                >
+                  {item.desc}
+                </div>
               </div>
             </div>
           ))}
