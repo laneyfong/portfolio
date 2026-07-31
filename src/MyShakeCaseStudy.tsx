@@ -44,7 +44,7 @@ import myshakeDashboard from "./assets/myshake-dashboard.png";
 import myshakeCarouselNote from "./assets/myshake-carousel-note.png";
 import myshakePrepareNote from "./assets/myshake-prepare-note.png";
 import myshakeNotificationsNote from "./assets/myshake-notifications-note.png";
-import myshakeTeam from "./assets/myshake-team.jpg";
+import myshakeTeam from "./assets/myshake-team.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
