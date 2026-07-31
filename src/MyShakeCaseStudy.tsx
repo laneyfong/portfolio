@@ -196,6 +196,55 @@ const MYSHAKE_EXTRA_STYLE = `
     75% { transform: translate(-2px, 1px) rotate(-0.2deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
   }
+
+  /* Mobile responsive: convert horizontal layouts to vertical */
+  @media (max-width: 768px) {
+    /* Stack 2-column and 3-column grids vertically */
+    [style*="gridTemplateColumns"][style*="1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Convert fixed-width sidebars to full width */
+    [style*="width: 320px"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-bottom: 20px;
+    }
+
+    /* Convert flexbox row to column */
+    [style*="gap: 32"] {
+      flex-direction: column !important;
+      gap: 24px !important;
+    }
+
+    /* Prevent horizontal overflow on flex containers */
+    [style*="display: flex"] {
+      overflow-x: hidden !important;
+    }
+
+    /* Stack information grids vertically */
+    [style*="gridTemplateRows"] {
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    /* Extra tight spacing on small screens */
+    [style*="gap: 60"] {
+      gap: 24px !important;
+    }
+
+    [style*="gap: 40"] {
+      gap: 20px !important;
+    }
+
+    /* Ensure no horizontal overflow */
+    * {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+  }
 `;
 
 interface AnnotationConfig {

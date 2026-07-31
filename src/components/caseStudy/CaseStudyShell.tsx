@@ -162,11 +162,20 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .case-main { padding-top: 132px !important; }
         }
         @media (max-width: 768px) {
+          /* Prevent horizontal overflow */
+          html, body, main { overflow-x: hidden !important; max-width: 100vw; }
+
           /* Ensure minimum 48x48px touch targets on mobile */
           button, a, input, .case-btn-press { min-width: 48px !important; min-height: 48px !important; }
 
           /* Flexible spacing for mobile */
           .case-grid-3, .case-grid-2, .case-intro-shots { grid-template-columns: 1fr !important; gap: clamp(16px, 4vw, 32px); }
+
+          /* Stack flex containers vertically */
+          [style*="display: flex"] { flex-direction: column !important; }
+
+          /* Convert fixed widths to responsive */
+          [style*="width:"] { max-width: 100% !important; width: auto !important; }
 
           /* Reduce font sizes smoothly */
           .case-main { padding: clamp(16px, 5vw, 60px) !important; }
@@ -175,6 +184,9 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           /* Extra small screens */
           button, a, .case-btn-press { min-width: 44px !important; min-height: 44px !important; padding: 12px 16px !important; }
           .case-main { padding: clamp(12px, 3vw, 40px) !important; }
+
+          /* Aggressive horizontal overflow prevention */
+          * { max-width: 100vw !important; overflow-x: hidden !important; }
         }
         ${extraStyle}
       `}</style>
