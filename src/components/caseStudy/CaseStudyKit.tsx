@@ -1124,16 +1124,24 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       {items.map((item) => (
-        <div key={item.rank}>
+        <div
+          key={item.rank}
+          style={{
+            borderRadius: tokens.radius.sm,
+            background: tokens.color.offWhite,
+            overflow: "hidden",
+            transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
+            border: `1px solid ${tokens.color.cardBorder}`,
+          }}
+        >
           <button
             onClick={() => toggleExpanded(item.rank)}
             style={{
               width: "100%",
               textAlign: "left",
-              padding: "20px 0",
-              borderBottom: `1px solid ${tokens.color.cardBorder}`,
+              padding: "20px 24px",
               background: "transparent",
               border: "none",
               cursor: "pointer",
@@ -1141,16 +1149,13 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
               justifyContent: "space-between",
               alignItems: "center",
               fontFamily: tokens.font.sans,
-              transition: "all 0.2s ease",
-              paddingRight: 12,
+              transition: "background 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = tokens.color.offWhite;
-              e.currentTarget.style.borderRadius = tokens.radius.sm;
+              e.currentTarget.style.background = "rgba(45, 45, 45, 0.03)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.borderRadius = "0";
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
@@ -1161,19 +1166,37 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
                 {item.title}
               </div>
             </div>
-            <div style={{ fontSize: "20px", color: tokens.color.accent, transition: "transform 0.3s ease", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0 }}>
+            <div style={{ fontSize: "20px", color: tokens.color.accent, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center" }}>
               ↓
             </div>
           </button>
           {expandedSet.has(item.rank) && (
-            <div style={{ padding: "0 0 20px 40px", background: "transparent" }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0, paddingTop: 8 }}>
+            <div
+              style={{
+                padding: "0 24px 20px 56px",
+                background: "transparent",
+                animation: "slideDown 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+              }}
+            >
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
                 {item.detail}
               </p>
             </div>
           )}
         </div>
       ))}
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };
