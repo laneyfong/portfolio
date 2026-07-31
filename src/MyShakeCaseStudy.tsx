@@ -774,32 +774,6 @@ const MyShakeCaseStudy: FC = () => {
           <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
         </Reveal>
 
-        <Callout>A/B Testing</Callout>
-
-        <div style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, marginBottom: 20 }}>
-          {AB_VARIATIONS.map((v, i) => (
-            <button
-              key={v.label}
-              onClick={() => setAbVariant(i as 0 | 1)}
-              aria-pressed={abVariant === i}
-              className="case-btn-press"
-              style={{
-                padding: "8px 18px",
-                borderRadius: tokens.radius.full,
-                border: "none",
-                cursor: "pointer",
-                background: abVariant === i ? tokens.color.ink : "transparent",
-                color: abVariant === i ? tokens.color.white : tokens.color.body,
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.sm,
-                fontWeight: tokens.weight.medium,
-              }}
-            >
-              {v.label}
-            </button>
-          ))}
-        </div>
-
         <div style={{ marginBottom: 80 }}>
           <Reveal>
             <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
