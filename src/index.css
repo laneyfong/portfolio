@@ -8,3 +8,65 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Mobile-responsive typography and spacing using fluid values */
+@media (max-width: 768px) {
+  /* Ensure minimum 48x48px touch targets for all interactive elements */
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    min-width: 48px;
+    min-height: 48px;
+    padding: max(8px, clamp(8px, 2vw, 16px));
+    line-height: 1.5;
+  }
+
+  /* Flexible font sizes that scale with viewport */
+  html {
+    font-size: clamp(14px, 2.5vw, 16px);
+  }
+
+  /* Flexible spacing using clamp for responsive gutters */
+  body {
+    padding: clamp(8px, 3vw, 16px);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Extra small screens - slightly reduced for practical sizing */
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    min-width: 44px;
+    min-height: 44px;
+    padding: max(8px, clamp(6px, 1.5vw, 12px));
+  }
+
+  html {
+    font-size: clamp(13px, 2vw, 16px);
+  }
+}
+
+/* Fluid grid layouts for responsive card arrangements */
+@supports (display: grid) {
+  @media (min-width: 320px) {
+    .responsive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+      gap: clamp(12px, 3vw, 24px);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .responsive-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: clamp(16px, 4vw, 32px);
+    }
+  }
+}

@@ -149,6 +149,11 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
            toggles. Cards with no click action intentionally don't get this. */
         .case-btn-press { transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
         .case-btn-press:active { transform: scale(0.94); }
+        /* Fluid grid layouts with auto-fit for responsive rearrangement */
+        .case-grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .case-grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .case-intro-shots { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
         @media (max-width: 900px) {
           .case-sidebar { display: none !important; }
           .case-mobile-back { display: flex !important; }
@@ -156,10 +161,20 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .case-main, .case-footer-wrap { margin-left: 0 !important; }
           .case-main { padding-top: 132px !important; }
         }
-        @media (max-width: 760px) {
-          .case-grid-3 { grid-template-columns: 1fr !important; }
-          .case-grid-2 { grid-template-columns: 1fr !important; }
-          .case-intro-shots { grid-template-columns: 1fr !important; }
+        @media (max-width: 768px) {
+          /* Ensure minimum 48x48px touch targets on mobile */
+          button, a, input, .case-btn-press { min-width: 48px !important; min-height: 48px !important; }
+
+          /* Flexible spacing for mobile */
+          .case-grid-3, .case-grid-2, .case-intro-shots { grid-template-columns: 1fr !important; gap: clamp(16px, 4vw, 32px); }
+
+          /* Reduce font sizes smoothly */
+          .case-main { padding: clamp(16px, 5vw, 60px) !important; }
+        }
+        @media (max-width: 640px) {
+          /* Extra small screens */
+          button, a, .case-btn-press { min-width: 44px !important; min-height: 44px !important; padding: 12px 16px !important; }
+          .case-main { padding: clamp(12px, 3vw, 40px) !important; }
         }
         ${extraStyle}
       `}</style>

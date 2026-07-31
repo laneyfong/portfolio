@@ -98,12 +98,26 @@ const Badge: FC<BadgeProps> = ({
           }}
         >
       <style>{`
+        @media (max-width: 768px) {
+          .badge-container {
+            width: clamp(220px, 85vw, 340px) !important;
+          }
+          .badge-container button {
+            min-height: 48px !important;
+            min-width: 48px !important;
+          }
+        }
         @media (max-width: 640px) {
           .badge-container {
-            width: clamp(215px, 80vw, 320px) !important;
+            width: clamp(200px, 90vw, 320px) !important;
           }
           .badge-front, .badge-back {
             padding: 14px 14px 20px 14px !important;
+          }
+          .badge-container button {
+            min-height: 44px !important;
+            min-width: 44px !important;
+            padding: 12px !important;
           }
         }
       `}</style>
