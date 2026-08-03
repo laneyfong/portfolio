@@ -533,7 +533,7 @@ const MyShakeCaseStudy: FC = () => {
             color: tokens.color.ink,
             lineHeight: tokens.leading.snug,
             margin: "0 0 20px",
-            maxWidth: 680,
+            maxWidth: 440,
           }}
         >
           Redesigning earthquake alerts for <Italic>intuitive, high-stakes navigation</Italic>.

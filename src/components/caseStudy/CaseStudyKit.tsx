@@ -72,6 +72,7 @@ export const SectionHeading: FC<{ children: ReactNode }> = ({ children }) => (
       fontSize: "24px",
       color: tokens.color.textDark,
       margin: "0 0 20px",
+      maxWidth: 440,
     }}
   >
     {children}
@@ -87,6 +88,7 @@ export const Callout: FC<{ children: ReactNode }> = ({ children }) => (
       color: tokens.color.textDark,
       lineHeight: tokens.leading.snug,
       margin: "40px 0 24px",
+      maxWidth: 440,
     }}
   >
     {children}
@@ -101,7 +103,7 @@ export const Paragraph: FC<{ children: ReactNode }> = ({ children }) => (
       lineHeight: tokens.leading.normal,
       color: tokens.color.body,
       margin: "0 0 24px",
-      maxWidth: 720,
+      maxWidth: 440,
     }}
   >
     {children}
@@ -649,7 +651,7 @@ export const TypeCompare: FC<{ options?: { name: string; family: string }[] }> =
 );
 
 export const Bullets: FC<{ items: ReactNode[] }> = ({ items }) => (
-  <ul style={{ margin: "0 0 20px", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 14, maxWidth: 720 }}>
+  <ul style={{ margin: "0 0 20px", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 14, maxWidth: 440 }}>
     {items.map((item, i) => (
       <li
         key={i}

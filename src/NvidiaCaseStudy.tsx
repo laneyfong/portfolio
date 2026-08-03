@@ -96,7 +96,7 @@ const NvidiaCaseStudy: FC = () => {
             color: tokens.color.ink,
             lineHeight: tokens.leading.snug,
             margin: "0 0 20px",
-            maxWidth: 680,
+            maxWidth: 440,
           }}
         >
           Designing an AI UX agent that <Italic>engineers actually trust</Italic>.

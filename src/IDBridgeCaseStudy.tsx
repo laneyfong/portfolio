@@ -50,7 +50,7 @@ const IDBridgeCaseStudy: FC = () => {
             color: tokens.color.ink,
             lineHeight: tokens.leading.snug,
             margin: "0 0 20px",
-            maxWidth: 680,
+            maxWidth: 440,
           }}
         >
           Designing a <Italic>verified identity platform</Italic> for unhoused individuals in 6 hours.
@@ -71,6 +71,18 @@ const IDBridgeCaseStudy: FC = () => {
               { label: "Result", value: "🥇 First Place Winner" },
             ]}
           />
+        </Reveal>
+
+        <Reveal delay={100}>
+          <div style={{
+            borderRadius: tokens.radius.md,
+            overflow: "hidden",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+            marginBottom: 60,
+            maxWidth: 440
+          }}>
+            <img src={idbridgeThumbnail} alt="IDbridge Home screen - Verify Identity" style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
         </Reveal>
 
         <Reveal>
@@ -94,26 +106,7 @@ const IDBridgeCaseStudy: FC = () => {
             borderRadius: "14px",
             marginBottom: 40
           }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
-                <div style={{
-                  width: "100%",
-                  borderRadius: tokens.radius.md,
-                  overflow: "hidden",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)"
-                }}>
-                  <img src={idbridgeThumbnail} alt="Home screen - Verify Identity" style={{ width: "100%", height: "auto", display: "block" }} />
-                </div>
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
-                    Verify Identity
-                  </div>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal, maxWidth: "100%" }}>
-                    Build trust with QR codes and verified referrals
-                  </div>
-                </div>
-              </div>
-
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
                 <div style={{
                   width: "100%",
