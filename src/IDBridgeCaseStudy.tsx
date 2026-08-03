@@ -75,38 +75,30 @@ const IDBridgeCaseStudy: FC = () => {
 
         <Reveal delay={100}>
           <div style={{
-            borderRadius: tokens.radius.md,
-            overflow: "hidden",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
-            marginBottom: 60,
-            maxWidth: 440
-          }}>
-            <img src={idbridgeThumbnail} alt="IDbridge Home screen - Verify Identity" style={{ width: "100%", height: "auto", display: "block" }} />
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
-            <FeatureCard title="Problem">
-              Unhoused individuals struggle to access long-term housing because they lack verifiable identification and documentation.
-            </FeatureCard>
-            <FeatureCard title="Solution">
-              A privacy-first, offline-friendly platform that helps users create a verified document trail and connect with social workers.
-            </FeatureCard>
-            <FeatureCard title="Approach">
-              Explored how AI could accelerate research and ideation while identifying its limitations in empathy-driven design.
-            </FeatureCard>
-          </div>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <div style={{
             background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
             padding: "60px 40px",
             borderRadius: "14px",
             marginBottom: 40
           }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
+                <div style={{
+                  width: "100%",
+                  borderRadius: tokens.radius.md,
+                  overflow: "hidden",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)"
+                }}>
+                  <img src={idbridgeThumbnail} alt="Home screen - Verify Identity" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                    Verify Identity
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, lineHeight: tokens.leading.normal, maxWidth: "100%" }}>
+                    Build trust with QR codes and verified referrals
+                  </div>
+                </div>
+              </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
                 <div style={{
                   width: "100%",
@@ -164,6 +156,20 @@ const IDBridgeCaseStudy: FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
+            <FeatureCard title="Problem">
+              Unhoused individuals struggle to access long-term housing because they lack verifiable identification and documentation.
+            </FeatureCard>
+            <FeatureCard title="Solution">
+              A privacy-first, offline-friendly platform that helps users create a verified document trail and connect with social workers.
+            </FeatureCard>
+            <FeatureCard title="Approach">
+              Explored how AI could accelerate research and ideation while identifying its limitations in empathy-driven design.
+            </FeatureCard>
           </div>
         </Reveal>
       </section>
