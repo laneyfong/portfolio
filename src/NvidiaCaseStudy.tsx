@@ -181,7 +181,7 @@ const NvidiaCaseStudy: FC = () => {
         </Paragraph>
 
         <Reveal>
-          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
+          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 80 }}>
             <IconCard
               icon={<ChatIcon />}
               title="Semi-structured Interviews"
@@ -196,7 +196,9 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>Key research themes from engineer interviews.</Callout>
+        <div style={{ marginBottom: 48 }}>
+          <Callout>Key research themes from engineer interviews.</Callout>
+        </div>
         <Reveal>
           <ResearchThemes />
         </Reveal>
@@ -271,12 +273,17 @@ const NvidiaCaseStudy: FC = () => {
           <SkillRow items={["Insight Framing", "How Might We"]} />
         </Reveal>
 
-        <Callout>The core challenge: Say/Do Gap</Callout>
+        <div style={{ marginBottom: 60 }}>
+          <Callout>The core challenge: Say/Do Gap</Callout>
+        </div>
+
         <Reveal>
-          <DesignChallenges />
+          <div style={{ marginBottom: 100 }}>
+            <DesignChallenges />
+          </div>
         </Reveal>
 
-        <div style={{ marginBottom: 40 }}>
+        <div style={{ marginBottom: 100 }}>
           <Kicker>Design Question 1: Prioritization</Kicker>
           <Callout>
             How might we design a system that helps teams rank usability issues alongside technical bugs and see which will have the highest user impact?
@@ -445,10 +452,13 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
         <Reveal>
           <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
-            The biggest insight from leading research across a 4-person team was recognizing when data wasn't working—we cut the survey when response rates showed it wouldn't be usable, rather than forcing it to a finish line. But the real breakthrough was understanding that engineers' gap between what they want (trustworthy AI, simple tools) and what they actually do (rely on Slack threads and feedback buttons) is a workflow-trust problem, not a screen redesign. That reframing is what's guiding everything next.
+            The biggest insight from leading research across a 4-person team was recognizing when data wasn't working. We cut the survey when response rates showed it wouldn't be usable, rather than forcing it to a finish line.
+          </p>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
+            But the real breakthrough was understanding engineers' gap between what they want (trustworthy AI, simple tools) and what they actually do (rely on Slack threads and feedback buttons). This is a workflow-trust problem, not a screen redesign.
           </p>
           <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
-            I'm incredibly proud of the win we're taking together. To the research, design, and engineering team: thank you for believing that understanding engineers deeply would change how we build AI that they can trust. This collaboration is what made the difference.
+            I'm incredibly proud of the win we're taking together. To the research, design, and engineering team: thank you for believing that understanding engineers deeply would change how we build AI that they can trust.
           </p>
         </Reveal>
       </section>

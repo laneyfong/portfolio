@@ -186,10 +186,10 @@ const IDBridgeCaseStudy: FC = () => {
           Unhoused individuals face systemic barriers when accessing shelter and housing. Beyond availability and cost, the most overlooked obstacle is documentation — without verifiable identity, referrals, and proof of eligibility, the path to permanent housing becomes nearly impossible to navigate.
         </Paragraph>
 
-        <div style={{ marginTop: 40, marginBottom: 40 }}>
+        <div style={{ marginTop: 60, marginBottom: 80 }}>
           <Kicker>User pain points from research</Kicker>
           <Reveal>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div
                 style={{
                   padding: "20px 24px",
@@ -296,13 +296,16 @@ const IDBridgeCaseStudy: FC = () => {
           <SkillRow items={["Literature Review", "Reddit Research", "AI-Assisted Synthesis"]} />
         </Reveal>
 
-        <Callout>Using AI to accelerate discovery</Callout>
+        <div style={{ marginBottom: 60 }}>
+          <Callout>Using AI to accelerate discovery</Callout>
+        </div>
+
         <Paragraph>
           With only 6 hours, we used Gemini to condense research papers and Reddit to validate real user experiences. This allowed us to rapidly identify patterns without losing human insight.
         </Paragraph>
 
         <Reveal>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 80 }}>
             <IconHighlight
               icon="📊"
               title="Key Finding: Documentation is the Barrier"
@@ -316,13 +319,16 @@ const IDBridgeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>AI's role in research: Pros and cons</Callout>
+        <div style={{ marginBottom: 60 }}>
+          <Callout>AI's role in research: Pros and cons</Callout>
+        </div>
+
         <Reveal>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: 20,
+              gap: 24,
               marginBottom: 32,
             }}
           >
@@ -434,13 +440,16 @@ const IDBridgeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>Design principles: Accessibility first</Callout>
+        <div style={{ marginTop: 80, marginBottom: 60 }}>
+          <Callout>Design principles: Accessibility first</Callout>
+        </div>
+
         <Reveal>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-              gap: 16,
+              gap: 24,
               marginBottom: 32,
             }}
           >

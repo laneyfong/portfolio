@@ -737,11 +737,16 @@ const MyShakeCaseStudy: FC = () => {
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
         </Reveal>
 
-        <div style={{ marginBottom: 60 }}>
+        <div style={{ marginBottom: 80 }}>
           <Reveal>
             <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
-              The old flow required users to navigate through 7 screens just to check on a single loved one: launch app → navigate to search → enter name → wait for results → verify location → check status → confirm safety. During an earthquake, this friction meant users gave up. Our redesign cuts this to 3 steps by putting pinned loved ones on the dashboard and making status checks instant.
+              The old flow required 7 screens to check on a single loved one: launch app → search → enter name → wait → verify location → check status → confirm safety.
             </p>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
+              During an earthquake, this friction meant users gave up. Our redesign cuts this to 3 steps by putting pinned loved ones on the dashboard and making status checks instant.
+            </p>
+          </Reveal>
+          <Reveal>
             <StepsComparison />
           </Reveal>
         </div>
@@ -898,7 +903,7 @@ const MyShakeCaseStudy: FC = () => {
               borderRadius: tokens.radius.md,
               display: "flex",
               justifyContent: "center",
-              marginBottom: 16,
+              marginBottom: 80,
             }}
           >
             <img
@@ -915,16 +920,22 @@ const MyShakeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>Core features of the redesign</Callout>
+        <div style={{ marginBottom: 60 }}>
+          <Callout>Core features of the redesign</Callout>
+        </div>
         <Reveal>
           <SolutionBreakdown />
         </Reveal>
 
         <Reveal>
-          <BigImpactStat value="45%" label="Increase in user engagement" color={tokens.color.accent} />
+          <div style={{ marginBottom: 80 }}>
+            <BigImpactStat value="45%" label="Increase in user engagement" color={tokens.color.accent} />
+          </div>
         </Reveal>
 
-        <Callout>The Solution: 3 steps instead of 7.</Callout>
+        <div style={{ marginBottom: 60 }}>
+          <Callout>The Solution: 3 steps instead of 7.</Callout>
+        </div>
 
         <Reveal>
           <ProcessFlow
