@@ -202,7 +202,7 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             <FindingRow method="Trust & Transparency in AI Systems">
               <div>
                 <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>

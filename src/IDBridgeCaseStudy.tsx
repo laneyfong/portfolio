@@ -611,6 +611,12 @@ const IDBridgeCaseStudy: FC = () => {
 
         <Callout>Design Screens</Callout>
         <Reveal>
+          <div style={{ marginBottom: 48 }}>
+            <Kicker>How it works: The app's core screens</Kicker>
+          </div>
+        </Reveal>
+
+        <Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
@@ -641,10 +647,16 @@ const IDBridgeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ maxWidth: 440, margin: "0 auto" }}>
             <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, margin: 0 }}>
-              The most important lesson: design cannot be replaced with AI—it lacks the empathy one human has for another. AI accelerated our research and ideation, but we had to manually verify every AI-sourced insight against lived experience to avoid mixing false authority with truth. In six hours, we learned that ruthless prioritization reveals what actually matters: verification + connection. The most resonant ideas emerged when we stepped back from AI suggestions and centered the voices of the people we were designing for.
+              The most important lesson: design cannot be replaced with AI—it lacks the empathy one human has for another.
+            </p>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32 }}>
+              AI accelerated our research and ideation, but we had to manually verify every AI-sourced insight against lived experience. Ruthless prioritization revealed what actually matters: verification and direct connection with communities.
+            </p>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32 }}>
+              The most resonant ideas emerged when we stepped back from AI suggestions and centered the voices of the people we were designing for.
             </p>
             <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 0, marginTop: 32 }}>
-              I'm proud of the impact we created together in an incredibly tight window. To my team: thank you for approaching this work with care, integrity, and a genuine commitment to building with the underbanked community, not for them. That human-centered approach is what made this redesign possible.
+              I'm proud of the impact we created together in an incredibly tight window. To my team: thank you for approaching this work with care, integrity, and a genuine commitment to building with the underbanked community, not for them.
             </p>
           </div>
         </Reveal>

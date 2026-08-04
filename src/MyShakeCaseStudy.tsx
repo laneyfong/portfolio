@@ -624,11 +624,14 @@ const MyShakeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <div style={{ marginBottom: 40 }}>
+        <div style={{ marginBottom: 80 }}>
           <Kicker>The Challenge: Grow from 5% to 12.5% active users in 3 months</Kicker>
           <Reveal>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
+              With only 5% of MyShake's 3.8M users actively engaging with the app during earthquakes, the team needed to increase engagement to 12.5%.
+            </p>
             <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
-              With only 5% of MyShake's 3.8M users actively engaging with the app during earthquakes, the team needed to increase engagement to 12.5%. The current interface's data-heavy approach and confusing alert system meant users weren't finding the information they needed when seconds mattered most.
+              The current interface's data-heavy approach and confusing alert system meant users weren't finding the information they needed when seconds mattered most.
             </p>
           </Reveal>
           <Reveal>
@@ -680,10 +683,10 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ marginBottom: 60 }}>
+          <div style={{ marginBottom: 80 }}>
             <Kicker>What users actually want</Kicker>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 440 }}>
-              From 5 interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision. Family safety ranked second—users wanted to check on loved ones in seconds, not minutes. Alert type confusion (reported by 2 of 5 users) meant we needed to visually distinguish between EEW and CEN notifications.
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
+              From 5 interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision.
             </p>
             <ExpandableRankedList items={[
               { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do. This insight shaped the dashboard-first design, putting personal location and alerts at the top of the experience." },
