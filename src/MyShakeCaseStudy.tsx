@@ -1,7 +1,17 @@
 import type { FC } from "react";
 import { useState } from "react";
 import { tokens } from "./tokens";
-import { Reveal, Italic, TagPill, PullQuote } from "./components/caseStudy/CaseStudyKit";
+import {
+  Reveal,
+  Italic,
+  TagPill,
+  PullQuote,
+  SectionHeading,
+  Callout,
+  SkillRow,
+  BigImpactStat,
+  ProcessFlow,
+} from "./components/caseStudy/CaseStudyKit";
 import SolutionBreakdown from "./components/caseStudy/SolutionBreakdown";
 import StepsComparison from "./components/caseStudy/StepsComparison";
 import {
@@ -19,6 +29,9 @@ import myshakeCarouselNote from "./assets/myshake-carousel-note.png";
 import myshakePrepareNote from "./assets/myshake-prepare-note.png";
 import myshakeNotificationsNote from "./assets/myshake-notifications-note.png";
 import myshakeTeam from "./assets/myshake-team.png";
+import myshakeAlert from "./assets/myshake-alert.png";
+import myshakeDetails from "./assets/myshake-details.png";
+import myshakeHomeExplanation from "./assets/myshake-home-explanation.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "hero", label: "Hero" },
@@ -85,10 +98,10 @@ const DashboardWalkthrough: FC<{
     <section id="dashboard-walkthrough" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
       <Reveal dramatic>
         <div style={{ marginBottom: 48 }}>
-          <div style={{ fontSize: "14px", fontWeight: 600, color: tokens.color.muted, marginBottom: 12, textTransform: "uppercase" }}>
+          <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.muted, marginBottom: 12, textTransform: "uppercase" }}>
             Dashboard Design
           </div>
-          <h2 style={{ fontSize: "24px", fontWeight: 600, color: tokens.color.ink, margin: 0 }}>
+          <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: 0 }}>
             The solution: Everything a user needs in one tap
           </h2>
         </div>
@@ -125,7 +138,7 @@ const DashboardWalkthrough: FC<{
                     transition: "all 0.2s ease",
                   }}
                 >
-                  <h3 style={{ fontSize: "16px", fontWeight: 600, color: tokens.color.ink, margin: "0 0 8px" }}>
+                  <h3 style={{ fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                     {ann.label}
                   </h3>
                   <p style={{ fontSize: "14px", color: tokens.color.body, lineHeight: 1.5, margin: 0 }}>
@@ -163,11 +176,11 @@ const MyShakeCaseStudy: FC = () => {
       <section id="hero" style={{ paddingBottom: 120 }} className="section-reveal">
         <Reveal>
           <div style={{ marginBottom: 16 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: 600, color: tokens.color.muted }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted }}>
               Earthquake app redesign
             </span>
           </div>
-          <h1 style={{ fontFamily: tokens.font.sans, fontWeight: 600, fontSize: "32px", color: tokens.color.ink, lineHeight: 1.2, margin: "0 0 24px", maxWidth: 500 }}>
+          <h1 style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text["2xl"], color: tokens.color.ink, lineHeight: tokens.leading.snug, margin: "0 0 24px", maxWidth: 440 }}>
             Transforming passive alerts into <Italic>active safety companion</Italic>
           </h1>
           <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: 1.5, margin: "0 0 32px", maxWidth: 440 }}>
@@ -246,6 +259,133 @@ const MyShakeCaseStudy: FC = () => {
 
       {/* 5. SOLUTION */}
       <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal dramatic>
+          <SectionHeading>The final design prioritizes safety and clarity during emergencies</SectionHeading>
+          <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
+          <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
+        </Reveal>
+
+        <Reveal>
+          <div
+            style={{
+              background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+              padding: "60px 40px",
+              borderRadius: tokens.radius.md,
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: 80,
+            }}
+          >
+            <img
+              src={myshakeHomeExplanation}
+              alt="MyShake app features and interaction design"
+              style={{
+                width: "100%",
+                maxWidth: "640px",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                display: "block",
+              }}
+            />
+          </div>
+        </Reveal>
+
+        <div style={{ marginBottom: 60 }}>
+          <Callout>Core features of the redesign</Callout>
+        </div>
+        <Reveal>
+          <SolutionBreakdown />
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginBottom: 80 }}>
+            <BigImpactStat value="45%" label="Increase in user engagement" color={tokens.color.accent} />
+          </div>
+        </Reveal>
+
+        <div style={{ marginBottom: 60 }}>
+          <Callout>The Solution: 3 steps instead of 7.</Callout>
+        </div>
+
+        <Reveal>
+          <ProcessFlow
+            steps={[
+              {
+                title: "Open App",
+                description: "Dashboard immediately visible with pinned loved ones",
+                color: "#6BCB77",
+                icon: "1",
+              },
+              {
+                title: "Tap Contact",
+                description: "One tap to see location and safety status in real-time",
+                color: "#4D96FF",
+                icon: "2",
+              },
+              {
+                title: "Get Status",
+                description: "Critical information displayed instantly and clearly",
+                color: "#FFB84D",
+                icon: "3",
+              },
+            ]}
+          />
+        </Reveal>
+
+        <div style={{ marginTop: 80 }}>
+          <Reveal dramatic>
+            <Callout>Design Decisions</Callout>
+          </Reveal>
+
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Dashboard-First Layout
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  Pinned loved ones appear instantly on launch. No search, no navigation layers. In an earthquake, every second matters—users shouldn't have to dig.
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Two-Alert System
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  EEW alerts arrive seconds after shaking starts; CEN notifications come after. Distinct visual treatment (color, language) helps users understand timing and urgency without thinking.
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Gesture Design for Mobile
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  Tap-to-expand locations and swipe between pinned contacts. Designed for one-handed use during stressful moments, minimizing the mental load of complex interactions.
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                  Responsive Grid System
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                  Mobile uses single-column stacking; tablet expands to a 2-column layout with the map on left and content on right. The grid adapts layout without rethinking information hierarchy.
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
         <DashboardWalkthrough
           dashboardImage={myshakeDashboard}
           annotation1={myshakeCarouselNote}
@@ -253,16 +393,35 @@ const MyShakeCaseStudy: FC = () => {
           annotation3={myshakeNotificationsNote}
         />
 
-        <Reveal>
-          <div style={{ marginTop: 80, marginBottom: 80 }}>
-            <div style={{ marginBottom: 48 }}>
-              <div style={{ fontSize: "14px", fontWeight: 600, color: tokens.color.muted, marginBottom: 12, textTransform: "uppercase" }}>
-                Core Features
+        <section style={{ paddingTop: 60, paddingBottom: 60 }} className="section-reveal">
+          <Reveal dramatic>
+            <SectionHeading>Key Design Details</SectionHeading>
+            <SkillRow items={["Micro-interactions", "Accessibility", "User Testing Refinements"]} />
+          </Reveal>
+
+          <Reveal>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+              <div>
+                <img src={myshakeAlert} alt="Alert notification screens showing EEW vs CEN differentiation" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.textDark, marginBottom: 4 }}>
+                  Alert Flows
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                  EEW and CEN alerts visually distinct
+                </div>
+              </div>
+              <div>
+                <img src={myshakeDetails} alt="Detailed information screens with optimized content hierarchy" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }} />
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.textDark, marginBottom: 4 }}>
+                  Detail Screens
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                  Information hierarchy optimized for crisis moments
+                </div>
               </div>
             </div>
-            <SolutionBreakdown />
-          </div>
-        </Reveal>
+          </Reveal>
+        </section>
       </section>
 
       {/* 6. PROCESS */}
@@ -383,10 +542,10 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal dramatic>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
             <div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: 600, color: tokens.color.muted, marginBottom: 12 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, marginBottom: 12 }}>
                 Next case study
               </div>
-              <h2 style={{ fontFamily: tokens.font.sans, fontWeight: 600, fontSize: tokens.text.lg, color: tokens.color.textDark, margin: 0 }}>
+              <h2 style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.lg, color: tokens.color.textDark, margin: 0 }}>
                 NVIDIA AI UX Agent
               </h2>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: "8px 0 0", maxWidth: 400 }}>
