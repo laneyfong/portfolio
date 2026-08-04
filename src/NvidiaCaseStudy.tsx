@@ -248,13 +248,13 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <div style={{ marginTop: 40 }}>
+        <div style={{ marginTop: 60, marginBottom: 80 }}>
           <Callout>The Real Insight: Say vs. Do.</Callout>
           <Paragraph>
             What engineers told us in interviews didn't fully align with their actual workflows — and this gap revealed the true design opportunity.
           </Paragraph>
           <Reveal>
-            <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
               <FeatureCard title="What they said">
                 They value usability, human judgement, and trustworthy AI insights in a dedicated tool.
               </FeatureCard>

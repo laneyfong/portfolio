@@ -104,6 +104,7 @@ export const Paragraph: FC<{ children: ReactNode }> = ({ children }) => (
       color: tokens.color.body,
       margin: "0 0 24px",
       maxWidth: 440,
+      marginTop: 8,
     }}
   >
     {children}
@@ -117,7 +118,8 @@ export const Kicker: FC<{ children: ReactNode }> = ({ children }) => (
       fontSize: tokens.text.sm,
       fontWeight: tokens.weight.medium,
       color: tokens.color.muted,
-      marginBottom: 12,
+      marginBottom: 16,
+      marginTop: 8,
     }}
   >
     {children}
@@ -125,7 +127,7 @@ export const Kicker: FC<{ children: ReactNode }> = ({ children }) => (
 );
 
 export const SkillRow: FC<{ items: string[] }> = ({ items }) => (
-  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
+  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 48, marginTop: 20 }}>
     {items.map((item) => (
       <TagPill key={item}>{item}</TagPill>
     ))}
