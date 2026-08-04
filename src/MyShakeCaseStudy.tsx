@@ -520,7 +520,7 @@ const MyShakeCaseStudy: FC = () => {
     <CaseStudyShell sections={SECTIONS} highlights={HIGHLIGHTS} extraStyle={MYSHAKE_EXTRA_STYLE}>
       {/* Intro */}
       <section id="intro" style={{ paddingBottom: 96 }} className="section-reveal">
-        <div style={{ marginBottom: 12 }}>
+        <div style={{ marginBottom: 16 }}>
           <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted }}>
             High anxiety. Low clarity.
           </span>
@@ -532,7 +532,7 @@ const MyShakeCaseStudy: FC = () => {
             fontSize: tokens.text["2xl"],
             color: tokens.color.ink,
             lineHeight: tokens.leading.snug,
-            margin: "0 0 20px",
+            margin: "0 0 24px",
             maxWidth: 440,
           }}
         >
