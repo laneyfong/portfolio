@@ -583,11 +583,24 @@ const MyShakeCaseStudy: FC = () => {
       {/* Research */}
       <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <div style={{ marginBottom: 32 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
-              I started with direct user research to understand the core problem
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+              Research
             </span>
           </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text["2xl"],
+              fontWeight: tokens.weight.medium,
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 440,
+            }}
+          >
+            I started with direct user research to understand the core problem
+          </h2>
           <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
         </Reveal>
 
@@ -654,11 +667,24 @@ const MyShakeCaseStudy: FC = () => {
       {/* Synthesis */}
       <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <div style={{ marginBottom: 32 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
-              I synthesized insights into a user-centered solution
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+              Synthesis
             </span>
           </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text["2xl"],
+              fontWeight: tokens.weight.medium,
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 440,
+            }}
+          >
+            I synthesized insights into a user-centered solution
+          </h2>
           <SkillRow items={["Information Architecture", "Storyboarding"]} />
         </Reveal>
 
@@ -700,11 +726,24 @@ const MyShakeCaseStudy: FC = () => {
       {/* Ideation */}
       <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <div style={{ marginBottom: 32 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
-              I explored multiple design directions and tested with users
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+              Ideation
             </span>
           </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text["2xl"],
+              fontWeight: tokens.weight.medium,
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 440,
+            }}
+          >
+            I explored multiple design directions and tested with users
+          </h2>
           <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
         </Reveal>
 
@@ -776,11 +815,24 @@ const MyShakeCaseStudy: FC = () => {
       {/* Solution */}
       <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <div style={{ marginBottom: 32 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
-              The final design prioritizes safety and clarity during emergencies
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+              Solution
             </span>
           </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text["2xl"],
+              fontWeight: tokens.weight.medium,
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 440,
+            }}
+          >
+            The final design prioritizes safety and clarity during emergencies
+          </h2>
           <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
           <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
         </Reveal>
@@ -1000,11 +1052,24 @@ const MyShakeCaseStudy: FC = () => {
       {/* Reflection */}
       <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
-          <div style={{ marginBottom: 32 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
-              This project taught me the power of saying no and advocating for research
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+              Reflection
             </span>
           </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text["2xl"],
+              fontWeight: tokens.weight.medium,
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 440,
+            }}
+          >
+            This project taught me the power of saying no and advocating for research
+          </h2>
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
         <Reveal>
