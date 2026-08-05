@@ -217,78 +217,170 @@ const ScrollDrivenProductShowcase: FC<{
     } else if (scrollProgress >= exitStart && scrollProgress < exitEnd) {
       progress = 1 - (scrollProgress - exitStart) / transitionWindow;
       opacity = progress;
-    } else if (scrollProgress >= entryEnd && scrollProgress < exitStart) {
-      opacity = 1;
     }
 
-    return { opacity, progress };
+    const offset = annotation.side === "left"
+      ? -32 * (1 - Math.max(opacity, 0))
+      : 32 * (1 - Math.max(opacity, 0));
+
+    return { opacity: Math.max(0, Math.min(1, opacity)), offset };
   };
 
   return (
-    <div
+    <section
+      style={{ paddingTop: 0, paddingBottom: 400, position: "relative" }}
+      className="section-reveal"
       ref={containerRef}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: 60,
-        alignItems: "start",
-        marginBottom: 120,
-      }}
     >
-      <div style={{ position: "sticky", top: 120, height: "fit-content" }}>
-        <img
-          src={dashboardImage}
-          alt="MyShake dashboard"
+      <div style={{ position: "relative", minHeight: "350vh" }}>
+        {/* Sticky Container - Three Column Layout */}
+        <div
           style={{
-            width: "100%",
-            maxWidth: "340px",
-            height: "auto",
-            borderRadius: tokens.radius.md,
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+            position: "sticky",
+            top: 0,
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "40px",
+            zIndex: 10,
+            pointerEvents: "none",
+            padding: "60px 40px",
+            boxSizing: "border-box",
           }}
-        />
-      </div>
+        >
+          {/* LEFT ANNOTATIONS COLUMN */}
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px", alignItems: "flex-start" }}>
+            {annotations
+              .filter((a) => a.side === "left")
+              .map((annotation, idx) => {
+                const { opacity, offset } = getAnnotationState(annotation);
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
-        {annotations.map((annotation, i) => {
-          const state = getAnnotationState(annotation);
-          return (
-            <div
-              key={i}
-              style={{
-                opacity: state.opacity,
-                transform: `translateY(${(1 - state.opacity) * 20}px)`,
-                transition: "opacity 0.3s ease, transform 0.3s ease",
-              }}
-            >
-              <div style={{ marginBottom: 16 }}>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
-                  {annotation.title}
-                </div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0, maxWidth: 400 }}>
-                  {annotation.description}
-                </p>
-              </div>
-
-              {state.opacity > 0.3 && (
-                <div style={{ borderRadius: tokens.radius.md, overflow: "hidden" }}>
-                  <img
-                    src={annotation.image}
-                    alt={annotation.title}
+                return (
+                  <div
+                    key={idx}
                     style={{
-                      width: "100%",
-                      height: "auto",
-                      display: "block",
-                      borderRadius: tokens.radius.md,
+                      opacity,
+                      transform: `translateX(${offset}px)`,
+                      transition:
+                        "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      willChange: "opacity, transform",
+                      background: tokens.color.white,
+                      padding: "20px",
+                      borderRadius: "12px",
+                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
-                  />
-                </div>
-              )}
-            </div>
-          );
-        })}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "16px",
+                        fontWeight: tokens.weight.medium,
+                        color: tokens.color.textDark,
+                        margin: "0 0 10px",
+                        lineHeight: tokens.leading.snug,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "14px",
+                        color: tokens.color.body,
+                        margin: 0,
+                        lineHeight: tokens.leading.normal,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.description}
+                    </p>
+                  </div>
+                );
+              })}
+          </div>
+
+          {/* CENTER PRODUCT COLUMN */}
+          <div
+            style={{
+              maxWidth: "300px",
+              width: "100%",
+              pointerEvents: "auto",
+              zIndex: 20,
+              flexShrink: 0,
+            }}
+          >
+            <img
+              src={dashboardImage}
+              alt="MyShake dashboard showing pinned locations and earthquakes"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderTopLeftRadius: "24px",
+                borderTopRightRadius: "24px",
+                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.12)",
+                display: "block",
+              }}
+            />
+          </div>
+
+          {/* RIGHT ANNOTATIONS COLUMN */}
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px", alignItems: "flex-end" }}>
+            {annotations
+              .filter((a) => a.side === "right")
+              .map((annotation, idx) => {
+                const { opacity, offset } = getAnnotationState(annotation);
+
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      opacity,
+                      transform: `translateX(${-offset}px)`,
+                      transition:
+                        "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      willChange: "opacity, transform",
+                      background: tokens.color.white,
+                      padding: "20px",
+                      borderRadius: "12px",
+                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "16px",
+                        fontWeight: tokens.weight.medium,
+                        color: tokens.color.textDark,
+                        margin: "0 0 10px",
+                        lineHeight: tokens.leading.snug,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "14px",
+                        color: tokens.color.body,
+                        margin: 0,
+                        lineHeight: tokens.leading.normal,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.description}
+                    </p>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -818,8 +910,8 @@ const MyShakeCaseStudy: FC = () => {
           dashboardImage={myshakeDashboard}
           annotations={[
             {
-              threshold: 0.25,
-              side: "left",
+              threshold: 0.15,
+              side: "right",
               title: "Swipe Between Pinned Contacts",
               description: "Users can quickly swipe left/right to check each pinned loved one's status. No searching, no waiting.",
               image: myshakeCarouselNote,
@@ -832,8 +924,8 @@ const MyShakeCaseStudy: FC = () => {
               image: myshakePrepareNote,
             },
             {
-              threshold: 0.75,
-              side: "left",
+              threshold: 0.8,
+              side: "right",
               title: "Clear Alert Hierarchy",
               description: "EEW (seconds before shaking) and CEN (post-earthquake) are visually distinct. No confusion.",
               image: myshakeNotificationsNote,
