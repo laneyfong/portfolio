@@ -244,8 +244,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
             margin: "24px 16px 0px 16px",
             overflow: "hidden",
             minHeight: 0,
-            borderRadius: 4,
-            background: "linear-gradient(180deg, #D8D8DB 0%, #C8C8CB 100%)",
+            borderRadius: 8,
+            background: "linear-gradient(180deg, #E8E8EB 0%, #E0E0E3 100%)",
             position: "relative",
           }}
         >
@@ -258,7 +258,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               width: "auto",
               height: "auto",
               objectFit: "contain",
-              borderRadius: "4px",
+              borderRadius: "8px",
               transition: "transform 0.22s ease, filter 0.22s ease, opacity 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
               filter: invertOnHover && hovered ? "invert(1)" : "invert(0)",
