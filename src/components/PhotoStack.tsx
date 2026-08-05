@@ -6,6 +6,7 @@ interface Photo {
   src: string;
   srcWebp?: string;
   alt: string;
+  rotate?: number;
 }
 
 interface PhotoStackProps {
@@ -153,6 +154,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
                 objectFit: "cover",
                 objectPosition: "50% 55%",
                 display: "block",
+                transform: photos[currentIndex].rotate ? `rotate(${photos[currentIndex].rotate}deg)` : "rotate(0deg)",
               }}
             />
           </picture>

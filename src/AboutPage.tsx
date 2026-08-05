@@ -301,7 +301,7 @@ const AboutPage: FC = () => {
             <PhotoStack
               photos={[
                 { src: aboutBioPhoto, srcWebp: aboutBioPhotoWebp, alt: "Laney Fong in the SF Bay Area", label: "This is me!" },
-                { src: aboutStoryNewYork, srcWebp: aboutStoryNewYorkWebp, alt: "Travel - New York", label: "I love traveling <3" },
+                { src: aboutStoryNewYork, srcWebp: aboutStoryNewYorkWebp, alt: "Travel - New York", label: "I love traveling <3", rotate: -3 },
                 { src: aboutStoryFoodie, alt: "Foodie adventures", label: "Trying new restaurants is my hobby" },
               ]}
               onPhotoChange={(index) => setCurrentPhotoIndex(index)}
