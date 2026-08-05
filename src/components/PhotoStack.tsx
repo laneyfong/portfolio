@@ -155,6 +155,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
                 objectPosition: "50% 55%",
                 display: "block",
                 transform: photos[currentIndex].rotate ? `rotate(${photos[currentIndex].rotate}deg) scale(1.4)` : "rotate(0deg) scale(1)",
+                transformOrigin: "center center",
               }}
             />
           </picture>
