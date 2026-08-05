@@ -12,8 +12,7 @@ import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import aboutBioPhotoWebp from "./assets/about-bio-photo.webp";
 import clubPic from "./assets/club-pic.jpg";
 import clubPicWebp from "./assets/club-pic.webp";
-import aboutStoryNewYork from "./assets/about-story-newyork.jpg";
-import aboutStoryNewYorkWebp from "./assets/about-story-newyork.webp";
+import japanSapporo from "./assets/japan-sapporo.HEIC";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
@@ -301,7 +300,7 @@ const AboutPage: FC = () => {
             <PhotoStack
               photos={[
                 { src: aboutBioPhoto, srcWebp: aboutBioPhotoWebp, alt: "Laney Fong in the SF Bay Area", label: "This is me!" },
-                { src: aboutStoryNewYork, srcWebp: aboutStoryNewYorkWebp, alt: "Travel - New York", label: "I love traveling <3", rotate: 90 },
+                { src: japanSapporo, alt: "Travel - Japan Sapporo", label: "I love traveling <3", rotate: 90 },
                 { src: aboutStoryFoodie, alt: "Foodie adventures", label: "Trying new restaurants is my hobby" },
               ]}
               onPhotoChange={(index) => setCurrentPhotoIndex(index)}
