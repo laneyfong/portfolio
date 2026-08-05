@@ -129,7 +129,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: linear-gradient(135deg, #F5F5F7 0%, #E8EAED 100%);
+          background: linear-gradient(135deg, #D8D8DB 0%, #C8C8CB 100%);
           gap: ${hovered ? "8px" : "1px"};
           transition: gap 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
