@@ -14,7 +14,7 @@ interface ProudMomentsCarouselProps {
   onIndexChange?: (index: number) => void;
 }
 
-const STORY_DURATION = 5000; // 5 seconds per story
+const STORY_DURATION = 8000; // 8 seconds per story
 
 const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -196,9 +196,9 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexC
                 key={idx}
                 style={{
                   flex: 1,
-                  height: "3px",
-                  background: "rgba(255, 255, 255, 0.3)",
-                  borderRadius: "2px",
+                  height: "5px",
+                  background: "rgba(0, 0, 0, 0.2)",
+                  borderRadius: "3px",
                   overflow: "hidden",
                 }}
               >
@@ -208,6 +208,7 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexC
                     background: "white",
                     width: idx === currentIndex ? `${progress}%` : idx < currentIndex ? "100%" : "0%",
                     transition: idx === currentIndex ? "none" : "width 0.3s ease",
+                    boxShadow: idx === currentIndex ? "0 0 8px rgba(255, 255, 255, 0.6)" : "none",
                   }}
                 />
               </div>
