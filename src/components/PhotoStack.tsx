@@ -164,7 +164,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
       <div
         style={{
           position: "absolute",
-          bottom: 12,
+          bottom: 14,
           left: "50%",
           transform: "translateX(-50%)",
           fontFamily: tokens.font.sans,
