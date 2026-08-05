@@ -128,7 +128,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           margin: 24px 16px 0px 16px;
           overflow: hidden;
           position: relative;
-          border-radius: 14px;
+          border-radius: 4px;
           background: linear-gradient(180deg, #D8D8DB 0%, #C8C8CB 100%);
           gap: ${hovered ? "8px" : "1px"};
           transition: gap 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -138,7 +138,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           width: ${hovered ? "22%" : "40%"};
           height: 100%;
           object-fit: contain;
-          border-radius: 14px;
+          border-radius: 4px;
           transition: width ${hovered ? "0.5s" : "1.2s"} cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.22s ease;
         }
 
