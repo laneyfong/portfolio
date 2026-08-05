@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tokens } from "../tokens";
 
 interface ProudMoment {
@@ -14,18 +14,52 @@ interface ProudMomentsCarouselProps {
   onIndexChange?: (index: number) => void;
 }
 
+const STORY_DURATION = 5000; // 5 seconds per story
+
 const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  // Auto-progression effect
+  useEffect(() => {
+    if (isHovered) return; // Pause on hover
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        const newProgress = prev + (100 / STORY_DURATION) * 50; // Update every 50ms
+        if (newProgress >= 100) {
+          // Move to next story
+          setCurrentIndex((prev) => {
+            const newIndex = (prev + 1) % moments.length;
+            onIndexChange?.(newIndex);
+            return newIndex;
+          });
+          return 0;
+        }
+        return newProgress;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isHovered, moments.length, onIndexChange]);
+
+  // Reset progress when index changes
+  useEffect(() => {
+    setProgress(0);
+  }, [currentIndex]);
 
   const goToNext = () => {
     const newIndex = (currentIndex + 1) % moments.length;
     setCurrentIndex(newIndex);
+    setProgress(0);
     onIndexChange?.(newIndex);
   };
 
   const goToPrev = () => {
     const newIndex = (currentIndex - 1 + moments.length) % moments.length;
     setCurrentIndex(newIndex);
+    setProgress(0);
     onIndexChange?.(newIndex);
   };
 
@@ -116,27 +150,15 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexC
         }
 
         .carousel-indicators {
-          position: absolute;
-          bottom: 12px;
-          right: 12px;
-          display: flex;
-          gap: 8px;
-          z-index: 5;
+          display: none;
         }
 
         .carousel-indicator {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.5);
-          cursor: pointer;
-          transition: all 0.2s ease;
+          display: none;
         }
 
         .carousel-indicator.active {
-          background: white;
-          width: 24px;
-          border-radius: 4px;
+          display: none;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -148,7 +170,50 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexC
         }
       `}</style>
 
-      <div className="carousel-container" onMouseEnter={() => {}}>
+      <div
+        className="carousel-container"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Story progress bars at top */}
+        {moments.length > 1 && (
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              display: "flex",
+              gap: "4px",
+              padding: "8px",
+              zIndex: 20,
+              background: "linear-gradient(to bottom, rgba(0,0,0,0.3), transparent)",
+              borderRadius: `${tokens.radius.sm} ${tokens.radius.sm} 0 0`,
+            }}
+          >
+            {moments.map((_, idx) => (
+              <div
+                key={idx}
+                style={{
+                  flex: 1,
+                  height: "3px",
+                  background: "rgba(255, 255, 255, 0.3)",
+                  borderRadius: "2px",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    background: "white",
+                    width: idx === currentIndex ? `${progress}%` : idx < currentIndex ? "100%" : "0%",
+                    transition: idx === currentIndex ? "none" : "width 0.3s ease",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        )}
         <div className="carousel-image-wrapper">
           <picture>
             <source srcSet={currentMoment.srcWebp} type="image/webp" />
