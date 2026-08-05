@@ -101,7 +101,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           overflow: hidden;
           position: relative;
           border-radius: 14px;
-          background: linear-gradient(135deg, #D8D8DB 0%, #C8C8CB 100%);
+          background: linear-gradient(180deg, #D8D8DB 0%, #C8C8CB 100%);
           gap: 0px;
         }
 

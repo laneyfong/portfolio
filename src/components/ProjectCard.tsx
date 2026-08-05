@@ -245,7 +245,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             overflow: "hidden",
             minHeight: 0,
             borderRadius: 14,
-            background: "linear-gradient(135deg, #D8D8DB 0%, #C8C8CB 100%)",
+            background: "linear-gradient(180deg, #D8D8DB 0%, #C8C8CB 100%)",
             position: "relative",
           }}
         >
