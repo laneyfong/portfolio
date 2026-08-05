@@ -12,7 +12,7 @@ import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import aboutBioPhotoWebp from "./assets/about-bio-photo.webp";
 import clubPic from "./assets/club-pic.jpg";
 import clubPicWebp from "./assets/club-pic.webp";
-import japanSapporo from "./assets/japan-sapporo.HEIC";
+import japanSapporo from "./assets/japan-sapporo.jpg";
 import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
