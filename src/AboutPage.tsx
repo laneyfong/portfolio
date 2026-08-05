@@ -312,7 +312,7 @@ const AboutPage: FC = () => {
               style={{
                 position: "absolute",
                 right: -200,
-                top: -60,
+                top: -80,
                 zIndex: 100,
                 pointerEvents: "none",
               }}
@@ -329,7 +329,7 @@ const AboutPage: FC = () => {
                   maxWidth: "150px",
                   lineHeight: 1.3,
                   wordBreak: "break-word",
-                  paddingTop: "20px",
+                  paddingTop: "16px",
                 }}
               >
                 {["This is me!", "I love traveling <3", "Trying new restaurants is my hobby"][currentPhotoIndex]}
