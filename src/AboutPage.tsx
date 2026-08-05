@@ -329,7 +329,7 @@ const AboutPage: FC = () => {
                   maxWidth: "150px",
                   lineHeight: 1.3,
                   wordBreak: "break-word",
-                  paddingTop: "16px",
+                  paddingTop: "20px",
                 }}
               >
                 {["This is me!", "I love traveling <3", "Trying new restaurants is my hobby"][currentPhotoIndex]}
