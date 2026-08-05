@@ -10,6 +10,7 @@ const NAV_LINKS = ["Work", "About", "Lab", "Resume"];
 const ROUTES: Record<string, string> = {
   Work: "/",
   About: "/about",
+  Lab: "/lab",
   Resume: RESUME_URL,
 };
 
@@ -54,7 +55,7 @@ const FooterLink: FC<{ label: string }> = ({ label }) => {
 const Footer: FC = () => (
   <footer
     style={{
-      backgroundColor: tokens.color.ink,
+      backgroundColor: "#111111",
       width: "100%",
       boxSizing: "border-box",
     }}
