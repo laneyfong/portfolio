@@ -439,7 +439,6 @@ const AboutPage: FC = () => {
           <div
             style={{
               background: tokens.color.offWhite,
-              border: `1px solid ${tokens.color.cardBorder}`,
               borderRadius: tokens.radius.md,
               padding: 28,
             }}
