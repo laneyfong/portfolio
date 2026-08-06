@@ -454,7 +454,7 @@ const AboutPage: FC = () => {
             >
               {proudMomentIndex === 0
                 ? "As president, I revitalized UC Berkeley's dedication to user experience by restructuring its primary UX club. My focus on member engagement and real-world project experience transformed the organization into a thriving, tight-knit professional community!"
-                : "We won first place in the Google Designathon building an app that connects unhoused individuals to resources. Shout out to my amazing team members Kaiwen, Hribav, Andrew, and Gabriel!"}
+                : "We won first place in the Google Designathon building an app that connects unhoused individuals to resources. This experience reinforced my belief in design's power to create meaningful social impact. Shout out to my amazing team members Kaiwen, Hribav, Andrew, and Gabriel!"}
             </p>
             <ProudMomentsCarousel
               onIndexChange={setProudMomentIndex}
