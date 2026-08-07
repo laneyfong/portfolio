@@ -76,8 +76,8 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
             // Calculate z-index: active card on top, cards below decrease in z
             const zIndex = distance === 0 ? 50 : 40 - Math.abs(distance);
 
-            // More muted scale: active = 1, only slight scaling for inactive
-            const scale = isCardActive ? 1 : Math.max(0.98, 1 - Math.abs(distance) * 0.01);
+            // Scale difference: active = 1, inactive cards scale down significantly
+            const scale = isCardActive ? 1 : Math.max(0.85, 1 - Math.abs(distance) * 0.15);
 
             // Smoother opacity: fade-based transitions
             const opacity = isCardActive ? 1 : Math.max(0.35, 1 - Math.abs(distance) * 0.3);
