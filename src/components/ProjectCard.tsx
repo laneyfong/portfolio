@@ -25,6 +25,7 @@ interface ProjectCardProps {
   hoverDetails?: string[];
   noBackground?: boolean;
   noImageRadius?: boolean;
+  noImageGradient?: boolean;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -44,6 +45,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   hoverDetails,
   noBackground = false,
   noImageRadius = false,
+  noImageGradient = false,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -249,7 +251,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             overflow: "hidden",
             minHeight: 0,
             borderRadius: 8,
-            background: "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)",
+            background: noImageGradient ? "transparent" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)",
             position: "relative",
           }}
         >

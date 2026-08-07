@@ -215,6 +215,7 @@ const Portfolio: FC = () => {
                 wipLabel="WIP"
                 noBackground
                 noImageRadius
+                noImageGradient
               />
             </div>
           </div>
