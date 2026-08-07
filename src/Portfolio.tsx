@@ -174,7 +174,7 @@ const Portfolio: FC = () => {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
-              gap: 12,
+              gap: 0,
               alignItems: "stretch",
               justifyItems: "stretch",
               minWidth: 0,

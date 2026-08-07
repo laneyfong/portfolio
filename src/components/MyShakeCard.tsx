@@ -47,7 +47,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         flexDirection: "column",
         transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
-        boxShadow: hovered ? "0 12px 32px rgba(0, 0, 0, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.04)",
       }}
     >
       {/* Video Section */}
@@ -146,7 +145,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: "18px",
+          padding: "18px 0",
           opacity: hovered ? 0 : 1,
           transition: "opacity 0.3s ease",
           pointerEvents: "none",
