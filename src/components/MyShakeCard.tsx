@@ -1,7 +1,8 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
+import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
 
 interface MyShakeCardProps {
   defaultImage: string;
@@ -26,6 +27,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const captionParts = caption.split(captionItalic);
 
@@ -113,27 +115,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           transition: transform 0.22s ease;
         }
 
-        .myshake-left-screen {
-          width: 22%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          visibility: hidden;
-          animation: ${hovered ? "slideOutLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
-        }
-
-        .myshake-right-screen {
-          width: 26%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          visibility: hidden;
-          animation: ${hovered ? "slideOutRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards"};
-        }
 
         @media (prefers-reduced-motion: reduce) {
           .myshake-left-screen,
@@ -261,18 +242,39 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         {/* Image Section with Consistent Flex Layout */}
         <div className="myshake-image-section">
-          {/* Left Alert Screen - Always in Layout, Hidden by Default */}
-          <div className="myshake-left-screen">
-            <img src={alertImage} alt="MyShake earthquake alert" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px" }} />
-          </div>
+          {/* Default Image - Visible when not hovered */}
+          <img
+            src={defaultImage}
+            alt="MyShake pinned locations"
+            className="myshake-center-image"
+            style={{
+              opacity: hovered ? 0 : 1,
+              transition: "opacity 0.3s ease",
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
 
-          {/* Center Screen - Always Visible */}
-          <img src={defaultImage} alt="MyShake pinned locations" className="myshake-center-image" />
-
-          {/* Right Details Screen - Always in Layout, Hidden by Default */}
-          <div className="myshake-right-screen">
-            <img src={detailsImage} alt="MyShake earthquake details" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "14px" }} />
-          </div>
+          {/* Video - Visible on hover */}
+          <video
+            ref={videoRef}
+            src={myshakeScreenRecording}
+            style={{
+              opacity: hovered ? 1 : 0,
+              transition: "opacity 0.3s ease",
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              borderRadius: "14px",
+              pointerEvents: "none",
+            }}
+            autoPlay
+            loop
+            muted
+          />
         </div>
 
         {/* Bottom Section */}
