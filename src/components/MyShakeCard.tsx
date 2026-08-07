@@ -5,7 +5,6 @@ import { tokens } from "../tokens";
 import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
 
 interface MyShakeCardProps {
-  defaultImage: string;
   caption: string;
   captionItalic: string;
   roleOutcome: string;
@@ -14,7 +13,6 @@ interface MyShakeCardProps {
 }
 
 const MyShakeCard: FC<MyShakeCardProps> = ({
-  defaultImage,
   caption,
   captionItalic,
   roleOutcome,
@@ -238,34 +236,16 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         {/* Image Section with Consistent Flex Layout */}
         <div className="myshake-image-section">
-          {/* Default Image - Visible when not hovered */}
-          <img
-            src={defaultImage}
-            alt="MyShake pinned locations"
-            className="myshake-center-image"
-            style={{
-              opacity: hovered ? 0 : 1,
-              transition: "opacity 0.3s ease",
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-            }}
-          />
-
-          {/* Video - Visible on hover */}
+          {/* Video - Replaces default image */}
           <video
             ref={videoRef}
             src={myshakeScreenRecording}
             style={{
-              opacity: hovered ? 1 : 0,
-              transition: "opacity 0.3s ease",
-              position: "absolute",
               width: "100%",
               height: "100%",
               objectFit: "cover",
               borderRadius: "14px",
-              pointerEvents: "none",
+              display: "block",
             }}
             autoPlay
             playsInline

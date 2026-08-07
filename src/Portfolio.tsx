@@ -13,7 +13,6 @@ import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 import laneyPhoto from "./assets/laney-photo.jpg";
-import myshakeDefault from "./assets/myshake-default.png";
 import idbridgeThumbnail from "./assets/idbridge-thumbnail.png";
 import idbridgeDocuments from "./assets/idbridge-documents.png";
 import idbridgeHistory from "./assets/idbridge-history.png";
@@ -186,7 +185,6 @@ const Portfolio: FC = () => {
           >
             <div ref={card1Ref} className="card-reveal card-1-reveal">
               <MyShakeCard
-                defaultImage={myshakeDefault}
                 roleOutcome="Mobile Design × Crisis Response"
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
                 captionItalic="45% engagement increase"
