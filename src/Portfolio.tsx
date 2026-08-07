@@ -213,6 +213,8 @@ const Portfolio: FC = () => {
                 context="Capstone Project"
                 to="/nvidia-ai-ux-agent"
                 wipLabel="WIP"
+                noBackground
+                noImageRadius
               />
             </div>
           </div>

@@ -23,6 +23,8 @@ interface ProjectCardProps {
   hoverScreenshot?: string;
   context?: string;
   hoverDetails?: string[];
+  noBackground?: boolean;
+  noImageRadius?: boolean;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -40,6 +42,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
   hoverScreenshot,
   context,
   hoverDetails,
+  noBackground = false,
+  noImageRadius = false,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -83,7 +87,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           cursor: to ? "pointer" : "default",
           transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
           transform: hovered && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
-          backgroundColor: darkHoverMode && hovered ? "#111111" : tokens.color.offWhite,
+          backgroundColor: noBackground ? "transparent" : (darkHoverMode && hovered ? "#111111" : tokens.color.offWhite),
           boxShadow: hovered ? "0 12px 32px rgba(0, 0, 0, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.04)",
           overflow: "hidden",
           position: "relative",
@@ -258,7 +262,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               width: "auto",
               height: "auto",
               objectFit: "contain",
-              borderRadius: "8px",
+              borderRadius: noImageRadius ? "0px" : "8px",
               transition: "transform 0.22s ease, filter 0.22s ease, opacity 0.22s ease",
               transform: hovered ? "scale(1.02)" : "scale(1)",
               filter: invertOnHover && hovered ? "invert(1)" : "invert(0)",
