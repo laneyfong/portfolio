@@ -163,123 +163,127 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           muted
         />
 
-        {/* Text Overlay - On top of video */}
+        {/* Top Text Overlay - Always visible */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
+            top: 0,
+            left: 0,
+            right: 0,
             display: "flex",
-            flexDirection: "column",
+            alignItems: "flex-start",
             justifyContent: "space-between",
+            gap: 12,
             padding: "16px",
-            opacity: hovered ? 0 : 1,
-            transition: "opacity 0.3s ease",
             zIndex: 5,
             pointerEvents: "none",
           }}
         >
-          {/* Top: Context and Arrow */}
-          <div
+          <span
             style={{
-              display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "space-between",
-              gap: 12,
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "11px",
+              color: "white",
+              letterSpacing: "0.5px",
+              textTransform: "uppercase",
+              lineHeight: tokens.leading.none,
+              textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
             }}
           >
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                fontSize: "11px",
-                color: "white",
-                letterSpacing: "0.5px",
-                textTransform: "uppercase",
-                lineHeight: tokens.leading.none,
-                textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
-              }}
-            >
-              {context}
-            </span>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 32 32"
-              style={{
-                filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
-                flexShrink: 0,
-              }}
-            >
-              <circle
-                cx="16"
-                cy="16"
-                r="14"
-                fill="none"
+            {context}
+          </span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 32 32"
+            style={{
+              filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
+              flexShrink: 0,
+              transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+            }}
+          >
+            <circle
+              cx="16"
+              cy="16"
+              r="14"
+              fill="none"
+              stroke="white"
+              strokeWidth="1.5"
+            />
+            <g>
+              <path
+                d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
                 stroke="white"
                 strokeWidth="1.5"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              <g>
-                <path
-                  d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </g>
-            </svg>
-          </div>
+            </g>
+          </svg>
+        </div>
 
-          {/* Bottom: Caption and Role Outcome with gradient background */}
-          <div
+        {/* Bottom Text Overlay - Fades on hover */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+            background: "linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%)",
+            padding: "0",
+            opacity: hovered ? 0 : 1,
+            transition: "opacity 0.3s ease",
+            zIndex: 5,
+            pointerEvents: "none",
+            paddingBottom: "16px",
+            paddingLeft: "16px",
+            paddingRight: "16px",
+            paddingTop: "32px",
+          }}
+        >
+          {/* Caption */}
+          <span
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 8,
-              background: "linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%)",
-              padding: "24px 8px 8px 8px",
-              borderRadius: "8px",
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.regular,
+              fontSize: "14px",
+              color: "white",
+              lineHeight: tokens.leading.snug,
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
             }}
           >
-            {/* Caption */}
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                fontSize: "14px",
-                color: "white",
-                lineHeight: tokens.leading.snug,
-                display: "-webkit-box",
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-                textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
-              }}
-            >
-              {captionParts[0]}
-              <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
-                {captionItalic}
-              </em>
-              {captionParts[1]}
-            </span>
+            {captionParts[0]}
+            <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
+              {captionItalic}
+            </em>
+            {captionParts[1]}
+          </span>
 
-            {/* Role Outcome */}
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                fontSize: "11px",
-                color: "rgba(255, 255, 255, 0.8)",
-                letterSpacing: tokens.tracking.tight,
-                textTransform: "uppercase",
-                lineHeight: tokens.leading.none,
-                textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
-              }}
-            >
-              {roleOutcome}
-            </span>
-          </div>
+          {/* Role Outcome */}
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "11px",
+              color: "rgba(255, 255, 255, 0.8)",
+              letterSpacing: tokens.tracking.tight,
+              textTransform: "uppercase",
+              lineHeight: tokens.leading.none,
+              textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
+            }}
+          >
+            {roleOutcome}
+          </span>
         </div>
       </div>
     </>
