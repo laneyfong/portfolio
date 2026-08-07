@@ -139,55 +139,55 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           right: 0,
           display: "flex",
           flexDirection: "column",
-          gap: 8,
-          background: "linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%)",
+          gap: 12,
+          background: "linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%)",
           padding: "0",
           opacity: hovered ? 0 : 1,
           transition: "opacity 0.3s ease",
           zIndex: 5,
           pointerEvents: "none",
-          paddingBottom: "16px",
-          paddingLeft: "16px",
-          paddingRight: "16px",
-          paddingTop: "32px",
+          paddingBottom: "20px",
+          paddingLeft: "18px",
+          paddingRight: "18px",
+          paddingTop: "40px",
         }}
       >
-        {/* Caption */}
+        {/* Role Outcome - appears first in visual hierarchy */}
         <span
           style={{
             fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.regular,
-            fontSize: "14px",
+            fontWeight: tokens.weight.medium,
+            fontSize: "12px",
+            color: "rgba(255, 255, 255, 0.85)",
+            letterSpacing: tokens.tracking.tight,
+            textTransform: "uppercase",
+            lineHeight: tokens.leading.none,
+            textShadow: "0 2px 6px rgba(0, 0, 0, 0.5)",
+          }}
+        >
+          {roleOutcome}
+        </span>
+
+        {/* Caption - main focus */}
+        <span
+          style={{
+            fontFamily: tokens.font.sans,
+            fontWeight: tokens.weight.medium,
+            fontSize: "16px",
             color: "white",
             lineHeight: tokens.leading.snug,
             display: "-webkit-box",
             WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
-            textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
+            textShadow: "0 2px 8px rgba(0, 0, 0, 0.6)",
           }}
         >
           {captionParts[0]}
-          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
+          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
             {captionItalic}
           </em>
           {captionParts[1]}
-        </span>
-
-        {/* Role Outcome */}
-        <span
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "11px",
-            color: "rgba(255, 255, 255, 0.8)",
-            letterSpacing: tokens.tracking.tight,
-            textTransform: "uppercase",
-            lineHeight: tokens.leading.none,
-            textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
-          }}
-        >
-          {roleOutcome}
         </span>
       </div>
     </div>
