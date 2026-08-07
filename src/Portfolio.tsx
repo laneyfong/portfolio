@@ -176,11 +176,13 @@ const Portfolio: FC = () => {
               gridTemplateColumns: "repeat(2, 1fr)",
               gap: 20,
               alignItems: "stretch",
+              justifyItems: "stretch",
               minWidth: 0,
               width: "100%",
+              gridAutoRows: "auto",
             }}
           >
-            <div ref={card1Ref} className="card-reveal card-1-reveal">
+            <div ref={card1Ref} className="card-reveal card-1-reveal" style={{ width: "100%", height: "100%" }}>
               <MyShakeCard
                 roleOutcome="Mobile Design × Crisis Response"
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
@@ -190,7 +192,7 @@ const Portfolio: FC = () => {
               />
             </div>
 
-            <div ref={card2Ref} className="card-reveal card-2-reveal">
+            <div ref={card2Ref} className="card-reveal card-2-reveal" style={{ width: "100%", height: "100%" }}>
               <IDbridgeCard
                 roleOutcome="Social Impact × Accessibility"
                 caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours."
@@ -200,7 +202,7 @@ const Portfolio: FC = () => {
               />
             </div>
 
-            <div ref={card3Ref} className="card-reveal card-3-reveal">
+            <div ref={card3Ref} className="card-reveal card-3-reveal" style={{ width: "100%", height: "100%" }}>
               <ProjectCard
                 screenshot={nvidiaLogo}
                 layout="landscape"
