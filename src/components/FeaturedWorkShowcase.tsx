@@ -7,32 +7,42 @@ interface FeaturedWorkShowcaseProps {
 
 const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isGridMode, setIsGridMode] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Scroll-driven activation
+  // Scroll-driven activation and grid-to-stacked transition
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
 
+      const containerRect = containerRef.current.getBoundingClientRect();
       const viewportCenter = window.innerHeight / 2;
 
-      let closestIndex = 0;
-      let closestDistance = Infinity;
+      // Determine if we should be in grid or stacked mode
+      // Switch to stacked mode once container scrolls past top of viewport
+      const shouldBeGridMode = containerRect.top > -window.innerHeight * 0.3;
+      setIsGridMode(shouldBeGridMode);
 
-      cardsRef.current.forEach((card, index) => {
-        if (!card) return;
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.top + cardRect.height / 2;
-        const distance = Math.abs(cardCenter - viewportCenter);
+      // Only calculate active index in stacked mode
+      if (!shouldBeGridMode) {
+        let closestIndex = 0;
+        let closestDistance = Infinity;
 
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
+        cardsRef.current.forEach((card, index) => {
+          if (!card) return;
+          const cardRect = card.getBoundingClientRect();
+          const cardCenter = cardRect.top + cardRect.height / 2;
+          const distance = Math.abs(cardCenter - viewportCenter);
 
-      setActiveIndex(closestIndex);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        setActiveIndex(closestIndex);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -59,13 +69,15 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
         perspective: "1000px",
       }}
     >
-      {/* Stack container with padding to show next card */}
+      {/* Grid/Stack container with smooth transition */}
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 0,
+          display: isGridMode ? "grid" : "flex",
+          gridTemplateColumns: isGridMode ? "repeat(2, 1fr)" : undefined,
+          flexDirection: isGridMode ? undefined : "column",
+          gap: isGridMode ? 16 : 0,
           width: "100%",
+          transition: "display 0.6s cubic-bezier(0.4, 0, 0.2, 1), gap 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
         {Array.isArray(children) &&
@@ -73,19 +85,32 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
             const isCardActive = index === activeIndex;
             const distance = index - activeIndex;
 
-            // Calculate z-index: active card on top, cards below decrease in z
+            // Grid mode: show all cards normally
+            if (isGridMode) {
+              const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: true } as any) : child;
+              return (
+                <div
+                  key={index}
+                  ref={(el) => {
+                    cardsRef.current[index] = el;
+                  }}
+                  onClick={() => handleCardClick(index)}
+                  style={{
+                    width: "100%",
+                    cursor: "pointer",
+                  }}
+                >
+                  {childWithProps}
+                </div>
+              );
+            }
+
+            // Stacked mode: show one active with others scaled/faded
             const zIndex = distance === 0 ? 50 : 40 - Math.abs(distance);
-
-            // Scale difference: active = 1, inactive cards scale down significantly
             const scale = isCardActive ? 1 : Math.max(0.85, 1 - Math.abs(distance) * 0.15);
-
-            // Smoother opacity: fade-based transitions
             const opacity = isCardActive ? 1 : Math.max(0.35, 1 - Math.abs(distance) * 0.3);
-
-            // Vertical offset for stacking (both above and below)
             const offsetY = distance > 0 ? Math.min(distance * 12, 24) : Math.max(distance * -12, -24);
 
-            // Clone child element with isActive prop if it's a valid element
             const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: isCardActive } as any) : child;
 
             return (
@@ -104,7 +129,6 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
                   transition: "opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
                   transformOrigin: "center top",
                   zIndex,
-                  // Clip cards to show only 20-30% peek (above and below)
                   clipPath: distance > 0
                     ? `inset(0 0 -${100 - Math.min(distance === 1 ? 28 : 15, 28)}% 0)`
                     : distance < 0
