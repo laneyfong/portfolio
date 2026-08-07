@@ -33,7 +33,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   screenshot,
   caption,
   captionItalic,
-  layout = "portrait",
+  layout: _layout = "portrait",
   height: _height,
   metrics,
   to,
