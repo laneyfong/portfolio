@@ -6,8 +6,6 @@ import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
 
 interface MyShakeCardProps {
   defaultImage: string;
-  alertImage: string;
-  detailsImage: string;
   caption: string;
   captionItalic: string;
   roleOutcome: string;
@@ -17,8 +15,6 @@ interface MyShakeCardProps {
 
 const MyShakeCard: FC<MyShakeCardProps> = ({
   defaultImage,
-  alertImage,
-  detailsImage,
   caption,
   captionItalic,
   roleOutcome,
