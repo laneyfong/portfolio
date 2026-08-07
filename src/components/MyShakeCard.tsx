@@ -141,26 +141,54 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
           transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
           boxShadow: hovered ? "0 12px 32px rgba(0, 0, 0, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.04)",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        {/* Header */}
+        {/* Image Section - On Top */}
         <div
+          className="myshake-image-section"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 8,
-            padding: "16px 16px 0px 16px",
-            flex: "0 0 auto",
             position: "relative",
-            zIndex: 10,
+            flex: "0 0 auto",
+            paddingBottom: "50%",
+            height: 0,
+            overflow: "hidden",
+            borderRadius: "20px 20px 0 0",
           }}
         >
+          {/* Video */}
+          <video
+            ref={videoRef}
+            src={myshakeScreenRecording}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+            autoPlay
+            playsInline
+            loop
+            muted
+          />
+
+          {/* Overlay: Context and Arrow - On top of video */}
           <div
             style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
               display: "flex",
               alignItems: "flex-start",
               justifyContent: "space-between",
               gap: 12,
+              padding: "16px",
+              zIndex: 5,
             }}
           >
             <span
@@ -168,7 +196,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
                 fontSize: "11px",
-                color: tokens.color.muted,
+                color: "white",
                 letterSpacing: "0.5px",
                 textTransform: "uppercase",
                 lineHeight: tokens.leading.none,
@@ -191,27 +219,36 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
                 cy="16"
                 r="14"
                 fill="none"
-                stroke={tokens.color.body}
+                stroke="white"
                 strokeWidth="1.5"
-                style={{
-                  transition: "stroke 0.5s ease",
-                }}
               />
               <g>
                 <path
                   d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                  stroke={tokens.color.body}
+                  stroke="white"
                   strokeWidth="1.5"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  style={{
-                    transition: "stroke 0.5s ease",
-                  }}
                 />
               </g>
             </svg>
           </div>
+        </div>
+
+        {/* Description Section - Below Video */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 14,
+            padding: "16px",
+            flex: 1,
+            position: "relative",
+            zIndex: 10,
+          }}
+        >
+          {/* Caption */}
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -232,40 +269,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             </em>
             {captionParts[1]}
           </span>
-        </div>
 
-        {/* Image Section with Consistent Flex Layout */}
-        <div className="myshake-image-section">
-          {/* Video - Replaces default image */}
-          <video
-            ref={videoRef}
-            src={myshakeScreenRecording}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "14px",
-              display: "block",
-            }}
-            autoPlay
-            playsInline
-            loop
-            muted
-          />
-        </div>
-
-        {/* Bottom Section */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 14,
-            padding: "16px 16px 20px 16px",
-            flex: "0 0 auto",
-            position: "relative",
-            zIndex: 10,
-          }}
-        >
+          {/* Role Outcome */}
           <span
             style={{
               fontFamily: tokens.font.sans,
