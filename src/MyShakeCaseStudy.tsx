@@ -30,6 +30,7 @@ import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import { AlertIcon, PinIcon } from "./components/icons/CaseStudyIcons";
 import myshakeThumbnail from "./assets/myshake-thumbnail.png";
+import myshakeScreenRecording from "./assets/myshake-screen-recording.mp4";
 import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
 import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
@@ -466,26 +467,24 @@ const MyShakeCaseStudy: FC = () => {
           <Reveal delay={100}>
             <div
               style={{
-                background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
-                padding: "40px",
-                borderRadius: tokens.radius.md,
                 marginBottom: 40,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: 400,
+                borderRadius: tokens.radius.md,
+                overflow: "hidden",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
               }}
             >
-              <img
-                src={myshakeThumbnail}
+              <video
+                src={myshakeScreenRecording}
                 alt="MyShake redesigned app - the new safety-focused design"
                 style={{
                   width: "100%",
                   height: "auto",
-                  borderRadius: tokens.radius.md,
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
-                  maxWidth: 320,
+                  display: "block",
                 }}
+                autoPlay
+                playsInline
+                loop
+                muted
               />
             </div>
           </Reveal>
