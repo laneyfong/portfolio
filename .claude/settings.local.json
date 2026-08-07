@@ -134,7 +134,9 @@
       "Bash(cp /Users/laneyfong/.claude/image-cache/ac087bfe-a2bf-4b56-afa5-5ca0d442d719/1.png /Users/laneyfong/portfolio/src/assets/myshake-dashboard.png)",
       "Bash(cp /Users/laneyfong/.claude/image-cache/ac087bfe-a2bf-4b56-afa5-5ca0d442d719/2.png /Users/laneyfong/portfolio/src/assets/myshake-carousel-note.png)",
       "Bash(cp /Users/laneyfong/.claude/image-cache/ac087bfe-a2bf-4b56-afa5-5ca0d442d719/3.png /Users/laneyfong/portfolio/src/assets/myshake-prepare-note.png)",
-      "Bash(cp /Users/laneyfong/.claude/image-cache/ac087bfe-a2bf-4b56-afa5-5ca0d442d719/4.png /Users/laneyfong/portfolio/src/assets/myshake-notifications-note.png)"
+      "Bash(cp /Users/laneyfong/.claude/image-cache/ac087bfe-a2bf-4b56-afa5-5ca0d442d719/4.png /Users/laneyfong/portfolio/src/assets/myshake-notifications-note.png)",
+      "Bash(convert japan-sapporo.HEIC japan-sapporo.jpg)",
+      "Bash(ffmpeg -i japan-sapporo.HEIC -q:v 2 japan-sapporo.jpg -y)"
     ]
   }
 }

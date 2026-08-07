@@ -29,7 +29,6 @@ import StepsComparison from "./components/caseStudy/StepsComparison";
 import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import { AlertIcon, PinIcon } from "./components/icons/CaseStudyIcons";
-import myshakeThumbnail from "./assets/myshake-thumbnail.png";
 import myshakeScreenRecording from "./assets/myshake-screen-recording.mp4";
 import myshakeAlert from "./assets/myshake-alert.png";
 import myshakeDetails from "./assets/myshake-details.png";
@@ -475,7 +474,6 @@ const MyShakeCaseStudy: FC = () => {
             >
               <video
                 src={myshakeScreenRecording}
-                alt="MyShake redesigned app - the new safety-focused design"
                 style={{
                   width: "100%",
                   height: "auto",

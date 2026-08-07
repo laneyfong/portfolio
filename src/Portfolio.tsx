@@ -174,9 +174,10 @@ const Portfolio: FC = () => {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
-              gap: 12,
+              gap: 20,
               alignItems: "stretch",
               minWidth: 0,
+              width: "100%",
             }}
           >
             <div ref={card1Ref} className="card-reveal card-1-reveal">
