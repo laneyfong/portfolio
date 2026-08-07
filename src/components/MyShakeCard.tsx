@@ -157,7 +157,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
       {/* Text Section Below Video - No Background */}
       <div
         style={{
-          display: "flex",
+          display: isActive ? "flex" : "none",
           flexDirection: "column",
           gap: 12,
           padding: "18px 0",
