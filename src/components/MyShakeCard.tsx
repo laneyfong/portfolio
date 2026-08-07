@@ -150,9 +150,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           className="myshake-image-section"
           style={{
             position: "relative",
-            flex: "0 0 auto",
-            paddingBottom: "50%",
-            height: 0,
+            flex: 1,
             overflow: "hidden",
             borderRadius: "20px 20px 0 0",
           }}
