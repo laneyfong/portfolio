@@ -17,7 +17,7 @@ const ContentContainer: FC<ContentContainerProps> = ({ children }) => {
     <div
       style={{
         width: "100%",
-        maxWidth: "100%",
+        maxWidth: "clamp(100%, 100%, 1920px)",
         marginLeft: "auto",
         marginRight: "auto",
         paddingLeft: "clamp(16px, 2%, 24px)",
