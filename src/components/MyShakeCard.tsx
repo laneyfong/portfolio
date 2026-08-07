@@ -136,57 +136,55 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         style={{
           borderRadius: 20,
           cursor: "pointer",
-          backgroundColor: tokens.color.offWhite,
-          color: hovered ? "#ffffff" : tokens.color.body,
+          position: "relative",
+          overflow: "hidden",
+          aspectRatio: "16 / 10",
           transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
           transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
           boxShadow: hovered ? "0 12px 32px rgba(0, 0, 0, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.04)",
-          display: "flex",
-          flexDirection: "column",
         }}
       >
-        {/* Image Section - On Top */}
-        <div
-          className="myshake-image-section"
+        {/* Video - Full Card */}
+        <video
+          ref={videoRef}
+          src={myshakeScreenRecording}
           style={{
-            position: "relative",
-            flex: 1,
-            overflow: "hidden",
-            borderRadius: "20px 20px 0 0",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+          autoPlay
+          playsInline
+          loop
+          muted
+        />
+
+        {/* Text Overlay - On top of video */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "16px",
+            opacity: hovered ? 0 : 1,
+            transition: "opacity 0.3s ease",
+            zIndex: 5,
+            pointerEvents: "none",
           }}
         >
-          {/* Video */}
-          <video
-            ref={videoRef}
-            src={myshakeScreenRecording}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-            autoPlay
-            playsInline
-            loop
-            muted
-          />
-
-          {/* Overlay: Context and Arrow - On top of video */}
+          {/* Top: Context and Arrow */}
           <div
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
               display: "flex",
               alignItems: "flex-start",
               justifyContent: "space-between",
               gap: 12,
-              padding: "16px",
-              zIndex: 5,
             }}
           >
             <span
@@ -198,6 +196,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
                 letterSpacing: "0.5px",
                 textTransform: "uppercase",
                 lineHeight: tokens.leading.none,
+                textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
               }}
             >
               {context}
@@ -207,8 +206,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               height="20"
               viewBox="0 0 32 32"
               style={{
-                transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+                filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
                 flexShrink: 0,
               }}
             >
@@ -232,57 +230,56 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               </g>
             </svg>
           </div>
-        </div>
 
-        {/* Description Section - Below Video */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 14,
-            padding: "16px",
-            flex: 1,
-            position: "relative",
-            zIndex: 10,
-          }}
-        >
-          {/* Caption */}
-          <span
+          {/* Bottom: Caption and Role Outcome with gradient background */}
+          <div
             style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.regular,
-              fontSize: "16px",
-              color: tokens.color.body,
-              lineHeight: tokens.leading.snug,
-              transition: "color 0.32s ease",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+              background: "linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%)",
+              padding: "24px 8px 8px 8px",
+              borderRadius: "8px",
             }}
           >
-            {captionParts[0]}
-            <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
-              {captionItalic}
-            </em>
-            {captionParts[1]}
-          </span>
+            {/* Caption */}
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.regular,
+                fontSize: "14px",
+                color: "white",
+                lineHeight: tokens.leading.snug,
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              {captionParts[0]}
+              <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
+                {captionItalic}
+              </em>
+              {captionParts[1]}
+            </span>
 
-          {/* Role Outcome */}
-          <span
-            style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              fontSize: "12px",
-              color: tokens.color.muted,
-              letterSpacing: tokens.tracking.tight,
-              textTransform: "uppercase",
-              lineHeight: tokens.leading.none,
-              transition: "color 0.5s ease",
-            }}
-          >
-            {roleOutcome}
-          </span>
+            {/* Role Outcome */}
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "11px",
+                color: "rgba(255, 255, 255, 0.8)",
+                letterSpacing: tokens.tracking.tight,
+                textTransform: "uppercase",
+                lineHeight: tokens.leading.none,
+                textShadow: "0 1px 4px rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              {roleOutcome}
+            </span>
+          </div>
         </div>
       </div>
     </>
