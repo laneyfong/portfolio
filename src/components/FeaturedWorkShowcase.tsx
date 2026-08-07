@@ -76,14 +76,14 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
             // Calculate z-index: active card on top, cards below decrease in z
             const zIndex = distance === 0 ? 50 : 40 - Math.abs(distance);
 
-            // Calculate scale: active = 1, each card behind = 0.95
-            const scale = isCardActive ? 1 : Math.max(0.92, 1 - Math.abs(distance) * 0.04);
+            // More muted scale: active = 1, only slight scaling for inactive
+            const scale = isCardActive ? 1 : Math.max(0.98, 1 - Math.abs(distance) * 0.01);
 
-            // Calculate opacity: active = 1, inactive = 0.6
-            const opacity = isCardActive ? 1 : Math.max(0.5, 1 - Math.abs(distance) * 0.2);
+            // Smoother opacity: fade-based transitions
+            const opacity = isCardActive ? 1 : Math.max(0.35, 1 - Math.abs(distance) * 0.3);
 
-            // Calculate vertical offset for stacking effect
-            const offsetY = distance > 0 ? Math.min(distance * 24, 48) : 0;
+            // Minimal vertical offset for more subtle stacking
+            const offsetY = distance > 0 ? Math.min(distance * 12, 24) : 0;
 
             // Clone child element with isActive prop if it's a valid element
             const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: isCardActive } as any) : child;
@@ -101,7 +101,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
                   cursor: distance > 0 ? "pointer" : "default",
                   transform: `scale(${scale}) translateY(${offsetY}px)`,
                   opacity,
-                  transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                  transition: "opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
                   transformOrigin: "center top",
                   zIndex,
                   // Clip cards below to show only 20-30% peek
