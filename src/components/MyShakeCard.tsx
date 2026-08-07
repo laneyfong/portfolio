@@ -43,144 +43,142 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         cursor: "pointer",
         position: "relative",
         overflow: "hidden",
-        aspectRatio: "16 / 10",
+        display: "flex",
+        flexDirection: "column",
         transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
         boxShadow: hovered ? "0 12px 32px rgba(0, 0, 0, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.04)",
       }}
     >
-      {/* Video - Full Card */}
-      <video
-        ref={videoRef}
-        src={myshakeScreenRecording}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
-        autoPlay
-        playsInline
-        loop
-        muted
-      />
-
-      {/* Top Text Overlay - Always visible */}
+      {/* Video Section */}
       <div
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: 12,
-          padding: "16px",
-          zIndex: 5,
-          pointerEvents: "none",
+          position: "relative",
+          aspectRatio: "16 / 10",
+          overflow: "hidden",
+          borderRadius: 20,
         }}
       >
-        <span
+        <video
+          ref={videoRef}
+          src={myshakeScreenRecording}
           style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "11px",
-            color: "white",
-            letterSpacing: "0.5px",
-            textTransform: "uppercase",
-            lineHeight: tokens.leading.none,
-            textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+          autoPlay
+          playsInline
+          loop
+          muted
+        />
+
+        {/* Top Text Overlay - Always visible */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 12,
+            padding: "16px",
+            zIndex: 5,
+            pointerEvents: "none",
           }}
         >
-          {context}
-        </span>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 32 32"
-          style={{
-            filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
-            flexShrink: 0,
-            transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-            transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
-          }}
-        >
-          <circle
-            cx="16"
-            cy="16"
-            r="14"
-            fill="none"
-            stroke="white"
-            strokeWidth="1.5"
-          />
-          <g>
-            <path
-              d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "11px",
+              color: "white",
+              letterSpacing: "0.5px",
+              textTransform: "uppercase",
+              lineHeight: tokens.leading.none,
+              textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
+            }}
+          >
+            {context}
+          </span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 32 32"
+            style={{
+              filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
+              flexShrink: 0,
+              transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+            }}
+          >
+            <circle
+              cx="16"
+              cy="16"
+              r="14"
+              fill="none"
               stroke="white"
               strokeWidth="1.5"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
             />
-          </g>
-        </svg>
+            <g>
+              <path
+                d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                stroke="white"
+                strokeWidth="1.5"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+          </svg>
+        </div>
       </div>
 
-      {/* Bottom Text Overlay - Fades on hover */}
+      {/* Text Section Below Video - No Background */}
       <div
         style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          background: "linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%)",
-          padding: "0",
+          padding: "18px",
           opacity: hovered ? 0 : 1,
           transition: "opacity 0.3s ease",
-          zIndex: 5,
           pointerEvents: "none",
-          paddingBottom: "20px",
-          paddingLeft: "18px",
-          paddingRight: "18px",
-          paddingTop: "40px",
         }}
       >
-        {/* Role Outcome - appears first in visual hierarchy */}
+        {/* Role Outcome */}
         <span
           style={{
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
             fontSize: "12px",
-            color: "rgba(255, 255, 255, 0.85)",
+            color: tokens.color.muted,
             letterSpacing: tokens.tracking.tight,
             textTransform: "uppercase",
             lineHeight: tokens.leading.none,
-            textShadow: "0 2px 6px rgba(0, 0, 0, 0.5)",
           }}
         >
           {roleOutcome}
         </span>
 
-        {/* Caption - main focus */}
+        {/* Caption */}
         <span
           style={{
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
             fontSize: "16px",
-            color: "white",
+            color: tokens.color.ink,
             lineHeight: tokens.leading.snug,
             display: "-webkit-box",
             WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
-            textShadow: "0 2px 8px rgba(0, 0, 0, 0.6)",
           }}
         >
           {captionParts[0]}
