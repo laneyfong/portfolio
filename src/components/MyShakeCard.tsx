@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
@@ -10,6 +10,7 @@ interface MyShakeCardProps {
   roleOutcome: string;
   context: string;
   to: string;
+  isActive?: boolean;
 }
 
 const MyShakeCard: FC<MyShakeCardProps> = ({
@@ -18,12 +19,26 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   roleOutcome,
   context,
   to,
+  isActive = true,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const captionParts = caption.split(captionItalic);
+
+  // Control video playback based on active state
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isActive) {
+        videoRef.current.play().catch(() => {
+          // Autoplay may fail due to browser policies
+        });
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isActive]);
 
   return (
     <div

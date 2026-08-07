@@ -9,6 +9,7 @@ import ProjectCard from "./components/ProjectCard";
 import HalftoneField from "./components/HalftoneField";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
+import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
@@ -27,9 +28,6 @@ if (typeof window !== 'undefined') {
 
 const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
-  const { ref: card1Ref, isVisible: card1Visible } = useScrollReveal();
-  const { ref: card2Ref, isVisible: card2Visible } = useScrollReveal();
-  const { ref: card3Ref, isVisible: card3Visible } = useScrollReveal();
 
   const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
   const [videoReady, setVideoReady] = useState(false);
@@ -109,22 +107,6 @@ const Portfolio: FC = () => {
           transition: ${!videoReady ? "opacity 0.4s ease-out" : "none"};
         }
 
-        .card-reveal {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-
-        .card-1-reveal {
-          animation: ${card1Visible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
-        }
-
-        .card-2-reveal {
-          animation: ${card2Visible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards" : "none"};
-        }
-
-        .card-3-reveal {
-          animation: ${card3Visible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards" : "none"};
-        }
 
         @media (prefers-reduced-motion: reduce) {
           .top-nav-reveal,
@@ -168,21 +150,8 @@ const Portfolio: FC = () => {
 
       <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(40px, 8vw, 100px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <ContentContainer>
-          <div
-            id="work"
-            className="grid-cols work-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: 16,
-              alignItems: "stretch",
-              justifyItems: "stretch",
-              minWidth: 0,
-              width: "100%",
-              gridAutoRows: "auto",
-            }}
-          >
-            <div ref={card1Ref} className="card-reveal card-1-reveal" style={{ width: "100%", height: "100%" }}>
+          <div id="work" style={{ width: "100%" }}>
+            <FeaturedWorkShowcase>
               <MyShakeCard
                 roleOutcome="Mobile Design × Crisis Response"
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
@@ -190,9 +159,6 @@ const Portfolio: FC = () => {
                 context="Internship"
                 to="/myshake-design"
               />
-            </div>
-
-            <div ref={card2Ref} className="card-reveal card-2-reveal" style={{ width: "100%", height: "100%" }}>
               <IDbridgeCard
                 roleOutcome="Social Impact × Accessibility"
                 caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours."
@@ -200,9 +166,6 @@ const Portfolio: FC = () => {
                 context="Designathon"
                 to="/idbridge-design"
               />
-            </div>
-
-            <div ref={card3Ref} className="card-reveal card-3-reveal" style={{ width: "100%", height: "100%" }}>
               <ProjectCard
                 screenshot={nvidiaLogo}
                 layout="landscape"
@@ -217,7 +180,7 @@ const Portfolio: FC = () => {
                 noImageRadius
                 noImageGradient
               />
-            </div>
+            </FeaturedWorkShowcase>
           </div>
         </ContentContainer>
       </div>
