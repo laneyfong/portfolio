@@ -263,11 +263,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               position: "absolute",
               width: "100%",
               height: "100%",
-              objectFit: "contain",
+              objectFit: "cover",
               borderRadius: "14px",
               pointerEvents: "none",
             }}
             autoPlay
+            playsInline
             loop
             muted
           />
