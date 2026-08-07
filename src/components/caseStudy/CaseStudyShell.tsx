@@ -2,7 +2,6 @@ import type { FC, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../../tokens";
-import Footer from "../Footer";
 import { BackArrowIcon, ChevronIcon } from "./CaseStudyKit";
 
 export const SIDEBAR_WIDTH = 160;
@@ -440,10 +439,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           {children}
         </div>
       </main>
-
-      <div className="case-footer-wrap" style={{ marginLeft: SIDEBAR_WIDTH }}>
-        <Footer />
-      </div>
     </div>
   );
 };
