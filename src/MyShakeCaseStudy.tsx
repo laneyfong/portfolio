@@ -604,7 +604,7 @@ const MyShakeCaseStudy: FC = () => {
               maxWidth: 480,
             }}
           >
-            I started with direct user research to understand the core problem
+            Understanding why engagement and active user rates are low
           </h2>
           <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
         </Reveal>
