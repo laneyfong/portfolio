@@ -9,6 +9,7 @@ import ProjectCard from "./components/ProjectCard";
 import HalftoneField from "./components/HalftoneField";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
+import VeriSupplyCard from "./components/VeriSupplyCard";
 import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
@@ -180,6 +181,7 @@ const Portfolio: FC = () => {
                 noImageRadius
                 noImageGradient
               />
+              <VeriSupplyCard />
             </FeaturedWorkShowcase>
           </div>
         </ContentContainer>
