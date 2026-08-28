@@ -82,8 +82,8 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
             // Smoother opacity: fade-based transitions
             const opacity = isCardActive ? 1 : Math.max(0.35, 1 - Math.abs(distance) * 0.3);
 
-            // Vertical offset for stacking (both above and below)
-            const offsetY = distance > 0 ? Math.min(distance * 12, 24) : Math.max(distance * -12, -24);
+            // Vertical offset for stacking - shows peek of next card
+            const offsetY = distance > 0 ? 0 : Math.max(distance * -12, -24);
 
             // Clone child element with isActive prop if it's a valid element
             const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: isCardActive } as any) : child;
@@ -105,9 +105,9 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
                   transformOrigin: "center top",
                   zIndex,
                   clipPath: distance > 0
-                    ? `inset(0 0 -${100 - Math.min(distance === 1 ? 28 : 15, 28)}% 0)`
+                    ? `inset(0 0 -${100 - Math.min(distance === 1 ? 35 : 15, 35)}% 0)`
                     : distance < 0
-                    ? `inset(-${100 - Math.min(Math.abs(distance) === 1 ? 28 : 15, 28)}% 0 0 0)`
+                    ? `inset(-${100 - Math.min(Math.abs(distance) === 1 ? 35 : 15, 35)}% 0 0 0)`
                     : "none",
                 }}
               >
