@@ -12,6 +12,7 @@ import {
 } from "./components/caseStudy/CaseStudyKit";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
 import PasswordProtection from "./components/PasswordProtection";
+import verisupplyThumbnail from "./assets/verisupply-thumbnail.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -94,9 +95,31 @@ const VeriSupplyCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 480 }}>
-              VeriSupply is a decision-support platform for procurement teams navigating supply-chain complexity. Rather than overwhelming users with risk scores, we designed a system that connects supplier data to business impact and recommends actionable decisions.
-            </p>
+            <div style={{ marginBottom: 48, maxWidth: 600 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
+                <strong>The context:</strong> Procurement teams at enterprises manage thousands of suppliers and complex bill-of-materials. When supply disruptions happen, they're drowning in risk alerts but paralyzed—unable to connect the data to what actually matters for their business.
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
+                <strong>What makes this different:</strong> Instead of building another risk-scoring tool (which already existed), we discovered through research that the real bottleneck wasn't visibility—it was decision-making. Procurement leaders had the data but couldn't act on it confidently.
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                <strong>Our solution:</strong> A decision-support platform that reframes how teams use supply-chain data. Rather than overwhelming with risk scores, we built a system that connects supplier data to business impact and recommends next actions—with evidence to back them up.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div style={{ marginBottom: 60, borderRadius: 20, overflow: "hidden" }}>
+              <img
+                src={verisupplyThumbnail}
+                alt="VeriSupply dashboard interface"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+              />
+            </div>
           </Reveal>
 
           <Reveal>
@@ -133,40 +156,89 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "flex", flexDirection: "column", gap: 32, marginBottom: 60 }}>
-            <div style={{ borderLeft: `4px solid ${tokens.color.accent}`, paddingLeft: 24 }}>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                Risk scores without business context
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
+            {/* Risk Scores */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+                <circle cx="40" cy="40" r="35" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.3" />
+                <text x="40" y="45" fontSize="32" fontWeight="bold" textAnchor="middle" fill={tokens.color.ink}>
+                  84
+                </text>
+                <path d="M 40 65 L 40 75" stroke={tokens.color.muted} strokeWidth="2" />
+                <path d="M 30 70 L 50 70" stroke={tokens.color.muted} strokeWidth="2" />
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+                Numbers without meaning
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                A number on a screen doesn't say which products, customers, or revenue are actually exposed—or what to do next.
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+                Risk scores lack business context
               </p>
             </div>
 
-            <div style={{ borderLeft: `4px solid ${tokens.color.accent}`, paddingLeft: 24 }}>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                Visibility that stops at Tier 1
+            {/* Supply Chain Tiers */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+                <rect x="25" y="10" width="30" height="20" fill={tokens.color.ink} rx="2" />
+                <text x="40" y="25" fontSize="12" fill={tokens.color.white} textAnchor="middle" fontWeight="bold">
+                  Tier 1
+                </text>
+                <line x1="40" y1="30" x2="40" y2="35" stroke={tokens.color.muted} strokeWidth="2" />
+                <rect x="25" y="38" width="30" height="16" fill={tokens.color.muted} opacity="0.3" rx="2" />
+                <text x="40" y="50" fontSize="10" fill={tokens.color.ink} textAnchor="middle">
+                  Tier 2?
+                </text>
+                <line x1="40" y1="54" x2="40" y2="58" stroke={tokens.color.muted} strokeWidth="2" strokeDasharray="2,2" />
+                <rect x="20" y="60" width="40" height="14" fill={tokens.color.muted} opacity="0.2" rx="2" />
+                <text x="40" y="71" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
+                  Tier 3+: Unknown
+                </text>
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+                Blind spots beyond Tier 1
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Most disruptions start several tiers upstream, in suppliers your systems were never connected to in the first place.
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+                Upstream disruptions go unseen
               </p>
             </div>
 
-            <div style={{ borderLeft: `4px solid ${tokens.color.accent}`, paddingLeft: 24 }}>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                Analysis that arrives too late
+            {/* Time Delays */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+                <circle cx="40" cy="40" r="28" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.3" />
+                <circle cx="40" cy="40" r="20" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.5" />
+                <line x1="40" y1="20" x2="40" y2="12" stroke={tokens.color.ink} strokeWidth="2" />
+                <line x1="55" y1="25" x2="61" y2="19" stroke={tokens.color.muted} strokeWidth="1.5" opacity="0.5" />
+                <line x1="60" y1="40" x2="70" y2="40" stroke={tokens.color.muted} strokeWidth="1.5" opacity="0.5" />
+                <text x="40" y="48" fontSize="14" fill={tokens.color.muted} textAnchor="middle" fontWeight="bold" opacity="0.6">
+                  Waiting...
+                </text>
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+                Analysis is too slow
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                By the time a manual investigation is finished, the decision window that mattered has already closed.
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+                Manual investigation misses decision windows
               </p>
             </div>
 
-            <div style={{ borderLeft: `4px solid ${tokens.color.accent}`, paddingLeft: 24 }}>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                Automation that replaces judgment
+            {/* Black Box Automation */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+                <rect x="20" y="25" width="40" height="30" fill={tokens.color.ink} rx="2" />
+                <text x="40" y="50" fontSize="24" fill={tokens.color.white} textAnchor="middle" fontWeight="bold">
+                  ?
+                </text>
+                <line x1="15" y1="42" x2="25" y2="42" stroke={tokens.color.muted} strokeWidth="2" />
+                <line x1="55" y1="42" x2="65" y2="42" stroke={tokens.color.muted} strokeWidth="2" />
+                <text x="40" y="70" fontSize="12" fill={tokens.color.muted} textAnchor="middle">
+                  Black box decision
+                </text>
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+                Automation without evidence
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                An answer with no evidence and no reasoning isn't something a procurement team can defend to their stakeholders.
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+                Can't defend decisions to stakeholders
               </p>
             </div>
           </div>
@@ -194,14 +266,14 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 600 }}>
-            Initial hypothesis: Supply-chain risk visibility was the core problem. After interviews with procurement leaders, strategic sourcing managers, and operations teams, we discovered the real pain wasn't knowing about risk—it was knowing what to do about it.
+            <strong>What we set out to prove:</strong> Supply-chain risk visibility was the core bottleneck. But we challenged that assumption by conducting in-depth interviews with procurement leaders, strategic sourcing managers, and operations teams across multiple companies. What we discovered shifted the entire project direction.
           </p>
         </Reveal>
 
         <Reveal>
           <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
             <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
-              Key Research Findings
+              The Real Problem (What Teams Actually Said)
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div>
@@ -209,25 +281,25 @@ const VeriSupplyCaseStudy: FC = () => {
                   "Don't give me another place to look — tell me what matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
-                  Strategic Sourcing / Procurement Lead
+                  Strategic Sourcing Lead at Fortune 500 Manufacturer
                 </p>
               </div>
 
               <div>
                 <p style={{ fontFamily: tokens.font.serifItalic, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "People don't have time to read. They need it condensed."
+                  "People don't have time to read 50-page reports. We need it condensed to what actually matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
-                  Operations / Supply Chain Leader
+                  Operations Director, Supply Chain
                 </p>
               </div>
 
               <div>
                 <p style={{ fontFamily: tokens.font.serifItalic, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "AI summary is good, just need a good database to back it up."
+                  "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
-                  Operations / Supply Chain Leader
+                  VP Procurement, Tech Company
                 </p>
               </div>
             </div>
@@ -236,14 +308,14 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 16px" }}>
-            Patterns we identified:
+            This revealed 5 critical gaps:
           </h3>
           <ul style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0, paddingLeft: 20 }}>
-            <li>Fragmented information across tools and systems</li>
-            <li>Invisible supply-chain connections beyond Tier 1</li>
-            <li>No clear way to assess business impact of supply issues</li>
-            <li>Difficult supplier comparison and alternative sourcing</li>
-            <li>Engineering changes create blind spots in the supply chain</li>
+            <li><strong>Fragmentation:</strong> Critical supply-chain data scattered across disconnected tools and systems</li>
+            <li><strong>Invisibility:</strong> Disruptions start in Tier 2+ suppliers no one is monitoring</li>
+            <li><strong>No context:</strong> Risk scores don't show which products, customers, or revenue are actually exposed</li>
+            <li><strong>Slow action:</strong> Manual analysis takes days—decision windows close in hours</li>
+            <li><strong>Undefendable decisions:</strong> Automation without reasoning can't be justified to stakeholders</li>
           </ul>
         </Reveal>
       </section>
@@ -266,34 +338,68 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginBottom: 60 }}>
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
-                01 Monitor
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Continuously monitors suppliers, BOMs, market signals, and supply-chain data to surface relevant changes automatically.
-              </p>
-            </div>
+          <svg width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60 }}>
+            {/* Flow diagram: three layers */}
+            {/* Layer 1: Monitor */}
+            <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.muted} strokeWidth="2" rx="8" opacity="0.7" />
+            <circle cx="175" cy="85" r="35" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
+            <text x="175" y="95" fontSize="24" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+              📡
+            </text>
+            <text x="175" y="145" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+              Monitor
+            </text>
+            <text x="175" y="200" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+              Detect changes
+            </text>
+            <text x="175" y="220" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+              across suppliers & data
+            </text>
 
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
-                02 Understand
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Identifies supplier patterns, dependencies, and potential business impact so you can quickly understand what requires attention.
-              </p>
-            </div>
+            {/* Arrow 1 */}
+            <path d="M 300 140 L 360 140" stroke={tokens.color.muted} strokeWidth="3" markerEnd={`url(#arrowhead)`} />
 
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
-                03 Act
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Compares options, surfaces tradeoffs, and recommends next actions while showing how each decision could affect your supply chain.
-              </p>
-            </div>
-          </div>
+            {/* Layer 2: Understand */}
+            <rect x="370" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.muted} strokeWidth="2" rx="8" opacity="0.7" />
+            <circle cx="495" cy="85" r="35" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
+            <text x="495" y="95" fontSize="24" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+              🔍
+            </text>
+            <text x="495" y="145" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+              Understand
+            </text>
+            <text x="495" y="200" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+              Assess impact on
+            </text>
+            <text x="495" y="220" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+              business & revenue
+            </text>
+
+            {/* Arrow 2 */}
+            <path d="M 620 140 L 680 140" stroke={tokens.color.muted} strokeWidth="3" markerEnd={`url(#arrowhead)`} />
+
+            {/* Layer 3: Act */}
+            <rect x="690" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.muted} strokeWidth="2" rx="8" opacity="0.7" />
+            <circle cx="815" cy="85" r="35" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
+            <text x="815" y="95" fontSize="24" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+              ✓
+            </text>
+            <text x="815" y="145" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+              Act
+            </text>
+            <text x="815" y="200" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+              Make informed decisions
+            </text>
+            <text x="815" y="220" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+              with evidence
+            </text>
+
+            <defs>
+              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <polygon points="0 0, 10 3, 0 6" fill={tokens.color.muted} />
+              </marker>
+            </defs>
+          </svg>
         </Reveal>
 
         <Callout>Decision support with evidence to increase confidence.</Callout>
@@ -317,40 +423,157 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
+            {/* Dashboard */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+                <rect x="10" y="10" width="220" height="160" fill="none" stroke={tokens.color.muted} strokeWidth="1.5" rx="4" />
+                <rect x="15" y="15" width="210" height="30" fill={tokens.color.muted} opacity="0.2" rx="2" />
+                <text x="120" y="36" fontSize="12" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  AI Summary • Priorities • Impact
+                </text>
+                <rect x="15" y="50" width="100" height="50" fill={tokens.color.muted} opacity="0.1" rx="2" />
+                <text x="65" y="82" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
+                  Risk Map
+                </text>
+                <rect x="125" y="50" width="100" height="50" fill={tokens.color.muted} opacity="0.1" rx="2" />
+                <text x="175" y="82" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
+                  Alerts
+                </text>
+                <rect x="15" y="105" width="210" height="50" fill={tokens.color.muted} opacity="0.05" rx="2" />
+                <text x="120" y="135" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
+                  Supply Chain Overview
+                </text>
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Dashboard
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Central hub showing AI analyst summary, priority list, business impact indicators, and supply-chain risk map. Designed to answer: "What matters most right now?"
+                Central hub showing AI summary, priorities, business impact, and supply-chain risk map. One screen to see what matters most.
               </p>
             </div>
 
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+            {/* Engineering Changes */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+                <rect x="80" y="20" width="80" height="50" fill={tokens.color.muted} opacity="0.15" rx="3" />
+                <text x="120" y="50" fontSize="12" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  Open Changes
+                </text>
+                <path d="M 120 70 L 120 90" stroke={tokens.color.muted} strokeWidth="2" markerEnd={`url(#arrowdown)`} />
+                <circle cx="60" cy="110" r="20" fill="none" stroke={tokens.color.muted} strokeWidth="1.5" />
+                <text x="60" y="117" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
+                  Supplier
+                </text>
+                <text x="60" y="130" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
+                  Impact?
+                </text>
+                <circle cx="180" cy="110" r="20" fill="none" stroke={tokens.color.muted} strokeWidth="1.5" />
+                <text x="180" y="117" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
+                  Supply
+                </text>
+                <text x="180" y="130" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
+                  Risk?
+                </text>
+                <path d="M 60 130 L 90 145" stroke={tokens.color.muted} strokeWidth="1" strokeDasharray="2,2" />
+                <path d="M 180 130 L 150 145" stroke={tokens.color.muted} strokeWidth="1" strokeDasharray="2,2" />
+                <rect x="50" y="145" width="140" height="25" fill={tokens.color.ink} opacity="0.1" rx="2" />
+                <text x="120" y="163" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  Catch blind spots before problems
+                </text>
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Engineering Changes
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Monitors open changes and their sourcing impact. Designed to catch supply-chain blind spots before they become problems.
+                Automatically links design changes to supplier and sourcing impact. Catch risks before they become problems.
               </p>
             </div>
 
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+            {/* Supplier Comparison */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+                <rect x="15" y="15" width="65" height="140" fill={tokens.color.muted} opacity="0.15" rx="3" />
+                <text x="47" y="40" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  Option A
+                </text>
+                <rect x="17" y="48" width="61" height="8" fill={tokens.color.muted} opacity="0.3" rx="1" />
+                <rect x="17" y="60" width="61" height="8" fill={tokens.color.muted} opacity="0.3" rx="1" />
+                <rect x="17" y="72" width="61" height="8" fill={tokens.color.muted} opacity="0.3" rx="1" />
+                <text x="47" y="130" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
+                  Cost vs Quality
+                </text>
+
+                <rect x="88" y="15" width="65" height="140" fill={tokens.color.muted} opacity="0.25" rx="3" />
+                <text x="120" y="40" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  Option B
+                </text>
+                <rect x="90" y="48" width="61" height="8" fill={tokens.color.muted} opacity="0.4" rx="1" />
+                <rect x="90" y="60" width="61" height="8" fill={tokens.color.muted} opacity="0.4" rx="1" />
+                <rect x="90" y="72" width="61" height="8" fill={tokens.color.muted} opacity="0.4" rx="1" />
+                <text x="120" y="130" fontSize="10" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  Comparison
+                </text>
+
+                <rect x="161" y="15" width="65" height="140" fill={tokens.color.muted} opacity="0.35" rx="3" />
+                <text x="193" y="40" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  Option C
+                </text>
+                <rect x="163" y="48" width="61" height="8" fill={tokens.color.muted} opacity="0.5" rx="1" />
+                <rect x="163" y="60" width="61" height="8" fill={tokens.color.muted} opacity="0.5" rx="1" />
+                <rect x="163" y="72" width="61" height="8" fill={tokens.color.muted} opacity="0.5" rx="1" />
+                <text x="193" y="130" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
+                  Tradeoffs
+                </text>
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Supplier Comparison
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                AI-generated comparison cards with rationale, alternative options, and decision tradeoffs. Designed to speed up sourcing decisions.
+                AI-generated options with cost, quality, and risk tradeoffs side-by-side. Make faster sourcing decisions.
               </p>
             </div>
 
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+            {/* Bill of Materials */}
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+                <rect x="15" y="15" width="210" height="25" fill={tokens.color.muted} opacity="0.2" rx="2" />
+                <text x="120" y="33" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+                  Part #001 | Supplier A | $45
+                </text>
+                <rect x="30" y="48" width="65" height="15" fill={tokens.color.muted} opacity="0.1" rx="1" />
+                <text x="62" y="58" fontSize="9" fill={tokens.color.muted} textAnchor="middle">
+                  Quote
+                </text>
+                <rect x="110" y="48" width="65" height="15" fill={tokens.color.muted} opacity="0.1" rx="1" />
+                <text x="142" y="58" fontSize="9" fill={tokens.color.muted} textAnchor="middle">
+                  Risk
+                </text>
+                <rect x="190" y="48" width="35" height="15" fill={tokens.color.muted} opacity="0.1" rx="1" />
+                <text x="207" y="58" fontSize="9" fill={tokens.color.muted} textAnchor="middle">
+                  Impact
+                </text>
+
+                <rect x="15" y="75" width="210" height="25" fill={tokens.color.muted} opacity="0.1" rx="2" />
+                <text x="120" y="93" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
+                  Part #002 | Supplier B | $32
+                </text>
+
+                <rect x="15" y="110" width="210" height="25" fill={tokens.color.muted} opacity="0.1" rx="2" />
+                <text x="120" y="128" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
+                  Part #003 | Supplier C | $89
+                </text>
+
+                <path d="M 120 140 L 120 155" stroke={tokens.color.muted} strokeWidth="1" strokeDasharray="2,2" />
+                <text x="120" y="170" fontSize="10" fill={tokens.color.muted} textAnchor="middle" fontWeight="bold">
+                  Full supply chain visibility
+                </text>
+              </svg>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Bill of Materials
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Connected view of part numbers, suppliers, quotes, and sourcing impact. Designed to show the full picture of product supply-chain exposure.
+                Connected view of all parts, suppliers, costs, and supply-chain exposure in one view.
               </p>
             </div>
           </div>
@@ -459,10 +682,10 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <div>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
-                Prototype testing and iteration
+                Prototype testing and iteration (going deeper)
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                Low-fidelity prototypes revealed workflow gaps that would have been expensive to discover in high-fidelity. Testing with actual procurement leaders caught critical assumptions before development.
+                After discovering the real problem was decision-making, not visibility, we built low-fidelity prototypes to test the three-layer hypothesis with actual procurement leaders. Multiple rounds of testing and iteration revealed workflow gaps that would have been expensive to discover during development. This validation phase shifted resource allocation and shaped the entire MVP scope.
               </p>
             </div>
 

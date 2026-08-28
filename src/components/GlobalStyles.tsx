@@ -10,7 +10,7 @@ const GlobalStyles: FC = () => (
     }
     a, button { font-family: inherit; }
     /* Focus visible for keyboard navigation */
-    a:focus-visible, button:focus-visible { outline: 2px solid #8DC8E4; outline-offset: 2px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #A0A0A0; outline-offset: 2px; }
     /* Improve readability with increased line height */
     p { line-height: 1.6; }
     /* Touch targets minimum 44x44px */

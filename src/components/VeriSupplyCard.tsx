@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
+import verisupplyThumbnail from "../assets/verisupply-thumbnail.png";
 
 interface VeriSupplyCardProps {
   isActive?: boolean;
@@ -35,7 +36,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
       }}
     >
-      {/* Image Section with gradient background */}
+      {/* Image Section */}
       <div
         style={{
           position: "relative",
@@ -46,61 +47,19 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "60px 0px",
+          padding: 32,
         }}
       >
-        {/* Lock Icon */}
-        <div
+        <img
+          src={verisupplyThumbnail}
+          alt="VeriSupply dashboard"
           style={{
-            position: "relative",
-            zIndex: 2,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 16,
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            borderRadius: 12,
           }}
-        >
-          <svg
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-            style={{
-              opacity: 0.6,
-              filter: "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))",
-            }}
-          >
-            <g stroke={tokens.color.ink} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M 10 22 L 10 36 Q 10 38 12 38 L 36 38 Q 38 38 38 36 L 38 22" />
-              <rect x="14" y="18" width="20" height="10" rx="2" />
-              <path d="M 24 26 L 24 30" />
-              <circle cx="24" cy="33" r="1" fill={tokens.color.ink} />
-            </g>
-          </svg>
-          <div style={{ textAlign: "center" }}>
-            <p
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.sm,
-                fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
-                margin: 0,
-                opacity: 0.7,
-              }}
-            >
-              Confidential
-            </p>
-            <p
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.sm,
-                color: tokens.color.muted,
-                margin: "4px 0 0",
-              }}
-            >
-              Password required
-            </p>
-          </div>
-        </div>
+        />
       </div>
 
       {/* Text Section Below Image */}

@@ -144,25 +144,19 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Paragraph>
-          Engineering-heavy teams often lack dedicated UX resources, which means usability issues tend to surface
-          late — after something has already shipped. This project investigates the trust, accuracy, and workflow
-          integration of AI-generated findings, to see whether automated insights can be made actionable enough for
-          practitioners to act on early.
+          <strong>The context:</strong> Engineering-heavy teams at startups and enterprises often lack dedicated UX resources. When they do test, it's late—after prototyping or shipping. Design debt compounds quietly until it becomes a crisis. <strong>The problem:</strong> By then, fixing usability issues is expensive and disruptive. <strong>The opportunity:</strong> What if AI could simulate user behavior and flag friction early, before engineering even starts building?
         </Paragraph>
 
         <Reveal>
           <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-            <FeatureCard title="Problem">
-              Engineering-heavy teams lack dedicated UX resources, so usability issues are often discovered
-              late-stage — after a feature has already shipped.
+            <FeatureCard title="The Gap">
+              Engineering-heavy teams lack dedicated UX resources, so usability issues surface late—after features ship.
             </FeatureCard>
-            <FeatureCard title="Approach">
-              An AI UX agent that simulates user behavior, providing automated pre-screening before features are
-              implemented.
+            <FeatureCard title="The Idea">
+              Build an AI UX agent that simulates user behavior and provides automated pre-screening before implementation.
             </FeatureCard>
-            <FeatureCard title="Research Question">
-              How can AI-generated insights support early evaluation, and what makes findings actionable and
-              trustworthy for practitioners?
+            <FeatureCard title="The Challenge">
+              How do we make AI-generated insights trustworthy enough for engineers to act on them early?
             </FeatureCard>
           </div>
         </Reveal>

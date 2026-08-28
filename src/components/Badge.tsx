@@ -122,11 +122,11 @@ const Badge: FC<BadgeProps> = ({
         }
       `}</style>
 
-          {/* FRONT: Blue accent area */}
+          {/* FRONT: Accent area */}
           <div
             style={{
               flex: 1,
-              background: "#8DC8E4",
+              background: tokens.color.accent,
               borderRadius: "16px",
               display: "flex",
               alignItems: "center",

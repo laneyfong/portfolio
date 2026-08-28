@@ -458,9 +458,17 @@ const MyShakeCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 480 }}>
-              I led the design with 2 engineers, starting mobile-first then expanding to tablet. The app needed to feel fast and intuitive during high-stress moments — every tap counted.
-            </p>
+            <div style={{ marginBottom: 48, maxWidth: 600 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
+                <strong>The context:</strong> MyShake is a USGS-powered earthquake alerting app that reaches millions in earthquake-prone regions. When an earthquake hits, the app has seconds to deliver critical information — but the original design buried safety-relevant data behind confusing navigation and low engagement.
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
+                <strong>What made this different:</strong> Unlike typical earthquake info apps (which prioritize technical data), MyShake users had one core need: confirming loved ones are safe. The original IA treated it like a data visualization tool, not a crisis response companion.
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                <strong>My approach:</strong> Led end-to-end design to reframe MyShake as a safety-first utility. Reduced the steps to check on loved ones from 7 down to 3. Result: 45% increase in engagement and a tool people actually return to during critical moments.
+              </p>
+            </div>
           </Reveal>
 
           <Reveal delay={100}>
