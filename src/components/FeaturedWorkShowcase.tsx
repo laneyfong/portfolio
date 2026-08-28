@@ -75,7 +75,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
           display: isGridMode ? "grid" : "flex",
           gridTemplateColumns: isGridMode ? "repeat(2, 1fr)" : undefined,
           flexDirection: isGridMode ? undefined : "column",
-          gap: isGridMode ? 16 : 0,
+          gap: isGridMode ? 16 : 4,
           width: "100%",
           transition: "display 0.6s cubic-bezier(0.4, 0, 0.2, 1), gap 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
