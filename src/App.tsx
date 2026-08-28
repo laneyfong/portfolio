@@ -7,6 +7,7 @@ import ProjectArchivePage from "./ProjectArchivePage";
 import MyShakeCaseStudy from "./MyShakeCaseStudy";
 import IDBridgeCaseStudy from "./IDBridgeCaseStudy";
 import NvidiaCaseStudy from "./NvidiaCaseStudy";
+import VeriSupplyCaseStudy from "./VeriSupplyCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
 
 function ScrollToTop() {
@@ -50,6 +51,7 @@ function PageFadeInWrapper() {
         <Route path="/myshake-design" element={<MyShakeCaseStudy />} />
         <Route path="/idbridge-design" element={<IDBridgeCaseStudy />} />
         <Route path="/nvidia-ai-ux-agent" element={<NvidiaCaseStudy />} />
+        <Route path="/verisupply" element={<VeriSupplyCaseStudy />} />
       </Routes>
     </div>
   );
