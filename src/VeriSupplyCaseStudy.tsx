@@ -156,10 +156,17 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
+          <style>{`
+            @media (max-width: 768px) {
+              .problem-grid {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}</style>
+          <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
             {/* Risk Scores */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
                 <circle cx="40" cy="40" r="35" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.3" />
                 <text x="40" y="45" fontSize="32" fontWeight="bold" textAnchor="middle" fill={tokens.color.ink}>
                   84
@@ -177,7 +184,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Supply Chain Tiers */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
                 <rect x="25" y="10" width="30" height="20" fill={tokens.color.ink} rx="2" />
                 <text x="40" y="25" fontSize="12" fill={tokens.color.white} textAnchor="middle" fontWeight="bold">
                   Tier 1
@@ -203,7 +210,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Time Delays */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
                 <circle cx="40" cy="40" r="28" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.3" />
                 <circle cx="40" cy="40" r="20" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.5" />
                 <line x1="40" y1="20" x2="40" y2="12" stroke={tokens.color.ink} strokeWidth="2" />
@@ -223,7 +230,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Black Box Automation */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16 }}>
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
                 <rect x="20" y="25" width="40" height="30" fill={tokens.color.ink} rx="2" />
                 <text x="40" y="50" fontSize="24" fill={tokens.color.white} textAnchor="middle" fontWeight="bold">
                   ?
@@ -338,7 +345,14 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <svg width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60 }}>
+          <style>{`
+            @media (max-width: 768px) {
+              .solution-flow {
+                height: auto !important;
+              }
+            }
+          `}</style>
+          <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet">
             {/* Flow diagram: three layers */}
             {/* Layer 1: Monitor */}
             <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.muted} strokeWidth="2" rx="8" opacity="0.7" />
@@ -423,7 +437,14 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
+          <style>{`
+            @media (max-width: 768px) {
+              .design-grid {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}</style>
+          <div className="design-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
             {/* Dashboard */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
