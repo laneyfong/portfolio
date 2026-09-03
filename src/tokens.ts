@@ -3,20 +3,20 @@ export const tokens = {
   color: {
     white: "#FFFFFF",
     offWhite: "#FAFAFB",
-    ink: "#2D2D2D",
-    textDark: "#2D2D2D",
-    accent: "#A0A0A0",
+    ink: "#1A1A1A",
+    textDark: "#1A1A1A",
+    accent: "#1A1A1A",
     body: "#626262",
     stroke: "#F1F0EE",
-    dark: "#28292B",
+    dark: "#1A1A1A",
     // Solid gray, not alpha-blended black — rgba(0,0,0,0.24) on white only hit ~1.8:1
     // contrast, failing WCAG AA (needs 4.5:1 for text). #636363 clears 4.5:1 even
     // against the translucent nav-pill background (~#EAEAEA), the lightest surface
     // this color sits on, while still reading as "de-emphasized" next to body/ink.
     muted: "#757575",
-    navBg: "rgba(40, 41, 43, 0.10)",
-    navActive: "rgba(40, 41, 43, 0.80)",
-    cardBorder: "rgba(40, 41, 43, 0.05)",
+    navBg: "rgba(26, 26, 26, 0.08)",
+    navActive: "rgba(26, 26, 26, 0.95)",
+    cardBorder: "rgba(26, 26, 26, 0.08)",
   },
   font: {
     sans: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -61,8 +61,8 @@ export const tokens = {
     subtle: "0px 4px 20px 0px rgba(0, 0, 0, 0.10)",
     insetCircle: "inset 0px 4px 10px 0px rgba(0, 0, 0, 0.25)",
     imageFrame: "inset 0 0 0 4px #F1F0EE, 0px 4px 20px 0px rgba(0, 0, 0, 0.10)",
-    // Neutral gray outline glow for hovered work cards — sits right at the border, doesn't wash the whole card.
-    cardGlowHover: "0 0 0 1.5px #A0A0A0, 0 0 14px 0px rgba(160, 160, 160, 0.35)",
+    // Deep charcoal outline glow for hovered work cards — sits right at the border, doesn't wash the whole card.
+    cardGlowHover: "0 0 0 1.5px #1A1A1A, 0 0 14px 0px rgba(26, 26, 26, 0.15)",
     // Same hue as `card`, just larger/darker — used where hover should read as "lifted", not "glowing".
     cardHoverLarge: "0px 16px 44px 0px rgba(0, 0, 0, 0.24)",
   },
