@@ -200,11 +200,7 @@ const Badge: FC<BadgeProps> = ({
                 opacity: 0.65,
               }}
             >
-              Designing intentionally. For{" "}
-              <span style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>
-                humans
-              </span>
-              .
+              Accessibility design for high-stakes products
             </p>
 
             <p
