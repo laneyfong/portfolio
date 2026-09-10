@@ -126,7 +126,7 @@ const Badge: FC<BadgeProps> = ({
           <div
             style={{
               flex: 1,
-              background: tokens.color.accent,
+              background: `linear-gradient(135deg, ${tokens.color.accentStart}, ${tokens.color.accentEnd})`,
               borderRadius: "16px",
               display: "flex",
               alignItems: "center",

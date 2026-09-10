@@ -5,7 +5,8 @@ export const tokens = {
     offWhite: "#FAFAFB",
     ink: "#1A1A1A",
     textDark: "#1A1A1A",
-    accent: "#D97706",
+    accentStart: "#60A5FA",
+    accentEnd: "#A78BFA",
     body: "#626262",
     stroke: "#F1F0EE",
     dark: "#1A1A1A",
@@ -61,8 +62,8 @@ export const tokens = {
     subtle: "0px 4px 20px 0px rgba(0, 0, 0, 0.10)",
     insetCircle: "inset 0px 4px 10px 0px rgba(0, 0, 0, 0.25)",
     imageFrame: "inset 0 0 0 4px #F1F0EE, 0px 4px 20px 0px rgba(0, 0, 0, 0.10)",
-    // Gold accent outline glow for hovered work cards — sits right at the border, doesn't wash the whole card.
-    cardGlowHover: "0 0 0 1.5px #D97706, 0 0 14px 0px rgba(217, 119, 6, 0.25)",
+    // Accent outline glow for hovered work cards — sits right at the border, doesn't wash the whole card.
+    cardGlowHover: "0 0 0 1.5px #A78BFA, 0 0 14px 0px rgba(167, 139, 250, 0.25)",
     // Same hue as `card`, just larger/darker — used where hover should read as "lifted", not "glowing".
     cardHoverLarge: "0px 16px 44px 0px rgba(0, 0, 0, 0.24)",
   },
