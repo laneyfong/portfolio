@@ -417,66 +417,60 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet">
-            {/* Flow diagram: three layers */}
             {/* Layer 1: Monitor */}
-            <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.muted} strokeWidth="2" rx="8" opacity="0.7" />
-            <circle cx="175" cy="85" r="35" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
-            <text x="175" y="95" fontSize="24" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-              📡
-            </text>
-            <text x="175" y="145" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+            <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.accent} strokeWidth="1.5" rx="12" />
+            {/* Monitor icon: signals */}
+            <circle cx="175" cy="80" r="28" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.6" />
+            <circle cx="175" cy="80" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.8" />
+            <circle cx="175" cy="80" r="8" fill={tokens.color.accent} />
+            <text x="175" y="150" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
               Monitor
             </text>
-            <text x="175" y="200" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+            <text x="175" y="175" fontSize="12" fill={tokens.color.body} textAnchor="middle">
               Detect changes
             </text>
-            <text x="175" y="220" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+            <text x="175" y="192" fontSize="12" fill={tokens.color.body} textAnchor="middle">
               across suppliers & data
             </text>
 
             {/* Arrow 1 */}
-            <path d="M 300 140 L 360 140" stroke={tokens.color.muted} strokeWidth="3" markerEnd={`url(#arrowhead)`} />
+            <path d="M 310 140 L 365 140" stroke={tokens.color.accent} strokeWidth="2.5" />
+            <polygon points="365,140 375,135 375,145" fill={tokens.color.accent} />
 
             {/* Layer 2: Understand */}
-            <rect x="370" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.muted} strokeWidth="2" rx="8" opacity="0.7" />
-            <circle cx="495" cy="85" r="35" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
-            <text x="495" y="95" fontSize="24" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-              🔍
-            </text>
-            <text x="495" y="145" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+            <rect x="385" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.accent} strokeWidth="1.5" rx="12" />
+            {/* Understand icon: nested circles with data */}
+            <rect x="460" y="60" width="30" height="15" fill={tokens.color.accent} opacity="0.3" rx="2" />
+            <rect x="460" y="80" width="30" height="15" fill={tokens.color.accent} opacity="0.6" rx="2" />
+            <rect x="495" y="70" width="20" height="20" fill={tokens.color.accent} rx="2" />
+            <text x="510" y="150" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
               Understand
             </text>
-            <text x="495" y="200" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+            <text x="510" y="175" fontSize="12" fill={tokens.color.body} textAnchor="middle">
               Assess impact on
             </text>
-            <text x="495" y="220" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+            <text x="510" y="192" fontSize="12" fill={tokens.color.body} textAnchor="middle">
               business & revenue
             </text>
 
             {/* Arrow 2 */}
-            <path d="M 620 140 L 680 140" stroke={tokens.color.muted} strokeWidth="3" markerEnd={`url(#arrowhead)`} />
+            <path d="M 635 140 L 690 140" stroke={tokens.color.accent} strokeWidth="2.5" />
+            <polygon points="690,140 700,135 700,145" fill={tokens.color.accent} />
 
             {/* Layer 3: Act */}
-            <rect x="690" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.muted} strokeWidth="2" rx="8" opacity="0.7" />
-            <circle cx="815" cy="85" r="35" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
-            <text x="815" y="95" fontSize="24" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-              ✓
-            </text>
-            <text x="815" y="145" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+            <rect x="700" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.accent} strokeWidth="1.5" rx="12" />
+            {/* Act icon: checkmark */}
+            <circle cx="825" cy="80" r="24" fill={tokens.color.accent} opacity="0.15" />
+            <path d="M 815 82 L 821 88 L 835 74" stroke={tokens.color.accent} strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <text x="825" y="150" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
               Act
             </text>
-            <text x="815" y="200" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+            <text x="825" y="175" fontSize="12" fill={tokens.color.body} textAnchor="middle">
               Make informed decisions
             </text>
-            <text x="815" y="220" fontSize="13" fill={tokens.color.body} textAnchor="middle" textLength="200">
+            <text x="825" y="192" fontSize="12" fill={tokens.color.body} textAnchor="middle">
               with evidence
             </text>
-
-            <defs>
-              <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                <polygon points="0 0, 10 3, 0 6" fill={tokens.color.muted} />
-              </marker>
-            </defs>
           </svg>
         </Reveal>
 
@@ -512,23 +506,18 @@ const VeriSupplyCaseStudy: FC = () => {
             {/* Dashboard */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
-                <rect x="10" y="10" width="220" height="160" fill="none" stroke={tokens.color.muted} strokeWidth="1.5" rx="4" />
-                <rect x="15" y="15" width="210" height="30" fill={tokens.color.muted} opacity="0.2" rx="2" />
-                <text x="120" y="36" fontSize="12" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  AI Summary • Priorities • Impact
-                </text>
-                <rect x="15" y="50" width="100" height="50" fill={tokens.color.muted} opacity="0.1" rx="2" />
-                <text x="65" y="82" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
-                  Risk Map
-                </text>
-                <rect x="125" y="50" width="100" height="50" fill={tokens.color.muted} opacity="0.1" rx="2" />
-                <text x="175" y="82" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
-                  Alerts
-                </text>
-                <rect x="15" y="105" width="210" height="50" fill={tokens.color.muted} opacity="0.05" rx="2" />
-                <text x="120" y="135" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
-                  Supply Chain Overview
-                </text>
+                {/* Frame */}
+                <rect x="12" y="10" width="216" height="160" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" rx="6" />
+                {/* Header bar */}
+                <rect x="16" y="14" width="208" height="24" fill={tokens.color.accent} opacity="0.1" rx="3" />
+                <line x1="20" y1="20" x2="100" y2="20" stroke={tokens.color.accent} strokeWidth="2" />
+                <line x1="20" y1="26" x2="80" y2="26" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.5" />
+                {/* Content grid */}
+                <rect x="16" y="44" width="96" height="56" fill={tokens.color.accent} opacity="0.08" rx="3" />
+                <circle cx="64" cy="72" r="12" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.6" />
+                <rect x="16" y="104" width="208" height="56" fill={tokens.color.accent} opacity="0.05" rx="3" />
+                <line x1="24" y1="115" x2="200" y2="115" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
+                <line x1="24" y1="125" x2="200" y2="125" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Dashboard
@@ -541,31 +530,24 @@ const VeriSupplyCaseStudy: FC = () => {
             {/* Engineering Changes */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
-                <rect x="80" y="20" width="80" height="50" fill={tokens.color.muted} opacity="0.15" rx="3" />
-                <text x="120" y="50" fontSize="12" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  Open Changes
-                </text>
-                <path d="M 120 70 L 120 90" stroke={tokens.color.muted} strokeWidth="2" markerEnd={`url(#arrowdown)`} />
-                <circle cx="60" cy="110" r="20" fill="none" stroke={tokens.color.muted} strokeWidth="1.5" />
-                <text x="60" y="117" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
-                  Supplier
-                </text>
-                <text x="60" y="130" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
-                  Impact?
-                </text>
-                <circle cx="180" cy="110" r="20" fill="none" stroke={tokens.color.muted} strokeWidth="1.5" />
-                <text x="180" y="117" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
-                  Supply
-                </text>
-                <text x="180" y="130" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
-                  Risk?
-                </text>
-                <path d="M 60 130 L 90 145" stroke={tokens.color.muted} strokeWidth="1" strokeDasharray="2,2" />
-                <path d="M 180 130 L 150 145" stroke={tokens.color.muted} strokeWidth="1" strokeDasharray="2,2" />
-                <rect x="50" y="145" width="140" height="25" fill={tokens.color.ink} opacity="0.1" rx="2" />
-                <text x="120" y="163" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  Catch blind spots before problems
-                </text>
+                {/* Source box */}
+                <rect x="80" y="15" width="80" height="35" fill={tokens.color.accent} opacity="0.15" rx="4" />
+                <line x1="95" y1="25" x2="155" y2="25" stroke={tokens.color.accent} strokeWidth="2" />
+                <line x1="95" y1="32" x2="155" y2="32" stroke={tokens.color.accent} strokeWidth="2" />
+                {/* Arrow down */}
+                <path d="M 120 50 L 120 65" stroke={tokens.color.accent} strokeWidth="2" />
+                <polygon points="120,65 116,57 124,57" fill={tokens.color.accent} />
+                {/* Impact nodes */}
+                <circle cx="60" cy="100" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" />
+                <line x1="60" y1="90" x2="60" y2="110" stroke={tokens.color.accent} strokeWidth="1" opacity="0.5" />
+                <circle cx="180" cy="100" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" />
+                <line x1="180" y1="90" x2="180" y2="110" stroke={tokens.color.accent} strokeWidth="1" opacity="0.5" />
+                {/* Connection lines */}
+                <path d="M 75 105 Q 120 125 150 105" stroke={tokens.color.accent} strokeWidth="1" fill="none" opacity="0.4" strokeDasharray="2,2" />
+                {/* Result highlight */}
+                <rect x="50" y="140" width="140" height="28" fill={tokens.color.accent} opacity="0.1" rx="4" />
+                <circle cx="60" cy="154" r="4" fill={tokens.color.accent} />
+                <line x1="70" y1="154" x2="180" y2="154" stroke={tokens.color.accent} strokeWidth="1.5" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Engineering Changes
@@ -578,38 +560,29 @@ const VeriSupplyCaseStudy: FC = () => {
             {/* Supplier Comparison */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
-                <rect x="15" y="15" width="65" height="140" fill={tokens.color.muted} opacity="0.15" rx="3" />
-                <text x="47" y="40" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  Option A
-                </text>
-                <rect x="17" y="48" width="61" height="8" fill={tokens.color.muted} opacity="0.3" rx="1" />
-                <rect x="17" y="60" width="61" height="8" fill={tokens.color.muted} opacity="0.3" rx="1" />
-                <rect x="17" y="72" width="61" height="8" fill={tokens.color.muted} opacity="0.3" rx="1" />
-                <text x="47" y="130" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
-                  Cost vs Quality
-                </text>
+                {/* Option A */}
+                <rect x="10" y="12" width="60" height="140" fill={tokens.color.accent} opacity="0.08" rx="4" />
+                <line x1="18" y1="25" x2="52" y2="25" stroke={tokens.color.accent} strokeWidth="2" />
+                <line x1="18" y1="35" x2="52" y2="35" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.5" />
+                <line x1="18" y1="45" x2="52" y2="45" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.5" />
+                <line x1="18" y1="55" x2="52" y2="55" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.5" />
 
-                <rect x="88" y="15" width="65" height="140" fill={tokens.color.muted} opacity="0.25" rx="3" />
-                <text x="120" y="40" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  Option B
-                </text>
-                <rect x="90" y="48" width="61" height="8" fill={tokens.color.muted} opacity="0.4" rx="1" />
-                <rect x="90" y="60" width="61" height="8" fill={tokens.color.muted} opacity="0.4" rx="1" />
-                <rect x="90" y="72" width="61" height="8" fill={tokens.color.muted} opacity="0.4" rx="1" />
-                <text x="120" y="130" fontSize="10" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  Comparison
-                </text>
+                {/* Option B */}
+                <rect x="80" y="12" width="60" height="140" fill={tokens.color.accent} opacity="0.12" rx="4" />
+                <line x1="88" y1="25" x2="122" y2="25" stroke={tokens.color.accent} strokeWidth="2" />
+                <line x1="88" y1="35" x2="122" y2="35" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.6" />
+                <line x1="88" y1="45" x2="122" y2="45" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.6" />
+                <line x1="88" y1="55" x2="122" y2="55" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.6" />
 
-                <rect x="161" y="15" width="65" height="140" fill={tokens.color.muted} opacity="0.35" rx="3" />
-                <text x="193" y="40" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  Option C
-                </text>
-                <rect x="163" y="48" width="61" height="8" fill={tokens.color.muted} opacity="0.5" rx="1" />
-                <rect x="163" y="60" width="61" height="8" fill={tokens.color.muted} opacity="0.5" rx="1" />
-                <rect x="163" y="72" width="61" height="8" fill={tokens.color.muted} opacity="0.5" rx="1" />
-                <text x="193" y="130" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
-                  Tradeoffs
-                </text>
+                {/* Option C */}
+                <rect x="150" y="12" width="60" height="140" fill={tokens.color.accent} opacity="0.16" rx="4" />
+                <line x1="158" y1="25" x2="192" y2="25" stroke={tokens.color.accent} strokeWidth="2" />
+                <line x1="158" y1="35" x2="192" y2="35" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.7" />
+                <line x1="158" y1="45" x2="192" y2="45" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.7" />
+                <line x1="158" y1="55" x2="192" y2="55" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.7" />
+
+                {/* Comparison indicator */}
+                <path d="M 40 160 L 120 160 L 180 160" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Supplier Comparison
@@ -622,37 +595,29 @@ const VeriSupplyCaseStudy: FC = () => {
             {/* Bill of Materials */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
-                <rect x="15" y="15" width="210" height="25" fill={tokens.color.muted} opacity="0.2" rx="2" />
-                <text x="120" y="33" fontSize="11" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
-                  Part #001 | Supplier A | $45
-                </text>
-                <rect x="30" y="48" width="65" height="15" fill={tokens.color.muted} opacity="0.1" rx="1" />
-                <text x="62" y="58" fontSize="9" fill={tokens.color.muted} textAnchor="middle">
-                  Quote
-                </text>
-                <rect x="110" y="48" width="65" height="15" fill={tokens.color.muted} opacity="0.1" rx="1" />
-                <text x="142" y="58" fontSize="9" fill={tokens.color.muted} textAnchor="middle">
-                  Risk
-                </text>
-                <rect x="190" y="48" width="35" height="15" fill={tokens.color.muted} opacity="0.1" rx="1" />
-                <text x="207" y="58" fontSize="9" fill={tokens.color.muted} textAnchor="middle">
-                  Impact
-                </text>
+                {/* Header */}
+                <rect x="14" y="12" width="212" height="22" fill={tokens.color.accent} opacity="0.1" rx="3" />
+                <line x1="20" y1="20" x2="70" y2="20" stroke={tokens.color.accent} strokeWidth="2" />
+                <line x1="100" y1="20" x2="130" y2="20" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.5" />
+                <line x1="160" y1="20" x2="180" y2="20" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.5" />
 
-                <rect x="15" y="75" width="210" height="25" fill={tokens.color.muted} opacity="0.1" rx="2" />
-                <text x="120" y="93" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
-                  Part #002 | Supplier B | $32
-                </text>
+                {/* Row 1 */}
+                <rect x="14" y="38" width="212" height="20" fill={tokens.color.accent} opacity="0.08" rx="2" />
+                <line x1="30" y1="48" x2="80" y2="48" stroke={tokens.color.accent} strokeWidth="1" opacity="0.4" />
+                <rect x="100" y="42" width="30" height="12" fill={tokens.color.accent} opacity="0.15" rx="1" />
+                <rect x="140" y="42" width="30" height="12" fill={tokens.color.accent} opacity="0.15" rx="1" />
 
-                <rect x="15" y="110" width="210" height="25" fill={tokens.color.muted} opacity="0.1" rx="2" />
-                <text x="120" y="128" fontSize="11" fill={tokens.color.muted} textAnchor="middle">
-                  Part #003 | Supplier C | $89
-                </text>
+                {/* Row 2 */}
+                <rect x="14" y="64" width="212" height="20" fill={tokens.color.accent} opacity="0.05" rx="2" />
+                <line x1="30" y1="74" x2="80" y2="74" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
 
-                <path d="M 120 140 L 120 155" stroke={tokens.color.muted} strokeWidth="1" strokeDasharray="2,2" />
-                <text x="120" y="170" fontSize="10" fill={tokens.color.muted} textAnchor="middle" fontWeight="bold">
-                  Full supply chain visibility
-                </text>
+                {/* Row 3 */}
+                <rect x="14" y="90" width="212" height="20" fill={tokens.color.accent} opacity="0.05" rx="2" />
+                <line x1="30" y1="100" x2="80" y2="100" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
+
+                {/* Indicator line */}
+                <path d="M 120 115 L 120 130" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" strokeDasharray="2,2" />
+                <circle cx="120" cy="138" r="3" fill={tokens.color.accent} />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
                 Bill of Materials
