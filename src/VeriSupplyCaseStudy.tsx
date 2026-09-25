@@ -164,15 +164,20 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
-            {/* Risk Scores */}
+            {/* Numbers without meaning */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
-                <circle cx="40" cy="40" r="35" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.3" />
-                <text x="40" y="45" fontSize="32" fontWeight="bold" textAnchor="middle" fill={tokens.color.ink}>
-                  84
+                {/* Bar chart with confused lines */}
+                <rect x="15" y="45" width="8" height="25" fill={tokens.color.accent} opacity="0.5" />
+                <rect x="28" y="35" width="8" height="35" fill={tokens.color.accent} opacity="0.7" />
+                <rect x="41" y="25" width="8" height="45" fill={tokens.color.accent} />
+                <rect x="54" y="40" width="8" height="30" fill={tokens.color.accent} opacity="0.6" />
+                {/* Question mark hovering above */}
+                <text x="40" y="18" fontSize="20" fill={tokens.color.muted} textAnchor="middle" fontWeight="bold">
+                  ?
                 </text>
-                <path d="M 40 65 L 40 75" stroke={tokens.color.muted} strokeWidth="2" />
-                <path d="M 30 70 L 50 70" stroke={tokens.color.muted} strokeWidth="2" />
+                {/* Confused connection line */}
+                <path d="M 40 25 Q 35 30 40 35" stroke={tokens.color.muted} strokeWidth="1.5" fill="none" opacity="0.4" strokeDasharray="2,2" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
                 Numbers without meaning
@@ -182,23 +187,16 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Supply Chain Tiers */}
+            {/* Blind spots */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
-                <rect x="25" y="10" width="30" height="20" fill={tokens.color.ink} rx="2" />
-                <text x="40" y="25" fontSize="12" fill={tokens.color.white} textAnchor="middle" fontWeight="bold">
-                  Tier 1
-                </text>
-                <line x1="40" y1="30" x2="40" y2="35" stroke={tokens.color.muted} strokeWidth="2" />
-                <rect x="25" y="38" width="30" height="16" fill={tokens.color.muted} opacity="0.3" rx="2" />
-                <text x="40" y="50" fontSize="10" fill={tokens.color.ink} textAnchor="middle">
-                  Tier 2?
-                </text>
-                <line x1="40" y1="54" x2="40" y2="58" stroke={tokens.color.muted} strokeWidth="2" strokeDasharray="2,2" />
-                <rect x="20" y="60" width="40" height="14" fill={tokens.color.muted} opacity="0.2" rx="2" />
-                <text x="40" y="71" fontSize="10" fill={tokens.color.muted} textAnchor="middle">
-                  Tier 3+: Unknown
-                </text>
+                {/* Eye symbol with reduced visibility */}
+                <circle cx="40" cy="40" r="12" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
+                <circle cx="40" cy="40" r="6" fill={tokens.color.ink} />
+                {/* Fading pyramid below */}
+                <polygon points="20,55 40,50 60,55 50,65 30,65" fill={tokens.color.accent} opacity="0.8" />
+                <polygon points="25,60 40,58 55,60 48,68 32,68" fill={tokens.color.accent} opacity="0.4" />
+                <polygon points="30,65 40,64 50,65 45,70 35,70" fill={tokens.color.accent} opacity="0.15" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
                 Blind spots beyond Tier 1
@@ -208,17 +206,15 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Time Delays */}
+            {/* Slow analysis */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
-                <circle cx="40" cy="40" r="28" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.3" />
-                <circle cx="40" cy="40" r="20" fill="none" stroke={tokens.color.muted} strokeWidth="2" opacity="0.5" />
-                <line x1="40" y1="20" x2="40" y2="12" stroke={tokens.color.ink} strokeWidth="2" />
-                <line x1="55" y1="25" x2="61" y2="19" stroke={tokens.color.muted} strokeWidth="1.5" opacity="0.5" />
-                <line x1="60" y1="40" x2="70" y2="40" stroke={tokens.color.muted} strokeWidth="1.5" opacity="0.5" />
-                <text x="40" y="48" fontSize="14" fill={tokens.color.muted} textAnchor="middle" fontWeight="bold" opacity="0.6">
-                  Waiting...
-                </text>
+                {/* Hourglass shape */}
+                <path d="M 25 18 L 55 18 L 50 40 L 55 62 L 25 62 L 30 40 Z" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
+                {/* Sand falling slowly */}
+                <circle cx="40" cy="50" r="3" fill={tokens.color.accent} opacity="0.6" />
+                <circle cx="38" cy="55" r="2.5" fill={tokens.color.accent} opacity="0.4" />
+                <circle cx="42" cy="58" r="2" fill={tokens.color.accent} opacity="0.2" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
                 Analysis is too slow
@@ -228,18 +224,21 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Black Box Automation */}
+            {/* Black box automation */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
-                <rect x="20" y="25" width="40" height="30" fill={tokens.color.ink} rx="2" />
-                <text x="40" y="50" fontSize="24" fill={tokens.color.white} textAnchor="middle" fontWeight="bold">
+                {/* Locked box */}
+                <rect x="22" y="28" width="36" height="28" fill="none" stroke={tokens.color.ink} strokeWidth="2.5" rx="2" />
+                {/* Lock symbol */}
+                <path d="M 32 38 Q 32 32 40 32 Q 48 32 48 38" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
+                <circle cx="40" cy="44" r="3" fill={tokens.color.ink} />
+                {/* Question mark in box */}
+                <text x="40" y="56" fontSize="16" fill={tokens.color.muted} textAnchor="middle" fontWeight="bold">
                   ?
                 </text>
-                <line x1="15" y1="42" x2="25" y2="42" stroke={tokens.color.muted} strokeWidth="2" />
-                <line x1="55" y1="42" x2="65" y2="42" stroke={tokens.color.muted} strokeWidth="2" />
-                <text x="40" y="70" fontSize="12" fill={tokens.color.muted} textAnchor="middle">
-                  Black box decision
-                </text>
+                {/* Arrows going in/out */}
+                <path d="M 15 44 L 20 44" stroke={tokens.color.muted} strokeWidth="1.5" opacity="0.5" />
+                <path d="M 60 44 L 65 44" stroke={tokens.color.muted} strokeWidth="1.5" opacity="0.5" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
                 Automation without evidence
