@@ -95,16 +95,33 @@ const VeriSupplyCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <div style={{ marginBottom: 48, maxWidth: 600 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
-                <strong>The context:</strong> Procurement teams at enterprises manage thousands of suppliers and complex bill-of-materials. When supply disruptions happen, they're drowning in risk alerts but paralyzed—unable to connect the data to what actually matters for their business.
-              </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
-                <strong>What makes this different:</strong> Instead of building another risk-scoring tool (which already existed), we discovered through research that the real bottleneck wasn't visibility—it was decision-making. Procurement leaders had the data but couldn't act on it confidently.
-              </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                <strong>Our solution:</strong> A decision-support platform that reframes how teams use supply-chain data. Rather than overwhelming with risk scores, we built a system that connects supplier data to business impact and recommends next actions—with evidence to back them up.
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                  The Context
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  Procurement teams drowning in disconnected risk alerts, unable to act confidently.
+                </p>
+              </div>
+
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                  The Insight
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  The real bottleneck wasn't visibility—it was confident decision-making.
+                </p>
+              </div>
+
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                  Our Solution
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  Decision-support platform with evidence to back up every recommendation.
+                </p>
+              </div>
             </div>
           </Reveal>
 
@@ -271,8 +288,8 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 600 }}>
-            <strong>What we set out to prove:</strong> Supply-chain risk visibility was the core bottleneck. But we challenged that assumption by conducting in-depth interviews with procurement leaders, strategic sourcing managers, and operations teams across multiple companies. What we discovered shifted the entire project direction.
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 600, opacity: 0.8 }}>
+            We challenged the assumption that risk visibility was the problem. Interviews with procurement leaders across multiple companies revealed the real bottleneck: <strong>decision-making, not data.</strong>
           </p>
         </Reveal>
 
@@ -313,16 +330,64 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 16px" }}>
-            This revealed 5 critical gaps:
-          </h3>
-          <ul style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0, paddingLeft: 20 }}>
-            <li><strong>Fragmentation:</strong> Critical supply-chain data scattered across disconnected tools and systems</li>
-            <li><strong>Invisibility:</strong> Disruptions start in Tier 2+ suppliers no one is monitoring</li>
-            <li><strong>No context:</strong> Risk scores don't show which products, customers, or revenue are actually exposed</li>
-            <li><strong>Slow action:</strong> Manual analysis takes days—decision windows close in hours</li>
-            <li><strong>Undefendable decisions:</strong> Automation without reasoning can't be justified to stakeholders</li>
-          </ul>
+          <style>{`
+            @media (max-width: 768px) {
+              .gaps-grid {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}</style>
+          <div className="gaps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginTop: 0 }}>
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>🔗</div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+                Fragmentation
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+                Data scattered across disconnected tools
+              </p>
+            </div>
+
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>👁️</div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+                Invisibility
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+                Tier 2+ suppliers unseen
+              </p>
+            </div>
+
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>❓</div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+                No Context
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+                Risk without business impact
+              </p>
+            </div>
+
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>⏱️</div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+                Slow Action
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+                Manual analysis misses windows
+              </p>
+            </div>
+
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ fontSize: 24, marginBottom: 8 }}>🔐</div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+                Undefendable
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+                Automation without evidence
+              </p>
+            </div>
+          </div>
         </Reveal>
       </section>
 
@@ -690,31 +755,38 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
-                Asking the right questions
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                The initial hypothesis was too narrow. By asking "Why don't you use existing risk tools?" instead of assuming the answer, we discovered that risk visibility wasn't the real problem—decision-making was.
+          <style>{`
+            @media (max-width: 768px) {
+              .learnings-grid {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}</style>
+          <div className="learnings-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+                Ask the Right Questions
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
+                Narrow hypothesis → Problem reframing. Visibility wasn't the bottleneck; decision-making was.
               </p>
             </div>
 
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
-                Prototype testing and iteration (going deeper)
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                After discovering the real problem was decision-making, not visibility, we built low-fidelity prototypes to test the three-layer hypothesis with actual procurement leaders. Multiple rounds of testing and iteration revealed workflow gaps that would have been expensive to discover during development. This validation phase shifted resource allocation and shaped the entire MVP scope.
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+                Prototype to Validate
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
+                Low-fidelity testing with users revealed workflow gaps that would've been expensive in dev.
               </p>
             </div>
 
-            <div>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
-                Validating hypothesis, not features
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
-                The MVP scope shifted from "comprehensive risk database" to "decision support with evidence." This reframing meant building less but building smarter, focused on the actual problem.
+            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+                Build Smarter, Not Bigger
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
+                Shifted from "comprehensive database" to "decision support." Less scope, higher impact.
               </p>
             </div>
           </div>
