@@ -7,6 +7,7 @@ export const tokens = {
     textDark: "#1A1A1A",
     accentStart: "#60A5FA",
     accentEnd: "#A78BFA",
+    accent: "#A78BFA",
     body: "#626262",
     stroke: "#F1F0EE",
     dark: "#1A1A1A",
