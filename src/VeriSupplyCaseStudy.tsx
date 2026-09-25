@@ -183,7 +183,7 @@ const VeriSupplyCaseStudy: FC = () => {
           <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
             {/* Numbers without meaning */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Bar chart with confused lines */}
                 <rect x="15" y="45" width="8" height="25" fill={tokens.color.accent} opacity="0.5" />
                 <rect x="28" y="35" width="8" height="35" fill={tokens.color.accent} opacity="0.7" />
@@ -206,7 +206,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Blind spots */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Eye symbol with reduced visibility */}
                 <circle cx="40" cy="40" r="12" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
                 <circle cx="40" cy="40" r="6" fill={tokens.color.ink} />
@@ -225,7 +225,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Slow analysis */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Hourglass shape */}
                 <path d="M 25 18 L 55 18 L 50 40 L 55 62 L 25 62 L 30 40 Z" fill="none" stroke={tokens.color.ink} strokeWidth="2" />
                 {/* Sand falling slowly */}
@@ -243,7 +243,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Black box automation */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet">
+              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Locked box */}
                 <rect x="22" y="28" width="36" height="28" fill="none" stroke={tokens.color.ink} strokeWidth="2.5" rx="2" />
                 {/* Lock symbol */}
@@ -288,7 +288,7 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 600, opacity: 0.8 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
             We challenged the assumption that risk visibility was the problem. Interviews with procurement leaders across multiple companies revealed the real bottleneck: <strong>decision-making, not data.</strong>
           </p>
         </Reveal>
@@ -343,7 +343,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
                 Fragmentation
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
                 Data scattered across disconnected tools
               </p>
             </div>
@@ -353,7 +353,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
                 Invisibility
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
                 Tier 2+ suppliers unseen
               </p>
             </div>
@@ -363,7 +363,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
                 No Context
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
                 Risk without business impact
               </p>
             </div>
@@ -373,7 +373,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
                 Slow Action
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
                 Manual analysis misses windows
               </p>
             </div>
@@ -383,7 +383,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
                 Undefendable
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug, opacity: 0.7 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
                 Automation without evidence
               </p>
             </div>
@@ -416,7 +416,7 @@ const VeriSupplyCaseStudy: FC = () => {
               }
             }
           `}</style>
-          <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet">
+          <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
             {/* Layer 1: Monitor */}
             <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.accent} strokeWidth="1.5" rx="12" />
             {/* Monitor icon: signals */}
@@ -505,7 +505,7 @@ const VeriSupplyCaseStudy: FC = () => {
           <div className="design-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
             {/* Dashboard */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
-              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Frame */}
                 <rect x="12" y="10" width="216" height="160" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" rx="6" />
                 {/* Header bar */}
@@ -529,7 +529,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Engineering Changes */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
-              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Source box */}
                 <rect x="80" y="15" width="80" height="35" fill={tokens.color.accent} opacity="0.15" rx="4" />
                 <line x1="95" y1="25" x2="155" y2="25" stroke={tokens.color.accent} strokeWidth="2" />
@@ -559,7 +559,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Supplier Comparison */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
-              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Option A */}
                 <rect x="10" y="12" width="60" height="140" fill={tokens.color.accent} opacity="0.08" rx="4" />
                 <line x1="18" y1="25" x2="52" y2="25" stroke={tokens.color.accent} strokeWidth="2" />
@@ -594,7 +594,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
             {/* Bill of Materials */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
-              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }}>
+              <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Header */}
                 <rect x="14" y="12" width="212" height="22" fill={tokens.color.accent} opacity="0.1" rx="3" />
                 <line x1="20" y1="20" x2="70" y2="20" stroke={tokens.color.accent} strokeWidth="2" />
