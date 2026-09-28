@@ -181,8 +181,7 @@ const Badge: FC<BadgeProps> = ({
                 fontSize: "16px",
                 letterSpacing: tokens.tracking.tight,
                 color: tokens.color.body,
-                lineHeight: 1.3,
-                opacity: 0.7,
+                lineHeight: 1.5,
               }}
             >
               {role}
@@ -190,14 +189,13 @@ const Badge: FC<BadgeProps> = ({
 
             <p
               style={{
-                margin: "4px 0 0 0",
+                margin: "8px 0 0 0",
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.regular,
                 fontSize: "16px",
                 letterSpacing: tokens.tracking.tight,
                 color: tokens.color.body,
-                lineHeight: 1.3,
-                opacity: 0.65,
+                lineHeight: 1.5,
               }}
             >
               Accessibility design for high-stakes products
@@ -205,14 +203,13 @@ const Badge: FC<BadgeProps> = ({
 
             <p
               style={{
-                margin: "6px 0 0 0",
+                margin: "10px 0 0 0",
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.regular,
-                fontSize: "16px",
+                fontSize: "14px",
                 letterSpacing: tokens.tracking.tight,
                 color: tokens.color.muted,
-                lineHeight: 1.2,
-                opacity: 0.5,
+                lineHeight: 1.4,
                 textAlign: "center",
               }}
             >
@@ -257,10 +254,9 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "10px",
+                fontSize: "11px",
                 color: tokens.color.muted,
-                lineHeight: 1.2,
-                opacity: 0.65,
+                lineHeight: 1.3,
                 textTransform: "uppercase",
                 letterSpacing: "0.5px",
                 marginBottom: 8,
@@ -275,7 +271,7 @@ const Badge: FC<BadgeProps> = ({
                 fontWeight: tokens.weight.light,
                 fontSize: "16px",
                 color: tokens.color.body,
-                lineHeight: 1.4,
+                lineHeight: 1.5,
               }}
             >
               {location}
@@ -295,10 +291,9 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "10px",
+                fontSize: "11px",
                 color: tokens.color.muted,
-                lineHeight: 1.2,
-                opacity: 0.65,
+                lineHeight: 1.3,
                 textTransform: "uppercase",
                 letterSpacing: "0.5px",
                 marginBottom: 8,
@@ -313,7 +308,7 @@ const Badge: FC<BadgeProps> = ({
                 fontWeight: tokens.weight.light,
                 fontSize: "16px",
                 color: tokens.color.body,
-                lineHeight: 1.4,
+                lineHeight: 1.5,
               }}
             >
               {description}
@@ -331,10 +326,9 @@ const Badge: FC<BadgeProps> = ({
               style={{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "10px",
+                fontSize: "11px",
                 color: tokens.color.muted,
-                lineHeight: 1.2,
-                opacity: 0.65,
+                lineHeight: 1.3,
                 textTransform: "uppercase",
                 letterSpacing: "0.5px",
                 marginBottom: 8,
@@ -349,7 +343,7 @@ const Badge: FC<BadgeProps> = ({
                 fontWeight: tokens.weight.light,
                 fontSize: "16px",
                 color: tokens.color.body,
-                lineHeight: 1.4,
+                lineHeight: 1.5,
               }}
             >
               Research-backed decisions, obsessive attention to accessibility, ruthless focus on reducing friction.
@@ -382,23 +376,22 @@ const Badge: FC<BadgeProps> = ({
                 padding: "11px 18px",
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.light,
-                fontSize: "13px",
+                fontSize: "14px",
                 color: tokens.color.ink,
-                lineHeight: 1.2,
-                opacity: 0.85,
-                transition: "opacity 0.2s ease, background-color 0.2s ease",
+                lineHeight: 1.4,
+                transition: "background-color 0.2s ease, border-color 0.2s ease",
                 backgroundColor: "transparent",
                 width: "100%",
                 textAlign: "center",
                 justifyContent: "center",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.opacity = "0.7";
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(0, 0, 0, 0.02)";
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(0, 0, 0, 0.04)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.muted;
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.opacity = "0.85";
                 (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.cardBorder;
               }}
             >
               See work
