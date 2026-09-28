@@ -418,7 +418,7 @@ const VeriSupplyCaseStudy: FC = () => {
           `}</style>
           <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
             {/* Layer 1: Monitor */}
-            <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.accent} strokeWidth="1.5" rx="12" />
+            <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} rx="12" />
             {/* Monitor icon: signal waves */}
             <circle cx="175" cy="80" r="28" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.5" />
             <circle cx="175" cy="80" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
@@ -438,7 +438,7 @@ const VeriSupplyCaseStudy: FC = () => {
             <polygon points="365,140 375,135 375,145" fill={tokens.color.accent} />
 
             {/* Layer 2: Understand */}
-            <rect x="385" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke={tokens.color.accent} strokeWidth="1.5" rx="12" />
+            <rect x="385" y="40" width="250" height="200" fill={tokens.color.offWhite} rx="12" />
             {/* Understand icon: connected data */}
             <rect x="460" y="60" width="30" height="15" fill={tokens.color.accent} opacity="0.3" rx="2" />
             <rect x="460" y="80" width="30" height="15" fill={tokens.color.accent} opacity="0.6" rx="2" />
@@ -459,7 +459,7 @@ const VeriSupplyCaseStudy: FC = () => {
             <polygon points="690,140 700,135 700,145" fill={tokens.color.accent} />
 
             {/* Layer 3: Act - Green for positive outcome */}
-            <rect x="700" y="40" width="250" height="200" fill={tokens.color.offWhite} stroke="#10B981" strokeWidth="1.5" rx="12" />
+            <rect x="700" y="40" width="250" height="200" fill={tokens.color.offWhite} rx="12" />
             {/* Act icon: checkmark in success circle */}
             <circle cx="825" cy="80" r="28" fill="#10B981" opacity="0.1" />
             <path d="M 815 82 L 821 88 L 835 74" stroke="#10B981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
@@ -508,7 +508,6 @@ const VeriSupplyCaseStudy: FC = () => {
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Frame */}
-                <rect x="12" y="10" width="216" height="160" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" rx="6" />
                 {/* Header bar */}
                 <rect x="16" y="14" width="208" height="24" fill={tokens.color.accent} opacity="0.1" rx="3" />
                 <line x1="20" y1="20" x2="100" y2="20" stroke={tokens.color.accent} strokeWidth="2" />
@@ -570,7 +569,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
                 {/* Option B - Highlighted */}
                 <rect x="80" y="12" width="60" height="140" fill={tokens.color.accent} opacity="0.12" rx="4" />
-                <rect x="78" y="10" width="64" height="144" fill="none" stroke={tokens.color.accent} strokeWidth="2.5" rx="5" />
+                <rect x="78" y="10" width="64" height="144" fill="none" rx="5" />
                 <line x1="88" y1="25" x2="122" y2="25" stroke={tokens.color.accent} strokeWidth="2" />
                 <line x1="88" y1="35" x2="122" y2="35" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.7" />
                 <line x1="88" y1="45" x2="122" y2="45" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.7" />
