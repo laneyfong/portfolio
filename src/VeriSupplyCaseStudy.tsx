@@ -423,13 +423,13 @@ const VeriSupplyCaseStudy: FC = () => {
             <circle cx="175" cy="80" r="28" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.5" />
             <circle cx="175" cy="80" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
             <circle cx="175" cy="80" r="8" fill={tokens.color.accent} />
-            <text x="175" y="150" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+            <text x="175" y="150" fontSize="26" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
               Monitor
             </text>
-            <text x="175" y="175" fontSize="12" fill={tokens.color.body} textAnchor="middle">
+            <text x="175" y="180" fontSize="16" fill={tokens.color.body} textAnchor="middle">
               Detect changes
             </text>
-            <text x="175" y="192" fontSize="12" fill={tokens.color.body} textAnchor="middle">
+            <text x="175" y="202" fontSize="16" fill={tokens.color.body} textAnchor="middle">
               across suppliers & data
             </text>
 
@@ -444,13 +444,13 @@ const VeriSupplyCaseStudy: FC = () => {
             <rect x="460" y="80" width="30" height="15" fill={tokens.color.accent} opacity="0.6" rx="2" />
             <rect x="495" y="70" width="20" height="20" fill={tokens.color.accent} rx="2" />
             <path d="M 480 68 L 495 78" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.4" />
-            <text x="510" y="150" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+            <text x="510" y="150" fontSize="26" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
               Understand
             </text>
-            <text x="510" y="175" fontSize="12" fill={tokens.color.body} textAnchor="middle">
+            <text x="510" y="180" fontSize="16" fill={tokens.color.body} textAnchor="middle">
               Assess impact on
             </text>
-            <text x="510" y="192" fontSize="12" fill={tokens.color.body} textAnchor="middle">
+            <text x="510" y="202" fontSize="16" fill={tokens.color.body} textAnchor="middle">
               business & revenue
             </text>
 
@@ -463,13 +463,13 @@ const VeriSupplyCaseStudy: FC = () => {
             {/* Act icon: checkmark in success circle */}
             <circle cx="825" cy="80" r="28" fill="#10B981" opacity="0.1" />
             <path d="M 815 82 L 821 88 L 835 74" stroke="#10B981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <text x="825" y="150" fontSize="18" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
+            <text x="825" y="150" fontSize="26" fill={tokens.color.ink} textAnchor="middle" fontWeight="bold">
               Act
             </text>
-            <text x="825" y="175" fontSize="12" fill={tokens.color.body} textAnchor="middle">
+            <text x="825" y="180" fontSize="16" fill={tokens.color.body} textAnchor="middle">
               Make informed decisions
             </text>
-            <text x="825" y="192" fontSize="12" fill={tokens.color.body} textAnchor="middle">
+            <text x="825" y="202" fontSize="16" fill={tokens.color.body} textAnchor="middle">
               with evidence
             </text>
           </svg>
