@@ -457,8 +457,46 @@ const MyShakeCaseStudy: FC = () => {
             />
           </Reveal>
 
+          <Reveal delay={100}>
+            <div
+              style={{
+                marginBottom: 60,
+                borderRadius: tokens.radius.md,
+                overflow: "hidden",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+              }}
+            >
+              <video
+                src={myshakeScreenRecording}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+                autoPlay
+                playsInline
+                loop
+                muted
+              />
+            </div>
+          </Reveal>
+
           <Reveal>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
+            <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 60 }}>
+              <FeatureCard title="Problem">
+                The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no reason to return.
+              </FeatureCard>
+              <FeatureCard title="Solution">
+                Redesigned MyShake from passive info tool into a safety-first utility for checking loved ones instantly.
+              </FeatureCard>
+              <FeatureCard title="Result">
+                Users now instantly access loved ones' safety status, transforming MyShake into a trusted companion.
+              </FeatureCard>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 60 }}>
               <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Context
@@ -485,44 +523,6 @@ const MyShakeCaseStudy: FC = () => {
                   Reframed as safety-first utility. Reduced steps from 7 to 3. Result: 45% engagement increase.
                 </p>
               </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <div
-              style={{
-                marginBottom: 40,
-                borderRadius: tokens.radius.md,
-                overflow: "hidden",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
-              }}
-            >
-              <video
-                src={myshakeScreenRecording}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                }}
-                autoPlay
-                playsInline
-                loop
-                muted
-              />
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
-              <FeatureCard title="Problem">
-                The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no reason to return.
-              </FeatureCard>
-              <FeatureCard title="Solution">
-                Redesigned MyShake from passive info tool into a safety-first utility for checking loved ones instantly.
-              </FeatureCard>
-              <FeatureCard title="Result">
-                Users now instantly access loved ones' safety status, transforming MyShake into a trusted companion.
-              </FeatureCard>
             </div>
           </Reveal>
 
