@@ -95,48 +95,17 @@ const VeriSupplyCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <div style={{ marginBottom: 60, borderRadius: 20, overflow: "hidden", background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)", padding: 40, display: "flex", justifyContent: "center", alignItems: "center", minHeight: 400 }}>
+            <div style={{ marginBottom: 80, borderRadius: 20, overflow: "hidden", background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)", padding: 60, display: "flex", justifyContent: "center", alignItems: "center", minHeight: 600 }}>
               <img
                 src={verisupplyThumbnail}
                 alt="VeriSupply dashboard interface"
                 style={{
                   width: "100%",
-                  maxWidth: "600px",
+                  maxWidth: "800px",
                   height: "auto",
                   display: "block",
                 }}
               />
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  The Context
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                  Procurement teams drowning in disconnected risk alerts, unable to act confidently.
-                </p>
-              </div>
-
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  The Insight
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                  The real bottleneck wasn't visibility—it was confident decision-making.
-                </p>
-              </div>
-
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  Our Solution
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                  Decision-support platform with evidence to back up every recommendation.
-                </p>
-              </div>
             </div>
           </Reveal>
 
