@@ -459,7 +459,7 @@ const MyShakeCaseStudy: FC = () => {
 
           <Reveal>
             <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Context
                 </p>
@@ -468,7 +468,7 @@ const MyShakeCaseStudy: FC = () => {
                 </p>
               </div>
 
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Insight
                 </p>
@@ -477,7 +477,7 @@ const MyShakeCaseStudy: FC = () => {
                 </p>
               </div>
 
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Approach
                 </p>
