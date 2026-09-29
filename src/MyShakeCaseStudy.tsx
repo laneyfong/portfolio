@@ -1181,7 +1181,6 @@ const MyShakeCaseStudy: FC = () => {
                 width: 48,
                 height: 48,
                 borderRadius: "50%",
-                border: `1px solid ${tokens.color.cardBorder}`,
                 color: tokens.color.ink,
                 cursor: "pointer",
                 fontSize: 20,
