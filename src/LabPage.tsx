@@ -6,6 +6,10 @@ import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
+import screenRecording20251023 from "./assets/screen-recording-2025-10-23.mp4";
+import screenRecording20260112 from "./assets/lab-2026-01-12at3.05.27 PM.mov";
+import screenRecording20260326a from "./assets/lab-2026-03-26at3.14.13 PM.mov";
+import screenRecording20260326b from "./assets/lab-2026-03-26at3.15.38 PM.mov";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
@@ -21,6 +25,53 @@ interface LabModuleProps {
   isSpecial?: boolean;
   specialType?: "daylight" | "ascii-ripple";
 }
+
+const VideoCard: FC<{ src: string; title: string; date: string }> = ({ src, title, date }) => (
+  <div
+    style={{
+      borderRadius: tokens.radius.md,
+      overflow: "hidden",
+      background: tokens.color.offWhite,
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+    }}
+  >
+    <video
+      src={src}
+      controls
+      style={{
+        width: "100%",
+        height: "300px",
+        objectFit: "cover",
+        display: "block",
+      }}
+    />
+    <div style={{ padding: 20 }}>
+      <h3
+        style={{
+          margin: "0 0 8px",
+          fontFamily: tokens.font.sans,
+          fontSize: tokens.text.base,
+          fontWeight: tokens.weight.medium,
+          color: tokens.color.ink,
+        }}
+      >
+        {title}
+      </h3>
+      <p
+        style={{
+          margin: 0,
+          fontFamily: tokens.font.sans,
+          fontSize: tokens.text.sm,
+          color: tokens.color.muted,
+        }}
+      >
+        {date}
+      </p>
+    </div>
+  </div>
+);
 
 const LabPage: FC = () => {
   const experiments: LabModuleProps[] = [
@@ -45,6 +96,29 @@ const LabPage: FC = () => {
       tags: ["interaction", "animation", "ASCII", "ripple"],
       isSpecial: true,
       specialType: "ascii-ripple",
+    },
+  ];
+
+  const videoExperiments = [
+    {
+      src: screenRecording20251023,
+      title: "Design Iteration: Product Flow",
+      date: "Oct 2025",
+    },
+    {
+      src: screenRecording20260112,
+      title: "Mobile Interaction Exploration",
+      date: "Jan 2026",
+    },
+    {
+      src: screenRecording20260326a,
+      title: "Motion & Animation Study I",
+      date: "Mar 2026",
+    },
+    {
+      src: screenRecording20260326b,
+      title: "Motion & Animation Study II",
+      date: "Mar 2026",
     },
   ];
 
@@ -160,6 +234,13 @@ const LabPage: FC = () => {
                     isLoading={exp.isLoading}
                   />
                 )}
+              </div>
+            ))}
+
+            {/* Video Experiments */}
+            {videoExperiments.map((video, idx) => (
+              <div key={`video-${idx}`} className="lab-module" style={{ height: "100%" }}>
+                <VideoCard src={video.src} title={video.title} date={video.date} />
               </div>
             ))}
           </div>
