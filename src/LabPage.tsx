@@ -7,9 +7,6 @@ import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
 import screenRecording20251023 from "./assets/screen-recording-2025-10-23.mp4";
-import screenRecording20260112 from "./assets/lab-2026-01-12at3.05.27 PM.mov";
-import screenRecording20260326a from "./assets/lab-2026-03-26at3.14.13 PM.mov";
-import screenRecording20260326b from "./assets/lab-2026-03-26at3.15.38 PM.mov";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
@@ -104,21 +101,6 @@ const LabPage: FC = () => {
       src: screenRecording20251023,
       title: "Design Iteration: Product Flow",
       date: "Oct 2025",
-    },
-    {
-      src: screenRecording20260112,
-      title: "Mobile Interaction Exploration",
-      date: "Jan 2026",
-    },
-    {
-      src: screenRecording20260326a,
-      title: "Motion & Animation Study I",
-      date: "Mar 2026",
-    },
-    {
-      src: screenRecording20260326b,
-      title: "Motion & Animation Study II",
-      date: "Mar 2026",
     },
   ];
 

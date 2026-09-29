@@ -11,8 +11,14 @@ import {
   PullQuote,
 } from "./components/caseStudy/CaseStudyKit";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
+import VideoCarousel from "./components/caseStudy/VideoCarousel";
 import PasswordProtection from "./components/PasswordProtection";
 import verisupplyThumbnail from "./assets/verisupply-thumbnail.png";
+import verisupplyBom from "./assets/verisupply-bom.mp4";
+import verisupplyEngineering from "./assets/verisupply-engineering.mp4";
+import verisupplyCompAnalysis from "./assets/verisupply-comp-analysis.png";
+import verisupplyImage1 from "./assets/verisupply-image-1.png";
+import verisupplyImage2 from "./assets/verisupply-image-2.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -446,6 +452,46 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Callout>Decision support with evidence to increase confidence.</Callout>
+
+        <Reveal>
+          <VideoCarousel
+            title="Platform in action"
+            description="See how VeriSupply transforms raw supply-chain data into actionable insights. The platform combines real-time monitoring, impact assessment, and decision support to help procurement teams act with confidence."
+            items={[
+              {
+                type: "video",
+                src: verisupplyBom,
+                title: "BOM Analysis & Risk Assessment",
+                description: "Real-time monitoring of Bill of Materials with automated risk scoring and supplier dependency mapping.",
+              },
+              {
+                type: "image",
+                src: verisupplyCompAnalysis,
+                title: "Competitive Analysis View",
+                description: "Market landscape analysis showing alternatives and mitigation strategies for at-risk suppliers.",
+              },
+              {
+                type: "video",
+                src: verisupplyEngineering,
+                title: "Engineering Changes & Impact Tracking",
+                description: "Track supplier engineering changes with downstream impact visualization to manufacturing and revenue.",
+              },
+              {
+                type: "image",
+                src: verisupplyImage1,
+                title: "Supplier Risk Dashboard",
+                description: "Centralized view of supplier health, risk indicators, and recommended actions.",
+              },
+              {
+                type: "image",
+                src: verisupplyImage2,
+                title: "Decision Support Interface",
+                description: "Evidence-backed recommendations with contextual business impact for informed procurement decisions.",
+              },
+            ]}
+            aspectRatio={16 / 9}
+          />
+        </Reveal>
       </section>
 
       {/* Design */}
