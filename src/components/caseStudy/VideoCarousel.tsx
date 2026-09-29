@@ -97,7 +97,7 @@ export const VideoCarousel: FC<{
         }}
       >
         {/* Content */}
-        <div style={{ width: "100%", height: "100%", position: "relative" }}>
+        <div style={{ width: "100%", height: "100%", position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
           {currentItem.type === "video" ? (
             <video
               ref={videoRef}
@@ -106,7 +106,7 @@ export const VideoCarousel: FC<{
               style={{
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
+                objectFit: "contain",
                 display: "block",
               }}
               controls
@@ -118,7 +118,7 @@ export const VideoCarousel: FC<{
               style={{
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
+                objectFit: "contain",
                 display: "block",
               }}
             />

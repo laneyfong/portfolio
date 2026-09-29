@@ -465,28 +465,10 @@ const VeriSupplyCaseStudy: FC = () => {
                 description: "Real-time monitoring of Bill of Materials with automated risk scoring and supplier dependency mapping.",
               },
               {
-                type: "image",
-                src: verisupplyCompAnalysis,
-                title: "Competitive Analysis View",
-                description: "Market landscape analysis showing alternatives and mitigation strategies for at-risk suppliers.",
-              },
-              {
                 type: "video",
                 src: verisupplyEngineering,
                 title: "Engineering Changes & Impact Tracking",
                 description: "Track supplier engineering changes with downstream impact visualization to manufacturing and revenue.",
-              },
-              {
-                type: "image",
-                src: verisupplyImage1,
-                title: "Supplier Risk Dashboard",
-                description: "Centralized view of supplier health, risk indicators, and recommended actions.",
-              },
-              {
-                type: "image",
-                src: verisupplyImage2,
-                title: "Decision Support Interface",
-                description: "Evidence-backed recommendations with contextual business impact for informed procurement decisions.",
               },
             ]}
             aspectRatio={16 / 9}
@@ -643,6 +625,45 @@ const VeriSupplyCaseStudy: FC = () => {
                 Connected view of all parts, suppliers, costs, and supply-chain exposure in one view.
               </p>
             </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginTop: 80, marginBottom: 60 }}>
+            <h3
+              style={{
+                margin: "0 0 24px",
+                fontFamily: tokens.font.sans,
+                fontSize: tokens.text.lg,
+                fontWeight: tokens.weight.medium,
+                color: tokens.color.ink,
+              }}
+            >
+              Real interface: Market analysis & supplier insights
+            </h3>
+            <VideoCarousel
+              items={[
+                {
+                  type: "image",
+                  src: verisupplyCompAnalysis,
+                  title: "Competitive Analysis",
+                  description: "Market landscape showing alternative suppliers and cost/risk tradeoffs for decision-making.",
+                },
+                {
+                  type: "image",
+                  src: verisupplyImage1,
+                  title: "Supplier Risk Dashboard",
+                  description: "Centralized view of supplier health metrics, risk indicators, and recommended actions.",
+                },
+                {
+                  type: "image",
+                  src: verisupplyImage2,
+                  title: "Decision Support Interface",
+                  description: "Evidence-backed recommendations with business impact analysis for informed decision-making.",
+                },
+              ]}
+              aspectRatio={4 / 3}
+            />
           </div>
         </Reveal>
       </section>
