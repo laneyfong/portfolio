@@ -16,7 +16,6 @@ export const VideoCarousel: FC<{
   aspectRatio?: number;
 }> = ({ items, title, description, aspectRatio = 16 / 9 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
