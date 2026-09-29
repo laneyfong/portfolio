@@ -181,17 +181,17 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
-            {/* Numbers without meaning */}
+            {/* Numbers without meaning - Purple for confusion/complexity */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Bar chart - orange for warning/problem */}
-                <rect x="15" y="45" width="8" height="25" fill="#F97316" opacity="0.5" />
-                <rect x="28" y="35" width="8" height="35" fill="#F97316" opacity="0.7" />
-                <rect x="41" y="25" width="8" height="45" fill="#F97316" opacity="0.85" />
-                <rect x="54" y="40" width="8" height="30" fill="#F97316" opacity="0.6" />
+                {/* Bar chart - purple for confusion/complexity */}
+                <rect x="15" y="45" width="8" height="25" fill="#8B5CF6" opacity="0.5" />
+                <rect x="28" y="35" width="8" height="35" fill="#8B5CF6" opacity="0.7" />
+                <rect x="41" y="25" width="8" height="45" fill="#8B5CF6" opacity="0.85" />
+                <rect x="54" y="40" width="8" height="30" fill="#8B5CF6" opacity="0.6" />
                 {/* Question mark */}
-                <circle cx="40" cy="18" r="8" fill="#F97316" opacity="0.15" />
-                <text x="40" y="22" fontSize="14" fill="#F97316" textAnchor="middle" fontWeight="bold">
+                <circle cx="40" cy="18" r="8" fill="#8B5CF6" opacity="0.15" />
+                <text x="40" y="22" fontSize="14" fill="#8B5CF6" textAnchor="middle" fontWeight="bold">
                   ?
                 </text>
               </svg>
@@ -203,16 +203,16 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Blind spots */}
+            {/* Blind spots - Dark blue for invisibility/unseen */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Eye symbol - orange to show warning/problem */}
-                <circle cx="40" cy="40" r="14" fill="none" stroke="#F97316" strokeWidth="2" />
-                <circle cx="40" cy="40" r="6" fill="#F97316" opacity="0.3" />
+                {/* Eye symbol - dark blue to show invisibility */}
+                <circle cx="40" cy="40" r="14" fill="none" stroke="#1E3A8A" strokeWidth="2" />
+                <circle cx="40" cy="40" r="6" fill="#1E3A8A" opacity="0.3" />
                 {/* Fading pyramid showing decreasing visibility */}
-                <polygon points="20,55 40,50 60,55 50,65 30,65" fill="#F97316" opacity="0.6" />
-                <polygon points="25,60 40,58 55,60 48,68 32,68" fill="#F97316" opacity="0.3" />
-                <polygon points="30,65 40,64 50,65 45,70 35,70" fill="#F97316" opacity="0.1" />
+                <polygon points="20,55 40,50 60,55 50,65 30,65" fill="#1E3A8A" opacity="0.6" />
+                <polygon points="25,60 40,58 55,60 48,68 32,68" fill="#1E3A8A" opacity="0.3" />
+                <polygon points="30,65 40,64 50,65 45,70 35,70" fill="#1E3A8A" opacity="0.1" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
                 Blind spots beyond Tier 1
@@ -222,15 +222,15 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Slow analysis */}
+            {/* Slow analysis - Amber for time pressure/caution */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Hourglass shape - orange for problem/waiting */}
-                <path d="M 25 18 L 55 18 L 50 40 L 55 62 L 25 62 L 30 40 Z" fill="none" stroke="#F97316" strokeWidth="2.5" />
+                {/* Hourglass shape - amber for time pressure */}
+                <path d="M 25 18 L 55 18 L 50 40 L 55 62 L 25 62 L 30 40 Z" fill="none" stroke="#F59E0B" strokeWidth="2.5" />
                 {/* Sand falling slowly */}
-                <circle cx="40" cy="48" r="2" fill="#F97316" />
-                <circle cx="40" cy="54" r="1.8" fill="#F97316" opacity="0.5" />
-                <circle cx="40" cy="60" r="1.5" fill="#F97316" opacity="0.2" />
+                <circle cx="40" cy="48" r="2" fill="#F59E0B" />
+                <circle cx="40" cy="54" r="1.8" fill="#F59E0B" opacity="0.5" />
+                <circle cx="40" cy="60" r="1.5" fill="#F59E0B" opacity="0.2" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
                 Analysis is too slow
@@ -240,22 +240,22 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Black box automation */}
+            {/* Black box automation - Red for danger/risk */}
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Locked box - orange for warning/problem */}
-                <rect x="22" y="28" width="36" height="28" fill="none" stroke="#F97316" strokeWidth="2.5" rx="3" />
+                {/* Locked box - red for danger/risk */}
+                <rect x="22" y="28" width="36" height="28" fill="none" stroke="#DC2626" strokeWidth="2.5" rx="3" />
                 {/* Lock symbol */}
-                <path d="M 32 38 Q 32 32 40 32 Q 48 32 48 38" fill="none" stroke="#F97316" strokeWidth="2" />
-                <circle cx="40" cy="44" r="3" fill="#F97316" />
+                <path d="M 32 38 Q 32 32 40 32 Q 48 32 48 38" fill="none" stroke="#DC2626" strokeWidth="2" />
+                <circle cx="40" cy="44" r="3" fill="#DC2626" />
                 {/* Question mark */}
-                <circle cx="40" cy="56" r="6" fill="#F97316" opacity="0.15" />
-                <text x="40" y="59" fontSize="12" fill="#F97316" textAnchor="middle" fontWeight="bold">
+                <circle cx="40" cy="56" r="6" fill="#DC2626" opacity="0.15" />
+                <text x="40" y="59" fontSize="12" fill="#DC2626" textAnchor="middle" fontWeight="bold">
                   ?
                 </text>
                 {/* Data flow arrows */}
-                <path d="M 12 44 L 22 44" stroke="#F97316" strokeWidth="1.5" opacity="0.5" />
-                <path d="M 58 44 L 68 44" stroke="#F97316" strokeWidth="1.5" opacity="0.5" />
+                <path d="M 12 44 L 22 44" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
+                <path d="M 58 44 L 68 44" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
                 Automation without evidence
