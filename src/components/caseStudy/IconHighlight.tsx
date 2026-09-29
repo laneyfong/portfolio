@@ -17,7 +17,7 @@ const IconHighlight: FC<IconHighlightProps> = ({ icon, title, description, color
         alignItems: "flex-start",
         padding: "16px 20px",
         borderRadius: tokens.radius.md,
-        border: `1px solid ${color}20`,
+
         backgroundColor: `${color}08`,
       }}
     >

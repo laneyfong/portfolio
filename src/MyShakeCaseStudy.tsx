@@ -19,7 +19,6 @@ import {
   StatRow,
   BigImpactStat,
   HMWStatement,
-  ExpandableRankedList,
 } from "./components/caseStudy/CaseStudyKit";
 import ColorVariationGrid from "./components/caseStudy/ColorVariationGrid";
 import EffortImpactMatrix from "./components/caseStudy/EffortImpactMatrix";
@@ -642,13 +641,32 @@ const MyShakeCaseStudy: FC = () => {
             <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
               From 5 interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision.
             </p>
-            <ExpandableRankedList
-              items={[
-                { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do. This insight shaped the dashboard-first design, putting personal location and alerts at the top of the experience." },
-                { rank: 2, title: "Family Safety", detail: "After personal safety, knowing loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes—often requiring just 1-3 taps. This led to the pinned contacts feature and the 2-alert system (EEW vs CEN) to clarify communication timing." },
-                { rank: 3, title: "Property Damage", detail: "While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first. However, 2 of 5 users mentioned confusion between alert types, requiring clearer visual distinction in the design." },
-              ]}
-            />
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div style={{ padding: 20, backgroundColor: tokens.color.offWhite, borderRadius: tokens.radius.md }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                  1. Personal Safety
+                </div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do. This insight shaped the dashboard-first design, putting personal location and alerts at the top of the experience.
+                </p>
+              </div>
+              <div style={{ padding: 20, backgroundColor: tokens.color.offWhite, borderRadius: tokens.radius.md }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                  2. Family Safety
+                </div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  After personal safety, knowing loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes—often requiring just 1-3 taps. This led to the pinned contacts feature and the 2-alert system (EEW vs CEN) to clarify communication timing.
+                </p>
+              </div>
+              <div style={{ padding: 20, backgroundColor: tokens.color.offWhite, borderRadius: tokens.radius.md }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                  3. Property Damage
+                </div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first. However, 2 of 5 users mentioned confusion between alert types, requiring clearer visual distinction in the design.
+                </p>
+              </div>
+            </div>
           </div>
         </Reveal>
 

@@ -82,7 +82,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
                   fontWeight: tokens.weight.regular,
                   color: tokens.color.body,
                   backgroundColor: tokens.color.offWhite,
-                  border: `1px solid ${tokens.color.cardBorder}`,
+
                   padding: "6px 12px",
                   borderRadius: "6px",
                 }}
@@ -151,7 +151,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
                     borderRadius: tokens.radius.sm,
                     overflow: "hidden",
                     backgroundColor: tokens.color.offWhite,
-                    border: `1px solid ${tokens.color.cardBorder}`,
+
                     aspectRatio: "4/3",
                   }}
                 >

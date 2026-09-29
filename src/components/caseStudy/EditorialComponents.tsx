@@ -70,8 +70,6 @@ export const KeyInsight: FC<{
   <div style={{ marginBottom: 80 }}>
     <div
       style={{
-        borderLeft: `4px solid ${tokens.color.accent}`,
-        paddingLeft: 24,
         marginBottom: 40,
       }}
     >
@@ -320,7 +318,6 @@ export const VisualTimeline: FC<{ steps: ProcessStep[] }> = ({ steps }) => (
                   color: tokens.color.accent,
                   fontWeight: tokens.weight.medium,
                   paddingTop: 12,
-                  borderTop: `1px solid ${tokens.color.stroke}`,
                 }}
               >
                 Decision: {step.decision}
@@ -437,7 +434,6 @@ export const ReflectionCards: FC<{ points: ReflectionPoint[] }> = ({ points }) =
             padding: 24,
             borderRadius: tokens.radius.md,
             backgroundColor: tokens.color.offWhite,
-            borderLeft: `4px solid ${tokens.color.accent}`,
           }}
         >
           <h3

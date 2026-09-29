@@ -45,7 +45,6 @@ const DesignChallenges: FC = () => {
           style={{
             padding: 20,
             borderRadius: tokens.radius.md,
-            border: `1px solid ${challenge.color}20`,
             backgroundColor: `${challenge.color}08`,
             display: "flex",
             flexDirection: "column",

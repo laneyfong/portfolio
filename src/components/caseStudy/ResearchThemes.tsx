@@ -41,7 +41,7 @@ const ResearchThemes: FC = () => {
           style={{
             padding: 24,
             borderRadius: tokens.radius.md,
-            border: `1px solid ${tokens.color.cardBorder}`,
+
             backgroundColor: tokens.color.offWhite,
             display: "flex",
             flexDirection: "column",

@@ -219,7 +219,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             width: 40,
             height: 40,
             borderRadius: "50%",
-            border: `1px solid ${tokens.color.cardBorder}`,
             background: "transparent",
             color: tokens.color.textDark,
             cursor: "pointer",
@@ -232,11 +231,9 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = tokens.color.offWhite;
-            e.currentTarget.style.borderColor = tokens.color.accent;
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.borderColor = tokens.color.cardBorder;
           }}
         >
           <BackArrowIcon />
@@ -285,7 +282,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         </nav>
 
         {highlights.length > 0 && (
-          <div style={{ marginTop: "auto", paddingTop: 20, borderTop: `1px solid ${tokens.color.cardBorder}` }}>
+          <div style={{ marginTop: "auto", paddingTop: 20 }}>
             <button
               onClick={() => setHighlightsOpen((open) => !open)}
               aria-expanded={highlightsOpen}
@@ -360,7 +357,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           width: 40,
           height: 40,
           borderRadius: "50%",
-          border: `1px solid ${tokens.color.cardBorder}`,
           background: tokens.color.white,
           color: tokens.color.ink,
           cursor: "pointer",
@@ -389,7 +385,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           padding: "0 20px 12px",
           overflowX: "auto",
           background: tokens.color.white,
-          borderBottom: `1px solid ${tokens.color.cardBorder}`,
           boxShadow: tokens.shadow.subtle,
         }}
       >
@@ -402,14 +397,13 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
               flexShrink: 0,
               padding: "6px 14px",
               borderRadius: tokens.radius.full,
-              border: `1px solid ${active === s.id ? tokens.color.ink : tokens.color.cardBorder}`,
               background: active === s.id ? tokens.color.ink : tokens.color.white,
               color: active === s.id ? tokens.color.white : tokens.color.body,
               fontFamily: tokens.font.sans,
               fontSize: 13,
               fontWeight: tokens.weight.medium,
               cursor: "pointer",
-              transition: "background 0.2s ease, color 0.2s ease, border-color 0.2s ease",
+              transition: "background 0.2s ease, color 0.2s ease",
             }}
           >
             {s.label}

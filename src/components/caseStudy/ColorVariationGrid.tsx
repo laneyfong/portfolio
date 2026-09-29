@@ -55,7 +55,7 @@ const ColorVariationGrid: FC = () => {
               padding: "12px 16px",
               backgroundColor: tokens.color.offWhite,
               borderRadius: tokens.radius.sm,
-              border: `1px solid ${tokens.color.cardBorder}`,
+
             }}
           >
             {/* Magnitude Badge */}

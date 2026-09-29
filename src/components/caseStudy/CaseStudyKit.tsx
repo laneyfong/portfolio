@@ -285,7 +285,6 @@ export const FindingRow: FC<{ method: string; children: ReactNode }> = ({ method
         gap: 24,
         alignItems: "start",
         padding: "24px 0",
-        borderTop: `1px solid ${tokens.color.cardBorder}`,
       }}
     >
       <div
@@ -340,9 +339,8 @@ export const PullQuote: FC<{ children: ReactNode; attribution?: string; dark?: b
   <div
     style={{
       background: dark ? tokens.color.ink : "transparent",
-      borderLeft: dark ? "none" : `3px solid ${tokens.color.accent}`,
       borderRadius: dark ? tokens.radius.md : 0,
-      padding: dark ? "32px 36px" : "2px 0 2px 24px",
+      padding: dark ? "32px 36px" : "2px 0 2px 0px",
       margin: "32px 0",
     }}
   >
@@ -536,8 +534,7 @@ export const StepFlow: FC<{ steps: number; variant: "before" | "after"; label: s
                 width: nodeSize,
                 height: nodeSize,
                 borderRadius: "50%",
-                background: isAfter ? tokens.color.ink : tokens.color.white,
-                border: `2px solid ${color}`,
+                background: isAfter ? tokens.color.ink : color,
                 flexShrink: 0,
                 opacity: inView ? 1 : 0,
                 transform: inView ? "scale(1)" : "scale(0.3)",
@@ -1071,7 +1068,6 @@ export const InsightCard: FC<{ number: number; insight: ReactNode; detail?: Reac
       gap: 20,
       marginBottom: 28,
       paddingLeft: 20,
-      borderLeft: `4px solid ${color}`,
       paddingTop: 12,
       paddingBottom: 12,
     }}
@@ -1106,101 +1102,9 @@ export const BigImpactStat: FC<{ value: string; label: string; color?: string }>
 
 export const HMWStatement: FC<{ children: ReactNode }> = ({ children }) => (
   <div style={{ textAlign: "left", marginBottom: 48, paddingTop: 32, paddingBottom: 32 }}>
-    <div style={{ width: "60px", height: "1px", background: tokens.color.cardBorder, margin: "0 0 24px" }} />
     <div style={{ fontFamily: tokens.font.sans, fontSize: "20px", color: tokens.color.textDark, maxWidth: 600, lineHeight: tokens.leading.snug }}>
       {children}
     </div>
-    <div style={{ width: "60px", height: "1px", background: tokens.color.cardBorder, margin: "24px 0 0" }} />
   </div>
 );
 
-export const ExpandableRankedList: FC<{ items: { rank: number; title: string; detail: string }[] }> = ({ items }) => {
-  const [expandedSet, setExpandedSet] = useState<Set<number>>(new Set());
-
-  const toggleExpanded = (rank: number) => {
-    const newSet = new Set(expandedSet);
-    if (newSet.has(rank)) {
-      newSet.delete(rank);
-    } else {
-      newSet.add(rank);
-    }
-    setExpandedSet(newSet);
-  };
-
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-      {items.map((item) => (
-        <div
-          key={item.rank}
-          style={{
-            borderRadius: tokens.radius.sm,
-            background: tokens.color.offWhite,
-            overflow: "hidden",
-            transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
-            border: `1px solid ${tokens.color.cardBorder}`,
-          }}
-        >
-          <button
-            onClick={() => toggleExpanded(item.rank)}
-            style={{
-              width: "100%",
-              textAlign: "left",
-              padding: "20px 24px",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              fontFamily: tokens.font.sans,
-              transition: "background 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(45, 45, 45, 0.03)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.muted, minWidth: "24px" }}>
-                {item.rank}
-              </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>
-                {item.title}
-              </div>
-            </div>
-            <div style={{ fontSize: "24px", color: tokens.color.muted, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", width: "32px" }}>
-              ⌄
-            </div>
-          </button>
-          {expandedSet.has(item.rank) && (
-            <div
-              style={{
-                padding: "0 24px 20px 56px",
-                background: "transparent",
-                animation: "slideDown 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards",
-              }}
-            >
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                {item.detail}
-              </p>
-            </div>
-          )}
-        </div>
-      ))}
-      <style>{`
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-8px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-    </div>
-  );
-};
