@@ -95,8 +95,23 @@ const VeriSupplyCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
+            <div style={{ marginBottom: 60, borderRadius: 20, overflow: "hidden", background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)", padding: 40, display: "flex", justifyContent: "center", alignItems: "center", minHeight: 400 }}>
+              <img
+                src={verisupplyThumbnail}
+                alt="VeriSupply dashboard interface"
+                style={{
+                  width: "100%",
+                  maxWidth: "600px",
+                  height: "auto",
+                  display: "block",
+                }}
+              />
+            </div>
+          </Reveal>
+
+          <Reveal>
             <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Context
                 </p>
@@ -105,7 +120,7 @@ const VeriSupplyCaseStudy: FC = () => {
                 </p>
               </div>
 
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Insight
                 </p>
@@ -114,7 +129,7 @@ const VeriSupplyCaseStudy: FC = () => {
                 </p>
               </div>
 
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   Our Solution
                 </p>
@@ -122,20 +137,6 @@ const VeriSupplyCaseStudy: FC = () => {
                   Decision-support platform with evidence to back up every recommendation.
                 </p>
               </div>
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <div style={{ marginBottom: 60, borderRadius: 20, overflow: "hidden" }}>
-              <img
-                src={verisupplyThumbnail}
-                alt="VeriSupply dashboard interface"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                }}
-              />
             </div>
           </Reveal>
 
