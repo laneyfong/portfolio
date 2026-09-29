@@ -458,16 +458,33 @@ const MyShakeCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <div style={{ marginBottom: 48, maxWidth: 600 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
-                <strong>The context:</strong> MyShake is a USGS-powered earthquake alerting app that reaches millions in earthquake-prone regions. When an earthquake hits, the app has seconds to deliver critical information — but the original design buried safety-relevant data behind confusing navigation and low engagement.
-              </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
-                <strong>What made this different:</strong> Unlike typical earthquake info apps (which prioritize technical data), MyShake users had one core need: confirming loved ones are safe. The original IA treated it like a data visualization tool, not a crisis response companion.
-              </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                <strong>My approach:</strong> Led end-to-end design to reframe MyShake as a safety-first utility. Reduced the steps to check on loved ones from 7 down to 3. Result: 45% increase in engagement and a tool people actually return to during critical moments.
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 48 }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                  The Context
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  USGS earthquake alerting app reaching millions. Original design buried safety data behind poor navigation and low engagement.
+                </p>
+              </div>
+
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                  The Insight
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  Users need one thing: confirming loved ones are safe. Not data visualization—a crisis response companion.
+                </p>
+              </div>
+
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24, borderLeft: `4px solid ${tokens.color.accent}` }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                  The Approach
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                  Reframed as safety-first utility. Reduced steps from 7 to 3. Result: 45% engagement increase.
+                </p>
+              </div>
             </div>
           </Reveal>
 
@@ -695,12 +712,24 @@ const MyShakeCaseStudy: FC = () => {
 
         <div style={{ marginBottom: 80 }}>
           <Reveal>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
-              The old flow required 7 screens to check on a single loved one: launch app → search → enter name → wait → verify location → check status → confirm safety.
-            </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
-              During an earthquake, this friction meant users gave up. Our redesign cuts this to 3 steps by putting pinned loved ones on the dashboard and making status checks instant.
-            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 32 }}>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+                  Before: 7 Taps
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, lineHeight: tokens.leading.snug, margin: 0 }}>
+                  Launch → search → enter name → wait → verify location → check status → confirm safety
+                </p>
+              </div>
+              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.accent, margin: "0 0 12px" }}>
+                  After: 3 Taps
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.snug, margin: 0 }}>
+                  Pinned contacts on dashboard with instant status checks
+                </p>
+              </div>
+            </div>
           </Reveal>
           <Reveal>
             <StepsComparison />
