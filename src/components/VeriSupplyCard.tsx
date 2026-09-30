@@ -36,14 +36,15 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
         gap: isActive ? 32 : 0,
         alignItems: isActive ? "flex-start" : "stretch",
-        height: isActive ? "calc(100vh - 88px)" : "auto",
+        minHeight: isActive ? "600px" : "auto",
+        height: isActive ? "600px" : "auto",
       }}
     >
       {/* Image Section */}
       <div
         style={{
           position: "relative",
-          aspectRatio: isActive ? undefined : "16 / 10",
+          aspectRatio: isActive ? "16 / 10" : "16 / 10",
           overflow: "hidden",
           borderRadius: 20,
           background: "linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%)",
@@ -53,7 +54,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           padding: 32,
           flexShrink: 0,
           width: isActive ? "70%" : "100%",
-          height: isActive ? "100%" : "auto",
+          minHeight: isActive ? "600px" : "auto",
         }}
       >
         <img
