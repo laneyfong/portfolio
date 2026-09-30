@@ -36,6 +36,8 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
         gap: isActive ? 32 : 0,
         alignItems: isActive ? "flex-start" : "stretch",
+        minHeight: isActive ? "600px" : "auto",
+        height: isActive ? "600px" : "auto",
       }}
     >
       {/* Image Section */}

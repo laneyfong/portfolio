@@ -44,10 +44,11 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
     if (card) {
       const cardTop = card.getBoundingClientRect().top + window.scrollY;
       const viewportHeight = window.innerHeight;
-      const desiredTopOffset = viewportHeight * 0.35; // Space above (35% from top)
+      const fixedCardHeight = 600; // Fixed height when active
 
-      // Scroll so card appears with equal space above and below
-      const scrollPosition = cardTop - desiredTopOffset;
+      // Center card with equal space above and below
+      const desiredSpaceAbove = (viewportHeight - fixedCardHeight) / 2;
+      const scrollPosition = cardTop - desiredSpaceAbove;
 
       window.scrollTo({
         top: Math.max(0, scrollPosition),
