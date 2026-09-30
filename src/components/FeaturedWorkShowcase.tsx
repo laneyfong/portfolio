@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from "react";
 import { useState, useEffect, useRef, cloneElement, isValidElement } from "react";
+import { tokens } from "../tokens";
 
 interface FeaturedWorkShowcaseProps {
   children: ReactNode[];
@@ -43,12 +44,13 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
     const card = cardsRef.current[index];
     if (card) {
       const cardTop = card.getBoundingClientRect().top + window.scrollY;
-      const viewportHeight = window.innerHeight;
+      const navClearance = tokens.layout.navClearance;
+      const availableViewportHeight = window.innerHeight - navClearance;
       const fixedCardHeight = 600; // Fixed height when active
 
-      // Center card with equal space above and below
-      const desiredSpaceAbove = (viewportHeight - fixedCardHeight) / 2;
-      const scrollPosition = cardTop - desiredSpaceAbove;
+      // Center card with equal space above and below, accounting for nav
+      const desiredSpaceAbove = (availableViewportHeight - fixedCardHeight) / 2;
+      const scrollPosition = cardTop - navClearance - desiredSpaceAbove;
 
       window.scrollTo({
         top: Math.max(0, scrollPosition),
