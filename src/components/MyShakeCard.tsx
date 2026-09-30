@@ -171,8 +171,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           flexDirection: "column",
           gap: 12,
           padding: window.innerWidth > 768 ? "0 0 0 0" : "16px 0 0 0",
-          opacity: hovered ? 0 : 1,
-          transition: "opacity 0.3s ease",
           pointerEvents: "none",
           flex: 1,
           justifyContent: "flex-start",
