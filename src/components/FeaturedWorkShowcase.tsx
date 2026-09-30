@@ -42,13 +42,15 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
   const handleCardClick = (index: number) => {
     const card = cardsRef.current[index];
     if (card) {
-      const cardRect = card.getBoundingClientRect();
-      const targetPosition = window.innerHeight * 0.4; // Position card at 40% from top for visual balance
-      const currentPosition = cardRect.top;
-      const offset = currentPosition - targetPosition;
+      const cardTop = card.getBoundingClientRect().top + window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const cardHeight = card.getBoundingClientRect().height;
 
-      window.scrollBy({
-        top: offset,
+      // Scroll so card appears centered with equal space above and below
+      const scrollPosition = cardTop - (viewportHeight - cardHeight) / 2;
+
+      window.scrollTo({
+        top: scrollPosition,
         behavior: "smooth",
       });
       setActiveIndex(index);
