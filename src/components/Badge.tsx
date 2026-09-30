@@ -257,7 +257,7 @@ const Badge: FC<BadgeProps> = ({
                 fontSize: "11px",
                 color: tokens.color.muted,
                 lineHeight: 1.3,
-                textTransform: "uppercase",
+                ,
                 letterSpacing: "0.5px",
                 marginBottom: 8,
               }}
@@ -294,7 +294,7 @@ const Badge: FC<BadgeProps> = ({
                 fontSize: "11px",
                 color: tokens.color.muted,
                 lineHeight: 1.3,
-                textTransform: "uppercase",
+                ,
                 letterSpacing: "0.5px",
                 marginBottom: 8,
               }}
@@ -329,7 +329,7 @@ const Badge: FC<BadgeProps> = ({
                 fontSize: "11px",
                 color: tokens.color.muted,
                 lineHeight: 1.3,
-                textTransform: "uppercase",
+                ,
                 letterSpacing: "0.5px",
                 marginBottom: 8,
               }}

@@ -184,7 +184,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 fontSize: "12px",
                 color: tokens.color.muted,
                 letterSpacing: tokens.tracking.tight,
-                textTransform: "uppercase",
+                ,
                 lineHeight: tokens.leading.none,
               }}
             >
@@ -210,7 +210,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                   fontSize: "12px",
                   fontWeight: tokens.weight.medium,
                   color: tokens.color.muted,
-                  textTransform: "uppercase",
+                  ,
                   letterSpacing: "0.5px",
                 }}
               >
@@ -249,7 +249,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             fontSize: "12px",
             color: tokens.color.muted,
             letterSpacing: tokens.tracking.tight,
-            textTransform: "uppercase",
+            ,
             lineHeight: tokens.leading.none,
           }}
         >

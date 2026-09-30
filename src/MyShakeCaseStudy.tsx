@@ -498,7 +498,7 @@ const MyShakeCaseStudy: FC = () => {
           <Reveal>
             <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 60 }}>
               <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Context
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
@@ -507,7 +507,7 @@ const MyShakeCaseStudy: FC = () => {
               </div>
 
               <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Insight
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
@@ -516,7 +516,7 @@ const MyShakeCaseStudy: FC = () => {
               </div>
 
               <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   The Approach
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>

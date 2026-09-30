@@ -271,7 +271,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
-            <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
+            <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
               The Real Problem (What Teams Actually Said)
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -689,7 +689,7 @@ const VeriSupplyCaseStudy: FC = () => {
           <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P0: Validation
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
@@ -701,7 +701,7 @@ const VeriSupplyCaseStudy: FC = () => {
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P1: Definition
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
@@ -713,7 +713,7 @@ const VeriSupplyCaseStudy: FC = () => {
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P2: Design
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
@@ -725,7 +725,7 @@ const VeriSupplyCaseStudy: FC = () => {
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P3: Build
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
@@ -767,7 +767,7 @@ const VeriSupplyCaseStudy: FC = () => {
           `}</style>
           <div className="learnings-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
                 Ask the Right Questions
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
@@ -776,7 +776,7 @@ const VeriSupplyCaseStudy: FC = () => {
             </div>
 
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
                 Prototype to Validate
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
@@ -785,7 +785,7 @@ const VeriSupplyCaseStudy: FC = () => {
             </div>
 
             <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, textTransform: "uppercase", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
                 Build Smarter, Not Bigger
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>

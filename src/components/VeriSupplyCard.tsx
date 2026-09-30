@@ -80,7 +80,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
             fontSize: "12px",
             color: tokens.color.muted,
             letterSpacing: tokens.tracking.tight,
-            textTransform: "uppercase",
+            ,
             lineHeight: tokens.leading.none,
           }}
         >
@@ -108,7 +108,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
             fontSize: "12px",
             color: tokens.color.muted,
             letterSpacing: tokens.tracking.tight,
-            textTransform: "uppercase",
+            ,
             lineHeight: tokens.leading.none,
           }}
         >

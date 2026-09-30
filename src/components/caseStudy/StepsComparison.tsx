@@ -20,7 +20,7 @@ const StepsComparison: FC = () => {
             fontSize: "12px",
             fontWeight: tokens.weight.medium,
             color: tokens.color.muted,
-            textTransform: "uppercase",
+            ,
             letterSpacing: "0.5px",
             marginBottom: 16,
           }}
@@ -100,7 +100,7 @@ const StepsComparison: FC = () => {
             fontSize: "12px",
             fontWeight: tokens.weight.medium,
             color: tokens.color.muted,
-            textTransform: "uppercase",
+            ,
             letterSpacing: "0.5px",
             marginBottom: 16,
           }}
