@@ -70,11 +70,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
       <div
         style={{
           position: "relative",
-          aspectRatio: "16 / 10",
+          aspectRatio: isActive ? "16 / 10" : "16 / 10",
           overflow: "hidden",
           borderRadius: 20,
           flexShrink: 0,
-          width: isActive ? "60%" : "100%",
+          width: isActive ? "70%" : "100%",
+          minHeight: isActive ? "600px" : "auto",
         }}
       >
         <video

@@ -42,7 +42,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
       <div
         style={{
           position: "relative",
-          aspectRatio: "16 / 10",
+          aspectRatio: isActive ? "16 / 10" : "16 / 10",
           overflow: "hidden",
           borderRadius: 20,
           background: "linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%)",
@@ -51,7 +51,8 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           justifyContent: "center",
           padding: 32,
           flexShrink: 0,
-          width: isActive ? "60%" : "100%",
+          width: isActive ? "70%" : "100%",
+          minHeight: isActive ? "600px" : "auto",
         }}
       >
         <img
