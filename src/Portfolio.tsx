@@ -121,7 +121,7 @@ const Portfolio: FC = () => {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 80,
+            marginBottom: 140,
             marginTop: -180,
             minHeight: "clamp(300px, 40vh, 60vh)",
             paddingBottom: 60,
@@ -139,7 +139,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(40px, 8vw, 100px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(20px, 3vw, 40px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
         <ContentContainer>
           <div id="work" style={{ width: "100%" }}>
             <FeaturedWorkShowcase>
