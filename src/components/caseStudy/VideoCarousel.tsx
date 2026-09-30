@@ -21,6 +21,7 @@ export const VideoCarousel: FC<{
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const fullscreenVideoRef = useRef<HTMLVideoElement>(null);
+  const autoAdvanceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleVideoEnded = () => {
     if (currentIndex < items.length - 1) {
@@ -55,6 +56,24 @@ export const VideoCarousel: FC<{
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isFullscreen]);
+
+  useEffect(() => {
+    // Auto-advance images in fullscreen mode (Instagram stories style)
+    if (isFullscreen && currentItem.type === "image" && items.length > 1) {
+      if (autoAdvanceTimerRef.current) {
+        clearTimeout(autoAdvanceTimerRef.current);
+      }
+      autoAdvanceTimerRef.current = setTimeout(() => {
+        handleNext();
+      }, 4000); // Auto-advance after 4 seconds
+    }
+
+    return () => {
+      if (autoAdvanceTimerRef.current) {
+        clearTimeout(autoAdvanceTimerRef.current);
+      }
+    };
+  }, [isFullscreen, currentIndex, currentItem.type]);
 
   const currentItem = items[currentIndex];
 
@@ -304,7 +323,25 @@ export const VideoCarousel: FC<{
             zIndex: 1000,
             backdropFilter: "blur(2px)",
           }}
-          onClick={() => setIsFullscreen(false)}
+          onClick={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const thirdWidth = rect.width / 3;
+
+            // Left third = previous, Right third = next, Center = close
+            if (currentItem.type === "image") {
+              if (clickX < thirdWidth && items.length > 1) {
+                handlePrevious();
+              } else if (clickX > thirdWidth * 2 && items.length > 1) {
+                handleNext();
+              } else {
+                setIsFullscreen(false);
+              }
+            } else {
+              // Videos just close on click
+              setIsFullscreen(false);
+            }
+          }}
         >
           {/* Close button */}
           <button
@@ -462,6 +499,27 @@ export const VideoCarousel: FC<{
           >
             {currentIndex + 1} / {items.length}
           </div>
+
+          {/* Auto-advance progress bar for images */}
+          {currentItem.type === "image" && items.length > 1 && (
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: 2,
+                background: "rgba(255, 255, 255, 0.6)",
+                animation: "progress 4s linear forwards",
+              }}
+            >
+              <style>{`
+                @keyframes progress {
+                  from { width: 0%; }
+                  to { width: 100%; }
+                }
+              `}</style>
+            </div>
+          )}
         </div>
       )}
     </div>
