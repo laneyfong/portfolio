@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { useState } from "react";
 import { tokens } from "../tokens";
+import avatarSticker from "../assets/avatar-sticker.png";
 
 interface BadgeProps {
   name?: string;
@@ -137,7 +138,20 @@ const Badge: FC<BadgeProps> = ({
             }}
           >
 
-            {/* Photo/Image */}
+            {/* Avatar sticker */}
+            <img
+              src={avatarSticker}
+              alt="Avatar"
+              style={{
+                width: "85%",
+                height: "85%",
+                objectFit: "contain",
+                position: "relative",
+                zIndex: 2,
+              }}
+            />
+
+            {/* Photo/Image fallback */}
             {photo && (
               <img
                 src={photo}
@@ -146,14 +160,14 @@ const Badge: FC<BadgeProps> = ({
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  position: "relative",
-                  zIndex: 2,
+                  position: "absolute",
+                  zIndex: 1,
                 }}
               />
             )}
 
             {/* Dot pattern when no photo */}
-            {!photo && <div style={{ position: "relative", zIndex: 2 }}><DotPattern /></div>}
+            {!photo && <div style={{ position: "absolute", zIndex: 1 }}><DotPattern /></div>}
           </div>
 
           {/* Bottom info section */}
