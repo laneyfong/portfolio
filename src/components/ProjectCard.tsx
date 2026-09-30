@@ -83,6 +83,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
         gap: isActive ? 32 : 0,
         alignItems: isActive ? "flex-start" : "stretch",
         height: isActive ? "calc(100vh - 88px)" : "auto",
+        paddingTop: isActive ? "clamp(80px, 8vw, 120px)" : 0,
+        paddingBottom: isActive ? "clamp(80px, 8vw, 120px)" : 0,
+        boxSizing: "border-box",
       }}
     >
       {/* Image Section */}

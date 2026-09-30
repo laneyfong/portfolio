@@ -66,6 +66,9 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         alignItems: isActive ? "flex-start" : "stretch",
         minHeight: isActive ? "600px" : "auto",
         height: isActive ? "600px" : "auto",
+        paddingTop: isActive ? "clamp(80px, 8vw, 120px)" : 0,
+        paddingBottom: isActive ? "clamp(80px, 8vw, 120px)" : 0,
+        boxSizing: "border-box",
       }}
     >
       {/* Video Section */}
