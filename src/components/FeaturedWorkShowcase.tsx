@@ -43,12 +43,12 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
     const card = cardsRef.current[index];
     if (card) {
       const cardRect = card.getBoundingClientRect();
-      const cardHeight = cardRect.height;
+      const cardCenter = cardRect.top + cardRect.height / 2;
       const viewportCenter = window.innerHeight / 2;
-      const scrollOffset = window.scrollY + cardRect.top - (viewportCenter - cardHeight / 2);
+      const offset = cardCenter - viewportCenter;
 
-      window.scrollTo({
-        top: scrollOffset,
+      window.scrollBy({
+        top: offset,
         behavior: "smooth",
       });
       setActiveIndex(index);
