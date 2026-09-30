@@ -139,7 +139,7 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(20px, 3vw, 40px)", paddingBottom: "clamp(80px, 12vw, 150px)", boxSizing: "border-box" }}>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(20px, 3vw, 40px)", paddingBottom: "clamp(200px, 20vw, 400px)", boxSizing: "border-box" }}>
         <ContentContainer>
           <div id="work" style={{ width: "100%" }}>
             <FeaturedWorkShowcase>
