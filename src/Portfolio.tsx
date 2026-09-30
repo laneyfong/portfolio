@@ -162,7 +162,6 @@ const Portfolio: FC = () => {
               <ProjectCard
                 screenshot={nvidiaLogo}
                 layout="landscape"
-                height={550}
                 roleOutcome="AI Design × Automation"
                 caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
                 captionItalic="Autonomous UX validation"
@@ -170,6 +169,7 @@ const Portfolio: FC = () => {
                 to="/nvidia-ai-ux-agent"
                 wipLabel="WIP"
                 noImageRadius
+                noImageGradient
               />
             </FeaturedWorkShowcase>
           </section>
