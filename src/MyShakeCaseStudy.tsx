@@ -399,17 +399,16 @@ const MYSHAKE_EXTRA_STYLE = `
   }
 
   @media (max-width: 768px) {
-    html, body, main { overflow-x: hidden !important; max-width: 100vw; }
     button, a, input, .case-btn-press { min-width: 48px !important; min-height: 48px !important; }
     .case-grid-3, .case-grid-2, .case-intro-shots { grid-template-columns: 1fr !important; gap: clamp(16px, 4vw, 32px); }
     [style*="display: flex"] { flex-direction: column !important; }
-    [style*="width:"] { max-width: 100% !important; width: auto !important; }
     .case-main { padding: clamp(16px, 5vw, 60px) !important; }
   }
   @media (max-width: 640px) {
     button, a, .case-btn-press { min-width: 44px !important; min-height: 44px !important; padding: 12px 16px !important; }
     .case-main { padding: clamp(12px, 3vw, 40px) !important; }
-    * { max-width: 100vw !important; overflow-x: hidden !important; }
+    body, html { overflow-x: hidden; }
+    * { box-sizing: border-box; }
   }
 `;
 
