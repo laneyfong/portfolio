@@ -26,7 +26,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderRadius: 20,
+        borderRadius: window.innerWidth > 768 ? 20 : 12,
         cursor: "pointer",
         position: "relative",
         overflow: "hidden",
@@ -49,7 +49,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           position: "relative",
           aspectRatio: isActive ? "16 / 10" : "16 / 10",
           overflow: "hidden",
-          borderRadius: 20,
+          borderRadius: window.innerWidth > 768 ? 20 : 0,
           background: "linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%)",
           display: "flex",
           alignItems: "center",

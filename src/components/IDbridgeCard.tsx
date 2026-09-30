@@ -54,7 +54,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderRadius: 20,
+        borderRadius: window.innerWidth > 768 ? 20 : 12,
         cursor: "pointer",
         position: "relative",
         overflow: "hidden",
@@ -77,7 +77,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           position: "relative",
           aspectRatio: isActive ? "16 / 10" : "16 / 10",
           overflow: "hidden",
-          borderRadius: 20,
+          borderRadius: window.innerWidth > 768 ? 20 : 0,
           flexShrink: 0,
           width: isActive && window.innerWidth > 768 ? "70%" : "100%",
           minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",

@@ -72,7 +72,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderRadius: 20,
+        borderRadius: window.innerWidth > 768 ? 20 : 12,
         cursor: to ? "pointer" : "default",
         position: "relative",
         overflow: "hidden",
@@ -94,7 +94,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           position: "relative",
           aspectRatio: isActive && window.innerWidth > 768 ? undefined : "16 / 10",
           overflow: "hidden",
-          borderRadius: 20,
+          borderRadius: window.innerWidth > 768 ? 20 : 0,
           backgroundColor: noBackground ? "transparent" : (noImageGradient ? "transparent" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)"),
           background: noImageGradient ? "transparent" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)",
           display: "flex",
