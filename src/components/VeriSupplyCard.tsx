@@ -72,13 +72,15 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
       {/* Text Section - Below or Right Side */}
       <div
         style={{
-          display: isActive ? "flex" : "none",
+          display: "flex",
           flexDirection: "column",
           gap: 12,
           padding: isActive ? "0 0 0 0" : "18px 0",
           pointerEvents: "none",
-          flex: isActive ? 1 : "none",
+          flex: isActive ? 1 : "1 1 auto",
           justifyContent: isActive ? "flex-start" : "flex-start",
+          minHeight: 0,
+          overflow: "hidden",
         }}
       >
         {/* Context */}
