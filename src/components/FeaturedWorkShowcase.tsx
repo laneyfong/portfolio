@@ -41,19 +41,12 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
   }, []);
 
   const handleCardClick = (index: number) => {
+    setActiveIndex(index);
     const card = cardsRef.current[index];
     if (card) {
-      const cardTop = card.getBoundingClientRect().top + window.scrollY;
-      const navClearance = tokens.layout.navClearance;
-
-      // Scroll card to top, just below nav bar - no extra spacing
-      const scrollPosition = cardTop - navClearance;
-
-      window.scrollTo({
-        top: Math.max(0, scrollPosition),
-        behavior: "smooth",
-      });
-      setActiveIndex(index);
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
   };
 
