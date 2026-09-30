@@ -14,17 +14,7 @@ import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
-import laneyPhoto from "./assets/laney-photo.jpg";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
-
-// Preload hero image for faster initial render
-if (typeof window !== 'undefined') {
-  const link = document.createElement('link');
-  link.rel = 'preload';
-  link.as = 'image';
-  link.href = laneyPhoto;
-  document.head.appendChild(link);
-}
 
 
 const Portfolio: FC = () => {
@@ -143,7 +133,7 @@ const Portfolio: FC = () => {
           <HalftoneField width={dimensions.width} height={dimensions.height * 1.2} onVideoReady={() => setVideoReady(true)} />
           <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
-              <Badge photo={laneyPhoto} onCTAClick={scrollToWork} />
+              <Badge onCTAClick={scrollToWork} />
             </HangingCard>
           </div>
         </div>
