@@ -70,7 +70,7 @@ export const SectionHeading: FC<{ children: ReactNode }> = ({ children }) => (
       fontFamily: tokens.font.sans,
       fontWeight: tokens.weight.medium,
       fontSize: "24px",
-      color: tokens.color.textDark,
+      color: tokens.color.body,
       margin: "0 0 20px",
       maxWidth: 440,
     }}
@@ -85,7 +85,7 @@ export const Callout: FC<{ children: ReactNode }> = ({ children }) => (
       fontFamily: tokens.font.sans,
       fontWeight: tokens.weight.medium,
       fontSize: "18px",
-      color: tokens.color.textDark,
+      color: tokens.color.body,
       lineHeight: tokens.leading.snug,
       margin: "40px 0 24px",
       maxWidth: 440,
@@ -165,7 +165,7 @@ export const SnapshotBar: FC<{ items: { label: string; value: ReactNode }[] }> =
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
             fontSize: tokens.text.base,
-            color: tokens.color.textDark,
+            color: tokens.color.body,
             lineHeight: 1.3,
           }}
         >
@@ -195,7 +195,7 @@ export const FeatureCard: FC<{ title: string; children: ReactNode }> = ({ title,
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: "15px",
-          color: tokens.color.textDark,
+          color: tokens.color.body,
           marginBottom: 8,
         }}
       >
@@ -254,7 +254,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.textDark,
+          color: tokens.color.body,
           marginBottom: 10,
         }}
       >
@@ -291,7 +291,7 @@ export const FindingRow: FC<{ method: string; children: ReactNode }> = ({ method
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.textDark,
+          color: tokens.color.body,
           paddingTop: 2,
         }}
       >
@@ -393,7 +393,7 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.textDark,
+          color: tokens.color.body,
           marginBottom: 20,
         }}
       >
@@ -453,7 +453,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.textDark,
+          color: tokens.color.body,
           marginBottom: 14,
         }}
       >
@@ -642,7 +642,7 @@ export const TypeCompare: FC<{ options?: { name: string; family: string }[] }> =
         <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, marginBottom: 12 }}>
           {opt.name}
         </div>
-        <div style={{ fontFamily: opt.family, fontSize: 30, color: tokens.color.textDark, lineHeight: 1.2 }}>Aa Bb 12:45</div>
+        <div style={{ fontFamily: opt.family, fontSize: 30, color: tokens.color.body, lineHeight: 1.2 }}>Aa Bb 12:45</div>
       </div>
     ))}
   </div>
@@ -827,7 +827,7 @@ export const UserJourney: FC<{
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.medium,
                   fontSize: "15px",
-                  color: tokens.color.textDark,
+                  color: tokens.color.body,
                 }}
               >
                 {stage.label}
@@ -924,7 +924,7 @@ export const ProcessFlow: FC<{
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.medium,
                   fontSize: "15px",
-                  color: tokens.color.textDark,
+                  color: tokens.color.body,
                   marginBottom: 4,
                 }}
               >
@@ -1019,7 +1019,7 @@ export const ProcessFlow: FC<{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
                 fontSize: "13px",
-                color: tokens.color.textDark,
+                color: tokens.color.body,
                 marginBottom: 3,
               }}
             >
@@ -1191,7 +1191,7 @@ export const BigImpactStat: FC<{ value: string; label: string; color?: string }>
 
 export const HMWStatement: FC<{ children: ReactNode }> = ({ children }) => (
   <div style={{ textAlign: "left", marginBottom: 48, paddingTop: 32, paddingBottom: 32 }}>
-    <div style={{ fontFamily: tokens.font.sans, fontSize: "20px", color: tokens.color.textDark, maxWidth: 600, lineHeight: tokens.leading.snug }}>
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "20px", color: tokens.color.body, maxWidth: 600, lineHeight: tokens.leading.snug }}>
       {children}
     </div>
   </div>
