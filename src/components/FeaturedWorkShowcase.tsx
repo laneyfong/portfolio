@@ -1,6 +1,5 @@
 import type { FC, ReactNode } from "react";
 import { useState, useEffect, useRef, cloneElement, isValidElement } from "react";
-import { tokens } from "../tokens";
 
 interface FeaturedWorkShowcaseProps {
   children: ReactNode[];
