@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { useState } from "react";
 import { tokens } from "../tokens";
+import badgeAvatar from "../assets/badge-avatar.png";
 
 interface BadgeProps {
   name?: string;
@@ -17,7 +18,7 @@ const Badge: FC<BadgeProps> = ({
   role = "Product Designer",
   location = "San Francisco Bay Area",
   description = "B.A. Cognitive Science @ UC Berkeley | M.S. HCI @ UCSC",
-  photo,
+  photo = badgeAvatar,
   onCTAClick,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -145,9 +146,8 @@ const Badge: FC<BadgeProps> = ({
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
-                  position: "absolute",
-                  inset: 0,
+                  objectFit: "contain",
+                  position: "relative",
                   zIndex: 2,
                 }}
               />
