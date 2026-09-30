@@ -162,15 +162,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
         )}
       </div>
 
-      {/* Text Section - Below or Right Side */}
+      {/* Text Section - Right Side (Active Only) */}
+      {isActive && (
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: isActive ? "0 0 0 0" : "18px 0",
+          padding: "0 0 0 0",
           pointerEvents: "none",
-          flex: isActive ? 1 : undefined,
+          flex: 1,
           justifyContent: "flex-start",
         }}
       >
@@ -295,6 +296,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           </div>
         )}
       </div>
+      )}
     </div>
   );
 };

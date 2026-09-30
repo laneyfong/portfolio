@@ -69,15 +69,16 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         />
       </div>
 
-      {/* Text Section - Below or Right Side */}
+      {/* Text Section - Right Side (Active Only) */}
+      {isActive && (
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: isActive ? "0 0 0 0" : "18px 0",
+          padding: "0 0 0 0",
           pointerEvents: "none",
-          flex: isActive ? 1 : undefined,
+          flex: 1,
           justifyContent: "flex-start",
         }}
       >
@@ -122,6 +123,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           Product Design × AI/ML × Supply Chain
         </span>
       </div>
+      )}
     </div>
   );
 };

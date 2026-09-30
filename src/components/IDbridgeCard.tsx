@@ -160,17 +160,18 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         </div>
       </div>
 
-      {/* Text Section - Below or Right Side */}
+      {/* Text Section - Right Side (Active Only) */}
+      {isActive && (
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: isActive ? "0 0 0 0" : "18px 0",
+          padding: "0 0 0 0",
           opacity: hovered ? 0 : 1,
           transition: "opacity 0.3s ease",
           pointerEvents: "none",
-          flex: isActive ? 1 : undefined,
+          flex: 1,
           justifyContent: "flex-start",
         }}
       >
@@ -207,6 +208,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           {captionParts[1]}
         </span>
       </div>
+      )}
     </div>
   );
 };
