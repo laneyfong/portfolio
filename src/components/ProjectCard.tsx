@@ -226,10 +226,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
             fontSize: "16px",
             color: tokens.color.ink,
             lineHeight: tokens.leading.snug,
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
+            wordWrap: "break-word",
+            overflowWrap: "break-word",
           }}
         >
           {captionParts[0]}
