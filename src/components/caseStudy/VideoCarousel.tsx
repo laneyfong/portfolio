@@ -21,7 +21,8 @@ export const VideoCarousel: FC<{
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const fullscreenVideoRef = useRef<HTMLVideoElement>(null);
-  const autoAdvanceTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const autoAdvanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const currentItem = items[currentIndex];
 
   const handleVideoEnded = () => {
     if (currentIndex < items.length - 1) {
@@ -74,8 +75,6 @@ export const VideoCarousel: FC<{
       }
     };
   }, [isFullscreen, currentIndex, currentItem.type]);
-
-  const currentItem = items[currentIndex];
 
   return (
     <div
