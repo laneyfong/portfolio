@@ -43,9 +43,9 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
     const card = cardsRef.current[index];
     if (card) {
       const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.top + cardRect.height / 2;
-      const viewportCenter = window.innerHeight / 2;
-      const offset = cardCenter - viewportCenter;
+      const targetPosition = window.innerHeight * 0.4; // Position card at 40% from top for visual balance
+      const currentPosition = cardRect.top;
+      const offset = currentPosition - targetPosition;
 
       window.scrollBy({
         top: offset,
