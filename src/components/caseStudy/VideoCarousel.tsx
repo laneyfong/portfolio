@@ -14,7 +14,8 @@ export const VideoCarousel: FC<{
   title?: ReactNode;
   description?: ReactNode;
   aspectRatio?: number;
-}> = ({ items, title, description, aspectRatio = 16 / 9 }) => {
+  hideControls?: boolean;
+}> = ({ items, title, description, aspectRatio = 16 / 9, hideControls = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -123,7 +124,7 @@ export const VideoCarousel: FC<{
                 objectFit: "contain",
                 display: "block",
               }}
-              controls
+              controls={!hideControls}
               onClick={(e) => e.stopPropagation()}
             />
           ) : (
@@ -360,7 +361,7 @@ export const VideoCarousel: FC<{
                   height: "100%",
                   objectFit: "contain",
                 }}
-                controls
+                controls={!hideControls}
                 autoPlay
               />
             ) : (

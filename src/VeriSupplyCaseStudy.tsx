@@ -472,6 +472,7 @@ const VeriSupplyCaseStudy: FC = () => {
               },
             ]}
             aspectRatio={16 / 9}
+            hideControls
           />
         </Reveal>
       </section>
