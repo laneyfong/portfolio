@@ -59,9 +59,11 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         position: "relative",
         overflow: "hidden",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: isActive ? "row" : "column",
         transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
+        gap: isActive ? 32 : 0,
+        alignItems: isActive ? "flex-start" : "stretch",
       }}
     >
       {/* Video Section */}
@@ -71,6 +73,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           aspectRatio: "16 / 10",
           overflow: "hidden",
           borderRadius: 20,
+          flexShrink: 0,
+          width: isActive ? "60%" : "100%",
         }}
       >
         <video
@@ -153,16 +157,18 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         </div>
       </div>
 
-      {/* Text Section Below Video - No Background */}
+      {/* Text Section - Below or Right Side */}
       <div
         style={{
           display: isActive ? "flex" : "none",
           flexDirection: "column",
           gap: 12,
-          padding: "18px 0",
+          padding: isActive ? "0 0 0 0" : "18px 0",
           opacity: hovered ? 0 : 1,
           transition: "opacity 0.3s ease",
           pointerEvents: "none",
+          flex: isActive ? 1 : "none",
+          justifyContent: isActive ? "flex-start" : "flex-start",
         }}
       >
         {/* Role Outcome */}
