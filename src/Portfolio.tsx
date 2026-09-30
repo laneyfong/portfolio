@@ -150,6 +150,7 @@ const Portfolio: FC = () => {
                 context="Internship"
                 to="/myshake-design"
               />
+              <VeriSupplyCard />
               <IDbridgeCard
                 roleOutcome="Social Impact × Accessibility"
                 caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours."
@@ -171,7 +172,6 @@ const Portfolio: FC = () => {
                 noImageRadius
                 noImageGradient
               />
-              <VeriSupplyCard />
             </FeaturedWorkShowcase>
           </div>
         </ContentContainer>
