@@ -240,6 +240,7 @@ const TopNav: FC = () => {
             onClick={() => navigate("/")}
             role="button"
             tabIndex={0}
+            aria-label="Go to home"
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();

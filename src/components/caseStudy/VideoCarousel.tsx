@@ -194,6 +194,7 @@ export const VideoCarousel: FC<{
           >
             <button
               onClick={handlePrevious}
+              aria-label="Previous item"
               style={{
                 width: 40,
                 height: 40,
@@ -221,11 +222,14 @@ export const VideoCarousel: FC<{
             </button>
 
             {/* Dots Indicator */}
-            <div style={{ display: "flex", gap: 8 }}>
+            <div style={{ display: "flex", gap: 8 }} role="tablist" aria-label="Carousel pages">
               {items.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
+                  role="tab"
+                  aria-selected={idx === currentIndex}
+                  aria-label={`Go to item ${idx + 1} of ${items.length}`}
                   style={{
                     width: idx === currentIndex ? 24 : 8,
                     height: 8,
@@ -244,6 +248,7 @@ export const VideoCarousel: FC<{
 
             <button
               onClick={handleNext}
+              aria-label="Next item"
               style={{
                 width: 40,
                 height: 40,

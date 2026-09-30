@@ -77,12 +77,12 @@ const ProjectCard: FC<ProjectCardProps> = ({
         position: "relative",
         overflow: "hidden",
         display: "flex",
-        flexDirection: isActive ? "row" : "column",
+        flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
         transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, outline 0.2s ease",
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
-        gap: isActive ? 32 : 0,
-        alignItems: isActive ? "flex-start" : "stretch",
-        height: isActive ? "calc(100vh - 88px)" : "auto",
+        gap: isActive && window.innerWidth > 768 ? 32 : 0,
+        alignItems: isActive && window.innerWidth > 768 ? "flex-start" : "stretch",
+        height: isActive && window.innerWidth > 768 ? "calc(100vh - 88px)" : "auto",
         marginTop: isActive ? "clamp(40px, 4vw, 80px)" : 0,
         marginBottom: isActive ? "clamp(40px, 4vw, 80px)" : 0,
         outline: "none",
@@ -92,7 +92,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       <div
         style={{
           position: "relative",
-          aspectRatio: isActive ? undefined : "16 / 10",
+          aspectRatio: isActive && window.innerWidth > 768 ? undefined : "16 / 10",
           overflow: "hidden",
           borderRadius: 20,
           backgroundColor: noBackground ? "transparent" : (noImageGradient ? "transparent" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)"),
@@ -102,8 +102,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           justifyContent: "center",
           padding: "60px 0px",
           flexShrink: 0,
-          width: isActive ? "70%" : "100%",
-          height: isActive ? "100%" : "auto",
+          width: isActive && window.innerWidth > 768 ? "70%" : "100%",
+          height: isActive && window.innerWidth > 768 ? "100%" : "auto",
         }}
       >
         <img
@@ -172,7 +172,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: "0 0 0 0",
+          padding: window.innerWidth > 768 ? "0 0 0 0" : "16px 0 0 0",
           pointerEvents: "none",
           flex: 1,
           justifyContent: "flex-start",

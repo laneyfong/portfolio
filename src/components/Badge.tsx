@@ -52,8 +52,17 @@ const Badge: FC<BadgeProps> = ({
     <div
       className="badge-container"
       onClick={() => setIsFlipped(!isFlipped)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setIsFlipped(!isFlipped);
+        }
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      role="button"
+      tabIndex={0}
+      aria-label="Click or press Enter to flip card"
       style={{
         width: "clamp(235px, 24vw, 360px)",
         aspectRatio: "2.125 / 3.370",
@@ -61,6 +70,7 @@ const Badge: FC<BadgeProps> = ({
         fontFamily: tokens.font.sans,
         cursor: "pointer",
         position: "relative",
+        outline: "none",
       }}
     >
       <div

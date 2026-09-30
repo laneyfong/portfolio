@@ -141,7 +141,8 @@ const Portfolio: FC = () => {
 
       <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(20px, 3vw, 40px)", paddingBottom: "clamp(200px, 20vw, 400px)", boxSizing: "border-box" }}>
         <ContentContainer>
-          <div id="work" style={{ width: "100%" }}>
+          <section id="work" style={{ width: "100%" }}>
+            <h1 style={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden" }}>Featured Work</h1>
             <FeaturedWorkShowcase>
               <MyShakeCard
                 roleOutcome="Mobile Design × Crisis Response"
@@ -171,7 +172,7 @@ const Portfolio: FC = () => {
                 noImageRadius
               />
             </FeaturedWorkShowcase>
-          </div>
+          </section>
         </ContentContainer>
       </div>
 
