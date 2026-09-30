@@ -113,6 +113,14 @@ const Badge: FC<BadgeProps> = ({
           .badge-container {
             width: clamp(220px, 85vw, 340px) !important;
           }
+          .badge-flip-inner {
+            backface-visibility: hidden !important;
+            -webkit-backface-visibility: hidden !important;
+          }
+          .badge-front, .badge-back {
+            backface-visibility: hidden !important;
+            -webkit-backface-visibility: hidden !important;
+          }
           .badge-container button {
             min-height: 48px !important;
             min-width: 48px !important;
@@ -124,6 +132,8 @@ const Badge: FC<BadgeProps> = ({
           }
           .badge-front, .badge-back {
             padding: 14px 14px 20px 14px !important;
+            backface-visibility: hidden !important;
+            -webkit-backface-visibility: hidden !important;
           }
           .badge-container button {
             min-height: 44px !important;

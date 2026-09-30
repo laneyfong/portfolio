@@ -29,7 +29,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
   const navigate = useNavigate();
   const [active, setActive] = useState(sections[0]?.id ?? "");
   const [highlightsOpen, setHighlightsOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
   const navListRef = useRef<HTMLDivElement>(null);
   const [indicatorTop, setIndicatorTop] = useState(0);
 
@@ -56,20 +55,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
     return () => observer.disconnect();
   }, [sections]);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-      setProgress(Math.min(100, Math.max(0, pct)));
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -190,9 +175,6 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         ${extraStyle}
       `}</style>
 
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 2, zIndex: 20, background: "transparent", opacity: 0.6 }}>
-        <div style={{ height: "100%", width: `${progress}%`, background: tokens.color.accent, transition: "width 0.1s ease-out" }} />
-      </div>
 
       {/* Desktop sidebar */}
       <div
