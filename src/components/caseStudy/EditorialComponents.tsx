@@ -34,7 +34,6 @@ export const ProjectSnapshot: FC<{ items: SnapshotItem[] }> = ({ items }) => (
             fontSize: "12px",
             fontWeight: tokens.weight.medium,
             color: tokens.color.muted,
-            ,
             letterSpacing: "0.5px",
           }}
         >
@@ -280,7 +279,6 @@ export const VisualTimeline: FC<{ steps: ProcessStep[] }> = ({ steps }) => (
                 fontSize: "12px",
                 fontWeight: tokens.weight.medium,
                 color: tokens.color.muted,
-                ,
                 letterSpacing: "0.5px",
                 marginBottom: 8,
               }}
