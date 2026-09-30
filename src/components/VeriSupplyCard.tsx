@@ -38,9 +38,8 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         alignItems: isActive ? "flex-start" : "stretch",
         minHeight: isActive ? "600px" : "auto",
         height: isActive ? "600px" : "auto",
-        paddingTop: isActive ? "clamp(80px, 8vw, 120px)" : 0,
-        paddingBottom: isActive ? "clamp(80px, 8vw, 120px)" : 0,
-        boxSizing: "border-box",
+        marginTop: isActive ? "clamp(80px, 8vw, 120px)" : 0,
+        marginBottom: isActive ? "clamp(80px, 8vw, 120px)" : 0,
       }}
     >
       {/* Image Section */}
