@@ -288,7 +288,8 @@ const AboutPage: FC = () => {
           style={{
             position: "relative",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
             flexWrap: "wrap",
             gap: ROW_GAP,
           }}
@@ -314,8 +315,8 @@ const AboutPage: FC = () => {
             <div
               style={{
                 position: "absolute",
-                right: -200,
-                top: -80,
+                right: -180,
+                top: 0,
                 zIndex: 100,
                 pointerEvents: "none",
               }}
@@ -333,6 +334,7 @@ const AboutPage: FC = () => {
                   lineHeight: 1.3,
                   wordBreak: "break-word",
                   paddingTop: "16px",
+                  whiteSpace: "normal",
                 }}
               >
                 {["This is me!", "I love traveling <3", "Trying new restaurants is my hobby"][currentPhotoIndex]}
