@@ -45,12 +45,9 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
     if (card) {
       const cardTop = card.getBoundingClientRect().top + window.scrollY;
       const navClearance = tokens.layout.navClearance;
-      const availableViewportHeight = window.innerHeight - navClearance;
-      const fixedCardHeight = 600; // Fixed height when active
 
-      // Center card with equal space above and below, accounting for nav
-      const desiredSpaceAbove = (availableViewportHeight - fixedCardHeight) / 2;
-      const scrollPosition = cardTop - navClearance - desiredSpaceAbove;
+      // Scroll card to top, just below nav bar - no extra spacing
+      const scrollPosition = cardTop - navClearance;
 
       window.scrollTo({
         top: Math.max(0, scrollPosition),
