@@ -60,7 +60,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         overflow: "hidden",
         display: "flex",
         flexDirection: isActive ? "row" : "column",
-        transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease",
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
         gap: isActive ? 32 : 0,
         alignItems: isActive ? "flex-start" : "stretch",
@@ -68,6 +68,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         height: isActive ? "600px" : "auto",
         marginTop: isActive ? "clamp(40px, 4vw, 80px)" : 0,
         marginBottom: isActive ? "clamp(40px, 4vw, 80px)" : 0,
+        outline: "none",
       }}
     >
       {/* Video Section */}

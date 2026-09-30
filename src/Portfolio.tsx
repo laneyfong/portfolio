@@ -121,7 +121,7 @@ const Portfolio: FC = () => {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            marginBottom: 140,
+            marginBottom: 60,
             marginTop: -180,
             minHeight: "clamp(300px, 40vh, 60vh)",
             paddingBottom: 60,
