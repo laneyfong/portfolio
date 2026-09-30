@@ -16,8 +16,10 @@ export const VideoCarousel: FC<{
   aspectRatio?: number;
 }> = ({ items, title, description, aspectRatio = 16 / 9 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const fullscreenVideoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoEnded = () => {
     if (currentIndex < items.length - 1) {
@@ -42,6 +44,16 @@ export const VideoCarousel: FC<{
       });
     }
   }, [currentIndex, items]);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isFullscreen) {
+        setIsFullscreen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isFullscreen]);
 
   const currentItem = items[currentIndex];
 
@@ -94,7 +106,9 @@ export const VideoCarousel: FC<{
           overflow: "hidden",
           background: tokens.color.ink,
           aspectRatio: `${aspectRatio}`,
+          cursor: "pointer",
         }}
+        onClick={() => setIsFullscreen(true)}
       >
         {/* Content */}
         <div style={{ width: "100%", height: "100%", position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -110,6 +124,7 @@ export const VideoCarousel: FC<{
                 display: "block",
               }}
               controls
+              onClick={(e) => e.stopPropagation()}
             />
           ) : (
             <img
@@ -123,6 +138,24 @@ export const VideoCarousel: FC<{
               }}
             />
           )}
+        </div>
+
+        {/* Fullscreen hint */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 16,
+            right: 16,
+            background: "rgba(0, 0, 0, 0.5)",
+            color: "white",
+            padding: "8px 12px",
+            borderRadius: tokens.radius.sm,
+            fontSize: "12px",
+            fontFamily: tokens.font.sans,
+            pointerEvents: "none",
+          }}
+        >
+          Click to expand
         </div>
 
         {/* Navigation Controls */}
@@ -253,6 +286,183 @@ export const VideoCarousel: FC<{
           )}
         </div>
       ) : null}
+
+      {/* Fullscreen Modal Overlay */}
+      {isFullscreen && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "rgba(0, 0, 0, 0.95)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+            backdropFilter: "blur(2px)",
+          }}
+          onClick={() => setIsFullscreen(false)}
+        >
+          {/* Close button */}
+          <button
+            onClick={() => setIsFullscreen(false)}
+            style={{
+              position: "absolute",
+              top: 20,
+              right: 20,
+              background: "rgba(255, 255, 255, 0.1)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              color: "white",
+              width: 40,
+              height: 40,
+              borderRadius: "50%",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 24,
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background =
+                "rgba(255, 255, 255, 0.2)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background =
+                "rgba(255, 255, 255, 0.1)";
+            }}
+          >
+            ✕
+          </button>
+
+          {/* Fullscreen content */}
+          <div
+            style={{
+              width: "90vw",
+              height: "90vh",
+              maxWidth: "1600px",
+              maxHeight: "900px",
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {currentItem.type === "video" ? (
+              <video
+                ref={fullscreenVideoRef}
+                src={currentItem.src}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+                controls
+                autoPlay
+              />
+            ) : (
+              <img
+                src={currentItem.src}
+                alt={currentItem.title || "Fullscreen view"}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            )}
+          </div>
+
+          {/* Navigation arrows in fullscreen */}
+          {items.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevious();
+                }}
+                style={{
+                  position: "absolute",
+                  left: 20,
+                  background: "rgba(255, 255, 255, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  color: "white",
+                  width: 50,
+                  height: 50,
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 24,
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "rgba(255, 255, 255, 0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "rgba(255, 255, 255, 0.1)";
+                }}
+              >
+                ←
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                style={{
+                  position: "absolute",
+                  right: 20,
+                  background: "rgba(255, 255, 255, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  color: "white",
+                  width: 50,
+                  height: 50,
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 24,
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "rgba(255, 255, 255, 0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "rgba(255, 255, 255, 0.1)";
+                }}
+              >
+                →
+              </button>
+            </>
+          )}
+
+          {/* Info at bottom */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 30,
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              color: "rgba(255, 255, 255, 0.6)",
+              fontFamily: tokens.font.sans,
+              fontSize: "14px",
+            }}
+          >
+            {currentIndex + 1} / {items.length}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
