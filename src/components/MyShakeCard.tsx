@@ -114,7 +114,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               fontSize: "11px",
               color: "white",
               letterSpacing: "0.5px",
-              ,
               lineHeight: tokens.leading.none,
               textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
             }}
@@ -174,7 +173,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             fontSize: "12px",
             color: tokens.color.muted,
             letterSpacing: tokens.tracking.tight,
-            ,
             lineHeight: tokens.leading.none,
           }}
         >

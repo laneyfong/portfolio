@@ -228,7 +228,6 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
                     fontWeight: tokens.weight.medium,
                     color: tokens.color.muted,
                     letterSpacing: "0.8px",
-                    ,
                     opacity: 0.5,
                     marginBottom: 6,
                   }}
@@ -242,7 +241,6 @@ const LabCard: FC<LabCardProps> = ({ type, title, description, experimentId, dat
                     fontWeight: tokens.weight.medium,
                     color: tokens.color.body,
                     letterSpacing: "0.5px",
-                    ,
                     paddingBottom: 8,
                   }}
                 >

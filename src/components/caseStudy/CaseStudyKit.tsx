@@ -153,7 +153,6 @@ export const SnapshotBar: FC<{ items: { label: string; value: ReactNode }[] }> =
           style={{
             fontFamily: tokens.font.sans,
             fontSize: 11,
-            ,
             letterSpacing: "0.05em",
             color: tokens.color.muted,
             marginBottom: 6,

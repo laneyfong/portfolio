@@ -158,7 +158,6 @@ const IDBridgeCaseStudy: FC = () => {
                     fontWeight: tokens.weight.medium,
                     color: tokens.color.muted,
                     marginBottom: 8,
-                    ,
                     letterSpacing: "0.5px",
                   }}
                 >
@@ -203,7 +202,6 @@ const IDBridgeCaseStudy: FC = () => {
                     fontWeight: tokens.weight.medium,
                     color: tokens.color.muted,
                     marginBottom: 8,
-                    ,
                     letterSpacing: "0.5px",
                   }}
                 >
