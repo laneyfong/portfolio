@@ -47,7 +47,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible) setActive(visible.target.id);
       },
-      { rootMargin: "-40% 0px -40% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+      { rootMargin: "-25% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
     sections.forEach(({ id }) => {
       const el = document.getElementById(id);
