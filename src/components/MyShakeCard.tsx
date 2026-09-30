@@ -170,10 +170,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           opacity: hovered ? 0 : 1,
           transition: "opacity 0.3s ease",
           pointerEvents: "none",
-          flex: isActive ? 1 : "1 1 auto",
-          justifyContent: isActive ? "flex-start" : "flex-start",
-          minHeight: 0,
-          overflow: "hidden",
+          flex: isActive ? 1 : undefined,
+          justifyContent: "flex-start",
         }}
       >
         {/* Role Outcome */}
