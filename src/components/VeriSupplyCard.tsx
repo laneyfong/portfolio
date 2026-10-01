@@ -2,7 +2,6 @@ import type { FC } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
-import verisupplyThumbnail from "../assets/verisupply-thumbnail.png";
 import verisupplyHero from "../assets/verisupply-hero.png";
 
 interface VeriSupplyCardProps {
@@ -65,7 +64,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
       >
         <img
           className="verisupply-img"
-          src={isActive ? verisupplyHero : verisupplyThumbnail}
+          src={verisupplyHero}
           alt="VeriSupply dashboard"
           style={{
             width: "100%",
