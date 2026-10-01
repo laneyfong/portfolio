@@ -12,10 +12,6 @@ import clubPic from "./assets/club-pic.jpg";
 import clubPicWebp from "./assets/club-pic.webp";
 import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
-import portfolioImage1 from "./assets/IMG_0336.png";
-import portfolioImage2 from "./assets/IMG_0338.png";
-import portfolioImage3 from "./assets/IMG_0340.png";
-import portfolioImage4 from "./assets/IMG_0342.png";
 
 const Italic: FC<{ children: string; color?: string }> = ({ children, color }) => (
   <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400, color }}>{children}</em>
@@ -315,10 +311,10 @@ const AboutPage: FC = () => {
           >
             <ImageStory
               images={[
-                { src: portfolioImage1, alt: "Portfolio moment 1" },
-                { src: portfolioImage2, alt: "Portfolio moment 2" },
-                { src: portfolioImage3, alt: "Portfolio moment 3" },
-                { src: portfolioImage4, alt: "Portfolio moment 4" },
+                { src: "/portfolio_about/IMG_0336.PNG", alt: "Portfolio moment 1" },
+                { src: "/portfolio_about/IMG_0338.PNG", alt: "Portfolio moment 2" },
+                { src: "/portfolio_about/IMG_0340.PNG", alt: "Portfolio moment 3" },
+                { src: "/portfolio_about/IMG_0342.PNG", alt: "Portfolio moment 4" },
               ]}
               onImageChange={(index) => setCurrentPhotoIndex(index)}
             />
