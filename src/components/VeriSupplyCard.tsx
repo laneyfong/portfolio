@@ -50,11 +50,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           aspectRatio: isActive ? "16 / 10" : "16 / 10",
           overflow: "hidden",
           borderRadius: window.innerWidth > 768 ? 20 : 0,
-          background: "linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: 32,
           flexShrink: 0,
           width: isActive && window.innerWidth > 768 ? "70%" : "100%",
           minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
@@ -66,8 +64,8 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "contain",
-            borderRadius: 12,
+            objectFit: "cover",
+            objectPosition: "center",
           }}
         />
       </div>
