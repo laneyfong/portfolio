@@ -161,26 +161,6 @@ const NvidiaCaseStudy: FC = () => {
             </FeatureCard>
           </div>
         </Reveal>
-
-        <Reveal>
-          <div style={{ marginTop: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "#1a1a1a", display: "flex", justifyContent: "center", alignItems: "center", maxHeight: "70vh" }}>
-            <video
-              src={nvidiaPrototype}
-              style={{
-                width: "auto",
-                height: "100%",
-                maxWidth: "100%",
-                objectFit: "contain",
-                display: "block",
-              }}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-            />
-          </div>
-        </Reveal>
       </section>
 
       {/* Research */}
@@ -434,6 +414,26 @@ const NvidiaCaseStudy: FC = () => {
             >
               Early-stage concept showing how an AI UX agent could help engineers prioritize and validate findings
             </p>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginTop: 80, marginBottom: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "#1a1a1a", display: "flex", justifyContent: "center", alignItems: "center", maxHeight: "70vh" }}>
+            <video
+              src={nvidiaPrototype}
+              style={{
+                width: "auto",
+                height: "100%",
+                maxWidth: "100%",
+                objectFit: "contain",
+                display: "block",
+              }}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+            />
           </div>
         </Reveal>
 
