@@ -196,7 +196,7 @@ const ProudMomentsCarousel: FC<ProudMomentsCarouselProps> = ({ moments, onIndexC
                 key={idx}
                 style={{
                   flex: 1,
-                  height: "5px",
+                  height: "2px",
                   background: "rgba(0, 0, 0, 0.2)",
                   borderRadius: "3px",
                   overflow: "hidden",
