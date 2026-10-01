@@ -68,7 +68,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
   return (
     <div
-      ref={cardRef}
       role="link"
       tabIndex={0}
       onClick={() => navigate(to)}
