@@ -80,6 +80,7 @@ const AboutPage: FC = () => {
     flexBasis: PANEL_WIDTH,
     width: PANEL_WIDTH,
     alignSelf: "flex-start" as const,
+    paddingTop: 0,
   };
 
   return (
