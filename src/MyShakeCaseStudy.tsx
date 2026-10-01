@@ -495,37 +495,6 @@ const MyShakeCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 60 }}>
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  The Context
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                  USGS earthquake alerting app reaching millions. Original design buried safety data behind poor navigation and low engagement.
-                </p>
-              </div>
-
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  The Insight
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                  Users need one thing: confirming loved ones are safe. Not data visualization—a crisis response companion.
-                </p>
-              </div>
-
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  The Approach
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                  Reframed as safety-first utility. Reduced steps from 7 to 3. Result: 45% engagement increase.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal>
             <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
                 <div style={{ textAlign: "center" }}>
