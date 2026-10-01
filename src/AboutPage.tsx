@@ -295,9 +295,9 @@ const AboutPage: FC = () => {
           style={{
             position: "relative",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             alignItems: "flex-start",
-            flexWrap: "wrap",
+            flexWrap: "nowrap",
             gap: ROW_GAP,
             width: "100%",
           }}
