@@ -311,10 +311,10 @@ const AboutPage: FC = () => {
           >
             <ImageStory
               images={[
-                { src: "/portfolio_about/IMG_0336.PNG", alt: "Portfolio moment 1" },
-                { src: "/portfolio_about/IMG_0338.PNG", alt: "Portfolio moment 2" },
-                { src: "/portfolio_about/IMG_0340.PNG", alt: "Portfolio moment 3" },
-                { src: "/portfolio_about/IMG_0342.PNG", alt: "Portfolio moment 4" },
+                { src: "/IMG_0336.PNG", alt: "Portfolio moment 1" },
+                { src: "/IMG_0338.PNG", alt: "Portfolio moment 2" },
+                { src: "/IMG_0340.PNG", alt: "Portfolio moment 3" },
+                { src: "/IMG_0342.PNG", alt: "Portfolio moment 4" },
               ]}
               onImageChange={(index) => setCurrentPhotoIndex(index)}
             />
