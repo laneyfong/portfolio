@@ -94,7 +94,7 @@ const VeriSupplyCaseStudy: FC = () => {
               items={[
                 { label: "Role", value: "Product Designer, Strategy" },
                 { label: "Team", value: "2 Designers · 1 PM · 3 Engineers" },
-                { label: "Timeline", value: "6 months" },
+                { label: "Timeline", value: "3 months" },
                 { label: "Stage", value: "MVP → Design Partner Pilot" },
               ]}
             />
