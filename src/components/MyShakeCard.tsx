@@ -17,20 +17,24 @@ interface MyShakeCardProps {
 const boldifyMetrics = (text: string, metrics: string[] = []): ReactNode => {
   if (metrics.length === 0) return text;
 
-  const parts: ReactNode[] = [];
-  let remaining = text;
+  let result: ReactNode[] = [text];
 
   metrics.forEach((metric, index) => {
-    const idx = remaining.indexOf(metric);
-    if (idx !== -1) {
-      parts.push(remaining.slice(0, idx));
-      parts.push(<strong key={`metric-${index}`}>{metric}</strong>);
-      remaining = remaining.slice(idx + metric.length);
-    }
+    result = result.flatMap((part) => {
+      if (typeof part !== "string") return part;
+
+      const idx = part.indexOf(metric);
+      if (idx === -1) return part;
+
+      return [
+        part.slice(0, idx),
+        <strong key={`metric-${index}-${idx}`}>{metric}</strong>,
+        part.slice(idx + metric.length),
+      ];
+    });
   });
 
-  parts.push(remaining);
-  return parts;
+  return result.filter((part) => part !== "");
 };
 
 const MyShakeCard: FC<MyShakeCardProps> = ({
