@@ -28,7 +28,7 @@ const boldifyMetrics = (text: string, metrics: string[] = []): ReactNode => {
 
       return [
         part.slice(0, idx),
-        <strong key={`metric-${index}-${idx}`}>{metric}</strong>,
+        <span key={`metric-${index}-${idx}`} style={{ fontWeight: tokens.weight.medium }}>{metric}</span>,
         part.slice(idx + metric.length),
       ];
     });
