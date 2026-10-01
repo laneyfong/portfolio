@@ -252,9 +252,17 @@ const AboutPage: FC = () => {
           }
         }
         @media (max-width: 640px) {
-          main { margin-left: 0 !important; width: 100% !important; }
+          main { margin-left: 0 !important; width: 100% !important; padding: 64px 0 96px !important; }
           .about-container {
             gap: 20px !important;
+          }
+          /* Ensure content fits viewport on mobile */
+          * {
+            box-sizing: border-box !important;
+          }
+          body, html {
+            width: 100% !important;
+            overflow-x: hidden !important;
           }
         }
 

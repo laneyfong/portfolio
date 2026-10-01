@@ -20,6 +20,7 @@ const ContentContainer: FC<ContentContainerProps> = ({ children }) => {
           .content-container {
             padding-left: 0 !important;
             padding-right: 0 !important;
+            max-width: 100% !important;
           }
         }
       `}</style>
