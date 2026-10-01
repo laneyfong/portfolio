@@ -277,7 +277,7 @@ const AboutPage: FC = () => {
 
       <main style={{ width: "100%", padding: "64px 0 96px", boxSizing: "border-box", marginTop: "64px" }}>
         <ContentContainer>
-        <div style={{ width: HERO_WIDTH, margin: "0 auto 20px" }}>
+        <div style={{ width: HERO_WIDTH, margin: "0 auto 0" }}>
           <h1
             style={{
               fontFamily: tokens.font.sans,
@@ -299,7 +299,7 @@ const AboutPage: FC = () => {
             justifyContent: "flex-start",
             alignItems: "flex-start",
             flexWrap: "nowrap",
-            gap: ROW_GAP,
+            gap: 32,
             width: "100%",
           }}
         >
