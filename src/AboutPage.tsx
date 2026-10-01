@@ -215,6 +215,9 @@ const AboutPage: FC = () => {
             flex-direction: column !important;
             align-items: center !important;
           }
+          .spotify-embed-container {
+            display: none !important;
+          }
           .about-left-panel {
             display: none !important;
             width: 100% !important;
@@ -353,6 +356,7 @@ const AboutPage: FC = () => {
 
           {/* Right side: Spotify embed */}
           <div
+            className="spotify-embed-container"
             style={{
               width: "100%",
               maxWidth: "380px",
