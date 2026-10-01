@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tokens } from "../tokens";
 import avatarSticker from "../assets/avatar-sticker.png";
 
@@ -23,6 +23,15 @@ const Badge: FC<BadgeProps> = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [showSparkle, setShowSparkle] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) {
+      setShowSparkle(true);
+      const timer = setTimeout(() => setShowSparkle(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isHovered]);
 
   // Dot pattern for badge accent
   const DotPattern = () => (
@@ -183,10 +192,25 @@ const Badge: FC<BadgeProps> = ({
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
-              overflow: "hidden",
+              overflow: "visible",
               marginBottom: "16px",
             }}
           >
+            <style>{`
+              @keyframes sparkleFloat {
+                0% {
+                  opacity: 1;
+                  transform: translateY(0) scale(1);
+                }
+                100% {
+                  opacity: 0;
+                  transform: translateY(-20px) scale(0.8);
+                }
+              }
+              .sparkle {
+                animation: sparkleFloat 2s ease-out forwards;
+              }
+            `}</style>
 
             {/* Avatar sticker */}
             <img
@@ -200,6 +224,23 @@ const Badge: FC<BadgeProps> = ({
                 zIndex: 2,
               }}
             />
+
+            {/* Sparkle emoji */}
+            {showSparkle && (
+              <div
+                className="sparkle"
+                style={{
+                  position: "absolute",
+                  top: "20%",
+                  right: "15%",
+                  fontSize: "24px",
+                  zIndex: 3,
+                  pointerEvents: "none",
+                }}
+              >
+                ✨
+              </div>
+            )}
 
             {/* Photo/Image fallback */}
             {photo && (
