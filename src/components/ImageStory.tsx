@@ -83,7 +83,7 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: currentIndex === 2 ? "center bottom" : "center",
+            objectPosition: currentIndex === 2 ? "center 65%" : "center",
             display: "block",
             transition: "transform 0.2s ease",
             transform: isHovered ? "scale(1.02)" : "scale(1)",
