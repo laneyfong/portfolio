@@ -1097,6 +1097,7 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              gap: 16,
               fontFamily: tokens.font.sans,
               transition: "background 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
@@ -1107,15 +1108,15 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
               e.currentTarget.style.background = "transparent";
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.muted, minWidth: "24px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1, minWidth: 0 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.muted, minWidth: "24px", lineHeight: 1.5 }}>
                 {item.rank}
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, lineHeight: 1.5 }}>
                 {item.title}
               </div>
             </div>
-            <div style={{ fontSize: "24px", color: tokens.color.muted, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", width: "32px", height: "24px" }}>
+            <div style={{ fontSize: "24px", color: tokens.color.muted, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", minWidth: "32px", lineHeight: 1 }}>
               ⌄
             </div>
           </button>
