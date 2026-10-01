@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
@@ -11,7 +11,27 @@ interface MyShakeCardProps {
   context: string;
   to: string;
   isActive?: boolean;
+  boldMetrics?: string[];
 }
+
+const boldifyMetrics = (text: string, metrics: string[] = []): ReactNode => {
+  if (metrics.length === 0) return text;
+
+  const parts: ReactNode[] = [];
+  let remaining = text;
+
+  metrics.forEach((metric, index) => {
+    const idx = remaining.indexOf(metric);
+    if (idx !== -1) {
+      parts.push(remaining.slice(0, idx));
+      parts.push(<strong key={`metric-${index}`}>{metric}</strong>);
+      remaining = remaining.slice(idx + metric.length);
+    }
+  });
+
+  parts.push(remaining);
+  return parts;
+};
 
 const MyShakeCard: FC<MyShakeCardProps> = ({
   caption,
@@ -20,6 +40,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   context,
   to,
   isActive = true,
+  boldMetrics = [],
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -202,11 +223,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             overflowWrap: "break-word",
           }}
         >
-          {captionParts[0]}
+          {boldifyMetrics(captionParts[0], boldMetrics)}
           <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
-            {captionItalic}
+            {boldifyMetrics(captionItalic, boldMetrics)}
           </em>
-          {captionParts[1]}
+          {boldifyMetrics(captionParts[1], boldMetrics)}
         </span>
       </div>
       )}

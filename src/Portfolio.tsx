@@ -150,6 +150,7 @@ const Portfolio: FC = () => {
                 captionItalic="45% engagement increase"
                 context="Internship"
                 to="/myshake-design"
+                boldMetrics={["7 to 3", "45%"]}
               />
               <VeriSupplyCard />
               <IDbridgeCard

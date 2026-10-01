@@ -260,7 +260,7 @@ const IDBridgeCaseStudy: FC = () => {
             <IconHighlight
               icon="📊"
               title="Key Finding: Documentation is the Barrier"
-              description="In the California Statewide Study of People Experiencing Homelessness (2023), more than 53% of participants noted a lack of documents as a barrier to finding permanent housing."
+              description="In the California Statewide Study of People Experiencing Homelessness (2023), more than <strong>53%</strong> of participants noted a lack of documents as a barrier to finding permanent housing."
             />
             <IconHighlight
               icon="🔍"
