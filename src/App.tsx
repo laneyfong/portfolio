@@ -14,32 +14,21 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Scroll to top immediately and after delays to ensure layout is fully ready
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    const scrollToTopNow = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
 
-    // Multiple timing attempts to ensure scroll happens after render and layout
-    const timer1 = setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 0);
-    const timer2 = setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 50);
-    const timer3 = setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 150);
+    scrollToTopNow();
+
+    // Multiple timing attempts with increasing delays to ensure layout is fully ready
+    const timers = [0, 50, 100, 200, 300].map(delay =>
+      setTimeout(scrollToTopNow, delay)
+    );
 
     return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
+      timers.forEach(timer => clearTimeout(timer));
     };
   }, [pathname]);
 
