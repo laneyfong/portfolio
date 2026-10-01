@@ -75,6 +75,67 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
             filter: "contrast(1.15) brightness(1.05) saturate(1.1)",
           }}
         />
+
+        {/* Top Text Overlay */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 12,
+            padding: "16px",
+            zIndex: 5,
+            pointerEvents: "none",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "11px",
+              color: "white",
+              letterSpacing: "0.5px",
+              lineHeight: tokens.leading.none,
+              textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
+            }}
+          >
+            B2B SaaS
+          </span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 32 32"
+            style={{
+              filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
+              flexShrink: 0,
+              transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+            }}
+          >
+            <circle
+              cx="16"
+              cy="16"
+              r="14"
+              fill="none"
+              stroke="white"
+              strokeWidth="1.5"
+            />
+            <g>
+              <path
+                d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                stroke="white"
+                strokeWidth="1.5"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+          </svg>
+        </div>
       </div>
 
       {/* Text Section - Right Side (Active Only) */}
