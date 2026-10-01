@@ -192,7 +192,7 @@ const Badge: FC<BadgeProps> = ({
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
-              overflow: "visible",
+              overflow: "hidden",
               marginBottom: "16px",
             }}
           >
@@ -225,23 +225,6 @@ const Badge: FC<BadgeProps> = ({
               }}
             />
 
-            {/* Sparkle emoji */}
-            {showSparkle && (
-              <div
-                className="sparkle"
-                style={{
-                  position: "absolute",
-                  top: "20%",
-                  right: "15%",
-                  fontSize: "24px",
-                  zIndex: 3,
-                  pointerEvents: "none",
-                }}
-              >
-                ✨
-              </div>
-            )}
-
             {/* Photo/Image fallback */}
             {photo && (
               <img
@@ -260,6 +243,23 @@ const Badge: FC<BadgeProps> = ({
             {/* Dot pattern when no photo */}
             {!photo && <div style={{ position: "absolute", zIndex: 1 }}><DotPattern /></div>}
           </div>
+
+          {/* Sparkle emoji */}
+          {showSparkle && (
+            <div
+              className="sparkle"
+              style={{
+                position: "absolute",
+                top: "28%",
+                right: "12%",
+                fontSize: "28px",
+                zIndex: 10,
+                pointerEvents: "none",
+              }}
+            >
+              ✨
+            </div>
+          )}
 
           {/* Bottom info section */}
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
