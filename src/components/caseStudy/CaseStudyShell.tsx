@@ -405,7 +405,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         className="case-main"
         style={{
           marginLeft: SIDEBAR_WIDTH,
-          padding: "80px 0 0",
+          padding: "0",
           boxSizing: "border-box",
         }}
       >
