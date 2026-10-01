@@ -215,9 +215,6 @@ const AboutPage: FC = () => {
             flex-direction: column !important;
             align-items: center !important;
           }
-          .about-left-panel > div {
-            flex-direction: column !important;
-          }
           .about-left-panel {
             display: none !important;
             width: 100% !important;
@@ -308,7 +305,7 @@ const AboutPage: FC = () => {
 
           {/* Left side: Contact panel */}
           <div className="about-left-panel" style={rightPanelStyle}>
-            <div style={{ display: "flex", flexDirection: "row", gap: 18, alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
               <h3
                 style={{
                   fontFamily: tokens.font.sans,
@@ -321,7 +318,7 @@ const AboutPage: FC = () => {
               >
                 Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
               </h3>
-              <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
+              <div style={{ display: "flex", gap: 10 }}>
                 <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
                   <LinkedInIcon />
                 </SocialIconLink>
