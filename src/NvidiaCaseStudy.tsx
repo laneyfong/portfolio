@@ -369,55 +369,6 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div
-            style={{
-              margin: "32px 0",
-              background: tokens.color.offWhite,
-              borderRadius: tokens.radius.md,
-              padding: 60,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              gap: 12,
-            }}
-          >
-            <div
-              style={{
-                fontSize: "48px",
-                marginBottom: 8,
-              }}
-            >
-              🎬
-            </div>
-            <div
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                fontSize: "18px",
-                color: tokens.color.textDark,
-                marginBottom: 4,
-              }}
-            >
-              Design Concept Video
-            </div>
-            <p
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "14px",
-                color: tokens.color.body,
-                margin: 0,
-                maxWidth: 400,
-                lineHeight: tokens.leading.normal,
-              }}
-            >
-              Early-stage concept showing how an AI UX agent could help engineers prioritize and validate findings
-            </p>
-          </div>
-        </Reveal>
-
-        <Reveal>
           <div style={{ marginTop: 80, marginBottom: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "#1a1a1a", display: "flex", justifyContent: "center", alignItems: "center", maxHeight: "70vh" }}>
             <video
               src={nvidiaPrototype}
