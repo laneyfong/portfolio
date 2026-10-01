@@ -160,18 +160,26 @@ const Portfolio: FC = () => {
                 context="Designathon"
                 to="/idbridge-design"
               />
-              <ProjectCard
-                screenshot={nvidiaLogo}
-                layout="landscape"
-                roleOutcome="AI Design × Automation"
-                caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
-                captionItalic="Autonomous UX validation"
-                context="Capstone Project"
-                to="/nvidia-ai-ux-agent"
-                wipLabel="WIP"
-                noImageRadius
-                noImageGradient
-              />
+              <div className="nvidia-card">
+                <style>{`
+                  .nvidia-card img {
+                    transform: scale(0.75) !important;
+                    transform-origin: center !important;
+                  }
+                `}</style>
+                <ProjectCard
+                  screenshot={nvidiaLogo}
+                  layout="landscape"
+                  roleOutcome="AI Design × Automation"
+                  caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
+                  captionItalic="Autonomous UX validation"
+                  context="Capstone Project"
+                  to="/nvidia-ai-ux-agent"
+                  wipLabel="WIP"
+                  noImageRadius
+                  noImageGradient
+                />
+              </div>
             </FeaturedWorkShowcase>
           </section>
         </ContentContainer>
