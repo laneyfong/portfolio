@@ -20,18 +20,23 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [loadedIndices, setLoadedIndices] = useState(new Set([0]));
 
-  // Preload all images on mount for instant loading
+  // Preload current and next images only for faster loading
   useEffect(() => {
-    images.forEach((image) => {
-      const img = new Image();
-      img.src = image.src;
-      if (image.srcWebp) {
-        const webpImg = new Image();
-        webpImg.src = image.srcWebp;
+    const nextIndex = (currentIndex + 1) % images.length;
+    const indicesToPreload = [currentIndex, nextIndex];
+
+    indicesToPreload.forEach((idx) => {
+      if (!loadedIndices.has(idx)) {
+        const img = new Image();
+        img.onload = () => {
+          setLoadedIndices((prev) => new Set([...prev, idx]));
+        };
+        img.src = images[idx].src;
       }
     });
-  }, [images]);
+  }, [currentIndex, images, loadedIndices]);
 
   // Auto-progression effect
   useEffect(() => {
@@ -110,14 +115,16 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
           alt={currentImage.alt}
           className="image-story-img"
           decoding="async"
+          loading="eager"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
             objectPosition: currentIndex === 2 ? "center 65%" : "center",
             display: "block",
-            transition: "transform 0.2s ease",
+            transition: "transform 0.2s ease, filter 0.3s ease",
             transform: isHovered ? "scale(1.02)" : "scale(1)",
+            filter: loadedIndices.has(currentIndex) ? "blur(0px)" : "blur(4px)",
           }}
         />
       </picture>
