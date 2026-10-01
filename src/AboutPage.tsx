@@ -25,7 +25,6 @@ function withItalics(text: string, terms: string[]): ReactNode[] {
 const HERO_WIDTH = "min(820px, 90vw)";
 const IMAGE_WIDTH = "min(580px, 85vw)";
 const PANEL_WIDTH = 252;
-const ROW_GAP = 40;
 
 const AboutPage: FC = () => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
