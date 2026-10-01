@@ -4,7 +4,7 @@ import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
-import PhotoStack from "./components/PhotoStack";
+import ImageStory from "./components/ImageStory";
 import ProudMomentsCarousel from "./components/ProudMomentsCarousel";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL, RESUME_URL } from "./components/SocialIcons";
@@ -313,13 +313,13 @@ const AboutPage: FC = () => {
             onMouseEnter={() => setBioPhotoHovered(true)}
             onMouseLeave={() => setBioPhotoHovered(false)}
           >
-            <PhotoStack
-              photos={[
+            <ImageStory
+              images={[
                 { src: aboutBioPhoto, srcWebp: aboutBioPhotoWebp, alt: "Laney Fong in the SF Bay Area", label: "This is me!" },
                 { src: japanSapporo, alt: "Travel - Japan Sapporo", label: "I love traveling <3" },
                 { src: aboutStoryFoodie, alt: "Foodie adventures", label: "Trying new restaurants is my hobby" },
               ]}
-              onPhotoChange={(index) => setCurrentPhotoIndex(index)}
+              onImageChange={(index) => setCurrentPhotoIndex(index)}
             />
 
             {/* Side label */}
