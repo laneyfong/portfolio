@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tokens } from "../tokens";
 
 interface StoryImage {
@@ -17,6 +17,18 @@ interface ImageStoryProps {
 const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+
+  // Preload all images on mount for instant loading
+  useEffect(() => {
+    images.forEach((image) => {
+      const img = new Image();
+      img.src = image.src;
+      if (image.srcWebp) {
+        const webpImg = new Image();
+        webpImg.src = image.srcWebp;
+      }
+    });
+  }, [images]);
 
   const handleNext = () => {
     const newIndex = (currentIndex + 1) % images.length;
@@ -37,12 +49,11 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
       style={{
         position: "relative",
         width: "100%",
-        aspectRatio: "3 / 2.5",
+        aspectRatio: "3 / 2",
         borderRadius: "8px",
         overflow: "hidden",
         cursor: "pointer",
         backgroundColor: tokens.color.offWhite,
-        transform: "translateY(-20px)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -67,12 +78,12 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
           src={currentImage.src}
           alt={currentImage.alt}
           className="image-story-img"
-          loading="lazy"
           decoding="async"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            objectPosition: currentIndex === 2 ? "center bottom" : "center",
             display: "block",
             transition: "transform 0.2s ease",
             transform: isHovered ? "scale(1.02)" : "scale(1)",
