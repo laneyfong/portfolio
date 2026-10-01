@@ -24,6 +24,7 @@ import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStu
 import ResearchThemes from "./components/caseStudy/ResearchThemes";
 import DesignChallenges from "./components/caseStudy/DesignChallenges";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
+import nvidiaPrototype from "./assets/nvidia-prototype.mp4";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -158,6 +159,22 @@ const NvidiaCaseStudy: FC = () => {
             <FeatureCard title="The Challenge">
               How do we make AI-generated insights trustworthy enough for engineers to act on them early?
             </FeatureCard>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginTop: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "#1a1a1a", display: "flex", justifyContent: "center", alignItems: "center", minHeight: 600 }}>
+            <video
+              src={nvidiaPrototype}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+              controls
+              preload="metadata"
+            />
           </div>
         </Reveal>
       </section>
