@@ -67,9 +67,21 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
 
   return (
-    <div
-      role="link"
-      tabIndex={0}
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .myshake-card-mobile {
+            border-radius: 0 !important;
+          }
+          .myshake-video-mobile {
+            border-radius: 8px !important;
+          }
+        }
+      `}</style>
+      <div
+        className="myshake-card-mobile"
+        role="link"
+        tabIndex={0}
       onClick={() => navigate(to)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -99,6 +111,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
     >
       {/* Video Section */}
       <div
+        className="myshake-video-mobile"
         style={{
           position: "relative",
           aspectRatio: isActive ? "16 / 10" : "16 / 10",
@@ -239,7 +252,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         </span>
       </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 

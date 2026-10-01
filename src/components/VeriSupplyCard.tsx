@@ -13,9 +13,21 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
-      role="link"
-      tabIndex={0}
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .verisupply-card-mobile {
+            border-radius: 0 !important;
+          }
+          .verisupply-image-mobile {
+            border-radius: 8px !important;
+          }
+        }
+      `}</style>
+      <div
+        className="verisupply-card-mobile"
+        role="link"
+        tabIndex={0}
       onClick={() => navigate("/verisupply")}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -45,6 +57,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
     >
       {/* Image Section */}
       <div
+        className="verisupply-image-mobile"
         style={{
           position: "relative",
           aspectRatio: isActive ? "16 / 10" : "16 / 10",
@@ -189,7 +202,8 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         </span>
       </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 

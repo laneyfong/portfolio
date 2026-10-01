@@ -55,7 +55,19 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const captionParts = caption.split(captionItalic);
 
   return (
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .project-card-mobile {
+            border-radius: 0 !important;
+          }
+          .project-card-image-mobile {
+            border-radius: 8px !important;
+          }
+        }
+      `}</style>
     <div
+      className="project-card-mobile"
       role={to ? "link" : undefined}
       tabIndex={to ? 0 : undefined}
       onClick={to ? () => navigate(to) : undefined}
@@ -90,6 +102,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
     >
       {/* Image Section */}
       <div
+        className="project-card-image-mobile"
         style={{
           position: "relative",
           aspectRatio: isActive && window.innerWidth > 768 ? undefined : "16 / 10",
@@ -303,6 +316,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       </div>
       )}
     </div>
+    </>
   );
 };
 

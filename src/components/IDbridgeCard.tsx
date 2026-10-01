@@ -41,9 +41,21 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
   }, [isActive]);
 
   return (
-    <div
-      role="link"
-      tabIndex={0}
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .idbridge-card-mobile {
+            border-radius: 0 !important;
+          }
+          .idbridge-video-mobile {
+            border-radius: 8px !important;
+          }
+        }
+      `}</style>
+      <div
+        className="idbridge-card-mobile"
+        role="link"
+        tabIndex={0}
       onClick={() => navigate(to)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -73,6 +85,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
     >
       {/* Video Section */}
       <div
+        className="idbridge-video-mobile"
         style={{
           position: "relative",
           aspectRatio: isActive ? "16 / 10" : "16 / 10",
@@ -213,7 +226,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         </span>
       </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 
