@@ -295,10 +295,11 @@ const AboutPage: FC = () => {
           style={{
             position: "relative",
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "flex-start",
             flexWrap: "wrap",
             gap: ROW_GAP,
+            width: "100%",
           }}
         >
 
