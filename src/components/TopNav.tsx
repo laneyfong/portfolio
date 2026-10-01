@@ -184,10 +184,10 @@ const TopNav: FC = () => {
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
-            gap: 0;
+            gap: 8px;
             list-style: none;
             margin: 0;
-            padding: 16px 0;
+            padding: 20px 0;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
@@ -195,7 +195,7 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu.open {
-            max-height: 300px;
+            max-height: 400px;
           }
 
           .mobile-menu-item {
