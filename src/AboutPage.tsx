@@ -12,10 +12,12 @@ import aboutBioPhoto from "./assets/about-bio-photo.jpg";
 import aboutBioPhotoWebp from "./assets/about-bio-photo.webp";
 import clubPic from "./assets/club-pic.jpg";
 import clubPicWebp from "./assets/club-pic.webp";
-import japanSapporo from "./assets/japan-sapporo.jpg";
-import aboutStoryFoodie from "./assets/about-story-foodie.jpg";
 import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
+import portfolioImage1 from "./assets/IMG_0336.PNG";
+import portfolioImage2 from "./assets/IMG_0338.PNG";
+import portfolioImage3 from "./assets/IMG_0340.PNG";
+import portfolioImage4 from "./assets/IMG_0342.PNG";
 
 const Italic: FC<{ children: string; color?: string }> = ({ children, color }) => (
   <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400, color }}>{children}</em>
@@ -315,9 +317,10 @@ const AboutPage: FC = () => {
           >
             <ImageStory
               images={[
-                { src: aboutBioPhoto, srcWebp: aboutBioPhotoWebp, alt: "Laney Fong in the SF Bay Area", label: "This is me!" },
-                { src: japanSapporo, alt: "Travel - Japan Sapporo", label: "I love traveling <3" },
-                { src: aboutStoryFoodie, alt: "Foodie adventures", label: "Trying new restaurants is my hobby" },
+                { src: portfolioImage1, alt: "Portfolio moment 1" },
+                { src: portfolioImage2, alt: "Portfolio moment 2" },
+                { src: portfolioImage3, alt: "Portfolio moment 3" },
+                { src: portfolioImage4, alt: "Portfolio moment 4" },
               ]}
               onImageChange={(index) => setCurrentPhotoIndex(index)}
             />
@@ -348,7 +351,7 @@ const AboutPage: FC = () => {
                   whiteSpace: "normal",
                 }}
               >
-                {["This is me!", "I love traveling <3", "Trying new restaurants is my hobby"][currentPhotoIndex]}
+                {["", "", "", ""][currentPhotoIndex]}
               </div>
             </div>
           </div>
