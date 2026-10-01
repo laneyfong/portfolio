@@ -199,9 +199,9 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu-item {
-            padding: 12px clamp(32px, 7vw, 80px);
+            padding: 18px clamp(32px, 7vw, 80px);
             font-family: ${tokens.font.sans};
-            font-size: 14px;
+            font-size: 16px;
             font-weight: ${tokens.weight.regular};
             letter-spacing: ${tokens.tracking.tight};
             color: ${tokens.color.body};
