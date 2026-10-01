@@ -50,7 +50,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
           top: cardTop - navClearance,
           behavior: "smooth",
         });
-      }, 100);
+      }, 300);
     }
   };
 
@@ -105,7 +105,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
                   cursor: distance > 0 ? "pointer" : "default",
                   transform: `scale(${scale}) translateY(${offsetY}px)`,
                   opacity,
-                  transition: "opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
+                  transition: "opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   transformOrigin: "center top",
                   zIndex,
                   clipPath: distance > 0
