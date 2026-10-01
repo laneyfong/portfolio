@@ -51,6 +51,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setCursorPos({ x: e.clientX, y: e.clientY });
+  };
 
   const captionParts = caption.split(captionItalic);
 
@@ -71,9 +76,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
       }
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onMouseMove={handleMouseMove}
       style={{
         borderRadius: window.innerWidth > 768 ? 20 : 12,
-        cursor: to ? "pointer" : "default",
+        cursor: hovered && to ? "none" : to ? "pointer" : "default",
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -299,6 +305,66 @@ const ProjectCard: FC<ProjectCardProps> = ({
           </div>
         )}
       </div>
+      )}
+
+      {/* Custom cursor tooltip */}
+      {hovered && to && (
+        <div
+          style={{
+            position: "fixed",
+            left: `${cursorPos.x}px`,
+            top: `${cursorPos.y}px`,
+            transform: "translate(-50%, -50%)",
+            pointerEvents: "none",
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              width: "100px",
+              height: "100px",
+              borderRadius: "50%",
+              background: "rgba(255, 255, 255, 0.15)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+              gap: "4px",
+              padding: "12px",
+              boxSizing: "border-box",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontSize: "11px",
+                fontWeight: tokens.weight.medium,
+                color: "white",
+                textAlign: "center",
+                lineHeight: 1.2,
+              }}
+            >
+              View case study
+            </span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              style={{ transform: "rotate(-45deg)" }}
+            >
+              <path
+                d="M1 11L11 1M11 1H5M11 1V7"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
       )}
     </div>
   );
