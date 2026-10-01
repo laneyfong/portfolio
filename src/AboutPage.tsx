@@ -32,7 +32,7 @@ const AboutPage: FC = () => {
   const [dogWaving, setDogWaving] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [proudMomentIndex, setProudMomentIndex] = useState(0);
-  const { ref: bioSectionRef, isVisible: bioVisible } = useScrollReveal({ threshold: 0.3 });
+  const { ref: bioSectionRef } = useScrollReveal({ threshold: 0.3 });
   const { ref: proudSectionRef, isVisible: proudVisible } = useScrollReveal({ threshold: 0.2 });
 
   useEffect(() => {
@@ -126,9 +126,8 @@ const AboutPage: FC = () => {
         }
 
         .bio-section-reveal {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: ${bioVisible ? "scrollFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .proud-section-reveal {
