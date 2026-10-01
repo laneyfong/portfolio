@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
+import { getLuminance, getBackgroundColorUnderCursor, isDarkBackground } from "../utils/colorUtils";
 
 interface ProjectMetric {
   value: string;
@@ -52,9 +53,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [isDark, setIsDark] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
+    const bgColor = getBackgroundColorUnderCursor(e.clientX, e.clientY);
+    const luminance = getLuminance(bgColor);
+    setIsDark(isDarkBackground(luminance));
   };
 
   const captionParts = caption.split(captionItalic);
@@ -324,9 +329,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
               width: "100px",
               height: "100px",
               borderRadius: "50%",
-              background: "rgba(255, 255, 255, 0.15)",
+              background: isDark ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.15)",
               backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.3)",
+              border: isDark ? "1.5px solid rgba(255, 255, 255, 0.4)" : "1.5px solid rgba(0, 0, 0, 0.3)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -341,7 +346,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 fontFamily: tokens.font.sans,
                 fontSize: "11px",
                 fontWeight: tokens.weight.medium,
-                color: "white",
+                color: isDark ? "white" : "#1A1A1A",
                 textAlign: "center",
                 lineHeight: 1.2,
               }}
@@ -357,7 +362,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             >
               <path
                 d="M1 11L11 1M11 1H5M11 1V7"
-                stroke="white"
+                stroke={isDark ? "white" : "#1A1A1A"}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
