@@ -1061,17 +1061,21 @@ export const StatRow: FC<{ items: { icon?: ReactNode; value: string; label: stri
 );
 
 export const ExpandableRankedList: FC<{ items: { rank: number; title: string; detail: string }[] }> = ({ items }) => {
-  const [expandedSet, setExpandedSet] = useState<Set<number>>(new Set());
+  const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set());
 
   const toggleExpanded = (rank: number) => {
-    const newSet = new Set(expandedSet);
-    if (newSet.has(rank)) {
-      newSet.delete(rank);
-    } else {
-      newSet.add(rank);
-    }
-    setExpandedSet(newSet);
+    setExpandedIds((prevSet) => {
+      const newSet = new Set(prevSet);
+      if (newSet.has(rank)) {
+        newSet.delete(rank);
+      } else {
+        newSet.add(rank);
+      }
+      return newSet;
+    });
   };
+
+  const isExpanded = (rank: number) => expandedIds.has(rank);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -1116,11 +1120,11 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
                 {item.title}
               </div>
             </div>
-            <div style={{ fontSize: "24px", color: tokens.color.muted, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: expandedSet.has(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", minWidth: "32px", lineHeight: 1 }}>
+            <div style={{ fontSize: "24px", color: tokens.color.muted, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: isExpanded(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", minWidth: "32px", lineHeight: 1 }}>
               ⌄
             </div>
           </button>
-          {expandedSet.has(item.rank) && (
+          {isExpanded(item.rank) && (
             <div
               style={{
                 padding: "0 24px 20px 56px",
