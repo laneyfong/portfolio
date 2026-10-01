@@ -44,6 +44,19 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
         aspectRatio: "3 / 2",
       }}
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .photo-stack-peeking {
+            border: 4px solid #ECE7D9 !important;
+          }
+          .photo-stack-main {
+            border-top: 4px solid #ECE7D9 !important;
+            border-left: 4px solid #ECE7D9 !important;
+            border-right: 4px solid #ECE7D9 !important;
+            border-bottom: 16px solid #ECE7D9 !important;
+          }
+        }
+      `}</style>
       {/* Peeking photos (behind) - always visible */}
       {photos.map((photo, index) => {
         if (index === currentIndex) return null;
@@ -56,13 +69,14 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
         return (
           <div
             key={index}
+            className="photo-stack-peeking"
             style={{
               position: "absolute",
               top: stackOffset * offset,
               left: stackOffset * offset,
               right: -stackOffset * offset,
               bottom: -stackOffset * offset,
-              border: "4px solid #ECE7D9",
+              border: "8px solid #ECE7D9",
               borderRadius: 2,
               overflow: "hidden",
               aspectRatio: "3 / 2",
@@ -95,6 +109,7 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
 
       {/* Main photo card */}
       <div
+        className="photo-stack-main"
         role="button"
         tabIndex={0}
         aria-label="Click to view next photo"
@@ -112,10 +127,10 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
           width: "100%",
           height: "100%",
           cursor: "pointer",
-          borderTop: "4px solid #ECE7D9",
-          borderLeft: "4px solid #ECE7D9",
-          borderRight: "4px solid #ECE7D9",
-          borderBottom: "16px solid #ECE7D9",
+          borderTop: "8px solid #ECE7D9",
+          borderLeft: "8px solid #ECE7D9",
+          borderRight: "8px solid #ECE7D9",
+          borderBottom: "28px solid #ECE7D9",
           borderRadius: 2,
           overflow: "hidden",
           boxSizing: "border-box",
