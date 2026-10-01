@@ -11,24 +11,6 @@ interface VeriSupplyCardProps {
 const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [isDark, setIsDark] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setCursorPos({ x: e.clientX, y: e.clientY });
-
-    if (!isActive || window.innerWidth <= 768) {
-      setIsDark(false);
-      return;
-    }
-
-    const target = e.currentTarget as HTMLElement;
-    const rect = target.getBoundingClientRect();
-    const relativeX = e.clientX - rect.left;
-    const threshold = rect.width * 0.65;
-
-    setIsDark(relativeX < threshold);
-  };
 
   return (
     <div
@@ -41,15 +23,11 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           navigate("/verisupply");
         }
       }}
-      onMouseEnter={(e) => {
-        setHovered(true);
-        handleMouseMove(e);
-      }}
+      onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onMouseMove={handleMouseMove}
       style={{
         borderRadius: window.innerWidth > 768 ? 20 : 12,
-        cursor: hovered ? "none" : "pointer",
+        cursor: "pointer",
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -148,66 +126,6 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
           Product Design × AI/ML × Supply Chain
         </span>
       </div>
-      )}
-
-      {/* Custom cursor tooltip */}
-      {hovered && (
-        <div
-          style={{
-            position: "fixed",
-            left: `${cursorPos.x}px`,
-            top: `${cursorPos.y}px`,
-            transform: "translate(-50%, -50%)",
-            pointerEvents: "none",
-            zIndex: 9999,
-          }}
-        >
-          <div
-            style={{
-              width: "100px",
-              height: "100px",
-              borderRadius: "50%",
-              background: isDark ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.15)",
-              backdropFilter: "blur(10px)",
-              border: isDark ? "1.5px solid rgba(255, 255, 255, 0.4)" : "1.5px solid rgba(0, 0, 0, 0.3)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              gap: "4px",
-              padding: "12px",
-              boxSizing: "border-box",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "11px",
-                fontWeight: tokens.weight.medium,
-                color: isDark ? "white" : "#1A1A1A",
-                textAlign: "center",
-                lineHeight: 1.2,
-              }}
-            >
-              View case study
-            </span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              style={{ transform: "rotate(-45deg)" }}
-            >
-              <path
-                d="M1 11L11 1M11 1H5M11 1V7"
-                stroke={isDark ? "white" : "#1A1A1A"}
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </div>
       )}
     </div>
   );
