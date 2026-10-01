@@ -103,7 +103,7 @@ const NvidiaCaseStudy: FC = () => {
           Designing an AI UX agent that <Italic>engineers actually trust</Italic>.
         </h1>
 
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
+        <div className="case-study-tags" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
           {TAGS.map((tag) => (
             <TagPill key={tag}>{tag}</TagPill>
           ))}

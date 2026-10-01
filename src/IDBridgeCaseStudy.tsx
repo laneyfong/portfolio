@@ -57,7 +57,7 @@ const IDBridgeCaseStudy: FC = () => {
           Designing a <Italic>verified identity platform</Italic> for unhoused individuals in 6 hours.
         </h1>
 
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
+        <div className="case-study-tags" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
           {TAGS.map((tag) => (
             <TagPill key={tag}>{tag}</TagPill>
           ))}

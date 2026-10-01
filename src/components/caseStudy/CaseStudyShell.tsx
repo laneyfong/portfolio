@@ -158,6 +158,13 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           /* Hide mobile nav tabs on mobile */
           .case-mobile-tabs { display: none !important; }
           .case-main { padding-top: clamp(16px, 5vw, 60px) !important; }
+
+          /* Grid layout for tags on mobile */
+          .case-study-tags {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
         }
         @media (max-width: 640px) {
           /* Extra small screens */

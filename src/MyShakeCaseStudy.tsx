@@ -439,7 +439,7 @@ const MyShakeCaseStudy: FC = () => {
             Redesigning earthquake alerts for <Italic>intuitive, high-stakes navigation</Italic>.
           </h1>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
+          <div className="case-study-tags" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
             {TAGS.map((tag) => (
               <TagPill key={tag}>{tag}</TagPill>
             ))}
