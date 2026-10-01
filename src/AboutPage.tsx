@@ -305,7 +305,7 @@ const AboutPage: FC = () => {
           {/* Top: Photos */}
           <div
             className="about-center-photo"
-            style={{ width: "100%", flexShrink: 0, position: "relative" }}
+            style={{ width: "100%", flexShrink: 0, position: "relative", marginTop: "40px" }}
             onMouseEnter={() => setBioPhotoHovered(true)}
             onMouseLeave={() => setBioPhotoHovered(false)}
           >
@@ -381,7 +381,7 @@ const AboutPage: FC = () => {
         </div>
 
         {/* Bio copy */}
-        <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "64px auto 0" }}>
+        <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "24px auto 0" }}>
           <p
             style={{
               fontFamily: tokens.font.sans,
