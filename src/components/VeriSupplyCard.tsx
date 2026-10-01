@@ -69,7 +69,6 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
             height: "100%",
             objectFit: "cover",
             objectPosition: "center",
-            filter: "contrast(1.15) brightness(1.05) saturate(1.1)",
           }}
         />
 
