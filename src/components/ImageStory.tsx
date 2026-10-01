@@ -37,11 +37,12 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
       style={{
         position: "relative",
         width: "100%",
-        aspectRatio: "3 / 2",
+        aspectRatio: "3 / 2.5",
         borderRadius: "8px",
         overflow: "hidden",
         cursor: "pointer",
         backgroundColor: tokens.color.offWhite,
+        transform: "translateY(-20px)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -66,6 +67,8 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
           src={currentImage.src}
           alt={currentImage.alt}
           className="image-story-img"
+          loading="lazy"
+          decoding="async"
           style={{
             width: "100%",
             height: "100%",
