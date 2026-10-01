@@ -172,7 +172,10 @@ const NvidiaCaseStudy: FC = () => {
                 objectFit: "cover",
                 display: "block",
               }}
-              controls
+              autoPlay
+              loop
+              muted
+              playsInline
               preload="metadata"
             />
           </div>
