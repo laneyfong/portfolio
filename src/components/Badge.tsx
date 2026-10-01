@@ -111,7 +111,7 @@ const Badge: FC<BadgeProps> = ({
       <style>{`
         @media (max-width: 768px) {
           .badge-container {
-            width: clamp(220px, 85vw, 340px) !important;
+            width: clamp(180px, 70vw, 300px) !important;
           }
           .badge-flip-inner {
             backface-visibility: hidden !important;
@@ -121,6 +121,21 @@ const Badge: FC<BadgeProps> = ({
             backface-visibility: hidden !important;
             -webkit-backface-visibility: hidden !important;
           }
+          .badge-front h2 {
+            font-size: 15px !important;
+          }
+          .badge-front p {
+            font-size: 13px !important;
+          }
+          .badge-front p:last-child {
+            font-size: 12px !important;
+          }
+          .badge-back-value {
+            font-size: 13px !important;
+          }
+          .badge-back-label {
+            font-size: 10px !important;
+          }
           .badge-container button {
             min-height: 48px !important;
             min-width: 48px !important;
@@ -128,12 +143,27 @@ const Badge: FC<BadgeProps> = ({
         }
         @media (max-width: 640px) {
           .badge-container {
-            width: clamp(200px, 90vw, 320px) !important;
+            width: clamp(160px, 75vw, 260px) !important;
           }
           .badge-front, .badge-back {
-            padding: 14px 14px 20px 14px !important;
+            padding: 12px 12px 18px 12px !important;
             backface-visibility: hidden !important;
             -webkit-backface-visibility: hidden !important;
+          }
+          .badge-front h2 {
+            font-size: 13px !important;
+          }
+          .badge-front p {
+            font-size: 11px !important;
+          }
+          .badge-front p:last-child {
+            font-size: 10px !important;
+          }
+          .badge-back-value {
+            font-size: 11px !important;
+          }
+          .badge-back-label {
+            font-size: 9px !important;
           }
           .badge-container button {
             min-height: 44px !important;

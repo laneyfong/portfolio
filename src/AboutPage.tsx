@@ -243,8 +243,11 @@ const AboutPage: FC = () => {
             align-self: stretch !important;
             order: 3 !important;
           }
-          /* Hide side label on mobile */
+          /* Hide side label and photo notes on mobile */
           .about-center-photo > div:nth-child(2) {
+            display: none !important;
+          }
+          .about-center-photo div[role="button"] + div {
             display: none !important;
           }
         }

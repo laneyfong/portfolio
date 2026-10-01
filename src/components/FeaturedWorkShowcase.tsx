@@ -105,7 +105,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
                   cursor: distance > 0 ? "pointer" : "default",
                   transform: `scale(${scale}) translateY(${offsetY}px)`,
                   opacity,
-                  transition: "opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                  transition: "opacity 1.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
                   transformOrigin: "center top",
                   zIndex,
                   clipPath: distance > 0

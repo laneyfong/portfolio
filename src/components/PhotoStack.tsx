@@ -164,7 +164,15 @@ const PhotoStack: FC<PhotoStackProps> = ({ photos, onPhotoChange }) => {
       </div>
 
       {/* Click indicator */}
+      <style>{`
+        @media (max-width: 760px) {
+          .photo-stack-indicator {
+            display: none !important;
+          }
+        }
+      `}</style>
       <div
+        className="photo-stack-indicator"
         style={{
           position: "absolute",
           bottom: 6,
