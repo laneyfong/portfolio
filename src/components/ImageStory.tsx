@@ -14,9 +14,12 @@ interface ImageStoryProps {
   onImageChange?: (index: number) => void;
 }
 
+const STORY_DURATION = 5000; // 5 seconds per story
+
 const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   // Preload all images on mount for instant loading
   useEffect(() => {
@@ -30,15 +33,43 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
     });
   }, [images]);
 
+  // Auto-progression effect
+  useEffect(() => {
+    if (isHovered) return; // Pause on hover
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        const newProgress = prev + (100 / STORY_DURATION) * 50; // Update every 50ms
+        if (newProgress >= 100) {
+          // Move to next story
+          const newIndex = (currentIndex + 1) % images.length;
+          setCurrentIndex(newIndex);
+          onImageChange?.(newIndex);
+          return 0;
+        }
+        return newProgress;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isHovered, currentIndex, images.length, onImageChange]);
+
+  // Reset progress when index changes
+  useEffect(() => {
+    setProgress(0);
+  }, [currentIndex]);
+
   const handleNext = () => {
     const newIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(newIndex);
+    setProgress(0);
     onImageChange?.(newIndex);
   };
 
   const handlePrev = () => {
     const newIndex = (currentIndex - 1 + images.length) % images.length;
     setCurrentIndex(newIndex);
+    setProgress(0);
     onImageChange?.(newIndex);
   };
 
@@ -121,8 +152,9 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
                 style={{
                   height: "100%",
                   background: "white",
-                  width: idx <= currentIndex ? "100%" : "0%",
-                  transition: "width 0.3s ease",
+                  width: idx === currentIndex ? `${progress}%` : idx < currentIndex ? "100%" : "0%",
+                  transition: idx === currentIndex ? "none" : "width 0.3s ease",
+                  boxShadow: idx === currentIndex ? "0 0 8px rgba(255, 255, 255, 0.6)" : "none",
                 }}
               />
             </div>
