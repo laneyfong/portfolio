@@ -163,13 +163,14 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ marginTop: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "#1a1a1a", display: "flex", justifyContent: "center", alignItems: "center", minHeight: 600 }}>
+          <div style={{ marginTop: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "#1a1a1a", display: "flex", justifyContent: "center", alignItems: "center", maxHeight: "70vh" }}>
             <video
               src={nvidiaPrototype}
               style={{
-                width: "100%",
+                width: "auto",
                 height: "100%",
-                objectFit: "cover",
+                maxWidth: "100%",
+                objectFit: "contain",
                 display: "block",
               }}
               autoPlay
