@@ -79,7 +79,7 @@ const AboutPage: FC = () => {
     width: PANEL_WIDTH,
     alignSelf: "flex-start" as const,
     paddingTop: 0,
-    marginBottom: 24,
+    marginBottom: 16,
   };
 
   return (
@@ -276,7 +276,7 @@ const AboutPage: FC = () => {
 
       <main style={{ width: "100%", padding: "64px 0 96px", boxSizing: "border-box", marginTop: "64px" }}>
         <ContentContainer>
-        <div style={{ width: HERO_WIDTH, margin: "0 auto 24px" }}>
+        <div style={{ width: HERO_WIDTH, margin: "0 auto 16px" }}>
           <h1
             style={{
               fontFamily: tokens.font.sans,
@@ -298,7 +298,7 @@ const AboutPage: FC = () => {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "flex-start",
-            gap: 24,
+            gap: 14,
             width: "100%",
           }}
         >
