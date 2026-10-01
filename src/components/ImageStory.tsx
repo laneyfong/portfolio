@@ -22,12 +22,11 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
   const [progress, setProgress] = useState(0);
   const [loadedIndices, setLoadedIndices] = useState(new Set([0]));
 
-  // Preload current and next images only for faster loading
+  // Preload all images on mount for smooth transitions
   useEffect(() => {
-    const nextIndex = (currentIndex + 1) % images.length;
-    const indicesToPreload = [currentIndex, nextIndex];
+    const allIndicesToPreload = images.map((_, idx) => idx);
 
-    indicesToPreload.forEach((idx) => {
+    allIndicesToPreload.forEach((idx) => {
       if (!loadedIndices.has(idx)) {
         const img = new Image();
         img.onload = () => {
@@ -36,7 +35,7 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
         img.src = images[idx].src;
       }
     });
-  }, [currentIndex, images, loadedIndices]);
+  }, [images, loadedIndices]);
 
   // Auto-progression effect
   useEffect(() => {
