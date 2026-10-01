@@ -72,6 +72,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
             objectFit: "cover",
             objectPosition: "center",
             opacity: isActive ? 1 : 0.9,
+            filter: "contrast(1.15) brightness(1.05) saturate(1.1)",
           }}
         />
       </div>
