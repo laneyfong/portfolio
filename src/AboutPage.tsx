@@ -22,7 +22,7 @@ function withItalics(text: string, terms: string[]): ReactNode[] {
   return text.split(pattern).map((part, i) => (terms.includes(part) ? <Italic key={i}>{part}</Italic> : part));
 }
 
-const HERO_WIDTH = "min(820px, 90vw)";
+const HERO_WIDTH = "min(720px, 90vw)";
 const PANEL_WIDTH = 252;
 
 const AboutPage: FC = () => {
