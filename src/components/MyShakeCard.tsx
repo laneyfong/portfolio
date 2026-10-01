@@ -72,15 +72,17 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
 
-    // Get the element directly under cursor and check its data attribute
+    if (!isActive || window.innerWidth <= 768) {
+      setIsDark(false);
+      return;
+    }
+
     const target = e.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
     const relativeX = e.clientX - rect.left;
+    const threshold = rect.width * 0.65;
 
-    // If hovering over left 70% of card (on desktop), it's the video section (dark)
-    // If hovering over right 30%, it's the text section (light)
-    const isVideoSection = relativeX < rect.width * 0.7;
-    setIsDark(isVideoSection);
+    setIsDark(relativeX < threshold);
   };
 
   return (
@@ -95,7 +97,10 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           navigate(to);
         }
       }}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={(e) => {
+        setHovered(true);
+        handleMouseMove(e);
+      }}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMouseMove}
       style={{
