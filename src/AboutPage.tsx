@@ -23,7 +23,6 @@ function withItalics(text: string, terms: string[]): ReactNode[] {
 }
 
 const HERO_WIDTH = "min(820px, 90vw)";
-const IMAGE_WIDTH = "min(580px, 85vw)";
 const PANEL_WIDTH = 252;
 
 const AboutPage: FC = () => {
@@ -295,47 +294,18 @@ const AboutPage: FC = () => {
           style={{
             position: "relative",
             display: "flex",
+            flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "flex-start",
-            flexWrap: "nowrap",
             gap: 32,
             width: "100%",
           }}
         >
 
-          {/* Left side: Contact panel */}
-          <div className="about-left-panel" style={rightPanelStyle}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-              <h3
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontWeight: tokens.weight.regular,
-                  fontSize: tokens.text.base,
-                  color: tokens.color.body,
-                  margin: 0,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
-              </h3>
-              <div style={{ display: "flex", gap: 10 }}>
-                <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
-                  <LinkedInIcon />
-                </SocialIconLink>
-                <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
-                  <EmailIcon />
-                </SocialIconLink>
-                <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
-                  <ResumeIcon />
-                </SocialIconLink>
-              </div>
-            </div>
-          </div>
-
-          {/* Right side: Photos */}
+          {/* Top: Photos */}
           <div
             className="about-center-photo"
-            style={{ width: IMAGE_WIDTH, flexShrink: 0, position: "relative" }}
+            style={{ width: "100%", flexShrink: 0, position: "relative" }}
             onMouseEnter={() => setBioPhotoHovered(true)}
             onMouseLeave={() => setBioPhotoHovered(false)}
           >
@@ -376,6 +346,35 @@ const AboutPage: FC = () => {
                 }}
               >
                 {["", "", "", ""][currentPhotoIndex]}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom: Contact panel */}
+          <div className="about-left-panel" style={rightPanelStyle}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              <h3
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.regular,
+                  fontSize: tokens.text.base,
+                  color: tokens.color.body,
+                  margin: 0,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
+              </h3>
+              <div style={{ display: "flex", gap: 10 }}>
+                <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
+                  <LinkedInIcon />
+                </SocialIconLink>
+                <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
+                  <EmailIcon />
+                </SocialIconLink>
+                <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
+                  <ResumeIcon />
+                </SocialIconLink>
               </div>
             </div>
           </div>
