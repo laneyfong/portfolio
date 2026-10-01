@@ -14,19 +14,30 @@ interface ContentContainerProps {
  */
 const ContentContainer: FC<ContentContainerProps> = ({ children }) => {
   return (
-    <div
-      style={{
-        width: "100%",
-        maxWidth: "clamp(320px, 85vw, 900px)",
-        marginLeft: "auto",
-        marginRight: "auto",
-        paddingLeft: "clamp(16px, 2%, 24px)",
-        paddingRight: "clamp(16px, 2%, 24px)",
-        boxSizing: "border-box",
-      }}
-    >
-      {children}
-    </div>
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .content-container {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+        }
+      `}</style>
+      <div
+        className="content-container"
+        style={{
+          width: "100%",
+          maxWidth: "clamp(320px, 85vw, 900px)",
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingLeft: "clamp(16px, 2%, 24px)",
+          paddingRight: "clamp(16px, 2%, 24px)",
+          boxSizing: "border-box",
+        }}
+      >
+        {children}
+      </div>
+    </>
   );
 };
 

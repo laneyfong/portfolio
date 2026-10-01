@@ -152,12 +152,22 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           /* Flexible spacing for mobile */
           .case-grid-3, .case-grid-2, .case-intro-shots { grid-template-columns: 1fr !important; gap: clamp(16px, 4vw, 32px); }
 
-          /* Reduce font sizes smoothly */
-          .case-main { padding: clamp(16px, 5vw, 60px) !important; }
+          /* Edge-to-edge on mobile */
+          .case-main {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            padding-top: 80px !important;
+            padding-bottom: 0 !important;
+          }
+
+          .case-content-wrapper {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            max-width: 100% !important;
+          }
 
           /* Hide mobile nav tabs on mobile */
           .case-mobile-tabs { display: none !important; }
-          .case-main { padding-top: clamp(16px, 5vw, 60px) !important; }
 
           /* Grid layout for tags on mobile */
           .case-study-tags {
@@ -418,6 +428,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         }}
       >
         <div
+          className="case-content-wrapper"
           style={{
             width: "100%",
             maxWidth: "clamp(320px, 90vw, 880px)",
