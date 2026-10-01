@@ -2,7 +2,6 @@ import type { FC } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
-import { getLuminance, getBackgroundColorUnderCursor, isDarkBackground } from "../utils/colorUtils";
 import verisupplyThumbnail from "../assets/verisupply-thumbnail.png";
 
 interface VeriSupplyCardProps {
@@ -17,9 +16,15 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
-    const bgColor = getBackgroundColorUnderCursor(e.clientX, e.clientY);
-    const luminance = getLuminance(bgColor);
-    setIsDark(isDarkBackground(luminance));
+
+    const target = e.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    const relativeX = e.clientX - rect.left;
+
+    // If hovering over left 70% of card (on desktop), it's the image section (dark)
+    // If hovering over right 30%, it's the text section (light)
+    const isImageSection = relativeX < rect.width * 0.7;
+    setIsDark(isImageSection);
   };
 
   return (

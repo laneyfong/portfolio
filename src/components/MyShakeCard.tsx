@@ -2,7 +2,6 @@ import type { FC, ReactNode } from "react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
-import { getLuminance, getBackgroundColorUnderCursor, isDarkBackground } from "../utils/colorUtils";
 import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
 
 interface MyShakeCardProps {
@@ -72,9 +71,16 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   // Track cursor for custom tooltip
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
-    const bgColor = getBackgroundColorUnderCursor(e.clientX, e.clientY);
-    const luminance = getLuminance(bgColor);
-    setIsDark(isDarkBackground(luminance));
+
+    // Get the element directly under cursor and check its data attribute
+    const target = e.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    const relativeX = e.clientX - rect.left;
+
+    // If hovering over left 70% of card (on desktop), it's the video section (dark)
+    // If hovering over right 30%, it's the text section (light)
+    const isVideoSection = relativeX < rect.width * 0.7;
+    setIsDark(isVideoSection);
   };
 
   return (

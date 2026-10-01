@@ -16,9 +16,24 @@ export const isDarkBackground = (luminance: number): boolean => {
 };
 
 export const getBackgroundColorUnderCursor = (x: number, y: number): string => {
-  const element = document.elementFromPoint(x, y) as HTMLElement;
-  if (!element) return "rgba(255, 255, 255, 1)";
+  // Try multiple positions to avoid getting the tooltip itself
+  const offsets = [
+    { x: 0, y: 0 },
+    { x: -30, y: -30 },
+    { x: 30, y: 30 },
+    { x: -50, y: 0 },
+    { x: 50, y: 0 }
+  ];
 
-  const bgColor = window.getComputedStyle(element).backgroundColor;
-  return bgColor || "rgba(255, 255, 255, 1)";
+  for (const offset of offsets) {
+    const element = document.elementFromPoint(x + offset.x, y + offset.y) as HTMLElement;
+    if (!element || element.closest('[role="button"]')?.querySelector('.badge-container')) continue;
+
+    const bgColor = window.getComputedStyle(element).backgroundColor;
+    if (bgColor && bgColor !== "rgba(0, 0, 0, 0)") {
+      return bgColor;
+    }
+  }
+
+  return "rgba(255, 255, 255, 1)";
 };
