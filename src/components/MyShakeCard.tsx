@@ -107,6 +107,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           flexShrink: 0,
           width: isActive && window.innerWidth > 768 ? "70%" : "100%",
           minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
+          backgroundColor: "#1a1a1a",
+          willChange: "opacity",
         }}
       >
         <video

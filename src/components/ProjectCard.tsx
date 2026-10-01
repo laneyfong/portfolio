@@ -104,6 +104,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           flexShrink: 0,
           width: isActive && window.innerWidth > 768 ? "70%" : "100%",
           height: isActive && window.innerWidth > 768 ? "100%" : "auto",
+          willChange: "opacity",
         }}
       >
         <img
