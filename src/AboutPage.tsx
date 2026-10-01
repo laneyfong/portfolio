@@ -366,7 +366,7 @@ const AboutPage: FC = () => {
             }}
           >
             <iframe
-              src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ52esdJ2HTQb?utm_source=generator"
+              src="https://open.spotify.com/embed/track/02HyFYmpzt02VJ8k0CqxKj?utm_source=generator"
               width="100%"
               height="352"
               frameBorder="0"
