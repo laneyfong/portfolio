@@ -79,7 +79,7 @@ const AboutPage: FC = () => {
   const rightPanelStyle = {
     flexBasis: PANEL_WIDTH,
     width: PANEL_WIDTH,
-    alignSelf: "center" as const,
+    alignSelf: "flex-start" as const,
   };
 
   return (
