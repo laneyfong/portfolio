@@ -63,6 +63,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         <img
           src={verisupplyHero}
           alt="VeriSupply dashboard"
+          decoding="async"
           style={{
             width: "100%",
             height: "100%",

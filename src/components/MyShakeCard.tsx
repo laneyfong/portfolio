@@ -127,6 +127,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           playsInline
           loop
           muted
+          preload="metadata"
         />
 
         {/* Top Text Overlay - Always visible */}

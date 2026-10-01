@@ -110,6 +110,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <img
           src={hovered && hoverScreenshot ? hoverScreenshot : screenshot}
           alt="Project screenshot"
+          decoding="async"
           style={{
             maxWidth: "100%",
             maxHeight: "100%",

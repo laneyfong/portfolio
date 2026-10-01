@@ -101,6 +101,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           playsInline
           loop
           muted
+          preload="metadata"
         />
 
         {/* Top Text Overlay - Always visible */}
