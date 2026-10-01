@@ -303,82 +303,73 @@ const AboutPage: FC = () => {
           }}
         >
 
-          {/* Left side: photo + spotify */}
+          {/* Left side: photos */}
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 24,
-              alignItems: "center",
-            }}
+            className="about-center-photo"
+            style={{ width: IMAGE_WIDTH, flexShrink: 0, position: "relative" }}
+            onMouseEnter={() => setBioPhotoHovered(true)}
+            onMouseLeave={() => setBioPhotoHovered(false)}
           >
-            {/* Center bio photo — interactive photo stack */}
-            <div
-              className="about-center-photo"
-              style={{ width: IMAGE_WIDTH, flexShrink: 0, position: "relative" }}
-              onMouseEnter={() => setBioPhotoHovered(true)}
-              onMouseLeave={() => setBioPhotoHovered(false)}
-            >
-              <ImageStory
-                images={[
-                  { src: "/IMG_0338.PNG", alt: "Portfolio moment 1" },
-                  { src: "/IMG_0336.PNG", alt: "Portfolio moment 2" },
-                  { src: "/IMG_0340.PNG", alt: "Portfolio moment 3" },
-                  { src: "/IMG_0342.PNG", alt: "Portfolio moment 4" },
-                ]}
-                onImageChange={(index) => setCurrentPhotoIndex(index)}
-              />
+            <ImageStory
+              images={[
+                { src: "/IMG_0338.PNG", alt: "Portfolio moment 1" },
+                { src: "/IMG_0336.PNG", alt: "Portfolio moment 2" },
+                { src: "/IMG_0340.PNG", alt: "Portfolio moment 3" },
+                { src: "/IMG_0342.PNG", alt: "Portfolio moment 4" },
+              ]}
+              onImageChange={(index) => setCurrentPhotoIndex(index)}
+            />
 
-              {/* Side label */}
-              <div
-                style={{
-                  position: "absolute",
-                  right: -180,
-                  top: 0,
-                  zIndex: 100,
-                  pointerEvents: "none",
-                }}
-              >
-                {/* Handwritten label */}
-                <div
-                  style={{
-                    fontFamily: "'Caveat', cursive",
-                    fontSize: "22px",
-                    fontWeight: 700,
-                    color: tokens.color.muted,
-                    transform: "rotate(-8deg)",
-                    letterSpacing: "0.5px",
-                    maxWidth: "150px",
-                    lineHeight: 1.3,
-                    wordBreak: "break-word",
-                    paddingTop: "16px",
-                    whiteSpace: "normal",
-                  }}
-                >
-                  {["", "", "", ""][currentPhotoIndex]}
-                </div>
-              </div>
-            </div>
-
-            {/* Spotify embed */}
+            {/* Side label */}
             <div
               style={{
-                width: "100%",
-                maxWidth: "380px",
-                borderRadius: tokens.radius.md,
-                overflow: "hidden",
+                position: "absolute",
+                right: -180,
+                top: 0,
+                zIndex: 100,
+                pointerEvents: "none",
               }}
             >
-              <iframe
-                src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ52esdJ2HTQb?utm_source=generator"
-                width="100%"
-                height="352"
-                frameBorder="0"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                style={{ borderRadius: tokens.radius.md }}
-              ></iframe>
+              {/* Handwritten label */}
+              <div
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  fontSize: "22px",
+                  fontWeight: 700,
+                  color: tokens.color.muted,
+                  transform: "rotate(-8deg)",
+                  letterSpacing: "0.5px",
+                  maxWidth: "150px",
+                  lineHeight: 1.3,
+                  wordBreak: "break-word",
+                  paddingTop: "16px",
+                  whiteSpace: "normal",
+                }}
+              >
+                {["", "", "", ""][currentPhotoIndex]}
+              </div>
             </div>
+          </div>
+
+          {/* Right side: Spotify embed */}
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "380px",
+              borderRadius: tokens.radius.md,
+              overflow: "hidden",
+              flexShrink: 0,
+            }}
+          >
+            <iframe
+              src="https://open.spotify.com/embed/track/6bCDlLBvKjkWZl0KlYRdvV?utm_source=generator"
+              width="100%"
+              height="352"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              style={{ borderRadius: tokens.radius.md }}
+            ></iframe>
           </div>
 
           {/* Contact panel — always visible, not gated behind the photo click */}
