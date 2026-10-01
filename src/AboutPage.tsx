@@ -215,9 +215,6 @@ const AboutPage: FC = () => {
             flex-direction: column !important;
             align-items: center !important;
           }
-          .spotify-embed-container {
-            display: none !important;
-          }
           .about-left-panel {
             display: none !important;
             width: 100% !important;
@@ -306,7 +303,36 @@ const AboutPage: FC = () => {
           }}
         >
 
-          {/* Left side: photos */}
+          {/* Left side: Contact panel */}
+          <div className="about-left-panel" style={rightPanelStyle}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              <h3
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.regular,
+                  fontSize: tokens.text.base,
+                  color: tokens.color.body,
+                  margin: 0,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
+              </h3>
+              <div style={{ display: "flex", gap: 10 }}>
+                <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
+                  <LinkedInIcon />
+                </SocialIconLink>
+                <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
+                  <EmailIcon />
+                </SocialIconLink>
+                <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
+                  <ResumeIcon />
+                </SocialIconLink>
+              </div>
+            </div>
+          </div>
+
+          {/* Right side: Photos */}
           <div
             className="about-center-photo"
             style={{ width: IMAGE_WIDTH, flexShrink: 0, position: "relative" }}
@@ -350,57 +376,6 @@ const AboutPage: FC = () => {
                 }}
               >
                 {["", "", "", ""][currentPhotoIndex]}
-              </div>
-            </div>
-          </div>
-
-          {/* Right side: Spotify embed */}
-          <div
-            className="spotify-embed-container"
-            style={{
-              width: "100%",
-              maxWidth: "380px",
-              borderRadius: tokens.radius.md,
-              overflow: "hidden",
-              flexShrink: 0,
-            }}
-          >
-            <iframe
-              src="https://open.spotify.com/embed/track/02HyFYmpzt02VJ8k0CqxKj?utm_source=generator"
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              style={{ borderRadius: tokens.radius.md }}
-            ></iframe>
-          </div>
-
-          {/* Contact panel — always visible, not gated behind the photo click */}
-          <div className="about-right-panel" style={rightPanelStyle}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-              <h3
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontWeight: tokens.weight.regular,
-                  fontSize: tokens.text.base,
-                  color: tokens.color.body,
-                  margin: 0,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
-              </h3>
-              <div style={{ display: "flex", gap: 10 }}>
-                <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
-                  <LinkedInIcon />
-                </SocialIconLink>
-                <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
-                  <EmailIcon />
-                </SocialIconLink>
-                <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
-                  <ResumeIcon />
-                </SocialIconLink>
               </div>
             </div>
           </div>
