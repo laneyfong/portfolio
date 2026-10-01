@@ -152,11 +152,12 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           /* Flexible spacing for mobile */
           .case-grid-3, .case-grid-2, .case-intro-shots { grid-template-columns: 1fr !important; gap: clamp(16px, 4vw, 32px); }
 
-          /* Stack flex containers vertically */
-          [style*="display: flex"] { flex-direction: column !important; }
-
           /* Reduce font sizes smoothly */
           .case-main { padding: clamp(16px, 5vw, 60px) !important; }
+
+          /* Hide mobile nav tabs on mobile */
+          .case-mobile-tabs { display: none !important; }
+          .case-main { padding-top: clamp(16px, 5vw, 60px) !important; }
         }
         @media (max-width: 640px) {
           /* Extra small screens */
