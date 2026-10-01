@@ -14,6 +14,10 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
+    <>
+      <style>{`
+        .verisupply-img { transition: opacity 1.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+      `}</style>
     <div
       role="link"
       tabIndex={0}
@@ -60,6 +64,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         }}
       >
         <img
+          className="verisupply-img"
           src={isActive ? verisupplyHero : verisupplyThumbnail}
           alt="VeriSupply dashboard"
           style={{
@@ -67,6 +72,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
             height: "100%",
             objectFit: "cover",
             objectPosition: "center",
+            opacity: isActive ? 1 : 0.9,
           }}
         />
       </div>
@@ -127,6 +133,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
       </div>
       )}
     </div>
+    </>
   );
 };
 
