@@ -79,6 +79,7 @@ const AboutPage: FC = () => {
     width: PANEL_WIDTH,
     alignSelf: "flex-start" as const,
     paddingTop: 0,
+    marginBottom: 24,
   };
 
   return (
@@ -275,7 +276,7 @@ const AboutPage: FC = () => {
 
       <main style={{ width: "100%", padding: "64px 0 96px", boxSizing: "border-box", marginTop: "64px" }}>
         <ContentContainer>
-        <div style={{ width: HERO_WIDTH, margin: "0 auto 0" }}>
+        <div style={{ width: HERO_WIDTH, margin: "0 auto 24px" }}>
           <h1
             style={{
               fontFamily: tokens.font.sans,
@@ -297,7 +298,7 @@ const AboutPage: FC = () => {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "flex-start",
-            gap: 32,
+            gap: 24,
             width: "100%",
           }}
         >
@@ -305,7 +306,7 @@ const AboutPage: FC = () => {
           {/* Top: Photos */}
           <div
             className="about-center-photo"
-            style={{ width: "100%", flexShrink: 0, position: "relative", marginTop: "40px" }}
+            style={{ width: "100%", flexShrink: 0, position: "relative" }}
             onMouseEnter={() => setBioPhotoHovered(true)}
             onMouseLeave={() => setBioPhotoHovered(false)}
           >
