@@ -16,11 +16,25 @@ function ScrollToTop() {
   useEffect(() => {
     // Scroll to top immediately and after delays to ensure layout is fully ready
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
     // Multiple timing attempts to ensure scroll happens after render and layout
-    const timer1 = setTimeout(() => window.scrollTo(0, 0), 0);
-    const timer2 = setTimeout(() => window.scrollTo(0, 0), 50);
-    const timer3 = setTimeout(() => window.scrollTo(0, 0), 100);
+    const timer1 = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 0);
+    const timer2 = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 50);
+    const timer3 = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 150);
 
     return () => {
       clearTimeout(timer1);
