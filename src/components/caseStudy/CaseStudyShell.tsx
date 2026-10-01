@@ -197,6 +197,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             height: 40,
             borderRadius: "50%",
             background: "transparent",
+            border: `1px solid ${tokens.color.cardBorder}`,
             color: tokens.color.textDark,
             cursor: "pointer",
             display: "flex",
@@ -208,9 +209,11 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = tokens.color.offWhite;
+            e.currentTarget.style.borderColor = tokens.color.muted;
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.borderColor = tokens.color.cardBorder;
           }}
         >
           <BackArrowIcon />
@@ -335,12 +338,22 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           height: 40,
           borderRadius: "50%",
           background: tokens.color.white,
+          border: `1px solid ${tokens.color.cardBorder}`,
           color: tokens.color.ink,
           cursor: "pointer",
           alignItems: "center",
           justifyContent: "center",
           zIndex: 10,
           boxShadow: tokens.shadow.subtle,
+          transition: "all 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = tokens.color.muted;
+          e.currentTarget.style.background = tokens.color.offWhite;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = tokens.color.cardBorder;
+          e.currentTarget.style.background = tokens.color.white;
         }}
       >
         <BackArrowIcon />
