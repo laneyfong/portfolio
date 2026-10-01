@@ -122,19 +122,19 @@ const Badge: FC<BadgeProps> = ({
             -webkit-backface-visibility: hidden !important;
           }
           .badge-front h2 {
-            font-size: 15px !important;
+            font-size: 16px !important;
           }
           .badge-front p {
-            font-size: 13px !important;
+            font-size: 14px !important;
           }
           .badge-front p:last-child {
-            font-size: 12px !important;
-          }
-          .badge-back-value {
             font-size: 13px !important;
           }
+          .badge-back-value {
+            font-size: 14px !important;
+          }
           .badge-back-label {
-            font-size: 10px !important;
+            font-size: 11px !important;
           }
           .badge-container button {
             min-height: 48px !important;
@@ -151,19 +151,19 @@ const Badge: FC<BadgeProps> = ({
             -webkit-backface-visibility: hidden !important;
           }
           .badge-front h2 {
-            font-size: 13px !important;
+            font-size: 14px !important;
           }
           .badge-front p {
-            font-size: 11px !important;
+            font-size: 13px !important;
           }
           .badge-front p:last-child {
-            font-size: 10px !important;
+            font-size: 12px !important;
           }
           .badge-back-value {
-            font-size: 11px !important;
+            font-size: 12px !important;
           }
           .badge-back-label {
-            font-size: 9px !important;
+            font-size: 10px !important;
           }
           .badge-container button {
             min-height: 44px !important;
