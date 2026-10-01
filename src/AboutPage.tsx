@@ -8,16 +8,14 @@ import ImageStory from "./components/ImageStory";
 import ProudMomentsCarousel from "./components/ProudMomentsCarousel";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, ResumeIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL, RESUME_URL } from "./components/SocialIcons";
-import aboutBioPhoto from "./assets/about-bio-photo.jpg";
-import aboutBioPhotoWebp from "./assets/about-bio-photo.webp";
 import clubPic from "./assets/club-pic.jpg";
 import clubPicWebp from "./assets/club-pic.webp";
 import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
-import portfolioImage1 from "./assets/IMG_0336.PNG";
-import portfolioImage2 from "./assets/IMG_0338.PNG";
-import portfolioImage3 from "./assets/IMG_0340.PNG";
-import portfolioImage4 from "./assets/IMG_0342.PNG";
+import portfolioImage1 from "./assets/IMG_0336.png";
+import portfolioImage2 from "./assets/IMG_0338.png";
+import portfolioImage3 from "./assets/IMG_0340.png";
+import portfolioImage4 from "./assets/IMG_0342.png";
 
 const Italic: FC<{ children: string; color?: string }> = ({ children, color }) => (
   <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400, color }}>{children}</em>
