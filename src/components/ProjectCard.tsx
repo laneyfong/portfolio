@@ -53,11 +53,17 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const [hovered, setHovered] = useState(false);
 
   const captionParts = caption.split(captionItalic);
+  const isDesktop = window.innerWidth > 768;
 
   return (
     <>
       <style>{`
         .project-card-mobile {
+          border-radius: ${isDesktop ? 20 : 12}px;
+          cursor: ${to ? "pointer" : "default"};
+          position: relative;
+          overflow: hidden;
+          display: flex;
           transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
@@ -66,14 +72,71 @@ const ProjectCard: FC<ProjectCardProps> = ({
                       align-items 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       flex-direction 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.2s,
                       box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                      outline 0.6s cubic-bezier(0.4, 0, 0.2, 1),
                       transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          outline: none;
+        }
+
+        .project-card--inactive {
+          flex-direction: column;
+          gap: 0;
+          align-items: stretch;
+          height: auto;
+          margin-top: 0;
+          margin-bottom: 0;
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+        }
+
+        .project-card--active {
+          flex-direction: row;
+          gap: 32px;
+          align-items: flex-start;
+          height: 600px;
+          margin-top: 12px;
+          margin-bottom: clamp(40px, 4vw, 80px);
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+        }
+
+        .project-card--active:hover {
+          transform: translateY(-4px) scale(1.01);
+        }
+
+        .project-card--inactive:hover {
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
         }
 
         .project-card-image-mobile {
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 60px 0px;
+          flex-shrink: 0;
+          background: ${noImageGradient ? "#F5F5F7" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)"};
+          border-radius: ${isDesktop ? 20 : 0}px;
           transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: filter, width, height;
+        }
+
+        .project-card-image-mobile--inactive {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 10;
+          filter: grayscale(100%);
+        }
+
+        .project-card-image-mobile--active {
+          width: 70%;
+          height: 100%;
+          filter: grayscale(0%);
+        }
+
+        .project-card-image-mobile:hover {
+          filter: grayscale(0%);
         }
 
         @media (max-width: 768px) {
@@ -86,7 +149,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         }
       `}</style>
     <div
-      className="project-card-mobile"
+      className={`project-card-mobile ${isActive && isDesktop ? "project-card--active" : "project-card--inactive"}`}
       role={to ? "link" : undefined}
       tabIndex={to ? 0 : undefined}
       onClick={(e) => {
@@ -107,46 +170,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
       }
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        borderRadius: window.innerWidth > 768 ? 20 : 12,
-        cursor: to ? "pointer" : "default",
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
-        transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
-        transform: isActive && hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
-        boxShadow: hovered && !isActive ? "0 12px 32px rgba(0, 0, 0, 0.15)" : "none",
-        gap: isActive && window.innerWidth > 768 ? 32 : 0,
-        alignItems: isActive && window.innerWidth > 768 ? "flex-start" : "stretch",
-        height: isActive && window.innerWidth > 768 ? "600px" : "auto",
-        marginTop: isActive ? "12px" : 0,
-        marginBottom: isActive ? "clamp(40px, 4vw, 80px)" : 0,
-        outline: "none",
-        opacity: 1,
-      }}
     >
       {/* Image Section */}
       <div
-        className="project-card-image-mobile"
-        style={{
-          position: "relative",
-          aspectRatio: isActive && window.innerWidth > 768 ? undefined : "16 / 10",
-          overflow: "hidden",
-          borderRadius: window.innerWidth > 768 ? 20 : 0,
-          backgroundColor: noBackground ? "transparent" : (noImageGradient ? "#F5F5F7" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)"),
-          background: noImageGradient ? "#F5F5F7" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "60px 0px",
-          flexShrink: 0,
-          width: isActive && window.innerWidth > 768 ? "70%" : "100%",
-          height: isActive && window.innerWidth > 768 ? "100%" : "auto",
-          willChange: "opacity, filter, width, height",
-          filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
-          transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
+        className={`project-card-image-mobile ${isActive && isDesktop ? "project-card-image-mobile--active" : "project-card-image-mobile--inactive"}`}
       >
         <img
           src={hovered && hoverScreenshot ? hoverScreenshot : screenshot}
@@ -215,7 +242,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: window.innerWidth > 768 ? "0 0 0 0" : "16px 0 0 0",
+          padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
           pointerEvents: "none",
           flex: 1,
           justifyContent: "flex-start",
