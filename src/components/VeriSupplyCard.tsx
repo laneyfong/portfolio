@@ -56,7 +56,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
         alignItems: isActive && window.innerWidth > 768 ? "flex-start" : "stretch",
         minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
         height: isActive && window.innerWidth > 768 ? "600px" : "auto",
-        marginTop: isActive ? "20px" : 0,
+        marginTop: isActive ? "16px" : 0,
         marginBottom: isActive ? "clamp(40px, 4vw, 80px)" : 0,
         outline: "none",
       }}
