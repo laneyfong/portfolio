@@ -1046,18 +1046,33 @@ export const ProcessFlow: FC<{
 // ---------- New visual-first components ----------
 
 export const StatRow: FC<{ items: { icon?: ReactNode; value: string; label: string }[] }> = ({ items }) => (
-  <div style={{ display: "grid", gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 24, marginBottom: 48 }}>
-    {items.map((item, i) => (
-      <div key={i} style={{ textAlign: "center", padding: "28px 24px", borderRadius: tokens.radius.md, background: tokens.color.offWhite }}>
-        <div style={{ fontFamily: tokens.font.sans, fontSize: "48px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8, lineHeight: 1 }}>
-          {item.value}
+  <>
+    <style>{`
+      .stat-row {
+        display: grid;
+        grid-template-columns: repeat(${items.length}, 1fr);
+        gap: 24px;
+        margin-bottom: 48px;
+      }
+      @media (max-width: 768px) {
+        .stat-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    `}</style>
+    <div className="stat-row">
+      {items.map((item, i) => (
+        <div key={i} style={{ textAlign: "center", padding: "28px 24px", borderRadius: tokens.radius.md, background: tokens.color.offWhite }}>
+          <div style={{ fontFamily: tokens.font.sans, fontSize: "48px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8, lineHeight: 1 }}>
+            {item.value}
+          </div>
+          <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, fontWeight: tokens.weight.regular, lineHeight: tokens.leading.snug }}>
+            {item.label}
+          </div>
         </div>
-        <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, fontWeight: tokens.weight.regular, lineHeight: tokens.leading.snug }}>
-          {item.label}
-        </div>
-      </div>
-    ))}
-  </div>
+      ))}
+    </div>
+  </>
 );
 
 export const ExpandableRankedList: FC<{ items: { rank: number; title: string; detail: string }[] }> = ({ items }) => {
