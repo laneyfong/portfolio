@@ -366,6 +366,34 @@ const AboutPage: FC = () => {
               ["Product Designer", "Cognitive Science @ UC Berkeley", "HCI master's @ UCSC"]
             )}
           </p>
+
+          {/* Contact panel - inline with bio */}
+          <div style={{ marginTop: 24, marginBottom: 24 }}>
+            <h3
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.regular,
+                fontSize: tokens.text.base,
+                color: tokens.color.body,
+                margin: "0 0 14px 0",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
+            </h3>
+            <div style={{ display: "flex", gap: 10, margin: "0 0 18px 0" }}>
+              <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
+                <LinkedInIcon />
+              </SocialIconLink>
+              <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
+                <EmailIcon />
+              </SocialIconLink>
+              <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
+                <ResumeIcon />
+              </SocialIconLink>
+            </div>
+          </div>
+
           <p
             style={{
               fontFamily: tokens.font.sans,
@@ -406,35 +434,6 @@ const AboutPage: FC = () => {
               ["research-backed", "accessibility", "friction"]
             )}
           </p>
-        </div>
-
-        {/* Contact panel */}
-        <div className="about-left-panel" style={{ marginTop: 32, width: HERO_WIDTH, margin: "32px auto 0" }}>
-          <div>
-            <h3
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                fontSize: tokens.text.base,
-                color: tokens.color.body,
-                margin: "0 0 14px 0",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
-            </h3>
-            <div style={{ display: "flex", gap: 10, margin: "0 0 18px 0" }}>
-              <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
-                <LinkedInIcon />
-              </SocialIconLink>
-              <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
-                <EmailIcon />
-              </SocialIconLink>
-              <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
-                <ResumeIcon />
-              </SocialIconLink>
-            </div>
-          </div>
         </div>
 
         {/* Things I am proud of */}
