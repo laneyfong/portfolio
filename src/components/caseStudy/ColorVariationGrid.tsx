@@ -26,8 +26,8 @@ const ColorVariationGrid: FC = () => {
         }
         @media (max-width: 768px) {
           .color-variation-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 24px;
             margin-bottom: 32px;
           }
