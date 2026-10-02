@@ -47,7 +47,7 @@ const IDBridgeCaseStudy: FC = () => {
           style={{
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
-            fontSize: tokens.text["2xl"],
+            fontSize: tokens.text.xl,
             color: tokens.color.ink,
             lineHeight: tokens.leading.snug,
             margin: "0 0 20px",

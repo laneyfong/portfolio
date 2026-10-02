@@ -429,7 +429,7 @@ const MyShakeCaseStudy: FC = () => {
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: tokens.text["2xl"],
+              fontSize: tokens.text.xl,
               color: tokens.color.ink,
               lineHeight: tokens.leading.snug,
               margin: "0 0 20px",
@@ -581,7 +581,7 @@ const MyShakeCaseStudy: FC = () => {
           <h2
             style={{
               fontFamily: tokens.font.sans,
-              fontSize: tokens.text["2xl"],
+              fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
               color: tokens.color.ink,
               lineHeight: tokens.leading.snug,
@@ -665,7 +665,7 @@ const MyShakeCaseStudy: FC = () => {
           <h2
             style={{
               fontFamily: tokens.font.sans,
-              fontSize: tokens.text["2xl"],
+              fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
               color: tokens.color.ink,
               lineHeight: tokens.leading.snug,
@@ -736,7 +736,7 @@ const MyShakeCaseStudy: FC = () => {
           <h2
             style={{
               fontFamily: tokens.font.sans,
-              fontSize: tokens.text["2xl"],
+              fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
               color: tokens.color.ink,
               lineHeight: tokens.leading.snug,
@@ -825,7 +825,7 @@ const MyShakeCaseStudy: FC = () => {
           <h2
             style={{
               fontFamily: tokens.font.sans,
-              fontSize: tokens.text["2xl"],
+              fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
               color: tokens.color.ink,
               lineHeight: tokens.leading.snug,
@@ -1062,7 +1062,7 @@ const MyShakeCaseStudy: FC = () => {
           <h2
             style={{
               fontFamily: tokens.font.sans,
-              fontSize: tokens.text["2xl"],
+              fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
               color: tokens.color.ink,
               lineHeight: tokens.leading.snug,
