@@ -262,6 +262,20 @@ const AboutPage: FC = () => {
         }
       `}</style>
 
+      <style>{`
+        @media (max-width: 768px) {
+          main {
+            padding: 40px 0 64px !important;
+          }
+          .about-container {
+            overflow: hidden !important;
+          }
+          .about-center-photo > div:nth-child(2) {
+            display: none !important;
+          }
+        }
+      `}</style>
+
       <TopNav />
 
       <main style={{ width: "100%", padding: "64px 0 96px", boxSizing: "border-box", marginTop: "64px" }}>
