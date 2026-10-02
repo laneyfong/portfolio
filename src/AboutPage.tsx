@@ -278,14 +278,14 @@ const AboutPage: FC = () => {
 
       <main style={{ width: "100%", padding: "64px 0 96px", boxSizing: "border-box", marginTop: "64px" }}>
         <ContentContainer>
-        <div style={{ width: HERO_WIDTH, margin: "0 auto 16px" }}>
+        <div style={{ width: HERO_WIDTH, margin: "0 auto 0" }}>
           <h1
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.regular,
               fontSize: tokens.text.xl,
               color: tokens.color.muted,
-              margin: 0,
+              margin: "0 0 14px 0",
             }}
           >
             Introducing <Italic color={tokens.color.ink}>Laney Fong</Italic>
@@ -293,7 +293,7 @@ const AboutPage: FC = () => {
         </div>
 
         {/* Intro text */}
-        <div style={{ width: HERO_WIDTH, margin: "0 auto 0", marginTop: 14 }}>
+        <div style={{ width: HERO_WIDTH, margin: "0 auto 0" }}>
           <p
             style={{
               fontFamily: tokens.font.sans,
@@ -304,23 +304,8 @@ const AboutPage: FC = () => {
             }}
           >
             {withItalics(
-              "A Product Designer with a background in Cognitive Science @ UC Berkeley",
-              ["Product Designer", "Cognitive Science @ UC Berkeley"]
-            )}
-          </p>
-          <p
-            style={{
-              fontFamily: tokens.font.sans,
-              fontSize: tokens.text.md,
-              lineHeight: tokens.leading.normal,
-              color: tokens.color.body,
-              margin: 0,
-              marginTop: "14px",
-            }}
-          >
-            {withItalics(
-              "is currently finishing up her HCI master's @ UCSC.",
-              ["HCI master's @ UCSC"]
+              "A Product Designer with a background in Cognitive Science @ UC Berkeley and is currently finishing up her HCI master's @ UCSC.",
+              ["Product Designer", "Cognitive Science @ UC Berkeley", "HCI master's @ UCSC"]
             )}
           </p>
         </div>
