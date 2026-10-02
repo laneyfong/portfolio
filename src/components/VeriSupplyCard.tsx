@@ -93,25 +93,6 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           filter: grayscale(0%);
         }
 
-        .verisupply-text-section {
-          transition: flex 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .verisupply-text-section--inactive {
-          flex: 0;
-          width: 0;
-          opacity: 0;
-          overflow: hidden;
-        }
-
-        .verisupply-text-section--active {
-          flex: 1;
-          width: auto;
-          opacity: 1;
-          overflow: visible;
-        }
 
         @media (max-width: 768px) {
           .verisupply-card-mobile {
@@ -229,17 +210,17 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
         </div>
       </div>
 
-      {/* Text Section - Right Side */}
+      {/* Text Section - Right Side (Active Only) */}
+      {isActive && (
       <div
-        className={`verisupply-text-section ${isActive && isDesktop ? "verisupply-text-section--active" : "verisupply-text-section--inactive"}`}
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
           padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: isActive ? "auto" : "none",
+          pointerEvents: "none",
+          flex: 1,
           justifyContent: "flex-start",
-          minWidth: 0,
         }}
       >
         {/* Role Outcome */}
@@ -275,6 +256,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           .
         </span>
       </div>
+      )}
     </div>
     </>
   );

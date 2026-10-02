@@ -145,25 +145,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           filter: grayscale(0%);
         }
 
-        .myshake-text-section {
-          transition: flex 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .myshake-text-section--inactive {
-          flex: 0;
-          width: 0;
-          opacity: 0;
-          overflow: hidden;
-        }
-
-        .myshake-text-section--active {
-          flex: 1;
-          width: auto;
-          opacity: 1;
-          overflow: visible;
-        }
 
         @media (max-width: 768px) {
           .myshake-card-mobile {
@@ -288,17 +269,17 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         </div>
       </div>
 
-      {/* Text Section - Right Side */}
+      {/* Text Section - Right Side (Active Only) */}
+      {isActive && (
       <div
-        className={`myshake-text-section ${isActive && isDesktop ? "myshake-text-section--active" : "myshake-text-section--inactive"}`}
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
           padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: isActive ? "auto" : "none",
+          pointerEvents: "none",
+          flex: 1,
           justifyContent: "flex-start",
-          minWidth: 0,
         }}
       >
         {/* Role Outcome */}
@@ -334,6 +315,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           {boldifyMetrics(captionParts[1], boldMetrics)}
         </span>
       </div>
+      )}
       </div>
     </>
   );

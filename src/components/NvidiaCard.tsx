@@ -103,25 +103,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           filter: grayscale(0%);
         }
 
-        .nvidia-text-section {
-          transition: flex 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nvidia-text-section--inactive {
-          flex: 0;
-          width: 0;
-          opacity: 0;
-          overflow: hidden;
-        }
-
-        .nvidia-text-section--active {
-          flex: 1;
-          width: auto;
-          opacity: 1;
-          overflow: visible;
-        }
 
         @media (max-width: 768px) {
           .nvidia-card-mobile {
@@ -273,17 +254,17 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           </div>
         </div>
 
-        {/* Text Section - Right Side */}
+        {/* Text Section - Right Side (Active Only) */}
+        {isActive && (
         <div
-          className={`nvidia-text-section ${isActive && isDesktop ? "nvidia-text-section--active" : "nvidia-text-section--inactive"}`}
           style={{
             display: "flex",
             flexDirection: "column",
             gap: 12,
             padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
-            pointerEvents: isActive ? "auto" : "none",
+            pointerEvents: "none",
+            flex: 1,
             justifyContent: "flex-start",
-            minWidth: 0,
           }}
         >
           {/* Context */}
@@ -357,6 +338,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             </span>
           </div>
         </div>
+        )}
       </div>
     </>
   );
