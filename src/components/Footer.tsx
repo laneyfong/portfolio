@@ -82,7 +82,7 @@ const Footer: FC = () => (
           style={{
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.regular,
-            fontSize: tokens.text.sm,
+            fontSize: tokens.text.md,
             color: tokens.color.white,
             opacity: 0.85,
             margin: "0 0 12px 0",
@@ -93,7 +93,7 @@ const Footer: FC = () => (
             style={{
               fontFamily: tokens.font.serifItalic,
               fontStyle: "italic",
-              color: tokens.color.accent,
+              color: "#86A8D8",
             }}
           >
             intention
