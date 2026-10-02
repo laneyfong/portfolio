@@ -123,6 +123,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           width: isActive && window.innerWidth > 768 ? "70%" : "100%",
           height: isActive && window.innerWidth > 768 ? "100%" : "auto",
           willChange: "opacity",
+          filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
+          transition: "filter 0.4s ease",
         }}
       >
         <img

@@ -76,6 +76,8 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
           backgroundColor: "#1a1a1a",
           willChange: "opacity",
+          filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
+          transition: "filter 0.4s ease",
         }}
       >
         <img
