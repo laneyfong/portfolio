@@ -79,19 +79,16 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           pointer-events: none;
           flex: 1;
           justify-content: flex-start;
-          white-space: nowrap;
           overflow: hidden;
-          transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.7s, opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.7s;
+          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nvidia-text-section--inactive {
-          transform: translateX(20px);
           opacity: 0;
           pointer-events: none;
         }
 
         .nvidia-text-section--active {
-          transform: translateX(0);
           opacity: 1;
           pointer-events: auto;
         }

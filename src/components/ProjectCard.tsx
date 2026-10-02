@@ -107,19 +107,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
           pointer-events: none;
           flex: 1;
           justify-content: flex-start;
-          white-space: nowrap;
           overflow: hidden;
-          transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.7s, opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.7s;
+          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-card-text-section--inactive {
-          transform: translateX(20px);
           opacity: 0;
           pointer-events: none;
         }
 
         .project-card-text-section--active {
-          transform: translateX(0);
           opacity: 1;
           pointer-events: auto;
         }
