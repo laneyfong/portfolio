@@ -123,6 +123,11 @@ const Badge: FC<BadgeProps> = ({
           }}
         >
       <style>{`
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .badge-container {
+            width: clamp(280px, 28vw, 420px) !important;
+          }
+        }
         @media (max-width: 768px) {
           .badge-container {
             width: clamp(180px, 70vw, 300px) !important;
