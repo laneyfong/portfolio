@@ -297,7 +297,8 @@ const AboutPage: FC = () => {
             justifyContent: "flex-start",
             alignItems: "flex-start",
             gap: 14,
-            width: "100%",
+            width: HERO_WIDTH,
+            margin: "0 auto",
           }}
         >
 
