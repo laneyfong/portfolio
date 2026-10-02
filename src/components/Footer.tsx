@@ -82,7 +82,7 @@ const Footer: FC = () => (
           style={{
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.regular,
-            fontSize: tokens.text.md,
+            fontSize: tokens.text.base,
             color: tokens.color.white,
             opacity: 0.85,
             margin: "0 0 12px 0",
