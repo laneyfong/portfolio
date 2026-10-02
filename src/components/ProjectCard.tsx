@@ -95,7 +95,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         overflow: "hidden",
         display: "flex",
         flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
-        transition: "all 1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1), outline 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1)",
+        transition: "flex-direction 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1), gap 0.8s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.8s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1), outline 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
         transform: isActive && hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
         boxShadow: hovered && !isActive ? "0 12px 32px rgba(0, 0, 0, 0.15)" : "none",
         gap: isActive && window.innerWidth > 768 ? 32 : 0,
@@ -123,9 +123,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
           flexShrink: 0,
           width: isActive && window.innerWidth > 768 ? "70%" : "100%",
           height: isActive && window.innerWidth > 768 ? "100%" : "auto",
-          willChange: "opacity, filter",
+          willChange: "opacity, filter, width, height",
           filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
-          transition: "filter 1.2s cubic-bezier(0.4, 0, 0.2, 1), width 0.9s cubic-bezier(0.4, 0, 0.2, 1), height 0.9s cubic-bezier(0.4, 0, 0.2, 1)",
+          transition: "filter 1.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
         <img
