@@ -355,10 +355,23 @@ const AboutPage: FC = () => {
           <p
             style={{
               fontFamily: tokens.font.sans,
+              fontSize: tokens.text.base,
+              lineHeight: tokens.leading.normal,
+              color: tokens.color.body,
+              margin: 0,
+            }}
+          >
+            Hello! I am Laney.
+          </p>
+
+          <p
+            style={{
+              fontFamily: tokens.font.sans,
               fontSize: tokens.text.md,
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
               margin: 0,
+              marginTop: "14px",
             }}
           >
             {withItalics(
@@ -393,19 +406,6 @@ const AboutPage: FC = () => {
               </SocialIconLink>
             </div>
           </div>
-
-          <p
-            style={{
-              fontFamily: tokens.font.sans,
-              fontSize: tokens.text.base,
-              lineHeight: tokens.leading.normal,
-              color: tokens.color.body,
-              margin: 0,
-              marginTop: "14px",
-            }}
-          >
-            Hello! I am Laney.
-          </p>
           <p
             style={{
               fontFamily: tokens.font.sans,
