@@ -308,6 +308,23 @@ const Badge: FC<BadgeProps> = ({
             >
               ↻ Flip to explore
             </p>
+
+            {/* Sparkle emoji - only on front */}
+            {showSparkle && (
+              <div
+                className="sparkle"
+                style={{
+                  position: "absolute",
+                  top: "20%",
+                  right: "10%",
+                  fontSize: "32px",
+                  zIndex: 20,
+                  pointerEvents: "none",
+                }}
+              >
+                ✨
+              </div>
+            )}
           </div>
         </div>
 
@@ -508,23 +525,6 @@ const Badge: FC<BadgeProps> = ({
           </button>
         </div>
       </div>
-
-      {/* Sparkle emoji */}
-      {showSparkle && (
-        <div
-          className="sparkle"
-          style={{
-            position: "absolute",
-            top: "20%",
-            right: "10%",
-            fontSize: "32px",
-            zIndex: 20,
-            pointerEvents: "none",
-          }}
-        >
-          ✨
-        </div>
-      )}
     </div>
   );
 };
