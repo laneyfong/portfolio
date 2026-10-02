@@ -110,10 +110,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
           flex-shrink: 0;
           background: ${noImageGradient ? "#F5F5F7" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)"};
           border-radius: ${isDesktop ? 20 : 0}px;
-          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      aspect-ratio 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                      height 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                      aspect-ratio 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                      filter 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
           will-change: filter, width, height;
         }
 
