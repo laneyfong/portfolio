@@ -76,7 +76,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           display: flex;
           flex-direction: column;
           gap: 12px;
-          padding: ${isDesktop ? "0 0 0 0" : "16px 0 0 0"};
           pointer-events: none;
           flex: 1;
           justify-content: flex-start;
