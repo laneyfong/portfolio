@@ -16,14 +16,23 @@ const ColorVariationGrid: FC = () => {
   ];
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
-        gap: 24,
-        marginBottom: 32,
-      }}
-    >
+    <>
+      <style>{`
+        .color-variation-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+          margin-bottom: 32px;
+        }
+        @media (max-width: 768px) {
+          .color-variation-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+      <div
+        className="color-variation-grid"
+      >
       {variations.map((variation, idx) => (
         <div
           key={idx}
@@ -136,7 +145,8 @@ const ColorVariationGrid: FC = () => {
           )}
         </div>
       ))}
-    </div>
+      </div>
+    </>
   );
 };
 
