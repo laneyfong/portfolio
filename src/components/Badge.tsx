@@ -204,6 +204,7 @@ const Badge: FC<BadgeProps> = ({
               position: "relative",
               overflow: "hidden",
               marginBottom: "16px",
+              backgroundBlendMode: "screen",
             }}
           >
             <style>{`
