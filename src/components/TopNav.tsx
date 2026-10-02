@@ -197,6 +197,22 @@ const TopNav: FC = () => {
           .mobile-menu.open {
             max-height: 400px;
           }
+        }
+
+        @media (min-width: 769px) and (max-width: 900px) {
+          .mobile-menu {
+            gap: 20px;
+            padding: 16px 0;
+          }
+
+          .mobile-menu.open {
+            max-height: 350px;
+          }
+
+          .mobile-menu-item {
+            padding: 14px clamp(32px, 7vw, 80px);
+            font-size: 15px;
+          }
 
           .mobile-menu-item {
             padding: 18px clamp(32px, 7vw, 80px);
