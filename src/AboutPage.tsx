@@ -388,7 +388,7 @@ const AboutPage: FC = () => {
               fontSize: tokens.text.md,
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
-              margin: "0 0 16px",
+              margin: 0,
             }}
           >
             {withItalics(
@@ -402,7 +402,7 @@ const AboutPage: FC = () => {
               fontSize: tokens.text.base,
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
-              margin: "0 0 16px",
+              margin: 0,
             }}
           >
             Hello! I am Laney.
@@ -413,7 +413,7 @@ const AboutPage: FC = () => {
               fontSize: tokens.text.base,
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
-              margin: "0 0 16px",
+              margin: 0,
             }}
           >
             {withItalics(
