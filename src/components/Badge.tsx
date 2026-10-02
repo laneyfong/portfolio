@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { tokens } from "../tokens";
 import avatarSticker from "../assets/avatar-sticker.png";
 
@@ -25,6 +25,7 @@ const Badge: FC<BadgeProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const [showSparkle, setShowSparkle] = useState(false);
   const [avatarRotate, setAvatarRotate] = useState({ x: 0, y: 0 });
+  const badgeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isHovered) {
@@ -34,25 +35,32 @@ const Badge: FC<BadgeProps> = ({
     }
   }, [isHovered]);
 
+  useEffect(() => {
+    if (!isHovered) return;
+
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (!badgeRef.current) return;
+
+      const rect = badgeRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const distX = (e.clientX - centerX) / (rect.width / 2);
+      const distY = (e.clientY - centerY) / (rect.height / 2);
+
+      setAvatarRotate({
+        x: Math.max(-15, Math.min(15, distY * -20)),
+        y: Math.max(-15, Math.min(15, distX * 20)),
+      });
+    };
+
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    return () => window.removeEventListener("mousemove", handleGlobalMouseMove);
+  }, [isHovered]);
+
   const handleMouseEnter = () => {
     setIsHovered(true);
     setShowSparkle(true);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isHovered) return;
-
-    const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const distX = (e.clientX - centerX) / (rect.width / 2);
-    const distY = (e.clientY - centerY) / (rect.height / 2);
-
-    setAvatarRotate({
-      x: Math.max(-15, Math.min(15, distY * -20)),
-      y: Math.max(-15, Math.min(15, distX * 20)),
-    });
   };
 
   // Dot pattern for badge accent
@@ -81,6 +89,7 @@ const Badge: FC<BadgeProps> = ({
 
   return (
     <div
+      ref={badgeRef}
       className="badge-container"
       onClick={() => setIsFlipped(!isFlipped)}
       onKeyDown={(e) => {
@@ -91,7 +100,6 @@ const Badge: FC<BadgeProps> = ({
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setIsHovered(false)}
-      onMouseMove={handleMouseMove}
       role="button"
       tabIndex={0}
       aria-label="Click or press Enter to flip card"
