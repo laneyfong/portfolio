@@ -206,14 +206,11 @@ const AboutPage: FC = () => {
             align-items: center !important;
           }
           .about-left-panel {
-            display: none !important;
+            display: block !important;
             width: 100% !important;
             flex-basis: 100% !important;
             min-width: 100% !important;
             order: 2 !important;
-          }
-          .about-left-panel.revealed {
-            display: block !important;
             margin-top: 32px !important;
           }
           .about-center-photo {
