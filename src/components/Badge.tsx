@@ -500,6 +500,14 @@ const Badge: FC<BadgeProps> = ({
                 (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
                 (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.cardBorder;
               }}
+              onTouchStart={(e) => {
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(0, 0, 0, 0.08)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.muted;
+              }}
+              onTouchEnd={(e) => {
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.cardBorder;
+              }}
             >
               See work
               <span
