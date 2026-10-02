@@ -304,8 +304,23 @@ const AboutPage: FC = () => {
             }}
           >
             {withItalics(
-              "A Product Designer with a background in Cognitive Science @ UC Berkeley and is currently finishing up her HCI master's @ UCSC.",
-              ["Product Designer", "Cognitive Science @ UC Berkeley", "HCI master's @ UCSC"]
+              "A Product Designer with a background in Cognitive Science @ UC Berkeley",
+              ["Product Designer", "Cognitive Science @ UC Berkeley"]
+            )}
+          </p>
+          <p
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.md,
+              lineHeight: tokens.leading.normal,
+              color: tokens.color.body,
+              margin: 0,
+              marginTop: "14px",
+            }}
+          >
+            {withItalics(
+              "is currently finishing up her HCI master's @ UCSC.",
+              ["HCI master's @ UCSC"]
             )}
           </p>
         </div>
