@@ -165,7 +165,7 @@ const LabPage: FC = () => {
               style={{
                 margin: "0 0 16px 0",
                 fontFamily: tokens.font.sans,
-                fontSize: "44px",
+                fontSize: tokens.text.xl,
                 fontWeight: tokens.weight.medium,
                 color: tokens.color.ink,
                 lineHeight: 1.2,
