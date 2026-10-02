@@ -19,7 +19,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
   roleOutcome,
   context,
   to,
-  isActive = true,
+  isActive = false,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -56,7 +56,12 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         className="idbridge-card-mobile"
         role="link"
         tabIndex={0}
-      onClick={() => navigate(to)}
+      onClick={(e) => {
+        if (isActive) {
+          e.stopPropagation();
+          navigate(to);
+        }
+      }}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();

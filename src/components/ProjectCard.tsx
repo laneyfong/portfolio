@@ -71,6 +71,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       role={to ? "link" : undefined}
       tabIndex={to ? 0 : undefined}
       onClick={(e) => {
+        console.log('ProjectCard clicked:', { isActive, to, shouldNavigate: isActive && to });
         if (isActive && to) {
           e.stopPropagation();
           navigate(to);

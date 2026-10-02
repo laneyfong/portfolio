@@ -43,7 +43,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   roleOutcome,
   context,
   to,
-  isActive = true,
+  isActive = false,
   boldMetrics = [],
 }) => {
   const navigate = useNavigate();
@@ -82,7 +82,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         className="myshake-card-mobile"
         role="link"
         tabIndex={0}
-      onClick={() => navigate(to)}
+      onClick={(e) => {
+        if (isActive) {
+          e.stopPropagation();
+          navigate(to);
+        }
+      }}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();

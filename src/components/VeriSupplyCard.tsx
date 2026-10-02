@@ -8,7 +8,7 @@ interface VeriSupplyCardProps {
   isActive?: boolean;
 }
 
-const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
+const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
 
@@ -28,7 +28,12 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = true }) => {
         className="verisupply-card-mobile"
         role="link"
         tabIndex={0}
-      onClick={() => navigate("/verisupply")}
+      onClick={(e) => {
+        if (isActive) {
+          e.stopPropagation();
+          navigate("/verisupply");
+        }
+      }}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
