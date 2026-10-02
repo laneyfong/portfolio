@@ -12,6 +12,7 @@ import clubPic from "./assets/club-pic.jpg";
 import clubPicWebp from "./assets/club-pic.webp";
 import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
+import nameLogoCharacter from "../NameLogoFull_Character.svg";
 
 const Italic: FC<{ children: string; color?: string }> = ({ children, color }) => (
   <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400, color }}>{children}</em>
@@ -485,6 +486,38 @@ const AboutPage: FC = () => {
                   label: "Google Designathon",
                 },
               ]}
+            />
+          </div>
+
+          {/* Sign-off */}
+          <div
+            style={{
+              marginTop: 80,
+              paddingTop: 40,
+              borderTop: `1px solid ${tokens.color.cardBorder}`,
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
+            <p
+              style={{
+                fontFamily: tokens.font.sans,
+                fontSize: tokens.text.base,
+                lineHeight: tokens.leading.normal,
+                color: tokens.color.body,
+                margin: 0,
+              }}
+            >
+              Portfolio vibe-coded and designed by
+            </p>
+            <img
+              src={nameLogoCharacter}
+              alt="Laney Fong signature"
+              style={{
+                maxWidth: "120px",
+                height: "auto",
+              }}
             />
           </div>
         </div>
