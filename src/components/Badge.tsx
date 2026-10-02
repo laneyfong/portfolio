@@ -33,6 +33,11 @@ const Badge: FC<BadgeProps> = ({
     }
   }, [isHovered]);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setShowSparkle(true);
+  };
+
   // Dot pattern for badge accent
   const DotPattern = () => (
     <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ position: "absolute", inset: 0 }} aria-hidden>
@@ -67,7 +72,7 @@ const Badge: FC<BadgeProps> = ({
           setIsFlipped(!isFlipped);
         }
       }}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setIsHovered(false)}
       role="button"
       tabIndex={0}
