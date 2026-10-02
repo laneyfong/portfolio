@@ -68,7 +68,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           justify-content: flex-start;
           white-space: nowrap;
           overflow: hidden;
-          transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.7s, opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.7s;
         }
 
         .verisupply-text-section--inactive {
