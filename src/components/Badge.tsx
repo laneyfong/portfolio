@@ -244,22 +244,6 @@ const Badge: FC<BadgeProps> = ({
             {!photo && <div style={{ position: "absolute", zIndex: 1 }}><DotPattern /></div>}
           </div>
 
-          {/* Sparkle emoji */}
-          {showSparkle && (
-            <div
-              className="sparkle"
-              style={{
-                position: "absolute",
-                top: "28%",
-                right: "12%",
-                fontSize: "28px",
-                zIndex: 10,
-                pointerEvents: "none",
-              }}
-            >
-              ✨
-            </div>
-          )}
 
           {/* Bottom info section */}
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -519,6 +503,23 @@ const Badge: FC<BadgeProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Sparkle emoji */}
+      {showSparkle && (
+        <div
+          className="sparkle"
+          style={{
+            position: "absolute",
+            top: "20%",
+            right: "10%",
+            fontSize: "32px",
+            zIndex: 20,
+            pointerEvents: "none",
+          }}
+        >
+          ✨
+        </div>
+      )}
     </div>
   );
 };
