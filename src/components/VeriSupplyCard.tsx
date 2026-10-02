@@ -11,21 +11,129 @@ interface VeriSupplyCardProps {
 const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
+  const isDesktop = window.innerWidth > 768;
 
   return (
     <>
       <style>{`
+        .verisupply-card-mobile {
+          border-radius: ${isDesktop ? 20 : 12}px;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          outline: none;
+        }
+
+        .verisupply-card--inactive {
+          gap: 0;
+          height: auto;
+          margin-top: 0;
+          margin-bottom: 0;
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+        }
+
+        .verisupply-card--active {
+          gap: 32px;
+          height: 600px;
+          margin-top: 12px;
+          margin-bottom: clamp(40px, 4vw, 80px);
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+          align-items: flex-start;
+        }
+
+        .verisupply-card--active:hover {
+          transform: translateY(-4px) scale(1.01);
+        }
+
+        .verisupply-card--inactive:hover {
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .verisupply-image-mobile {
+          position: relative;
+          overflow: hidden;
+          border-radius: ${isDesktop ? 20 : 0}px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          background-color: #1a1a1a;
+          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      aspect-ratio 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: filter, width, height;
+        }
+
+        .verisupply-image-mobile--inactive {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 10;
+          filter: grayscale(100%);
+        }
+
+        .verisupply-image-mobile--active {
+          width: 70%;
+          height: 100%;
+          aspect-ratio: auto;
+          filter: grayscale(0%);
+        }
+
+        .verisupply-image-mobile:hover {
+          filter: grayscale(0%);
+        }
+
+        .verisupply-text-section {
+          transition: flex 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .verisupply-text-section--inactive {
+          flex: 0;
+          width: 0;
+          opacity: 0;
+          overflow: hidden;
+        }
+
+        .verisupply-text-section--active {
+          flex: 1;
+          width: auto;
+          opacity: 1;
+          overflow: visible;
+        }
+
         @media (max-width: 768px) {
           .verisupply-card-mobile {
             border-radius: 0 !important;
+            flex-direction: column !important;
           }
           .verisupply-image-mobile {
             border-radius: 8px !important;
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16 / 10 !important;
+            filter: grayscale(100%) !important;
+          }
+          .verisupply-text-section {
+            flex: 1 !important;
+            width: auto !important;
+            opacity: 1 !important;
           }
         }
       `}</style>
       <div
-        className="verisupply-card-mobile"
+        className={`verisupply-card-mobile ${isActive && isDesktop ? "verisupply-card--active" : "verisupply-card--inactive"}`}
         role="link"
         tabIndex={0}
       onClick={(e) => {
@@ -42,44 +150,10 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        borderRadius: window.innerWidth > 768 ? 20 : 12,
-        cursor: "pointer",
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
-        transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease",
-        transform: isActive && hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
-        boxShadow: hovered && !isActive ? "0 12px 32px rgba(0, 0, 0, 0.15)" : "none",
-        gap: isActive && window.innerWidth > 768 ? 32 : 0,
-        alignItems: isActive && window.innerWidth > 768 ? "flex-start" : "stretch",
-        minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
-        height: isActive && window.innerWidth > 768 ? "600px" : "auto",
-        marginTop: isActive ? "12px" : 0,
-        marginBottom: isActive ? "clamp(40px, 4vw, 80px)" : 0,
-        outline: "none",
-      }}
     >
       {/* Image Section */}
       <div
-        className="verisupply-image-mobile"
-        style={{
-          position: "relative",
-          aspectRatio: isActive ? "16 / 10" : "16 / 10",
-          overflow: "hidden",
-          borderRadius: window.innerWidth > 768 ? 20 : 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-          width: isActive && window.innerWidth > 768 ? "70%" : "100%",
-          minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
-          backgroundColor: "#1a1a1a",
-          willChange: "opacity",
-          filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
-          transition: "filter 0.4s ease",
-        }}
+        className={`verisupply-image-mobile ${isActive && isDesktop ? "verisupply-image-mobile--active" : "verisupply-image-mobile--inactive"}`}
       >
         <img
           src={verisupplyHero}
@@ -155,46 +229,19 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
         </div>
       </div>
 
-      {/* Text Section - Right Side (Active Only) */}
-      {isActive && (
+      {/* Text Section - Right Side */}
       <div
+        className={`verisupply-text-section ${isActive && isDesktop ? "verisupply-text-section--active" : "verisupply-text-section--inactive"}`}
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: window.innerWidth > 768 ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: "none",
-          flex: 1,
+          padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
+          pointerEvents: isActive ? "auto" : "none",
           justifyContent: "flex-start",
+          minWidth: 0,
         }}
       >
-        {/* Context */}
-        <span
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "12px",
-            color: tokens.color.muted,
-            letterSpacing: tokens.tracking.tight,
-            lineHeight: tokens.leading.none,
-          }}
-        >
-          B2B SaaS
-        </span>
-
-        {/* Caption */}
-        <span
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "16px",
-            color: tokens.color.ink,
-            lineHeight: tokens.leading.snug,
-          }}
-        >
-          Turn supply-chain complexity into <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>confident decisions</em>.
-        </span>
-
         {/* Role Outcome */}
         <span
           style={{
@@ -206,11 +253,29 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
             lineHeight: tokens.leading.none,
           }}
         >
-          Product Design × AI/ML × Supply Chain
+          Supply chain transparency
+        </span>
+
+        {/* Caption */}
+        <span
+          style={{
+            fontFamily: tokens.font.sans,
+            fontWeight: tokens.weight.medium,
+            fontSize: "16px",
+            color: tokens.color.ink,
+            lineHeight: tokens.leading.snug,
+            wordWrap: "break-word",
+            overflowWrap: "break-word",
+          }}
+        >
+          Reimagined supplier intake from 1-2 weeks to 1-2 hours. Reduced supplier data entry errors by{" "}
+          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
+            86%
+          </em>
+          .
         </span>
       </div>
-      )}
-      </div>
+    </div>
     </>
   );
 };

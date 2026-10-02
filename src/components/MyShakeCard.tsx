@@ -66,20 +66,126 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   }, [isActive]);
 
 
+  const isDesktop = window.innerWidth > 768;
+
   return (
     <>
       <style>{`
+        .myshake-card-mobile {
+          border-radius: ${isDesktop ? 20 : 12}px;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          outline: none;
+        }
+
+        .myshake-card--inactive {
+          gap: 0;
+          height: auto;
+          margin-top: 0;
+          margin-bottom: 0;
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+        }
+
+        .myshake-card--active {
+          gap: 32px;
+          height: 600px;
+          margin-top: 12px;
+          margin-bottom: clamp(40px, 4vw, 80px);
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+          align-items: flex-start;
+        }
+
+        .myshake-card--active:hover {
+          transform: translateY(-4px) scale(1.01);
+        }
+
+        .myshake-card--inactive:hover {
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .myshake-video-mobile {
+          position: relative;
+          overflow: hidden;
+          border-radius: ${isDesktop ? 20 : 0}px;
+          flex-shrink: 0;
+          background-color: #1a1a1a;
+          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      aspect-ratio 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: filter, width, height;
+        }
+
+        .myshake-video-mobile--inactive {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 10;
+          filter: grayscale(100%);
+        }
+
+        .myshake-video-mobile--active {
+          width: 70%;
+          height: 100%;
+          aspect-ratio: auto;
+          filter: grayscale(0%);
+        }
+
+        .myshake-video-mobile:hover {
+          filter: grayscale(0%);
+        }
+
+        .myshake-text-section {
+          transition: flex 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .myshake-text-section--inactive {
+          flex: 0;
+          width: 0;
+          opacity: 0;
+          overflow: hidden;
+        }
+
+        .myshake-text-section--active {
+          flex: 1;
+          width: auto;
+          opacity: 1;
+          overflow: visible;
+        }
+
         @media (max-width: 768px) {
           .myshake-card-mobile {
             border-radius: 0 !important;
+            flex-direction: column !important;
           }
           .myshake-video-mobile {
             border-radius: 8px !important;
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16 / 10 !important;
+            filter: grayscale(100%) !important;
+          }
+          .myshake-text-section {
+            flex: 1 !important;
+            width: auto !important;
+            opacity: 1 !important;
           }
         }
       `}</style>
       <div
-        className="myshake-card-mobile"
+        className={`myshake-card-mobile ${isActive && isDesktop ? "myshake-card--active" : "myshake-card--inactive"}`}
         role="link"
         tabIndex={0}
       onClick={(e) => {
@@ -96,41 +202,10 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        borderRadius: window.innerWidth > 768 ? 20 : 12,
-        cursor: "pointer",
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
-        transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease",
-        transform: isActive && hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
-        boxShadow: hovered && !isActive ? "0 12px 32px rgba(0, 0, 0, 0.15)" : "none",
-        gap: isActive && window.innerWidth > 768 ? 32 : 0,
-        alignItems: isActive && window.innerWidth > 768 ? "flex-start" : "stretch",
-        minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
-        height: isActive && window.innerWidth > 768 ? "600px" : "auto",
-        marginTop: isActive ? "12px" : 0,
-        marginBottom: isActive ? "clamp(40px, 4vw, 80px)" : 0,
-        outline: "none",
-      }}
     >
       {/* Video Section */}
       <div
-        className="myshake-video-mobile"
-        style={{
-          position: "relative",
-          aspectRatio: isActive ? "16 / 10" : "16 / 10",
-          overflow: "hidden",
-          borderRadius: window.innerWidth > 768 ? 20 : 0,
-          flexShrink: 0,
-          width: isActive && window.innerWidth > 768 ? "70%" : "100%",
-          minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
-          backgroundColor: "#1a1a1a",
-          willChange: "opacity",
-          filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
-          transition: "filter 0.4s ease",
-        }}
+        className={`myshake-video-mobile ${isActive && isDesktop ? "myshake-video-mobile--active" : "myshake-video-mobile--inactive"}`}
       >
         <video
           ref={videoRef}
@@ -213,17 +288,17 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         </div>
       </div>
 
-      {/* Text Section - Right Side (Active Only) */}
-      {isActive && (
+      {/* Text Section - Right Side */}
       <div
+        className={`myshake-text-section ${isActive && isDesktop ? "myshake-text-section--active" : "myshake-text-section--inactive"}`}
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
-          padding: window.innerWidth > 768 ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: "none",
-          flex: 1,
+          padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
+          pointerEvents: isActive ? "auto" : "none",
           justifyContent: "flex-start",
+          minWidth: 0,
         }}
       >
         {/* Role Outcome */}
@@ -259,7 +334,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           {boldifyMetrics(captionParts[1], boldMetrics)}
         </span>
       </div>
-      )}
       </div>
     </>
   );

@@ -12,8 +12,8 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isDesktop = window.innerWidth > 768;
 
-  // Control video playback based on active state
   useEffect(() => {
     if (videoRef.current) {
       if (isActive) {
@@ -29,17 +29,121 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
   return (
     <>
       <style>{`
+        .nvidia-card-mobile {
+          border-radius: ${isDesktop ? 20 : 12}px;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          outline: none;
+        }
+
+        .nvidia-card--inactive {
+          gap: 0;
+          height: auto;
+          margin-top: 0;
+          margin-bottom: 0;
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+        }
+
+        .nvidia-card--active {
+          gap: 32px;
+          height: 600px;
+          margin-top: 12px;
+          margin-bottom: clamp(40px, 4vw, 80px);
+          box-shadow: none;
+          transform: translateY(0) scale(1);
+          align-items: flex-start;
+        }
+
+        .nvidia-card--active:hover {
+          transform: translateY(-4px) scale(1.01);
+        }
+
+        .nvidia-card--inactive:hover {
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .nvidia-video-mobile {
+          position: relative;
+          overflow: hidden;
+          border-radius: ${isDesktop ? 20 : 0}px;
+          flex-shrink: 0;
+          background-color: #1a1a1a;
+          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      aspect-ratio 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: filter, width, height;
+        }
+
+        .nvidia-video-mobile--inactive {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 10;
+          filter: grayscale(100%);
+        }
+
+        .nvidia-video-mobile--active {
+          width: 70%;
+          height: 100%;
+          aspect-ratio: auto;
+          filter: grayscale(0%);
+        }
+
+        .nvidia-video-mobile:hover {
+          filter: grayscale(0%);
+        }
+
+        .nvidia-text-section {
+          transition: flex 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nvidia-text-section--inactive {
+          flex: 0;
+          width: 0;
+          opacity: 0;
+          overflow: hidden;
+        }
+
+        .nvidia-text-section--active {
+          flex: 1;
+          width: auto;
+          opacity: 1;
+          overflow: visible;
+        }
+
         @media (max-width: 768px) {
           .nvidia-card-mobile {
             border-radius: 0 !important;
+            flex-direction: column !important;
           }
           .nvidia-video-mobile {
             border-radius: 8px !important;
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16 / 10 !important;
+            filter: grayscale(100%) !important;
+          }
+          .nvidia-text-section {
+            flex: 1 !important;
+            width: auto !important;
+            opacity: 1 !important;
           }
         }
       `}</style>
       <div
-        className="nvidia-card-mobile"
+        className={`nvidia-card-mobile ${isActive && isDesktop ? "nvidia-card--active" : "nvidia-card--inactive"}`}
         role="link"
         tabIndex={0}
         onClick={(e) => {
@@ -58,41 +162,10 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
         }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        style={{
-          borderRadius: window.innerWidth > 768 ? 20 : 12,
-          cursor: "pointer",
-          position: "relative",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
-          transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease",
-          transform: isActive && hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
-          boxShadow: hovered && !isActive ? "0 12px 32px rgba(0, 0, 0, 0.15)" : "none",
-          gap: isActive && window.innerWidth > 768 ? 32 : 0,
-          alignItems: isActive && window.innerWidth > 768 ? "flex-start" : "stretch",
-          minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
-          height: isActive && window.innerWidth > 768 ? "600px" : "auto",
-          marginTop: isActive ? "12px" : 0,
-          marginBottom: isActive ? "clamp(40px, 4vw, 80px)" : 0,
-          outline: "none",
-        }}
       >
         {/* Video Section */}
         <div
-          className="nvidia-video-mobile"
-          style={{
-            position: "relative",
-            aspectRatio: isActive ? "16 / 10" : "16 / 10",
-            overflow: "hidden",
-            borderRadius: window.innerWidth > 768 ? 20 : 0,
-            flexShrink: 0,
-            width: isActive && window.innerWidth > 768 ? "70%" : "100%",
-            minHeight: isActive && window.innerWidth > 768 ? "600px" : "auto",
-            backgroundColor: "#1a1a1a",
-            willChange: "opacity",
-            filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
-            transition: "filter 0.4s ease",
-          }}
+          className={`nvidia-video-mobile ${isActive && isDesktop ? "nvidia-video-mobile--active" : "nvidia-video-mobile--inactive"}`}
         >
           <video
             ref={videoRef}
@@ -168,123 +241,122 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           </div>
 
           {/* WIP Badge */}
-          {!isActive && (
-            <div
+          <div
+            style={{
+              position: "absolute",
+              bottom: "16px",
+              right: "16px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "4px 12px",
+              borderRadius: tokens.radius.full,
+              backgroundColor: tokens.color.offWhite,
+              border: `1px solid ${tokens.color.cardBorder}`,
+              flexShrink: 0,
+              zIndex: 5,
+              opacity: isActive ? 0 : 1,
+              transition: "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            <span
               style={{
-                position: "absolute",
-                bottom: "16px",
-                right: "16px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "4px 12px",
-                borderRadius: tokens.radius.full,
-                backgroundColor: tokens.color.offWhite,
-                border: `1px solid ${tokens.color.cardBorder}`,
-                flexShrink: 0,
-                zIndex: 5,
+                fontFamily: tokens.font.sans,
+                fontSize: "12px",
+                fontWeight: tokens.weight.medium,
+                color: tokens.color.muted,
+                letterSpacing: "0.5px",
               }}
             >
-              <span
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontSize: "12px",
-                  fontWeight: tokens.weight.medium,
-                  color: tokens.color.muted,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                WIP
-              </span>
-            </div>
-          )}
+              WIP
+            </span>
+          </div>
         </div>
 
-        {/* Text Section - Right Side (Active Only) */}
-        {isActive && (
+        {/* Text Section - Right Side */}
+        <div
+          className={`nvidia-text-section ${isActive && isDesktop ? "nvidia-text-section--active" : "nvidia-text-section--inactive"}`}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+            padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
+            pointerEvents: isActive ? "auto" : "none",
+            justifyContent: "flex-start",
+            minWidth: 0,
+          }}
+        >
+          {/* Context */}
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "12px",
+              color: tokens.color.muted,
+              letterSpacing: tokens.tracking.tight,
+              lineHeight: tokens.leading.none,
+            }}
+          >
+            Capstone Project
+          </span>
+
+          {/* Caption */}
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "16px",
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              wordWrap: "break-word",
+              overflowWrap: "break-word",
+            }}
+          >
+            AI-powered usability testing that catches friction points at scale.
+          </span>
+
+          {/* Role Outcome */}
+          <span
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "12px",
+              color: tokens.color.muted,
+              letterSpacing: tokens.tracking.tight,
+              lineHeight: tokens.leading.none,
+            }}
+          >
+            Product Designer
+          </span>
+
+          {/* WIP Badge on Active */}
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              gap: 12,
-              padding: window.innerWidth > 768 ? "0 0 0 0" : "16px 0 0 0",
-              pointerEvents: "none",
-              flex: 1,
-              justifyContent: "flex-start",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "4px 12px",
+              borderRadius: tokens.radius.full,
+              backgroundColor: tokens.color.offWhite,
+              border: `1px solid ${tokens.color.cardBorder}`,
+              flexShrink: 0,
+              marginTop: 8,
+              width: "fit-content",
             }}
           >
-            {/* Context */}
             <span
               style={{
                 fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
                 fontSize: "12px",
-                color: tokens.color.muted,
-                letterSpacing: tokens.tracking.tight,
-                lineHeight: tokens.leading.none,
-              }}
-            >
-              Capstone Project
-            </span>
-
-            {/* Caption */}
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
-                fontSize: "16px",
-                color: tokens.color.ink,
-                lineHeight: tokens.leading.snug,
-                wordWrap: "break-word",
-                overflowWrap: "break-word",
-              }}
-            >
-              AI-powered usability testing that catches friction points at scale.
-            </span>
-
-            {/* Role Outcome */}
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                fontSize: "12px",
                 color: tokens.color.muted,
-                letterSpacing: tokens.tracking.tight,
-                lineHeight: tokens.leading.none,
+                letterSpacing: "0.5px",
               }}
             >
-              Product Designer
+              WIP
             </span>
-
-            {/* WIP Badge on Active */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "4px 12px",
-                borderRadius: tokens.radius.full,
-                backgroundColor: tokens.color.offWhite,
-                border: `1px solid ${tokens.color.cardBorder}`,
-                flexShrink: 0,
-                marginTop: 8,
-                width: "fit-content",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontSize: "12px",
-                  fontWeight: tokens.weight.medium,
-                  color: tokens.color.muted,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                WIP
-              </span>
-            </div>
           </div>
-        )}
+        </div>
       </div>
     </>
   );
