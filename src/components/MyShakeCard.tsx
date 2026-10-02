@@ -120,10 +120,10 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           border-radius: ${isDesktop ? 20 : 0}px;
           flex-shrink: 0;
           background-color: #1a1a1a;
-          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      aspect-ratio 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                      height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                      aspect-ratio 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                      filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: filter, width, height;
         }
 
