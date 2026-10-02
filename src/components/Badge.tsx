@@ -36,8 +36,6 @@ const Badge: FC<BadgeProps> = ({
   }, [isHovered]);
 
   useEffect(() => {
-    if (!isHovered) return;
-
     const handleGlobalMouseMove = (e: MouseEvent) => {
       if (!badgeRef.current) return;
 
@@ -56,7 +54,7 @@ const Badge: FC<BadgeProps> = ({
 
     window.addEventListener("mousemove", handleGlobalMouseMove);
     return () => window.removeEventListener("mousemove", handleGlobalMouseMove);
-  }, [isHovered]);
+  }, []);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
