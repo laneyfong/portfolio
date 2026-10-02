@@ -239,8 +239,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
                 overflowWrap: "break-word",
               }}
             >
-              Built an AI usability tester that spots friction points humans miss. Never sleeps.
-              Always learning.
+              AI-powered usability testing that catches friction points at scale
             </span>
 
             {/* Role Outcome */}
