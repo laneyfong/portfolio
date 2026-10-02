@@ -223,6 +223,8 @@ const Badge: FC<BadgeProps> = ({
               position: "relative",
               overflow: "hidden",
               marginBottom: "16px",
+              perspective: "1000px",
+              perspectiveOrigin: "center center",
             }}
           >
             <style>{`
@@ -251,8 +253,10 @@ const Badge: FC<BadgeProps> = ({
                 objectFit: "contain",
                 position: "relative",
                 zIndex: 2,
-                transform: `rotateX(${avatarRotate.x}deg) rotateY(${avatarRotate.y}deg)`,
+                transform: `rotateX(${avatarRotate.x}deg) rotateY(${avatarRotate.y}deg) scale(${1 + Math.abs(avatarRotate.x + avatarRotate.y) * 0.005})`,
                 transition: isHovered ? "none" : "transform 0.3s ease-out",
+                transformStyle: "preserve-3d",
+                filter: `drop-shadow(0 ${Math.abs(avatarRotate.x) * 0.5}px ${8 + Math.abs(avatarRotate.x) * 2}px rgba(0,0,0,0.15))`,
               }}
             />
 
