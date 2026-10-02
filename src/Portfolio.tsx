@@ -10,11 +10,10 @@ import HalftoneField from "./components/HalftoneField";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
 import VeriSupplyCard from "./components/VeriSupplyCard";
+import NvidiaCard from "./components/NvidiaCard";
 import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
-
-import nvidiaLogo from "./assets/nvidia-logo.webp";
 
 
 const Portfolio: FC = () => {
@@ -59,12 +58,6 @@ const Portfolio: FC = () => {
       <style>{`
         .work-grid > :last-child {
           grid-column: 1 / -1;
-        }
-
-        /* Scale Nvidia logo image */
-        .project-card-image-mobile img[src*="nvidia"] {
-          transform: scale(0.75) !important;
-          transform-origin: center !important;
         }
 
         @media (max-width: 768px) {
@@ -166,18 +159,7 @@ const Portfolio: FC = () => {
                 context="Designathon"
                 to="/idbridge-design"
               />
-              <ProjectCard
-                screenshot={nvidiaLogo}
-                layout="landscape"
-                roleOutcome="AI Design × Automation"
-                caption="Built an AI usability tester that spots friction points humans miss. Never sleeps. Always learning."
-                captionItalic="Autonomous UX validation"
-                context="Capstone Project"
-                to="/nvidia-ai-ux-agent"
-                wipLabel="WIP"
-                noImageRadius
-                noImageGradient
-              />
+              <NvidiaCard />
             </FeaturedWorkShowcase>
           </section>
         </ContentContainer>
