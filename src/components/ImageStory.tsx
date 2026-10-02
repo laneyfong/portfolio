@@ -22,7 +22,7 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
   const [isPressed, setIsPressed] = useState(false);
   const [progress, setProgress] = useState(0);
   const [loadedIndices, setLoadedIndices] = useState(new Set([0]));
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef(0);
 
   // Preload all images on mount for smooth transitions
