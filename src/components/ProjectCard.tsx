@@ -70,7 +70,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       className="project-card-mobile"
       role={to ? "link" : undefined}
       tabIndex={to ? 0 : undefined}
-      onClick={isActive && to ? () => navigate(to) : (e) => e.preventDefault()}
+      onClick={isActive && to ? () => navigate(to) : undefined}
       onKeyDown={
         to
           ? (e) => {
