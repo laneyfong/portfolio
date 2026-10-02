@@ -268,7 +268,7 @@ const Badge: FC<BadgeProps> = ({
 
             <p
               style={{
-                margin: 0,
+                margin: "6px 0 0 0",
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.regular,
                 fontSize: "16px",
