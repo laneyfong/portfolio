@@ -328,7 +328,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           {boldifyMetrics(captionParts[1], boldMetrics)}
         </span>
       </div>
-      )}
       </div>
     </>
   );
