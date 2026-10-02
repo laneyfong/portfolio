@@ -148,7 +148,7 @@ const Portfolio: FC = () => {
             <FeaturedWorkShowcase>
               <MyShakeCard
                 roleOutcome="Mobile Design × Crisis Response"
-                caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration."
+                caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration. "
                 captionItalic="45% engagement increase"
                 context="Internship"
                 to="/myshake-design"
@@ -157,7 +157,7 @@ const Portfolio: FC = () => {
               <VeriSupplyCard />
               <IDbridgeCard
                 roleOutcome="Social Impact × Accessibility"
-                caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours."
+                caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours. "
                 captionItalic="First place winner"
                 context="Designathon"
                 to="/idbridge-design"
