@@ -251,7 +251,7 @@ const Badge: FC<BadgeProps> = ({
 
 
           {/* Bottom info section */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
             <h2
               style={{
                 margin: 0,
@@ -268,7 +268,7 @@ const Badge: FC<BadgeProps> = ({
 
             <p
               style={{
-                margin: "0",
+                margin: "-2px 0 0 0",
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.regular,
                 fontSize: "16px",
@@ -282,7 +282,7 @@ const Badge: FC<BadgeProps> = ({
 
             <p
               style={{
-                margin: "8px 0 0 0",
+                margin: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.regular,
                 fontSize: "14px",
@@ -296,7 +296,7 @@ const Badge: FC<BadgeProps> = ({
 
             <p
               style={{
-                margin: "10px 0 0 0",
+                margin: 0,
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.regular,
                 fontSize: "14px",
