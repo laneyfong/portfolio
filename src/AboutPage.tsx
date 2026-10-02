@@ -79,7 +79,6 @@ const AboutPage: FC = () => {
     width: PANEL_WIDTH,
     alignSelf: "flex-start" as const,
     paddingTop: 0,
-    marginBottom: 16,
   };
 
   return (
