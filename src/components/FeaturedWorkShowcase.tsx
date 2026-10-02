@@ -89,8 +89,23 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
             // Vertical offset for stacking - shows peek of next card
             const offsetY = distance > 0 ? 0 : Math.max(distance * -12, -24);
 
-            // Clone child element with isActive prop if it's a valid element
-            const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: isCardActive } as any) : child;
+            // Clone child element with isActive prop and onClick override if it's a valid element
+            const childWithProps = isValidElement(child) ? cloneElement(child, {
+              isActive: isCardActive,
+              onCardClick: (e: React.MouseEvent) => {
+                e.stopPropagation();
+                if (!isCardActive) {
+                  // First click: just center the card
+                  handleCardClick(index);
+                } else {
+                  // Second click: let the original onClick fire (navigate to case study)
+                  const originalClick = (child as any).props.onClick;
+                  if (originalClick) {
+                    originalClick(e);
+                  }
+                }
+              }
+            } as any) : child;
 
             return (
               <div
@@ -98,7 +113,11 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
                 ref={(el) => {
                   cardsRef.current[index] = el;
                 }}
-                onClick={() => handleCardClick(index)}
+                onClick={() => {
+                  if (!isCardActive) {
+                    handleCardClick(index);
+                  }
+                }}
                 style={{
                   position: "relative",
                   width: "100%",
