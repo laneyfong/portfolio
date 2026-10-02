@@ -95,7 +95,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         overflow: "hidden",
         display: "flex",
         flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
-        transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, outline 0.3s ease",
+        transition: "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, outline 0.4s ease",
         transform: isActive && hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
         boxShadow: hovered && !isActive ? "0 12px 32px rgba(0, 0, 0, 0.15)" : "none",
         gap: isActive && window.innerWidth > 768 ? 32 : 0,
@@ -125,7 +125,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           height: isActive && window.innerWidth > 768 ? "100%" : "auto",
           willChange: "opacity",
           filter: isActive || hovered ? "grayscale(0%)" : "grayscale(100%)",
-          transition: "filter 0.4s ease",
+          transition: "filter 0.5s ease",
         }}
       >
         <img
@@ -139,7 +139,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             height: "auto",
             objectFit: "contain",
             borderRadius: noImageRadius ? "0px" : "8px",
-            transition: "transform 0.22s ease, filter 0.22s ease, opacity 0.22s ease",
+            transition: "transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease",
             transform: hovered ? "scale(1.02)" : "scale(1)",
             filter: invertOnHover && hovered ? "invert(1)" : "invert(0)",
             display: "block",
@@ -156,7 +156,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
               justifyContent: "center",
               opacity: hovered ? 1 : 0,
               visibility: hovered ? "visible" : "hidden",
-              transition: "opacity 0.22s ease, visibility 0.22s ease",
+              transition: "opacity 0.3s ease, visibility 0.3s ease",
             }}
           >
             <div
