@@ -184,7 +184,7 @@ const TopNav: FC = () => {
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 24px;
             list-style: none;
             margin: 0;
             padding: 20px 0;
