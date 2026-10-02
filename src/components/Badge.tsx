@@ -291,7 +291,7 @@ const Badge: FC<BadgeProps> = ({
                 lineHeight: 1.6,
               }}
             >
-              Research-driven, accessibility-first design for high-stakes problems that reduces friction and creates impact at scale.
+              Designing accessible interfaces that drive product growth and scale
             </p>
 
             <p
