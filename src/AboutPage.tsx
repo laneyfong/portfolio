@@ -293,19 +293,7 @@ const AboutPage: FC = () => {
         </div>
 
         {/* Intro text */}
-        <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "0 auto 0", marginTop: 14 }}>
-          <p
-            style={{
-              fontFamily: tokens.font.sans,
-              fontSize: tokens.text.base,
-              lineHeight: tokens.leading.normal,
-              color: tokens.color.body,
-              margin: 0,
-            }}
-          >
-            Hello! I am Laney.
-          </p>
-
+        <div style={{ width: HERO_WIDTH, margin: "0 auto 0", marginTop: 14 }}>
           <p
             style={{
               fontFamily: tokens.font.sans,
@@ -313,7 +301,6 @@ const AboutPage: FC = () => {
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
               margin: 0,
-              marginTop: "14px",
             }}
           >
             {withItalics(
@@ -416,6 +403,18 @@ const AboutPage: FC = () => {
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
               margin: 0,
+            }}
+          >
+            Hello! I am Laney.
+          </p>
+          <p
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.base,
+              lineHeight: tokens.leading.normal,
+              color: tokens.color.body,
+              margin: 0,
+              marginTop: "14px",
             }}
           >
             {withItalics(
