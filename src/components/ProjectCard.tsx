@@ -57,6 +57,14 @@ const ProjectCard: FC<ProjectCardProps> = ({
   return (
     <>
       <style>{`
+        .project-card-mobile {
+          transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card-image-mobile {
+          transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         @media (max-width: 768px) {
           .project-card-mobile {
             border-radius: 0 !important;
