@@ -23,7 +23,6 @@ function withItalics(text: string, terms: string[]): ReactNode[] {
 }
 
 const HERO_WIDTH = "min(720px, 90vw)";
-const PANEL_WIDTH = 252;
 
 const AboutPage: FC = () => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -73,13 +72,6 @@ const AboutPage: FC = () => {
     window.addEventListener("click", handleClick);
     return () => window.removeEventListener("click", handleClick);
   }, []);
-
-  const rightPanelStyle = {
-    flexBasis: PANEL_WIDTH,
-    width: PANEL_WIDTH,
-    alignSelf: "flex-start" as const,
-    paddingTop: 0,
-  };
 
   return (
     <div
@@ -292,11 +284,6 @@ const AboutPage: FC = () => {
           className="about-container"
           style={{
             position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            gap: 14,
             width: HERO_WIDTH,
             margin: "0 auto",
           }}
@@ -351,7 +338,7 @@ const AboutPage: FC = () => {
           </div>
 
           {/* Bottom: Contact panel */}
-          <div className="about-left-panel" style={rightPanelStyle}>
+          <div className="about-left-panel" style={{ marginTop: 14 }}>
             <div>
               <h3
                 style={{
