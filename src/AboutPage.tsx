@@ -348,6 +348,7 @@ const AboutPage: FC = () => {
               </div>
             </div>
           </div>
+        </div>
 
         {/* Bio copy */}
         <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "0 auto 0", marginTop: 14 }}>
