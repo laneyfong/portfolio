@@ -254,7 +254,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
                 lineHeight: tokens.leading.none,
               }}
             >
-              AI Design × Automation
+              Product Designer
             </span>
 
             {/* WIP Badge on Active */}
