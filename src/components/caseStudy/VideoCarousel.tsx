@@ -42,9 +42,7 @@ export const VideoCarousel: FC<{
 
   useEffect(() => {
     if (videoRef.current && items[currentIndex].type === "video") {
-      videoRef.current.play().catch(() => {
-        // Autoplay might be blocked, that's ok
-      });
+      videoRef.current.pause();
     }
   }, [currentIndex, items]);
 
@@ -403,7 +401,6 @@ export const VideoCarousel: FC<{
                   objectFit: "contain",
                 }}
                 controls={!hideControls}
-                autoPlay
               />
             ) : (
               <img
