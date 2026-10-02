@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { tokens } from "../tokens";
 
 interface StoryImage {
@@ -19,53 +19,63 @@ const STORY_DURATION = 5000; // 5 seconds per story
 const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
   const [progress, setProgress] = useState(0);
   const [loadedIndices, setLoadedIndices] = useState(new Set([0]));
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const progressRef = useRef(0);
 
   // Preload all images on mount for smooth transitions
   useEffect(() => {
-    const allIndicesToPreload = images.map((_, idx) => idx);
-
-    allIndicesToPreload.forEach((idx) => {
-      if (!loadedIndices.has(idx)) {
-        const img = new Image();
-        img.onload = () => {
-          setLoadedIndices((prev) => new Set([...prev, idx]));
-        };
-        img.src = images[idx].src;
-      }
+    images.forEach((img, idx) => {
+      const image = new Image();
+      image.src = img.src;
+      image.onload = () => {
+        setLoadedIndices((prev) => new Set([...prev, idx]));
+      };
     });
-  }, [images, loadedIndices]);
+  }, [images]);
 
   // Auto-progression effect
   useEffect(() => {
-    if (isHovered) return; // Pause on hover
+    if (isHovered || isPressed) return; // Pause on hover or press
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        const newProgress = prev + (100 / STORY_DURATION) * 50; // Update every 50ms
-        if (newProgress >= 100) {
-          // Move to next story
-          const newIndex = (currentIndex + 1) % images.length;
-          setCurrentIndex(newIndex);
+    // Clear any existing timer
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    progressRef.current = 0;
+    setProgress(0);
+
+    // Start new timer
+    timerRef.current = setInterval(() => {
+      progressRef.current += 100 / (STORY_DURATION / 50);
+
+      if (progressRef.current >= 100) {
+        // Move to next story
+        setCurrentIndex((prev) => {
+          const newIndex = (prev + 1) % images.length;
           onImageChange?.(newIndex);
-          return 0;
-        }
-        return newProgress;
-      });
+          progressRef.current = 0;
+          return newIndex;
+        });
+      } else {
+        setProgress(progressRef.current);
+      }
     }, 50);
 
-    return () => clearInterval(interval);
-  }, [isHovered, currentIndex, images.length, onImageChange]);
-
-  // Reset progress when index changes
-  useEffect(() => {
-    setProgress(0);
-  }, [currentIndex]);
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [isHovered, isPressed, images.length, onImageChange]);
 
   const handleNext = () => {
     const newIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(newIndex);
+    progressRef.current = 0;
     setProgress(0);
     onImageChange?.(newIndex);
   };
@@ -73,6 +83,7 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
   const handlePrev = () => {
     const newIndex = (currentIndex - 1 + images.length) % images.length;
     setCurrentIndex(newIndex);
+    progressRef.current = 0;
     setProgress(0);
     onImageChange?.(newIndex);
   };
@@ -89,46 +100,33 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
         overflow: "hidden",
         cursor: "pointer",
         backgroundColor: tokens.color.offWhite,
+        userSelect: "none",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
       onClick={handleNext}
     >
-      <style>{`
-        @keyframes storyFade {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
+      <img
+        src={currentImage.src}
+        alt={currentImage.alt}
+        decoding="async"
+        loading="eager"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: currentIndex === 2 ? "center 65%" : "center",
+          display: "block",
+          transition: "none",
+          filter: loadedIndices.has(currentIndex) ? "blur(0px)" : "blur(4px)",
+        }}
+      />
 
-        .image-story-img {
-          animation: storyFade 0.3s ease;
-        }
-      `}</style>
-
-      <picture>
-        {currentImage.srcWebp && (
-          <source srcSet={currentImage.srcWebp} type="image/webp" />
-        )}
-        <img
-          src={currentImage.src}
-          alt={currentImage.alt}
-          className="image-story-img"
-          decoding="async"
-          loading="eager"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: currentIndex === 2 ? "center 65%" : "center",
-            display: "block",
-            transition: "transform 0.2s ease, filter 0.3s ease",
-            transform: isHovered ? "scale(1.02)" : "scale(1)",
-            filter: loadedIndices.has(currentIndex) ? "blur(0px)" : "blur(4px)",
-          }}
-        />
-      </picture>
-
-      {/* Progress bar at top */}
+      {/* Progress bars at top */}
       {images.length > 1 && (
         <div
           style={{
@@ -137,9 +135,9 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
             left: 0,
             right: 0,
             display: "flex",
-            gap: "3px",
+            gap: "4px",
             padding: "8px",
-            background: "linear-gradient(to bottom, rgba(0,0,0,0.3), transparent)",
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.2), transparent)",
             zIndex: 5,
           }}
         >
@@ -149,7 +147,7 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
               style={{
                 flex: 1,
                 height: "2px",
-                background: "rgba(255, 255, 255, 0.3)",
+                background: "rgba(255, 255, 255, 0.4)",
                 borderRadius: "2px",
                 overflow: "hidden",
               }}
@@ -158,9 +156,13 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
                 style={{
                   height: "100%",
                   background: "white",
-                  width: idx === currentIndex ? `${progress}%` : idx < currentIndex ? "100%" : "0%",
-                  transition: idx === currentIndex ? "none" : "width 0.3s ease",
-                  boxShadow: idx === currentIndex ? "0 0 8px rgba(255, 255, 255, 0.6)" : "none",
+                  width:
+                    idx === currentIndex
+                      ? `${progress}%`
+                      : idx < currentIndex
+                      ? "100%"
+                      : "0%",
+                  transition: "none",
                 }}
               />
             </div>
@@ -168,13 +170,13 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
         </div>
       )}
 
-      {/* Navigation overlay hint */}
-      {isHovered && images.length > 1 && (
+      {/* Navigation arrows on hover */}
+      {images.length > 1 && (
         <div
           style={{
             position: "absolute",
             inset: 0,
-            display: "flex",
+            display: isHovered ? "flex" : "none",
             alignItems: "center",
             justifyContent: "space-between",
             padding: "16px",
@@ -185,30 +187,48 @@ const ImageStory: FC<ImageStoryProps> = ({ images, onImageChange }) => {
           <div
             style={{
               fontSize: "24px",
-              color: "rgba(255, 255, 255, 0.6)",
+              color: "rgba(255, 255, 255, 0.7)",
               fontWeight: "bold",
               cursor: "pointer",
               pointerEvents: "auto",
+              transition: "color 0.2s ease",
             }}
             onClick={(e) => {
               e.stopPropagation();
               handlePrev();
             }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLDivElement).style.color =
+                "rgba(255, 255, 255, 1)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLDivElement).style.color =
+                "rgba(255, 255, 255, 0.7)")
+            }
           >
             ←
           </div>
           <div
             style={{
               fontSize: "24px",
-              color: "rgba(255, 255, 255, 0.6)",
+              color: "rgba(255, 255, 255, 0.7)",
               fontWeight: "bold",
               cursor: "pointer",
               pointerEvents: "auto",
+              transition: "color 0.2s ease",
             }}
             onClick={(e) => {
               e.stopPropagation();
               handleNext();
             }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLDivElement).style.color =
+                "rgba(255, 255, 255, 1)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLDivElement).style.color =
+                "rgba(255, 255, 255, 0.7)")
+            }
           >
             →
           </div>
