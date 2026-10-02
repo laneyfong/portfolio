@@ -292,16 +292,46 @@ const AboutPage: FC = () => {
           </h1>
         </div>
 
+        {/* Intro text */}
+        <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "0 auto 0", marginTop: 14 }}>
+          <p
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.base,
+              lineHeight: tokens.leading.normal,
+              color: tokens.color.body,
+              margin: 0,
+            }}
+          >
+            Hello! I am Laney.
+          </p>
+
+          <p
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.md,
+              lineHeight: tokens.leading.normal,
+              color: tokens.color.body,
+              margin: 0,
+              marginTop: "14px",
+            }}
+          >
+            {withItalics(
+              "A Product Designer with a background in Cognitive Science @ UC Berkeley and is currently finishing up her HCI master's @ UCSC.",
+              ["Product Designer", "Cognitive Science @ UC Berkeley", "HCI master's @ UCSC"]
+            )}
+          </p>
+        </div>
+
+        {/* Photo */}
         <div
           className="about-container"
           style={{
             position: "relative",
             width: HERO_WIDTH,
-            margin: "0 auto",
+            margin: "24px auto 0",
           }}
         >
-
-          {/* Top: Photos */}
           <div
             className="about-center-photo"
             style={{ width: "100%", flexShrink: 0, position: "relative" }}
@@ -350,62 +380,35 @@ const AboutPage: FC = () => {
           </div>
         </div>
 
-        {/* Bio copy */}
-        <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "0 auto 0", marginTop: 14 }}>
-          <p
+        {/* Contact panel */}
+        <div style={{ width: HERO_WIDTH, margin: "24px auto 0" }}>
+          <h3
             style={{
               fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.regular,
               fontSize: tokens.text.base,
-              lineHeight: tokens.leading.normal,
               color: tokens.color.body,
-              margin: 0,
+              margin: "0 0 14px 0",
+              whiteSpace: "nowrap",
             }}
           >
-            Hello! I am Laney.
-          </p>
-
-          <p
-            style={{
-              fontFamily: tokens.font.sans,
-              fontSize: tokens.text.md,
-              lineHeight: tokens.leading.normal,
-              color: tokens.color.body,
-              margin: 0,
-              marginTop: "14px",
-            }}
-          >
-            {withItalics(
-              "A Product Designer with a background in Cognitive Science @ UC Berkeley and is currently finishing up her HCI master's @ UCSC.",
-              ["Product Designer", "Cognitive Science @ UC Berkeley", "HCI master's @ UCSC"]
-            )}
-          </p>
-
-          {/* Contact panel - inline with bio */}
-          <div style={{ marginTop: 24, marginBottom: 24 }}>
-            <h3
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                fontSize: tokens.text.base,
-                color: tokens.color.body,
-                margin: "0 0 14px 0",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
-            </h3>
-            <div style={{ display: "flex", gap: 10, margin: "0 0 18px 0" }}>
-              <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
-                <LinkedInIcon />
-              </SocialIconLink>
-              <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
-                <EmailIcon />
-              </SocialIconLink>
-              <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
-                <ResumeIcon />
-              </SocialIconLink>
-            </div>
+            Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
+          </h3>
+          <div style={{ display: "flex", gap: 10, margin: "0 0 18px 0" }}>
+            <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
+              <LinkedInIcon />
+            </SocialIconLink>
+            <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
+              <EmailIcon />
+            </SocialIconLink>
+            <SocialIconLink href={RESUME_URL} label="Download resume" external variant="light">
+              <ResumeIcon />
+            </SocialIconLink>
           </div>
+        </div>
+
+        {/* Bio paragraphs - 18px space before */}
+        <div ref={bioSectionRef} className="bio-section-reveal" style={{ width: HERO_WIDTH, margin: "0 auto 0", marginTop: 18 }}>
           <p
             style={{
               fontFamily: tokens.font.sans,
@@ -427,6 +430,7 @@ const AboutPage: FC = () => {
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
               margin: 0,
+              marginTop: "14px",
             }}
           >
             {withItalics(
