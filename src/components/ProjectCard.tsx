@@ -71,7 +71,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
       role={to ? "link" : undefined}
       tabIndex={to ? 0 : undefined}
       onClick={(e) => {
-        console.log('ProjectCard clicked:', { isActive, to, shouldNavigate: isActive && to });
         if (isActive && to) {
           e.stopPropagation();
           navigate(to);
@@ -96,7 +95,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         overflow: "hidden",
         display: "flex",
         flexDirection: isActive && window.innerWidth > 768 ? "row" : "column",
-        transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, outline 0.2s ease",
+        transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, outline 0.3s ease",
         transform: hovered ? "translateY(-4px) scale(1.01)" : "translateY(0) scale(1)",
         gap: isActive && window.innerWidth > 768 ? 32 : 0,
         alignItems: isActive && window.innerWidth > 768 ? "flex-start" : "stretch",
