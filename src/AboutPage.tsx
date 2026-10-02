@@ -352,7 +352,7 @@ const AboutPage: FC = () => {
 
           {/* Bottom: Contact panel */}
           <div className="about-left-panel" style={rightPanelStyle}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
               <h3
                 style={{
                   fontFamily: tokens.font.sans,
