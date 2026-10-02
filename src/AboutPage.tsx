@@ -365,7 +365,7 @@ const AboutPage: FC = () => {
               >
                 Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
               </h3>
-              <div style={{ display: "flex", gap: 10 }}>
+              <div style={{ display: "flex", gap: 10, margin: 0 }}>
                 <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
                   <LinkedInIcon />
                 </SocialIconLink>
