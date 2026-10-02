@@ -401,6 +401,7 @@ const AboutPage: FC = () => {
               lineHeight: tokens.leading.normal,
               color: tokens.color.body,
               margin: 0,
+              marginTop: "14px",
             }}
           >
             Hello! I am Laney.
