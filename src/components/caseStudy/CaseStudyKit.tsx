@@ -1135,9 +1135,24 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
                 {item.title}
               </div>
             </div>
-            <div style={{ fontSize: "24px", color: tokens.color.muted, transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)", transform: isExpanded(item.rank) ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", minWidth: "32px", height: "32px" }}>
-              ⌄
-            </div>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                color: tokens.color.muted,
+                transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                transform: isExpanded(item.rank) ? "rotate(180deg)" : "rotate(0deg)",
+                flexShrink: 0,
+              }}
+            >
+              <polyline points="5 7.5 10 12.5 15 7.5" />
+            </svg>
           </button>
           {isExpanded(item.rank) && (
             <div
