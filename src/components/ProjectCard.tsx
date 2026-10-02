@@ -58,11 +58,22 @@ const ProjectCard: FC<ProjectCardProps> = ({
     <>
       <style>{`
         .project-card-mobile {
-          transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      align-items 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      flex-direction 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.2s,
+                      box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      outline 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .project-card-image-mobile {
-          transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @media (max-width: 768px) {
