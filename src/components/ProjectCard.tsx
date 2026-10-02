@@ -100,6 +100,29 @@ const ProjectCard: FC<ProjectCardProps> = ({
           box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
         }
 
+        .project-card-text-section {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: ${isDesktop ? "0 0 0 0" : "16px 0 0 0"};
+          pointer-events: none;
+          flex: 1;
+          justify-content: flex-start;
+          transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card-text-section--inactive {
+          transform: translateX(20px);
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .project-card-text-section--active {
+          transform: translateX(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+
         .project-card-image-mobile {
           position: relative;
           overflow: hidden;
@@ -269,15 +292,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
       {/* Text Section - Right Side */}
       <div
         className={`project-card-text-section ${isActive && isDesktop ? "project-card-text-section--active" : "project-card-text-section--inactive"}`}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 12,
-          padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: isActive ? "auto" : "none",
-          justifyContent: "flex-start",
-          minWidth: 0,
-        }}
       >
         {/* Context + WIP Badge */}
         <div

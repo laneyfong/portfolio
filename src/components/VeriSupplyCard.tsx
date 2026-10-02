@@ -59,6 +59,29 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
         }
 
+        .verisupply-text-section {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: ${isDesktop ? "0 0 0 0" : "16px 0 0 0"};
+          pointer-events: none;
+          flex: 1;
+          justify-content: flex-start;
+          transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .verisupply-text-section--inactive {
+          transform: translateX(20px);
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .verisupply-text-section--active {
+          transform: translateX(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+
         .verisupply-image-mobile {
           position: relative;
           overflow: hidden;
@@ -210,18 +233,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
         </div>
       </div>
 
-      {/* Text Section - Right Side (Active Only) */}
-      {isActive && (
+      {/* Text Section - Right Side */}
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 12,
-          padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: "none",
-          flex: 1,
-          justifyContent: "flex-start",
-        }}
+        className={`verisupply-text-section ${isActive && isDesktop ? "verisupply-text-section--active" : "verisupply-text-section--inactive"}`}
       >
         {/* Role Outcome */}
         <span
@@ -256,7 +270,6 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           .
         </span>
       </div>
-      )}
     </div>
     </>
   );

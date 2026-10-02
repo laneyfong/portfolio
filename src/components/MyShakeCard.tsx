@@ -114,6 +114,29 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
         }
 
+        .myshake-text-section {
+          display: flex;
+          flex-direction: column;
+          gap: 12;
+          padding: ${isDesktop ? "0 0 0 0" : "16px 0 0 0"};
+          pointer-events: none;
+          flex: 1;
+          justify-content: flex-start;
+          transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .myshake-text-section--inactive {
+          transform: translateX(20px);
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .myshake-text-section--active {
+          transform: translateX(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+
         .myshake-video-mobile {
           position: relative;
           overflow: hidden;
@@ -269,18 +292,9 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         </div>
       </div>
 
-      {/* Text Section - Right Side (Active Only) */}
-      {isActive && (
+      {/* Text Section - Right Side */}
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 12,
-          padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: "none",
-          flex: 1,
-          justifyContent: "flex-start",
-        }}
+        className={`myshake-text-section ${isActive && isDesktop ? "myshake-text-section--active" : "myshake-text-section--inactive"}`}
       >
         {/* Role Outcome */}
         <span
