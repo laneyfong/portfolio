@@ -346,13 +346,13 @@ const AboutPage: FC = () => {
                   fontWeight: tokens.weight.regular,
                   fontSize: tokens.text.base,
                   color: tokens.color.body,
-                  margin: 0,
+                  margin: "0 0 14px 0",
                   whiteSpace: "nowrap",
                 }}
               >
                 Let's <Italic>matcha</Italic> (or <Italic>coffee</Italic>) chat
               </h3>
-              <div style={{ display: "flex", gap: 10, margin: 0 }}>
+              <div style={{ display: "flex", gap: 10, margin: "0 0 16px 0" }}>
                 <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
                   <LinkedInIcon />
                 </SocialIconLink>
