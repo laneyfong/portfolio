@@ -44,9 +44,9 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
     const card = cardsRef.current[index];
     if (card) {
       setTimeout(() => {
-        const cardTop = card.getBoundingClientRect().top + window.scrollY;
-        const cardHeight = card.getBoundingClientRect().height;
-        const navClearance = 88; // Fixed nav bar height
+        const cardRect = card.getBoundingClientRect();
+        const cardTop = cardRect.top + window.scrollY;
+        const cardHeight = cardRect.height;
         const scrollTop = cardTop + cardHeight / 2 - window.innerHeight / 2;
         window.scrollTo({
           top: scrollTop,
