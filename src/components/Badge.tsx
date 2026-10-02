@@ -285,13 +285,13 @@ const Badge: FC<BadgeProps> = ({
                 margin: "8px 0 0 0",
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.regular,
-                fontSize: "16px",
+                fontSize: "14px",
                 letterSpacing: tokens.tracking.tight,
                 color: tokens.color.body,
-                lineHeight: 1.5,
+                lineHeight: 1.6,
               }}
             >
-              Accessibility design for high-stakes products
+              Research-driven design for high-stakes problems. Accessibility-first. AI-ready. Built to reduce friction and impact at scale.
             </p>
 
             <p
