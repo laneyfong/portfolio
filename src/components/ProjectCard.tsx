@@ -27,7 +27,6 @@ interface ProjectCardProps {
   noImageRadius?: boolean;
   noImageGradient?: boolean;
   isActive?: boolean;
-  onCardClick?: (e: React.MouseEvent) => void;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
@@ -49,7 +48,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
   noImageRadius = false,
   noImageGradient = false,
   isActive = true,
-  onCardClick,
 }) => {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -72,7 +70,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       className="project-card-mobile"
       role={to ? "link" : undefined}
       tabIndex={to ? 0 : undefined}
-      onClick={onCardClick || (to ? () => navigate(to) : undefined)}
+      onClick={to ? () => navigate(to) : undefined}
       onKeyDown={
         to
           ? (e) => {
