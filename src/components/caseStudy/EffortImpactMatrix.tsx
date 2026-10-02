@@ -32,23 +32,36 @@ const EffortImpactMatrix: FC = () => {
   const innerHeight = matrixSize - padding * 2;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 32,
-        marginBottom: 32,
-      }}
-    >
-      {/* Matrix SVG */}
+    <>
+      <style>{`
+        .effort-impact-matrix-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+          margin-bottom: 32px;
+        }
+        .effort-impact-matrix-svg-container {
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          transform: scale(1);
+        }
+        @media (max-width: 768px) {
+          .effort-impact-matrix-svg-container {
+            transform: scale(0.65);
+            transform-origin: top center;
+            margin-bottom: -220px;
+          }
+        }
+      `}</style>
       <div
-        style={{
-          position: "relative",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-        }}
+        className="effort-impact-matrix-wrapper"
       >
+        {/* Matrix SVG */}
+        <div
+          className="effort-impact-matrix-svg-container"
+        >
         <svg
           width={matrixSize}
           height={matrixSize}
@@ -288,7 +301,8 @@ const EffortImpactMatrix: FC = () => {
           })}
         </svg>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
