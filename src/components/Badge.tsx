@@ -296,7 +296,7 @@ const Badge: FC<BadgeProps> = ({
                 lineHeight: 1.6,
               }}
             >
-              Designing accessible interfaces that drive product growth and scale
+              Designing accessible-first products 0→1 with confident, polished UI
             </p>
 
             <p
