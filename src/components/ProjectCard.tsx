@@ -107,6 +107,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           pointer-events: none;
           flex: 1;
           justify-content: flex-start;
+          white-space: nowrap;
+          overflow: hidden;
           transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
