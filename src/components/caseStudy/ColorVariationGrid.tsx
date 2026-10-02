@@ -26,7 +26,16 @@ const ColorVariationGrid: FC = () => {
         }
         @media (max-width: 768px) {
           .color-variation-grid {
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            overflow-x: auto;
+            margin-bottom: 32px;
+            padding-bottom: 8px;
+          }
+          .color-variation-grid > div {
+            flex-shrink: 0;
+            min-width: calc(100vw - 64px);
           }
         }
       `}</style>
