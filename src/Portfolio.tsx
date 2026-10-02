@@ -5,7 +5,6 @@ import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
-import ProjectCard from "./components/ProjectCard";
 import HalftoneField from "./components/HalftoneField";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
