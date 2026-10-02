@@ -44,7 +44,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
   hoverScreenshot,
   context,
   hoverDetails,
-  noBackground = false,
   noImageRadius = false,
   noImageGradient = false,
   isActive = false,
@@ -64,22 +63,18 @@ const ProjectCard: FC<ProjectCardProps> = ({
           position: relative;
           overflow: hidden;
           display: flex;
-          transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+          flex-direction: row;
+          transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      align-items 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      flex-direction 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.2s,
                       box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
                       transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
           outline: none;
         }
 
         .project-card--inactive {
-          flex-direction: column;
           gap: 0;
-          align-items: stretch;
           height: auto;
           margin-top: 0;
           margin-bottom: 0;
@@ -88,14 +83,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
         }
 
         .project-card--active {
-          flex-direction: row;
           gap: 32px;
-          align-items: flex-start;
           height: 600px;
           margin-top: 12px;
           margin-bottom: clamp(40px, 4vw, 80px);
           box-shadow: none;
           transform: translateY(0) scale(1);
+          align-items: flex-start;
         }
 
         .project-card--active:hover {
@@ -118,6 +112,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           border-radius: ${isDesktop ? 20 : 0}px;
           transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      aspect-ratio 1.2s cubic-bezier(0.4, 0, 0.2, 1),
                       filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: filter, width, height;
         }
@@ -132,6 +127,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         .project-card-image-mobile--active {
           width: 70%;
           height: 100%;
+          aspect-ratio: auto;
           filter: grayscale(0%);
         }
 
@@ -139,12 +135,47 @@ const ProjectCard: FC<ProjectCardProps> = ({
           filter: grayscale(0%);
         }
 
+        .project-card-text-section {
+          transition: flex 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+                      opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card-text-section--inactive {
+          flex: 0;
+          width: 0;
+          opacity: 0;
+          overflow: hidden;
+        }
+
+        .project-card-text-section--active {
+          flex: 1;
+          width: auto;
+          opacity: 1;
+          overflow: visible;
+        }
+
         @media (max-width: 768px) {
           .project-card-mobile {
             border-radius: 0 !important;
+            flex-direction: column !important;
           }
           .project-card-image-mobile {
             border-radius: 8px !important;
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16 / 10 !important;
+          }
+          .project-card-image-mobile--active {
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16 / 10 !important;
+            filter: grayscale(100%) !important;
+          }
+          .project-card-text-section {
+            flex: 1 !important;
+            width: auto !important;
+            opacity: 1 !important;
           }
         }
       `}</style>
@@ -235,17 +266,17 @@ const ProjectCard: FC<ProjectCardProps> = ({
         )}
       </div>
 
-      {/* Text Section - Right Side (Active Only) */}
-      {isActive && (
+      {/* Text Section - Right Side */}
       <div
+        className={`project-card-text-section ${isActive && isDesktop ? "project-card-text-section--active" : "project-card-text-section--inactive"}`}
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 12,
           padding: isDesktop ? "0 0 0 0" : "16px 0 0 0",
-          pointerEvents: "none",
-          flex: 1,
+          pointerEvents: isActive ? "auto" : "none",
           justifyContent: "flex-start",
+          minWidth: 0,
         }}
       >
         {/* Context + WIP Badge */}
@@ -369,7 +400,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
           </div>
         )}
       </div>
-      )}
     </div>
     </>
   );
