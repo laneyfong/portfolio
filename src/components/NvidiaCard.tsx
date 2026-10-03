@@ -33,10 +33,10 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           position: relative;
           overflow: hidden;
           display: flex;
-          flex-direction: row;
-          gap: 32px;
+          flex-direction: column;
+          gap: 16px;
           outline: none;
-          opacity: ${isActive ? 1 : 0.5};
+          opacity: ${isActive ? 1 : 0.7};
           transform: translateY(${isActive ? 0 : 20}px);
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
                       transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -55,40 +55,25 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           flex-shrink: 0;
           background-color: #1a1a1a;
           transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          filter: ${hovered ? "grayscale(0%)" : "grayscale(100%)"};
+          filter: ${isActive || hovered ? "grayscale(0%)" : "grayscale(100%)"};
         }
 
         .nvidia-text {
-          display: none;
-        }
-
-        @media (min-width: 769px) {
-          .nvidia-text {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            flex: 1;
-            justify-content: flex-start;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: ${isActive ? 1 : 0};
-            pointer-events: ${isActive ? "auto" : "none"};
-          }
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          justify-content: flex-start;
         }
 
         @media (max-width: 768px) {
           .nvidia-card {
             border-radius: 0 !important;
-            flex-direction: column !important;
             gap: 16px !important;
           }
           .nvidia-video {
             border-radius: 8px !important;
             width: 100% !important;
             aspect-ratio: 16 / 10 !important;
-          }
-          .nvidia-text {
-            display: flex !important;
-            opacity: 1 !important;
           }
         }
       `}</style>

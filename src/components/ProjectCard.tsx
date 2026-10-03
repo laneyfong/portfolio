@@ -63,10 +63,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
           position: relative;
           overflow: hidden;
           display: flex;
-          flex-direction: row;
-          gap: 32px;
+          flex-direction: column;
+          gap: 16px;
           outline: none;
-          opacity: ${isActive ? 1 : 0.5};
+          opacity: ${isActive ? 1 : 0.7};
           transform: translateY(${isActive ? 0 : 20}px);
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
                       transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -89,41 +89,26 @@ const ProjectCard: FC<ProjectCardProps> = ({
           flex-shrink: 0;
           background: ${noImageGradient ? "#F5F5F7" : "linear-gradient(to top, #D0D0D3 0%, #F5F5F7 100%)"};
           transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          filter: ${hovered ? "grayscale(0%)" : "grayscale(100%)"};
+          filter: ${isActive || hovered ? "grayscale(0%)" : "grayscale(100%)"};
         }
 
         .project-text {
-          display: none;
-        }
-
-        @media (min-width: 769px) {
-          .project-text {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            flex: 1;
-            justify-content: flex-start;
-            overflow: hidden;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: ${isActive ? 1 : 0};
-            pointer-events: ${isActive ? "auto" : "none"};
-          }
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          justify-content: flex-start;
+          overflow: hidden;
         }
 
         @media (max-width: 768px) {
           .project-card {
             border-radius: 0 !important;
-            flex-direction: column !important;
             gap: 16px !important;
           }
           .project-image {
             border-radius: 8px !important;
             width: 100% !important;
             aspect-ratio: 16 / 10 !important;
-          }
-          .project-text {
-            display: flex !important;
-            opacity: 1 !important;
           }
         }
       `}</style>
