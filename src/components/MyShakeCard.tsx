@@ -209,6 +209,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           </div>
         </div>
 
+        {isActive && (
         <div className="myshake-text">
           <span
             style={{
@@ -241,6 +242,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             {boldifyMetrics(captionParts[1], boldMetrics)}
           </span>
         </div>
+        )}
       </div>
     </>
   );

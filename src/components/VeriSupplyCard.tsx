@@ -151,6 +151,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           </div>
         </div>
 
+        {isActive && (
         <div className="verisupply-text">
           <span
             style={{
@@ -183,6 +184,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
             .
           </span>
         </div>
+        )}
       </div>
     </>
   );

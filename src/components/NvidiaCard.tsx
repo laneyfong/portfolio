@@ -200,6 +200,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           </div>
         </div>
 
+        {isActive && (
         <div className="nvidia-text">
           <span
             style={{
@@ -268,6 +269,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             </span>
           </div>
         </div>
+        )}
       </div>
     </>
   );

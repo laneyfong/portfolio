@@ -183,6 +183,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           </div>
         </div>
 
+        {isActive && (
         <div className="idbridge-text">
           <span
             style={{
@@ -215,6 +216,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
             {captionParts[1]}
           </span>
         </div>
+        )}
       </div>
     </>
   );

@@ -195,6 +195,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           )}
         </div>
 
+        {isActive && (
         <div className="project-text">
           <div
             style={{
@@ -313,6 +314,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             </div>
           )}
         </div>
+        )}
       </div>
     </>
   );
