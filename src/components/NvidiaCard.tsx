@@ -17,9 +17,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
   useEffect(() => {
     if (videoRef.current) {
       if (isActive) {
-        videoRef.current.play().catch(() => {
-          // Autoplay may fail due to browser policies
-        });
+        videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
       }
@@ -29,123 +27,74 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
   return (
     <>
       <style>{`
-        .nvidia-card-mobile {
+        .nvidia-card {
           border-radius: ${isDesktop ? 20 : 12}px;
           cursor: pointer;
           position: relative;
           overflow: hidden;
           display: flex;
           flex-direction: row;
-          transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-          outline: none;
-        }
-
-        .nvidia-card--inactive {
-          gap: 0;
-          height: auto;
-          margin-top: 0;
-          margin-bottom: 0;
-          box-shadow: none;
-          transform: translateY(0) scale(1);
-        }
-
-        .nvidia-card--active {
           gap: 32px;
-          height: 600px;
-          margin-top: 12px;
-          margin-bottom: clamp(40px, 4vw, 80px);
-          box-shadow: none;
-          transform: translateY(0) scale(1);
-          align-items: flex-start;
+          outline: none;
+          opacity: ${isActive ? 1 : 0.5};
+          transform: translateY(${isActive ? 0 : 20}px);
+          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nvidia-card--active:hover {
-          transform: translateY(-4px) scale(1.01);
-        }
-
-        .nvidia-card--inactive:hover {
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .nvidia-text-section {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          pointer-events: none;
-          flex: 1;
-          justify-content: flex-start;
-          overflow: hidden;
-          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nvidia-text-section--inactive {
-          opacity: 0;
-          pointer-events: none;
-        }
-
-        .nvidia-text-section--active {
+        .nvidia-card:hover {
           opacity: 1;
-          pointer-events: auto;
         }
 
-        .nvidia-video-mobile {
+        .nvidia-video {
           position: relative;
           overflow: hidden;
           border-radius: ${isDesktop ? 20 : 0}px;
+          width: 100%;
+          aspect-ratio: 16 / 10;
           flex-shrink: 0;
           background-color: #1a1a1a;
-          transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      aspect-ratio 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-          will-change: filter, width, height;
+          transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          filter: ${hovered ? "grayscale(0%)" : "grayscale(100%)"};
         }
 
-        .nvidia-video-mobile--inactive {
-          width: 100%;
-          height: auto;
-          aspect-ratio: 16 / 10;
-          filter: grayscale(100%);
+        .nvidia-text {
+          display: none;
         }
 
-        .nvidia-video-mobile--active {
-          width: 70%;
-          height: 100%;
-          aspect-ratio: auto;
-          filter: grayscale(0%);
+        @media (min-width: 769px) {
+          .nvidia-text {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+            justify-content: flex-start;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: ${isActive ? 1 : 0};
+            pointer-events: ${isActive ? "auto" : "none"};
+          }
         }
-
-        .nvidia-video-mobile:hover {
-          filter: grayscale(0%);
-        }
-
 
         @media (max-width: 768px) {
-          .nvidia-card-mobile {
+          .nvidia-card {
             border-radius: 0 !important;
             flex-direction: column !important;
+            gap: 16px !important;
           }
-          .nvidia-video-mobile {
+          .nvidia-video {
             border-radius: 8px !important;
             width: 100% !important;
-            height: auto !important;
             aspect-ratio: 16 / 10 !important;
-            filter: grayscale(100%) !important;
           }
-          .nvidia-text-section {
-            flex: 1 !important;
-            width: auto !important;
+          .nvidia-text {
+            display: flex !important;
             opacity: 1 !important;
           }
         }
       `}</style>
+
       <div
-        className={`nvidia-card-mobile ${isActive && isDesktop ? "nvidia-card--active" : "nvidia-card--inactive"}`}
+        className="nvidia-card"
         role="link"
         tabIndex={0}
         onClick={(e) => {
@@ -165,10 +114,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Video Section */}
-        <div
-          className={`nvidia-video-mobile ${isActive && isDesktop ? "nvidia-video-mobile--active" : "nvidia-video-mobile--inactive"}`}
-        >
+        <div className="nvidia-video">
           <video
             ref={videoRef}
             src={nvidiaPrototype}
@@ -188,7 +134,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             preload="metadata"
           />
 
-          {/* Top Text Overlay */}
           <div
             style={{
               position: "absolute",
@@ -242,7 +187,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             </svg>
           </div>
 
-          {/* WIP Badge */}
           <div
             style={{
               position: "absolute",
@@ -258,7 +202,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               flexShrink: 0,
               zIndex: 5,
               opacity: isActive ? 0 : 1,
-              transition: "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
             <span
@@ -275,11 +219,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           </div>
         </div>
 
-        {/* Text Section - Right Side */}
-        <div
-          className={`nvidia-text-section ${isActive && isDesktop ? "nvidia-text-section--active" : "nvidia-text-section--inactive"}`}
-        >
-          {/* Context */}
+        <div className="nvidia-text">
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -293,7 +233,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             Capstone Project
           </span>
 
-          {/* Caption */}
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -308,7 +247,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             AI-powered usability testing that catches friction points at scale.
           </span>
 
-          {/* Role Outcome */}
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -322,7 +260,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             Product Designer
           </span>
 
-          {/* WIP Badge on Active */}
           <div
             style={{
               display: "flex",

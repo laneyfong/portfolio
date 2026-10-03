@@ -52,267 +52,214 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
   const captionParts = caption.split(captionItalic);
 
-  // Control video playback based on active state
   useEffect(() => {
     if (videoRef.current) {
       if (isActive) {
-        videoRef.current.play().catch(() => {
-          // Autoplay may fail due to browser policies
-        });
+        videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
       }
     }
   }, [isActive]);
 
-
   const isDesktop = window.innerWidth > 768;
 
   return (
     <>
       <style>{`
-        .myshake-card-mobile {
+        .myshake-card {
           border-radius: ${isDesktop ? 20 : 12}px;
           cursor: pointer;
           position: relative;
           overflow: hidden;
           display: flex;
           flex-direction: row;
-          transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          gap: 32px;
           outline: none;
+          opacity: ${isActive ? 1 : 0.5};
+          transform: translateY(${isActive ? 0 : 20}px);
+          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .myshake-card--inactive {
-          transform: translateY(0) scale(1);
+        .myshake-card:hover {
+          opacity: 1;
         }
 
-        .myshake-card--active {
-          transform: translateY(0) scale(1);
+        .myshake-video {
+          position: relative;
+          overflow: hidden;
+          border-radius: ${isDesktop ? 20 : 0}px;
+          width: 100%;
+          aspect-ratio: 16 / 10;
+          flex-shrink: 0;
+          background-color: #1a1a1a;
+          transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          filter: ${hovered ? "grayscale(0%)" : "grayscale(100%)"};
         }
 
-        .myshake-card--active:hover {
-          transform: translateY(-4px) scale(1.01);
-        }
-
-        .myshake-card--inactive:hover {
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .myshake-text-section {
+        .myshake-text {
           display: none;
         }
 
         @media (min-width: 769px) {
-          .myshake-text-section {
+          .myshake-text {
             display: flex;
             flex-direction: column;
             gap: 12px;
             flex: 1;
             justify-content: flex-start;
-            overflow: hidden;
             transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-
-          .myshake-text-section--inactive {
-            opacity: 0;
-            pointer-events: none;
-          }
-
-          .myshake-text-section--active {
-            opacity: 1;
-            pointer-events: auto;
+            opacity: ${isActive ? 1 : 0};
+            pointer-events: ${isActive ? "auto" : "none"};
           }
         }
-
-        .myshake-video-mobile {
-          position: relative;
-          overflow: hidden;
-          border-radius: ${isDesktop ? 20 : 0}px;
-          flex-shrink: 0;
-          background-color: #1a1a1a;
-          width: 100%;
-          aspect-ratio: 16 / 10;
-          transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .myshake-video-mobile--inactive {
-          filter: grayscale(100%);
-        }
-
-        .myshake-video-mobile--active {
-          filter: grayscale(0%);
-        }
-
-        .myshake-video-mobile:hover {
-          filter: grayscale(0%);
-        }
-
 
         @media (max-width: 768px) {
-          .myshake-card-mobile {
+          .myshake-card {
             border-radius: 0 !important;
             flex-direction: column !important;
+            gap: 16px !important;
           }
-          .myshake-video-mobile {
+          .myshake-video {
             border-radius: 8px !important;
             width: 100% !important;
-            height: auto !important;
             aspect-ratio: 16 / 10 !important;
-            filter: grayscale(100%) !important;
           }
-          .myshake-text-section {
-            flex: 1 !important;
-            width: auto !important;
+          .myshake-text {
+            display: flex !important;
             opacity: 1 !important;
           }
         }
       `}</style>
+
       <div
-        className={`myshake-card-mobile ${isActive && isDesktop ? "myshake-card--active" : "myshake-card--inactive"}`}
+        className="myshake-card"
         role="link"
         tabIndex={0}
-      onClick={(e) => {
-        if (isActive) {
-          e.stopPropagation();
-          navigate(to);
-        }
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          navigate(to);
-        }
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Video Section */}
-      <div
-        className={`myshake-video-mobile ${isActive && isDesktop ? "myshake-video-mobile--active" : "myshake-video-mobile--inactive"}`}
+        onClick={(e) => {
+          if (isActive) {
+            e.stopPropagation();
+            navigate(to);
+          }
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            if (isActive) {
+              navigate(to);
+            }
+          }
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
-        <video
-          ref={videoRef}
-          src={myshakeScreenRecording}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-          autoPlay
-          playsInline
-          loop
-          muted
-          preload="metadata"
-        />
+        <div className="myshake-video">
+          <video
+            ref={videoRef}
+            src={myshakeScreenRecording}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+            autoPlay
+            playsInline
+            loop
+            muted
+            preload="metadata"
+          />
 
-        {/* Top Text Overlay - Always visible */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: 12,
-            padding: "16px",
-            zIndex: 5,
-            pointerEvents: "none",
-          }}
-        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+              gap: 12,
+              padding: "16px",
+              zIndex: 5,
+              pointerEvents: "none",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "11px",
+                color: "white",
+                letterSpacing: "0.5px",
+                lineHeight: tokens.leading.none,
+                textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              {context}
+            </span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 32 32"
+              style={{
+                filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
+                flexShrink: 0,
+                transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+              }}
+            >
+              <circle cx="16" cy="16" r="14" fill="none" stroke="white" strokeWidth="1.5"></circle>
+              <g>
+                <path
+                  d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div className="myshake-text">
           <span
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: "11px",
-              color: "white",
-              letterSpacing: "0.5px",
+              fontSize: "12px",
+              color: tokens.color.muted,
+              letterSpacing: tokens.tracking.tight,
               lineHeight: tokens.leading.none,
-              textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
             }}
           >
-            {context}
+            {roleOutcome}
           </span>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 32 32"
+
+          <span
             style={{
-              filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
-              flexShrink: 0,
-              transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-              transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "16px",
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              wordWrap: "break-word",
+              overflowWrap: "break-word",
             }}
           >
-            <circle
-              cx="16"
-              cy="16"
-              r="14"
-              fill="none"
-              stroke="white"
-              strokeWidth="1.5"
-            />
-            <g>
-              <path
-                d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                stroke="white"
-                strokeWidth="1.5"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-          </svg>
+            {boldifyMetrics(captionParts[0], boldMetrics)}
+            <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
+              {boldifyMetrics(captionItalic, boldMetrics)}
+            </em>
+            {boldifyMetrics(captionParts[1], boldMetrics)}
+          </span>
         </div>
-      </div>
-
-      {/* Text Section - Right Side */}
-      <div
-        className={`myshake-text-section ${isActive && isDesktop ? "myshake-text-section--active" : "myshake-text-section--inactive"}`}
-      >
-        {/* Role Outcome */}
-        <span
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "12px",
-            color: tokens.color.muted,
-            letterSpacing: tokens.tracking.tight,
-            lineHeight: tokens.leading.none,
-          }}
-        >
-          {roleOutcome}
-        </span>
-
-        {/* Caption */}
-        <span
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "16px",
-            color: tokens.color.ink,
-            lineHeight: tokens.leading.snug,
-            wordWrap: "break-word",
-            overflowWrap: "break-word",
-          }}
-        >
-          {boldifyMetrics(captionParts[0], boldMetrics)}
-          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
-            {boldifyMetrics(captionItalic, boldMetrics)}
-          </em>
-          {boldifyMetrics(captionParts[1], boldMetrics)}
-        </span>
-      </div>
       </div>
     </>
   );

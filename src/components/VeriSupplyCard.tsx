@@ -16,259 +16,193 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
   return (
     <>
       <style>{`
-        .verisupply-card-mobile {
+        .verisupply-card {
           border-radius: ${isDesktop ? 20 : 12}px;
           cursor: pointer;
           position: relative;
           overflow: hidden;
           display: flex;
           flex-direction: row;
-          transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      gap 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      margin-top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      margin-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                      box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-          outline: none;
-        }
-
-        .verisupply-card--inactive {
-          gap: 0;
-          height: auto;
-          margin-top: 0;
-          margin-bottom: 0;
-          box-shadow: none;
-          transform: translateY(0) scale(1);
-        }
-
-        .verisupply-card--active {
           gap: 32px;
-          height: 600px;
-          margin-top: 12px;
-          margin-bottom: clamp(40px, 4vw, 80px);
-          box-shadow: none;
-          transform: translateY(0) scale(1);
-          align-items: flex-start;
+          outline: none;
+          opacity: ${isActive ? 1 : 0.5};
+          transform: translateY(${isActive ? 0 : 20}px);
+          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .verisupply-card--active:hover {
-          transform: translateY(-4px) scale(1.01);
-        }
-
-        .verisupply-card--inactive:hover {
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .verisupply-text-section {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          pointer-events: none;
-          flex: 1;
-          justify-content: flex-start;
-          overflow: hidden;
-          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .verisupply-text-section--inactive {
-          opacity: 0;
-          pointer-events: none;
-        }
-
-        .verisupply-text-section--active {
+        .verisupply-card:hover {
           opacity: 1;
-          pointer-events: auto;
         }
 
-        .verisupply-image-mobile {
+        .verisupply-image {
           position: relative;
           overflow: hidden;
           border-radius: ${isDesktop ? 20 : 0}px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          width: 100%;
+          aspect-ratio: 16 / 10;
           flex-shrink: 0;
           background-color: #1a1a1a;
-          transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      aspect-ratio 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-          will-change: filter, width, height;
+          transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          filter: ${hovered ? "grayscale(0%)" : "grayscale(100%)"};
         }
 
-        .verisupply-image-mobile--inactive {
-          width: 100%;
-          height: auto;
-          aspect-ratio: 16 / 10;
-          filter: grayscale(100%);
+        .verisupply-text {
+          display: none;
         }
 
-        .verisupply-image-mobile--active {
-          width: 70%;
-          height: 100%;
-          aspect-ratio: auto;
-          filter: grayscale(0%);
+        @media (min-width: 769px) {
+          .verisupply-text {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+            justify-content: flex-start;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: ${isActive ? 1 : 0};
+            pointer-events: ${isActive ? "auto" : "none"};
+          }
         }
-
-        .verisupply-image-mobile:hover {
-          filter: grayscale(0%);
-        }
-
 
         @media (max-width: 768px) {
-          .verisupply-card-mobile {
+          .verisupply-card {
             border-radius: 0 !important;
             flex-direction: column !important;
+            gap: 16px !important;
           }
-          .verisupply-image-mobile {
+          .verisupply-image {
             border-radius: 8px !important;
             width: 100% !important;
-            height: auto !important;
             aspect-ratio: 16 / 10 !important;
-            filter: grayscale(100%) !important;
           }
-          .verisupply-text-section {
-            flex: 1 !important;
-            width: auto !important;
+          .verisupply-text {
+            display: flex !important;
             opacity: 1 !important;
           }
         }
       `}</style>
+
       <div
-        className={`verisupply-card-mobile ${isActive && isDesktop ? "verisupply-card--active" : "verisupply-card--inactive"}`}
+        className="verisupply-card"
         role="link"
         tabIndex={0}
-      onClick={(e) => {
-        if (isActive) {
-          e.stopPropagation();
-          navigate("/verisupply");
-        }
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          navigate("/verisupply");
-        }
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Image Section */}
-      <div
-        className={`verisupply-image-mobile ${isActive && isDesktop ? "verisupply-image-mobile--active" : "verisupply-image-mobile--inactive"}`}
+        onClick={(e) => {
+          if (isActive) {
+            e.stopPropagation();
+            navigate("/verisupply");
+          }
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            if (isActive) {
+              navigate("/verisupply");
+            }
+          }
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
-        <img
-          src={verisupplyHero}
-          alt="VeriSupply dashboard"
-          decoding="async"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-          }}
-        />
+        <div className="verisupply-image">
+          <img
+            src={verisupplyHero}
+            alt="VeriSupply dashboard"
+            decoding="async"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+          />
 
-        {/* Top Text Overlay */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: 12,
-            padding: "16px",
-            zIndex: 5,
-            pointerEvents: "none",
-          }}
-        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+              gap: 12,
+              padding: "16px",
+              zIndex: 5,
+              pointerEvents: "none",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "11px",
+                color: "white",
+                letterSpacing: "0.5px",
+                lineHeight: tokens.leading.none,
+                textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              B2B SaaS
+            </span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 32 32"
+              style={{
+                filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
+                flexShrink: 0,
+                transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+              }}
+            >
+              <circle cx="16" cy="16" r="14" fill="none" stroke="white" strokeWidth="1.5" />
+              <g>
+                <path
+                  d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div className="verisupply-text">
           <span
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: "11px",
-              color: "white",
-              letterSpacing: "0.5px",
+              fontSize: "12px",
+              color: tokens.color.muted,
+              letterSpacing: tokens.tracking.tight,
               lineHeight: tokens.leading.none,
-              textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
             }}
           >
-            B2B SaaS
+            Supply chain transparency
           </span>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 32 32"
+
+          <span
             style={{
-              filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
-              flexShrink: 0,
-              transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-              transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: "16px",
+              color: tokens.color.ink,
+              lineHeight: tokens.leading.snug,
+              wordWrap: "break-word",
+              overflowWrap: "break-word",
             }}
           >
-            <circle
-              cx="16"
-              cy="16"
-              r="14"
-              fill="none"
-              stroke="white"
-              strokeWidth="1.5"
-            />
-            <g>
-              <path
-                d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
-                stroke="white"
-                strokeWidth="1.5"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-          </svg>
+            Reimagined supplier intake from 1-2 weeks to 1-2 hours. Reduced supplier data entry errors by{" "}
+            <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
+              86%
+            </em>
+            .
+          </span>
         </div>
       </div>
-
-      {/* Text Section - Right Side */}
-      <div
-        className={`verisupply-text-section ${isActive && isDesktop ? "verisupply-text-section--active" : "verisupply-text-section--inactive"}`}
-      >
-        {/* Role Outcome */}
-        <span
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "12px",
-            color: tokens.color.muted,
-            letterSpacing: tokens.tracking.tight,
-            lineHeight: tokens.leading.none,
-          }}
-        >
-          Supply chain transparency
-        </span>
-
-        {/* Caption */}
-        <span
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.medium,
-            fontSize: "16px",
-            color: tokens.color.ink,
-            lineHeight: tokens.leading.snug,
-            wordWrap: "break-word",
-            overflowWrap: "break-word",
-          }}
-        >
-          Reimagined supplier intake from 1-2 weeks to 1-2 hours. Reduced supplier data entry errors by{" "}
-          <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
-            86%
-          </em>
-          .
-        </span>
-      </div>
-    </div>
     </>
   );
 };
