@@ -66,6 +66,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           gap: 16px;
           outline: none;
           padding: 14px 0;
+          height: fit-content;
           opacity: ${isActive ? 1 : 0.7};
           transform: translateY(${isActive ? 0 : 20}px);
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
