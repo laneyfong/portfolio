@@ -88,22 +88,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         }
 
         .myshake-card--inactive {
-          gap: 0;
-          height: auto;
-          margin-top: 0;
-          margin-bottom: 0;
-          box-shadow: none;
           transform: translateY(0) scale(1);
         }
 
         .myshake-card--active {
-          gap: 32px;
-          height: 600px;
-          margin-top: 12px;
-          margin-bottom: clamp(40px, 4vw, 80px);
-          box-shadow: none;
           transform: translateY(0) scale(1);
-          align-items: flex-start;
         }
 
         .myshake-card--active:hover {
@@ -115,24 +104,29 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         }
 
         .myshake-text-section {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          pointer-events: none;
-          flex: 1;
-          justify-content: flex-start;
-          overflow: hidden;
-          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+          display: none;
         }
 
-        .myshake-text-section--inactive {
-          opacity: 0;
-          pointer-events: none;
-        }
+        @media (min-width: 769px) {
+          .myshake-text-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+            justify-content: flex-start;
+            overflow: hidden;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          }
 
-        .myshake-text-section--active {
-          opacity: 1;
-          pointer-events: auto;
+          .myshake-text-section--inactive {
+            opacity: 0;
+            pointer-events: none;
+          }
+
+          .myshake-text-section--active {
+            opacity: 1;
+            pointer-events: auto;
+          }
         }
 
         .myshake-video-mobile {
@@ -141,24 +135,16 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           border-radius: ${isDesktop ? 20 : 0}px;
           flex-shrink: 0;
           background-color: #1a1a1a;
-          transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      aspect-ratio 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                      filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-          will-change: filter, width, height;
+          width: 100%;
+          aspect-ratio: 16 / 10;
+          transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .myshake-video-mobile--inactive {
-          width: 100%;
-          height: auto;
-          aspect-ratio: 16 / 10;
           filter: grayscale(100%);
         }
 
         .myshake-video-mobile--active {
-          width: 70%;
-          height: 100%;
-          aspect-ratio: auto;
           filter: grayscale(0%);
         }
 
