@@ -17,14 +17,14 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
     <>
       <style>{`
         .verisupply-card {
-          border-radius: ${isDesktop ? 20 : 12}px;
           cursor: pointer;
           position: relative;
-          overflow: hidden;
+          overflow: visible;
           display: flex;
           flex-direction: column;
           gap: 16px;
           outline: none;
+          padding: 14px 0;
           opacity: ${isActive ? 1 : 0.7};
           transform: translateY(${isActive ? 0 : 20}px);
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
@@ -55,10 +55,6 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
         }
 
         @media (max-width: 768px) {
-          .verisupply-card {
-            border-radius: 0 !important;
-            gap: 16px !important;
-          }
           .verisupply-image {
             border-radius: 8px !important;
             width: 100% !important;
