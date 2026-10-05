@@ -24,13 +24,13 @@ const ProductFragments: FC<ProductFragmentsProps> = ({ width, height, isHovered 
   useEffect(() => {
     const centerX = width / 2;
     const centerY = height / 2;
-    const radius = 200;
+    const radius = 280; // Increased radius to position further away
 
     setFragments([
       {
         id: "myshake",
         x: centerX + Math.cos(0) * radius,
-        y: centerY + Math.sin(0) * radius,
+        y: centerY + Math.sin(0) * radius - 60, // Offset upward
         angle: 0,
       },
       {
@@ -119,7 +119,7 @@ const ProductFragments: FC<ProductFragmentsProps> = ({ width, height, isHovered 
   };
 
   return (
-    <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
+    <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden", zIndex: 11 }}>
       {fragments.map((fragment) => {
         const centerX = width / 2;
         const centerY = height / 2;
