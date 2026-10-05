@@ -311,8 +311,8 @@ const Badge: FC<BadgeProps> = ({
               src={avatarSticker}
               alt="Avatar"
               style={{
-                width: "85%",
-                height: "85%",
+                width: "75%",
+                height: "75%",
                 objectFit: "contain",
                 position: "relative",
                 zIndex: 3,
