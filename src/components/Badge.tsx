@@ -146,31 +146,19 @@ const Badge: FC<BadgeProps> = ({
       <style>{`
         @keyframes holographicShift {
           0% {
-            background: linear-gradient(135deg, #2E4CB8 0%, #5B7CE8 100%);
+            background-image: linear-gradient(135deg, #FF006E, #FB5607);
           }
           25% {
-            background: linear-gradient(135deg, #8B4FC4 0%, #D84FFF 100%);
+            background-image: linear-gradient(135deg, #FB5607, #FFBE0B);
           }
           50% {
-            background: linear-gradient(135deg, #2E6CFF 0%, #00D9FF 100%);
+            background-image: linear-gradient(135deg, #FFBE0B, #00F5FF);
           }
           75% {
-            background: linear-gradient(135deg, #7B3F9B 0%, #00FFFF 100%);
+            background-image: linear-gradient(135deg, #00F5FF, #8338EC);
           }
           100% {
-            background: linear-gradient(135deg, #2E4CB8 0%, #5B7CE8 100%);
-          }
-        }
-
-        @keyframes holographicLight {
-          0% {
-            background-position: 0% 0%;
-          }
-          50% {
-            background-position: 100% 100%;
-          }
-          100% {
-            background-position: 0% 0%;
+            background-image: linear-gradient(135deg, #FF006E, #FB5607);
           }
         }
 
@@ -190,34 +178,14 @@ const Badge: FC<BadgeProps> = ({
         }
 
         .holographic-avatar-bg {
-          animation: holographicShift 10s ease-in-out infinite !important;
-          background: linear-gradient(135deg, #2E4CB8, #5B7CE8) !important;
-        }
-
-        .holographic-avatar-bg::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(100, 220, 255, 0.25) 50%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          background-size: 200% 200%;
-          animation: holographicLight 6s ease-in-out infinite;
-          pointer-events: none;
-          border-radius: inherit;
-          z-index: 1;
+          animation: holographicShift 8s ease-in-out infinite !important;
+          background-image: linear-gradient(135deg, #FF006E, #FB5607) !important;
         }
 
         @media (prefers-reduced-motion: reduce) {
           .holographic-avatar-bg {
             animation: none !important;
-            background: linear-gradient(135deg, #2E4CB8, #5B7CE8) !important;
-          }
-          .holographic-avatar-bg::before {
-            animation: none;
+            background-image: linear-gradient(135deg, #FF006E, #FB5607) !important;
           }
         }
 
