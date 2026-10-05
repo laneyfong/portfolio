@@ -62,6 +62,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
       style={{
         position: "relative",
         width: "100%",
+        height: "fit-content",
         perspective: "1000px",
       }}
     >
@@ -72,6 +73,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
           flexDirection: "column",
           gap: 6,
           width: "100%",
+          height: "fit-content",
         }}
       >
         {Array.isArray(children) &&
@@ -104,6 +106,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
                 style={{
                   position: "relative",
                   width: "100%",
+                  height: "fit-content",
                   cursor: distance > 0 ? "pointer" : "default",
                   transform: `scale(${scale}) translateY(${offsetY}px)`,
                   opacity,
