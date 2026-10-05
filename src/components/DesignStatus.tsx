@@ -5,9 +5,10 @@ import { tokens } from "../tokens";
 interface DesignStatusProps {
   isBadgeHovered?: boolean;
   isFlipped?: boolean;
+  activeCaseStudy?: string | null;
 }
 
-const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped }) => {
+const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped, activeCaseStudy }) => {
   const enabledRef = useRef({ motion: true });
 
   useEffect(() => {
@@ -25,6 +26,8 @@ const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped }) => {
     statusText = "How I think";
   } else if (isBadgeHovered) {
     statusText = "About the designer";
+  } else if (activeCaseStudy) {
+    statusText = activeCaseStudy;
   }
 
   return (
@@ -48,6 +51,12 @@ const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped }) => {
           opacity: enabledRef.current.motion ? 1 : 1,
           transition: enabledRef.current.motion ? "opacity 0.4s ease, color 0.4s ease" : "none",
           whiteSpace: "nowrap",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          backdropFilter: "blur(12px)",
+          padding: "8px 16px",
+          borderRadius: "24px",
+          border: "1px solid rgba(255, 255, 255, 0.6)",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
         }}
       >
         {statusText}

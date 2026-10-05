@@ -25,6 +25,7 @@ const Portfolio: FC = () => {
   const [videoReady, setVideoReady] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isBadgeHovered, setIsBadgeHovered] = useState(false);
+  const [hoveredCaseStudy, setHoveredCaseStudy] = useState<string | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -161,6 +162,7 @@ const Portfolio: FC = () => {
           <DesignStatus
             isBadgeHovered={isBadgeHovered}
             isFlipped={isFlipped}
+            activeCaseStudy={hoveredCaseStudy}
           />
         </div>
       </main>
@@ -169,7 +171,12 @@ const Portfolio: FC = () => {
         <ContentContainer>
           <section id="work" style={{ width: "100%" }}>
             <h1 style={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden" }}>Featured Work</h1>
-            <FeaturedWorkShowcase>
+            <FeaturedWorkShowcase
+              onActiveIndexChange={(index) => {
+                const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
+                setHoveredCaseStudy(caseStudies[index] || null);
+              }}
+            >
               <MyShakeCard
                 roleOutcome="Mobile Design × Crisis Response"
                 caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration. "

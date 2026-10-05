@@ -3,9 +3,10 @@ import { useState, useEffect, useRef, cloneElement, isValidElement } from "react
 
 interface FeaturedWorkShowcaseProps {
   children: ReactNode[];
+  onActiveIndexChange?: (index: number) => void;
 }
 
-const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
+const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, onActiveIndexChange }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -38,6 +39,11 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Notify parent when active index changes
+  useEffect(() => {
+    onActiveIndexChange?.(activeIndex);
+  }, [activeIndex, onActiveIndexChange]);
 
   const handleCardClick = (index: number) => {
     setActiveIndex(index);
