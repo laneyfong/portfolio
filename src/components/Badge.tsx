@@ -198,23 +198,28 @@ const Badge: FC<BadgeProps> = ({
           animation: sparkleFloat 2s ease-out forwards;
         }
 
-        @keyframes liquidMorph1 {
-          0% { transform: translate(0, 0) scale(1); }
-          16% { transform: translate(6px, -8px) scale(1.08); }
-          33% { transform: translate(-5px, 12px) scale(0.92); }
-          50% { transform: translate(10px, -4px) scale(1.05); }
-          66% { transform: translate(-8px, -10px) scale(0.98); }
-          83% { transform: translate(4px, 8px) scale(1.03); }
-          100% { transform: translate(0, 0) scale(1); }
+        @keyframes liquidShift1 {
+          0% { transform: translate(0, 0); }
+          25% { transform: translate(8px, -10px); }
+          50% { transform: translate(-6px, 12px); }
+          75% { transform: translate(10px, -8px); }
+          100% { transform: translate(0, 0); }
         }
 
-        @keyframes liquidMorph2 {
-          0% { transform: translate(0, 0) scale(1); }
-          20% { transform: translate(-8px, 10px) scale(0.95); }
-          40% { transform: translate(12px, -6px) scale(1.07); }
-          60% { transform: translate(-10px, 4px) scale(0.96); }
-          80% { transform: translate(8px, -12px) scale(1.04); }
-          100% { transform: translate(0, 0) scale(1); }
+        @keyframes liquidShift2 {
+          0% { transform: translate(0, 0); }
+          25% { transform: translate(-10px, 8px); }
+          50% { transform: translate(12px, -6px); }
+          75% { transform: translate(-8px, 10px); }
+          100% { transform: translate(0, 0); }
+        }
+
+        @keyframes liquidShift3 {
+          0% { transform: translate(0, 0); }
+          25% { transform: translate(6px, 10px); }
+          50% { transform: translate(-10px, -8px); }
+          75% { transform: translate(8px, 12px); }
+          100% { transform: translate(0, 0); }
         }
 
         .liquid-avatar-bg {
@@ -223,22 +228,22 @@ const Badge: FC<BadgeProps> = ({
 
         .liquid-morph {
           mix-blend-mode: overlay;
-          opacity: 0.65;
         }
 
-        .liquid-morph rect:first-of-type {
-          animation: liquidMorph1 22s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+        .liquid-morph-1 {
+          animation: liquidShift1 18s ease-in-out infinite;
         }
 
-        .liquid-morph rect:last-of-type {
-          animation: liquidMorph2 28s cubic-bezier(0.42, 0, 0.58, 1) infinite reverse;
+        .liquid-morph-2 {
+          animation: liquidShift2 24s ease-in-out infinite;
+        }
+
+        .liquid-morph-3 {
+          animation: liquidShift3 20s ease-in-out infinite;
         }
 
         @media (prefers-reduced-motion: reduce) {
           .liquid-morph {
-            animation: none !important;
-          }
-          .liquid-morph rect {
             animation: none !important;
           }
         }
@@ -327,9 +332,9 @@ const Badge: FC<BadgeProps> = ({
               background: "linear-gradient(135deg, #4B63B5, #6B7FCF)",
             }}
           >
-            {/* Animated liquid morphing layer */}
+            {/* Animated liquid morphing layer 1 */}
             <svg
-              className="liquid-morph"
+              className="liquid-morph liquid-morph-1"
               style={{
                 position: "absolute",
                 inset: 0,
@@ -341,50 +346,92 @@ const Badge: FC<BadgeProps> = ({
               aria-hidden
             >
               <defs>
-                <filter id="liquidNoise">
+                <filter id="liquidNoise1">
                   <feTurbulence
                     type="fractalNoise"
-                    baseFrequency="0.025"
-                    numOctaves="4"
+                    baseFrequency="0.035"
+                    numOctaves="5"
+                    result="noise"
+                    seed="1"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="28"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+              </defs>
+              <rect width="100" height="100" fill="#5B7FD9" filter="url(#liquidNoise1)" opacity="0.6" />
+            </svg>
+
+            {/* Animated liquid morphing layer 2 */}
+            <svg
+              className="liquid-morph liquid-morph-2"
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
+              preserveAspectRatio="none"
+              viewBox="0 0 100 100"
+              aria-hidden
+            >
+              <defs>
+                <filter id="liquidNoise2">
+                  <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.028"
+                    numOctaves="5"
                     result="noise"
                     seed="2"
                   />
                   <feDisplacementMap
                     in="SourceGraphic"
                     in2="noise"
-                    scale="15"
+                    scale="32"
                     xChannelSelector="R"
                     yChannelSelector="G"
                   />
                 </filter>
-
-                <radialGradient id="iridGradient" cx="35%" cy="35%">
-                  <stop offset="0%" stopColor="#8BB4FF" stopOpacity="0.4" />
-                  <stop offset="40%" stopColor="#6B7FCF" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="#4B63B5" stopOpacity="0" />
-                </radialGradient>
               </defs>
+              <rect width="100" height="100" fill="#7B5FD9" filter="url(#liquidNoise2)" opacity="0.4" />
+            </svg>
 
-              {/* Base liquid layer with iridescence */}
-              <rect
-                width="100"
-                height="100"
-                fill="url(#iridGradient)"
-                filter="url(#liquidNoise)"
-                opacity="0.6"
-              />
-
-              {/* Secondary iridescent layer */}
-              <rect
-                width="100"
-                height="100"
-                fill="url(#iridGradient)"
-                filter="url(#liquidNoise)"
-                opacity="0.3"
-                style={{
-                  mixBlendMode: "screen",
-                }}
-              />
+            {/* Animated liquid morphing layer 3 */}
+            <svg
+              className="liquid-morph liquid-morph-3"
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
+              preserveAspectRatio="none"
+              viewBox="0 0 100 100"
+              aria-hidden
+            >
+              <defs>
+                <filter id="liquidNoise3">
+                  <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.032"
+                    numOctaves="4"
+                    result="noise"
+                    seed="3"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="25"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+              </defs>
+              <rect width="100" height="100" fill="#6B9FCF" filter="url(#liquidNoise3)" opacity="0.35" />
             </svg>
 
             {/* Fine grain texture overlay */}
@@ -393,11 +440,11 @@ const Badge: FC<BadgeProps> = ({
                 position: "absolute",
                 inset: 0,
                 backgroundImage: `
-                  url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='1' /%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")
+                  url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='200' height='200' fill='%23000' filter='url(%23grain)' opacity='0.05'/%3E%3C/svg%3E")
                 `,
-                backgroundSize: "50px 50px",
+                backgroundSize: "120px 120px",
                 pointerEvents: "none",
-                zIndex: 2,
+                zIndex: 8,
               }}
             />
 
