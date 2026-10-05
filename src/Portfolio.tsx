@@ -6,6 +6,9 @@ import ContentContainer from "./components/ContentContainer";
 import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import HalftoneField from "./components/HalftoneField";
+import HeroEnvironment from "./components/HeroEnvironment";
+import ProductFragments from "./components/ProductFragments";
+import DesignStatus from "./components/DesignStatus";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
 import VeriSupplyCard from "./components/VeriSupplyCard";
@@ -21,6 +24,8 @@ const Portfolio: FC = () => {
 
   const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
   const [videoReady, setVideoReady] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isBadgeHovered, setIsBadgeHovered] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -133,11 +138,38 @@ const Portfolio: FC = () => {
           }}
         >
           <HalftoneField width={dimensions.width} height={dimensions.height * 1.2} onVideoReady={() => setVideoReady(true)} />
+
+          {/* Hero environment: background field and typography */}
+          <HeroEnvironment
+            width={dimensions.width}
+            height={dimensions.height * 1.2}
+            isFlipped={isFlipped}
+          />
+
+          {/* Product fragments around badge */}
+          <ProductFragments
+            width={dimensions.width}
+            height={dimensions.height * 1.2}
+            isHovered={isBadgeHovered}
+          />
+
+          {/* Central hanging badge */}
           <div style={{ position: "relative", zIndex: 10 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
-              <Badge onCTAClick={scrollToWork} />
+              <Badge
+                onCTAClick={scrollToWork}
+                onFlipChange={setIsFlipped}
+                onHoverChange={setIsBadgeHovered}
+                externalIsFlipped={isFlipped}
+              />
             </HangingCard>
           </div>
+
+          {/* Design status indicator */}
+          <DesignStatus
+            isBadgeHovered={isBadgeHovered}
+            isFlipped={isFlipped}
+          />
         </div>
       </main>
 

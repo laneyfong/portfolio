@@ -11,6 +11,9 @@ interface BadgeProps {
   description?: string;
   photo?: string;
   onCTAClick?: () => void;
+  onFlipChange?: (isFlipped: boolean) => void;
+  onHoverChange?: (isHovered: boolean) => void;
+  externalIsFlipped?: boolean;
 }
 
 const Badge: FC<BadgeProps> = ({
@@ -20,10 +23,16 @@ const Badge: FC<BadgeProps> = ({
   description = "B.A. Cognitive Science @ UC Berkeley | M.S. HCI @ UCSC",
   photo,
   onCTAClick,
+  onFlipChange,
+  onHoverChange,
+  externalIsFlipped,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showSparkle, setShowSparkle] = useState(false);
+
+  // Use external state if provided, otherwise use internal state
+  const displayFlipped = externalIsFlipped !== undefined ? externalIsFlipped : isFlipped;
 
   useEffect(() => {
     if (isHovered) {
@@ -36,6 +45,18 @@ const Badge: FC<BadgeProps> = ({
   const handleMouseEnter = () => {
     setIsHovered(true);
     setShowSparkle(true);
+    onHoverChange?.(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    onHoverChange?.(false);
+  };
+
+  const handleFlip = () => {
+    const newFlipped = !isFlipped;
+    setIsFlipped(newFlipped);
+    onFlipChange?.(newFlipped);
   };
 
   // Dot pattern for badge accent
@@ -65,15 +86,15 @@ const Badge: FC<BadgeProps> = ({
   return (
     <div
       className="badge-container"
-      onClick={() => setIsFlipped(!isFlipped)}
+      onClick={handleFlip}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          setIsFlipped(!isFlipped);
+          handleFlip();
         }
       }}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
       role="button"
       tabIndex={0}
       aria-label="Click or press Enter to flip card"
@@ -94,7 +115,7 @@ const Badge: FC<BadgeProps> = ({
           width: "100%",
           height: "100%",
           transformStyle: "preserve-3d",
-          transform: isFlipped
+          transform: displayFlipped
             ? "rotateY(180deg)"
             : isHovered
             ? "rotateY(10deg)"
