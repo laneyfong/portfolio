@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { tokens } from "../tokens";
 
 interface DesignStatusProps {
@@ -10,6 +10,8 @@ interface DesignStatusProps {
 
 const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped, activeCaseStudy }) => {
   const enabledRef = useRef({ motion: true });
+  const [bottomOffset, setBottomOffset] = useState(32);
+  const statusRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -18,6 +20,30 @@ const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped, active
       enabledRef.current.motion = !reduceMotionQuery.matches;
     });
     return () => reduceMotionQuery.removeEventListener("change", () => {});
+  }, []);
+
+  // Detect footer and adjust status bar position
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector("footer");
+      const status = statusRef.current;
+
+      if (!footer || !status) return;
+
+      const footerRect = footer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // If footer is within 200px of viewport bottom, move status bar up
+      if (footerRect.top < windowHeight - 100) {
+        const distanceToFooter = windowHeight - footerRect.top;
+        setBottomOffset(Math.max(32, 32 + distanceToFooter));
+      } else {
+        setBottomOffset(32);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   let statusText = "Designing with intention";
@@ -32,13 +58,15 @@ const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped, active
 
   return (
     <div
+      ref={statusRef}
       style={{
         position: "fixed",
-        bottom: "32px",
+        bottom: `${bottomOffset}px`,
         left: "50%",
         transform: "translateX(-50%)",
         pointerEvents: "none",
         zIndex: 100,
+        transition: "bottom 0.3s ease",
       }}
     >
       <div
