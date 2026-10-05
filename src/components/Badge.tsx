@@ -144,21 +144,42 @@ const Badge: FC<BadgeProps> = ({
           }}
         >
       <style>{`
-        @keyframes holographicShift {
+        @keyframes lightFieldShift {
           0% {
-            background-image: linear-gradient(135deg, #FF006E, #FB5607);
+            background-position: 0% 0%, 100% 100%;
           }
           25% {
-            background-image: linear-gradient(135deg, #FB5607, #FFBE0B);
+            background-position: 25% 25%, 75% 75%;
           }
           50% {
-            background-image: linear-gradient(135deg, #FFBE0B, #00F5FF);
+            background-position: 50% 50%, 50% 50%;
           }
           75% {
-            background-image: linear-gradient(135deg, #00F5FF, #8338EC);
+            background-position: 75% 75%, 25% 25%;
           }
           100% {
-            background-image: linear-gradient(135deg, #FF006E, #FB5607);
+            background-position: 0% 0%, 100% 100%;
+          }
+        }
+
+        @keyframes refractionSweep {
+          0% {
+            opacity: 0;
+            transform: translateX(-100%) translateY(-100%);
+          }
+          10% {
+            opacity: 0.08;
+          }
+          50% {
+            opacity: 0.08;
+            transform: translateX(100%) translateY(100%);
+          }
+          90% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(100%) translateY(100%);
           }
         }
 
@@ -178,14 +199,42 @@ const Badge: FC<BadgeProps> = ({
         }
 
         .holographic-avatar-bg {
-          animation: holographicShift 8s ease-in-out infinite !important;
-          background-image: linear-gradient(135deg, #FF006E, #FB5607) !important;
+          background: linear-gradient(135deg, #4B63B5, #6B7FCF);
+          background-image:
+            radial-gradient(circle at 30% 20%, rgba(139, 180, 255, 0.15) 0%, transparent 30%),
+            radial-gradient(circle at 70% 60%, rgba(107, 127, 207, 0.12) 0%, transparent 35%),
+            radial-gradient(circle at 50% 80%, rgba(75, 99, 181, 0.1) 0%, transparent 40%),
+            linear-gradient(135deg, #4B63B5, #6B7FCF);
+          background-size: 200% 200%, 250% 250%, 300% 300%, 100% 100%;
+          background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
+          animation: lightFieldShift 14s ease-in-out infinite;
+          position: relative;
+        }
+
+        .holographic-avatar-bg::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(180, 210, 255, 0.06) 50%,
+            rgba(255, 255, 255, 0) 100%
+          );
+          animation: refractionSweep 12s ease-in-out infinite;
+          pointer-events: none;
+          border-radius: inherit;
+          z-index: 1;
         }
 
         @media (prefers-reduced-motion: reduce) {
           .holographic-avatar-bg {
-            animation: none !important;
-            background-image: linear-gradient(135deg, #FF006E, #FB5607) !important;
+            animation: none;
+            background: linear-gradient(135deg, #4B63B5, #6B7FCF);
+          }
+          .holographic-avatar-bg::before {
+            animation: none;
+            opacity: 0;
           }
         }
 
