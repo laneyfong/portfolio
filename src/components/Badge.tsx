@@ -144,6 +144,83 @@ const Badge: FC<BadgeProps> = ({
           }}
         >
       <style>{`
+        @keyframes holographicShift {
+          0% {
+            background: linear-gradient(135deg, #4B63B5 0%, #6B7FCF 100%);
+          }
+          25% {
+            background: linear-gradient(135deg, #7B4FB5 0%, #9B63DF 100%);
+          }
+          50% {
+            background: linear-gradient(135deg, #4B7FCF 0%, #6B5BFF 100%);
+          }
+          75% {
+            background: linear-gradient(135deg, #4B63CF 0%, #6B9FBF 100%);
+          }
+          100% {
+            background: linear-gradient(135deg, #4B63B5 0%, #6B7FCF 100%);
+          }
+        }
+
+        @keyframes holographicLight {
+          0% {
+            background-position: 0% 0%;
+          }
+          50% {
+            background-position: 100% 100%;
+          }
+          100% {
+            background-position: 0% 0%;
+          }
+        }
+
+        @keyframes sparkleFloat {
+          0% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.8);
+          }
+        }
+
+        .sparkle {
+          animation: sparkleFloat 2s ease-out forwards;
+        }
+
+        .holographic-avatar-bg {
+          animation: holographicShift 12s ease-in-out infinite !important;
+          background: linear-gradient(135deg, #4B63B5, #6B7FCF) !important;
+        }
+
+        .holographic-avatar-bg::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(100, 200, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0) 100%
+          );
+          background-size: 200% 200%;
+          animation: holographicLight 8s ease-in-out infinite;
+          pointer-events: none;
+          border-radius: inherit;
+          z-index: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .holographic-avatar-bg {
+            animation: none !important;
+            background: linear-gradient(135deg, #4B63B5, #6B7FCF) !important;
+          }
+          .holographic-avatar-bg::before {
+            animation: none;
+          }
+        }
+
         @media (min-width: 769px) and (max-width: 1024px) {
           .badge-container {
             width: clamp(280px, 28vw, 420px) !important;
@@ -213,11 +290,11 @@ const Badge: FC<BadgeProps> = ({
         }
       `}</style>
 
-          {/* FRONT: Accent area */}
+          {/* FRONT: Accent area with holographic effect */}
           <div
+            className="holographic-avatar-bg"
             style={{
               flex: 1,
-              background: `linear-gradient(135deg, ${tokens.color.accentStart}, ${tokens.color.accentEnd})`,
               borderRadius: "16px",
               display: "flex",
               alignItems: "center",
@@ -228,21 +305,6 @@ const Badge: FC<BadgeProps> = ({
               backgroundBlendMode: "screen",
             }}
           >
-            <style>{`
-              @keyframes sparkleFloat {
-                0% {
-                  opacity: 1;
-                  transform: translateY(0) scale(1);
-                }
-                100% {
-                  opacity: 0;
-                  transform: translateY(-20px) scale(0.8);
-                }
-              }
-              .sparkle {
-                animation: sparkleFloat 2s ease-out forwards;
-              }
-            `}</style>
 
             {/* Avatar sticker */}
             <img
@@ -253,7 +315,7 @@ const Badge: FC<BadgeProps> = ({
                 height: "85%",
                 objectFit: "contain",
                 position: "relative",
-                zIndex: 2,
+                zIndex: 3,
               }}
             />
 
