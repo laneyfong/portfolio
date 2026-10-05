@@ -198,43 +198,48 @@ const Badge: FC<BadgeProps> = ({
           animation: sparkleFloat 2s ease-out forwards;
         }
 
-        .holographic-avatar-bg {
-          background: linear-gradient(135deg, #4B63B5, #6B7FCF);
-          background-image:
-            radial-gradient(circle at 30% 20%, rgba(139, 180, 255, 0.15) 0%, transparent 30%),
-            radial-gradient(circle at 70% 60%, rgba(107, 127, 207, 0.12) 0%, transparent 35%),
-            radial-gradient(circle at 50% 80%, rgba(75, 99, 181, 0.1) 0%, transparent 40%),
-            linear-gradient(135deg, #4B63B5, #6B7FCF);
-          background-size: 200% 200%, 250% 250%, 300% 300%, 100% 100%;
-          background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%;
-          animation: lightFieldShift 14s ease-in-out infinite;
+        @keyframes liquidMorph1 {
+          0% { transform: translate(0, 0) scale(1); }
+          16% { transform: translate(6px, -8px) scale(1.08); }
+          33% { transform: translate(-5px, 12px) scale(0.92); }
+          50% { transform: translate(10px, -4px) scale(1.05); }
+          66% { transform: translate(-8px, -10px) scale(0.98); }
+          83% { transform: translate(4px, 8px) scale(1.03); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+
+        @keyframes liquidMorph2 {
+          0% { transform: translate(0, 0) scale(1); }
+          20% { transform: translate(-8px, 10px) scale(0.95); }
+          40% { transform: translate(12px, -6px) scale(1.07); }
+          60% { transform: translate(-10px, 4px) scale(0.96); }
+          80% { transform: translate(8px, -12px) scale(1.04); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .liquid-avatar-bg {
           position: relative;
         }
 
-        .holographic-avatar-bg::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(180, 210, 255, 0.06) 50%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          animation: refractionSweep 12s ease-in-out infinite;
-          pointer-events: none;
-          border-radius: inherit;
-          z-index: 1;
+        .liquid-morph {
+          mix-blend-mode: overlay;
+          opacity: 0.65;
+        }
+
+        .liquid-morph rect:first-of-type {
+          animation: liquidMorph1 22s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+        }
+
+        .liquid-morph rect:last-of-type {
+          animation: liquidMorph2 28s cubic-bezier(0.42, 0, 0.58, 1) infinite reverse;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .holographic-avatar-bg {
-            animation: none;
-            background: linear-gradient(135deg, #4B63B5, #6B7FCF);
+          .liquid-morph {
+            animation: none !important;
           }
-          .holographic-avatar-bg::before {
-            animation: none;
-            opacity: 0;
+          .liquid-morph rect {
+            animation: none !important;
           }
         }
 
@@ -307,9 +312,9 @@ const Badge: FC<BadgeProps> = ({
         }
       `}</style>
 
-          {/* FRONT: Accent area with holographic effect */}
+          {/* FRONT: Accent area with liquid iridescent effect */}
           <div
-            className="holographic-avatar-bg"
+            className="liquid-avatar-bg"
             style={{
               flex: 1,
               borderRadius: "16px",
@@ -319,9 +324,82 @@ const Badge: FC<BadgeProps> = ({
               position: "relative",
               overflow: "hidden",
               marginBottom: "16px",
-              backgroundBlendMode: "screen",
+              background: "linear-gradient(135deg, #4B63B5, #6B7FCF)",
             }}
           >
+            {/* Animated liquid morphing layer */}
+            <svg
+              className="liquid-morph"
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
+              preserveAspectRatio="none"
+              viewBox="0 0 100 100"
+              aria-hidden
+            >
+              <defs>
+                <filter id="liquidNoise">
+                  <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.025"
+                    numOctaves="4"
+                    result="noise"
+                    seed="2"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="15"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+
+                <radialGradient id="iridGradient" cx="35%" cy="35%">
+                  <stop offset="0%" stopColor="#8BB4FF" stopOpacity="0.4" />
+                  <stop offset="40%" stopColor="#6B7FCF" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="#4B63B5" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+
+              {/* Base liquid layer with iridescence */}
+              <rect
+                width="100"
+                height="100"
+                fill="url(#iridGradient)"
+                filter="url(#liquidNoise)"
+                opacity="0.6"
+              />
+
+              {/* Secondary iridescent layer */}
+              <rect
+                width="100"
+                height="100"
+                fill="url(#iridGradient)"
+                filter="url(#liquidNoise)"
+                opacity="0.3"
+                style={{
+                  mixBlendMode: "screen",
+                }}
+              />
+            </svg>
+
+            {/* Fine grain texture overlay */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: `
+                  url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='1' /%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")
+                `,
+                backgroundSize: "50px 50px",
+                pointerEvents: "none",
+                zIndex: 2,
+              }}
+            />
 
             {/* Avatar sticker */}
             <img
