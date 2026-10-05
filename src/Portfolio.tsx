@@ -173,8 +173,12 @@ const Portfolio: FC = () => {
             <h1 style={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden" }}>Featured Work</h1>
             <FeaturedWorkShowcase
               onActiveIndexChange={(index) => {
-                const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
-                setHoveredCaseStudy(caseStudies[index] || null);
+                if (workVisible) {
+                  const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
+                  setHoveredCaseStudy(caseStudies[index] || null);
+                } else {
+                  setHoveredCaseStudy(null);
+                }
               }}
             >
               <MyShakeCard
