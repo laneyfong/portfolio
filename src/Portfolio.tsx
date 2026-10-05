@@ -7,7 +7,6 @@ import Badge from "./components/Badge";
 import HangingCard from "./components/HangingCard";
 import HalftoneField from "./components/HalftoneField";
 import HeroEnvironment from "./components/HeroEnvironment";
-import ProductFragments from "./components/ProductFragments";
 import DesignStatus from "./components/DesignStatus";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
@@ -144,13 +143,6 @@ const Portfolio: FC = () => {
             width={dimensions.width}
             height={dimensions.height * 1.2}
             isFlipped={isFlipped}
-          />
-
-          {/* Product fragments around badge */}
-          <ProductFragments
-            width={dimensions.width}
-            height={dimensions.height * 1.2}
-            isHovered={isBadgeHovered}
           />
 
           {/* Central hanging badge */}

@@ -126,18 +126,19 @@ const HeroEnvironment: FC<HeroEnvironmentProps> = ({ width, height, isFlipped = 
           style={{
             position: "relative",
             fontSize: "clamp(80px, 18vw, 280px)",
-            fontWeight: tokens.weight.regular,
-            color: "rgba(0, 0, 0, 0.04)",
+            fontWeight: tokens.weight.light,
+            color: "rgba(0, 0, 0, 0.03)",
             lineHeight: 0.9,
             textAlign: "center",
             whiteSpace: "nowrap",
             transform: `translateX(${enabledRef.current.cursor ? (mousePos.x - window.innerWidth / 2) * 0.02 : 0}px)`,
             transition: enabledRef.current.cursor ? "none" : "transform 0.3s ease-out",
             userSelect: "none",
-            letterSpacing: "-0.02em",
+            letterSpacing: tokens.tracking.tight,
+            fontFamily: tokens.font.sans,
           }}
         >
-          {isFlipped ? "THINKING" : "DESIGNING"}
+          {isFlipped ? "Systems" : "Designing"}
         </div>
       </div>
     </div>

@@ -3,12 +3,11 @@ import { useEffect, useRef } from "react";
 import { tokens } from "../tokens";
 
 interface DesignStatusProps {
-  hoveredFragmentId?: string | null;
   isBadgeHovered?: boolean;
   isFlipped?: boolean;
 }
 
-const DesignStatus: FC<DesignStatusProps> = ({ hoveredFragmentId, isBadgeHovered, isFlipped }) => {
+const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped }) => {
   const enabledRef = useRef({ motion: true });
 
   useEffect(() => {
@@ -20,19 +19,12 @@ const DesignStatus: FC<DesignStatusProps> = ({ hoveredFragmentId, isBadgeHovered
     return () => reduceMotionQuery.removeEventListener("change", () => {});
   }, []);
 
-  let statusText = "● DESIGNING WITH INTENTION";
+  let statusText = "Designing with intention";
 
   if (isFlipped) {
-    statusText = "● SYSTEMS";
+    statusText = "How I think";
   } else if (isBadgeHovered) {
-    statusText = "● ABOUT THE DESIGNER";
-  } else if (hoveredFragmentId) {
-    const fragmentLabels: Record<string, string> = {
-      myshake: "● CRISIS RESPONSE DESIGN",
-      nvidia: "● AI USABILITY TESTING",
-      verisupply: "● SUPPLY CHAIN SYSTEMS",
-    };
-    statusText = fragmentLabels[hoveredFragmentId] || statusText;
+    statusText = "About the designer";
   }
 
   return (
@@ -49,10 +41,10 @@ const DesignStatus: FC<DesignStatusProps> = ({ hoveredFragmentId, isBadgeHovered
       <div
         style={{
           fontFamily: tokens.font.sans,
-          fontSize: "12px",
+          fontSize: tokens.text.sm,
           fontWeight: tokens.weight.regular,
           color: tokens.color.muted,
-          letterSpacing: "0.5px",
+          letterSpacing: tokens.tracking.tight,
           opacity: enabledRef.current.motion ? 1 : 1,
           transition: enabledRef.current.motion ? "opacity 0.4s ease, color 0.4s ease" : "none",
           whiteSpace: "nowrap",
