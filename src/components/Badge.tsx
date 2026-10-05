@@ -146,19 +146,19 @@ const Badge: FC<BadgeProps> = ({
       <style>{`
         @keyframes holographicShift {
           0% {
-            background: linear-gradient(135deg, #4B63B5 0%, #6B7FCF 100%);
+            background: linear-gradient(135deg, #2E4CB8 0%, #5B7CE8 100%);
           }
           25% {
-            background: linear-gradient(135deg, #7B4FB5 0%, #9B63DF 100%);
+            background: linear-gradient(135deg, #8B4FC4 0%, #D84FFF 100%);
           }
           50% {
-            background: linear-gradient(135deg, #4B7FCF 0%, #6B5BFF 100%);
+            background: linear-gradient(135deg, #2E6CFF 0%, #00D9FF 100%);
           }
           75% {
-            background: linear-gradient(135deg, #4B63CF 0%, #6B9FBF 100%);
+            background: linear-gradient(135deg, #7B3F9B 0%, #00FFFF 100%);
           }
           100% {
-            background: linear-gradient(135deg, #4B63B5 0%, #6B7FCF 100%);
+            background: linear-gradient(135deg, #2E4CB8 0%, #5B7CE8 100%);
           }
         }
 
@@ -190,8 +190,8 @@ const Badge: FC<BadgeProps> = ({
         }
 
         .holographic-avatar-bg {
-          animation: holographicShift 12s ease-in-out infinite !important;
-          background: linear-gradient(135deg, #4B63B5, #6B7FCF) !important;
+          animation: holographicShift 10s ease-in-out infinite !important;
+          background: linear-gradient(135deg, #2E4CB8, #5B7CE8) !important;
         }
 
         .holographic-avatar-bg::before {
@@ -201,11 +201,11 @@ const Badge: FC<BadgeProps> = ({
           background: linear-gradient(
             135deg,
             rgba(255, 255, 255, 0) 0%,
-            rgba(100, 200, 255, 0.1) 50%,
+            rgba(100, 220, 255, 0.25) 50%,
             rgba(255, 255, 255, 0) 100%
           );
           background-size: 200% 200%;
-          animation: holographicLight 8s ease-in-out infinite;
+          animation: holographicLight 6s ease-in-out infinite;
           pointer-events: none;
           border-radius: inherit;
           z-index: 1;
@@ -214,7 +214,7 @@ const Badge: FC<BadgeProps> = ({
         @media (prefers-reduced-motion: reduce) {
           .holographic-avatar-bg {
             animation: none !important;
-            background: linear-gradient(135deg, #4B63B5, #6B7FCF) !important;
+            background: linear-gradient(135deg, #2E4CB8, #5B7CE8) !important;
           }
           .holographic-avatar-bg::before {
             animation: none;
