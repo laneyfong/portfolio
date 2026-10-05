@@ -11,6 +11,7 @@ interface DesignStatusProps {
 const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped, activeCaseStudy }) => {
   const enabledRef = useRef({ motion: true });
   const [bottomOffset, setBottomOffset] = useState(32);
+  const [isInHero, setIsInHero] = useState(true);
   const statusRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,13 +23,23 @@ const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped, active
     return () => reduceMotionQuery.removeEventListener("change", () => {});
   }, []);
 
-  // Detect footer and adjust status bar position
+  // Detect scroll position and work section visibility
   useEffect(() => {
     const handleScroll = () => {
+      const workSection = document.getElementById("work");
       const footer = document.querySelector("footer");
       const status = statusRef.current;
 
-      if (!footer || !status) return;
+      if (!status) return;
+
+      // Check if work section is visible on screen
+      if (workSection) {
+        const workRect = workSection.getBoundingClientRect();
+        // If work section is below viewport top, we're in hero
+        setIsInHero(workRect.top > window.innerHeight * 0.5);
+      }
+
+      if (!footer) return;
 
       const footerRect = footer.getBoundingClientRect();
       const windowHeight = window.innerHeight;
@@ -48,12 +59,15 @@ const DesignStatus: FC<DesignStatusProps> = ({ isBadgeHovered, isFlipped, active
 
   let statusText = "Designing with intention";
 
-  if (isFlipped) {
-    statusText = "How I think";
-  } else if (isBadgeHovered) {
-    statusText = "About the designer";
-  } else if (activeCaseStudy) {
-    statusText = activeCaseStudy;
+  // If in hero section, always show default text
+  if (!isInHero) {
+    if (isFlipped) {
+      statusText = "How I think";
+    } else if (isBadgeHovered) {
+      statusText = "About the designer";
+    } else if (activeCaseStudy) {
+      statusText = activeCaseStudy;
+    }
   }
 
   return (
