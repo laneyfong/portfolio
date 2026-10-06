@@ -152,8 +152,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           </div>
         </div>
 
-        {isActive && (
-        <div className="verisupply-text">
+        <div className="verisupply-text" style={{ opacity: isActive ? 1 : 0.7 }}>
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -162,6 +161,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               color: tokens.color.muted,
               letterSpacing: tokens.tracking.tight,
               lineHeight: tokens.leading.none,
+              textTransform: "uppercase",
             }}
           >
             Supply chain transparency
@@ -171,9 +171,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: "16px",
+              fontSize: "18px",
               color: tokens.color.ink,
-              lineHeight: tokens.leading.snug,
+              lineHeight: 1.4,
               wordWrap: "break-word",
               overflowWrap: "break-word",
             }}
@@ -184,8 +184,43 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
             </em>
             .
           </span>
+
+          {isActive && (
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/verisupply");
+              }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                marginTop: 8,
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.light,
+                fontSize: "14px",
+                color: tokens.color.body,
+                textDecoration: "none",
+                transition: "color 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = tokens.color.ink;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = tokens.color.body;
+              }}
+            >
+              View case study
+              <svg width="12" height="12" viewBox="0 0 8.271 8.974" fill="currentColor">
+                <path
+                  d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
+                  fillRule="nonzero"
+                />
+              </svg>
+            </a>
+          )}
         </div>
-        )}
       </div>
     </>
   );
