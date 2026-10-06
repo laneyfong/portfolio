@@ -127,12 +127,13 @@ const Portfolio: FC = () => {
             position: "relative",
             zIndex: 1,
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
-            marginBottom: 60,
+            alignItems: "center",
+            marginBottom: 40,
             marginTop: -180,
             minHeight: "clamp(300px, 40vh, 60vh)",
-            paddingBottom: 60,
-            alignItems: "center",
+            paddingBottom: 40,
             background: "white",
             overflow: "visible",
           }}
@@ -147,7 +148,7 @@ const Portfolio: FC = () => {
           />
 
           {/* Central hanging badge */}
-          <div style={{ position: "relative", zIndex: 10 }}>
+          <div style={{ position: "relative", zIndex: 10, marginBottom: 20 }}>
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge
                 onCTAClick={scrollToWork}
@@ -156,6 +157,79 @@ const Portfolio: FC = () => {
                 externalIsFlipped={isFlipped}
               />
             </HangingCard>
+          </div>
+
+          {/* Hero headline and CTA - visible without flipping */}
+          <div
+            style={{
+              textAlign: "center",
+              maxWidth: "500px",
+              zIndex: 5,
+              paddingLeft: 20,
+              paddingRight: 20,
+            }}
+          >
+            <h1
+              style={{
+                margin: "0 0 12px 0",
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "clamp(24px, 4vw, 32px)",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.ink,
+                lineHeight: 1.3,
+              }}
+            >
+              Accessible-first product design
+            </h1>
+            <p
+              style={{
+                margin: "0 0 20px 0",
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.regular,
+                fontSize: "clamp(14px, 2.5vw, 16px)",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.body,
+                lineHeight: 1.5,
+              }}
+            >
+              Building confident, polished products from concept to launch.
+            </p>
+            <button
+              onClick={scrollToWork}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                borderRadius: "12px",
+                border: `1px solid ${tokens.color.cardBorder}`,
+                padding: "11px 24px",
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.light,
+                fontSize: "14px",
+                color: tokens.color.ink,
+                lineHeight: 1.4,
+                backgroundColor: "transparent",
+                cursor: "pointer",
+                transition: "background-color 0.2s ease, border-color 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.04)";
+                e.currentTarget.style.borderColor = tokens.color.muted;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.borderColor = tokens.color.cardBorder;
+              }}
+            >
+              View my work
+              <svg width="12" height="12" viewBox="0 0 8.271 8.974" fill="currentColor">
+                <path
+                  d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
+                  fillRule="nonzero"
+                />
+              </svg>
+            </button>
           </div>
 
           {/* Design status indicator */}
@@ -167,10 +241,22 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(10px, 1.5vw, 20px)", paddingBottom: "clamp(200px, 20vw, 400px)", boxSizing: "border-box" }}>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(30px, 3vw, 50px)", paddingBottom: "clamp(200px, 20vw, 400px)", boxSizing: "border-box" }}>
         <ContentContainer>
           <section id="work" style={{ width: "100%" }}>
-            <h1 style={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden" }}>Featured Work</h1>
+            <h1
+              style={{
+                margin: "0 0 32px 0",
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.light,
+                fontSize: "clamp(20px, 3vw, 28px)",
+                letterSpacing: tokens.tracking.tight,
+                color: tokens.color.ink,
+                lineHeight: 1.3,
+              }}
+            >
+              Featured Work
+            </h1>
             <FeaturedWorkShowcase
               onActiveIndexChange={(index) => {
                 if (workVisible) {
