@@ -20,7 +20,7 @@ const Badge: FC<BadgeProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [rearCardOffset] = useState(0);
+  const [rearCardVisible, setRearCardVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -40,18 +40,20 @@ const Badge: FC<BadgeProps> = ({
 
   const handleMouseEnter = () => {
     setIsHovered(true);
+    setRearCardVisible(true);
     onHoverChange?.(true);
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    setRearCardVisible(false);
     setMousePos({ x: 0, y: 0 });
     onHoverChange?.(false);
   };
 
-  const hoverTilt = isHovered ? {
-    tilt: Math.min(Math.max(mousePos.x / 100, -2), 2),
-    tiltY: Math.min(Math.max(mousePos.y / 100, -1), 1),
+  const hoverTilt = isHovered && !prefersReducedMotion ? {
+    tilt: Math.min(Math.max(mousePos.x / 120, -1.5), 1.5),
+    tiltY: Math.min(Math.max(mousePos.y / 120, -0.8), 0.8),
   } : { tilt: 0, tiltY: 0 };
 
   return (
@@ -59,48 +61,49 @@ const Badge: FC<BadgeProps> = ({
       <style>{`
         @keyframes gentleSwing {
           0%, 100% {
-            transform: translateY(0px) rotateZ(-0.5deg);
+            transform: translateY(0px) rotateZ(-0.3deg);
           }
           50% {
-            transform: translateY(-2px) rotateZ(0.5deg);
+            transform: translateY(-1.5px) rotateZ(0.3deg);
           }
         }
 
-        .badge-hanging-container {
+        .badge-container {
           position: relative;
           width: 100%;
           height: 100%;
-          perspective: 1000px;
+          perspective: 1200px;
         }
 
         .lanyard {
           position: absolute;
-          top: -60px;
+          top: -50px;
           left: 50%;
           transform: translateX(-50%);
-          width: 32px;
-          height: 60px;
-          background: linear-gradient(90deg, #E94B8C 0%, #E94B8C 100%);
-          clip-path: polygon(30% 0%, 70% 0%, 85% 100%, 15% 100%);
-          box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.2), inset 1px 0 2px rgba(255, 255, 255, 0.2);
-          z-index: 3;
+          width: 28px;
+          height: 50px;
+          background: linear-gradient(90deg, #E84E8A 0%, #E84E8A 100%);
+          clip-path: polygon(20% 0%, 80% 0%, 90% 100%, 10% 100%);
+          box-shadow: inset -0.5px 0 1px rgba(0, 0, 0, 0.15), inset 0.5px 0 1px rgba(255, 255, 255, 0.2);
+          z-index: 20;
         }
 
         .lanyard-text {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%) rotate(0deg);
-          font-size: 8px;
+          transform: translate(-50%, -50%);
+          font-size: 7px;
           color: white;
-          font-weight: 500;
-          letter-spacing: 1px;
+          font-weight: 600;
+          letter-spacing: 0.8px;
           writing-mode: vertical-rl;
           text-orientation: mixed;
           text-transform: uppercase;
-          z-index: 4;
+          z-index: 21;
           pointer-events: none;
           font-family: ${tokens.font.sans};
+          white-space: nowrap;
         }
 
         .metal-ring {
@@ -108,50 +111,50 @@ const Badge: FC<BadgeProps> = ({
           top: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 50px;
-          height: 24px;
-          border: 2px solid #B0B0B0;
+          width: 48px;
+          height: 20px;
+          border: 1.5px solid #A8A8A8;
           border-radius: 50%;
-          background: linear-gradient(135deg, #E8E8E8 0%, #C0C0C0 50%, #A8A8A8 100%);
+          background: linear-gradient(180deg, #E0E0E0 0%, #C0C0C0 50%, #A0A0A0 100%);
           box-shadow:
-            inset 0 1px 3px rgba(255, 255, 255, 0.4),
-            inset 0 -1px 2px rgba(0, 0, 0, 0.3),
-            0 2px 4px rgba(0, 0, 0, 0.2);
-          z-index: 5;
+            inset 0 1px 2px rgba(255, 255, 255, 0.5),
+            inset 0 -0.5px 1px rgba(0, 0, 0, 0.3),
+            0 1.5px 3px rgba(0, 0, 0, 0.2);
+          z-index: 25;
         }
 
         .metal-clip {
           position: absolute;
-          top: 18px;
+          top: 16px;
           left: 50%;
           transform: translateX(-50%);
-          width: 42px;
-          height: 28px;
-          background: linear-gradient(135deg, #D8D8D8 0%, #B0B0B0 50%, #909090 100%);
-          border-radius: 3px 3px 8px 8px;
+          width: 38px;
+          height: 24px;
+          background: linear-gradient(180deg, #D0D0D0 0%, #A8A8A8 50%, #888888 100%);
+          border-radius: 2px 2px 6px 6px;
           box-shadow:
-            0 2px 6px rgba(0, 0, 0, 0.25),
-            inset 0 1px 2px rgba(255, 255, 255, 0.3),
-            inset 0 -1px 1px rgba(0, 0, 0, 0.2);
-          z-index: 6;
+            0 1.5px 4px rgba(0, 0, 0, 0.25),
+            inset 0 0.5px 1.5px rgba(255, 255, 255, 0.3),
+            inset 0 -0.5px 1px rgba(0, 0, 0, 0.15);
+          z-index: 26;
         }
 
         .clip-grip {
           position: absolute;
-          top: 8px;
+          top: 6px;
           left: 50%;
           transform: translateX(-50%);
-          width: 28px;
-          height: 3px;
+          width: 24px;
+          height: 2.5px;
           background: repeating-linear-gradient(
             90deg,
-            #808080 0px,
-            #808080 2px,
-            #A0A0A0 2px,
-            #A0A0A0 4px
+            #707070 0px,
+            #707070 1.5px,
+            #989898 1.5px,
+            #989898 3px
           );
-          border-radius: 2px;
-          opacity: 0.7;
+          border-radius: 1px;
+          opacity: 0.8;
         }
 
         .badge-layers-wrapper {
@@ -159,155 +162,158 @@ const Badge: FC<BadgeProps> = ({
           width: 100%;
           height: 100%;
           transform-style: preserve-3d;
-          transition: transform 0.3s ease-out;
-          animation: ${prefersReducedMotion ? 'none' : 'gentleSwing 3s ease-in-out infinite'};
-          overflow: hidden;
+          animation: ${prefersReducedMotion ? 'none' : 'gentleSwing 4s ease-in-out infinite'};
         }
 
         .rear-card {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(200, 150, 220, 0.4) 0%, rgba(150, 200, 220, 0.3) 50%, rgba(220, 150, 190, 0.35) 100%);
-          border-radius: 16px;
-          transform: rotateZ(-4deg);
-          backdrop-filter: blur(2px);
+          background: linear-gradient(135deg, rgba(220, 160, 210, 0.3) 0%, rgba(200, 170, 230, 0.25) 40%, rgba(170, 200, 230, 0.2) 100%);
+          border-radius: 12px;
+          border: 1px solid rgba(200, 150, 200, 0.2);
           box-shadow:
-            0 8px 24px rgba(150, 100, 180, 0.15),
-            inset 0 1px 20px rgba(255, 200, 220, 0.2);
-          border: 1px solid rgba(220, 150, 190, 0.3);
-          padding: 40px 32px;
+            0 6px 20px rgba(150, 120, 180, 0.12),
+            inset 0 1px 15px rgba(255, 220, 240, 0.15);
+          transform: translate(14px, 12px) rotateZ(-3.5deg);
+          backdrop-filter: blur(1.5px);
+          padding: 36px 28px;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
-          gap: 32px;
-          overflow: hidden;
+          gap: 20px;
+          opacity: ${rearCardVisible ? 1 : 0.3};
+          transition: opacity 0.3s ease-out;
         }
 
         .rear-card-section {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 6px;
         }
 
         .rear-card-label {
           font-family: ${tokens.font.sans};
-          font-size: 12px;
+          font-size: 10px;
           font-weight: ${tokens.weight.medium};
-          color: rgba(0, 0, 0, 0.5);
-          letter-spacing: 0.5px;
+          color: rgba(0, 0, 0, 0.45);
+          letter-spacing: 0.4px;
           text-transform: uppercase;
         }
 
-        .rear-card-content {
+        .rear-card-text {
           font-family: ${tokens.font.sans};
-          font-size: 14px;
+          font-size: 12px;
           font-weight: ${tokens.weight.light};
-          color: rgba(0, 0, 0, 0.7);
-          line-height: 1.5;
-          letter-spacing: ${tokens.tracking.tight};
+          color: rgba(0, 0, 0, 0.65);
+          line-height: 1.4;
         }
 
         .front-card {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F8 100%);
-          border-radius: 16px;
-          padding: 40px 32px;
+          background: linear-gradient(135deg, #FEFEFE 0%, #F8F8FB 100%);
+          border-radius: 12px;
+          border: 1px solid rgba(0, 0, 0, 0.04);
+          box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.08),
+            0 1px 3px rgba(0, 0, 0, 0.05),
+            inset 0 0.5px 0 rgba(255, 255, 255, 0.9);
+          padding: 28px 24px;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          box-shadow:
-            0 12px 32px rgba(0, 0, 0, 0.12),
-            0 2px 8px rgba(0, 0, 0, 0.08),
-            inset 0 1px 0 rgba(255, 255, 255, 0.8);
-          border: 1px solid rgba(0, 0, 0, 0.05);
+          z-index: 30;
           transform-style: preserve-3d;
-          z-index: 10;
           cursor: pointer;
-          transition: transform 0.2s ease-out;
-          transform: translateY(${rearCardOffset}px);
+        }
+
+        .front-card-clip-area {
+          position: absolute;
+          top: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 32px;
+          height: 16px;
+          background: linear-gradient(180deg, #ECECEC 0%, #E0E0E0 100%);
+          border-radius: 50% 50% 0 0;
+          border: 1px solid rgba(0, 0, 0, 0.06);
+          border-bottom: none;
+          box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6);
+          z-index: 28;
         }
 
         .front-card-header {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 4px;
+          padding-top: 4px;
         }
 
         .front-card-name {
           font-family: ${tokens.font.sans};
-          font-size: 32px;
+          font-size: 28px;
           font-weight: ${tokens.weight.medium};
           color: ${tokens.color.ink};
-          line-height: 1;
-          letter-spacing: ${tokens.tracking.tight};
+          line-height: 1.05;
+          letter-spacing: -0.2px;
+          margin: 0;
         }
 
         .front-card-role {
           font-family: ${tokens.font.sans};
-          font-size: 14px;
+          font-size: 12px;
           font-weight: ${tokens.weight.regular};
-          color: ${tokens.color.body};
+          color: #666666;
           line-height: 1.3;
           letter-spacing: ${tokens.tracking.tight};
-        }
-
-        .front-card-description {
-          font-family: ${tokens.font.sans};
-          font-size: 13px;
-          font-weight: ${tokens.weight.light};
-          color: ${tokens.color.muted};
-          line-height: 1.5;
-          letter-spacing: ${tokens.tracking.tight};
-          margin-top: 16px;
+          margin: 0;
         }
 
         .front-card-detail {
-          width: 28px;
-          height: 28px;
-          border-radius: 6px;
-          background: linear-gradient(135deg, #E94B8C 0%, #D73B7A 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 11px;
-          font-weight: bold;
-          align-self: flex-start;
+          width: 24px;
+          height: 24px;
+          background: linear-gradient(135deg, #E84E8A 0%, #D63B78 100%);
+          border-radius: 3px;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          gap: 2px;
+          padding: 3px;
+          box-sizing: border-box;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .badge-container-outer {
+        .detail-square {
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 1px;
+        }
+
+        .badge-hanging-wrapper {
           position: relative;
           width: 100%;
           height: 100%;
+          transform-style: preserve-3d;
+          transition: transform 0.25s ease-out;
         }
 
         @media (max-width: 768px) {
-          .badge-hanging-container {
-            scale: 0.85;
+          .badge-container {
+            scale: 0.8;
             transform-origin: top center;
           }
 
           .front-card-name {
-            font-size: 24px;
+            font-size: 20px;
           }
 
           .front-card-role {
-            font-size: 12px;
-          }
-
-          .front-card-description {
             font-size: 11px;
           }
 
-          .front-card,
-          .rear-card {
-            padding: 28px 24px;
-          }
-
           .lanyard {
-            height: 50px;
+            height: 40px;
+            top: -40px;
           }
         }
 
@@ -315,12 +321,16 @@ const Badge: FC<BadgeProps> = ({
           .badge-layers-wrapper {
             animation: none !important;
           }
+
+          .rear-card {
+            opacity: 0.3 !important;
+          }
         }
       `}</style>
 
       <div
         ref={containerRef}
-        className="badge-hanging-container"
+        className="badge-container"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={onCTAClick}
@@ -328,8 +338,8 @@ const Badge: FC<BadgeProps> = ({
         tabIndex={0}
         aria-label="Portfolio badge"
         style={{
-          width: "clamp(240px, 26vw, 320px)",
-          aspectRatio: "1 / 1.4",
+          width: "clamp(220px, 24vw, 300px)",
+          aspectRatio: "0.68",
           position: "relative",
         }}
       >
@@ -338,7 +348,7 @@ const Badge: FC<BadgeProps> = ({
           <div className="lanyard-text">Portfolio</div>
         </div>
 
-        {/* Metal ring connector */}
+        {/* Metal ring */}
         <div className="metal-ring" />
 
         {/* Metal clip */}
@@ -346,48 +356,50 @@ const Badge: FC<BadgeProps> = ({
           <div className="clip-grip" />
         </div>
 
-        {/* Main badge layers */}
+        {/* Main wrapper with tilt */}
         <div
-          className="badge-layers-wrapper"
+          className="badge-hanging-wrapper"
           style={{
             transform: !prefersReducedMotion && isHovered
-              ? `perspective(1000px) rotateX(${hoverTilt.tiltY}deg) rotateY(${hoverTilt.tilt}deg)`
-              : undefined,
+              ? `perspective(1200px) rotateX(${hoverTilt.tiltY * 0.6}deg) rotateY(${hoverTilt.tilt * 0.6}deg)`
+              : 'perspective(1200px) rotateX(0deg) rotateY(0deg)',
           }}
         >
-          {/* Rear card - visible when scrolled up */}
-          <div className="rear-card" style={{ transform: `translateY(calc(100% + ${rearCardOffset}px))` }}>
-            <div className="rear-card-section">
-              <div className="rear-card-label">About</div>
-              <div className="rear-card-content">
-                I design accessible-first products that simplify complex systems through thoughtful, confident UI.
+          {/* Layers */}
+          <div className="badge-layers-wrapper">
+            {/* Rear translucent card */}
+            <div className="rear-card">
+              <div className="rear-card-section">
+                <div className="rear-card-label">About</div>
+                <div className="rear-card-text">
+                  Designing accessible-first products that simplify complex systems.
+                </div>
+              </div>
+
+              <div className="rear-card-section">
+                <div className="rear-card-label">Focus</div>
+                <div className="rear-card-text">
+                  Accessibility · AI × UX · Design Systems
+                </div>
               </div>
             </div>
 
-            <div className="rear-card-section">
-              <div className="rear-card-label">Focus</div>
-              <div className="rear-card-content">
-                Accessibility · AI × UX · Design Systems
+            {/* Front white card */}
+            <div className="front-card">
+              <div className="front-card-clip-area" />
+
+              <div className="front-card-header">
+                <h2 className="front-card-name">{name}</h2>
+                <p className="front-card-role">{role}</p>
+              </div>
+
+              <div className="front-card-detail">
+                <div className="detail-square" />
+                <div className="detail-square" />
+                <div className="detail-square" />
+                <div className="detail-square" />
               </div>
             </div>
-
-            <div className="rear-card-section">
-              <div className="rear-card-label">Currently</div>
-              <div className="rear-card-content">
-                M.S. Human-Computer Interaction, UC Santa Cruz
-              </div>
-            </div>
-          </div>
-
-          {/* Front card */}
-          <div className="front-card">
-            <div className="front-card-header">
-              <div className="front-card-name">{name}</div>
-              <div className="front-card-role">{role}</div>
-              <div className="front-card-description">{description}</div>
-            </div>
-
-            <div className="front-card-detail">LF</div>
           </div>
         </div>
       </div>
