@@ -152,9 +152,7 @@ const Portfolio: FC = () => {
             <HangingCard stringHeight={280} holeCenterOffset={36}>
               <Badge
                 onCTAClick={scrollToWork}
-                onFlipChange={setIsFlipped}
                 onHoverChange={setIsBadgeHovered}
-                externalIsFlipped={isFlipped}
               />
             </HangingCard>
           </div>
