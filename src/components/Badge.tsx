@@ -5,8 +5,6 @@ import { tokens } from "../tokens";
 interface BadgeProps {
   name?: string;
   role?: string;
-  specialization?: string;
-  description?: string;
   onCTAClick?: () => void;
   onHoverChange?: (isHovered: boolean) => void;
 }
@@ -14,7 +12,6 @@ interface BadgeProps {
 const Badge: FC<BadgeProps> = ({
   name = "Laney Fong",
   role = "Product Designer",
-  description = "B.A. Cognitive Science @ UC Berkeley | M.S. HCI @ UCSC",
   onCTAClick,
   onHoverChange,
 }) => {
