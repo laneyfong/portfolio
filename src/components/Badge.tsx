@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { tokens } from "../tokens";
 import avatarSticker from "../assets/avatar-sticker.png";
 
@@ -27,685 +27,374 @@ const Badge: FC<BadgeProps> = ({
   onHoverChange,
   externalIsFlipped,
 }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [showSparkle, setShowSparkle] = useState(false);
-
-  // Use external state if provided, otherwise use internal state
-  const displayFlipped = externalIsFlipped !== undefined ? externalIsFlipped : isFlipped;
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   useEffect(() => {
-    if (isHovered) {
-      setShowSparkle(true);
-      const timer = setTimeout(() => setShowSparkle(false), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [isHovered]);
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current || prefersReducedMotion) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      setMousePos({
+        x: e.clientX - rect.left - rect.width / 2,
+        y: e.clientY - rect.top - rect.height / 2,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [prefersReducedMotion]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    setShowSparkle(true);
     onHoverChange?.(true);
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    setMousePos({ x: 0, y: 0 });
     onHoverChange?.(false);
   };
 
-  const handleFlip = () => {
-    const newFlipped = !isFlipped;
-    setIsFlipped(newFlipped);
-    onFlipChange?.(newFlipped);
-  };
-
-  // Dot pattern for badge accent
-  const DotPattern = () => (
-    <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ position: "absolute", inset: 0 }} aria-hidden>
-      {/* Outer ring dots */}
-      {[0, 60, 120, 180, 240, 300].map((angle) => {
-        const rad = (angle * Math.PI) / 180;
-        const x = 50 + 28 * Math.cos(rad);
-        const y = 50 + 28 * Math.sin(rad);
-        return <circle key={`outer-${angle}`} cx={x} cy={y} r="2.5" fill="#000" />;
-      })}
-
-      {/* Middle ring dots */}
-      {[30, 90, 150, 210, 270, 330].map((angle) => {
-        const rad = (angle * Math.PI) / 180;
-        const x = 50 + 18 * Math.cos(rad);
-        const y = 50 + 18 * Math.sin(rad);
-        return <circle key={`mid-${angle}`} cx={x} cy={y} r="1.8" fill="#000" />;
-      })}
-
-      {/* Center dot */}
-      <circle cx="50" cy="50" r="5" fill="#000" />
-    </svg>
-  );
+  const hoverTilt = isHovered ? {
+    tilt: Math.min(Math.max(mousePos.x / 100, -2), 2),
+    tiltY: Math.min(Math.max(mousePos.y / 100, -1), 1),
+  } : { tilt: 0, tiltY: 0 };
 
   return (
-    <div
-      className="badge-container"
-      onClick={handleFlip}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          handleFlip();
-        }
-      }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      role="button"
-      tabIndex={0}
-      aria-label="Click or press Enter to flip card"
-      style={{
-        width: "clamp(235px, 24vw, 360px)",
-        aspectRatio: "2.125 / 3.370",
-        perspective: "1200px",
-        fontFamily: tokens.font.sans,
-        cursor: "pointer",
-        position: "relative",
-        outline: "none",
-      }}
-    >
-      <div
-        className="badge-flip-inner"
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          transformStyle: "preserve-3d",
-          transform: displayFlipped
-            ? "rotateY(180deg)"
-            : isHovered
-            ? "rotateY(10deg)"
-            : "rotateY(0deg)",
-          transition: "transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
-        }}
-      >
-        {/* FRONT SIDE */}
-        <div
-          className="badge-front"
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            background: "linear-gradient(135deg, #FFFFFF 0%, #F8F8FA 100%)",
-            borderRadius: "24px",
-            boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
-            border: "1px solid rgba(0, 0, 0, 0.06)",
-            padding: "16px 16px 24px 16px",
-            boxSizing: "border-box",
-            overflow: "visible",
-          }}
-        >
+    <>
       <style>{`
-        @keyframes lightFieldShift {
-          0% {
-            background-position: 0% 0%, 100% 100%;
-          }
-          25% {
-            background-position: 25% 25%, 75% 75%;
+        @keyframes gentleSwing {
+          0%, 100% {
+            transform: translateY(0px) rotateZ(-0.5deg);
           }
           50% {
-            background-position: 50% 50%, 50% 50%;
-          }
-          75% {
-            background-position: 75% 75%, 25% 25%;
-          }
-          100% {
-            background-position: 0% 0%, 100% 100%;
+            transform: translateY(-2px) rotateZ(0.5deg);
           }
         }
 
-        @keyframes refractionSweep {
-          0% {
-            opacity: 0;
-            transform: translateX(-100%) translateY(-100%);
+        @keyframes rearCardDrift {
+          0%, 100% {
+            transform: rotateZ(-4deg) translateX(0px) translateY(0px);
           }
-          10% {
-            opacity: 0.08;
+          33% {
+            transform: rotateZ(-3.5deg) translateX(1px) translateY(-1px);
           }
-          50% {
-            opacity: 0.08;
-            transform: translateX(100%) translateY(100%);
-          }
-          90% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 0;
-            transform: translateX(100%) translateY(100%);
+          66% {
+            transform: rotateZ(-4.5deg) translateX(-1px) translateY(1px);
           }
         }
 
-        @keyframes sparkleFloat {
-          0% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(-20px) scale(0.8);
-          }
-        }
-
-        .sparkle {
-          animation: sparkleFloat 2s ease-out forwards;
-        }
-
-        @keyframes textureFlow {
-          0% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(3px, -4px) scale(1.02); }
-          50% { transform: translate(-2px, 3px) scale(0.99); }
-          75% { transform: translate(2px, -2px) scale(1.01); }
-          100% { transform: translate(0, 0) scale(1); }
-        }
-
-        @keyframes lightShift {
-          0% { transform: translate(-15%, -15%) scale(1.2); }
-          33% { transform: translate(10%, 5%) scale(1.1); }
-          66% { transform: translate(-5%, 12%) scale(1.15); }
-          100% { transform: translate(-15%, -15%) scale(1.2); }
-        }
-
-        .liquid-avatar-bg {
+        .badge-hanging-container {
           position: relative;
+          width: 100%;
+          height: 100%;
+          perspective: 1000px;
         }
 
-        .material-texture {
-          animation: textureFlow 26s ease-in-out infinite;
-          opacity: 0.95;
+        .lanyard {
+          position: absolute;
+          top: -60px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 32px;
+          height: 60px;
+          background: linear-gradient(90deg, #E94B8C 0%, #E94B8C 100%);
+          clip-path: polygon(30% 0%, 70% 0%, 85% 100%, 15% 100%);
+          box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.2), inset 1px 0 2px rgba(255, 255, 255, 0.2);
+          z-index: 3;
         }
 
-        .subtle-light {
-          animation: lightShift 32s ease-in-out infinite;
-          mix-blend-mode: screen;
-          opacity: 0.6;
+        .lanyard-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(0deg);
+          font-size: 8px;
+          color: white;
+          font-weight: 500;
+          letter-spacing: 1px;
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+          text-transform: uppercase;
+          z-index: 4;
+          pointer-events: none;
+          font-family: ${tokens.font.sans};
+        }
+
+        .metal-ring {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50px;
+          height: 24px;
+          border: 2px solid #B0B0B0;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #E8E8E8 0%, #C0C0C0 50%, #A8A8A8 100%);
+          box-shadow:
+            inset 0 1px 3px rgba(255, 255, 255, 0.4),
+            inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+            0 2px 4px rgba(0, 0, 0, 0.2);
+          z-index: 5;
+        }
+
+        .metal-clip {
+          position: absolute;
+          top: 18px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 42px;
+          height: 28px;
+          background: linear-gradient(135deg, #D8D8D8 0%, #B0B0B0 50%, #909090 100%);
+          border-radius: 3px 3px 8px 8px;
+          box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.25),
+            inset 0 1px 2px rgba(255, 255, 255, 0.3),
+            inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+          z-index: 6;
+        }
+
+        .clip-grip {
+          position: absolute;
+          top: 8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 28px;
+          height: 3px;
+          background: repeating-linear-gradient(
+            90deg,
+            #808080 0px,
+            #808080 2px,
+            #A0A0A0 2px,
+            #A0A0A0 4px
+          );
+          border-radius: 2px;
+          opacity: 0.7;
+        }
+
+        .badge-layers-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transition: transform 0.3s ease-out;
+          animation: ${prefersReducedMotion ? 'none' : 'gentleSwing 3s ease-in-out infinite'};
+        }
+
+        .rear-card {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(200, 150, 220, 0.4) 0%, rgba(150, 200, 220, 0.3) 50%, rgba(220, 150, 190, 0.35) 100%);
+          border-radius: 16px;
+          transform: ${`rotateZ(-4deg) translateX(8px) translateY(6px)`};
+          animation: ${prefersReducedMotion ? 'none' : 'rearCardDrift 4s ease-in-out infinite'};
+          backdrop-filter: blur(2px);
+          box-shadow:
+            0 8px 24px rgba(150, 100, 180, 0.15),
+            inset 0 1px 20px rgba(255, 200, 220, 0.2);
+          border: 1px solid rgba(220, 150, 190, 0.3);
+        }
+
+        .rear-card-glow {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 60% 80% at 70% 70%, rgba(220, 150, 190, 0.25) 0%, rgba(150, 180, 220, 0.15) 40%, transparent 70%);
+          border-radius: 16px;
+          pointer-events: none;
+        }
+
+        .front-card {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F8 100%);
+          border-radius: 16px;
+          padding: 20px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          box-shadow:
+            0 12px 32px rgba(0, 0, 0, 0.12),
+            0 2px 8px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          transform-style: preserve-3d;
+          z-index: 10;
+          cursor: pointer;
+          transition: transform 0.2s ease-out;
+        }
+
+        .front-card:hover {
+          transform: translateY(-1px);
+        }
+
+        .avatar-area {
+          width: 100%;
+          aspect-ratio: 1;
+          border-radius: 12px;
+          background: linear-gradient(135deg, #F0E6FF 0%, #E6F0FF 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
+
+        .avatar-area img {
+          width: 70%;
+          height: 70%;
+          object-fit: contain;
+        }
+
+        .badge-info {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          flex: 1;
+        }
+
+        .badge-name {
+          font-family: ${tokens.font.sans};
+          font-size: 18px;
+          font-weight: ${tokens.weight.medium};
+          color: ${tokens.color.ink};
+          line-height: 1.1;
+          letter-spacing: ${tokens.tracking.tight};
+        }
+
+        .badge-role {
+          font-family: ${tokens.font.sans};
+          font-size: 13px;
+          font-weight: ${tokens.weight.regular};
+          color: ${tokens.color.body};
+          line-height: 1.3;
+          letter-spacing: ${tokens.tracking.tight};
+        }
+
+        .badge-description {
+          font-family: ${tokens.font.sans};
+          font-size: 12px;
+          font-weight: ${tokens.weight.light};
+          color: ${tokens.color.muted};
+          line-height: 1.4;
+          letter-spacing: ${tokens.tracking.tight};
+        }
+
+        .logo-accent {
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          background: linear-gradient(135deg, #E94B8C 0%, #D73B7A 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 10px;
+          font-weight: bold;
+          align-self: flex-start;
+          margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+          .badge-hanging-container {
+            scale: 0.85;
+            transform-origin: top center;
+          }
+
+          .badge-name {
+            font-size: 16px;
+          }
+
+          .badge-role {
+            font-size: 12px;
+          }
+
+          .badge-description {
+            font-size: 11px;
+          }
+
+          .lanyard {
+            height: 50px;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .material-texture,
-          .subtle-light {
+          .badge-layers-wrapper {
             animation: none !important;
           }
-        }
 
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .badge-container {
-            width: clamp(280px, 28vw, 420px) !important;
-          }
-        }
-        @media (max-width: 768px) {
-          .badge-container {
-            width: clamp(180px, 70vw, 300px) !important;
-          }
-          .badge-flip-inner {
-            backface-visibility: hidden !important;
-            -webkit-backface-visibility: hidden !important;
-          }
-          .badge-front, .badge-back {
-            backface-visibility: hidden !important;
-            -webkit-backface-visibility: hidden !important;
-          }
-          .badge-front h2 {
-            font-size: 16px !important;
-          }
-          .badge-front p {
-            font-size: 14px !important;
-          }
-          .badge-front p:last-child {
-            font-size: 13px !important;
-          }
-          .badge-back-value {
-            font-size: 14px !important;
-          }
-          .badge-back-label {
-            font-size: 11px !important;
-          }
-          .badge-container button {
-            min-height: 48px !important;
-            min-width: 48px !important;
-          }
-        }
-        @media (max-width: 640px) {
-          .badge-container {
-            width: clamp(160px, 75vw, 260px) !important;
-          }
-          .badge-front, .badge-back {
-            padding: 12px 12px 18px 12px !important;
-            backface-visibility: hidden !important;
-            -webkit-backface-visibility: hidden !important;
-          }
-          .badge-front h2 {
-            font-size: 14px !important;
-          }
-          .badge-front p {
-            font-size: 13px !important;
-          }
-          .badge-front p:last-child {
-            font-size: 12px !important;
-          }
-          .badge-back-value {
-            font-size: 12px !important;
-          }
-          .badge-back-label {
-            font-size: 10px !important;
-          }
-          .badge-container button {
-            min-height: 44px !important;
-            min-width: 44px !important;
-            padding: 12px !important;
+          .rear-card {
+            animation: none !important;
           }
         }
       `}</style>
 
-          {/* FRONT: Accent area with liquid iridescent effect */}
-          <div
-            className="liquid-avatar-bg"
-            style={{
-              flex: 1,
-              borderRadius: "16px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "relative",
-              overflow: "hidden",
-              marginBottom: "16px",
-              background: "linear-gradient(135deg, #4B63B5, #6B7FCF)",
-            }}
-          >
-            {/* Subtle animated texture deformation layer */}
-            <svg
-              className="material-texture"
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-              }}
-              preserveAspectRatio="none"
-              viewBox="0 0 100 100"
-              aria-hidden
-            >
-              <defs>
-                <filter id="subtleMarble">
-                  <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.04"
-                    numOctaves="3"
-                    result="noise"
-                  />
-                  <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="noise"
-                    scale="12"
-                    xChannelSelector="R"
-                    yChannelSelector="G"
-                  />
-                </filter>
-              </defs>
-              <rect width="100" height="100" fill="#4B63B5" filter="url(#subtleMarble)" />
-            </svg>
-
-            {/* Very subtle light shift layer - only grayscale, no color */}
-            <svg
-              className="subtle-light"
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-              }}
-              preserveAspectRatio="none"
-              viewBox="0 0 100 100"
-              aria-hidden
-            >
-              <defs>
-                <radialGradient id="softLight" cx="40%" cy="40%">
-                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.08" />
-                  <stop offset="60%" stopColor="#FFFFFF" stopOpacity="0.01" />
-                  <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-                </radialGradient>
-              </defs>
-              <rect width="100" height="100" fill="url(#softLight)" />
-            </svg>
-
-            {/* Fine grain texture overlay - subtle film grain */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                backgroundImage: `
-                  url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='finegrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='12' numOctaves='3' result='noise' seed='5' /%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23000' filter='url(%23finegrain)' opacity='0.04'/%3E%3C/svg%3E")
-                `,
-                backgroundSize: "150px 150px",
-                pointerEvents: "none",
-                zIndex: 8,
-              }}
-            />
-
-            {/* Avatar sticker */}
-            <img
-              src={avatarSticker}
-              alt="Avatar"
-              style={{
-                width: "75%",
-                height: "75%",
-                objectFit: "contain",
-                position: "relative",
-                zIndex: 3,
-              }}
-            />
-
-            {/* Photo/Image fallback */}
-            {photo && (
-              <img
-                src={photo}
-                alt={name}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  position: "absolute",
-                  zIndex: 1,
-                }}
-              />
-            )}
-
-            {/* Dot pattern when no photo */}
-            {!photo && <div style={{ position: "absolute", zIndex: 1 }}><DotPattern /></div>}
-          </div>
-
-
-          {/* Bottom info section */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-            <h2
-              style={{
-                margin: 0,
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.medium,
-                fontSize: "18px",
-                letterSpacing: tokens.tracking.tight,
-                color: tokens.color.ink,
-                lineHeight: 1.2,
-              }}
-            >
-              {name}
-            </h2>
-
-            <p
-              style={{
-                margin: "-2px 0 0 0",
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                fontSize: "16px",
-                letterSpacing: tokens.tracking.tight,
-                color: tokens.color.body,
-                lineHeight: 1.5,
-              }}
-            >
-              {role}
-            </p>
-
-            <p
-              style={{
-                margin: 0,
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                fontSize: "14px",
-                letterSpacing: tokens.tracking.tight,
-                color: tokens.color.body,
-                lineHeight: 1.6,
-              }}
-            >
-              Designing accessible-first products 0→1 with confident, polished UI
-            </p>
-
-            <p
-              style={{
-                margin: 0,
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.regular,
-                fontSize: "14px",
-                letterSpacing: tokens.tracking.tight,
-                color: tokens.color.muted,
-                lineHeight: 1.4,
-                textAlign: "center",
-              }}
-            >
-              ↻ Flip to explore
-            </p>
-
-            {/* Sparkle emoji - only on front */}
-            {showSparkle && (
-              <div
-                className="sparkle"
-                style={{
-                  position: "absolute",
-                  top: "20%",
-                  right: "10%",
-                  fontSize: "32px",
-                  zIndex: 20,
-                  pointerEvents: "none",
-                }}
-              >
-                ✨
-              </div>
-            )}
-          </div>
+      <div
+        ref={containerRef}
+        className="badge-hanging-container"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={onCTAClick}
+        role="button"
+        tabIndex={0}
+        aria-label="Portfolio badge"
+        style={{
+          width: "clamp(240px, 26vw, 320px)",
+          aspectRatio: "1 / 1.4",
+          position: "relative",
+        }}
+      >
+        {/* Lanyard */}
+        <div className="lanyard">
+          <div className="lanyard-text">Portfolio</div>
         </div>
 
-        {/* BACK SIDE */}
+        {/* Metal ring connector */}
+        <div className="metal-ring" />
+
+        {/* Metal clip */}
+        <div className="metal-clip">
+          <div className="clip-grip" />
+        </div>
+
+        {/* Main badge layers */}
         <div
-          className="badge-back"
+          className="badge-layers-wrapper"
           style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            background: "linear-gradient(135deg, #FFFFFF 0%, #F8F8FA 100%)",
-            borderRadius: "20px",
-            boxShadow: "0 10px 28px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.08)",
-            border: "1px solid rgba(0, 0, 0, 0.06)",
-            padding: "66px 20px 16px 20px",
-            boxSizing: "border-box",
-            transform: "rotateY(180deg)",
-            overflowY: "auto",
+            transform: !prefersReducedMotion && isHovered
+              ? `perspective(1000px) rotateX(${hoverTilt.tiltY}deg) rotateY(${hoverTilt.tilt}deg)`
+              : undefined,
           }}
         >
-          {/* BACK: Location, Background, Design Philosophy */}
-          <div
-            className="badge-back-section"
-            style={{
-              marginBottom: 24,
-              paddingBottom: 16,
-              borderBottom: `1px solid rgba(0, 0, 0, 0.06)`,
-            }}
-          >
-            <div
-              className="badge-back-label"
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "11px",
-                color: tokens.color.muted,
-                lineHeight: 1.3,
-                letterSpacing: "0.5px",
-                marginBottom: 8,
-              }}
-            >
-              Location
-            </div>
-            <div
-              className="badge-back-value"
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "16px",
-                color: tokens.color.body,
-                lineHeight: 1.5,
-              }}
-            >
-              {location}
-            </div>
+          {/* Rear translucent card */}
+          <div className="rear-card">
+            <div className="rear-card-glow" />
           </div>
 
-          <div
-            className="badge-back-section"
-            style={{
-              marginBottom: 24,
-              paddingBottom: 16,
-              borderBottom: `1px solid rgba(0, 0, 0, 0.06)`,
-            }}
-          >
-            <div
-              className="badge-back-label"
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "11px",
-                color: tokens.color.muted,
-                lineHeight: 1.3,
-                letterSpacing: "0.5px",
-                marginBottom: 8,
-              }}
-            >
-              Background
+          {/* Front white card */}
+          <div className="front-card">
+            {/* Avatar area */}
+            <div className="avatar-area">
+              <img src={avatarSticker} alt={name} />
             </div>
-            <div
-              className="badge-back-value"
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "16px",
-                color: tokens.color.body,
-                lineHeight: 1.5,
-              }}
-            >
-              {description}
-            </div>
-          </div>
 
-          <div
-            className="badge-back-section"
-            style={{
-              marginBottom: 0,
-            }}
-          >
-            <div
-              className="badge-back-label"
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "11px",
-                color: tokens.color.muted,
-                lineHeight: 1.3,
-                letterSpacing: "0.5px",
-                marginBottom: 8,
-              }}
-            >
-              Approach
+            {/* Badge info */}
+            <div className="badge-info">
+              <div className="badge-name">{name}</div>
+              <div className="badge-role">{role}</div>
+              <div className="badge-description">{description}</div>
             </div>
-            <div
-              className="badge-back-value"
-              style={{
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "16px",
-                color: tokens.color.body,
-                lineHeight: 1.5,
-              }}
-            >
-              Research-backed decisions, obsessive attention to accessibility, ruthless focus on reducing friction.
-            </div>
-          </div>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onCTAClick?.();
-            }}
-            style={{
-              marginTop: "auto",
-              paddingTop: 12,
-              width: "100%",
-              boxSizing: "border-box",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 0,
-            }}
-          >
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                borderRadius: "12px",
-                border: `1px solid ${tokens.color.cardBorder}`,
-                padding: "11px 18px",
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "14px",
-                color: tokens.color.ink,
-                lineHeight: 1.4,
-                transition: "background-color 0.2s ease, border-color 0.2s ease",
-                backgroundColor: "transparent",
-                width: "100%",
-                textAlign: "center",
-                justifyContent: "center",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(0, 0, 0, 0.04)";
-                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.muted;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
-                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.cardBorder;
-              }}
-              onTouchStart={(e) => {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(0, 0, 0, 0.08)";
-                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.muted;
-              }}
-              onTouchEnd={(e) => {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
-                (e.currentTarget as HTMLDivElement).style.borderColor = tokens.color.cardBorder;
-              }}
-            >
-              See work
-              <span
-                style={{
-                  width: 12,
-                  height: 12,
-                  borderRadius: "50%",
-                  border: "0.75px solid currentColor",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <svg width="6" height="7" viewBox="0 0 8.271 8.974" fill="currentColor">
-                  <path
-                    d="M 8.271 4.838 L 4.135 8.974 L 0 4.838 L 0.396 4.443 L 3.854 7.901 L 3.854 0 L 4.417 0 L 4.417 7.901 L 7.875 4.443 L 8.271 4.838 Z"
-                    fillRule="nonzero"
-                  />
-                </svg>
-              </span>
-            </div>
-          </button>
+            {/* Logo accent */}
+            <div className="logo-accent">LF</div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
