@@ -198,52 +198,39 @@ const Badge: FC<BadgeProps> = ({
           animation: sparkleFloat 2s ease-out forwards;
         }
 
-        @keyframes liquidShift1 {
-          0% { transform: translate(0, 0); }
-          25% { transform: translate(8px, -10px); }
-          50% { transform: translate(-6px, 12px); }
-          75% { transform: translate(10px, -8px); }
-          100% { transform: translate(0, 0); }
+        @keyframes textureFlow {
+          0% { transform: translate(0, 0) scale(1); }
+          25% { transform: translate(3px, -4px) scale(1.02); }
+          50% { transform: translate(-2px, 3px) scale(0.99); }
+          75% { transform: translate(2px, -2px) scale(1.01); }
+          100% { transform: translate(0, 0) scale(1); }
         }
 
-        @keyframes liquidShift2 {
-          0% { transform: translate(0, 0); }
-          25% { transform: translate(-10px, 8px); }
-          50% { transform: translate(12px, -6px); }
-          75% { transform: translate(-8px, 10px); }
-          100% { transform: translate(0, 0); }
-        }
-
-        @keyframes liquidShift3 {
-          0% { transform: translate(0, 0); }
-          25% { transform: translate(6px, 10px); }
-          50% { transform: translate(-10px, -8px); }
-          75% { transform: translate(8px, 12px); }
-          100% { transform: translate(0, 0); }
+        @keyframes lightShift {
+          0% { transform: translate(-15%, -15%) scale(1.2); }
+          33% { transform: translate(10%, 5%) scale(1.1); }
+          66% { transform: translate(-5%, 12%) scale(1.15); }
+          100% { transform: translate(-15%, -15%) scale(1.2); }
         }
 
         .liquid-avatar-bg {
           position: relative;
         }
 
-        .liquid-morph {
-          mix-blend-mode: overlay;
+        .material-texture {
+          animation: textureFlow 26s ease-in-out infinite;
+          opacity: 0.95;
         }
 
-        .liquid-morph-1 {
-          animation: liquidShift1 18s ease-in-out infinite;
-        }
-
-        .liquid-morph-2 {
-          animation: liquidShift2 24s ease-in-out infinite;
-        }
-
-        .liquid-morph-3 {
-          animation: liquidShift3 20s ease-in-out infinite;
+        .subtle-light {
+          animation: lightShift 32s ease-in-out infinite;
+          mix-blend-mode: screen;
+          opacity: 0.6;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .liquid-morph {
+          .material-texture,
+          .subtle-light {
             animation: none !important;
           }
         }
@@ -332,9 +319,9 @@ const Badge: FC<BadgeProps> = ({
               background: "linear-gradient(135deg, #4B63B5, #6B7FCF)",
             }}
           >
-            {/* Animated liquid morphing layer 1 */}
+            {/* Subtle animated texture deformation layer */}
             <svg
-              className="liquid-morph liquid-morph-1"
+              className="material-texture"
               style={{
                 position: "absolute",
                 inset: 0,
@@ -346,29 +333,28 @@ const Badge: FC<BadgeProps> = ({
               aria-hidden
             >
               <defs>
-                <filter id="liquidNoise1">
+                <filter id="subtleMarble">
                   <feTurbulence
                     type="fractalNoise"
-                    baseFrequency="0.035"
-                    numOctaves="5"
+                    baseFrequency="0.04"
+                    numOctaves="3"
                     result="noise"
-                    seed="1"
                   />
                   <feDisplacementMap
                     in="SourceGraphic"
                     in2="noise"
-                    scale="28"
+                    scale="12"
                     xChannelSelector="R"
                     yChannelSelector="G"
                   />
                 </filter>
               </defs>
-              <rect width="100" height="100" fill="#5B7FD9" filter="url(#liquidNoise1)" opacity="0.6" />
+              <rect width="100" height="100" fill="#4B63B5" filter="url(#subtleMarble)" />
             </svg>
 
-            {/* Animated liquid morphing layer 2 */}
+            {/* Very subtle light shift layer - only grayscale, no color */}
             <svg
-              className="liquid-morph liquid-morph-2"
+              className="subtle-light"
               style={{
                 position: "absolute",
                 inset: 0,
@@ -380,69 +366,24 @@ const Badge: FC<BadgeProps> = ({
               aria-hidden
             >
               <defs>
-                <filter id="liquidNoise2">
-                  <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.028"
-                    numOctaves="5"
-                    result="noise"
-                    seed="2"
-                  />
-                  <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="noise"
-                    scale="32"
-                    xChannelSelector="R"
-                    yChannelSelector="G"
-                  />
-                </filter>
+                <radialGradient id="softLight" cx="40%" cy="40%">
+                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.08" />
+                  <stop offset="60%" stopColor="#FFFFFF" stopOpacity="0.01" />
+                  <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                </radialGradient>
               </defs>
-              <rect width="100" height="100" fill="#7B5FD9" filter="url(#liquidNoise2)" opacity="0.4" />
+              <rect width="100" height="100" fill="url(#softLight)" />
             </svg>
 
-            {/* Animated liquid morphing layer 3 */}
-            <svg
-              className="liquid-morph liquid-morph-3"
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-              }}
-              preserveAspectRatio="none"
-              viewBox="0 0 100 100"
-              aria-hidden
-            >
-              <defs>
-                <filter id="liquidNoise3">
-                  <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.032"
-                    numOctaves="4"
-                    result="noise"
-                    seed="3"
-                  />
-                  <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="noise"
-                    scale="25"
-                    xChannelSelector="R"
-                    yChannelSelector="G"
-                  />
-                </filter>
-              </defs>
-              <rect width="100" height="100" fill="#6B9FCF" filter="url(#liquidNoise3)" opacity="0.35" />
-            </svg>
-
-            {/* Fine grain texture overlay */}
+            {/* Fine grain texture overlay - subtle film grain */}
             <div
               style={{
                 position: "absolute",
                 inset: 0,
                 backgroundImage: `
-                  url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='200' height='200' fill='%23000' filter='url(%23grain)' opacity='0.05'/%3E%3C/svg%3E")
+                  url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='finegrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='12' numOctaves='3' result='noise' seed='5' /%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23000' filter='url(%23finegrain)' opacity='0.04'/%3E%3C/svg%3E")
                 `,
-                backgroundSize: "120px 120px",
+                backgroundSize: "150px 150px",
                 pointerEvents: "none",
                 zIndex: 8,
               }}
