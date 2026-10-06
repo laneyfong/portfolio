@@ -23,9 +23,9 @@ const Portfolio: FC = () => {
 
   const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
   const [videoReady, setVideoReady] = useState(false);
-  const [isFlipped, setIsFlipped] = useState(false);
   const [isBadgeHovered, setIsBadgeHovered] = useState(false);
   const [hoveredCaseStudy, setHoveredCaseStudy] = useState<string | null>(null);
+  const isFlipped = false;
 
   useEffect(() => {
     const handleResize = () => {
