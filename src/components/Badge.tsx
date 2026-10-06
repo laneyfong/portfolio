@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { useState, useEffect, useRef } from "react";
 import { tokens } from "../tokens";
-import avatarSticker from "../assets/avatar-sticker.png";
 
 interface BadgeProps {
   name?: string;
@@ -21,7 +20,7 @@ const Badge: FC<BadgeProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [rearCardOffset, setRearCardOffset] = useState(0);
+  const [rearCardOffset] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
