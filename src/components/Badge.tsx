@@ -7,25 +7,17 @@ interface BadgeProps {
   name?: string;
   role?: string;
   specialization?: string;
-  location?: string;
   description?: string;
-  photo?: string;
   onCTAClick?: () => void;
-  onFlipChange?: (isFlipped: boolean) => void;
   onHoverChange?: (isHovered: boolean) => void;
-  externalIsFlipped?: boolean;
 }
 
 const Badge: FC<BadgeProps> = ({
   name = "Laney Fong",
   role = "Product Designer",
-  location = "San Francisco Bay Area",
   description = "B.A. Cognitive Science @ UC Berkeley | M.S. HCI @ UCSC",
-  photo,
   onCTAClick,
-  onFlipChange,
   onHoverChange,
-  externalIsFlipped,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
