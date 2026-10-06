@@ -171,15 +171,17 @@ const Badge: FC<BadgeProps> = ({
           box-shadow:
             0 6px 20px rgba(150, 120, 180, 0.12),
             inset 0 1px 15px rgba(255, 220, 240, 0.15);
-          transform: translate(14px, 12px) rotateZ(-3.5deg);
+          transform: ${rearCardVisible ? 'translate(14px, 85px) rotateZ(-3.5deg)' : 'translate(14px, 12px) rotateZ(-3.5deg)'};
           backdrop-filter: blur(1.5px);
           padding: 36px 28px;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
           gap: 20px;
+          justify-content: space-between;
           opacity: ${rearCardVisible ? 1 : 0.3};
-          transition: opacity 0.3s ease-out;
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease-out;
+          z-index: 35;
         }
 
         .rear-card-section {
@@ -379,6 +381,34 @@ const Badge: FC<BadgeProps> = ({
                   Accessibility · AI × UX · Design Systems
                 </div>
               </div>
+
+              <button
+                onClick={onCTAClick}
+                style={{
+                  background: 'linear-gradient(135deg, #E84E8A 0%, #D63B78 100%)',
+                  border: 'none',
+                  color: 'white',
+                  fontFamily: tokens.font.sans,
+                  fontSize: '12px',
+                  fontWeight: tokens.weight.medium,
+                  padding: '8px 16px',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  marginTop: '8px',
+                  boxShadow: '0 2px 8px rgba(232, 78, 138, 0.25)',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 12px rgba(232, 78, 138, 0.35)';
+                  (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 2px 8px rgba(232, 78, 138, 0.25)';
+                  (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
+                }}
+              >
+                Learn More
+              </button>
             </div>
 
             {/* Front white card */}
