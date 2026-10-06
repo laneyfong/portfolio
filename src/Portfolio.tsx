@@ -170,19 +170,6 @@ const Portfolio: FC = () => {
       <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(30px, 3vw, 50px)", paddingBottom: "clamp(200px, 20vw, 400px)", boxSizing: "border-box" }}>
         <ContentContainer>
           <section id="work" style={{ width: "100%" }}>
-            <h1
-              style={{
-                margin: "0 0 32px 0",
-                fontFamily: tokens.font.sans,
-                fontWeight: tokens.weight.light,
-                fontSize: "clamp(20px, 3vw, 28px)",
-                letterSpacing: tokens.tracking.tight,
-                color: tokens.color.ink,
-                lineHeight: 1.3,
-              }}
-            >
-              Featured Work
-            </h1>
             <FeaturedWorkShowcase
               onActiveIndexChange={(index) => {
                 if (workVisible) {
