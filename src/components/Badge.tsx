@@ -181,7 +181,7 @@ const Badge: FC<BadgeProps> = ({
           justify-content: space-between;
           opacity: ${rearCardVisible ? 1 : 0.3};
           transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease-out;
-          z-index: 35;
+          z-index: 5;
         }
 
         .rear-card-section {
