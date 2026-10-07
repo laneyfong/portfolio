@@ -279,41 +279,10 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
                 </g>
               </svg>
             </div>
-
-            <div
-              style={{
-                position: "absolute",
-                top: "-36px",
-                right: "0px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "4px 12px",
-                borderRadius: tokens.radius.full,
-                backgroundColor: tokens.color.offWhite,
-                border: `1px solid ${tokens.color.cardBorder}`,
-                flexShrink: 0,
-                zIndex: 5,
-                opacity: isActive ? 0 : 1,
-                transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: tokens.font.sans,
-                  fontSize: "12px",
-                  fontWeight: tokens.weight.medium,
-                  color: tokens.color.muted,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                WIP
-              </span>
-            </div>
           </div>
         )}
 
-        <div className="nvidia-text" style={{ opacity: isActive ? 1 : 0.7 }}>
+        <div className="nvidia-text" style={{ opacity: isActive ? 1 : 0.7, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <span
             style={{
               fontFamily: tokens.font.sans,
@@ -341,7 +310,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               backgroundColor: tokens.color.offWhite,
               border: `1px solid ${tokens.color.cardBorder}`,
               flexShrink: 0,
-              marginTop: 8,
               width: "fit-content",
             }}
           >
