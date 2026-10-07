@@ -9,7 +9,6 @@ import VeriSupplyCard from "./components/VeriSupplyCard";
 import NvidiaCard from "./components/NvidiaCard";
 import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
-import AnimatedBackground from "./components/AnimatedBackground";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 
@@ -88,8 +87,6 @@ const Portfolio: FC = () => {
       <TopNav />
 
       <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "24px", position: "relative" }}>
-        <AnimatedBackground />
-
         <div
           className="hero-section badge-reveal"
           style={{
