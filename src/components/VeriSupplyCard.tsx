@@ -158,14 +158,14 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: "14px",
-              color: tokens.color.ink,
+              color: "#BEBEBE",
               lineHeight: 1.4,
               wordWrap: "break-word",
               overflowWrap: "break-word",
             }}
           >
             Reduced intake time from 1-2 weeks to{" "}
-            <em style={{ fontFamily: tokens.font.sans, fontWeight: 500 }}>
+            <em style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "#111111" }}>
               1-2 hours
             </em>
           </span>

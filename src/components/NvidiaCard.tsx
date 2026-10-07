@@ -207,14 +207,14 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: "14px",
-              color: tokens.color.ink,
+              color: "#BEBEBE",
               lineHeight: 1.4,
               wordWrap: "break-word",
               overflowWrap: "break-word",
             }}
           >
             Automated friction detection at
-            <em style={{ fontFamily: tokens.font.sans, fontWeight: 500 }}>
+            <em style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "#111111" }}>
               {" "}scale
             </em>
           </span>
