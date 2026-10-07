@@ -78,13 +78,14 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           padding: 14px 0 12px 0;
           height: fit-content;
           opacity: ${isActive ? 1 : 0.7};
-          transform: translateY(${isActive ? 0 : 20}px);
+          transform: translateY(${isActive ? 0 : 20}px) scale(1);
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
                       transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .myshake-card:hover {
           opacity: 1;
+          transform: translateY(${isActive ? 0 : 20}px) scale(1.02);
         }
 
         .myshake-video {
