@@ -173,8 +173,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             </svg>
           </div>
 
-            </div>
-          </BorderBeam>
           <div
             style={{
               position: "absolute",
@@ -188,7 +186,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               backgroundColor: tokens.color.offWhite,
               border: `1px solid ${tokens.color.cardBorder}`,
               flexShrink: 0,
-              zIndex: 10,
+              zIndex: 5,
               opacity: isActive ? 0 : 1,
               transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
@@ -205,6 +203,8 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               WIP
             </span>
           </div>
+            </div>
+          </BorderBeam>
           </div>
         ) : (
           <div className="nvidia-video">
@@ -280,37 +280,36 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               </svg>
             </div>
 
-            </div>
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              top: "16px",
-              right: "16px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "4px 12px",
-              borderRadius: tokens.radius.full,
-              backgroundColor: tokens.color.offWhite,
-              border: `1px solid ${tokens.color.cardBorder}`,
-              flexShrink: 0,
-              zIndex: 10,
-              opacity: isActive ? 0 : 1,
-              transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-            }}
-          >
-            <span
+            <div
               style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "12px",
-                fontWeight: tokens.weight.medium,
-                color: tokens.color.muted,
-                letterSpacing: "0.5px",
+                position: "absolute",
+                top: "16px",
+                right: "16px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "4px 12px",
+                borderRadius: tokens.radius.full,
+                backgroundColor: tokens.color.offWhite,
+                border: `1px solid ${tokens.color.cardBorder}`,
+                flexShrink: 0,
+                zIndex: 5,
+                opacity: isActive ? 0 : 1,
+                transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
-              WIP
-            </span>
+              <span
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: "12px",
+                  fontWeight: tokens.weight.medium,
+                  color: tokens.color.muted,
+                  letterSpacing: "0.5px",
+                }}
+              >
+                WIP
+              </span>
+            </div>
           </div>
         )}
 
