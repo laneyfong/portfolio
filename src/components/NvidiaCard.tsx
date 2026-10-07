@@ -219,19 +219,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             </em>
           </span>
 
-          <span
-            style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              fontSize: "12px",
-              color: tokens.color.muted,
-              letterSpacing: tokens.tracking.tight,
-              lineHeight: tokens.leading.none,
-            }}
-          >
-            Product Designer
-          </span>
-
           <div
             style={{
               display: "flex",
