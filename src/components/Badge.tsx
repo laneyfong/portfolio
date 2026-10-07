@@ -270,6 +270,16 @@ const Badge: FC<BadgeProps> = ({
           margin: 0;
         }
 
+        .front-card-tagline {
+          font-family: ${tokens.font.sans};
+          font-size: 10px;
+          font-weight: ${tokens.weight.light};
+          color: #999999;
+          line-height: 1.4;
+          letter-spacing: ${tokens.tracking.tight};
+          margin: 4px 0 0 0;
+        }
+
         .front-card-detail {
           width: 24px;
           height: 24px;
@@ -419,6 +429,7 @@ const Badge: FC<BadgeProps> = ({
               <div className="front-card-header">
                 <h2 className="front-card-name">{name}</h2>
                 <p className="front-card-role">{role}</p>
+                <p className="front-card-tagline">0→1 founder-focused, driving growth through accessible, minimal design</p>
               </div>
 
               <div className="front-card-detail">
