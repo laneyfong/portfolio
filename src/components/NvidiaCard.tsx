@@ -176,8 +176,8 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           <div
             style={{
               position: "absolute",
-              top: "16px",
-              right: "16px",
+              top: "-36px",
+              right: "0px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -283,8 +283,8 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             <div
               style={{
                 position: "absolute",
-                top: "16px",
-                right: "16px",
+                top: "-36px",
+                right: "0px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
