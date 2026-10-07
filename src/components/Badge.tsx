@@ -372,7 +372,7 @@ const Badge: FC<BadgeProps> = ({
               <div className="rear-card-section">
                 <div className="rear-card-label">About</div>
                 <div className="rear-card-text">
-                  Designing accessible-first products that simplify complex systems.
+                  Product designer, 0→1 founder-focused, driving growth through accessible, minimal design
                 </div>
               </div>
 
