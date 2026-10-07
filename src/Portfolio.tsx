@@ -4,8 +4,6 @@ import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
-import VeriSupplyCard from "./components/VeriSupplyCard";
-import NvidiaCard from "./components/NvidiaCard";
 import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
@@ -43,15 +41,8 @@ const Portfolio: FC = () => {
         }}
       />
       <style>{`
-        .work-grid > :last-child {
-          grid-column: 1 / -1;
-        }
-
         @media (max-width: 768px) {
           .work-grid { grid-template-columns: 1fr !important; }
-          .work-grid > :last-child {
-            grid-column: 1 / -1;
-          }
         }
 
         @keyframes scrollFadeUp {
@@ -134,7 +125,7 @@ const Portfolio: FC = () => {
           <FeaturedWorkShowcase
             onActiveIndexChange={(index) => {
               if (workVisible) {
-                const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
+                const caseStudies = ["MyShake", "IDBridge"];
                 setHoveredCaseStudy(caseStudies[index] || null);
               } else {
                 setHoveredCaseStudy(null);
@@ -148,14 +139,12 @@ const Portfolio: FC = () => {
               to="/myshake-design"
               boldMetrics={["7 to 3"]}
             />
-            <VeriSupplyCard />
             <IDbridgeCard
               caption="Designed accessible identity platform in "
               captionItalic="6 hours"
               context="Designathon"
               to="/idbridge-design"
             />
-            <NvidiaCard />
           </FeaturedWorkShowcase>
         </section>
       </div>
