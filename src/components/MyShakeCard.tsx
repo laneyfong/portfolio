@@ -211,6 +211,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               </g>
             </svg>
           </div>
+            </div>
           </MetalFx>
         ) : (
           <div className="myshake-video">

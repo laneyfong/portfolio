@@ -202,6 +202,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               WIP
             </span>
           </div>
+            </div>
           </MetalFx>
         ) : (
           <div className="nvidia-video">

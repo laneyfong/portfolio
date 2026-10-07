@@ -185,6 +185,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
               </g>
             </svg>
           </div>
+            </div>
           </MetalFx>
         ) : (
           <div className="idbridge-video">

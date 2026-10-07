@@ -153,6 +153,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               </g>
             </svg>
           </div>
+            </div>
           </MetalFx>
         ) : (
           <div className="verisupply-image">
