@@ -13,7 +13,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
-        gap: "24px",
+        gap: "8px",
         width: "100%",
         height: "fit-content",
       }}
