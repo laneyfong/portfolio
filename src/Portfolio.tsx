@@ -9,6 +9,7 @@ import NvidiaCard from "./components/NvidiaCard";
 import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
+import kinoSvg from "./assets/kino.svg";
 
 
 const Portfolio: FC = () => {
@@ -27,6 +28,20 @@ const Portfolio: FC = () => {
         position: "relative",
       }}
     >
+      <img
+        src={kinoSvg}
+        alt="Kino background"
+        style={{
+          position: "fixed",
+          top: 0,
+          right: 0,
+          width: "400px",
+          height: "400px",
+          zIndex: 0,
+          pointerEvents: "none",
+          opacity: 0.8,
+        }}
+      />
       <style>{`
         .work-grid > :last-child {
           grid-column: 1 / -1;
@@ -85,7 +100,7 @@ const Portfolio: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "24px", position: "relative" }}>
+      <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "24px", position: "relative", zIndex: 1 }}>
         <div
           className="hero-section badge-reveal"
           style={{
