@@ -137,7 +137,7 @@ const Portfolio: FC = () => {
             margin: 0,
             padding: 0,
           }}>
-            Based in San Francisco Bay Area
+            Based in SF Bay Area
           </p>
         </div>
       </main>
