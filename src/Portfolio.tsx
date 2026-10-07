@@ -90,18 +90,36 @@ const Portfolio: FC = () => {
           className="hero-section badge-reveal"
           style={{
             position: "relative",
-            zIndex: 1,
+            zIndex: 10,
             paddingBottom: 16,
-            background: "white",
+            background: "transparent",
             paddingLeft: "62px",
             paddingRight: "52px",
             paddingTop: "98px",
             display: "flex",
             alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: "40px",
           }}
         >
+          <iframe
+            src="https://www.kinotype.xyz/embed?c=eyJtb2RlIjoidGV4dC1mbG93IiwiYXNzZXRJZCI6Im9yY2hpZCIsImFzcGVjdCI6MS43Nzc3Nzc3Nzc3Nzc3Nzc3LCJwYXJhbXMiOnsiZGVuc2l0eSI6OTAsInRleHQiOiJnZW5lcmF0aXZlIGxvZ2ljICIsInRocmVzaG9sZCI6MC41LCJpbnZlcnQiOmZhbHNlLCJzY2FsZSI6MC45MiwiZm9udCI6Im1vbm8iLCJjb2xvck1vZGUiOiJtb25vIiwiaW5rQ29sb3IiOiIjNDA2MGM4IiwiYmFja2dyb3VuZCI6IiNmZmZmZmYiLCJhbmltYXRpb24iOiJmbG93Iiwic3BlZWQiOjAuNywiYW1vdW50IjowLjV9LCJzb3VyY2UiOnsieCI6MC42NiwieSI6MC41NX0sInRyYW5zcGFyZW50Ijp0cnVlfQ"
+            width="100%"
+            height="500"
+            title="Kino artwork"
+            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; magnetometer; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            allowFullScreen
+            loading="lazy"
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              border: "none",
+              borderRadius: "0",
+              zIndex: 0,
+              pointerEvents: "none"
+            }}
+          />
           <h1 style={{
             fontFamily: "'Manrope'",
             fontSize: "24px",
@@ -109,28 +127,14 @@ const Portfolio: FC = () => {
             lineHeight: "33px",
             letterSpacing: "-0.05em",
             color: "#BEBEBE",
-            maxWidth: "600px",
+            maxWidth: "891px",
             margin: 0,
             padding: 0,
-            flex: 1,
+            position: "relative",
+            zIndex: 1,
           }}>
             I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, simplifies complexity, and executed with taste.
           </h1>
-          <iframe
-            src="https://www.kinotype.xyz/embed?c=eyJtb2RlIjoidGV4dC1mbG93IiwiYXNzZXRJZCI6Im9yY2hpZCIsImFzcGVjdCI6MS43Nzc3Nzc3Nzc3Nzc3Nzc3LCJwYXJhbXMiOnsiZGVuc2l0eSI6OTAsInRleHQiOiJnZW5lcmF0aXZlIGxvZ2ljICIsInRocmVzaG9sZCI6MC41LCJpbnZlcnQiOmZhbHNlLCJzY2FsZSI6MC45MiwiZm9udCI6Im1vbm8iLCJjb2xvck1vZGUiOiJtb25vIiwiaW5rQ29sb3IiOiIjNDA2MGM4IiwiYmFja2dyb3VuZCI6IiNmZmZmZmYiLCJhbmltYXRpb24iOiJmbG93Iiwic3BlZWQiOjAuNywiYW1vdW50IjowLjV9LCJzb3VyY2UiOnsieCI6MC42NiwieSI6MC41NX0sInRyYW5zcGFyZW50Ijp0cnVlfQ"
-            width="300"
-            height="300"
-            title="Kino artwork"
-            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; magnetometer; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-            allowFullScreen
-            loading="lazy"
-            style={{
-              border: "none",
-              borderRadius: "8px",
-              flexShrink: 0,
-              display: "block"
-            }}
-          />
         </div>
       </main>
 
