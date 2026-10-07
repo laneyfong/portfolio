@@ -142,11 +142,11 @@ const Portfolio: FC = () => {
             }}
           >
             <MyShakeCard
-              caption="Reduced steps from "
-              captionItalic="7 to 3"
+              caption="Increased engagement by 45% through "
+              captionItalic="IA restructure"
               context="Internship"
               to="/myshake-design"
-              boldMetrics={["7 to 3"]}
+              boldMetrics={["45%"]}
             />
             <VeriSupplyCard />
             <IDbridgeCard
