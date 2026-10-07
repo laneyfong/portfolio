@@ -112,8 +112,9 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <BorderBeam>
-            <div className="idbridge-video">
+          <div style={{ position: "relative", overflow: "visible" }}>
+            <BorderBeam>
+              <div className="idbridge-video">
           <video
             ref={videoRef}
             src={idbridgeScreenRecording}
@@ -185,8 +186,9 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
               </g>
             </svg>
           </div>
-            </div>
-          </BorderBeam>
+              </div>
+            </BorderBeam>
+          </div>
         ) : (
           <div className="idbridge-video">
             <video

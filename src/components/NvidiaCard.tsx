@@ -98,8 +98,9 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <BorderBeam>
-            <div className="nvidia-video">
+          <div style={{ position: "relative", overflow: "visible" }}>
+            <BorderBeam>
+              <div className="nvidia-video">
           <video
             ref={videoRef}
             src={nvidiaPrototype}
@@ -202,8 +203,9 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
               WIP
             </span>
           </div>
-            </div>
-          </BorderBeam>
+              </div>
+            </BorderBeam>
+          </div>
         ) : (
           <div className="nvidia-video">
             <video

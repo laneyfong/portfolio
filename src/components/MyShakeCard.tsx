@@ -138,8 +138,9 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <BorderBeam>
-            <div className="myshake-video">
+          <div style={{ position: "relative", overflow: "visible" }}>
+            <BorderBeam>
+              <div className="myshake-video">
           <video
             ref={videoRef}
             src={myshakeScreenRecording}
@@ -211,8 +212,9 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               </g>
             </svg>
           </div>
-            </div>
-          </BorderBeam>
+              </div>
+            </BorderBeam>
+          </div>
         ) : (
           <div className="myshake-video">
             <video

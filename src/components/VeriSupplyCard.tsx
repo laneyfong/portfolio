@@ -87,8 +87,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <BorderBeam>
-            <div className="verisupply-image">
+          <div style={{ position: "relative", overflow: "visible" }}>
+            <BorderBeam>
+              <div className="verisupply-image">
           <img
             src={verisupplyHero}
             alt="VeriSupply dashboard"
@@ -153,8 +154,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               </g>
             </svg>
           </div>
-            </div>
-          </BorderBeam>
+              </div>
+            </BorderBeam>
+          </div>
         ) : (
           <div className="verisupply-image">
             <img
