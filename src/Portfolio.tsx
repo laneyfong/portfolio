@@ -3,11 +3,6 @@ import { useState, useEffect } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
-import Badge from "./components/Badge";
-import HangingCard from "./components/HangingCard";
-import HalftoneField from "./components/HalftoneField";
-import HeroEnvironment from "./components/HeroEnvironment";
-import DesignStatus from "./components/DesignStatus";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
 import VeriSupplyCard from "./components/VeriSupplyCard";
@@ -20,34 +15,8 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 
 const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
-
-  const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
   const [videoReady, setVideoReady] = useState(false);
-  const [isBadgeHovered, setIsBadgeHovered] = useState(false);
   const [hoveredCaseStudy, setHoveredCaseStudy] = useState<string | null>(null);
-  const isFlipped = false;
-
-  useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const scrollToWork = () => {
-    const target = document.getElementById("work");
-    if (!target) return;
-    const navOffset = tokens.layout.navClearance;
-    const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
-  };
 
 
   return (
@@ -122,48 +91,34 @@ const Portfolio: FC = () => {
         <AnimatedBackground />
 
         <div
-          className="badge-section badge-reveal"
+          className="hero-section badge-reveal"
           style={{
             position: "relative",
             zIndex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            marginBottom: 40,
-            marginTop: -180,
-            minHeight: "clamp(300px, 40vh, 60vh)",
-            paddingBottom: 40,
+            minHeight: "40vh",
+            paddingBottom: 80,
             background: "white",
             overflow: "visible",
+            paddingLeft: "62px",
+            paddingRight: "52px",
+            paddingTop: "98px",
+            display: "flex",
+            alignItems: "flex-start",
           }}
         >
-          <HalftoneField width={dimensions.width} height={dimensions.height * 1.2} onVideoReady={() => setVideoReady(true)} />
-
-          {/* Hero environment: background field and typography */}
-          <HeroEnvironment
-            width={dimensions.width}
-            height={dimensions.height * 1.2}
-            isFlipped={isFlipped}
-          />
-
-          {/* Central hanging badge */}
-          <div style={{ position: "relative", zIndex: 10, marginBottom: 20 }}>
-            <HangingCard stringHeight={280} holeCenterOffset={36}>
-              <Badge
-                onCTAClick={scrollToWork}
-                onHoverChange={setIsBadgeHovered}
-              />
-            </HangingCard>
-          </div>
-
-
-          {/* Design status indicator */}
-          <DesignStatus
-            isBadgeHovered={isBadgeHovered}
-            isFlipped={isFlipped}
-            activeCaseStudy={hoveredCaseStudy}
-          />
+          <h1 style={{
+            fontFamily: "'Manrope'",
+            fontSize: "24px",
+            fontWeight: 500,
+            lineHeight: "33px",
+            letterSpacing: "-0.05em",
+            color: "#BEBEBE",
+            maxWidth: "891px",
+            margin: 0,
+            padding: 0,
+          }}>
+            I design <strong style={{ fontWeight: 600, color: "#BEBEBE" }}>0 to 1</strong> interfaces that are inclusive, simplifies complexity, and executed with taste.
+          </h1>
         </div>
       </main>
 
