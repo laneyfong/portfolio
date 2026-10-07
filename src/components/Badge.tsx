@@ -179,8 +179,9 @@ const Badge: FC<BadgeProps> = ({
           flex-direction: column;
           gap: 20px;
           justify-content: space-between;
-          opacity: ${rearCardVisible ? 1 : 0.3};
+          opacity: ${rearCardVisible ? 1 : 0};
           transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease-out;
+          pointer-events: ${rearCardVisible ? 'auto' : 'none'};
           z-index: 5;
         }
 
