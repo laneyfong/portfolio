@@ -66,7 +66,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           overflow: hidden;
           border-radius: ${isDesktop ? 20 : 0}px;
           width: 100%;
-          aspect-ratio: 16 / 10;
+          aspect-ratio: 16 / 9;
           flex-shrink: 0;
           background-color: #1a1a1a;
           transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -84,7 +84,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           .idbridge-video {
             border-radius: 8px !important;
             width: 100% !important;
-            aspect-ratio: 16 / 10 !important;
+            aspect-ratio: 16 / 9 !important;
           }
         }
       `}</style>
