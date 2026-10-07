@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import ContentContainer from "./components/ContentContainer";
@@ -15,8 +15,8 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 
 const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
-  const [videoReady, setVideoReady] = useState(false);
-  const [hoveredCaseStudy, setHoveredCaseStudy] = useState<string | null>(null);
+  const [videoReady] = useState(true);
+  const [, setHoveredCaseStudy] = useState<string | null>(null);
 
 
   return (
