@@ -166,9 +166,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
             }}
           >
             Reduced intake time from 1-2 weeks to{" "}
-            <em style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "#111111" }}>
+            <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "#111111" }}>
               1-2 hours
-            </em>
+            </span>
           </span>
 
         </div>
