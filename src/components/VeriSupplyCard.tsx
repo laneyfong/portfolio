@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BorderBeam } from "border-beam";
+import { MetalFx } from "metal-fx";
 import { tokens } from "../tokens";
 import verisupplyHero from "../assets/verisupply-hero.png";
 
@@ -87,9 +87,8 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <div style={{ position: "relative", overflow: "visible", boxShadow: "0 0 20px rgba(17, 17, 17, 0.6)" }}>
-            <BorderBeam>
-              <div className="verisupply-image">
+          <MetalFx preset="chromatic" strength={0.8} theme="dark">
+            <div className="verisupply-image">
           <img
             src={verisupplyHero}
             alt="VeriSupply dashboard"
@@ -154,9 +153,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               </g>
             </svg>
           </div>
-              </div>
-            </BorderBeam>
-          </div>
+          </MetalFx>
         ) : (
           <div className="verisupply-image">
             <img

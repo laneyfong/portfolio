@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BorderBeam } from "border-beam";
+import { MetalFx } from "metal-fx";
 import { tokens } from "../tokens";
 import idbridgeScreenRecording from "../assets/idbridge-screen-recording.mp4";
 
@@ -112,9 +112,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <div style={{ position: "relative", overflow: "visible", boxShadow: "0 0 20px rgba(17, 17, 17, 0.6)" }}>
-            <BorderBeam>
-              <div className="idbridge-video">
+          <MetalFx preset="chromatic" strength={0.8} theme="dark">
+            <div className="idbridge-video">
           <video
             ref={videoRef}
             src={idbridgeScreenRecording}
@@ -186,9 +185,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
               </g>
             </svg>
           </div>
-              </div>
-            </BorderBeam>
-          </div>
+          </MetalFx>
         ) : (
           <div className="idbridge-video">
             <video

@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from "react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BorderBeam } from "border-beam";
+import { MetalFx } from "metal-fx";
 import { tokens } from "../tokens";
 import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
 
@@ -138,9 +138,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <div style={{ position: "relative", overflow: "visible", boxShadow: "0 0 20px rgba(17, 17, 17, 0.6)" }}>
-            <BorderBeam>
-              <div className="myshake-video">
+          <MetalFx preset="chromatic" strength={0.8} theme="dark">
+            <div className="myshake-video">
           <video
             ref={videoRef}
             src={myshakeScreenRecording}
@@ -212,9 +211,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               </g>
             </svg>
           </div>
-              </div>
-            </BorderBeam>
-          </div>
+          </MetalFx>
         ) : (
           <div className="myshake-video">
             <video
