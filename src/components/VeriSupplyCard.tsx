@@ -157,20 +157,6 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: "12px",
-              color: tokens.color.muted,
-              letterSpacing: tokens.tracking.tight,
-              lineHeight: tokens.leading.none,
-              textTransform: "uppercase",
-            }}
-          >
-            Supplier Intake
-          </span>
-
-          <span
-            style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
               fontSize: "14px",
               color: tokens.color.ink,
               lineHeight: 1.4,
