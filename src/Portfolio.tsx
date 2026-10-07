@@ -93,12 +93,13 @@ const Portfolio: FC = () => {
             zIndex: 1,
             paddingBottom: 16,
             background: "white",
-            overflow: "visible",
             paddingLeft: "62px",
             paddingRight: "52px",
             paddingTop: "98px",
             display: "flex",
             alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: "40px",
           }}
         >
           <h1 style={{
@@ -108,9 +109,10 @@ const Portfolio: FC = () => {
             lineHeight: "33px",
             letterSpacing: "-0.05em",
             color: "#BEBEBE",
-            maxWidth: "891px",
+            maxWidth: "600px",
             margin: 0,
             padding: 0,
+            flex: 1,
           }}>
             I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, simplifies complexity, and executed with taste.
           </h1>
@@ -120,12 +122,9 @@ const Portfolio: FC = () => {
             height="300"
             title="Kino artwork"
             style={{
-              position: "absolute",
-              right: "52px",
-              top: "98px",
               border: "none",
               borderRadius: "8px",
-              overflow: "hidden"
+              flexShrink: 0
             }}
           />
         </div>
