@@ -91,7 +91,6 @@ const Portfolio: FC = () => {
           style={{
             position: "relative",
             zIndex: 1,
-            minHeight: "40vh",
             paddingBottom: 80,
             background: "white",
             overflow: "visible",
