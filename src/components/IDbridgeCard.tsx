@@ -203,7 +203,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: "18px",
+              fontSize: "14px",
               color: tokens.color.ink,
               lineHeight: 1.4,
               wordWrap: "break-word",

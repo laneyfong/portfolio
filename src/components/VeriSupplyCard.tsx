@@ -164,25 +164,24 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               textTransform: "uppercase",
             }}
           >
-            Supply chain transparency
+            Supplier Intake
           </span>
 
           <span
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: "18px",
+              fontSize: "14px",
               color: tokens.color.ink,
               lineHeight: 1.4,
               wordWrap: "break-word",
               overflowWrap: "break-word",
             }}
           >
-            Reimagined supplier intake from 1-2 weeks to 1-2 hours. Reduced supplier data entry errors by{" "}
+            Reduced intake time from 1-2 weeks to{" "}
             <em style={{ fontFamily: tokens.font.sans, fontWeight: 500 }}>
-              86%
+              1-2 hours
             </em>
-            .
           </span>
 
         </div>
