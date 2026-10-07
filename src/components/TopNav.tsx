@@ -57,103 +57,79 @@ const TopNav: FC = () => {
         }
 
         .top-nav-content {
-          max-width: 1450px;
+          max-width: 100%;
           margin: 0 auto;
-          padding: 0 clamp(32px, 7vw, 80px);
+          padding: 10px 52px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          height: 64px;
+          height: 45px;
           box-sizing: border-box;
         }
 
         .top-nav-brand {
-          font-family: ${tokens.font.sans};
-          font-size: 16px;
-          font-weight: ${tokens.weight.medium};
-          letter-spacing: ${tokens.tracking.tight};
-          color: #555555;
+          font-family: 'Manrope', ${tokens.font.sans};
+          font-size: 18px;
+          font-weight: 500;
+          letter-spacing: -0.05em;
+          color: #111111;
           text-decoration: none;
           cursor: pointer;
           flex-shrink: 0;
           position: relative;
           transition: color 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .top-nav-brand-separator {
+          width: 6px;
+          height: 6px;
+          background: #BEBEBE;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+
+        .top-nav-brand-role {
+          font-family: 'Manrope', ${tokens.font.sans};
+          font-size: 18px;
+          font-weight: 500;
+          letter-spacing: -0.05em;
+          color: #ABADAF;
+          text-decoration: none;
         }
 
         .top-nav.scrolled .top-nav-brand {
-          color: ${tokens.color.ink};
-        }
-
-        .top-nav-brand::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(
-            90deg,
-            #D9757D,
-            #E8A876,
-            #D4C266,
-            #B8D9A8,
-            #7FB3D4,
-            #8B9BC5,
-            #B899D6,
-            #D9757D
-          );
-          background-size: 200% 100%;
-          background-position: 200% 0;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          pointer-events: none;
-        }
-
-        .top-nav-brand:hover::before {
-          opacity: 1;
-          animation: rainbowShine 5s ease infinite;
-        }
-
-        @keyframes rainbowShine {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
+          color: #111111;
         }
 
         .top-nav-links {
           display: flex;
-          gap: 32px;
+          gap: 24px;
           list-style: none;
           margin: 0;
           padding: 0;
         }
 
         .top-nav-link {
-          font-family: ${tokens.font.sans};
-          font-size: 14px;
-          font-weight: ${tokens.weight.regular};
-          letter-spacing: ${tokens.tracking.tight};
-          color: ${tokens.color.body};
+          font-family: 'Manrope', ${tokens.font.sans};
+          font-size: 18px;
+          font-weight: 500;
+          letter-spacing: -0.05em;
+          color: #ABADAF;
           text-decoration: none;
           cursor: pointer;
           position: relative;
           transition: color 0.2s ease;
-          padding-bottom: 2px;
-          border-bottom: 1px solid transparent;
         }
 
         .top-nav-link:hover {
-          color: ${tokens.color.ink};
-          border-bottom-color: ${tokens.color.ink};
-          border-bottom: 1px solid currentColor;
+          color: #111111;
         }
 
         .top-nav-link.active {
-          color: ${tokens.color.ink};
-          font-weight: ${tokens.weight.medium};
-          border-bottom: 1px solid ${tokens.color.ink};
+          color: #111111;
         }
 
         .mobile-menu-btn {
@@ -264,7 +240,9 @@ const TopNav: FC = () => {
               }
             }}
           >
-            Laney Fong
+            <span>Laney Fong</span>
+            <div className="top-nav-brand-separator" />
+            <span className="top-nav-brand-role">Product Designer</span>
           </div>
 
           <ul className="top-nav-links">
