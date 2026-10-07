@@ -35,7 +35,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           flex-direction: column;
           gap: 16px;
           outline: none;
-          padding: 14px 0;
+          padding: 14px 0 12px 0;
           height: fit-content;
           opacity: ${isActive ? 1 : 0.7};
           transform: translateY(${isActive ? 0 : 20}px);
