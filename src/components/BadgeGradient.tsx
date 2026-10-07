@@ -1,30 +1,6 @@
 import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react';
-import { useRef, useEffect } from 'react';
 
 export const BadgeGradient = () => {
-  const gradientRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (!gradientRef.current) return;
-
-    // Configure subtle, slow-moving gradient
-    gradientRef.current.setProps({
-      // Brand colors: cream and warm orange
-      uColors1: [0.941, 0.969, 0.949], // cream #FAF7F2
-      uColors2: [0.855, 0.467, 0.341], // warm orange #D97757
-
-      // Smooth, slow animation
-      uTime: 0,
-      uSpeed: 0.15, // Slow, subtle motion
-
-      // Noise for grain texture
-      uNoiseAmount: 0.25, // Light grain
-
-      // Gradient type for organic feel
-      uGradientType: 0,
-    });
-  }, []);
-
   return (
     <ShaderGradientCanvas
       style={{
@@ -36,7 +12,15 @@ export const BadgeGradient = () => {
         pointerEvents: 'none',
       }}
     >
-      <ShaderGradient ref={gradientRef} />
+      <ShaderGradient
+        control="props"
+        uColors1={[0.941, 0.969, 0.949]}
+        uColors2={[0.855, 0.467, 0.341]}
+        uColors3={[0.941, 0.969, 0.949]}
+        uColors4={[0.855, 0.467, 0.341]}
+        uSpeed={0.15}
+        uNoiseAmount={0.25}
+      />
     </ShaderGradientCanvas>
   );
 };
