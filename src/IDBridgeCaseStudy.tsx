@@ -115,13 +115,13 @@ const IDBridgeCaseStudy: FC = () => {
         <Reveal>
           <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
             <FeatureCard title="The Barrier">
-              Lack of verifiable identity locks unhoused individuals out of housing programs that require documentation.
+              Lack of verifiable identity blocks housing access.
             </FeatureCard>
             <FeatureCard title="Our Solution">
-              Designed a platform that lets users build verified document trails and connect with social workers.
+              Platform for verified documents and social worker connection.
             </FeatureCard>
             <FeatureCard title="The Process">
-              Spent time understanding (not assuming). Explored AI's role. Built something that works offline and respects privacy.
+              Offline-first, privacy-centered design built in 6 hours.
             </FeatureCard>
           </div>
         </Reveal>
@@ -378,13 +378,13 @@ const IDBridgeCaseStudy: FC = () => {
         <Reveal>
           <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
             <FeatureCard title="01 ID Verification">
-              Upload documents and referrals with QR code history for quick, verifiable proof of identity.
+              Verifiable documents with QR code history.
             </FeatureCard>
             <FeatureCard title="02 Social Worker Connection">
-              Chat-based access to representatives who provide next steps based on eligibility.
+              Chat access to representatives.
             </FeatureCard>
             <FeatureCard title="03 Shelter Listings">
-              View nearby shelters with real-time availability so no more wasted trips.
+              Real-time availability to prevent wasted trips.
             </FeatureCard>
           </div>
         </Reveal>

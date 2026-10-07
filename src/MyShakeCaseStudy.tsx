@@ -483,13 +483,13 @@ const MyShakeCaseStudy: FC = () => {
           <Reveal>
             <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 60 }}>
               <FeatureCard title="Problem">
-                The app felt outdated — poor onboarding, confusing navigation, and low engagement left users with no reason to return.
+                Outdated app with poor onboarding and low engagement.
               </FeatureCard>
               <FeatureCard title="Solution">
-                Redesigned MyShake from passive info tool into a safety-first utility for checking loved ones instantly.
+                Redesigned as safety-first utility for instant status checks.
               </FeatureCard>
               <FeatureCard title="Result">
-                Users now instantly access loved ones' safety status, transforming MyShake into a trusted companion.
+                45% engagement increase. Steps reduced from 7 to 3.
               </FeatureCard>
             </div>
           </Reveal>

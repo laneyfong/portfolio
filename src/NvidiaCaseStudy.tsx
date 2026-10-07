@@ -150,13 +150,13 @@ const NvidiaCaseStudy: FC = () => {
         <Reveal>
           <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             <FeatureCard title="The Gap">
-              Engineering-heavy teams lack dedicated UX resources, so usability issues surface late—after features ship.
+              Usability issues surface late—after features ship.
             </FeatureCard>
             <FeatureCard title="The Idea">
-              Build an AI UX agent that simulates user behavior and provides automated pre-screening before implementation.
+              AI UX agent for pre-screening before implementation.
             </FeatureCard>
             <FeatureCard title="The Challenge">
-              How do we make AI-generated insights trustworthy enough for engineers to act on them early?
+              Make AI insights trustworthy for early action.
             </FeatureCard>
           </div>
         </Reveal>
@@ -250,10 +250,10 @@ const NvidiaCaseStudy: FC = () => {
           <Reveal>
             <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
               <FeatureCard title="What they said">
-                They value usability, human judgement, and trustworthy AI insights in a dedicated tool.
+                Value usability, human judgement, and trustworthy AI insights.
               </FeatureCard>
               <FeatureCard title="What their workflows showed">
-                In reality, teams rely on analytics dashboards, feedback buttons, Slack threads, and quick AI summaries to make decisions.
+                Rely on dashboards, feedback, Slack, and quick summaries.
               </FeatureCard>
             </div>
           </Reveal>

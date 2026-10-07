@@ -118,13 +118,13 @@ const VeriSupplyCaseStudy: FC = () => {
           <Reveal>
             <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
               <FeatureCard title="Problem">
-                Procurement leaders were drowning in disconnected risk signals with no way to understand business impact or prioritize action.
+                Disconnected risk signals with no way to prioritize action.
               </FeatureCard>
               <FeatureCard title="Insight">
-                Risk visibility alone wasn't the problem—inability to make informed decisions with that information was.
+                Visibility alone wasn't enough—informed decision-making was the real gap.
               </FeatureCard>
               <FeatureCard title="Solution">
-                A three-layer platform: Monitor supplier data, Understand impact and dependencies, Act with AI-assisted sourcing decisions.
+                Three-layer platform: Monitor, Understand dependencies, Act with AI.
               </FeatureCard>
             </div>
           </Reveal>
