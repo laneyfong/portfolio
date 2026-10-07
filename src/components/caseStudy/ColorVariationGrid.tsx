@@ -140,7 +140,6 @@ const ColorVariationGrid: FC = () => {
                 fontSize: "11px",
                 color: tokens.color.muted,
                 opacity: 0.6,
-                fontStyle: "italic",
               }}
             >
               ✓ Selected for production

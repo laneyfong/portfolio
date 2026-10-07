@@ -237,7 +237,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             }}
           >
             {boldifyMetrics(captionParts[0], boldMetrics)}
-            <em style={{ fontFamily: tokens.font.sans, fontStyle: "italic", fontWeight: 500 }}>
+            <em style={{ fontFamily: tokens.font.sans, fontWeight: 500 }}>
               {boldifyMetrics(captionItalic, boldMetrics)}
             </em>
             {boldifyMetrics(captionParts[1], boldMetrics)}

@@ -75,7 +75,6 @@ export const KeyInsight: FC<{
       <p
         style={{
           fontSize: "24px",
-          fontStyle: "italic",
           fontWeight: tokens.weight.medium,
           color: tokens.color.ink,
           lineHeight: 1.6,

@@ -14,7 +14,7 @@ import designathonWin from "./assets/designathon-win.jpg";
 import cursorDog from "./assets/cursor-dog.png";
 
 const Italic: FC<{ children: string; color?: string }> = ({ children, color }) => (
-  <em style={{ fontFamily: tokens.font.sans, fontStyle: "italic", fontWeight: 400, color }}>{children}</em>
+  <em style={{ fontFamily: tokens.font.sans, fontWeight: 500, color }}>{children}</em>
 );
 
 function withItalics(text: string, terms: string[]): ReactNode[] {

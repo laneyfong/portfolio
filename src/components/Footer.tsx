@@ -92,7 +92,6 @@ const Footer: FC = () => (
           <em
             style={{
               fontFamily: tokens.font.sans,
-              fontStyle: "italic",
               color: "#86A8D8",
             }}
           >
@@ -123,7 +122,7 @@ const Footer: FC = () => (
           }}
         >
           Let's{" "}
-          <em style={{ fontFamily: tokens.font.sans, fontStyle: "italic" }}>collaborate</em>.
+          <em style={{ fontFamily: tokens.font.sans }}>collaborate</em>.
           <br />
           Reach out through
         </p>

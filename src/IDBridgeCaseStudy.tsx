@@ -168,7 +168,6 @@ const IDBridgeCaseStudy: FC = () => {
                     margin: 0,
                     fontFamily: tokens.font.sans,
                     fontSize: tokens.text.base,
-                    fontStyle: "italic",
                     lineHeight: tokens.leading.normal,
                     color: tokens.color.ink,
                   }}
@@ -212,7 +211,6 @@ const IDBridgeCaseStudy: FC = () => {
                     margin: 0,
                     fontFamily: tokens.font.sans,
                     fontSize: tokens.text.base,
-                    fontStyle: "italic",
                     lineHeight: tokens.leading.normal,
                     color: tokens.color.ink,
                   }}

@@ -179,7 +179,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
             }}
           >
             Reimagined supplier intake from 1-2 weeks to 1-2 hours. Reduced supplier data entry errors by{" "}
-            <em style={{ fontFamily: tokens.font.sans, fontStyle: "italic", fontWeight: 500 }}>
+            <em style={{ fontFamily: tokens.font.sans, fontWeight: 500 }}>
               86%
             </em>
             .
