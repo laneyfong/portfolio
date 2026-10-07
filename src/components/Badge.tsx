@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { useState, useEffect, useRef } from "react";
 import { tokens } from "../tokens";
+import BadgeGradient from "./BadgeGradient";
 
 interface BadgeProps {
   name?: string;
@@ -342,6 +343,9 @@ const Badge: FC<BadgeProps> = ({
           position: "relative",
         }}
       >
+        {/* Animated shader gradient background */}
+        <BadgeGradient />
+
         {/* Lanyard */}
         <div className="lanyard">
           <div className="lanyard-text">Portfolio</div>
