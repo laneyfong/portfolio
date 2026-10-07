@@ -142,7 +142,6 @@ const Portfolio: FC = () => {
             }}
           >
             <MyShakeCard
-              roleOutcome="Crisis Response"
               caption="Reduced steps from "
               captionItalic="7 to 3"
               context="Internship"
@@ -151,7 +150,6 @@ const Portfolio: FC = () => {
             />
             <VeriSupplyCard />
             <IDbridgeCard
-              roleOutcome="Verified Identity"
               caption="Designed accessible identity platform in "
               captionItalic="6 hours"
               context="Designathon"
