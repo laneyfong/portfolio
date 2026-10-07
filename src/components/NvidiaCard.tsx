@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { MetalFx } from "metal-fx";
+import { BorderBeam } from "border-beam";
 import { tokens } from "../tokens";
 import nvidiaPrototype from "../assets/nvidia-prototype.mp4";
 
@@ -98,7 +98,8 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
         onMouseLeave={() => setHovered(false)}
       >
         {hovered ? (
-          <MetalFx preset="chromatic" strength={0.8} theme="dark">
+          <div style={{ position: "relative", overflow: "visible" }}>
+            <BorderBeam>
             <div className="nvidia-video">
           <video
             ref={videoRef}
@@ -203,7 +204,8 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
             </span>
           </div>
             </div>
-          </MetalFx>
+          </BorderBeam>
+          </div>
         ) : (
           <div className="nvidia-video">
             <video
