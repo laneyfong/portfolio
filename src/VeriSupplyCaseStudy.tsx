@@ -276,7 +276,7 @@ const VeriSupplyCaseStudy: FC = () => {
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div>
-                <p style={{ fontFamily: tokens.font.serifItalic, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
                   "Don't give me another place to look — tell me what matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
@@ -285,7 +285,7 @@ const VeriSupplyCaseStudy: FC = () => {
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.serifItalic, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
                   "People don't have time to read 50-page reports. We need it condensed to what actually matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
@@ -294,7 +294,7 @@ const VeriSupplyCaseStudy: FC = () => {
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.serifItalic, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontStyle: "italic", color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
                   "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>

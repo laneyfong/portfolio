@@ -50,7 +50,7 @@ const QuoteLine: FC<{ children: string; attribution: string }> = ({ children, at
   <p
     style={{
       margin: "10px 0 0",
-      fontFamily: tokens.font.serifItalic,
+      fontFamily: tokens.font.sans,
       fontStyle: "italic",
       fontWeight: 400,
       fontSize: tokens.text.base,

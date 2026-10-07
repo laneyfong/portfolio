@@ -40,11 +40,11 @@ export const Reveal: FC<{ children: ReactNode; delay?: number; dramatic?: boolea
 // ---------- Typography primitives ----------
 
 export const Italic: FC<{ children: ReactNode }> = ({ children }) => (
-  <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 400 }}>{children}</em>
+  <em style={{ fontFamily: tokens.font.sans, fontStyle: "italic", fontWeight: 400 }}>{children}</em>
 );
 
 export const Emphasis: FC<{ children: ReactNode }> = ({ children }) => (
-  <span style={{ fontFamily: tokens.font.serifItalic, fontStyle: "normal", fontWeight: 500 }}>{children}</span>
+  <span style={{ fontFamily: tokens.font.sans, fontStyle: "normal", fontWeight: 500 }}>{children}</span>
 );
 
 export const TagPill: FC<{ children: string }> = ({ children }) => (
@@ -345,7 +345,7 @@ export const PullQuote: FC<{ children: ReactNode; attribution?: string; dark?: b
   >
     <p
       style={{
-        fontFamily: tokens.font.serifItalic,
+        fontFamily: tokens.font.sans,
         fontStyle: "italic",
         fontWeight: 400,
         fontSize: tokens.text.lg,

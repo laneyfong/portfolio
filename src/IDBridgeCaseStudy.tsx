@@ -166,7 +166,7 @@ const IDBridgeCaseStudy: FC = () => {
                 <p
                   style={{
                     margin: 0,
-                    fontFamily: tokens.font.serifItalic,
+                    fontFamily: tokens.font.sans,
                     fontSize: tokens.text.base,
                     fontStyle: "italic",
                     lineHeight: tokens.leading.normal,
@@ -210,7 +210,7 @@ const IDBridgeCaseStudy: FC = () => {
                 <p
                   style={{
                     margin: 0,
-                    fontFamily: tokens.font.serifItalic,
+                    fontFamily: tokens.font.sans,
                     fontSize: tokens.text.base,
                     fontStyle: "italic",
                     lineHeight: tokens.leading.normal,

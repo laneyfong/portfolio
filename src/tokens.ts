@@ -22,7 +22,6 @@ export const tokens = {
   },
   font: {
     sans: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    serifItalic: "'Playfair Display', Georgia, 'Times New Roman', serif",
   },
   weight: {
     light: 300,

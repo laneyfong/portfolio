@@ -211,7 +211,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
             }}
           >
             {captionParts[0]}
-            <em style={{ fontFamily: tokens.font.serifItalic, fontStyle: "italic", fontWeight: 500 }}>
+            <em style={{ fontFamily: tokens.font.sans, fontStyle: "italic", fontWeight: 500 }}>
               {captionItalic}
             </em>
             {captionParts[1]}
