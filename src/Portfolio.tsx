@@ -112,7 +112,7 @@ const Portfolio: FC = () => {
             margin: 0,
             padding: 0,
           }}>
-            I design <strong style={{ fontWeight: 600, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, simplifies complexity, and executed with taste.
+            I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, simplifies complexity, and executed with taste.
           </h1>
         </div>
       </main>
