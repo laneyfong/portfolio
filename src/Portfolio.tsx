@@ -2,7 +2,6 @@ import type { FC } from "react";
 import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
-import ContentContainer from "./components/ContentContainer";
 import MyShakeCard from "./components/MyShakeCard";
 import IDbridgeCard from "./components/IDbridgeCard";
 import VeriSupplyCard from "./components/VeriSupplyCard";
@@ -119,39 +118,37 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(30px, 3vw, 50px)", paddingBottom: "clamp(200px, 20vw, 400px)", boxSizing: "border-box" }}>
-        <ContentContainer>
-          <section id="work" style={{ width: "100%" }}>
-            <FeaturedWorkShowcase
-              onActiveIndexChange={(index) => {
-                if (workVisible) {
-                  const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
-                  setHoveredCaseStudy(caseStudies[index] || null);
-                } else {
-                  setHoveredCaseStudy(null);
-                }
-              }}
-            >
-              <MyShakeCard
-                roleOutcome="Mobile Design × Crisis Response"
-                caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration. "
-                captionItalic="45% engagement increase"
-                context="Internship"
-                to="/myshake-design"
-                boldMetrics={["7 to 3", "45%"]}
-              />
-              <VeriSupplyCard />
-              <IDbridgeCard
-                roleOutcome="Social Impact × Accessibility"
-                caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours. "
-                captionItalic="First place winner"
-                context="Designathon"
-                to="/idbridge-design"
-              />
-              <NvidiaCard />
-            </FeaturedWorkShowcase>
-          </section>
-        </ContentContainer>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "clamp(30px, 3vw, 50px)", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
+        <section id="work" style={{ width: "100%" }}>
+          <FeaturedWorkShowcase
+            onActiveIndexChange={(index) => {
+              if (workVisible) {
+                const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
+                setHoveredCaseStudy(caseStudies[index] || null);
+              } else {
+                setHoveredCaseStudy(null);
+              }
+            }}
+          >
+            <MyShakeCard
+              roleOutcome="Mobile Design × Crisis Response"
+              caption="Turned earthquake safety into the priority. Reduced steps from 7 to 3. Designed for crisis, not exploration. "
+              captionItalic="45% engagement increase"
+              context="Internship"
+              to="/myshake-design"
+              boldMetrics={["7 to 3", "45%"]}
+            />
+            <VeriSupplyCard />
+            <IDbridgeCard
+              roleOutcome="Social Impact × Accessibility"
+              caption="Won Google x UCSC Designathon. Designed a verified identity platform for unhoused individuals to access housing in just 6 hours. "
+              captionItalic="First place winner"
+              context="Designathon"
+              to="/idbridge-design"
+            />
+            <NvidiaCard />
+          </FeaturedWorkShowcase>
+        </section>
       </div>
 
       <div className="content-reveal">
