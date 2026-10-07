@@ -114,6 +114,20 @@ const Portfolio: FC = () => {
           }}>
             I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, simplifies complexity, and executed with taste.
           </h1>
+          <iframe
+            src="https://www.kinotype.xyz/embed?c=eyJtb2RlIjoidGV4dC1mbG93IiwiYXNzZXRJZCI6Im9yY2hpZCIsImFzcGVjdCI6MS43Nzc3Nzc3Nzc3Nzc3Nzc3LCJwYXJhbXMiOnsiZGVuc2l0eSI6OTAsInRleHQiOiJnZW5lcmF0aXZlIGxvZ2ljICIsInRocmVzaG9sZCI6MC41LCJpbnZlcnQiOmZhbHNlLCJzY2FsZSI6MC45MiwiZm9udCI6Im1vbm8iLCJjb2xvck1vZGUiOiJtb25vIiwiaW5rQ29sb3IiOiIjNDA2MGM4IiwiYmFja2dyb3VuZCI6IiNmZmZmZmYiLCJhbmltYXRpb24iOiJmbG93Iiwic3BlZWQiOjAuNywiYW1vdW50IjowLjV9LCJzb3VyY2UiOnsieCI6MC42NiwieSI6MC41NX0sInRyYW5zcGFyZW50Ijp0cnVlfQ"
+            width="300"
+            height="300"
+            title="Kino artwork"
+            style={{
+              position: "absolute",
+              right: "52px",
+              top: "98px",
+              border: "none",
+              borderRadius: "8px",
+              overflow: "hidden"
+            }}
+          />
         </div>
       </main>
 
