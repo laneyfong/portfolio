@@ -166,12 +166,12 @@ const Badge: FC<BadgeProps> = ({
         .rear-card {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(220, 160, 210, 0.3) 0%, rgba(200, 170, 230, 0.25) 40%, rgba(170, 200, 230, 0.2) 100%);
+          background: linear-gradient(135deg, rgba(250, 247, 242, 0.85) 0%, rgba(217, 119, 87, 0.85) 100%);
           border-radius: 12px;
-          border: 1px solid rgba(200, 150, 200, 0.2);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           box-shadow:
-            0 6px 20px rgba(150, 120, 180, 0.12),
-            inset 0 1px 15px rgba(255, 220, 240, 0.15);
+            0 6px 20px rgba(0, 0, 0, 0.12),
+            inset 0 1px 15px rgba(255, 255, 255, 0.2);
           transform: ${rearCardVisible ? 'translate(14px, 85px) rotateZ(-3.5deg)' : 'translate(14px, 12px) rotateZ(-3.5deg)'};
           backdrop-filter: blur(1.5px);
           padding: 36px 28px;
@@ -211,13 +211,13 @@ const Badge: FC<BadgeProps> = ({
         .front-card {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, #FEFEFE 0%, #F8F8FB 100%);
+          background: linear-gradient(135deg, #FAF7F2 0%, #D97757 100%);
           border-radius: 12px;
           border: 1px solid rgba(0, 0, 0, 0.04);
           box-shadow:
             0 8px 24px rgba(0, 0, 0, 0.08),
             0 1px 3px rgba(0, 0, 0, 0.05),
-            inset 0 0.5px 0 rgba(255, 255, 255, 0.9);
+            inset 0 0.5px 0 rgba(255, 255, 255, 0.3);
           padding: 28px 24px;
           box-sizing: border-box;
           display: flex;
@@ -226,6 +226,7 @@ const Badge: FC<BadgeProps> = ({
           z-index: 30;
           transform-style: preserve-3d;
           cursor: pointer;
+          overflow: hidden;
         }
 
         .front-card-clip-area {
