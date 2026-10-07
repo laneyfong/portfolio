@@ -110,7 +110,9 @@ const Portfolio: FC = () => {
             paddingRight: "52px",
             paddingTop: "98px",
             display: "flex",
+            flexDirection: "column",
             alignItems: "flex-start",
+            gap: "8px",
           }}
         >
           <h1 style={{
@@ -126,6 +128,17 @@ const Portfolio: FC = () => {
           }}>
             I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, drive business growth, and executed with taste.
           </h1>
+          <p style={{
+            fontFamily: "'Manrope'",
+            fontSize: "14px",
+            fontWeight: 400,
+            letterSpacing: "-0.05em",
+            color: "#BEBEBE",
+            margin: 0,
+            padding: 0,
+          }}>
+            Based in San Francisco Bay Area
+          </p>
         </div>
       </main>
 
