@@ -7,7 +7,7 @@ import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
 interface MyShakeCardProps {
   caption: string;
   captionItalic: string;
-  roleOutcome: string;
+  roleOutcome?: string;
   context: string;
   to: string;
   isActive?: boolean;
@@ -211,19 +211,21 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         </div>
 
         <div className="myshake-text" style={{ opacity: isActive ? 1 : 0.7 }}>
-          <span
-            style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              fontSize: "12px",
-              color: tokens.color.muted,
-              letterSpacing: tokens.tracking.tight,
-              lineHeight: tokens.leading.none,
-              textTransform: "uppercase",
-            }}
-          >
-            {roleOutcome}
-          </span>
+          {roleOutcome && (
+            <span
+              style={{
+                fontFamily: tokens.font.sans,
+                fontWeight: tokens.weight.medium,
+                fontSize: "12px",
+                color: tokens.color.muted,
+                letterSpacing: tokens.tracking.tight,
+                lineHeight: tokens.leading.none,
+                textTransform: "uppercase",
+              }}
+            >
+              {roleOutcome}
+            </span>
+          )}
 
           <span
             style={{
