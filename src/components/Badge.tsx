@@ -217,7 +217,7 @@ const Badge: FC<BadgeProps> = ({
             0 8px 24px rgba(0, 0, 0, 0.08),
             0 1px 3px rgba(0, 0, 0, 0.05),
             inset 0 0.5px 0 rgba(255, 255, 255, 0.9);
-          padding: 28px 24px;
+          padding: 32px 26px;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
@@ -246,38 +246,38 @@ const Badge: FC<BadgeProps> = ({
         .front-card-header {
           display: flex;
           flex-direction: column;
-          gap: 4px;
-          padding-top: 4px;
+          gap: 0;
+          padding-top: 0;
         }
 
         .front-card-name {
           font-family: ${tokens.font.sans};
-          font-size: 28px;
+          font-size: 36px;
           font-weight: ${tokens.weight.medium};
           color: ${tokens.color.ink};
-          line-height: 1.05;
-          letter-spacing: -0.2px;
-          margin: 0;
+          line-height: 0.95;
+          letter-spacing: -0.5px;
+          margin: 0 0 8px 0;
         }
 
         .front-card-role {
           font-family: ${tokens.font.sans};
-          font-size: 12px;
+          font-size: 14px;
           font-weight: ${tokens.weight.regular};
-          color: #666666;
+          color: #555555;
           line-height: 1.3;
           letter-spacing: ${tokens.tracking.tight};
-          margin: 0;
+          margin: 0 0 12px 0;
         }
 
         .front-card-tagline {
           font-family: ${tokens.font.sans};
-          font-size: 10px;
-          font-weight: ${tokens.weight.light};
-          color: #999999;
-          line-height: 1.4;
-          letter-spacing: ${tokens.tracking.tight};
-          margin: 4px 0 0 0;
+          font-size: 12px;
+          font-weight: ${tokens.weight.medium};
+          color: #333333;
+          line-height: 1.5;
+          letter-spacing: -0.3px;
+          margin: 0;
         }
 
         .front-card-detail {
