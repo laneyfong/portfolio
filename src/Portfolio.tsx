@@ -121,10 +121,14 @@ const Portfolio: FC = () => {
             width="300"
             height="300"
             title="Kino artwork"
+            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; magnetometer; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            allowFullScreen
+            loading="lazy"
             style={{
               border: "none",
               borderRadius: "8px",
-              flexShrink: 0
+              flexShrink: 0,
+              display: "block"
             }}
           />
         </div>
