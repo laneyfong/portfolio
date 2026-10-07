@@ -14,12 +14,12 @@ export const BadgeGradient = () => {
     >
       <ShaderGradient
         control="props"
-        uColors1={[0.941, 0.969, 0.949]}
-        uColors2={[0.855, 0.467, 0.341]}
-        uColors3={[0.941, 0.969, 0.949]}
-        uColors4={[0.855, 0.467, 0.341]}
-        uSpeed={0.15}
-        uNoiseAmount={0.25}
+        color1="#FAF7F2"
+        color2="#D97757"
+        color3="#FAF7F2"
+        color4="#D97757"
+        speed={0.15}
+        noiseAmount={0.25}
       />
     </ShaderGradientCanvas>
   );
