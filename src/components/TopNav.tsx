@@ -69,7 +69,7 @@ const TopNav: FC = () => {
 
         .top-nav-brand {
           font-family: 'Manrope', ${tokens.font.sans};
-          font-size: 18px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: -0.05em;
           color: #111111;
@@ -93,7 +93,7 @@ const TopNav: FC = () => {
 
         .top-nav-brand-role {
           font-family: 'Manrope', ${tokens.font.sans};
-          font-size: 18px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: -0.05em;
           color: #ABADAF;
@@ -114,7 +114,7 @@ const TopNav: FC = () => {
 
         .top-nav-link {
           font-family: 'Manrope', ${tokens.font.sans};
-          font-size: 18px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: -0.05em;
           color: #ABADAF;
