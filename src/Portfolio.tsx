@@ -32,7 +32,7 @@ const Portfolio: FC = () => {
         src={kinoSvg}
         alt="Kino background"
         style={{
-          position: "fixed",
+          position: "absolute",
           top: 0,
           right: 0,
           width: "400px",
