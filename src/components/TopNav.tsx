@@ -86,7 +86,7 @@ const TopNav: FC = () => {
         .top-nav-brand-separator {
           width: 6px;
           height: 6px;
-          background: #BEBEBE;
+          background: #4060c8;
           border-radius: 50%;
           flex-shrink: 0;
         }
