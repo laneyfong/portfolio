@@ -25,26 +25,8 @@ const Portfolio: FC = () => {
         fontFamily: tokens.font.sans,
         color: tokens.color.body,
         position: "relative",
-        overflow: "hidden",
       }}
     >
-      <iframe
-        src="https://www.kinotype.xyz/embed?c=eyJtb2RlIjoidGV4dC1mbG93IiwiYXNzZXRJZCI6Im9yY2hpZCIsImFzcGVjdCI6MS43Nzc3Nzc3Nzc3Nzc3Nzc3LCJwYXJhbXMiOnsiZGVuc2l0eSI6OTAsInRleHQiOiJnZW5lcmF0aXZlIGxvZ2ljICIsInRocmVzaG9sZCI6MC41LCJpbnZlcnQiOmZhbHNlLCJzY2FsZSI6MC45MiwiZm9udCI6Im1vbm8iLCJjb2xvck1vZGUiOiJtb25vIiwiaW5rQ29sb3IiOiIjNDA2MGM4IiwiYmFja2dyb3VuZCI6IiNmZmZmZmYiLCJhbmltYXRpb24iOiJmbG93Iiwic3BlZWQiOjAuNywiYW1vdW50IjowLjV9LCJzb3VyY2UiOnsieCI6MC42NiwieSI6MC41NX0sInRyYW5zcGFyZW50Ijp0cnVlfQ=="
-        title="Background animation"
-        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; magnetometer; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-        allowFullScreen
-        loading="lazy"
-        style={{
-          position: "fixed",
-          bottom: 0,
-          right: 0,
-          width: "500px",
-          height: "500px",
-          border: "none",
-          zIndex: 0,
-          pointerEvents: "none"
-        }}
-      />
       <style>{`
         .work-grid > :last-child {
           grid-column: 1 / -1;
@@ -103,12 +85,11 @@ const Portfolio: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "24px", position: "relative", zIndex: 1 }}>
+      <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "24px", position: "relative" }}>
         <div
           className="hero-section badge-reveal"
           style={{
             position: "relative",
-            zIndex: 10,
             paddingBottom: 16,
             paddingLeft: "62px",
             paddingRight: "52px",
