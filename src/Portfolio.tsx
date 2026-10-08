@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import MyShakeCard from "./components/MyShakeCard";
@@ -16,16 +16,6 @@ const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
   const [videoReady] = useState(true);
   const [, setHoveredCaseStudy] = useState<string | null>(null);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
 
   return (
@@ -42,7 +32,7 @@ const Portfolio: FC = () => {
         src={kinoSvg}
         alt="Kino background"
         style={{
-          position: "fixed",
+          position: "absolute",
           top: 0,
           right: 0,
           width: "400px",
@@ -50,8 +40,6 @@ const Portfolio: FC = () => {
           zIndex: 0,
           pointerEvents: "none",
           opacity: 0.8,
-          transform: `translateY(${scrollY * 0.6}px)`,
-          transition: "transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
       />
       <style>{`
