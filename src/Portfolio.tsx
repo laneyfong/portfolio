@@ -201,11 +201,11 @@ const Portfolio: FC = () => {
             fontSize: "14px",
             fontWeight: 400,
             letterSpacing: "-0.05em",
-            color: "#BEBEBE",
+            color: "#808080",
             margin: 0,
             padding: 0,
           }}>
-            Currently working at NVIDIA (Capstone)
+            Currently studying HCI @ UCSC, Prev. @ MyShake
           </p>
         </div>
       </main>
