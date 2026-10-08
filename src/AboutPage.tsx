@@ -281,7 +281,7 @@ const AboutPage: FC = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     padding: "0",
-                    gap: "218px",
+                    gap: "24px",
                     width: "100%",
                   }}
                 >
@@ -292,6 +292,8 @@ const AboutPage: FC = () => {
                       alignItems: "center",
                       padding: "0",
                       gap: "12px",
+                      flex: 1,
+                      minWidth: 0,
                     }}
                   >
                     <span
@@ -312,6 +314,7 @@ const AboutPage: FC = () => {
                         height: "4px",
                         background: "#D9D9D9",
                         borderRadius: "50%",
+                        flexShrink: 0,
                       }}
                     />
                     <span
@@ -335,6 +338,8 @@ const AboutPage: FC = () => {
                       lineHeight: "22px",
                       letterSpacing: "-0.05em",
                       color: "#000000",
+                      flexShrink: 0,
+                      whiteSpace: "nowrap",
                     }}
                   >
                     {exp.year}
@@ -402,10 +407,9 @@ const AboutPage: FC = () => {
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    justifyContent: "space-between",
+                    justifyContent: "flex-start",
                     alignItems: "center",
                     padding: "0",
-                    gap: "218px",
                     width: "100%",
                   }}
                 >
@@ -453,6 +457,7 @@ const AboutPage: FC = () => {
                       lineHeight: "19px",
                       letterSpacing: "-0.05em",
                       color: "#929292",
+                      flexShrink: 0,
                     }}
                   >
                     2025
@@ -532,10 +537,9 @@ const AboutPage: FC = () => {
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "space-between",
+                        justifyContent: "flex-start",
                         alignItems: "center",
                         padding: "0",
-                        gap: "218px",
                         width: "100%",
                       }}
                     >
@@ -583,6 +587,7 @@ const AboutPage: FC = () => {
                           lineHeight: "19px",
                           letterSpacing: "-0.05em",
                           color: "#929292",
+                          flexShrink: 0,
                         }}
                       >
                         {edu.year}
