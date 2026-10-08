@@ -191,48 +191,51 @@ const TopNav: FC = () => {
           }
         }
 
-        @media (min-width: 769px) and (max-width: 900px) {
-          .mobile-menu {
-            gap: 20px;
-            padding: 16px 0;
-          }
+        .mobile-menu-item {
+          padding: 14px 16px;
+          font-family: 'Manrope', ${tokens.font.sans};
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: -0.05em;
+          color: #333333;
+          text-decoration: none !important;
+          cursor: pointer;
+          transition: color 0.2s ease;
+          display: block;
+          border: none;
+          background: none;
+          width: 100%;
+          text-align: left;
+        }
 
-          .mobile-menu.open {
-            max-height: 350px;
-          }
+        .mobile-menu-item:hover {
+          color: #4060c8;
+          text-decoration: none !important;
+        }
 
-          .mobile-menu-item {
-            padding: 14px 16px;
-            font-family: 'Manrope', ${tokens.font.sans};
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: -0.05em;
-            color: #ABADAF;
-            text-decoration: none !important;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            display: block;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-          }
-
-          .mobile-menu-item:hover {
-            color: #4060c8;
-            text-decoration: none !important;
-          }
-
-          .mobile-menu-item.active {
-            color: #111111;
-            font-weight: 500;
-            text-decoration: none !important;
-          }
+        .mobile-menu-item.active {
+          color: #111111;
+          font-weight: 500;
+          text-decoration: none !important;
         }
 
         @media (max-width: 640px) {
           .top-nav-brand {
             font-size: 14px;
+          }
+
+          .mobile-menu {
+            padding: 12px 0;
+          }
+
+          .mobile-menu.open {
+            max-height: 300px;
+          }
+
+          .mobile-menu-item {
+            padding: 12px 12px;
+            font-size: 14px;
+            color: #333333;
           }
         }
       `}</style>
