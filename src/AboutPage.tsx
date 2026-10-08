@@ -61,6 +61,7 @@ const AboutPage: FC = () => {
             display: "flex",
             flexDirection: "row",
             alignItems: "flex-start",
+            justifyContent: "center",
             padding: "0",
             gap: "95px",
             position: "relative",
@@ -68,7 +69,7 @@ const AboutPage: FC = () => {
             height: "auto",
             minHeight: "943px",
             paddingTop: "143px",
-            paddingLeft: "461px",
+            paddingLeft: "0",
             paddingRight: "52px",
             boxSizing: "border-box",
           }}
@@ -77,7 +78,8 @@ const AboutPage: FC = () => {
           <div
             style={{
               position: "absolute",
-              left: 0,
+              left: "50%",
+              transform: "translateX(-100%)",
               top: 0,
               width: "461px",
               height: "100%",
@@ -110,10 +112,9 @@ const AboutPage: FC = () => {
               gap: "18px",
               width: "328px",
               height: "83px",
-              position: "absolute",
-              left: "52px",
-              top: "143px",
+              position: "relative",
               zIndex: 10,
+              marginBottom: "auto",
             }}
           >
             {/* Profile Image */}
