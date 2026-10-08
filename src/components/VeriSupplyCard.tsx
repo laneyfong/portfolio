@@ -28,9 +28,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           padding: 14px 0 12px 0;
           height: fit-content;
           opacity: ${isActive ? 1 : 0.7};
-          transform: translateY(${isActive ? 0 : 20}px);
-          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateY(${isActive ? 0 : 20}px) scale(${hovered ? 1.02 : 1});
+          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .verisupply-card:hover {
@@ -45,8 +45,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           aspect-ratio: 4 / 3;
           flex-shrink: 0;
           background-color: #1a1a1a;
-          transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           filter: ${isActive || hovered ? "grayscale(0%)" : "grayscale(100%)"};
+          box-shadow: ${hovered ? "0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
         }
 
         .verisupply-text {
