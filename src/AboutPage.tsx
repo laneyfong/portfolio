@@ -234,12 +234,11 @@ const AboutPage: FC = () => {
               flexDirection: "row",
               alignItems: "flex-start",
               padding: "0",
-              gap: "18px",
-              width: "328px",
-              height: "83px",
+              gap: "12px",
+              width: "auto",
+              height: "auto",
               position: "relative",
               zIndex: 10,
-              marginBottom: "auto",
             }}
           >
             {/* Profile Image */}
@@ -247,8 +246,8 @@ const AboutPage: FC = () => {
               src="/IMG_0338.PNG"
               alt="Laney Fong"
               style={{
-                width: "86px",
-                height: "83px",
+                width: "70px",
+                height: "70px",
                 borderRadius: "100px",
                 objectFit: "cover",
                 flexShrink: 0,
@@ -262,8 +261,9 @@ const AboutPage: FC = () => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 padding: "0",
+                paddingTop: "0",
                 gap: "6px",
-                width: "224px",
+                width: "auto",
               }}
             >
               <h2
