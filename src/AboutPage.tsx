@@ -44,15 +44,30 @@ const AboutPage: FC = () => {
       <TopNav />
 
       <style>{`
-        @keyframes subtleRotate {
+        @keyframes blobFlow {
           0% {
-            transform: rotate(0deg) scale(1);
+            filter: blur(0px) brightness(1);
+          }
+          25% {
+            filter: blur(0.5px) brightness(1.05);
           }
           50% {
-            transform: rotate(1.5deg) scale(1.01);
+            filter: blur(1px) brightness(1);
+          }
+          75% {
+            filter: blur(0.5px) brightness(1.05);
           }
           100% {
-            transform: rotate(0deg) scale(1);
+            filter: blur(0px) brightness(1);
+          }
+        }
+
+        @keyframes shiftContent {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.8;
           }
         }
       `}</style>
@@ -103,7 +118,7 @@ const AboutPage: FC = () => {
               backgroundPosition: "center left",
               backgroundRepeat: "no-repeat",
               pointerEvents: "none",
-              animation: "subtleRotate 8s ease-in-out infinite",
+              animation: "blobFlow 6s ease-in-out infinite",
               transformOrigin: "center center",
             }}
           />
