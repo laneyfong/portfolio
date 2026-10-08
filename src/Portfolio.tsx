@@ -59,10 +59,70 @@ const Portfolio: FC = () => {
           grid-column: 1 / -1;
         }
 
+        @media (max-width: 1024px) {
+          .work-grid { grid-template-columns: 1fr !important; }
+          .work-grid > :last-child {
+            grid-column: 1 / -1;
+          }
+        }
+
         @media (max-width: 768px) {
           .work-grid { grid-template-columns: 1fr !important; }
           .work-grid > :last-child {
             grid-column: 1 / -1;
+          }
+          main {
+            padding-top: 24px !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-top: 16px !important;
+          }
+          .hero-section {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            padding-top: 60px !important;
+            padding-bottom: 12px !important;
+          }
+          .hero-section h1 {
+            font-size: 18px !important;
+            line-height: 26px !important;
+          }
+          .hero-section p {
+            font-size: 12px !important;
+          }
+          #work-container {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            padding-top: 12px !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          main {
+            padding-top: 20px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            margin-top: 12px !important;
+          }
+          .hero-section {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            padding-top: 50px !important;
+            padding-bottom: 8px !important;
+            gap: 4px !important;
+          }
+          .hero-section h1 {
+            font-size: 16px !important;
+            line-height: 22px !important;
+          }
+          .hero-section p {
+            font-size: 12px !important;
+          }
+          #work-container {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            padding-top: 8px !important;
+            padding-bottom: 120px !important;
           }
         }
 
@@ -148,6 +208,12 @@ const Portfolio: FC = () => {
           transition: ${!videoReady ? "opacity 0.4s ease-out" : "none"};
         }
 
+
+        @media (max-width: 768px) {
+          img[alt="Kino background"] {
+            display: none !important;
+          }
+        }
 
         @media (prefers-reduced-motion: reduce) {
           .top-nav-reveal,
