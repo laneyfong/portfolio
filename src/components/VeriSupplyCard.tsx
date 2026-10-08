@@ -28,13 +28,15 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
           padding: 14px 0 12px 0;
           height: fit-content;
           opacity: ${isActive ? 1 : 0.7};
-          transform: translateY(${isActive ? 0 : 20}px) scale(${hovered ? 1.02 : 1});
+          transform: translateY(${isActive ? 0 : 20}px);
           transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 0 0 rgba(64, 96, 200, 0);
         }
 
         .verisupply-card:hover {
           opacity: 1;
+          box-shadow: 0 0 24px rgba(64, 96, 200, 0.3);
         }
 
         .verisupply-image {
