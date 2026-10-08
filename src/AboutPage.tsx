@@ -198,7 +198,7 @@ const AboutPage: FC = () => {
             width: "100%",
             height: "auto",
             minHeight: "943px",
-            paddingTop: "143px",
+            paddingTop: "60px",
             paddingLeft: "52px",
             paddingRight: "52px",
             boxSizing: "border-box",
