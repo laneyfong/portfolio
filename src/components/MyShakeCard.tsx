@@ -80,14 +80,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           height: fit-content;
           opacity: ${isActive ? 1 : 0.7};
           transform: translateY(${isActive ? 0 : 20}px);
-          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 0 0 rgba(64, 96, 200, 0);
+          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .myshake-card:hover {
           opacity: 1;
-          box-shadow: 0 0 24px rgba(64, 96, 200, 0.3);
         }
 
         .myshake-video {
@@ -100,7 +97,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           background-color: #1a1a1a;
           transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           filter: ${isActive || hovered ? "grayscale(0%)" : "grayscale(100%)"};
-          box-shadow: ${hovered ? "0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
+          box-shadow: ${hovered ? "0 0 24px rgba(64, 96, 200, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
         }
 
         .myshake-text {
