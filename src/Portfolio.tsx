@@ -114,6 +114,7 @@ const Portfolio: FC = () => {
           .hero-section h1 {
             font-size: 16px !important;
             line-height: 22px !important;
+            font-weight: 500 !important;
           }
           .hero-section p {
             font-size: 12px !important;
@@ -123,6 +124,39 @@ const Portfolio: FC = () => {
             padding-right: 16px !important;
             padding-top: 8px !important;
             padding-bottom: 120px !important;
+          }
+          .work-grid {
+            gap: 12px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          main {
+            padding-top: 16px !important;
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+          }
+          .hero-section {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            padding-top: 40px !important;
+            padding-bottom: 4px !important;
+          }
+          .hero-section h1 {
+            font-size: 14px !important;
+            line-height: 20px !important;
+          }
+          .hero-section p {
+            font-size: 11px !important;
+          }
+          #work-container {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            padding-top: 4px !important;
+            padding-bottom: 100px !important;
+          }
+          .work-grid {
+            gap: 8px !important;
           }
         }
 
