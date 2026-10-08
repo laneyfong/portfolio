@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import nameLogoCharacter from "../../NameLogoFull_Character.svg";
 import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL, RESUME_URL } from "./SocialIcons";
-import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
 
 const NAV_LINKS = ["Work", "About", "Lab", "Resume"];
 
@@ -58,28 +57,38 @@ const Footer: FC = () => (
     style={{
       width: "100%",
       boxSizing: "border-box",
+      background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(64,96,200,0.08) 100%)",
       borderTop: "1px solid rgba(190, 190, 190, 0.1)",
       position: "relative",
       overflow: "hidden",
-      background: "white",
     }}
   >
-    <ShaderGradientCanvas
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: 0,
-        pointerEvents: "none",
-      }}
-    >
-      <ShaderGradient
-        control="query"
-        urlString="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&bgColor3=%23ffffff&cAmbientLight=0.4&cDirectionalLight=0.8&cameraPositionX=-0.5&cameraPositionY=0&cameraPositionZ=2&color1=%23ffffff&color2=%234060c8&color3=%23ffffff&envPreset=city&fov=45&gizmoHelper=hide&grain=0.7&lightRotationX=45&lightRotationY=45&pixelDensity=1&positionX=0&positionY=0&positionZ=0&range=130&rangeEnd=40&rangeStart=0&rotationX=45&rotationY=45&rotationZ=35&scale=100&type=sphere&uAmplitude=0.3&uDensity=0.8&uFrequency=5.5&uSpeed=0.3&uStrength=0.2&upvector=%2B Y"
-      />
-    </ShaderGradientCanvas>
+    <style>{`
+      @keyframes ambientGlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .footer-glow {
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(64, 96, 200, 0.1) 0%, transparent 70%);
+        animation: ambientGlow 8s ease-in-out infinite;
+        pointer-events: none;
+      }
+    `}</style>
+
+    <div className="footer-glow"></div>
 
     <div
       style={{
