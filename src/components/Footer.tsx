@@ -83,28 +83,29 @@ const Footer: FC = () => (
         right: 0;
         bottom: 0;
         background: linear-gradient(
-          135deg,
-          rgba(255,255,255,0) 0%,
-          rgba(64,96,200,0.12) 25%,
-          rgba(255,255,255,0) 50%,
-          rgba(64,96,200,0.08) 75%,
-          rgba(255,255,255,0) 100%
+          -45deg,
+          rgba(255, 127, 80, 0.08) 0%,
+          rgba(64, 96, 200, 0.12) 25%,
+          rgba(255, 140, 0, 0.06) 50%,
+          rgba(64, 96, 200, 0.1) 75%,
+          rgba(255, 127, 80, 0.08) 100%
         );
         background-size: 400% 400%;
-        animation: gradientShift 8s ease-in-out infinite;
+        animation: gradientShift 12s ease-in-out infinite;
         pointer-events: none;
-        opacity: 0.6;
+        opacity: 0.8;
       }
 
       .footer-glow {
         position: absolute;
         bottom: 0;
-        right: -100px;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(64, 96, 200, 0.15) 0%, transparent 70%);
-        filter: blur(40px);
+        right: -50px;
+        width: 600px;
+        height: 400px;
+        background: radial-gradient(ellipse at center, rgba(255, 127, 80, 0.2) 0%, rgba(64, 96, 200, 0.1) 40%, transparent 70%);
+        filter: blur(60px);
         pointer-events: none;
+        animation: gradientShift 15s ease-in-out infinite;
       }
     `}</style>
 
