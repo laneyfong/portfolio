@@ -69,7 +69,7 @@ const AboutPage: FC = () => {
             height: "auto",
             minHeight: "943px",
             paddingTop: "143px",
-            paddingLeft: "0",
+            paddingLeft: "52px",
             paddingRight: "52px",
             boxSizing: "border-box",
           }}
@@ -77,18 +77,18 @@ const AboutPage: FC = () => {
           {/* Left Panel - SVG Background */}
           <div
             style={{
-              position: "absolute",
-              left: "50%",
-              transform: "translateX(-100%)",
+              position: "fixed",
+              left: 0,
               top: 0,
-              width: "461px",
-              height: "100%",
+              width: "400px",
+              height: "100vh",
               overflow: "hidden",
               zIndex: 0,
               backgroundImage: `url(${kinoSvg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundSize: "contain",
+              backgroundPosition: "center left",
               backgroundRepeat: "no-repeat",
+              pointerEvents: "none",
             }}
           />
 
