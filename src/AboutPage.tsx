@@ -109,7 +109,7 @@ const AboutPage: FC = () => {
       <main
         style={{
           width: "100%",
-          padding: "0 0 100px 0",
+          padding: "0 0 200px 0",
           boxSizing: "border-box",
           marginTop: "0",
           position: "relative",
