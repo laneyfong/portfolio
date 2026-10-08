@@ -46,7 +46,7 @@ const AboutPage: FC = () => {
       <main
         style={{
           width: "100%",
-          padding: "0",
+          padding: "0 0 40px 0",
           boxSizing: "border-box",
           marginTop: "0",
           position: "relative",
@@ -77,11 +77,11 @@ const AboutPage: FC = () => {
           {/* Left Panel - SVG Background */}
           <div
             style={{
-              position: "fixed",
+              position: "absolute",
               left: 0,
               top: 0,
               width: "400px",
-              height: "100vh",
+              height: "100%",
               overflow: "hidden",
               zIndex: 0,
               backgroundImage: `url(${kinoSvg})`,
