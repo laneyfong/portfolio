@@ -110,6 +110,7 @@ const AboutPage: FC = () => {
 
         .about-paragraph-slide {
           animation: slideUpFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          animation-delay: 0s;
         }
 
         @keyframes slideUpFadeIn {
@@ -355,7 +356,8 @@ const AboutPage: FC = () => {
                 color: "#111111",
                 margin: "0",
                 padding: "0",
-                marginTop: "-13px",
+                marginTop: "0",
+                opacity: 1,
               }}
             >
               Raised by a designer and an engineer in the Bay Area, I grew up at the intersection of art and technology. Seeing those two worlds blend early on, I always knew design was my calling. That early passion, combined with a deep curiosity about human behavior, led me to product design. I design products that work for everyone. My approach: research-backed decisions, obsessive attention to accessibility, and ruthless focus on reducing friction. Every pixel serves a purpose.
