@@ -44,12 +44,15 @@ const AboutPage: FC = () => {
       <TopNav />
 
       <style>{`
-        @keyframes floatSvg {
-          0%, 100% {
-            transform: translateY(0px);
+        @keyframes subtleRotate {
+          0% {
+            transform: rotate(0deg) scale(1);
           }
           50% {
-            transform: translateY(-20px);
+            transform: rotate(1.5deg) scale(1.01);
+          }
+          100% {
+            transform: rotate(0deg) scale(1);
           }
         }
       `}</style>
@@ -93,14 +96,15 @@ const AboutPage: FC = () => {
               top: 0,
               width: "400px",
               height: "100%",
-              overflow: "hidden",
+              overflow: "visible",
               zIndex: 0,
               backgroundImage: `url(${kinoSvg})`,
               backgroundSize: "contain",
               backgroundPosition: "center left",
               backgroundRepeat: "no-repeat",
               pointerEvents: "none",
-              animation: "floatSvg 6s ease-in-out infinite",
+              animation: "subtleRotate 8s ease-in-out infinite",
+              transformOrigin: "center center",
             }}
           />
 
