@@ -71,7 +71,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           background-color: #1a1a1a;
           transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           filter: ${hovered ? "grayscale(100%)" : "grayscale(0%)"};
-          box-shadow: ${hovered ? "0 0 24px rgba(64, 96, 200, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
+          box-shadow: ${hovered ? "0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
         }
 
         .idbridge-text {
@@ -245,8 +245,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
                 style={{
                   filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
                   flexShrink: 0,
-                  transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transform: hovered ? "rotate(45deg)" : "rotate(0deg)",
+                  transition: "opacity 0.3s ease",
+                  opacity: hovered ? 0.8 : 1,
                 }}
               >
                 <circle cx="16" cy="16" r="14" fill="none" stroke="white" strokeWidth="1.5" />
