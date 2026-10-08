@@ -112,9 +112,9 @@ const AboutPage: FC = () => {
           width: "100%",
           padding: "0 0 200px 0",
           boxSizing: "border-box",
-          marginTop: "0",
+          marginTop: "65px",
           position: "relative",
-          minHeight: "calc(100vh - 64px)",
+          minHeight: "calc(100vh - 65px)",
           display: "flex",
           flexDirection: "column",
         }}

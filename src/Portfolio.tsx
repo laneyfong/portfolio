@@ -265,7 +265,7 @@ const Portfolio: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "24px", position: "relative", zIndex: 1 }}>
+      <main style={{ width: "100%", padding: "40px 0 0", boxSizing: "border-box", marginTop: "65px", position: "relative", zIndex: 1 }}>
         <div
           className="hero-section badge-reveal"
           style={{

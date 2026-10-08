@@ -43,11 +43,13 @@ const TopNav: FC = () => {
           top: 0;
           left: 0;
           right: 0;
+          width: 100%;
           z-index: 101;
           transition: all 0.3s ease;
           background-color: rgba(255, 255, 255, 0.08);
           backdrop-filter: blur(4px);
           -webkit-backdrop-filter: blur(4px);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .top-nav.scrolled {
