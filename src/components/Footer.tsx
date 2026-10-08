@@ -57,14 +57,14 @@ const Footer: FC = () => (
     style={{
       width: "100%",
       boxSizing: "border-box",
-      background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(64,96,200,0.08) 100%)",
+      background: "white",
       borderTop: "1px solid rgba(190, 190, 190, 0.1)",
       position: "relative",
       overflow: "hidden",
     }}
   >
     <style>{`
-      @keyframes ambientGlow {
+      @keyframes gradientShift {
         0% {
           background-position: 0% 50%;
         }
@@ -76,18 +76,39 @@ const Footer: FC = () => (
         }
       }
 
+      .footer-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255,255,255,0) 0%,
+          rgba(64,96,200,0.12) 25%,
+          rgba(255,255,255,0) 50%,
+          rgba(64,96,200,0.08) 75%,
+          rgba(255,255,255,0) 100%
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease-in-out infinite;
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
       .footer-glow {
         position: absolute;
-        top: -200px;
-        right: -200px;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(64, 96, 200, 0.1) 0%, transparent 70%);
-        animation: ambientGlow 8s ease-in-out infinite;
+        bottom: 0;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(64, 96, 200, 0.15) 0%, transparent 70%);
+        filter: blur(40px);
         pointer-events: none;
       }
     `}</style>
 
+    <div className="footer-gradient"></div>
     <div className="footer-glow"></div>
 
     <div
