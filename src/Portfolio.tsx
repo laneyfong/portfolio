@@ -87,14 +87,14 @@ const Portfolio: FC = () => {
           }
         }
 
-        @keyframes scaleIn {
+        @keyframes slideUpFadeIn {
           from {
             opacity: 0;
-            transform: scale(0.95);
+            transform: translateY(40px);
           }
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
           }
         }
 
@@ -103,19 +103,19 @@ const Portfolio: FC = () => {
         }
 
         .work-section-cards.visible > div:nth-child(1) {
-          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         .work-section-cards.visible > div:nth-child(2) {
-          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
         }
 
         .work-section-cards.visible > div:nth-child(3) {
-          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
         }
 
         .work-section-cards.visible > div:nth-child(4) {
-          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
         }
 
         .badge-reveal {
