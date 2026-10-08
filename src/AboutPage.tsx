@@ -178,8 +178,8 @@ const AboutPage: FC = () => {
         }
 
         .about-content-reveal {
-          opacity: 0;
-          animation: ${contentVisible ? "fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+          opacity: 1;
+          animation: none;
         }
 
         @keyframes blobFlow {
