@@ -3,6 +3,7 @@ import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
+import { LinkedInIcon, EmailIcon, XIcon, SocialIconLink, LINKEDIN_URL, X_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import kinoSvg from "./assets/kino-visual.svg";
 
 interface ExperienceEntry {
@@ -221,13 +222,24 @@ const AboutPage: FC = () => {
                   lineHeight: "22px",
                   letterSpacing: "-0.05em",
                   color: "#8B8B8B",
-                  margin: "0",
+                  margin: "0 0 12px 0",
                   padding: "0",
                 }}
               >
                 I am an artist, foodie,<br />
                 dog-lover, and traveler.
               </p>
+              <div style={{ display: "flex", gap: 12 }}>
+                <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="light">
+                  <LinkedInIcon />
+                </SocialIconLink>
+                <SocialIconLink href={X_URL} label="X" external variant="light">
+                  <XIcon />
+                </SocialIconLink>
+                <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="light">
+                  <EmailIcon />
+                </SocialIconLink>
+              </div>
             </div>
           </div>
 
