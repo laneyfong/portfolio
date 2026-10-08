@@ -172,7 +172,8 @@ const AboutPage: FC = () => {
               alignItems: "flex-start",
               padding: "0",
               gap: "29px",
-              width: "419px",
+              width: "550px",
+              maxWidth: "100%",
               position: "relative",
               zIndex: 5,
             }}
@@ -204,6 +205,7 @@ const AboutPage: FC = () => {
                 color: "#111111",
                 margin: "0",
                 padding: "0",
+                marginTop: "-13px",
               }}
             >
               Raised by a designer and an engineer in the Bay Area, I grew up at the intersection of art and technology. Seeing those two worlds blend early on, I always knew design was my calling. That early passion, combined with a deep curiosity about human behavior, led me to product design. I design products that work for everyone. My approach: research-backed decisions, obsessive attention to accessibility, and ruthless focus on reducing friction. Every pixel serves a purpose.
