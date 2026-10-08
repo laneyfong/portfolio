@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
-import kinoMp4 from "./assets/kino.mp4";
+import kinoSvg from "./assets/kino-visual.svg";
 
 interface ExperienceEntry {
   role: string;
@@ -74,7 +74,7 @@ const AboutPage: FC = () => {
             boxSizing: "border-box",
           }}
         >
-          {/* Left Panel - Video Background */}
+          {/* Left Panel - SVG Background */}
           <div
             style={{
               position: "absolute",
@@ -87,12 +87,9 @@ const AboutPage: FC = () => {
               zIndex: 0,
             }}
           >
-            <video
-              src={kinoMp4}
-              autoPlay
-              loop
-              muted
-              playsInline
+            <img
+              src={kinoSvg}
+              alt="Kino visualization"
               style={{
                 width: "100%",
                 height: "100%",
