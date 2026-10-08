@@ -59,14 +59,15 @@ const AboutPage: FC = () => {
       <TopNav />
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .about-main-container {
-            flex-direction: column !important;
-            gap: 40px !important;
-            padding-top: 0 !important;
-            padding-left: 16px !important;
-            padding-right: 16px !important;
+            flex-direction: row !important;
+            gap: 32px !important;
+            padding-top: 60px !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
             min-height: auto !important;
+            flex-wrap: wrap !important;
           }
 
           .about-svg-bg {
@@ -86,11 +87,17 @@ const AboutPage: FC = () => {
           }
         }
 
+        @media (max-width: 768px) {
+          .about-main-container {
+            gap: 24px !important;
+          }
+        }
+
         @media (max-width: 640px) {
           .about-main-container {
             padding-left: 12px !important;
             padding-right: 12px !important;
-            gap: 32px !important;
+            gap: 20px !important;
           }
 
           .about-profile-card {
@@ -98,6 +105,21 @@ const AboutPage: FC = () => {
             align-items: flex-start !important;
             height: auto !important;
             gap: 12px !important;
+          }
+        }
+
+        .about-paragraph-slide {
+          animation: slideUpFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes slideUpFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
 
@@ -323,6 +345,7 @@ const AboutPage: FC = () => {
 
             {/* Bio text */}
             <p
+              className="about-paragraph-slide"
               style={{
                 fontFamily: "'Manrope'",
                 fontWeight: 500,
