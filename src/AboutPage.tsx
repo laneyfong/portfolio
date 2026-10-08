@@ -266,8 +266,11 @@ const AboutPage: FC = () => {
               <div
                 style={{
                   width: "100%",
-                  height: "0px",
-                  border: "1px solid #DCDCDC",
+                  height: "0",
+                  borderTop: "1px solid #DCDCDC",
+                  borderBottom: "none",
+                  borderLeft: "none",
+                  borderRight: "none",
                 }}
               />
               <h4
@@ -387,8 +390,11 @@ const AboutPage: FC = () => {
               <div
                 style={{
                   width: "100%",
-                  height: "0px",
-                  border: "1px solid #DCDCDC",
+                  height: "0",
+                  borderTop: "1px solid #DCDCDC",
+                  borderBottom: "none",
+                  borderLeft: "none",
+                  borderRight: "none",
                 }}
               />
               <h4
