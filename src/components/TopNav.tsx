@@ -69,6 +69,18 @@ const TopNav: FC = () => {
           box-sizing: border-box;
         }
 
+        @media (max-width: 900px) {
+          .top-nav-content {
+            padding: 8px 16px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .top-nav-content {
+            padding: 8px 12px;
+          }
+        }
+
         .top-nav-brand {
           font-family: 'Manrope', ${tokens.font.sans};
           font-size: 14px;
@@ -188,7 +200,7 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu-item {
-            padding: 18px clamp(32px, 7vw, 80px);
+            padding: 14px 16px;
             font-family: 'Manrope', ${tokens.font.sans};
             font-size: 14px;
             font-weight: 500;
@@ -200,6 +212,8 @@ const TopNav: FC = () => {
             display: block;
             border: none;
             background: none;
+            width: 100%;
+            text-align: left;
           }
 
           .mobile-menu-item:hover {
