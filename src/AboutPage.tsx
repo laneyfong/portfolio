@@ -166,7 +166,7 @@ const AboutPage: FC = () => {
             style={{
               display: "flex",
               flexDirection: "row",
-              alignItems: "flex-end",
+              alignItems: "flex-start",
               padding: "0",
               gap: "18px",
               width: "328px",
