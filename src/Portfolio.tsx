@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import MyShakeCard from "./components/MyShakeCard";
@@ -16,6 +16,16 @@ const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
   const [videoReady] = useState(true);
   const [, setHoveredCaseStudy] = useState<string | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
 
   return (
@@ -39,7 +49,9 @@ const Portfolio: FC = () => {
           height: "400px",
           zIndex: 0,
           pointerEvents: "none",
-          opacity: 0.8,
+          opacity: Math.max(0.8 - scrollY / 1000, 0),
+          transform: `translateY(-${Math.min(scrollY * 0.4, 300)}px)`,
+          transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
         }}
       />
       <style>{`
@@ -166,6 +178,9 @@ const Portfolio: FC = () => {
             flexDirection: "column",
             alignItems: "flex-start",
             gap: "8px",
+            transform: `translateY(-${Math.min(scrollY * 0.3, 200)}px)`,
+            opacity: Math.max(1 - scrollY / 800, 0),
+            transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
           }}
         >
           <h1 style={{
