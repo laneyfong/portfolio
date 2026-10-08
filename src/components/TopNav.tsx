@@ -58,12 +58,14 @@ const TopNav: FC = () => {
 
         .top-nav-content {
           max-width: 100%;
-          margin: 0 auto;
-          padding: 10px 52px;
+          width: 100%;
+          margin: 0;
+          padding: 8px 52px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          height: 45px;
+          height: auto;
+          min-height: 45px;
           box-sizing: border-box;
         }
 
@@ -186,29 +188,29 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu-item {
-            padding: 14px clamp(32px, 7vw, 80px);
-            font-size: 15px;
-          }
-
-          .mobile-menu-item {
             padding: 18px clamp(32px, 7vw, 80px);
-            font-family: ${tokens.font.sans};
-            font-size: 16px;
-            font-weight: ${tokens.weight.regular};
-            letter-spacing: ${tokens.tracking.tight};
-            color: ${tokens.color.body};
-            text-decoration: none;
+            font-family: 'Manrope', ${tokens.font.sans};
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            color: #ABADAF;
+            text-decoration: none !important;
             cursor: pointer;
             transition: color 0.2s ease;
+            display: block;
+            border: none;
+            background: none;
           }
 
           .mobile-menu-item:hover {
-            color: ${tokens.color.ink};
+            color: #4060c8;
+            text-decoration: none !important;
           }
 
           .mobile-menu-item.active {
-            color: ${tokens.color.ink};
-            font-weight: ${tokens.weight.medium};
+            color: #111111;
+            font-weight: 500;
+            text-decoration: none !important;
           }
         }
 

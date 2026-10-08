@@ -55,6 +55,10 @@ const Portfolio: FC = () => {
         }}
       />
       <style>{`
+        .work-grid {
+          grid-template-columns: 1fr !important;
+        }
+
         .work-grid > :last-child {
           grid-column: 1 / -1;
         }
