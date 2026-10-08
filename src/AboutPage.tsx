@@ -85,19 +85,13 @@ const AboutPage: FC = () => {
               height: "100%",
               overflow: "hidden",
               zIndex: 0,
+              backgroundImage: `url(${kinoSvg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
             }}
-          >
-            <img
-              src={kinoSvg}
-              alt="Kino visualization"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-          </div>
+          />
+
 
           {/* Profile Card - Left Side */}
           <div
