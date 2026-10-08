@@ -125,6 +125,7 @@ const Portfolio: FC = () => {
             maxWidth: "891px",
             margin: 0,
             padding: 0,
+            textWrap: "balance",
           }}>
             I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, drive business growth, and executed with taste.
           </h1>
