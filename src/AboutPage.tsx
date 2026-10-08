@@ -16,6 +16,11 @@ interface EducationEntry {
   year: string;
 }
 
+interface CommunitiesEntry {
+  role: string;
+  organization: string;
+}
+
 const AboutPage: FC = () => {
   const experiences: ExperienceEntry[] = [
     { role: "Product Designer (Capstone)", company: "Nvidia", year: "2026" },
@@ -29,6 +34,11 @@ const AboutPage: FC = () => {
   const education: EducationEntry[] = [
     { degree: "M.S. Human Computer Interaction", school: "University of California, Santa Cruz", year: "2026" },
     { degree: "B.A. Cognitive Science", school: "University of California, Berkeley", year: "2024" },
+  ];
+
+  const communities: CommunitiesEntry[] = [
+    { role: "Internal President", organization: "UX@Berkeley" },
+    { role: "Ambassador", organization: "Partiful" },
   ];
 
   return (
@@ -478,6 +488,124 @@ const AboutPage: FC = () => {
                     2025
                   </span>
                 </div>
+              </div>
+            </div>
+
+            {/* Communities Section */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                padding: "0",
+                gap: "29px",
+                width: "100%",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  padding: "0",
+                  gap: "16px",
+                  width: "100%",
+                }}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    height: "0px",
+                    border: "1px solid #DCDCDC",
+                  }}
+                />
+                <h4
+                  style={{
+                    fontFamily: "'Manrope'",
+                    fontWeight: 500,
+                    fontSize: "16px",
+                    lineHeight: "22px",
+                    letterSpacing: "-0.05em",
+                    color: "#868585",
+                    margin: "0",
+                    padding: "0",
+                  }}
+                >
+                  Communities
+                </h4>
+              </div>
+
+              {/* Communities entries */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  padding: "0",
+                  gap: "16px",
+                  width: "100%",
+                }}
+              >
+                {communities.map((comm, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "0",
+                      gap: "24px",
+                      width: "100%",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        padding: "0",
+                        gap: "12px",
+                        flex: 1,
+                        minWidth: 0,
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "'Manrope'",
+                          fontWeight: 500,
+                          fontSize: "16px",
+                          lineHeight: "22px",
+                          letterSpacing: "-0.05em",
+                          color: "#111111",
+                        }}
+                      >
+                        {comm.role}
+                      </span>
+                      <div
+                        style={{
+                          width: "4px",
+                          height: "4px",
+                          background: "#D9D9D9",
+                          borderRadius: "50%",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontFamily: "'Manrope'",
+                          fontWeight: 500,
+                          fontSize: "16px",
+                          lineHeight: "22px",
+                          letterSpacing: "-0.05em",
+                          color: "#111111",
+                        }}
+                      >
+                        {comm.organization}
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
