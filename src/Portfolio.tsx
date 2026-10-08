@@ -138,7 +138,7 @@ const Portfolio: FC = () => {
             margin: 0,
             padding: 0,
           }}>
-            Based in SF Bay Area
+            Currently working at NVIDIA (Capstone)
           </p>
         </div>
       </main>
