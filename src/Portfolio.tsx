@@ -50,8 +50,8 @@ const Portfolio: FC = () => {
           zIndex: 0,
           pointerEvents: "none",
           opacity: 0.8,
-          transform: `translateY(${scrollY * 0.4}px)`,
-          transition: "transform 0.1s ease-out",
+          transform: `translateY(${scrollY * 0.6}px)`,
+          transition: "transform 0.05s ease-out",
         }}
       />
       <style>{`
