@@ -38,14 +38,14 @@ const FooterLink: FC<{ label: string }> = ({ label }) => {
         fontFamily: tokens.font.sans,
         fontWeight: 400,
         fontSize: "14px",
-        color: "#D4D4D4",
+        color: "#FFFFFF",
         textDecoration: "none",
         cursor: path ? "pointer" : "default",
         letterSpacing: "-0.05em",
         transition: "color 0.2s ease",
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
-      onMouseLeave={(e) => (e.currentTarget.style.color = "#D4D4D4")}
+      onMouseEnter={(e) => (e.currentTarget.style.color = "#E0E0E0")}
+      onMouseLeave={(e) => (e.currentTarget.style.color = "#FFFFFF")}
     >
       {label}
     </a>
@@ -152,7 +152,7 @@ const Footer: FC = () => (
             fontFamily: tokens.font.sans,
             fontWeight: 400,
             fontSize: "14px",
-            color: "#E8E8E8",
+            color: "#FFFFFF",
             letterSpacing: "-0.05em",
             margin: "0 0 16px 0",
           }}
