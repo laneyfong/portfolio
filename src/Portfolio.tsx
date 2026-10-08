@@ -205,6 +205,17 @@ const Portfolio: FC = () => {
           }
         }
 
+        @keyframes fadeOut {
+          from {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          to {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+        }
+
         .work-section-cards > div {
           opacity: 0;
         }
@@ -217,11 +228,17 @@ const Portfolio: FC = () => {
         .work-section-cards.visible > div:nth-child(3),
         .work-section-cards.visible > div:nth-child(4) {
           animation: none;
+          opacity: 1;
         }
 
         .work-section-cards.visible.scrolled > div:nth-child(3),
         .work-section-cards.visible.scrolled > div:nth-child(4) {
           animation: slideUpFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .work-section-cards.scrolled-out > div:nth-child(3),
+        .work-section-cards.scrolled-out > div:nth-child(4) {
+          animation: fadeOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         .badge-reveal {
@@ -314,7 +331,7 @@ const Portfolio: FC = () => {
       <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
         <section id="work" style={{ width: "100%" }}>
           <FeaturedWorkShowcase
-            className={`work-section-cards ${workVisible ? "visible" : ""} ${scrollY > 400 ? "scrolled" : ""}`}
+            className={`work-section-cards ${workVisible ? "visible" : ""} ${scrollY > 400 ? "scrolled" : ""} ${scrollY > 1400 ? "scrolled-out" : ""}`}
             onActiveIndexChange={(index) => {
               if (workVisible) {
                 const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];

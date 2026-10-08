@@ -31,13 +31,13 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
 
   useEffect(() => {
     if (videoRef.current) {
-      if (isActive) {
-        videoRef.current.play().catch(() => {});
-      } else {
+      if (hovered || !isActive) {
         videoRef.current.pause();
+      } else if (isActive) {
+        videoRef.current.play().catch(() => {});
       }
     }
-  }, [isActive]);
+  }, [isActive, hovered]);
 
   return (
     <>
@@ -70,7 +70,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           flex-shrink: 0;
           background-color: #1a1a1a;
           transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          filter: ${isActive || hovered ? "grayscale(0%)" : "grayscale(100%)"};
+          filter: ${hovered ? "grayscale(100%)" : "grayscale(0%)"};
           box-shadow: ${hovered ? "0 0 24px rgba(64, 96, 200, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
         }
 
@@ -245,8 +245,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
                 style={{
                   filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
                   flexShrink: 0,
-                  transition: "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                  transform: hovered ? "rotate(-45deg)" : "rotate(0deg)",
+                  transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                  transform: hovered ? "rotate(45deg)" : "rotate(0deg)",
                 }}
               >
                 <circle cx="16" cy="16" r="14" fill="none" stroke="white" strokeWidth="1.5" />
