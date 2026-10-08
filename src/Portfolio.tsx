@@ -56,24 +56,21 @@ const Portfolio: FC = () => {
       />
       <style>{`
         .work-grid {
-          grid-template-columns: 1fr !important;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 8px;
         }
 
         .work-grid > :last-child {
-          grid-column: 1 / -1;
-        }
-
-        @media (max-width: 1024px) {
-          .work-grid { grid-template-columns: 1fr !important; }
-          .work-grid > :last-child {
-            grid-column: 1 / -1;
-          }
+          grid-column: 1;
         }
 
         @media (max-width: 768px) {
-          .work-grid { grid-template-columns: 1fr !important; }
+          .work-grid {
+            grid-template-columns: 1fr !important;
+          }
           .work-grid > :last-child {
-            grid-column: 1 / -1;
+            grid-column: 1 !important;
           }
           main {
             padding-top: 24px !important;

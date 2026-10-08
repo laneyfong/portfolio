@@ -155,17 +155,17 @@ const TopNav: FC = () => {
 
           .mobile-menu {
             position: fixed;
-            top: 64px;
+            top: 45px;
             left: 0;
             right: 0;
             background: white;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 0;
             list-style: none;
             margin: 0;
-            padding: 20px 0;
+            padding: 0;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
@@ -173,7 +173,7 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu.open {
-            max-height: 400px;
+            max-height: 500px;
           }
         }
 
