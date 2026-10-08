@@ -283,49 +283,53 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
         )}
 
         <div className="nvidia-text" style={{ opacity: isActive ? 1 : 0.7, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
-          <span
-            style={{
-              fontFamily: tokens.font.sans,
-              fontWeight: tokens.weight.medium,
-              fontSize: "14px",
-              color: "#BEBEBE",
-              lineHeight: 1.4,
-              wordWrap: "break-word",
-              overflowWrap: "break-word",
-            }}
-          >
-            Automated friction detection at
-            <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "#111111" }}>
-              {" "}scale
-            </span>
-          </span>
+          <div style={{ display: "flex", flexDirection: "column", gap: 0, flex: 1 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, width: "100%" }}>
+              <span
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
+                  fontSize: "14px",
+                  color: "#BEBEBE",
+                  lineHeight: 1.4,
+                  wordWrap: "break-word",
+                  overflowWrap: "break-word",
+                  flex: 1,
+                }}
+              >
+                Automated friction detection at
+                <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "#111111" }}>
+                  {" "}scale
+                </span>
+              </span>
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "4px 12px",
-              borderRadius: tokens.radius.full,
-              backgroundColor: tokens.color.offWhite,
-              border: `1px solid ${tokens.color.cardBorder}`,
-              flexShrink: 0,
-              width: "fit-content",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: tokens.font.sans,
-                fontSize: "12px",
-                fontWeight: tokens.weight.medium,
-                color: tokens.color.muted,
-                letterSpacing: "0.5px",
-              }}
-            >
-              WIP
-            </span>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "4px 12px",
+                  borderRadius: tokens.radius.full,
+                  backgroundColor: tokens.color.offWhite,
+                  border: `1px solid ${tokens.color.cardBorder}`,
+                  flexShrink: 0,
+                  width: "fit-content",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontSize: "12px",
+                    fontWeight: tokens.weight.medium,
+                    color: tokens.color.muted,
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  WIP
+                </span>
+              </div>
+            </div>
           </div>
-
         </div>
       </div>
     </>
