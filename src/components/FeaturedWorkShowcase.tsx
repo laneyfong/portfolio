@@ -10,22 +10,31 @@ interface FeaturedWorkShowcaseProps {
 const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, className }) => {
 
   return (
-    <div
-      className={className}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
-        gap: "8px",
-        width: "100%",
-        height: "fit-content",
-      }}
-    >
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .featured-work-showcase {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+      <div
+        className={`featured-work-showcase ${className}`}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "8px",
+          width: "100%",
+          height: "fit-content",
+        }}
+      >
       {Array.isArray(children) &&
         children.map((child, index) => {
           const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: true } as any) : child;
           return <div key={index}>{childWithProps}</div>;
         })}
-    </div>
+      </div>
+    </>
   );
 };
 
