@@ -84,11 +84,11 @@ const Footer: FC = () => (
         bottom: 0;
         background: linear-gradient(
           -45deg,
-          rgba(255, 127, 80, 0.15) 0%,
-          rgba(64, 96, 200, 0.2) 25%,
-          rgba(255, 140, 0, 0.12) 50%,
-          rgba(64, 96, 200, 0.18) 75%,
-          rgba(255, 127, 80, 0.15) 100%
+          rgba(255, 127, 80, 0.25) 0%,
+          rgba(64, 96, 200, 0.32) 25%,
+          rgba(255, 140, 0, 0.2) 50%,
+          rgba(64, 96, 200, 0.28) 75%,
+          rgba(255, 127, 80, 0.25) 100%
         );
         background-size: 400% 400%;
         animation: gradientShift 12s ease-in-out infinite;
@@ -106,9 +106,9 @@ const Footer: FC = () => (
         background-image:
           url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="2"/></filter><rect width="256" height="256" fill="transparent" filter="url(%23noise)"/></svg>');
         background-size: 256px 256px;
-        opacity: 0.3;
+        opacity: 0.5;
         pointer-events: none;
-        mix-blend-mode: overlay;
+        mix-blend-mode: multiply;
       }
 
       .footer-glow {
