@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
@@ -24,7 +23,7 @@ interface CommunitiesEntry {
 }
 
 const AboutPage: FC = () => {
-  const { ref: profileRef, isVisible: profileVisible } = useScrollReveal({ threshold: 0.5 });
+  const { ref: profileRef } = useScrollReveal({ threshold: 0.5 });
   const { ref: contentRef, isVisible: contentVisible } = useScrollReveal({ threshold: 0.3 });
 
   const experiences: ExperienceEntry[] = [

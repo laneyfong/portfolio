@@ -333,7 +333,7 @@ const Portfolio: FC = () => {
             />
             <VeriSupplyCard />
             <IDbridgeCard
-              caption="Designed accessible identity platform in "
+              caption="A solution to verify unhoused individuals in "
               captionItalic="6 hours"
               context="Designathon"
               to="/idbridge-design"
