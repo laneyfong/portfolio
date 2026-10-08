@@ -95,16 +95,43 @@ const AboutPage: FC = () => {
 
         @media (max-width: 640px) {
           .about-main-container {
-            padding-left: 12px !important;
-            padding-right: 12px !important;
-            gap: 20px !important;
+            flex-direction: column !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+            padding-top: 40px !important;
+            gap: 24px !important;
+            min-height: auto !important;
+            position: relative !important;
           }
 
           .about-profile-card {
-            flex-direction: column !important;
+            flex-direction: row !important;
             align-items: flex-start !important;
             height: auto !important;
-            gap: 12px !important;
+            gap: 18px !important;
+            width: auto !important;
+            padding: 0 !important;
+          }
+
+          .about-profile-card img {
+            width: 63px !important;
+            height: 61px !important;
+          }
+
+          .about-content-panel {
+            width: 100% !important;
+            max-width: none !important;
+            gap: 29px !important;
+          }
+
+          .about-hello-section {
+            font-weight: 400 !important;
+            color: #979797 !important;
+          }
+
+          .about-paragraph-slide {
+            font-weight: 400 !important;
+            color: #979797 !important;
           }
         }
 
@@ -330,6 +357,7 @@ const AboutPage: FC = () => {
           >
             {/* Hello section */}
             <h3
+              className="about-hello-section"
               style={{
                 fontFamily: "'Manrope'",
                 fontWeight: 500,
