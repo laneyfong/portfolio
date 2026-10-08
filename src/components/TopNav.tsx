@@ -125,7 +125,7 @@ const TopNav: FC = () => {
         }
 
         .top-nav-link:hover {
-          color: #111111;
+          color: #4060c8;
         }
 
         .top-nav-link.active {
