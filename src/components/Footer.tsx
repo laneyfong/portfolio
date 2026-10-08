@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import nameLogoCharacter from "../../NameLogoFull_Character.svg";
-import { LinkedInIcon, EmailIcon, SocialIconLink, LINKEDIN_URL, CONTACT_EMAIL, RESUME_URL } from "./SocialIcons";
+import { LinkedInIcon, EmailIcon, XIcon, SocialIconLink, LINKEDIN_URL, X_URL, CONTACT_EMAIL, RESUME_URL } from "./SocialIcons";
 
 const NAV_LINKS = ["Work", "About", "Lab", "Resume"];
 
@@ -184,11 +184,14 @@ const Footer: FC = () => (
           Let's collaborate.
         </p>
 
-        <div style={{ display: "flex", gap: 16 }}>
-          <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external>
+        <div style={{ display: "flex", gap: 12 }}>
+          <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external variant="dark">
             <LinkedInIcon />
           </SocialIconLink>
-          <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email">
+          <SocialIconLink href={X_URL} label="X" external variant="dark">
+            <XIcon />
+          </SocialIconLink>
+          <SocialIconLink href={`mailto:${CONTACT_EMAIL}`} label="Email" variant="dark">
             <EmailIcon />
           </SocialIconLink>
         </div>

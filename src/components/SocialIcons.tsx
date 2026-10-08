@@ -3,6 +3,7 @@ import { useState } from "react";
 import { tokens } from "../tokens";
 
 export const LINKEDIN_URL = "https://www.linkedin.com/in/laneyfong/?skipRedirect=true";
+export const X_URL = "https://x.com/laneyuxui";
 export const CONTACT_EMAIL = "laneyrfong@gmail.com";
 export const RESUME_URL = "/LaneyFongResume-ProductDesigner.pdf";
 
@@ -16,6 +17,12 @@ export const EmailIcon: FC = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     <rect x="3" y="5" width="18" height="14" rx="2.5" />
     <path d="M4 7l8 6 8-6" />
+  </svg>
+);
+
+export const XIcon: FC = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.75-5.868 6.75h-3.306l7.73-8.835L.846 2.25h6.734l4.678 6.182 5.256-6.182zM17.45 19.038h1.828L6.412 3.954H4.5z" />
   </svg>
 );
 
@@ -52,14 +59,14 @@ export const SocialIconLink: FC<SocialIconLinkProps> = ({ href, label, external,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        width: isDark ? 36 : 40,
-        height: isDark ? 36 : 40,
+        width: isDark ? 44 : 40,
+        height: isDark ? 44 : 40,
         borderRadius: "50%",
-        border: isDark ? `1px solid rgba(255, 255, 255, ${hovered ? 0.55 : 0.22})` : "none",
-        background: isDark ? "transparent" : hovered ? tokens.color.dark : tokens.color.ink,
+        border: isDark ? `1.5px solid rgba(255, 255, 255, ${hovered ? 0.8 : 0.35})` : "none",
+        background: isDark ? `rgba(255, 255, 255, ${hovered ? 0.15 : 0.08})` : hovered ? tokens.color.dark : tokens.color.ink,
         boxShadow: isDark ? "none" : tokens.shadow.subtle,
         color: isDark ? tokens.color.white : tokens.color.white,
-        opacity: isDark ? (hovered ? 1 : 0.78) : 1,
+        opacity: isDark ? (hovered ? 1 : 1) : 1,
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
         transition: "opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease",
       }}
