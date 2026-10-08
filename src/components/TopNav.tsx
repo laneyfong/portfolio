@@ -99,6 +99,10 @@ const TopNav: FC = () => {
           gap: 12px;
         }
 
+        .top-nav-brand:hover {
+          color: #4060c8;
+        }
+
         .top-nav-brand-separator {
           width: 6px;
           height: 6px;
