@@ -751,10 +751,30 @@ const MyShakeCaseStudy: FC = () => {
 
         <div style={{ marginBottom: 80 }}>
           <Reveal>
+            <style>{`
+              @media (max-width: 768px) {
+                .case-grid-2 {
+                  grid-template-columns: 1fr !important;
+                  gap: 24px !important;
+                }
+              }
+
+              .case-variation-buttons {
+                display: inline-flex;
+                flex-direction: row;
+                width: 100%;
+              }
+
+              @media (max-width: 768px) {
+                .case-variation-buttons {
+                  width: 100% !important;
+                }
+              }
+            `}</style>
             <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
               <ABWireframe variant={abVariant} />
               <div key={abVariant} className="case-fade-in">
-                <div style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, marginBottom: 24 }}>
+                <div className="case-variation-buttons" style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, marginBottom: 24 }}>
                   {[
                     { label: "Variation 1", title: "Half-list + half-map", description: "A split landing page: a list of nearby earthquakes on one side, a live map on the other." },
                     { label: "Variation 2", title: "Bento-style dashboard", description: "A bento grid surfacing pinned locations, nearby earthquakes, and education cards at a glance." },
