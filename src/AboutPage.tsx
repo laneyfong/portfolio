@@ -1,7 +1,9 @@
 import type { FC } from "react";
+import { useState } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import kinoSvg from "./assets/kino-visual.svg";
 
 interface ExperienceEntry {
@@ -22,6 +24,9 @@ interface CommunitiesEntry {
 }
 
 const AboutPage: FC = () => {
+  const { ref: profileRef, isVisible: profileVisible } = useScrollReveal({ threshold: 0.5 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollReveal({ threshold: 0.3 });
+
   const experiences: ExperienceEntry[] = [
     { role: "Product Designer (Capstone)", company: "Nvidia", year: "2026" },
     { role: "Product Growth & Design Intern", company: "Sensitel", year: "2026" },
@@ -54,6 +59,26 @@ const AboutPage: FC = () => {
       <TopNav />
 
       <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .about-profile-reveal {
+          animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .about-content-reveal {
+          opacity: 0;
+          animation: ${contentVisible ? "fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none"};
+        }
+
         @keyframes blobFlow {
           0% {
             filter: blur(0px) brightness(1);
@@ -136,6 +161,8 @@ const AboutPage: FC = () => {
 
           {/* Profile Card - Left Side */}
           <div
+            ref={profileRef}
+            className="about-profile-reveal"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -207,6 +234,8 @@ const AboutPage: FC = () => {
 
           {/* Right Panel - Content */}
           <div
+            ref={contentRef}
+            className={contentVisible ? "about-content-reveal" : ""}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -217,6 +246,8 @@ const AboutPage: FC = () => {
               maxWidth: "100%",
               position: "relative",
               zIndex: 5,
+              opacity: contentVisible ? 1 : 0,
+              animation: contentVisible ? "fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards" : "none",
             }}
           >
             {/* Hello section */}
