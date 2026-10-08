@@ -36,16 +36,16 @@ const FooterLink: FC<{ label: string }> = ({ label }) => {
       }}
       style={{
         fontFamily: tokens.font.sans,
-        fontWeight: tokens.weight.regular,
-        fontSize: "16px",
-        color: tokens.color.white,
+        fontWeight: 400,
+        fontSize: "14px",
+        color: "#ABADAF",
         textDecoration: "none",
         cursor: path ? "pointer" : "default",
-        opacity: 0.85,
-        transition: "opacity 0.15s ease",
+        letterSpacing: "-0.05em",
+        transition: "color 0.2s ease",
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-      onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.85")}
+      onMouseEnter={(e) => (e.currentTarget.style.color = "#4060c8")}
+      onMouseLeave={(e) => (e.currentTarget.style.color = "#ABADAF")}
     >
       {label}
     </a>
@@ -55,11 +55,41 @@ const FooterLink: FC<{ label: string }> = ({ label }) => {
 const Footer: FC = () => (
   <footer
     style={{
-      backgroundColor: "#111111",
       width: "100%",
       boxSizing: "border-box",
+      background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(64,96,200,0.08) 100%)",
+      borderTop: "1px solid rgba(190, 190, 190, 0.1)",
+      position: "relative",
+      overflow: "hidden",
     }}
   >
+    <style>{`
+      @keyframes ambientGlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .footer-glow {
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(64, 96, 200, 0.1) 0%, transparent 70%);
+        animation: ambientGlow 8s ease-in-out infinite;
+        pointer-events: none;
+      }
+    `}</style>
+
+    <div className="footer-glow"></div>
+
     <div
       style={{
         display: "flex",
@@ -67,45 +97,37 @@ const Footer: FC = () => (
         alignItems: "flex-start",
         flexWrap: "wrap",
         gap: 48,
-        maxWidth: "clamp(1440px, 95vw, 1800px)",
+        maxWidth: "1200px",
         margin: "0 auto",
-        paddingTop: "clamp(40px, 8vw, 70px)",
-        paddingBottom: "clamp(40px, 8vw, 70px)",
-        paddingLeft: "clamp(20px, 3.5%, 48px)",
-        paddingRight: "clamp(20px, 3.5%, 48px)",
+        paddingTop: "60px",
+        paddingBottom: "60px",
+        paddingLeft: "52px",
+        paddingRight: "52px",
         width: "100%",
         boxSizing: "border-box",
+        position: "relative",
+        zIndex: 1,
       }}
     >
       <div>
         <p
           style={{
             fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.regular,
-            fontSize: tokens.text.base,
-            color: tokens.color.white,
-            opacity: 0.85,
-            margin: "0 0 12px 0",
+            fontWeight: 400,
+            fontSize: "14px",
+            color: "#BEBEBE",
+            letterSpacing: "-0.05em",
+            margin: "0 0 16px 0",
           }}
         >
-          Designed with{" "}
-          <em
-            style={{
-              fontFamily: tokens.font.sans,
-              color: "#86A8D8",
-            }}
-          >
-            intention
-          </em>{" "}
-          by
+          Designed with intention
         </p>
         <img
           src={nameLogoCharacter}
           alt="Name logo character"
           style={{
-            maxWidth: "100%",
+            maxWidth: "120px",
             height: "auto",
-            marginTop: "4px",
           }}
         />
       </div>
@@ -114,20 +136,18 @@ const Footer: FC = () => (
         <p
           style={{
             fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.regular,
-            fontSize: tokens.text.md,
-            color: tokens.color.white,
-            lineHeight: tokens.leading.normal,
-            margin: 0,
+            fontWeight: 500,
+            fontSize: "14px",
+            color: "#111111",
+            letterSpacing: "-0.05em",
+            lineHeight: "21px",
+            margin: "0 0 16px 0",
           }}
         >
-          Let's{" "}
-          <em style={{ fontFamily: tokens.font.sans }}>collaborate</em>.
-          <br />
-          Reach out through
+          Let's collaborate.
         </p>
 
-        <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
+        <div style={{ display: "flex", gap: 16 }}>
           <SocialIconLink href={LINKEDIN_URL} label="LinkedIn" external>
             <LinkedInIcon />
           </SocialIconLink>
@@ -137,7 +157,7 @@ const Footer: FC = () => (
         </div>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {NAV_LINKS.map((label) => (
           <FooterLink key={label} label={label} />
         ))}
