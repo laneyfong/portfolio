@@ -102,7 +102,7 @@ const Portfolio: FC = () => {
         @keyframes slideUpFadeIn {
           from {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -114,20 +114,8 @@ const Portfolio: FC = () => {
           opacity: 0;
         }
 
-        .work-section-cards.visible > div:nth-child(1) {
-          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        .work-section-cards.visible > div:nth-child(2) {
-          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
-        }
-
-        .work-section-cards.visible > div:nth-child(3) {
-          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
-        }
-
-        .work-section-cards.visible > div:nth-child(4) {
-          animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+        .work-section-cards.visible > div {
+          animation: slideUpFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         .badge-reveal {
