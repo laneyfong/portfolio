@@ -4,12 +4,14 @@ import { cloneElement, isValidElement } from "react";
 interface FeaturedWorkShowcaseProps {
   children: ReactNode[];
   onActiveIndexChange?: (index: number) => void;
+  className?: string;
 }
 
-const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children }) => {
+const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, className }) => {
 
   return (
     <div
+      className={className}
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",

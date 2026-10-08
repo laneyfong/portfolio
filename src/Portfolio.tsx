@@ -65,6 +65,63 @@ const Portfolio: FC = () => {
           }
         }
 
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .work-section-cards {
+          opacity: 0;
+        }
+
+        .work-section-cards.visible {
+          animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .work-section-cards.visible > :nth-child(1) {
+          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .work-section-cards.visible > :nth-child(2) {
+          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+        }
+
+        .work-section-cards.visible > :nth-child(3) {
+          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+        }
+
+        .work-section-cards.visible > :nth-child(4) {
+          animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+        }
+
         .badge-reveal {
           opacity: 1;
         }
@@ -143,9 +200,10 @@ const Portfolio: FC = () => {
         </div>
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
+      <div ref={workSectionRef} id="work-container" className={`work-section-reveal ${workVisible ? "visible" : ""}`} style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
         <section id="work" style={{ width: "100%" }}>
           <FeaturedWorkShowcase
+            className={`work-section-cards ${workVisible ? "visible" : ""}`}
             onActiveIndexChange={(index) => {
               if (workVisible) {
                 const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
