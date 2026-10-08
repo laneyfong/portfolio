@@ -91,7 +91,7 @@ const Footer: FC = () => (
           rgba(255, 127, 80, 0.35) 100%
         );
         background-size: 400% 400%;
-        animation: gradientShift 12s ease-in-out infinite;
+        animation: gradientShift 18s ease-in-out infinite;
         pointer-events: none;
         opacity: 1;
       }
@@ -120,7 +120,7 @@ const Footer: FC = () => (
         background: radial-gradient(ellipse at center, rgba(255, 127, 80, 0.2) 0%, rgba(64, 96, 200, 0.1) 40%, transparent 70%);
         filter: blur(60px);
         pointer-events: none;
-        animation: gradientShift 15s ease-in-out infinite;
+        animation: gradientShift 22s ease-in-out infinite;
       }
     `}</style>
 
