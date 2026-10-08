@@ -392,10 +392,10 @@ const AboutPage: FC = () => {
                     style={{
                       fontFamily: "'Manrope'",
                       fontWeight: 400,
-                      fontSize: "16px",
-                      lineHeight: "22px",
+                      fontSize: "14px",
+                      lineHeight: "19px",
                       letterSpacing: "-0.05em",
-                      color: "#000000",
+                      color: "#929292",
                       flexShrink: 0,
                       whiteSpace: "nowrap",
                     }}
