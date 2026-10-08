@@ -59,6 +59,48 @@ const AboutPage: FC = () => {
       <TopNav />
 
       <style>{`
+        @media (max-width: 768px) {
+          .about-main-container {
+            flex-direction: column !important;
+            gap: 40px !important;
+            padding-top: 0 !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            min-height: auto !important;
+          }
+
+          .about-svg-bg {
+            display: none !important;
+          }
+
+          .about-profile-card {
+            width: 100% !important;
+            height: auto !important;
+            margin-bottom: 0 !important;
+            justify-content: flex-start !important;
+          }
+
+          .about-content-panel {
+            width: 100% !important;
+            max-width: none !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .about-main-container {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            gap: 32px !important;
+          }
+
+          .about-profile-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            height: auto !important;
+            gap: 12px !important;
+          }
+        }
+
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -121,6 +163,7 @@ const AboutPage: FC = () => {
       >
         {/* Main content container */}
         <div
+          className="about-main-container"
           style={{
             display: "flex",
             flexDirection: "row",
@@ -140,6 +183,7 @@ const AboutPage: FC = () => {
         >
           {/* Left Panel - SVG Background */}
           <div
+            className="about-svg-bg"
             style={{
               position: "absolute",
               left: 0,
@@ -162,7 +206,7 @@ const AboutPage: FC = () => {
           {/* Profile Card - Left Side */}
           <div
             ref={profileRef}
-            className="about-profile-reveal"
+            className="about-profile-reveal about-profile-card"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -246,7 +290,7 @@ const AboutPage: FC = () => {
           {/* Right Panel - Content */}
           <div
             ref={contentRef}
-            className={contentVisible ? "about-content-reveal" : ""}
+            className={`about-content-panel ${contentVisible ? "about-content-reveal" : ""}`}
             style={{
               display: "flex",
               flexDirection: "column",
