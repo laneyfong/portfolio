@@ -43,6 +43,17 @@ const AboutPage: FC = () => {
     >
       <TopNav />
 
+      <style>{`
+        @keyframes floatSvg {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+      `}</style>
+
       <main
         style={{
           width: "100%",
@@ -89,6 +100,7 @@ const AboutPage: FC = () => {
               backgroundPosition: "center left",
               backgroundRepeat: "no-repeat",
               pointerEvents: "none",
+              animation: "floatSvg 6s ease-in-out infinite",
             }}
           />
 
