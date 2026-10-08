@@ -23,6 +23,13 @@ interface CommunitiesEntry {
   organization: string;
 }
 
+interface CertificationEntry {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialId: string;
+}
+
 const AboutPage: FC = () => {
   const { ref: profileRef } = useScrollReveal({ threshold: 0.5 });
   const { ref: contentRef, isVisible: contentVisible } = useScrollReveal({ threshold: 0.3 });
@@ -44,6 +51,11 @@ const AboutPage: FC = () => {
   const communities: CommunitiesEntry[] = [
     { role: "Internal President", organization: "UX@Berkeley" },
     { role: "Campus Ambassador", organization: "Partiful" },
+  ];
+
+  const certifications: CertificationEntry[] = [
+    { title: "Start the UX Design Process: Empathize, Define, and Ideate", issuer: "Google", date: "Jul 2023", credentialId: "RPJDTE4EH4FC" },
+    { title: "Foundations of User Experience (UX) Design", issuer: "Google", date: "Jan 2023", credentialId: "ELVXHPESFQSN" },
   ];
 
   return (
@@ -879,6 +891,140 @@ const AboutPage: FC = () => {
                         }}
                       >
                         {edu.year}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications Section */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                padding: "0",
+                gap: "29px",
+                width: "100%",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  padding: "0",
+                  gap: "16px",
+                  width: "100%",
+                }}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    height: "0px",
+                    border: "1px solid #DCDCDC",
+                  }}
+                />
+                <h4
+                  style={{
+                    fontFamily: "'Manrope'",
+                    fontWeight: 500,
+                    fontSize: "16px",
+                    lineHeight: "22px",
+                    letterSpacing: "-0.05em",
+                    color: "#868585",
+                    margin: "0",
+                    padding: "0",
+                  }}
+                >
+                  Certifications
+                </h4>
+              </div>
+
+              {/* Certifications entries */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  padding: "0",
+                  gap: "16px",
+                  width: "100%",
+                }}
+              >
+                {certifications.map((cert, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      padding: "0",
+                      gap: "8px",
+                      width: "100%",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignItems: "flex-start",
+                        padding: "0",
+                        gap: "16px",
+                        width: "100%",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "'Manrope'",
+                          fontWeight: 500,
+                          fontSize: "16px",
+                          lineHeight: "22px",
+                          letterSpacing: "-0.05em",
+                          color: "#333333",
+                          flex: 1,
+                        }}
+                      >
+                        {cert.title}
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "0",
+                        gap: "16px",
+                        width: "100%",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "'Manrope'",
+                          fontWeight: 400,
+                          fontSize: "14px",
+                          lineHeight: "19px",
+                          letterSpacing: "-0.05em",
+                          color: "rgba(146, 146, 146, 0.933333)",
+                        }}
+                      >
+                        {cert.issuer} • {cert.date}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "'Manrope'",
+                          fontWeight: 400,
+                          fontSize: "14px",
+                          lineHeight: "19px",
+                          letterSpacing: "-0.05em",
+                          color: "#929292",
+                          flexShrink: 0,
+                        }}
+                      >
+                        {cert.credentialId}
                       </span>
                     </div>
                   </div>
