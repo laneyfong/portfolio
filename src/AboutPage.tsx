@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, XIcon, SocialIconLink, LINKEDIN_URL, X_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import kinoSvg from "./assets/kino-visual.svg";
+import profilePhoto from "./assets/about-profile-photo.HEIC";
 
 interface ExperienceEntry {
   role: string;
@@ -282,7 +283,7 @@ const AboutPage: FC = () => {
           >
             {/* Profile Image */}
             <img
-              src="/IMG_0338.PNG"
+              src={profilePhoto}
               alt="Laney Fong"
               style={{
                 width: "70px",
@@ -290,6 +291,7 @@ const AboutPage: FC = () => {
                 borderRadius: "100px",
                 objectFit: "cover",
                 flexShrink: 0,
+                filter: "grayscale(100%)",
               }}
             />
 
