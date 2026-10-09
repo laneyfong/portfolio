@@ -17,7 +17,6 @@ const Portfolio: FC = () => {
   const [videoReady] = useState(true);
   const [, setHoveredCaseStudy] = useState<string | null>(null);
   const [scrollY, setScrollY] = useState(0);
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const handleScroll = () => {
