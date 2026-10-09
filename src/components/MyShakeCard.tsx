@@ -55,13 +55,13 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
   useEffect(() => {
     if (videoRef.current) {
-      if (hovered || !isActive) {
-        videoRef.current.pause();
-      } else if (isActive) {
+      if (isActive) {
         videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
       }
     }
-  }, [isActive, hovered]);
+  }, [isActive]);
 
   const isDesktop = window.innerWidth > 768;
 
@@ -96,8 +96,25 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           flex-shrink: 0;
           background-color: #1a1a1a;
           transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          filter: ${hovered ? "grayscale(100%)" : "grayscale(0%)"};
+          filter: ${isActive || hovered ? "grayscale(0%)" : "grayscale(100%)"} ${hovered ? "brightness(0.6)" : "brightness(1)"};
           box-shadow: ${hovered ? "0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
+        }
+
+        .myshake-video::before {
+          content: "View Case Study";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: ${hovered ? "translate(-50%, -50%)" : "translate(-50%, -50%) scale(0.8)"};
+          opacity: ${hovered ? 1 : 0};
+          font-family: 'Manrope';
+          font-size: 16px;
+          font-weight: 500;
+          color: white;
+          z-index: 10;
+          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          pointer-events: none;
+          letter-spacing: -0.05em;
         }
 
         .myshake-text {
