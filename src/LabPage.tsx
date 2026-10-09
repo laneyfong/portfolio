@@ -8,6 +8,9 @@ import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
 import screenRecording20251023 from "./assets/screen-recording-2025-10-23.mp4";
 import carVideo from "./assets/car.mov";
+import labVideo1 from "./assets/lab-2026-01-12at3.05.27 PM.mov";
+import labVideo2 from "./assets/lab-2026-03-26at3.14.13 PM.mov";
+import labVideo3 from "./assets/lab-2026-03-26at3.15.38 PM.mov";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
@@ -99,6 +102,21 @@ const LabPage: FC = () => {
 
   const videoExperiments = [
     {
+      src: labVideo1,
+      title: "Interaction Exploration",
+      date: "Jan 2026",
+    },
+    {
+      src: labVideo2,
+      title: "Motion Experiment",
+      date: "Mar 2026",
+    },
+    {
+      src: labVideo3,
+      title: "Animation Study",
+      date: "Mar 2026",
+    },
+    {
       src: screenRecording20251023,
       title: "Design Iteration: Product Flow",
       date: "Oct 2025",
@@ -133,24 +151,14 @@ const LabPage: FC = () => {
 
         .lab-module {
           animation: fadeInStagger 0.5s ease-out forwards;
+          flex-shrink: 0;
         }
 
         .lab-module:nth-child(1) { animation-delay: 150ms; }
         .lab-module:nth-child(2) { animation-delay: 200ms; }
         .lab-module:nth-child(3) { animation-delay: 250ms; }
         .lab-module:nth-child(4) { animation-delay: 300ms; }
-
-        @media (max-width: 1024px) {
-          .lab-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .lab-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
+        .lab-module:nth-child(5) { animation-delay: 350ms; }
 
         @media (prefers-reduced-motion: reduce) {
           .lab-module {
@@ -163,98 +171,132 @@ const LabPage: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "80px 0", boxSizing: "border-box", marginTop: "64px" }}>
-        <ContentContainer>
-          {/* Header */}
-          <div style={{ marginBottom: 72 }}>
-            <h1
-              style={{
-                margin: "0 0 16px 0",
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.xl,
-                fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
-                lineHeight: 1.2,
-              }}
-            >
-              Lab
-            </h1>
-            <p
-              style={{
-                margin: 0,
-                maxWidth: 600,
-                fontFamily: tokens.font.sans,
-                fontSize: "16px",
-                fontWeight: tokens.weight.regular,
-                color: tokens.color.body,
-                lineHeight: 1.6,
-                opacity: 0.8,
-              }}
-            >
-              Experiments in motion, interaction, accessibility, and AI. A glimpse into how I think, explore, and push boundaries beyond finished work.
-            </p>
-          </div>
-
-          {/* Grid */}
-          <div
-            className="lab-grid"
+      <main style={{ width: "100%", padding: "80px 52px", boxSizing: "border-box", marginTop: "64px" }}>
+        {/* Description */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "14px",
+            marginBottom: "14px",
+            maxWidth: "285px",
+          }}
+        >
+          <p
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "20px",
-            }}
-          >
-            {experiments.map((exp, idx) => (
-              <div key={idx} className="lab-module" style={{ height: "100%" }}>
-                {exp.specialType === "daylight" ? (
-                  <DayLightCard />
-                ) : exp.specialType === "ascii-ripple" ? (
-                  <InteractiveTypography />
-                ) : (
-                  <LabCard
-                    type={exp.type as Exclude<ModuleType, "daylight">}
-                    title={exp.title}
-                    description={exp.description}
-                    experimentId={exp.experimentId}
-                    date={exp.date}
-                    status={exp.status}
-                    tags={exp.tags}
-                    isLoading={exp.isLoading}
-                  />
-                )}
-              </div>
-            ))}
-
-            {/* Video Experiments */}
-            {videoExperiments.map((video, idx) => (
-              <div key={`video-${idx}`} className="lab-module" style={{ height: "100%" }}>
-                <VideoCard src={video.src} title={video.title} date={video.date} />
-              </div>
-            ))}
-          </div>
-
-          {/* Footer Note */}
-          <div
-            style={{
-              marginTop: 80,
-              paddingTop: 40,
-              borderTop: `1px solid ${tokens.color.cardBorder}`,
-              fontSize: "13px",
+              margin: 0,
               fontFamily: tokens.font.sans,
+              fontSize: "18px",
               fontWeight: tokens.weight.regular,
-              color: tokens.color.muted,
-              opacity: 0.6,
-              lineHeight: 1.6,
+              color: tokens.color.ink,
+              lineHeight: "25px",
+              letterSpacing: "-0.05em",
             }}
           >
-            <p>
-              This Lab is ever-evolving. Experiments get paused, refined, or combined into larger explorations. Some become production features. Others teach me what <em>not</em> to do.
-            </p>
-            <p>
-              Curious about a specific experiment? Ideas for collaboration? <a href="mailto:laneyrfong@gmail.com" style={{ color: "inherit", textDecoration: "underline" }}>Let's talk</a>.
-            </p>
-          </div>
-        </ContentContainer>
+            Lab experiments in motion, interaction, accessibility, AI, and more.
+          </p>
+        </div>
+
+        {/* Horizontal Cards Container */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "12px",
+            width: "100%",
+            overflowX: "auto",
+            paddingBottom: "16px",
+          }}
+        >
+          {experiments.map((exp, idx) => (
+            <div
+              key={idx}
+              className="lab-module"
+              style={{
+                width: "339px",
+                height: "299px",
+                background: "#F0F0F0",
+                borderRadius: "14px",
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              {exp.specialType === "daylight" ? (
+                <DayLightCard />
+              ) : exp.specialType === "ascii-ripple" ? (
+                <InteractiveTypography />
+              ) : (
+                <LabCard
+                  type={exp.type as Exclude<ModuleType, "daylight">}
+                  title={exp.title}
+                  description={exp.description}
+                  experimentId={exp.experimentId}
+                  date={exp.date}
+                  status={exp.status}
+                  tags={exp.tags}
+                  isLoading={exp.isLoading}
+                />
+              )}
+            </div>
+          ))}
+
+          {/* Video Experiments */}
+          {videoExperiments.map((video, idx) => (
+            <div
+              key={`video-${idx}`}
+              className="lab-module"
+              style={{
+                width: "339px",
+                height: "299px",
+                background: "#F0F0F0",
+                borderRadius: "14px",
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <video
+                src={video.src}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+                muted
+                autoPlay
+                loop
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Footer Note */}
+        <div
+          style={{
+            marginTop: 80,
+            paddingTop: 40,
+            borderTop: `1px solid ${tokens.color.cardBorder}`,
+            fontSize: "13px",
+            fontFamily: tokens.font.sans,
+            fontWeight: tokens.weight.regular,
+            color: tokens.color.muted,
+            opacity: 0.6,
+            lineHeight: 1.6,
+            maxWidth: "600px",
+          }}
+        >
+          <p>
+            This Lab is ever-evolving. Experiments get paused, refined, or combined into larger explorations. Some become production features. Others teach me what <em>not</em> to do.
+          </p>
+          <p>
+            Curious about a specific experiment? Ideas for collaboration? <a href="mailto:laneyrfong@gmail.com" style={{ color: "inherit", textDecoration: "underline" }}>Let's talk</a>.
+          </p>
+        </div>
       </main>
 
       <Footer />
