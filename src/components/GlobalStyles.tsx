@@ -12,6 +12,10 @@ const GlobalStyles: FC = () => (
       --text-secondary: #626262;
       --text-muted: #ABADAF;
       --text-dark: #111111;
+      --text-grey-light: #979797;
+      --text-grey-medium: #A0A0A0;
+      --text-grey-dark: #929292;
+      --text-grey-lighter: #808080;
       --border-color: rgba(26, 26, 26, 0.08);
       --card-bg: #F0F0F0;
     }
@@ -20,9 +24,13 @@ const GlobalStyles: FC = () => (
       --bg-primary: #121212;
       --bg-secondary: #1E1E1E;
       --text-primary: #D0D0D0;
-      --text-secondary: #B8B8B8;
-      --text-muted: #808080;
+      --text-secondary: #C0C0C0;
+      --text-muted: #A8A8A8;
       --text-dark: #FFFFFF;
+      --text-grey-light: #B8B8B8;
+      --text-grey-medium: #B0B0B0;
+      --text-grey-dark: #A8A8A8;
+      --text-grey-lighter: #A0A0A0;
       --border-color: rgba(208, 208, 208, 0.1);
       --card-bg: #2A2A2A;
     }

@@ -140,12 +140,12 @@ const AboutPage: FC = () => {
 
           .about-hello-section {
             font-weight: 400 !important;
-            color: #979797 !important;
+            color: var(--text-grey-light) !important;
           }
 
           .about-paragraph-slide {
             font-weight: 400 !important;
-            color: #979797 !important;
+            color: var(--text-grey-light) !important;
           }
         }
 
@@ -378,7 +378,7 @@ const AboutPage: FC = () => {
                 fontSize: "16px",
                 lineHeight: "22px",
                 letterSpacing: "-0.05em",
-                color: "#979797",
+                color: "var(--text-grey-light)",
                 margin: "0",
                 padding: "0",
               }}
@@ -395,7 +395,7 @@ const AboutPage: FC = () => {
                 fontSize: "16px",
                 lineHeight: "22px",
                 letterSpacing: "-0.05em",
-                color: "#979797",
+                color: "var(--text-grey-light)",
                 margin: "0",
                 padding: "0",
                 marginTop: "0",
@@ -520,7 +520,7 @@ const AboutPage: FC = () => {
                       fontSize: "14px",
                       lineHeight: "19px",
                       letterSpacing: "-0.05em",
-                      color: "#929292",
+                      color: "var(--text-grey-dark)",
                       flexShrink: 0,
                       whiteSpace: "nowrap",
                     }}
@@ -644,7 +644,7 @@ const AboutPage: FC = () => {
                       fontSize: "14px",
                       lineHeight: "19px",
                       letterSpacing: "-0.05em",
-                      color: "#929292",
+                      color: "var(--text-grey-dark)",
                       flexShrink: 0,
                     }}
                   >
@@ -894,7 +894,7 @@ const AboutPage: FC = () => {
                           fontSize: "14px",
                           lineHeight: "19px",
                           letterSpacing: "-0.05em",
-                          color: "#929292",
+                          color: "var(--text-grey-dark)",
                           flexShrink: 0,
                         }}
                       >
@@ -1029,7 +1029,7 @@ const AboutPage: FC = () => {
                           fontSize: "14px",
                           lineHeight: "19px",
                           letterSpacing: "-0.05em",
-                          color: "#929292",
+                          color: "var(--text-grey-dark)",
                           flexShrink: 0,
                         }}
                       >
