@@ -79,6 +79,7 @@ const LabPage: FC = () => {
 
         .lab-module {
           animation: fadeInStagger 0.5s ease-out forwards;
+          flex-shrink: 0;
         }
 
         .lab-module:nth-child(1) { animation-delay: 150ms; }
@@ -135,13 +136,16 @@ const LabPage: FC = () => {
             marginTop: "14px",
           }}
         >
-          {/* Grid Cards Container */}
+          {/* Horizontal Cards Container */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-start",
               gap: "12px",
               width: "100%",
+              overflowX: "auto",
+              paddingBottom: "16px",
             }}
           >
           {experiments.map((exp, idx) => (
@@ -149,12 +153,13 @@ const LabPage: FC = () => {
               key={idx}
               className="lab-module"
               style={{
+                width: "339px",
                 height: "299px",
                 background: "#F0F0F0",
                 borderRadius: "14px",
                 overflow: "hidden",
                 position: "relative",
-                width: "100%",
+                flexShrink: 0,
               }}
             >
               {exp.specialType === "daylight" ? (
@@ -182,12 +187,13 @@ const LabPage: FC = () => {
               key={`video-${idx}`}
               className="lab-module"
               style={{
+                width: "339px",
                 height: "299px",
                 background: "#F0F0F0",
                 borderRadius: "14px",
                 overflow: "hidden",
                 position: "relative",
-                width: "100%",
+                flexShrink: 0,
               }}
             >
               <video
