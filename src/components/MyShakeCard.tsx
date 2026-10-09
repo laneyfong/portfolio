@@ -93,8 +93,9 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {hovered && <BorderBeam />}
-        <div
+        {hovered ? (
+          <BorderBeam>
+            <div
           className="myshake-video"
           style={{
             borderRadius: isDesktop ? "20px" : "0px",
@@ -197,7 +198,92 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               View Case Study
             </div>
           )}
-        </div>
+            </div>
+          </BorderBeam>
+        ) : (
+          <div
+            className="myshake-video"
+            style={{
+              borderRadius: isDesktop ? "20px" : "0px",
+              filter: "brightness(1)",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
+              transition: "filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            <video
+              ref={videoRef}
+              src={myshakeScreenRecording}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+              autoPlay
+              playsInline
+              loop
+              muted
+              preload="metadata"
+            />
+
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                display: "flex",
+                alignItems: "flex-start",
+                justifyContent: "space-between",
+                gap: 12,
+                padding: "16px",
+                zIndex: 5,
+                pointerEvents: "none",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
+                  fontSize: "11px",
+                  color: "white",
+                  letterSpacing: "0.5px",
+                  lineHeight: tokens.leading.none,
+                  textShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
+                }}
+              >
+                {context}
+              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 32 32"
+                style={{
+                  filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
+                  flexShrink: 0,
+                  transition: "opacity 0.6s ease, transform 0.6s ease",
+                  opacity: 1,
+                  transform: "translateY(0)",
+                }}
+              >
+                <circle cx="16" cy="16" r="14" fill="none" stroke="white" strokeWidth="1.5"></circle>
+                <g>
+                  <path
+                    d="M 16 8 L 24 16 L 16 24 M 24 16 L 8 16"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+          </div>
+        )}
 
         <div className="myshake-text" style={{ opacity: isActive ? 1 : 0.7 }}>
           {roleOutcome && (
