@@ -1097,7 +1097,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <section style={{ paddingTop: 60, paddingBottom: 60 }} className="section-reveal">
           <Reveal dramatic>
-            <div style={{ marginBottom: 32 }}>
+            <div style={{ marginBottom: 10 }}>
               <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
                 Key Design Details
               </span>
