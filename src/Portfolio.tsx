@@ -31,8 +31,9 @@ const Portfolio: FC = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !entry.target.classList.contains("card-in-view")) {
             entry.target.classList.add("card-in-view");
+            observer.unobserve(entry.target);
           }
         });
       },
