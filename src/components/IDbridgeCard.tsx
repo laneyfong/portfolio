@@ -67,14 +67,14 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           aspect-ratio: 4 / 3;
           flex-shrink: 0;
           background-color: #1a1a1a;
-          filter: brightness(1) grayscale(100%);
+          filter: brightness(1);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
           transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: filter, box-shadow;
         }
 
         .idbridge-video.hovered {
-          filter: brightness(0.6) grayscale(0%);
+          filter: brightness(0.6);
           box-shadow: 0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
