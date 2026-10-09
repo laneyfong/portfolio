@@ -423,6 +423,8 @@ const AboutPage: FC = () => {
                   borderBottom: "none",
                   borderLeft: "none",
                   borderRight: "none",
+                  margin: 0,
+                  padding: 0,
                 }}
               />
               <h4
@@ -547,6 +549,8 @@ const AboutPage: FC = () => {
                   borderBottom: "none",
                   borderLeft: "none",
                   borderRight: "none",
+                  margin: 0,
+                  padding: 0,
                 }}
               />
               <h4
@@ -674,7 +678,8 @@ const AboutPage: FC = () => {
                   style={{
                     width: "100%",
                     height: "0px",
-                    border: "1px solid #DCDCDC",
+                    border: "none",
+                  borderTop: "1px solid #DCDCDC",
                   }}
                 />
                 <h4
@@ -792,7 +797,8 @@ const AboutPage: FC = () => {
                   style={{
                     width: "100%",
                     height: "0px",
-                    border: "1px solid #DCDCDC",
+                    border: "none",
+                  borderTop: "1px solid #DCDCDC",
                   }}
                 />
                 <h4
@@ -924,7 +930,8 @@ const AboutPage: FC = () => {
                   style={{
                     width: "100%",
                     height: "0px",
-                    border: "1px solid #DCDCDC",
+                    border: "none",
+                  borderTop: "1px solid #DCDCDC",
                   }}
                 />
                 <h4
