@@ -64,10 +64,12 @@ const DynamicSliderCard: FC = () => {
           fontWeight: 500,
           color: "#333333",
           lineHeight: 1,
-          transform: `translateX(${(Math.random() - 0.5) * shakeAmount}px)`,
+          transform: `translateX(calc(-50% + ${(value / 100) * 50}px)) translateX(${(Math.random() - 0.5) * shakeAmount}px)`,
           transition: "transform 0.05s ease-out",
           fontFamily: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
           letterSpacing: "-0.05em",
+          position: "relative",
+          left: "50%",
         }}
       >
         {value}
