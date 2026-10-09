@@ -23,15 +23,31 @@
   aspect-ratio: 4 / 3;
   flex-shrink: 0;
   background-color: #1a1a1a;
-  filter: brightness(1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: filter, box-shadow;
 }
 
 .myshake-video.hovered {
-  filter: brightness(0.6);
   box-shadow: 0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.myshake-video::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  border-radius: 20px;
+}
+
+.myshake-video.hovered::before {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .myshake-label {
