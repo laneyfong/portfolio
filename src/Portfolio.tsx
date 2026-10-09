@@ -363,7 +363,7 @@ const Portfolio: FC = () => {
           }}
         >
           <h1 style={{
-            fontFamily: "'Manrope'",
+            fontFamily: tokens.font.sans,
             fontSize: "24px",
             fontWeight: 500,
             lineHeight: "33px",
@@ -377,7 +377,7 @@ const Portfolio: FC = () => {
             I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, drive business growth, and executed with taste.
           </h1>
           <p style={{
-            fontFamily: "'Manrope'",
+            fontFamily: tokens.font.sans,
             fontSize: "14px",
             fontWeight: 400,
             letterSpacing: "-0.05em",

@@ -309,7 +309,7 @@ const AboutPage: FC = () => {
             >
               <h2
                 style={{
-                  fontFamily: "'Manrope'",
+                  fontFamily: tokens.font.sans,
                   fontWeight: 500,
                   fontSize: "24px",
                   lineHeight: "33px",
@@ -323,7 +323,7 @@ const AboutPage: FC = () => {
               </h2>
               <p
                 style={{
-                  fontFamily: "'Manrope'",
+                  fontFamily: tokens.font.sans,
                   fontWeight: 500,
                   fontSize: "16px",
                   lineHeight: "22px",
@@ -372,7 +372,7 @@ const AboutPage: FC = () => {
             <h3
               className="about-hello-section"
               style={{
-                fontFamily: "'Manrope'",
+                fontFamily: tokens.font.sans,
                 fontWeight: 500,
                 fontSize: "16px",
                 lineHeight: "22px",
@@ -389,7 +389,7 @@ const AboutPage: FC = () => {
             <p
               className="about-paragraph-slide"
               style={{
-                fontFamily: "'Manrope'",
+                fontFamily: tokens.font.sans,
                 fontWeight: 500,
                 fontSize: "16px",
                 lineHeight: "22px",
@@ -427,7 +427,7 @@ const AboutPage: FC = () => {
               />
               <h4
                 style={{
-                  fontFamily: "'Manrope'",
+                  fontFamily: tokens.font.sans,
                   fontWeight: 500,
                   fontSize: "16px",
                   lineHeight: "22px",
@@ -478,7 +478,7 @@ const AboutPage: FC = () => {
                   >
                     <span
                       style={{
-                        fontFamily: "'Manrope'",
+                        fontFamily: tokens.font.sans,
                         fontWeight: 500,
                         fontSize: "16px",
                         lineHeight: "22px",
@@ -499,7 +499,7 @@ const AboutPage: FC = () => {
                     />
                     <span
                       style={{
-                        fontFamily: "'Manrope'",
+                        fontFamily: tokens.font.sans,
                         fontWeight: 500,
                         fontSize: "16px",
                         lineHeight: "22px",
@@ -512,7 +512,7 @@ const AboutPage: FC = () => {
                   </div>
                   <span
                     style={{
-                      fontFamily: "'Manrope'",
+                      fontFamily: tokens.font.sans,
                       fontWeight: 400,
                       fontSize: "14px",
                       lineHeight: "19px",
@@ -551,7 +551,7 @@ const AboutPage: FC = () => {
               />
               <h4
                 style={{
-                  fontFamily: "'Manrope'",
+                  fontFamily: tokens.font.sans,
                   fontWeight: 500,
                   fontSize: "16px",
                   lineHeight: "22px",
@@ -598,7 +598,7 @@ const AboutPage: FC = () => {
                 >
                   <span
                     style={{
-                      fontFamily: "'Manrope'",
+                      fontFamily: tokens.font.sans,
                       fontWeight: 500,
                       fontSize: "16px",
                       lineHeight: "22px",
@@ -622,7 +622,7 @@ const AboutPage: FC = () => {
                 >
                   <span
                     style={{
-                      fontFamily: "'Manrope'",
+                      fontFamily: tokens.font.sans,
                       fontWeight: 400,
                       fontSize: "14px",
                       lineHeight: "19px",
@@ -634,7 +634,7 @@ const AboutPage: FC = () => {
                   </span>
                   <span
                     style={{
-                      fontFamily: "'Manrope'",
+                      fontFamily: tokens.font.sans,
                       fontWeight: 400,
                       fontSize: "14px",
                       lineHeight: "19px",
@@ -679,7 +679,7 @@ const AboutPage: FC = () => {
                 />
                 <h4
                   style={{
-                    fontFamily: "'Manrope'",
+                    fontFamily: tokens.font.sans,
                     fontWeight: 500,
                     fontSize: "16px",
                     lineHeight: "22px",
@@ -730,7 +730,7 @@ const AboutPage: FC = () => {
                     >
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 500,
                           fontSize: "16px",
                           lineHeight: "22px",
@@ -751,7 +751,7 @@ const AboutPage: FC = () => {
                       />
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 500,
                           fontSize: "16px",
                           lineHeight: "22px",
@@ -797,7 +797,7 @@ const AboutPage: FC = () => {
                 />
                 <h4
                   style={{
-                    fontFamily: "'Manrope'",
+                    fontFamily: tokens.font.sans,
                     fontWeight: 500,
                     fontSize: "16px",
                     lineHeight: "22px",
@@ -846,7 +846,7 @@ const AboutPage: FC = () => {
                     >
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 500,
                           fontSize: "16px",
                           lineHeight: "22px",
@@ -870,7 +870,7 @@ const AboutPage: FC = () => {
                     >
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 400,
                           fontSize: "14px",
                           lineHeight: "19px",
@@ -882,7 +882,7 @@ const AboutPage: FC = () => {
                       </span>
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 400,
                           fontSize: "14px",
                           lineHeight: "19px",
@@ -929,7 +929,7 @@ const AboutPage: FC = () => {
                 />
                 <h4
                   style={{
-                    fontFamily: "'Manrope'",
+                    fontFamily: tokens.font.sans,
                     fontWeight: 500,
                     fontSize: "16px",
                     lineHeight: "22px",
@@ -979,7 +979,7 @@ const AboutPage: FC = () => {
                     >
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 500,
                           fontSize: "16px",
                           lineHeight: "22px",
@@ -1004,7 +1004,7 @@ const AboutPage: FC = () => {
                     >
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 400,
                           fontSize: "14px",
                           lineHeight: "19px",
@@ -1016,7 +1016,7 @@ const AboutPage: FC = () => {
                       </span>
                       <span
                         style={{
-                          fontFamily: "'Manrope'",
+                          fontFamily: tokens.font.sans,
                           fontWeight: 400,
                           fontSize: "14px",
                           lineHeight: "19px",
