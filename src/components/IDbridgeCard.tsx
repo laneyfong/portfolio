@@ -80,9 +80,10 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           bottom: 0;
           background: rgba(0, 0, 0, 0);
           pointer-events: none;
-          transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           z-index: 2;
           border-radius: ${isDesktop ? 20 : 0}px;
+          backdrop-filter: blur(0px);
         }
 
         .idbridge-video.hovered {
@@ -91,6 +92,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
 
         .idbridge-video.hovered::before {
           background: rgba(0, 0, 0, 0.4);
+          backdrop-filter: blur(8px);
         }
 
         .idbridge-label {
