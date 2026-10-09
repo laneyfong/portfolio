@@ -6,7 +6,6 @@ import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
 import DynamicSliderCard from "./components/DynamicSliderCard";
-import carVideo from "./assets/car.mov";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
@@ -60,13 +59,7 @@ const LabPage: FC = () => {
     },
   ];
 
-  const videoExperiments = [
-    {
-      src: carVideo,
-      title: "Motion Study: Car Animation",
-      date: "Oct 2025",
-    },
-  ];
+  const videoExperiments: Array<{ src: string; title: string; date: string }> = [];
 
   return (
     <div
