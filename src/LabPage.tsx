@@ -65,9 +65,10 @@ const LabPage: FC = () => {
     <div
       style={{
         minHeight: "100vh",
-        background: tokens.color.white,
+        background: "var(--bg-primary)",
         fontFamily: tokens.font.sans,
-        color: tokens.color.body,
+        color: "var(--text-secondary)",
+        transition: "background 0.3s ease, color 0.3s ease",
       }}
     >
       <style>{`

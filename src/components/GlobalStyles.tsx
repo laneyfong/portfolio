@@ -16,13 +16,13 @@ const GlobalStyles: FC = () => (
     }
 
     [data-theme="dark"] {
-      --bg-primary: #0F0F0F;
-      --bg-secondary: #1A1A1A;
-      --text-primary: #E8E8E8;
-      --text-secondary: #B0B0B0;
+      --bg-primary: #121212;
+      --bg-secondary: #1E1E1E;
+      --text-primary: #D0D0D0;
+      --text-secondary: #B8B8B8;
       --text-muted: #808080;
-      --border-color: rgba(232, 232, 232, 0.08);
-      --card-bg: #252525;
+      --border-color: rgba(208, 208, 208, 0.1);
+      --card-bg: #2A2A2A;
     }
 
     html {
