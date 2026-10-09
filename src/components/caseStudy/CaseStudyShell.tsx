@@ -318,7 +318,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                       fontFamily: tokens.font.sans,
                       fontSize: 12.5,
                       lineHeight: 1.4,
-                      color: tokens.color.body,
+                      color: "var(--text-secondary)",
                       animationDelay: `${i * 80}ms`,
                     }}
                   >

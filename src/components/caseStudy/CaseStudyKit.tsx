@@ -53,10 +53,10 @@ export const TagPill: FC<{ children: string }> = ({ children }) => (
       display: "inline-flex",
       padding: "6px 12px",
       borderRadius: tokens.radius.full,
-      background: tokens.color.offWhite,
+      background: "var(--card-bg)",
       fontFamily: tokens.font.sans,
       fontSize: tokens.text.sm,
-      color: tokens.color.body,
+      color: "var(--text-secondary)",
       whiteSpace: "nowrap",
     }}
   >
@@ -70,7 +70,7 @@ export const SectionHeading: FC<{ children: ReactNode }> = ({ children }) => (
       fontFamily: tokens.font.sans,
       fontWeight: tokens.weight.medium,
       fontSize: "24px",
-      color: tokens.color.body,
+      color: "var(--text-secondary)",
       margin: "0 0 20px",
       maxWidth: 440,
     }}
@@ -85,7 +85,7 @@ export const Callout: FC<{ children: ReactNode }> = ({ children }) => (
       fontFamily: tokens.font.sans,
       fontWeight: tokens.weight.medium,
       fontSize: "18px",
-      color: tokens.color.body,
+      color: "var(--text-secondary)",
       lineHeight: tokens.leading.snug,
       margin: "40px 0 24px",
       maxWidth: 440,
@@ -101,7 +101,7 @@ export const Paragraph: FC<{ children: ReactNode }> = ({ children }) => (
       fontFamily: tokens.font.sans,
       fontSize: "16px",
       lineHeight: tokens.leading.normal,
-      color: tokens.color.body,
+      color: "var(--text-secondary)",
       margin: "0 0 24px",
       maxWidth: 440,
       marginTop: 8,
@@ -117,7 +117,7 @@ export const Kicker: FC<{ children: ReactNode }> = ({ children }) => (
       fontFamily: tokens.font.sans,
       fontSize: tokens.text.sm,
       fontWeight: tokens.weight.medium,
-      color: tokens.color.muted,
+      color: "var(--text-muted)",
       marginBottom: 16,
       marginTop: 8,
     }}
@@ -146,7 +146,7 @@ export const SnapshotBar: FC<{ items: { label: string; value: ReactNode }[] }> =
           padding: "16px 20px",
           borderRadius: tokens.radius.md,
           
-          background: tokens.color.offWhite,
+          background: "var(--card-bg)",
         }}
       >
         <div
@@ -154,7 +154,7 @@ export const SnapshotBar: FC<{ items: { label: string; value: ReactNode }[] }> =
             fontFamily: tokens.font.sans,
             fontSize: 11,
             letterSpacing: "0.05em",
-            color: tokens.color.muted,
+            color: "var(--text-muted)",
             marginBottom: 6,
           }}
         >
@@ -165,7 +165,7 @@ export const SnapshotBar: FC<{ items: { label: string; value: ReactNode }[] }> =
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
             fontSize: tokens.text.base,
-            color: tokens.color.body,
+            color: "var(--text-secondary)",
             lineHeight: 1.3,
           }}
         >
@@ -184,7 +184,7 @@ export const FeatureCard: FC<{ title: string; children: ReactNode }> = ({ title,
   return (
     <div
       style={{
-        background: tokens.color.offWhite,
+        background: "var(--card-bg)",
         
         borderRadius: tokens.radius.md,
         padding: 20,
@@ -195,7 +195,7 @@ export const FeatureCard: FC<{ title: string; children: ReactNode }> = ({ title,
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: "15px",
-          color: tokens.color.body,
+          color: "var(--text-secondary)",
           marginBottom: 8,
         }}
       >
@@ -205,7 +205,7 @@ export const FeatureCard: FC<{ title: string; children: ReactNode }> = ({ title,
         style={{
           fontFamily: tokens.font.sans,
           fontSize: "14px",
-          color: tokens.color.body,
+          color: "var(--text-secondary)",
           lineHeight: tokens.leading.normal,
           margin: 0,
         }}
@@ -223,7 +223,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: tokens.color.offWhite,
+        background: "var(--card-bg)",
         
         borderRadius: tokens.radius.md,
         padding: 24,
@@ -254,7 +254,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.body,
+          color: "var(--text-secondary)",
           marginBottom: 10,
         }}
       >
@@ -291,7 +291,7 @@ export const FindingRow: FC<{ method: string; children: ReactNode }> = ({ method
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.body,
+          color: "var(--text-secondary)",
           paddingTop: 2,
         }}
       >
@@ -299,7 +299,7 @@ export const FindingRow: FC<{ method: string; children: ReactNode }> = ({ method
       </div>
       <div
         style={{
-          background: tokens.color.offWhite,
+          background: "var(--card-bg)",
           
           borderRadius: tokens.radius.md,
           padding: "20px 22px",
@@ -311,7 +311,7 @@ export const FindingRow: FC<{ method: string; children: ReactNode }> = ({ method
               margin: 0,
               fontFamily: tokens.font.sans,
               fontSize: tokens.text.base,
-              color: tokens.color.body,
+              color: "var(--text-secondary)",
               lineHeight: tokens.leading.normal,
             }}
           >
@@ -380,7 +380,7 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
     <div
       ref={ref}
       style={{
-        background: tokens.color.offWhite,
+        background: "var(--card-bg)",
         
         borderRadius: tokens.radius.md,
         padding: 28,
@@ -392,7 +392,7 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.body,
+          color: "var(--text-secondary)",
           marginBottom: 20,
         }}
       >
@@ -408,7 +408,7 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
                 marginBottom: 6,
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.sm,
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
               }}
             >
               <span>{bar.label}</span>
@@ -452,7 +452,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
           fontFamily: tokens.font.sans,
           fontWeight: tokens.weight.medium,
           fontSize: tokens.text.base,
-          color: tokens.color.body,
+          color: "var(--text-secondary)",
           marginBottom: 14,
         }}
       >
@@ -469,7 +469,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
                 flex: 1,
                 height: 30,
                 borderRadius: tokens.radius.sm,
-                background: tokens.color.offWhite,
+                background: "var(--card-bg)",
                 
                 overflow: "hidden",
               }}
@@ -632,7 +632,7 @@ export const TypeCompare: FC<{ options?: { name: string; family: string }[] }> =
       <div
         key={opt.name}
         style={{
-          background: tokens.color.offWhite,
+          background: "var(--card-bg)",
           
           borderRadius: tokens.radius.md,
           padding: 24,
@@ -657,7 +657,7 @@ export const Bullets: FC<{ items: ReactNode[] }> = ({ items }) => (
           paddingLeft: 20,
           fontFamily: tokens.font.sans,
           fontSize: tokens.text.base,
-          color: tokens.color.body,
+          color: "var(--text-secondary)",
           lineHeight: tokens.leading.normal,
         }}
       >
@@ -791,7 +791,7 @@ export const UserJourney: FC<{
       ref={ref}
       style={{
         margin: "20px 0 24px",
-        background: tokens.color.offWhite,
+        background: "var(--card-bg)",
         
         borderRadius: tokens.radius.md,
         padding: 20,
@@ -826,7 +826,7 @@ export const UserJourney: FC<{
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.medium,
                   fontSize: "15px",
-                  color: tokens.color.body,
+                  color: "var(--text-secondary)",
                 }}
               >
                 {stage.label}
@@ -836,7 +836,7 @@ export const UserJourney: FC<{
               style={{
                 fontFamily: tokens.font.sans,
                 fontSize: "13px",
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 lineHeight: tokens.leading.normal,
                 margin: 0,
                 marginLeft: 52,
@@ -863,7 +863,7 @@ export const ProcessFlow: FC<{
         ref={ref}
         style={{
           margin: "20px 0 24px",
-          background: tokens.color.offWhite,
+          background: "var(--card-bg)",
           
           borderRadius: tokens.radius.md,
           padding: 20,
@@ -923,7 +923,7 @@ export const ProcessFlow: FC<{
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.medium,
                   fontSize: "15px",
-                  color: tokens.color.body,
+                  color: "var(--text-secondary)",
                   marginBottom: 4,
                 }}
               >
@@ -933,7 +933,7 @@ export const ProcessFlow: FC<{
                 style={{
                   fontFamily: tokens.font.sans,
                   fontSize: "13px",
-                  color: tokens.color.body,
+                  color: "var(--text-secondary)",
                   lineHeight: tokens.leading.normal,
                   margin: 0,
                 }}
@@ -953,7 +953,7 @@ export const ProcessFlow: FC<{
       ref={ref}
       style={{
         margin: "20px 0 24px",
-        background: tokens.color.offWhite,
+        background: "var(--card-bg)",
         
         borderRadius: tokens.radius.md,
         padding: 20,
@@ -1018,7 +1018,7 @@ export const ProcessFlow: FC<{
                 fontFamily: tokens.font.sans,
                 fontWeight: tokens.weight.medium,
                 fontSize: "13px",
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 marginBottom: 3,
               }}
             >
@@ -1028,7 +1028,7 @@ export const ProcessFlow: FC<{
               style={{
                 fontFamily: tokens.font.sans,
                 fontSize: "12px",
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 lineHeight: 1.3,
                 margin: 0,
               }}
@@ -1098,7 +1098,7 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
           key={item.rank}
           style={{
             borderRadius: tokens.radius.sm,
-            background: tokens.color.offWhite,
+            background: "var(--card-bg)",
             overflow: "hidden",
             transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
@@ -1144,7 +1144,7 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
               strokeLinecap="round"
               strokeLinejoin="round"
               style={{
-                color: tokens.color.muted,
+                color: "var(--text-muted)",
                 transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 transform: isExpanded(item.rank) ? "rotate(180deg)" : "rotate(0deg)",
                 flexShrink: 0,
