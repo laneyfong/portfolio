@@ -167,7 +167,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         {hovered ? (
           <div style={{ position: "relative", overflow: "visible" }}>
             <BorderBeam>
-              <div className={`myshake-video ${hovered ? "hovered" : ""}`}>
+              <div className="myshake-video hovered">
           <video
             ref={videoRef}
             src={myshakeScreenRecording}
@@ -244,7 +244,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             </BorderBeam>
           </div>
         ) : (
-          <div className="myshake-video">
+          <div className={`myshake-video ${hovered ? "hovered" : ""}`}>
             <video
               ref={videoRef}
               src={myshakeScreenRecording}
