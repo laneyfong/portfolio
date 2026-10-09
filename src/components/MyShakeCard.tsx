@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BorderBeam } from "border-beam";
 import { tokens } from "../tokens";
+import "../myshake-card.css";
 import myshakeScreenRecording from "../assets/myshake-screen-recording.mp4";
 
 interface MyShakeCardProps {
@@ -67,85 +68,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
   return (
     <>
-      <style>{`
-        .myshake-card {
-          cursor: pointer;
-          position: relative;
-          overflow: visible;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          outline: none;
-          padding: 14px 0 12px 0;
-          height: fit-content;
-          opacity: ${isActive ? 1 : 0.7};
-          transform: translateY(${isActive ? 0 : 20}px);
-          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .myshake-card:hover {
-          opacity: 1;
-        }
-
-        .myshake-video {
-          position: relative;
-          overflow: hidden;
-          border-radius: ${isDesktop ? 20 : 0}px;
-          width: 100%;
-          aspect-ratio: 4 / 3;
-          flex-shrink: 0;
-          background-color: #1a1a1a;
-          transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          filter: grayscale(${isActive ? 0 : 100}%) brightness(1);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-          will-change: filter, box-shadow;
-        }
-
-        .myshake-video.hovered {
-          filter: grayscale(0%) brightness(0.6) !important;
-          box-shadow: 0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        .myshake-video::after {
-          content: "View Case Study";
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          opacity: 0;
-          font-family: 'Manrope';
-          font-size: 16px;
-          font-weight: 500;
-          color: white;
-          z-index: 20;
-          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          pointer-events: none;
-          letter-spacing: -0.05em;
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .myshake-video.hovered::after {
-          opacity: 1;
-        }
-
-        .myshake-text {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          justify-content: flex-start;
-        }
-
-        @media (max-width: 768px) {
-          .myshake-video {
-            border-radius: 8px !important;
-            width: 100% !important;
-            aspect-ratio: 4 / 3 !important;
-          }
-        }
-      `}</style>
-
       <div
         className="myshake-card"
+        style={{
+          opacity: isActive ? 1 : 0.7,
+          transform: `translateY(${isActive ? 0 : 20}px)`,
+        }}
         role="link"
         tabIndex={0}
         onClick={(e) => {
