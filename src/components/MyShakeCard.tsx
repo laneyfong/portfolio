@@ -96,8 +96,13 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           flex-shrink: 0;
           background-color: #1a1a1a;
           transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          filter: ${isActive || hovered ? "grayscale(0%)" : "grayscale(100%)"} ${hovered ? "brightness(0.6)" : "brightness(1)"};
-          box-shadow: ${hovered ? "0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)"};
+          filter: grayscale(${isActive ? 0 : 100}%) brightness(1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .myshake-video.hovered {
+          filter: grayscale(0%) brightness(0.6);
+          box-shadow: 0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .myshake-video::before {
@@ -105,8 +110,8 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: ${hovered ? "translate(-50%, -50%)" : "translate(-50%, -50%) scale(0.8)"};
-          opacity: ${hovered ? 1 : 0};
+          transform: translate(-50%, -50%) scale(0.8);
+          opacity: 0;
           font-family: 'Manrope';
           font-size: 16px;
           font-weight: 500;
@@ -115,6 +120,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           pointer-events: none;
           letter-spacing: -0.05em;
+        }
+
+        .myshake-video.hovered::before {
+          opacity: 1;
+          transform: translate(-50%, -50%);
         }
 
         .myshake-text {
@@ -157,7 +167,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
         {hovered ? (
           <div style={{ position: "relative", overflow: "visible" }}>
             <BorderBeam>
-              <div className="myshake-video">
+              <div className={`myshake-video ${hovered ? "hovered" : ""}`}>
           <video
             ref={videoRef}
             src={myshakeScreenRecording}
