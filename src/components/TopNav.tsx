@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import { RESUME_URL } from "./SocialIcons";
-import { useDarkMode } from "../context/DarkModeContext";
+import DarkModeToggle from "./DarkModeToggle";
 
 interface NavItem {
   label: string;
@@ -24,7 +24,6 @@ const TopNav: FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -234,26 +233,6 @@ const TopNav: FC = () => {
           text-decoration: none !important;
         }
 
-        .dark-mode-toggle {
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 8px;
-          color: var(--text-muted);
-          font-size: 14px;
-          font-weight: 500;
-          transition: color 0.2s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: 'Manrope', ${tokens.font.sans};
-          letter-spacing: -0.05em;
-        }
-
-        .dark-mode-toggle:hover {
-          color: #4060c8;
-        }
-
         @media (max-width: 640px) {
           .top-nav-brand {
             font-size: 14px;
@@ -323,13 +302,7 @@ const TopNav: FC = () => {
             ))}
           </ul>
 
-          <button
-            className="dark-mode-toggle"
-            onClick={toggleDarkMode}
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? "Light" : "Dark"}
-          </button>
+          <DarkModeToggle />
 
           <button
             className="mobile-menu-btn"
