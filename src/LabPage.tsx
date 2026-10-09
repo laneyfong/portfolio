@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { tokens } from "./tokens";
 import TopNav from "./components/TopNav";
-import ContentContainer from "./components/ContentContainer";
 import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
@@ -26,53 +25,6 @@ interface LabModuleProps {
   isSpecial?: boolean;
   specialType?: "daylight" | "ascii-ripple";
 }
-
-const VideoCard: FC<{ src: string; title: string; date: string }> = ({ src, title, date }) => (
-  <div
-    style={{
-      borderRadius: tokens.radius.md,
-      overflow: "hidden",
-      background: tokens.color.offWhite,
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-    }}
-  >
-    <video
-      src={src}
-      controls
-      style={{
-        width: "100%",
-        height: "300px",
-        objectFit: "cover",
-        display: "block",
-      }}
-    />
-    <div style={{ padding: 20 }}>
-      <h3
-        style={{
-          margin: "0 0 8px",
-          fontFamily: tokens.font.sans,
-          fontSize: tokens.text.base,
-          fontWeight: tokens.weight.medium,
-          color: tokens.color.ink,
-        }}
-      >
-        {title}
-      </h3>
-      <p
-        style={{
-          margin: 0,
-          fontFamily: tokens.font.sans,
-          fontSize: tokens.text.sm,
-          color: tokens.color.muted,
-        }}
-      >
-        {date}
-      </p>
-    </div>
-  </div>
-);
 
 const LabPage: FC = () => {
   const experiments: LabModuleProps[] = [
