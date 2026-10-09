@@ -42,8 +42,8 @@ const DynamicSliderCard: FC = () => {
     <div
       style={{
         position: "absolute",
-        width: "339px",
-        height: "299px",
+        width: "100%",
+        height: "100%",
         left: 0,
         top: 0,
         background: "#F0F0F0",

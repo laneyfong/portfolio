@@ -144,7 +144,7 @@ const LabPage: FC = () => {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 339px)",
+              gridTemplateColumns: "repeat(3, 1fr)",
               gap: "12px",
               width: "100%",
             }}
@@ -154,7 +154,7 @@ const LabPage: FC = () => {
               key={idx}
               className="lab-module"
               style={{
-                height: "299px",
+                aspectRatio: "339 / 299",
                 background: "#F0F0F0",
                 borderRadius: "14px",
                 overflow: "hidden",
@@ -188,7 +188,7 @@ const LabPage: FC = () => {
               key={`video-${idx}`}
               className="lab-module"
               style={{
-                height: "299px",
+                aspectRatio: "339 / 299",
                 background: "#F0F0F0",
                 borderRadius: "14px",
                 overflow: "hidden",
