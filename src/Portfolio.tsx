@@ -36,17 +36,18 @@ const Portfolio: FC = () => {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
-    const cardsContainer = document.querySelector(".work-section-cards");
-    if (cardsContainer) {
-      const cards = cardsContainer.querySelectorAll("> div");
-      cards.forEach((card, index) => {
-        card.setAttribute("data-card-index", index.toString());
-        observer.observe(card);
-      });
-    }
+    setTimeout(() => {
+      const cardsContainer = document.querySelector(".work-section-cards");
+      if (cardsContainer) {
+        const cards = cardsContainer.children;
+        Array.from(cards).forEach((card) => {
+          observer.observe(card);
+        });
+      }
+    }, 100);
 
     return () => observer.disconnect();
   }, []);
