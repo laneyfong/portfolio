@@ -652,6 +652,39 @@ const MyShakeCaseStudy: FC = () => {
             />
           </Reveal>
         </div>
+
+        <Reveal>
+          <div style={{ background: "#f5f5f5", borderRadius: tokens.radius.md, padding: "40px", marginTop: 80 }}>
+            <div style={{ marginBottom: 24 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 16px" }}>
+                Competitive Landscape
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                Analyzed 4 competitors: My Earthquakes Alert (4.7★ with 87.3K ratings), QuakeFeed (4.8★ with 80K ratings), Earthquake - alerts and map (4.7★ with 36K ratings), and MyShake (3★ with 1228 reviews). <strong>Key finding:</strong> Competitors excel at accuracy and speed but lack personalization. MyShake's unique strength is user contributions and customizable homepages, but suffers from laggy UI and poor visual hierarchy. Opportunity: Combine accuracy with MyShake's personalization while fixing the UI/UX to create the most trusted and delightful earthquake app.
+              </p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>Their Strengths</p>
+                <ul style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.snug, margin: 0, paddingLeft: 16 }}>
+                  <li>Real-time accuracy & speed</li>
+                  <li>Multiple data sources (USGS, EMSC, NRC)</li>
+                  <li>Clean, intuitive interfaces</li>
+                  <li>Customizable alerts & filters</li>
+                </ul>
+              </div>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>Our Opportunity</p>
+                <ul style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.snug, margin: 0, paddingLeft: 16 }}>
+                  <li>Personalized dashboard (loved ones)</li>
+                  <li>Better visual hierarchy</li>
+                  <li>Smooth, responsive UI</li>
+                  <li>Educational + safety focus</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* Synthesis */}
@@ -816,167 +849,6 @@ const MyShakeCaseStudy: FC = () => {
             </div>
           </Reveal>
         </div>
-
-        <Reveal>
-          <div style={{ marginBottom: 80 }}>
-            <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 16, display: "block" }}>
-              Competitive Analysis
-            </div>
-            <div style={{ overflowX: "auto", marginBottom: 40 }}>
-              <table style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.sm,
-              }}>
-                <thead>
-                  <tr style={{ borderBottom: `1px solid ${tokens.color.cardBorder}` }}>
-                    <th style={{ textAlign: "left", padding: "12px 16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Competitor Type</th>
-                    <th style={{ textAlign: "left", padding: "12px 16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Product Offering</th>
-                    <th style={{ textAlign: "left", padding: "12px 16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Unique Value Proposition</th>
-                    <th style={{ textAlign: "left", padding: "12px 16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>App Experience</th>
-                    <th style={{ textAlign: "left", padding: "12px 16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Key Strengths</th>
-                    <th style={{ textAlign: "left", padding: "12px 16px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Opportunities</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ borderBottom: `1px solid ${tokens.color.stroke}`, background: tokens.color.white }}>
-                    <td style={{ padding: "12px 16px", color: tokens.color.ink, fontWeight: tokens.weight.medium }}>MyShake</td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Offers recent warnings of earthquakes around the world<br/>
-                      • Map View and List View<br/>
-                      • Filter for magnitude and time range<br/>
-                      • Earthquake information regarding how to prepare and survive<br/>
-                      • Ability to log own earthquake experiences<br/>
-                      • FAQ section with all info<br/>
-                      • Contributions section for users
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • User contribution (adding to gamification value)<br/>
-                      • User can set their own homepage to relieve daily warning alerts<br/>
-                      • Educational content
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      Laggy UI, sometimes freezes (not smooth or efficient)<br/>
-                      3/5 RATING with 1228 reviews, people either love it or hate it<br/>
-                      Colors are not the cleanest<br/>
-                      Users randomly are woken up by accidental test alarms<br/>
-                      There is no way to constrain the frequency (couldve changed)<br/>
-                      Needs more customizability (such as magnitude threshold settings, alert radius customization)<br/>
-                      Unable to make experience reports
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Earthquake Early Warnings<br/>
-                      • Earthquake safety<br/>
-                      • Map<br/>
-                      • Customizable notifications
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      Needs work<br/>
-                      Colors are not appealing (green with red background)<br/>
-                      Font choice can be improved
-                    </td>
-                  </tr>
-                  <tr style={{ borderBottom: `1px solid ${tokens.color.stroke}`, background: tokens.color.white }}>
-                    <td style={{ padding: "12px 16px", color: tokens.color.ink, fontWeight: tokens.weight.medium }}>My Earthquakes Alert</td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Direct<br/>
-                      • Live earthquake map which can detect and track earthquakes from all around the world<br/>
-                      • Free earthquake alerts customized for you, with no restrictions<br/>
-                      • Powerful search feature to find earthquake history
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Alerts a few seconds before earthquake<br/>
-                      • Most accurate and helpful alerts<br/>
-                      • Compared to other earthquake apps<br/>
-                      • Can choose preferences<br/>
-                      • Best on the market
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      4.7, 87.3K Ratings<br/>
-                      Positive: Alerts are accurate and helpful to prepare<br/>
-                      Negative: Not able to add multiple location pins (App Store Review)
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Offers most recent earthquakes in order<br/>
-                      • Ability to search different regions, magnitudes, and dates<br/>
-                      • Custom notifications and map
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      Could be improved<br/>
-                      • UI could be improved<br/>
-                      • Easy to read<br/>
-                      • Pretty intuitive
-                    </td>
-                  </tr>
-                  <tr style={{ borderBottom: `1px solid ${tokens.color.stroke}`, background: tokens.color.white }}>
-                    <td style={{ padding: "12px 16px", color: tokens.color.ink, fontWeight: tokens.weight.medium }}>QuakeFeed Earthquake Tracker</td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Direct<br/>
-                      • FREE VERSION: nearby earthquake alerts, customizable regional alerts, interactive map, satellite imagery and streets map<br/>
-                      • Multiple data sources (USGS, EMSC, NRC)
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      Users can set up to 10 regional alerts (MyShake only has 1 homepage)<br/>
-                      Users can alert customization (EMSC, NRC, USGS)<br/>
-                      Users can customize (change units, appearance, show/hide country flags & wildfires tab in list view)<br/>
-                      "Charitable Giving" → users can counter for disaster relief
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      4.8 out of 5 rating - 80K ratings<br/>
-                      Bad - app unreliable as emergency notification system (inconsistent timely notification, comes 30+ mins to hours later)<br/>
-                      Negative: bad - used to be satellite, zoom in earthquake, bad - ads / annoying
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Only one homepage - dashboard of all the earthquakes that happened<br/>
-                      • +30k on one homepage - get map view and details abt<br/>
-                      • Top left - map<br/>
-                      • Bottom navigation - alert, filter, fort, settings
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      Okay<br/>
-                      • Spacing shoudl be improved (data rich)<br/>
-                      • Information architecture needs work<br/>
-                      • Pop-up ads are REALLY ANNOYING<br/>
-                      • Map view icon is white when there was an earthquake and it magnitude is color coordinated (higher magnitude = more red)
-                    </td>
-                  </tr>
-                  <tr style={{ borderBottom: `1px solid ${tokens.color.stroke}`, background: tokens.color.white }}>
-                    <td style={{ padding: "12px 16px", color: tokens.color.ink, fontWeight: tokens.weight.medium }}>Earthquake - alerts and map</td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Direct<br/>
-                      • Timeline of earthquakes around the world<br/>
-                      • Ability to filter by magnitude<br/>
-                      • Population statistics<br/>
-                      • NO ADS<br/>
-                      • PAID VERSION INCLUDES: push alerts for earthquakes
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      Quick explanation of earthquakes and tsunamis around the world<br/>
-                      Premium: selective global exploration with richer information
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      36k ratings, 4.7<br/>
-                      People complain their push notifications aren't free LMAO<br/>
-                      Not always on time: sends notis 30+ mins to hours later<br/>
-                      Degraded areas are severely limited, doesn't cover all
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      • Premium: custom notifi alerts set by own filter location magnitude diet, see earthquake log → YOU CAN'T SEARCH UP UR OWN CITY
-                    </td>
-                    <td style={{ padding: "12px 16px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
-                      UI is /: Everything is too compacted together<br/>
-                      Could be good or (bad)<br/>
-                      Color palettes to much (complains)<br/>
-                      Most important is map main component of display(but map isn't main component currently)<br/>
-                      Filter/sort option is a tab?
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </Reveal>
 
         <Reveal>
           <ColorVariationGrid />
