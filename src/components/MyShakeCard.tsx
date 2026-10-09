@@ -101,7 +101,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             borderRadius: isDesktop ? "20px" : "0px",
             filter: hovered ? "brightness(0.6)" : "brightness(1)",
             boxShadow: hovered ? "0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15)" : "0 2px 8px rgba(0, 0, 0, 0.05)",
-            transition: "filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
         >
           <video
