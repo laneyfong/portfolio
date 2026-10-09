@@ -9,6 +9,7 @@ import IDBridgeCaseStudy from "./IDBridgeCaseStudy";
 import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import VeriSupplyCaseStudy from "./VeriSupplyCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -71,11 +72,13 @@ function PageFadeInWrapper() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <GlobalStyles />
-      <PageFadeInWrapper />
-    </BrowserRouter>
+    <DarkModeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <GlobalStyles />
+        <PageFadeInWrapper />
+      </BrowserRouter>
+    </DarkModeProvider>
   );
 }
 

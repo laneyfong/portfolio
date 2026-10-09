@@ -4,7 +4,18 @@ const GlobalStyles: FC = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Playfair+Display:ital,wght@1,400&family=Caveat:wght@400;700&display=swap');
     *, *::before, *::after { box-sizing: border-box; }
-    body { letter-spacing: -0.02em; line-height: 1.5; }
+    body { letter-spacing: -0.02em; line-height: 1.5; background: #FFFFFF; color: #1A1A1A; transition: background 0.3s ease, color 0.3s ease; }
+
+    [data-theme="dark"] {
+      background: #1A1A1A;
+      color: #E8E8E8;
+    }
+
+    [data-theme="dark"] body {
+      background: #1A1A1A;
+      color: #E8E8E8;
+    }
+
     @media (prefers-reduced-motion: no-preference) {
       html { scroll-behavior: smooth; }
     }
