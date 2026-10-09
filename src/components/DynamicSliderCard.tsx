@@ -79,7 +79,6 @@ const DynamicSliderCard: FC = () => {
           width: "100%",
           display: "flex",
           alignItems: "center",
-          gap: "16px",
           position: "relative",
         }}
       >
@@ -91,7 +90,7 @@ const DynamicSliderCard: FC = () => {
             background: "#E0E0E0",
             borderRadius: "4px",
             position: "relative",
-            overflow: "hidden",
+            overflow: "visible",
           }}
         >
           {/* Filled track */}
@@ -133,39 +132,31 @@ const DynamicSliderCard: FC = () => {
             }}
           />
         </div>
-
-        {/* Slider Thumb Display */}
-        <div
-          style={{
-            width: "32px",
-            height: "32px",
-            borderRadius: "50%",
-            background: getSliderColor(),
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-            flexShrink: 0,
-            transition: "background 0.1s ease-out",
-          }}
-        />
       </div>
 
       <style>{`
         input[type="range"]::-webkit-slider-thumb {
           appearance: none;
-          width: 32px;
-          height: 32px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
-          background: transparent;
+          background: ${getSliderColor()};
           cursor: pointer;
           border: none;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          transition: background 0.1s ease-out;
+          margin-top: -6px;
         }
 
         input[type="range"]::-moz-range-thumb {
-          width: 32px;
-          height: 32px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
-          background: transparent;
+          background: ${getSliderColor()};
           cursor: pointer;
           border: none;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          transition: background 0.1s ease-out;
         }
 
         input[type="range"] {
