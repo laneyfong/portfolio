@@ -654,33 +654,69 @@ const MyShakeCaseStudy: FC = () => {
         </div>
 
         <Reveal>
-          <div style={{ background: "#f5f5f5", borderRadius: tokens.radius.md, padding: "40px", marginTop: 80 }}>
-            <div style={{ marginBottom: 24 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 16px" }}>
-                Competitive Landscape
-              </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
-                Analyzed 4 competitors: My Earthquakes Alert (4.7★ with 87.3K ratings), QuakeFeed (4.8★ with 80K ratings), Earthquake - alerts and map (4.7★ with 36K ratings), and MyShake (3★ with 1228 reviews). <strong>Key finding:</strong> Competitors excel at accuracy and speed but lack personalization. MyShake's unique strength is user contributions and customizable homepages, but suffers from laggy UI and poor visual hierarchy. Opportunity: Combine accuracy with MyShake's personalization while fixing the UI/UX to create the most trusted and delightful earthquake app.
-              </p>
+          <div style={{ marginTop: 80 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 32px" }}>
+              Competitive Landscape
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 16, marginBottom: 40 }}>
+              {[
+                { name: "My Earthquakes Alert", rating: "4.7", reviews: "87.3K", strength: "Speed & Accuracy", gap: "⭐⭐⭐⭐" },
+                { name: "QuakeFeed", rating: "4.8", reviews: "80K", strength: "Data Sources", gap: "⭐⭐⭐⭐" },
+                { name: "Earthquake - Alerts & Map", rating: "4.7", reviews: "36K", strength: "Clean UI", gap: "⭐⭐⭐" },
+                { name: "MyShake", rating: "3.0", reviews: "1.2K", strength: "Personalization", gap: "⭐⭐" },
+              ].map((app, i) => (
+                <div
+                  key={app.name}
+                  style={{
+                    background: i === 3 ? tokens.color.accent : tokens.color.offWhite,
+                    borderRadius: tokens.radius.md,
+                    padding: 16,
+                    border: i === 3 ? "none" : `1px solid ${tokens.color.cardBorder}`,
+                  }}
+                >
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: i === 3 ? tokens.color.white : tokens.color.ink, margin: "0 0 8px" }}>
+                    {app.name}
+                  </p>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "20px", fontWeight: tokens.weight.medium, color: i === 3 ? tokens.color.white : tokens.color.ink, margin: "0 0 4px" }}>
+                    {app.rating}★
+                  </p>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: i === 3 ? "rgba(255,255,255,0.8)" : tokens.color.muted, margin: "0 0 12px" }}>
+                    {app.reviews} reviews
+                  </p>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: i === 3 ? "rgba(255,255,255,0.9)" : tokens.color.body, margin: 0 }}>
+                    {app.strength}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
-              <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>Their Strengths</p>
-                <ul style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.snug, margin: 0, paddingLeft: 16 }}>
-                  <li>Real-time accuracy & speed</li>
-                  <li>Multiple data sources (USGS, EMSC, NRC)</li>
-                  <li>Clean, intuitive interfaces</li>
-                  <li>Customizable alerts & filters</li>
-                </ul>
-              </div>
-              <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>Our Opportunity</p>
-                <ul style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.snug, margin: 0, paddingLeft: 16 }}>
-                  <li>Personalized dashboard (loved ones)</li>
-                  <li>Better visual hierarchy</li>
-                  <li>Smooth, responsive UI</li>
-                  <li>Educational + safety focus</li>
-                </ul>
+            <div style={{ background: "#f5f5f5", borderRadius: tokens.radius.md, padding: 24 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+                <div>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+                    Competitors excel at:
+                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {["Speed & Accuracy", "Multiple data sources", "Clean interfaces"].map(item => (
+                      <div key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                        <span style={{ color: tokens.color.accent, fontWeight: "bold", flexShrink: 0 }}>•</span>
+                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+                    Our advantage:
+                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {["Personalized for loved ones", "Better visual hierarchy", "Smooth, delightful UX"].map(item => (
+                      <div key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                        <span style={{ color: tokens.color.accent, fontWeight: "bold", flexShrink: 0 }}>✓</span>
+                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
