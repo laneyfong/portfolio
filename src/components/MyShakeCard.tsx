@@ -98,11 +98,12 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
           transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           filter: grayscale(${isActive ? 0 : 100}%) brightness(1);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          will-change: filter, box-shadow;
         }
 
         .myshake-video.hovered {
-          filter: grayscale(0%) brightness(0.6);
-          box-shadow: 0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15);
+          filter: grayscale(0%) brightness(0.6) !important;
+          box-shadow: 0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15) !important;
         }
 
         .myshake-video::after {
