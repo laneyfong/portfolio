@@ -1012,7 +1012,7 @@ const MyShakeCaseStudy: FC = () => {
           />
         </Reveal>
 
-        <div style={{ marginTop: 80 }}>
+        <div style={{ marginTop: 0 }}>
           <Reveal dramatic>
             <div style={{ marginBottom: 10 }}>
               <Callout>Design Decisions</Callout>
