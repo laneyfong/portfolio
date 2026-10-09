@@ -266,7 +266,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.medium,
                   fontSize: "14px",
-                  color: "#BEBEBE",
+                  color: "#A0A0A0",
                   lineHeight: 1.4,
                   wordWrap: "break-word",
                   overflowWrap: "break-word",
