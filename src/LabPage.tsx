@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
-import screenRecording20251023 from "./assets/screen-recording-2025-10-23.mp4";
 import carVideo from "./assets/car.mov";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
@@ -50,11 +49,6 @@ const LabPage: FC = () => {
   ];
 
   const videoExperiments = [
-    {
-      src: screenRecording20251023,
-      title: "Design Iteration: Product Flow",
-      date: "Oct 2025",
-    },
     {
       src: carVideo,
       title: "Motion Study: Car Animation",
