@@ -90,7 +90,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           color: white;
           z-index: 10;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          letter-spacing: -0.05em;
+          letter-spacing: 0.03em;
           pointer-events: none;
           opacity: 0;
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
