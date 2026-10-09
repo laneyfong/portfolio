@@ -11,6 +11,7 @@ const GlobalStyles: FC = () => (
       --text-primary: #1A1A1A;
       --text-secondary: #626262;
       --text-muted: #ABADAF;
+      --text-dark: #111111;
       --border-color: rgba(26, 26, 26, 0.08);
       --card-bg: #F0F0F0;
     }
@@ -21,6 +22,7 @@ const GlobalStyles: FC = () => (
       --text-primary: #D0D0D0;
       --text-secondary: #B8B8B8;
       --text-muted: #808080;
+      --text-dark: #FFFFFF;
       --border-color: rgba(208, 208, 208, 0.1);
       --card-bg: #2A2A2A;
     }

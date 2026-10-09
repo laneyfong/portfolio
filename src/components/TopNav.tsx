@@ -127,12 +127,12 @@ const TopNav: FC = () => {
           font-size: 14px;
           font-weight: 500;
           letter-spacing: -0.05em;
-          color: #ABADAF;
+          color: var(--text-muted);
           text-decoration: none;
         }
 
         .top-nav.scrolled .top-nav-brand {
-          color: #111111;
+          color: var(--text-dark);
         }
 
         .top-nav-links {

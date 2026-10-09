@@ -315,7 +315,7 @@ const AboutPage: FC = () => {
                   fontSize: "24px",
                   lineHeight: "33px",
                   letterSpacing: "-0.05em",
-                  color: "#333333",
+                  color: "var(--text-dark)",
                   margin: "0",
                   padding: "0",
                 }}
@@ -486,7 +486,7 @@ const AboutPage: FC = () => {
                         fontSize: "16px",
                         lineHeight: "22px",
                         letterSpacing: "-0.05em",
-                        color: "#333333",
+                        color: "var(--text-dark)",
                       }}
                     >
                       {exp.role}
@@ -507,7 +507,7 @@ const AboutPage: FC = () => {
                         fontSize: "16px",
                         lineHeight: "22px",
                         letterSpacing: "-0.05em",
-                        color: "#333333",
+                        color: "var(--text-dark)",
                       }}
                     >
                       {exp.company}
@@ -608,7 +608,7 @@ const AboutPage: FC = () => {
                       fontSize: "16px",
                       lineHeight: "22px",
                       letterSpacing: "-0.05em",
-                      color: "#333333",
+                      color: "var(--text-dark)",
                     }}
                   >
                     First-Place
@@ -741,7 +741,7 @@ const AboutPage: FC = () => {
                           fontSize: "16px",
                           lineHeight: "22px",
                           letterSpacing: "-0.05em",
-                          color: "#333333",
+                          color: "var(--text-dark)",
                         }}
                       >
                         {comm.role}
@@ -762,7 +762,7 @@ const AboutPage: FC = () => {
                           fontSize: "16px",
                           lineHeight: "22px",
                           letterSpacing: "-0.05em",
-                          color: "#333333",
+                          color: "var(--text-dark)",
                         }}
                       >
                         {comm.organization}
@@ -858,7 +858,7 @@ const AboutPage: FC = () => {
                           fontSize: "16px",
                           lineHeight: "22px",
                           letterSpacing: "-0.05em",
-                          color: "#333333",
+                          color: "var(--text-dark)",
                         }}
                       >
                         {edu.degree}
@@ -992,7 +992,7 @@ const AboutPage: FC = () => {
                           fontSize: "16px",
                           lineHeight: "22px",
                           letterSpacing: "-0.05em",
-                          color: "#333333",
+                          color: "var(--text-dark)",
                           flex: 1,
                         }}
                       >

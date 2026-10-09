@@ -270,7 +270,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
             }}
           >
             {captionParts[0]}
-            <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "#111111" }}>
+            <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "var(--text-dark)" }}>
               {captionItalic}
             </span>
             {captionParts[1]}

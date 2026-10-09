@@ -375,7 +375,7 @@ const Portfolio: FC = () => {
             padding: 0,
             textWrap: "balance",
           }}>
-            I design <strong style={{ fontWeight: 500, color: "#111111" }}>0 to 1</strong> interfaces that are inclusive, drive business growth, and executed with taste.
+            I design <strong style={{ fontWeight: 500, color: "var(--text-dark)" }}>0 to 1</strong> interfaces that are inclusive, drive business growth, and executed with taste.
           </h1>
           <p style={{
             fontFamily: tokens.font.sans,
