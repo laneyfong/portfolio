@@ -41,6 +41,7 @@ import myshakeCarouselNote from "./assets/myshake-carousel-note.png";
 import myshakePrepareNote from "./assets/myshake-prepare-note.png";
 import myshakeNotificationsNote from "./assets/myshake-notifications-note.png";
 import myshakeTeam from "./assets/myshake-team.png";
+import myshakeInformationArchitecture from "./assets/myshake-information-architecture.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -885,6 +886,22 @@ const MyShakeCaseStudy: FC = () => {
             </div>
           </Reveal>
         </div>
+
+        <Reveal>
+          <div style={{ marginBottom: 80 }}>
+            <img
+              src={myshakeInformationArchitecture}
+              alt="MyShake Information Architecture"
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                display: "block",
+              }}
+            />
+          </div>
+        </Reveal>
 
         <Reveal>
           <ColorVariationGrid />
