@@ -92,10 +92,13 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
           color: white;
           z-index: 10;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          letter-spacing: 0.03em;
+          letter-spacing: -0.05em;
           pointer-events: none;
           opacity: 0;
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 1px solid white;
+          border-radius: 100px;
+          padding: 6px 16px;
         }
 
         .nvidia-video.hovered .nvidia-label {

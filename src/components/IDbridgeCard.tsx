@@ -110,6 +110,9 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           pointer-events: none;
           opacity: 0;
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 1px solid white;
+          border-radius: 100px;
+          padding: 6px 16px;
         }
 
         .idbridge-video.hovered .idbridge-label {
