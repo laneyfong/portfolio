@@ -375,7 +375,7 @@ const AboutPage: FC = () => {
                 fontSize: "16px",
                 lineHeight: "22px",
                 letterSpacing: "-0.05em",
-                color: "#111111",
+                color: "#979797",
                 margin: "0",
                 padding: "0",
               }}
