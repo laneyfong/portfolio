@@ -88,7 +88,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
   };
 
   return (
-    <div className="case-page-fade-in" style={{ minHeight: "100vh", background: tokens.color.white, fontFamily: tokens.font.sans }}>
+    <div className="case-page-fade-in" style={{ minHeight: "100vh", background: "var(--bg-primary)", fontFamily: tokens.font.sans, transition: "background 0.3s ease", color: "var(--text-secondary)" }}>
       <style>{`
         @media (prefers-reduced-motion: no-preference) {
           .case-page-fade-in { animation: case-page-fade-in 0.7s ease; }
