@@ -154,8 +154,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               style={{
                 filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
                 flexShrink: 0,
-                transition: "opacity 0.6s ease",
+                transition: "opacity 0.6s ease, transform 0.6s ease",
                 opacity: hovered ? 0.8 : 1,
+                transform: hovered ? "translateY(-4px)" : "translateY(0)",
               }}
             >
               <circle cx="16" cy="16" r="14" fill="none" stroke="white" strokeWidth="1.5" />
@@ -223,8 +224,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
                 style={{
                   filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))",
                   flexShrink: 0,
-                  transition: "opacity 0.6s ease",
+                  transition: "opacity 0.6s ease, transform 0.6s ease",
                   opacity: hovered ? 0.8 : 1,
+                transform: hovered ? "translateY(-4px)" : "translateY(0)",
                 }}
               >
                 <circle cx="16" cy="16" r="14" fill="none" stroke="white" strokeWidth="1.5" />
