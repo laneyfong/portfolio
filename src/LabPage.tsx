@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import LabCard from "./components/LabCard";
 import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
+import DynamicSliderCard from "./components/DynamicSliderCard";
 import carVideo from "./assets/car.mov";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
@@ -19,7 +20,7 @@ interface LabModuleProps {
   tags?: string[];
   isLoading?: boolean;
   isSpecial?: boolean;
-  specialType?: "daylight" | "ascii-ripple";
+  specialType?: "daylight" | "ascii-ripple" | "dynamic-slider";
 }
 
 const LabPage: FC = () => {
@@ -45,6 +46,17 @@ const LabPage: FC = () => {
       tags: ["interaction", "animation", "ASCII", "ripple"],
       isSpecial: true,
       specialType: "ascii-ripple",
+    },
+    {
+      type: "interaction",
+      title: "Dynamic Slider",
+      description: "Drag to increase the number. The dot color fades to blue and the number shakes as you pull the slider.",
+      experimentId: "EXP-2024-001",
+      date: "Oct 2026",
+      status: "exploring",
+      tags: ["interaction", "animation", "slider"],
+      isSpecial: true,
+      specialType: "dynamic-slider",
     },
   ];
 
@@ -160,6 +172,8 @@ const LabPage: FC = () => {
                 <DayLightCard />
               ) : exp.specialType === "ascii-ripple" ? (
                 <InteractiveTypography />
+              ) : exp.specialType === "dynamic-slider" ? (
+                <DynamicSliderCard />
               ) : (
                 <LabCard
                   type={exp.type as Exclude<ModuleType, "daylight">}
