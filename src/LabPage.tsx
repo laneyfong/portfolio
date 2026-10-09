@@ -105,16 +105,16 @@ const LabPage: FC = () => {
 
       <TopNav />
 
-      <main style={{ width: "100%", padding: "80px 52px", boxSizing: "border-box", marginTop: "64px" }}>
+      <main style={{ width: "100%", padding: "80px 0", boxSizing: "border-box", marginTop: "64px" }}>
         {/* Description */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
+            padding: "0 52px",
             gap: "14px",
             marginBottom: "14px",
-            maxWidth: "285px",
           }}
         >
           <p
@@ -123,27 +123,37 @@ const LabPage: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "18px",
               fontWeight: tokens.weight.regular,
-              color: tokens.color.ink,
+              color: "#ABADAF",
               lineHeight: "25px",
               letterSpacing: "-0.05em",
+              width: "285px",
+              height: "59px",
             }}
           >
             Lab experiments in motion, interaction, accessibility, AI, and more.
           </p>
         </div>
 
-        {/* Horizontal Cards Container */}
+        {/* Grey Background Container */}
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "12px",
-            width: "100%",
-            overflowX: "auto",
-            paddingBottom: "16px",
+            background: "#F5F5F5",
+            padding: "32px 52px",
+            marginTop: "14px",
           }}
         >
+          {/* Horizontal Cards Container */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "12px",
+              width: "100%",
+              overflowX: "auto",
+              paddingBottom: "16px",
+            }}
+          >
           {experiments.map((exp, idx) => (
             <div
               key={idx}
@@ -207,9 +217,11 @@ const LabPage: FC = () => {
               />
             </div>
           ))}
+          </div>
         </div>
 
         {/* Footer Note */}
+        <div style={{ padding: "0 52px" }}>
         <div
           style={{
             marginTop: 80,
@@ -230,6 +242,7 @@ const LabPage: FC = () => {
           <p>
             Curious about a specific experiment? Ideas for collaboration? <a href="mailto:laneyrfong@gmail.com" style={{ color: "inherit", textDecoration: "underline" }}>Let's talk</a>.
           </p>
+        </div>
         </div>
       </main>
 
