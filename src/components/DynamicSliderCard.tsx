@@ -57,37 +57,42 @@ const DynamicSliderCard: FC = () => {
         overflow: "hidden",
       }}
     >
-      {/* Number Display */}
-      <div
-        style={{
-          fontSize: `${fontSize}px`,
-          fontWeight: 500,
-          color: "#333333",
-          lineHeight: 1,
-          transform: `translateX(calc(-50% + ${(value / 100) * 50}px)) translateX(${(Math.random() - 0.5) * shakeAmount}px)`,
-          transition: "transform 0.05s ease-out",
-          fontFamily: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-          letterSpacing: "-0.05em",
-          position: "relative",
-          left: "50%",
-        }}
-      >
-        {value}
-      </div>
-
-      {/* Slider Container */}
+      {/* Slider and Number Container */}
       <div
         style={{
           width: "100%",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           position: "relative",
+          gap: "12px",
         }}
       >
+        {/* Number Display - positioned above slider */}
+        <div
+          style={{
+            fontSize: `${fontSize}px`,
+            fontWeight: 500,
+            color: "#333333",
+            lineHeight: 1,
+            transform: `translateX(calc(-50% + ${(value / 100) * 120}px)) translateX(${(Math.random() - 0.5) * shakeAmount}px)`,
+            transition: "transform 0.05s ease-out",
+            fontFamily: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            letterSpacing: "-0.05em",
+            position: "relative",
+            left: "50%",
+            height: `${fontSize}px`,
+            display: "flex",
+            alignItems: "flex-end",
+          }}
+        >
+          {value}
+        </div>
+
         {/* Slider Track */}
         <div
           style={{
-            flex: 1,
+            width: "100%",
             height: "8px",
             background: "#E0E0E0",
             borderRadius: "4px",
