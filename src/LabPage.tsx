@@ -7,9 +7,6 @@ import DayLightCard from "./components/DayLightCard";
 import InteractiveTypography from "./components/InteractiveTypography";
 import screenRecording20251023 from "./assets/screen-recording-2025-10-23.mp4";
 import carVideo from "./assets/car.mov";
-import labVideo1 from "./assets/lab-2026-01-12at3.05.27 PM.mov";
-import labVideo2 from "./assets/lab-2026-03-26at3.14.13 PM.mov";
-import labVideo3 from "./assets/lab-2026-03-26at3.15.38 PM.mov";
 
 type ModuleType = "motion" | "ai" | "interaction" | "concept" | "system" | "prototype" | "generative" | "accessibility" | "daylight";
 
@@ -53,21 +50,6 @@ const LabPage: FC = () => {
   ];
 
   const videoExperiments = [
-    {
-      src: labVideo1,
-      title: "Interaction Exploration",
-      date: "Jan 2026",
-    },
-    {
-      src: labVideo2,
-      title: "Motion Experiment",
-      date: "Mar 2026",
-    },
-    {
-      src: labVideo3,
-      title: "Animation Study",
-      date: "Mar 2026",
-    },
     {
       src: screenRecording20251023,
       title: "Design Iteration: Product Flow",
