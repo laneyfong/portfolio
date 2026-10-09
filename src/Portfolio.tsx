@@ -17,6 +17,7 @@ const Portfolio: FC = () => {
   const [videoReady] = useState(true);
   const [, setHoveredCaseStudy] = useState<string | null>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,30 @@ const Portfolio: FC = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("card-in-view");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const cardsContainer = document.querySelector(".work-section-cards");
+    if (cardsContainer) {
+      const cards = cardsContainer.querySelectorAll("> div");
+      cards.forEach((card, index) => {
+        card.setAttribute("data-card-index", index.toString());
+        observer.observe(card);
+      });
+    }
+
+    return () => observer.disconnect();
   }, []);
 
 
@@ -220,9 +245,12 @@ const Portfolio: FC = () => {
           opacity: 0;
         }
 
-        .work-section-cards.visible > div:nth-child(1),
-        .work-section-cards.visible > div:nth-child(2) {
+        .work-section-cards.visible > div:nth-child(1) {
           animation: slideUpFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .work-section-cards.visible > div:nth-child(2) {
+          animation: slideUpFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.1s;
         }
 
         .work-section-cards.visible > div:nth-child(3),
@@ -231,9 +259,42 @@ const Portfolio: FC = () => {
           opacity: 1;
         }
 
-        .work-section-cards.visible.scrolled > div:nth-child(3),
-        .work-section-cards.visible.scrolled > div:nth-child(4) {
+        .work-section-cards.visible.scrolled > div:nth-child(3) {
           animation: slideUpFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .work-section-cards.visible.scrolled > div:nth-child(4) {
+          animation: slideUpFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.1s;
+        }
+
+        @media (max-width: 768px) {
+          .work-section-cards > div {
+            opacity: 0;
+          }
+
+          .work-section-cards.visible > div:nth-child(1) {
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          }
+
+          .work-section-cards.visible > div:nth-child(2) {
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.15s;
+          }
+
+          .work-section-cards > div.card-in-view {
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          }
+
+          .work-section-cards > div:nth-child(3).card-in-view {
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          }
+
+          .work-section-cards > div:nth-child(4).card-in-view {
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.1s;
+          }
+
+          .work-section-cards.visible.scrolled > div {
+            opacity: 1;
+          }
         }
 
         .work-section-cards.scrolled-out > div:nth-child(3),
