@@ -95,7 +95,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
 
         .verisupply-image.hovered .verisupply-arrow {
           opacity: 0.8;
-          transform: translateY(-4px);
+          transform: translateY(-4px) rotate(-45deg);
         }
 
         .verisupply-text {

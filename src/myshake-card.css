@@ -77,7 +77,7 @@
 
 .myshake-video.hovered .myshake-arrow {
   opacity: 0.8;
-  transform: translateY(-4px);
+  transform: translateY(-4px) rotate(-45deg);
 }
 
 .myshake-text {

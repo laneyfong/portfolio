@@ -120,7 +120,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
 
         .idbridge-video.hovered .idbridge-arrow {
           opacity: 0.8;
-          transform: translateY(-4px);
+          transform: translateY(-4px) rotate(-45deg);
         }
 
         .idbridge-text {

@@ -106,7 +106,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
 
         .nvidia-video.hovered .nvidia-arrow {
           opacity: 0.8;
-          transform: translateY(-4px);
+          transform: translateY(-4px) rotate(-45deg);
         }
 
         .nvidia-text {
