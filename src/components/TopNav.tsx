@@ -51,13 +51,22 @@ const TopNav: FC = () => {
           background-color: rgba(255, 255, 255, 0.08);
           backdrop-filter: blur(4px);
           -webkit-backdrop-filter: blur(4px);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .top-nav {
+          background-color: rgba(15, 15, 15, 0.8);
+          border-bottom: 1px solid var(--border-color);
         }
 
         .top-nav.scrolled {
           background-color: rgba(255, 255, 255, 0.92);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
+        }
+
+        [data-theme="dark"] .top-nav.scrolled {
+          background-color: rgba(26, 26, 26, 0.95);
         }
 
         .top-nav-content {
@@ -90,7 +99,7 @@ const TopNav: FC = () => {
           font-size: 14px;
           font-weight: 500;
           letter-spacing: -0.05em;
-          color: #111111;
+          color: var(--text-primary);
           text-decoration: none;
           cursor: pointer;
           flex-shrink: 0;
@@ -139,7 +148,7 @@ const TopNav: FC = () => {
           font-size: 14px;
           font-weight: 500;
           letter-spacing: -0.05em;
-          color: #ABADAF;
+          color: var(--text-muted);
           text-decoration: none;
           cursor: pointer;
           position: relative;
@@ -151,7 +160,7 @@ const TopNav: FC = () => {
         }
 
         .top-nav-link.active {
-          color: #111111;
+          color: var(--text-primary);
         }
 
         .mobile-menu-btn {
@@ -230,20 +239,19 @@ const TopNav: FC = () => {
           border: none;
           cursor: pointer;
           padding: 8px;
-          color: #ABADAF;
-          font-size: 18px;
+          color: var(--text-muted);
+          font-size: 14px;
+          font-weight: 500;
           transition: color 0.2s ease;
           display: flex;
           align-items: center;
           justify-content: center;
+          font-family: 'Manrope', ${tokens.font.sans};
+          letter-spacing: -0.05em;
         }
 
         .dark-mode-toggle:hover {
           color: #4060c8;
-        }
-
-        .top-nav.scrolled .dark-mode-toggle {
-          color: #ABADAF;
         }
 
         @media (max-width: 640px) {
@@ -320,7 +328,7 @@ const TopNav: FC = () => {
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
           >
-            {isDarkMode ? "☀️" : "🌙"}
+            {isDarkMode ? "Light" : "Dark"}
           </button>
 
           <button
