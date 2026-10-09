@@ -1014,7 +1014,9 @@ const MyShakeCaseStudy: FC = () => {
 
         <div style={{ marginTop: 80 }}>
           <Reveal dramatic>
-            <Callout>Design Decisions</Callout>
+            <div style={{ marginBottom: 10 }}>
+              <Callout>Design Decisions</Callout>
+            </div>
           </Reveal>
 
           <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
