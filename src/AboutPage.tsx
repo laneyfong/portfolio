@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { LinkedInIcon, EmailIcon, XIcon, SocialIconLink, LINKEDIN_URL, X_URL, CONTACT_EMAIL } from "./components/SocialIcons";
 import kinoSvg from "./assets/kino-visual.svg";
-import profilePhoto from "./assets/about-profile-photo.HEIC";
+import profilePhoto from "./assets/about-profile-photo.png";
 
 interface ExperienceEntry {
   role: string;
