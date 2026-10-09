@@ -108,17 +108,17 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         .myshake-video::after {
           content: "View Case Study";
-          position: absolute;
+          position: fixed;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%) scale(0.8);
+          transform: translate(-50%, -50%);
           opacity: 0;
           font-family: 'Manrope';
           font-size: 16px;
           font-weight: 500;
           color: white;
           z-index: 20;
-          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           pointer-events: none;
           letter-spacing: -0.05em;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -126,7 +126,6 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
         .myshake-video.hovered::after {
           opacity: 1;
-          transform: translate(-50%, -50%);
         }
 
         .myshake-text {
