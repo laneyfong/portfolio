@@ -402,7 +402,7 @@ const AboutPage: FC = () => {
                 opacity: 1,
               }}
             >
-              Raised by a designer and an engineer in the Bay Area, I grew up at the intersection of art and technology. Seeing those two worlds blend early on, I always knew design was my calling. That early passion, combined with a deep curiosity about human behavior, led me to product design. I design products that work for everyone. My approach: research-backed decisions, obsessive attention to accessibility, and ruthless focus on reducing friction. Every pixel serves a purpose.
+              Raised by a designer and an engineer in the Bay Area, I grew up at the intersection of art and technology. Seeing those two worlds blend early on, I always knew design was my calling. Today, I am energized by building features that drive business growth, enhance safety, and turn complex, multi-step flows into frictionless experiences. Whether designing across tech, gaming, or AI spaces, I love crafting systems that scale and engage users deeply. My approach: research-backed decisions, obsessive attention to accessibility, and a collaborative, open-ended mindset where every pixel serves a purpose.
             </p>
 
             {/* Experience Section */}
