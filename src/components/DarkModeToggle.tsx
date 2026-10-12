@@ -9,13 +9,13 @@ const DarkModeToggle: FC = () => {
       onClick={toggleDarkMode}
       style={{
         position: "relative",
-        width: "54px",
-        height: "28px",
+        width: "44px",
+        height: "24px",
         border: "none",
         background: isDarkMode ? "rgba(100, 100, 100, 0.3)" : "rgba(200, 200, 200, 0.4)",
         borderRadius: "100px",
         cursor: "pointer",
-        padding: "3px",
+        padding: "2px",
         transition: "background 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
         display: "flex",
         alignItems: "center",
@@ -63,8 +63,8 @@ const DarkModeToggle: FC = () => {
 
         .toggle-thumb {
           position: absolute;
-          width: 22px;
-          height: 22px;
+          width: 18px;
+          height: 18px;
           background: #FFFFFF;
           border-radius: 50%;
           display: flex;
@@ -75,8 +75,8 @@ const DarkModeToggle: FC = () => {
         }
 
         .toggle-icon-small {
-          width: 14px;
-          height: 14px;
+          width: 11px;
+          height: 11px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -106,7 +106,7 @@ const DarkModeToggle: FC = () => {
       <div
         className="toggle-thumb"
         style={{
-          left: isDarkMode ? "29px" : "3px",
+          left: isDarkMode ? "24px" : "2px",
         }}
       >
         <div className="toggle-icon-small">
