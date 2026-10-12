@@ -1040,6 +1040,180 @@ const AboutPage: FC = () => {
                 ))}
               </div>
             </div>
+
+            {/* Software Stack Section */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                padding: "0",
+                gap: "32px",
+                width: "100%",
+                paddingTop: "100px",
+              }}
+            >
+              <div>
+                <h4
+                  style={{
+                    fontFamily: tokens.font.sans,
+                    fontWeight: 500,
+                    fontSize: "16px",
+                    letterSpacing: "-0.05em",
+                    color: "var(--text-dark)",
+                    marginBottom: "24px",
+                    margin: "0 0 24px 0",
+                  }}
+                >
+                  Software Stack
+                </h4>
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+                  gap: "24px",
+                  width: "100%",
+                  alignItems: "center",
+                }}
+              >
+                {/* Figma */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "var(--surface-light)",
+                    transition: "transform 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="10" cy="10" r="8" fill="#A259FF" />
+                    <circle cx="30" cy="10" r="8" fill="#F24E1E" />
+                    <circle cx="30" cy="30" r="8" fill="#FF7262" />
+                    <circle cx="10" cy="30" r="8" fill="#1ABCFE" />
+                    <circle cx="20" cy="20" r="8" fill="#0ACF83" />
+                  </svg>
+                  <span style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-dark)", textAlign: "center" }}>Figma</span>
+                </div>
+
+                {/* Claude */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "var(--surface-light)",
+                    transition: "transform 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#9D4EDD" />
+                    <path d="M20 10L26 18H14L20 10Z" fill="white" />
+                    <path d="M14 22H26L20 30L14 22Z" fill="white" opacity="0.7" />
+                  </svg>
+                  <span style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-dark)", textAlign: "center" }}>Claude</span>
+                </div>
+
+                {/* Cursor */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "var(--surface-light)",
+                    transition: "transform 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#09D9C4" />
+                    <path d="M14 18L22 10L26 26L18 22Z" fill="white" />
+                  </svg>
+                  <span style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-dark)", textAlign: "center" }}>Cursor</span>
+                </div>
+
+                {/* Lovable */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "var(--surface-light)",
+                    transition: "transform 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 34C10.6 34 3 26.4 3 17C3 11.2 6.4 6.2 11.2 3.8C12.4 3.2 13.8 2.8 15.2 2.8C17.8 2.8 20 4.4 20 6.8C20 4.4 22.2 2.8 24.8 2.8C26.2 2.8 27.6 3.2 28.8 3.8C33.6 6.2 37 11.2 37 17C37 26.4 29.4 34 20 34Z" fill="#FF2D5D" />
+                  </svg>
+                  <span style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-dark)", textAlign: "center" }}>Lovable</span>
+                </div>
+
+                {/* GitHub */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "var(--surface-light)",
+                    transition: "transform 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="var(--text-dark)" />
+                    <path d="M20 8C13.4 8 8 13.4 8 20C8 25.7 12.2 30.4 17.7 31.7C18.4 31.8 18.6 31.4 18.6 31V27.8C14.9 28.5 14 26.1 14 26.1C13.4 24.4 12.5 24 12.5 24C11.2 23.2 12.6 23.2 12.6 23.2C14 23.3 14.8 24.5 14.8 24.5C16 26.7 17.9 26.2 18.7 25.8C18.8 25 19.1 24.5 19.5 24.2C16.5 23.9 13.2 22.8 13.2 18.3C13.2 16.8 13.8 15.5 14.8 14.5C14.6 14.2 14.1 12.8 15 10.9C15 10.9 16.1 10.5 18.6 12C19.5 11.8 20.5 11.7 21.5 11.7C22.5 11.7 23.5 11.8 24.4 12C26.9 10.5 28 10.9 28 10.9C28.9 12.8 28.4 14.2 28.2 14.5C29.2 15.5 29.8 16.8 29.8 18.3C29.8 22.8 26.5 23.9 23.5 24.2C24 24.6 24.5 25.5 24.5 26.8V31C24.5 31.4 24.7 31.8 25.4 31.7C30.8 30.4 35 25.7 35 20C35 13.4 29.6 8 20 8Z" fill="white" />
+                  </svg>
+                  <span style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-dark)", textAlign: "center" }}>GitHub</span>
+                </div>
+
+                {/* Adobe Creative Cloud */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "var(--surface-light)",
+                    transition: "transform 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" fill="#FF0000" />
+                    <text x="20" y="24" textAnchor="middle" fontSize="14" fontWeight="bold" fill="white" fontFamily="Arial">Cc</text>
+                  </svg>
+                  <span style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-dark)", textAlign: "center" }}>Adobe CC</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
