@@ -229,7 +229,7 @@ const ScrollDrivenProductShowcase: FC<{
 
   return (
     <section
-      style={{ paddingTop: 0, paddingBottom: 400, position: "relative" }}
+      style={{ paddingTop: 0, paddingBottom: 0, position: "relative" }}
       className="section-reveal"
       ref={containerRef}
     >
