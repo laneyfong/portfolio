@@ -17,6 +17,8 @@ const Portfolio: FC = () => {
   const [videoReady] = useState(true);
   const [, setHoveredCaseStudy] = useState<string | null>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0.3);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,24 @@ const Portfolio: FC = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+
+      // Breathing effect based on mouse position
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const distX = (e.clientX - centerX) / centerX;
+      const distY = (e.clientY - centerY) / centerY;
+      const distance = Math.sqrt(distX * distX + distY * distY);
+      const newOpacity = Math.max(0.15, Math.min(0.5, 0.3 + distance * 0.1));
+      setOpacity(newOpacity);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   useEffect(() => {
@@ -388,6 +408,58 @@ const Portfolio: FC = () => {
           }}>
             Currently studying HCI @ UCSC, Prev. @ MyShake
           </p>
+        </div>
+
+        {/* ASCII Text Graphic */}
+        <div
+          style={{
+            position: "absolute",
+            top: "120px",
+            right: "60px",
+            width: "300px",
+            height: "320px",
+            fontFamily: "monospace",
+            fontSize: "11px",
+            lineHeight: "1.6",
+            color: `rgba(200, 200, 200, ${opacity})`,
+            whiteSpace: "pre-wrap",
+            wordWrap: "break-word",
+            pointerEvents: "none",
+            userSelect: "none",
+            opacity: opacity,
+            transform: `translate(${(mousePos.x - window.innerWidth / 2) * 0.01}px, ${(mousePos.y - window.innerHeight / 2) * 0.01}px)`,
+            transition: "opacity 0.3s ease-out, color 0.3s ease-out",
+            zIndex: 0,
+            background: "linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%)",
+            backdropFilter: "blur(0.5px)",
+            padding: "20px",
+            borderRadius: "8px",
+          }}
+        >
+{`0_to_1
+├─ HCI_UCSC
+├─ IA_Restructure
+├─ Growth_45%
+├─ Frictionless
+├─ Accessibility
+│  └─ WCAG_AAA
+├─ SF_Bay_Area
+├─ Complex_Systems
+├─ Research_Backed
+├─ Scale_&_Engage
+├─ Multi_Step_Flow
+├─ Business_Growth
+├─ MyShake_Impact
+├─ VeriSupply_6hr
+├─ IDBridge_Design
+└─ Meticulous_Craft
+
+tokens:
+color.primary=#D0D0D0
+color.accent=#4060C8
+depth.layer=atmospheric
+motion.parallax=subtle
+opacity.breathing=0.15-0.5`}
         </div>
       </main>
 
