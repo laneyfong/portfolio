@@ -163,7 +163,7 @@ const EffortImpactMatrix: FC = () => {
             y1={padding + innerHeight / 2}
             x2={padding + innerWidth}
             y2={padding + innerHeight / 2}
-            stroke={tokens.color.cardBorder}
+            stroke={"var(--border-color)"}
             strokeWidth="1"
             opacity="0.4"
           />
@@ -172,7 +172,7 @@ const EffortImpactMatrix: FC = () => {
             y1={padding}
             x2={padding + innerWidth / 2}
             y2={padding + innerHeight}
-            stroke={tokens.color.cardBorder}
+            stroke={"var(--border-color)"}
             strokeWidth="1"
             opacity="0.4"
           />

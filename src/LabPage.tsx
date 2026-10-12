@@ -222,11 +222,11 @@ const LabPage: FC = () => {
           style={{
             marginTop: 80,
             paddingTop: 40,
-            borderTop: `1px solid ${tokens.color.cardBorder}`,
+            borderTop: `1px solid ${"var(--border-color)"}`,
             fontSize: "13px",
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.regular,
-            color: tokens.color.muted,
+            color: "var(--text-muted)",
             opacity: 0.6,
             lineHeight: 1.6,
             maxWidth: "600px",

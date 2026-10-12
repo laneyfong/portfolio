@@ -18,6 +18,8 @@ const GlobalStyles: FC = () => (
       --text-grey-lighter: #808080;
       --border-color: rgba(26, 26, 26, 0.08);
       --card-bg: #F0F0F0;
+      --stroke: #F1F0EE;
+      --surface-light: #FAFAFB;
     }
 
     [data-theme="dark"] {
@@ -33,6 +35,8 @@ const GlobalStyles: FC = () => (
       --text-grey-lighter: #A0A0A0;
       --border-color: rgba(208, 208, 208, 0.1);
       --card-bg: #2A2A2A;
+      --stroke: #2F2F2F;
+      --surface-light: #1E1E1E;
     }
 
     html {

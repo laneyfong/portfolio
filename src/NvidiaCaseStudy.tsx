@@ -54,10 +54,10 @@ const QuoteLine: FC<{ children: string; attribution: string }> = ({ children, at
       fontWeight: 500,
       fontSize: tokens.text.base,
       lineHeight: tokens.leading.normal,
-      color: tokens.color.ink,
+      color: "var(--text-dark)",
     }}
   >
-    “{children}” <span style={{ fontFamily: tokens.font.sans, fontStyle: "normal", fontSize: tokens.text.sm, color: tokens.color.muted }}>— {attribution}</span>
+    “{children}” <span style={{ fontFamily: tokens.font.sans, fontStyle: "normal", fontSize: tokens.text.sm, color: "var(--text-muted)" }}>— {attribution}</span>
   </p>
 );
 
@@ -69,8 +69,8 @@ const StagePill: FC<{ label: string; state: "done" | "active" | "next" }> = ({ l
       gap: 6,
       padding: "6px 14px",
       borderRadius: tokens.radius.full,
-      background: state === "active" ? tokens.color.ink : tokens.color.offWhite,
-      color: state === "active" ? tokens.color.white : tokens.color.body,
+      background: state === "active" ? "var(--text-dark)" : "var(--surface-light)",
+      color: state === "active" ? "var(--bg-primary)" : "var(--text-secondary)",
       fontFamily: tokens.font.sans,
       fontSize: tokens.text.sm,
       fontWeight: state === "active" ? tokens.weight.medium : tokens.weight.regular,
@@ -93,7 +93,7 @@ const NvidiaCaseStudy: FC = () => {
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
             fontSize: tokens.text.xl,
-            color: tokens.color.ink,
+            color: "var(--text-dark)",
             lineHeight: tokens.leading.snug,
             margin: "0 0 20px",
             maxWidth: 440,
@@ -127,7 +127,7 @@ const NvidiaCaseStudy: FC = () => {
               justifyContent: "center",
               padding: "60px 20px",
               borderRadius: tokens.radius.md,
-              backgroundColor: tokens.color.offWhite,
+              backgroundColor: "var(--surface-light)",
               marginBottom: 40,
             }}
           >
@@ -201,7 +201,7 @@ const NvidiaCaseStudy: FC = () => {
           <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             <FindingRow method="Trust & Transparency in AI Systems">
               <div>
-                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                   Engineers want to be able to verify an AI finding themselves, and they're unclear on where
                   accountability sits when an automated insight turns out to be wrong.
                 </p>
@@ -211,7 +211,7 @@ const NvidiaCaseStudy: FC = () => {
             </FindingRow>
             <FindingRow method="Difficulty Collecting Useful User Data">
               <div>
-                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                   Internal feedback loops are thin and inconsistent — a lot of what teams know about usability comes
                   from Slack messages after launch, not structured testing.
                 </p>
@@ -221,7 +221,7 @@ const NvidiaCaseStudy: FC = () => {
             </FindingRow>
             <FindingRow method="Engineering Priorities Driven by Timelines & Severity">
               <div>
-                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                   Code-breaking bugs and approval workflows (a +1 then +2 review) crowd out usability fixes, which
                   have to clear a "worth the time" bar to get prioritized at all.
                 </p>
@@ -231,7 +231,7 @@ const NvidiaCaseStudy: FC = () => {
             </FindingRow>
             <FindingRow method="Engineers Prefer Simple, Actionable Tools">
               <div>
-                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                   No appetite for a learning curve — a tool earns its place by doing something engineers would
                   otherwise have to do manually, with zero onboarding.
                 </p>
@@ -404,7 +404,7 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Paragraph>
-          <strong style={{ fontWeight: tokens.weight.medium, color: tokens.color.ink }}>Next phase: </strong>
+          <strong style={{ fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>Next phase: </strong>
           continuing with design, prototypes, and vibe-coding to turn the two How-Might-We questions above into an
           actual interface — then testing whether engineers trust it enough to act on what it tells them.
         </Paragraph>
@@ -416,13 +416,13 @@ const NvidiaCaseStudy: FC = () => {
           <SectionHeading>This project taught me about designing for technical complexity and trust</SectionHeading>
         </Reveal>
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
             The biggest insight from leading research across a 4-person team was recognizing when data wasn't working. We cut the survey when response rates showed it wouldn't be usable, rather than forcing it to a finish line.
           </p>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
             But the real breakthrough was understanding engineers' gap between what they want (trustworthy AI, simple tools) and what they actually do (rely on Slack threads and feedback buttons). This is a workflow-trust problem, not a screen redesign.
           </p>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
             I'm incredibly proud of the win we're taking together. To the research, design, and engineering team: thank you for believing that understanding engineers deeply would change how we build AI that they can trust.
           </p>
         </Reveal>
@@ -438,7 +438,7 @@ const NvidiaCaseStudy: FC = () => {
                   fontFamily: tokens.font.sans,
                   fontSize: tokens.text.sm,
                   fontWeight: tokens.weight.medium,
-                  color: tokens.color.muted,
+                  color: "var(--text-muted)",
                   marginBottom: 12,
                 }}
               >
@@ -449,7 +449,7 @@ const NvidiaCaseStudy: FC = () => {
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.medium,
                   fontSize: tokens.text.lg,
-                  color: tokens.color.textDark,
+                  color: "var(--text-dark)",
                   margin: 0,
                 }}
               >
@@ -459,7 +459,7 @@ const NvidiaCaseStudy: FC = () => {
                 style={{
                   fontFamily: tokens.font.sans,
                   fontSize: tokens.text.base,
-                  color: tokens.color.body,
+                  color: "var(--text-secondary)",
                   margin: "8px 0 0",
                   maxWidth: 400,
                 }}
@@ -476,8 +476,8 @@ const NvidiaCaseStudy: FC = () => {
                 width: 56,
                 height: 56,
                 borderRadius: "50%",
-                background: tokens.color.ink,
-                color: tokens.color.white,
+                background: "var(--text-dark)",
+                color: "var(--bg-primary)",
                 textDecoration: "none",
                 transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 boxShadow: tokens.shadow.subtle,

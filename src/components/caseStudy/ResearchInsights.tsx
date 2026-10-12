@@ -64,7 +64,7 @@ const ResearchInsights: FC = () => {
             style={{
               fontFamily: tokens.font.sans,
               fontSize: "13px",
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: 1.4,
               fontWeight: tokens.weight.medium,
             }}

@@ -42,7 +42,7 @@ const ResearchThemes: FC = () => {
             padding: 24,
             borderRadius: tokens.radius.md,
 
-            backgroundColor: tokens.color.offWhite,
+            backgroundColor: "var(--surface-light)",
             display: "flex",
             flexDirection: "column",
             gap: 12,
@@ -65,7 +65,7 @@ const ResearchThemes: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "15px",
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
             }}
           >
             {theme.title}
@@ -74,7 +74,7 @@ const ResearchThemes: FC = () => {
             style={{
               fontFamily: tokens.font.sans,
               fontSize: "13px",
-              color: tokens.color.body,
+              color: "var(--text-secondary)",
               lineHeight: 1.5,
             }}
           >

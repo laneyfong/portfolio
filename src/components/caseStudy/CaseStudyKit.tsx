@@ -242,7 +242,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: hovered ? tokens.color.white : tokens.color.ink,
+          color: hovered ? tokens.color.white : "var(--text-dark)",
           marginBottom: 16,
           transition: "background 0.2s ease, color 0.2s ease",
         }}
@@ -262,7 +262,7 @@ export const IconCard: FC<{ icon: ReactNode; title: string; items: string[] }> =
       </div>
       <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 6 }}>
         {items.map((item) => (
-          <li key={item} style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body }}>
+          <li key={item} style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)" }}>
             {item}
           </li>
         ))}
@@ -337,7 +337,7 @@ export const PullQuote: FC<{ children: ReactNode; attribution?: string; dark?: b
 }) => (
   <div
     style={{
-      background: dark ? tokens.color.ink : "transparent",
+      background: dark ? "var(--text-dark)" : "transparent",
       borderRadius: dark ? tokens.radius.md : 0,
       padding: dark ? "32px 36px" : "2px 0 2px 0px",
       margin: "32px 0",
@@ -349,7 +349,7 @@ export const PullQuote: FC<{ children: ReactNode; attribution?: string; dark?: b
         fontWeight: 500,
         fontSize: tokens.text.lg,
         lineHeight: tokens.leading.snug,
-        color: dark ? tokens.color.white : tokens.color.ink,
+        color: dark ? tokens.color.white : "var(--text-dark)",
         margin: 0,
       }}
     >
@@ -361,7 +361,7 @@ export const PullQuote: FC<{ children: ReactNode; attribution?: string; dark?: b
           marginTop: 12,
           fontFamily: tokens.font.sans,
           fontSize: tokens.text.sm,
-          color: dark ? "rgba(255, 255, 255, 0.65)" : tokens.color.muted,
+          color: dark ? "rgba(255, 255, 255, 0.65)" : "var(--text-muted)",
         }}
       >
         — {attribution}
@@ -412,13 +412,13 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
               }}
             >
               <span>{bar.label}</span>
-              <span style={{ fontWeight: tokens.weight.medium, color: tokens.color.ink }}>{bar.display}</span>
+              <span style={{ fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>{bar.display}</span>
             </div>
             <div
               style={{
                 height: 10,
                 borderRadius: tokens.radius.full,
-                background: tokens.color.cardBorder,
+                background: "var(--border-color)",
                 overflow: "hidden",
               }}
             >
@@ -427,7 +427,7 @@ export const BarCompare: FC<{ title: string; bars: { label: string; value: numbe
                   height: "100%",
                   width: inView ? `${(bar.value / max) * 100}%` : "0%",
                   borderRadius: tokens.radius.full,
-                  background: tokens.color.ink,
+                  background: "var(--text-dark)",
                   transition: `width 0.8s ease ${i * 120}ms`,
                 }}
               />
@@ -461,7 +461,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {items.map((item, i) => (
           <div key={item} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ width: 16, fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, flexShrink: 0 }}>
+            <span style={{ width: 16, fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", flexShrink: 0 }}>
               {i + 1}
             </span>
             <div
@@ -479,7 +479,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
                   height: "100%",
                   width: inView ? `${RANK_WIDTHS[i] ?? 40}%` : "0%",
                   borderRadius: tokens.radius.sm,
-                  background: i === 0 ? tokens.color.ink : "transparent",
+                  background: i === 0 ? "var(--text-dark)" : "transparent",
                   display: "flex",
                   alignItems: "center",
                   paddingLeft: 12,
@@ -493,7 +493,7 @@ export const RankedBars: FC<{ title: string; items: string[] }> = ({ title, item
                   style={{
                     fontFamily: tokens.font.sans,
                     fontSize: tokens.text.sm,
-                    color: i === 0 ? tokens.color.white : tokens.color.body,
+                    color: i === 0 ? tokens.color.white : "var(--text-secondary)",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -518,10 +518,10 @@ export const StepFlow: FC<{ steps: number; variant: "before" | "after"; label: s
   const [ref, inView] = useInView<HTMLDivElement>(0.3);
   const isAfter = variant === "after";
   const nodeSize = isAfter ? 16 : 9;
-  const color = isAfter ? tokens.color.ink : tokens.color.cardBorder;
+  const color = isAfter ? "var(--text-dark)" : "var(--border-color)";
   return (
     <div ref={ref} style={{ margin: "28px 0" }}>
-      <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, marginBottom: 14 }}>
+      <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", marginBottom: 14 }}>
         {label}
       </div>
       <div style={{ display: "flex", alignItems: "center", maxWidth: isAfter ? 320 : 560 }}>
@@ -532,7 +532,7 @@ export const StepFlow: FC<{ steps: number; variant: "before" | "after"; label: s
                 width: nodeSize,
                 height: nodeSize,
                 borderRadius: "50%",
-                background: isAfter ? tokens.color.ink : color,
+                background: isAfter ? "var(--text-dark)" : color,
                 flexShrink: 0,
                 opacity: inView ? 1 : 0,
                 transform: inView ? "scale(1)" : "scale(0.3)",
@@ -586,13 +586,13 @@ export const RadialStat: FC<{ percent: number; label: string }> = ({ percent, la
   return (
     <div ref={ref} style={{ display: "flex", alignItems: "center", gap: 28, flexWrap: "wrap", margin: "32px 0" }}>
       <svg width="140" height="140" viewBox="0 0 140 140" style={{ flexShrink: 0 }}>
-        <circle cx="70" cy="70" r={r} fill="none" stroke={tokens.color.cardBorder} strokeWidth="10" />
+        <circle cx="70" cy="70" r={r} fill="none" stroke={"var(--border-color)"} strokeWidth="10" />
         <circle
           cx="70"
           cy="70"
           r={r}
           fill="none"
-          stroke={tokens.color.ink}
+          stroke={"var(--text-dark)"}
           strokeWidth="10"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
@@ -607,7 +607,7 @@ export const RadialStat: FC<{ percent: number; label: string }> = ({ percent, la
           fontSize="28"
           fontFamily={tokens.font.sans}
           fontWeight={tokens.weight.medium}
-          fill={tokens.color.ink}
+          fill={"var(--text-dark)"}
         >
           {shown}%
         </text>
@@ -638,10 +638,10 @@ export const TypeCompare: FC<{ options?: { name: string; family: string }[] }> =
           padding: 24,
         }}
       >
-        <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, marginBottom: 12 }}>
+        <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", marginBottom: 12 }}>
           {opt.name}
         </div>
-        <div style={{ fontFamily: opt.family, fontSize: 30, color: tokens.color.body, lineHeight: 1.2 }}>Aa Bb 12:45</div>
+        <div style={{ fontFamily: opt.family, fontSize: 30, color: "var(--text-secondary)", lineHeight: 1.2 }}>Aa Bb 12:45</div>
       </div>
     ))}
   </div>
@@ -669,7 +669,7 @@ export const Bullets: FC<{ items: ReactNode[] }> = ({ items }) => (
             width: 6,
             height: 6,
             borderRadius: "50%",
-            background: tokens.color.ink,
+            background: "var(--text-dark)",
           }}
         />
         {item}
@@ -1061,11 +1061,11 @@ export const StatRow: FC<{ items: { icon?: ReactNode; value: string; label: stri
     `}</style>
     <div className="stat-row">
       {items.map((item, i) => (
-        <div key={i} style={{ textAlign: "center", padding: "28px 24px", borderRadius: tokens.radius.md, background: tokens.color.offWhite }}>
-          <div style={{ fontFamily: tokens.font.sans, fontSize: "48px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8, lineHeight: 1 }}>
+        <div key={i} style={{ textAlign: "center", padding: "28px 24px", borderRadius: tokens.radius.md, background: "var(--surface-light)" }}>
+          <div style={{ fontFamily: tokens.font.sans, fontSize: "48px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8, lineHeight: 1 }}>
             {item.value}
           </div>
-          <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, fontWeight: tokens.weight.regular, lineHeight: tokens.leading.snug }}>
+          <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", fontWeight: tokens.weight.regular, lineHeight: tokens.leading.snug }}>
             {item.label}
           </div>
         </div>
@@ -1127,10 +1127,10 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1, minWidth: 0 }}>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.muted, minWidth: "24px", lineHeight: 1.5 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: "var(--text-muted)", minWidth: "24px", lineHeight: 1.5 }}>
                 {item.rank}
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", lineHeight: 1.5 }}>
                 {item.title}
               </div>
             </div>
@@ -1161,7 +1161,7 @@ export const ExpandableRankedList: FC<{ items: { rank: number; title: string; de
                 animation: "slideDown 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards",
               }}
             >
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, margin: 0 }}>
                 {item.detail}
               </p>
             </div>
@@ -1199,11 +1199,11 @@ export const InsightCard: FC<{ number: number; insight: ReactNode; detail?: Reac
       {number}
     </div>
     <div>
-      <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 4, lineHeight: tokens.leading.snug }}>
+      <div style={{ fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4, lineHeight: tokens.leading.snug }}>
         {insight}
       </div>
       {detail && (
-        <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+        <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
           {detail}
         </div>
       )}
@@ -1213,10 +1213,10 @@ export const InsightCard: FC<{ number: number; insight: ReactNode; detail?: Reac
 
 export const BigImpactStat: FC<{ value: string; label: string; color?: string }> = ({ value, label, color = tokens.color.accent }) => (
   <div style={{ textAlign: "center", marginBottom: 48, padding: "40px 0" }}>
-    <div style={{ fontFamily: tokens.font.sans, fontSize: "84px", fontWeight: tokens.weight.medium, color: tokens.color.ink, lineHeight: 1, marginBottom: 16 }}>
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "84px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", lineHeight: 1, marginBottom: 16 }}>
       {value}
     </div>
-    <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", color: tokens.color.body, fontWeight: tokens.weight.regular, marginBottom: 12 }}>
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "18px", color: "var(--text-secondary)", fontWeight: tokens.weight.regular, marginBottom: 12 }}>
       {label}
     </div>
     <div style={{ width: "80px", height: "2px", background: color, margin: "0 auto", opacity: 0.6 }} />
@@ -1225,7 +1225,7 @@ export const BigImpactStat: FC<{ value: string; label: string; color?: string }>
 
 export const HMWStatement: FC<{ children: ReactNode }> = ({ children }) => (
   <div style={{ textAlign: "left", marginBottom: 48, paddingTop: 32, paddingBottom: 32 }}>
-    <div style={{ fontFamily: tokens.font.sans, fontSize: "20px", color: tokens.color.body, maxWidth: 600, lineHeight: tokens.leading.snug }}>
+    <div style={{ fontFamily: tokens.font.sans, fontSize: "20px", color: "var(--text-secondary)", maxWidth: 600, lineHeight: tokens.leading.snug }}>
       {children}
     </div>
   </div>

@@ -48,7 +48,7 @@ const IDBridgeCaseStudy: FC = () => {
             fontFamily: tokens.font.sans,
             fontWeight: tokens.weight.medium,
             fontSize: tokens.text.xl,
-            color: tokens.color.ink,
+            color: "var(--text-dark)",
             lineHeight: tokens.leading.snug,
             margin: "0 0 20px",
             maxWidth: 440,
@@ -100,13 +100,13 @@ const IDBridgeCaseStudy: FC = () => {
 
         <Reveal>
           <div style={{ marginBottom: 48, maxWidth: 600 }}>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 20 }}>
               <strong>The context:</strong> Unhoused individuals face systemic barriers to accessing shelter and housing. The most overlooked obstacle: they lack verifiable identity and documentation required by every housing program.
             </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 20 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 20 }}>
               <strong>What made this unique:</strong> This was a 6-hour designathon with 0 prior research. Most teams would sketch surface solutions. We chose to spend the first 2 hours understanding the actual problem through empathy mapping and research, not rushing to design.
             </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
               <strong>The outcome:</strong> Won first place by designing a privacy-first, offline platform that lets individuals build verified document trails. We also explored how AI could accelerate the design process — and where it falls short in empathy-driven work.
             </p>
           </div>
@@ -148,7 +148,7 @@ const IDBridgeCaseStudy: FC = () => {
                   padding: "20px 24px",
                   borderRadius: tokens.radius.md,
                   
-                  backgroundColor: tokens.color.offWhite,
+                  backgroundColor: "var(--surface-light)",
                 }}
               >
                 <div
@@ -156,7 +156,7 @@ const IDBridgeCaseStudy: FC = () => {
                     fontFamily: tokens.font.sans,
                     fontSize: "13px",
                     fontWeight: tokens.weight.medium,
-                    color: tokens.color.muted,
+                    color: "var(--text-muted)",
                     marginBottom: 8,
                     letterSpacing: "0.5px",
                   }}
@@ -169,7 +169,7 @@ const IDBridgeCaseStudy: FC = () => {
                     fontFamily: tokens.font.sans,
                     fontSize: tokens.text.base,
                     lineHeight: tokens.leading.normal,
-                    color: tokens.color.ink,
+                    color: "var(--text-dark)",
                   }}
                 >
                   "I walked four miles with a backpack and a hurt knee to get to a shelter that their website said had beds, only to be told they've been full since 4 PM."
@@ -179,7 +179,7 @@ const IDBridgeCaseStudy: FC = () => {
                     margin: "8px 0 0",
                     fontFamily: tokens.font.sans,
                     fontSize: tokens.text.sm,
-                    color: tokens.color.muted,
+                    color: "var(--text-muted)",
                   }}
                 >
                   — Unhoused individual
@@ -191,7 +191,7 @@ const IDBridgeCaseStudy: FC = () => {
                   padding: "20px 24px",
                   borderRadius: tokens.radius.md,
                   
-                  backgroundColor: tokens.color.offWhite,
+                  backgroundColor: "var(--surface-light)",
                 }}
               >
                 <div
@@ -199,7 +199,7 @@ const IDBridgeCaseStudy: FC = () => {
                     fontFamily: tokens.font.sans,
                     fontSize: "13px",
                     fontWeight: tokens.weight.medium,
-                    color: tokens.color.muted,
+                    color: "var(--text-muted)",
                     marginBottom: 8,
                     letterSpacing: "0.5px",
                   }}
@@ -212,7 +212,7 @@ const IDBridgeCaseStudy: FC = () => {
                     fontFamily: tokens.font.sans,
                     fontSize: tokens.text.base,
                     lineHeight: tokens.leading.normal,
-                    color: tokens.color.ink,
+                    color: "var(--text-dark)",
                   }}
                 >
                   "If you lose your ID, you lose your life. Nothing starts without it, and replacing it is a loop that takes months and money I don't have."
@@ -222,7 +222,7 @@ const IDBridgeCaseStudy: FC = () => {
                     margin: "8px 0 0",
                     fontFamily: tokens.font.sans,
                     fontSize: tokens.text.sm,
-                    color: tokens.color.muted,
+                    color: "var(--text-muted)",
                   }}
                 >
                   — Unhoused individual
@@ -309,13 +309,13 @@ const IDBridgeCaseStudy: FC = () => {
                   gap: 8,
                 }}
               >
-                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   Speed & breadth of insights
                 </li>
-                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   Bias detection & synthesis
                 </li>
-                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   Accessible to resource-limited teams
                 </li>
               </ul>
@@ -348,13 +348,13 @@ const IDBridgeCaseStudy: FC = () => {
                   gap: 8,
                 }}
               >
-                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   Loss of human context & empathy
                 </li>
-                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   AI data mixed with real data = backtracking
                 </li>
-                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <li style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   False authority & bias amplification
                 </li>
               </ul>
@@ -407,15 +407,15 @@ const IDBridgeCaseStudy: FC = () => {
                 padding: 16,
                 borderRadius: tokens.radius.md,
                 
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
                 textAlign: "center",
               }}
             >
               <div style={{ fontSize: "24px", marginBottom: 8 }}>📱</div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>
                 Offline-First
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, marginTop: 4 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-secondary)", marginTop: 4 }}>
                 No data plan required
               </div>
             </div>
@@ -424,15 +424,15 @@ const IDBridgeCaseStudy: FC = () => {
                 padding: 16,
                 borderRadius: tokens.radius.md,
                 
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
                 textAlign: "center",
               }}
             >
               <div style={{ fontSize: "24px", marginBottom: 8 }}>🔒</div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>
                 Privacy-First
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, marginTop: 4 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-secondary)", marginTop: 4 }}>
                 User controls what's shared
               </div>
             </div>
@@ -441,15 +441,15 @@ const IDBridgeCaseStudy: FC = () => {
                 padding: 16,
                 borderRadius: tokens.radius.md,
                 
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
                 textAlign: "center",
               }}
             >
               <div style={{ fontSize: "24px", marginBottom: 8 }}>🎯</div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>
                 Clear Authority
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: tokens.color.body, marginTop: 4 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-secondary)", marginTop: 4 }}>
                 Inspired by gov't apps
               </div>
             </div>
@@ -483,19 +483,19 @@ const IDBridgeCaseStudy: FC = () => {
                 padding: 24,
                 borderRadius: tokens.radius.md,
                 
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
               }}
             >
               <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
-                <rect x="4" y="6" width="20" height="14" rx="2" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
-                <circle cx="10" cy="11" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
-                <path d="M 4 18 L 16 18" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M 4 21 L 12 21" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
+                <rect x="4" y="6" width="20" height="14" rx="2" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5"/>
+                <circle cx="10" cy="11" r="2.5" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5"/>
+                <path d="M 4 18 L 16 18" stroke={"var(--text-dark)"} strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M 4 21 L 12 21" stroke={"var(--text-dark)"} strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
                 ID Verification
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
                 Upload documents and referrals. QR code creates instant verification history.
               </div>
             </div>
@@ -505,21 +505,21 @@ const IDBridgeCaseStudy: FC = () => {
                 padding: 24,
                 borderRadius: tokens.radius.md,
                 
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
               }}
             >
               <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
-                <circle cx="8" cy="9" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
-                <circle cx="20" cy="9" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
-                <path d="M 4 14 C 4 12 6 11 8 11 C 10 11 12 12 12 14" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M 16 14 C 16 12 18 11 20 11 C 22 11 24 12 24 14" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
-                <circle cx="14" cy="17" r="2.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
-                <path d="M 10 22 C 10 20 11.8 19 14 19 C 16.2 19 18 20 18 22" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="8" cy="9" r="2.5" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5"/>
+                <circle cx="20" cy="9" r="2.5" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5"/>
+                <path d="M 4 14 C 4 12 6 11 8 11 C 10 11 12 12 12 14" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M 16 14 C 16 12 18 11 20 11 C 22 11 24 12 24 14" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="14" cy="17" r="2.5" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5"/>
+                <path d="M 10 22 C 10 20 11.8 19 14 19 C 16.2 19 18 20 18 22" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
                 Social Worker Connect
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
                 Chat with representatives for next steps based on eligibility.
               </div>
             </div>
@@ -529,18 +529,18 @@ const IDBridgeCaseStudy: FC = () => {
                 padding: 24,
                 borderRadius: tokens.radius.md,
                 
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
               }}
             >
               <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
-                <path d="M 4 16 L 14 6 L 24 16" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <rect x="5" y="16" width="18" height="9" rx="1" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
-                <rect x="11" y="19" width="6" height="6" rx="0.5" fill="none" stroke={tokens.color.ink} strokeWidth="1.5"/>
+                <path d="M 4 16 L 14 6 L 24 16" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <rect x="5" y="16" width="18" height="9" rx="1" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5"/>
+                <rect x="11" y="19" width="6" height="6" rx="0.5" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5"/>
               </svg>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
                 Shelter Listings
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
                 View availability and real-time bed counts. No more wasted trips.
               </div>
             </div>
@@ -550,17 +550,17 @@ const IDBridgeCaseStudy: FC = () => {
                 padding: 24,
                 borderRadius: tokens.radius.md,
                 
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
               }}
             >
               <svg width="28" height="28" viewBox="0 0 28 28" style={{ marginBottom: 12 }}>
-                <path d="M 14 4 C 9.6 4 6 7.6 6 12 C 6 16 10 22 14 26 C 18 22 22 16 22 12 C 22 7.6 18.4 4 14 4 Z" fill="none" stroke={tokens.color.ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="14" cy="12" r="2" fill={tokens.color.ink}/>
+                <path d="M 14 4 C 9.6 4 6 7.6 6 12 C 6 16 10 22 14 26 C 18 22 22 16 22 12 C 22 7.6 18.4 4 14 4 Z" fill="none" stroke={"var(--text-dark)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="14" cy="12" r="2" fill={"var(--text-dark)"}/>
               </svg>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
                 Offline Navigation
               </div>
-              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
                 Bus routes and maps work without data connection.
               </div>
             </div>
@@ -578,19 +578,19 @@ const IDBridgeCaseStudy: FC = () => {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Home</span>
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>Home</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <img src={idbridgeDocuments} alt="Documents screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Documents</span>
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>Documents</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <img src={idbridgeHistory} alt="History screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>History</span>
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>History</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <img src={idbridgeMap} alt="Map screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
-              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.body, textAlign: "center" }}>Map</span>
+              <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>Map</span>
             </div>
           </div>
         </Reveal>
@@ -604,16 +604,16 @@ const IDBridgeCaseStudy: FC = () => {
 
         <Reveal>
           <div style={{ maxWidth: 440, margin: "0 auto" }}>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, margin: 0 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, margin: 0 }}>
               The most important lesson: design cannot be replaced with AI—it lacks the empathy one human has for another.
             </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32 }}>
               AI accelerated our research and ideation, but we had to manually verify every AI-sourced insight against lived experience. Ruthless prioritization revealed what actually matters: verification and direct connection with communities.
             </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32 }}>
               The most resonant ideas emerged when we stepped back from AI suggestions and centered the voices of the people we were designing for.
             </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 0, marginTop: 32 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 0, marginTop: 32 }}>
               I'm proud of the impact we created together in an incredibly tight window. To my team: thank you for approaching this work with care, integrity, and a genuine commitment to building with the underbanked community, not for them.
             </p>
           </div>

@@ -82,7 +82,7 @@ const ProjectArchivePage: FC = () => {
         minHeight: "100vh",
         background: tokens.color.white,
         fontFamily: tokens.font.sans,
-        color: tokens.color.body,
+        color: "var(--text-secondary)",
       }}
     >
       <style>{`
@@ -110,7 +110,7 @@ const ProjectArchivePage: FC = () => {
                 fontFamily: tokens.font.sans,
                 fontSize: "44px",
                 fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
+                color: "var(--text-dark)",
                 lineHeight: 1.2,
               }}
             >
@@ -123,7 +123,7 @@ const ProjectArchivePage: FC = () => {
                 fontFamily: tokens.font.sans,
                 fontSize: "16px",
                 fontWeight: tokens.weight.regular,
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 lineHeight: 1.6,
                 opacity: 0.8,
               }}
@@ -170,7 +170,7 @@ const ProjectArchivePage: FC = () => {
             style={{
               marginTop: 120,
               paddingTop: 60,
-              borderTop: `1px solid ${tokens.color.cardBorder}`,
+              borderTop: `1px solid ${"var(--border-color)"}`,
               textAlign: "center",
             }}
           >
@@ -179,7 +179,7 @@ const ProjectArchivePage: FC = () => {
                 fontFamily: tokens.font.sans,
                 fontSize: "16px",
                 fontWeight: tokens.weight.regular,
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 lineHeight: 1.6,
                 maxWidth: 600,
                 margin: "0 auto",
@@ -192,7 +192,7 @@ const ProjectArchivePage: FC = () => {
                 fontFamily: tokens.font.sans,
                 fontSize: "14px",
                 fontWeight: tokens.weight.regular,
-                color: tokens.color.muted,
+                color: "var(--text-muted)",
                 lineHeight: 1.6,
                 marginTop: 20,
               }}

@@ -21,7 +21,7 @@ export const ProjectSnapshot: FC<{ items: SnapshotItem[] }> = ({ items }) => (
       gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
       gap: 24,
       padding: "40px",
-      backgroundColor: tokens.color.offWhite,
+      backgroundColor: "var(--surface-light)",
       borderRadius: tokens.radius.md,
       marginBottom: 80,
     }}
@@ -33,7 +33,7 @@ export const ProjectSnapshot: FC<{ items: SnapshotItem[] }> = ({ items }) => (
           style={{
             fontSize: "12px",
             fontWeight: tokens.weight.medium,
-            color: tokens.color.muted,
+            color: "var(--text-muted)",
             letterSpacing: "0.5px",
           }}
         >
@@ -43,7 +43,7 @@ export const ProjectSnapshot: FC<{ items: SnapshotItem[] }> = ({ items }) => (
           style={{
             fontSize: "18px",
             fontWeight: tokens.weight.medium,
-            color: tokens.color.ink,
+            color: "var(--text-dark)",
             lineHeight: tokens.leading.snug,
           }}
         >
@@ -76,7 +76,7 @@ export const KeyInsight: FC<{
         style={{
           fontSize: "24px",
           fontWeight: tokens.weight.medium,
-          color: tokens.color.ink,
+          color: "var(--text-dark)",
           lineHeight: 1.6,
           maxWidth: 640,
           margin: 0,
@@ -99,7 +99,7 @@ export const KeyInsight: FC<{
             style={{
               fontSize: "14px",
               fontWeight: tokens.weight.medium,
-              color: tokens.color.muted,
+              color: "var(--text-muted)",
             }}
           >
             {point.label}
@@ -135,10 +135,10 @@ export const VisualProblem: FC<{
 }> = ({ title, elements, visual }) => (
   <div style={{ marginBottom: 80 }}>
     <div style={{ marginBottom: 40 }}>
-      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.muted, marginBottom: 12 }}>
+      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-muted)", marginBottom: 12 }}>
         THE PROBLEM
       </div>
-      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: 0, maxWidth: 440 }}>
+      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: 0, maxWidth: 440 }}>
         {title}
       </h2>
     </div>
@@ -157,7 +157,7 @@ export const VisualProblem: FC<{
           key={i}
           style={{
             padding: 20,
-            backgroundColor: tokens.color.offWhite,
+            backgroundColor: "var(--surface-light)",
             borderRadius: tokens.radius.md,
           }}
         >
@@ -165,7 +165,7 @@ export const VisualProblem: FC<{
             style={{
               fontSize: "14px",
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               marginBottom: 8,
             }}
           >
@@ -174,7 +174,7 @@ export const VisualProblem: FC<{
           <p
             style={{
               fontSize: "13px",
-              color: tokens.color.body,
+              color: "var(--text-secondary)",
               lineHeight: tokens.leading.normal,
               margin: 0,
               marginBottom: el.metric ? 12 : 0,
@@ -214,10 +214,10 @@ interface ProcessStep {
 export const VisualTimeline: FC<{ steps: ProcessStep[] }> = ({ steps }) => (
   <div style={{ marginBottom: 80 }}>
     <div style={{ marginBottom: 60 }}>
-      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.muted, marginBottom: 12 }}>
+      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-muted)", marginBottom: 12 }}>
         PROCESS
       </div>
-      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: 0 }}>
+      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: 0 }}>
         From research to ship
       </h2>
     </div>
@@ -245,7 +245,7 @@ export const VisualTimeline: FC<{ steps: ProcessStep[] }> = ({ steps }) => (
                 style={{
                   borderRadius: tokens.radius.md,
                   overflow: "hidden",
-                  backgroundColor: tokens.color.offWhite,
+                  backgroundColor: "var(--surface-light)",
                   minHeight: 300,
                 }}
               >
@@ -277,7 +277,7 @@ export const VisualTimeline: FC<{ steps: ProcessStep[] }> = ({ steps }) => (
               style={{
                 fontSize: "12px",
                 fontWeight: tokens.weight.medium,
-                color: tokens.color.muted,
+                color: "var(--text-muted)",
                 letterSpacing: "0.5px",
                 marginBottom: 8,
               }}
@@ -289,7 +289,7 @@ export const VisualTimeline: FC<{ steps: ProcessStep[] }> = ({ steps }) => (
               style={{
                 fontSize: "18px",
                 fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
+                color: "var(--text-dark)",
                 margin: "0 0 16px",
               }}
             >
@@ -299,7 +299,7 @@ export const VisualTimeline: FC<{ steps: ProcessStep[] }> = ({ steps }) => (
             <p
               style={{
                 fontSize: "14px",
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 lineHeight: tokens.leading.normal,
                 margin: "0 0 12px",
                 maxWidth: 400,
@@ -340,10 +340,10 @@ interface ImpactMetric {
 export const ImpactInfographic: FC<{ metrics: ImpactMetric[] }> = ({ metrics }) => (
   <div style={{ marginBottom: 80 }}>
     <div style={{ marginBottom: 60 }}>
-      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.muted, marginBottom: 12 }}>
+      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-muted)", marginBottom: 12 }}>
         IMPACT
       </div>
-      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: 0 }}>
+      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: 0 }}>
         What changed
       </h2>
     </div>
@@ -362,7 +362,7 @@ export const ImpactInfographic: FC<{ metrics: ImpactMetric[] }> = ({ metrics }) 
             textAlign: "center",
             padding: "32px 20px",
             borderRadius: tokens.radius.md,
-            backgroundColor: tokens.color.offWhite,
+            backgroundColor: "var(--surface-light)",
           }}
         >
           {metric.icon && (
@@ -373,23 +373,23 @@ export const ImpactInfographic: FC<{ metrics: ImpactMetric[] }> = ({ metrics }) 
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 20 }}>
             <div>
-              <div style={{ fontSize: "12px", color: tokens.color.muted, marginBottom: 4 }}>Before</div>
-              <div style={{ fontSize: "28px", fontWeight: tokens.weight.medium, color: tokens.color.body }}>
+              <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: 4 }}>Before</div>
+              <div style={{ fontSize: "28px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)" }}>
                 {metric.before}
               </div>
             </div>
 
-            <div style={{ fontSize: "20px", color: tokens.color.muted }}>→</div>
+            <div style={{ fontSize: "20px", color: "var(--text-muted)" }}>→</div>
 
             <div>
-              <div style={{ fontSize: "12px", color: tokens.color.muted, marginBottom: 4 }}>After</div>
+              <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: 4 }}>After</div>
               <div style={{ fontSize: "28px", fontWeight: tokens.weight.medium, color: tokens.color.accent }}>
                 {metric.after}
               </div>
             </div>
           </div>
 
-          <div style={{ fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink }}>
+          <div style={{ fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>
             {metric.label}
           </div>
         </div>
@@ -409,10 +409,10 @@ interface ReflectionPoint {
 export const ReflectionCards: FC<{ points: ReflectionPoint[] }> = ({ points }) => (
   <div style={{ marginBottom: 80 }}>
     <div style={{ marginBottom: 60 }}>
-      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: tokens.color.muted, marginBottom: 12 }}>
+      <div style={{ fontSize: "14px", fontWeight: tokens.weight.medium, color: "var(--text-muted)", marginBottom: 12 }}>
         REFLECTION
       </div>
-      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: 0 }}>
+      <h2 style={{ fontSize: "24px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: 0 }}>
         Key takeaways
       </h2>
     </div>
@@ -430,14 +430,14 @@ export const ReflectionCards: FC<{ points: ReflectionPoint[] }> = ({ points }) =
           style={{
             padding: 24,
             borderRadius: tokens.radius.md,
-            backgroundColor: tokens.color.offWhite,
+            backgroundColor: "var(--surface-light)",
           }}
         >
           <h3
             style={{
               fontSize: "16px",
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               margin: "0 0 12px",
             }}
           >
@@ -446,7 +446,7 @@ export const ReflectionCards: FC<{ points: ReflectionPoint[] }> = ({ points }) =
           <p
             style={{
               fontSize: "14px",
-              color: tokens.color.body,
+              color: "var(--text-secondary)",
               lineHeight: tokens.leading.normal,
               margin: 0,
             }}

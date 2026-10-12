@@ -19,7 +19,7 @@ const StepsComparison: FC = () => {
             fontFamily: tokens.font.sans,
             fontSize: "12px",
             fontWeight: tokens.weight.medium,
-            color: tokens.color.muted,
+            color: "var(--text-muted)",
             letterSpacing: "0.5px",
             marginBottom: 16,
           }}
@@ -44,7 +44,7 @@ const StepsComparison: FC = () => {
                 gap: 12,
                 padding: "12px 16px",
                 borderRadius: tokens.radius.sm,
-                backgroundColor: tokens.color.offWhite,
+                backgroundColor: "var(--surface-light)",
               }}
             >
               <div
@@ -71,7 +71,7 @@ const StepsComparison: FC = () => {
                     fontFamily: tokens.font.sans,
                     fontSize: "13px",
                     fontWeight: tokens.weight.medium,
-                    color: tokens.color.ink,
+                    color: "var(--text-dark)",
                   }}
                 >
                   {item.label}
@@ -80,7 +80,7 @@ const StepsComparison: FC = () => {
                   style={{
                     fontFamily: tokens.font.sans,
                     fontSize: "12px",
-                    color: tokens.color.muted,
+                    color: "var(--text-muted)",
                   }}
                 >
                   {item.desc}
@@ -98,7 +98,7 @@ const StepsComparison: FC = () => {
             fontFamily: tokens.font.sans,
             fontSize: "12px",
             fontWeight: tokens.weight.medium,
-            color: tokens.color.muted,
+            color: "var(--text-muted)",
             letterSpacing: "0.5px",
             marginBottom: 16,
           }}
@@ -146,7 +146,7 @@ const StepsComparison: FC = () => {
                     fontFamily: tokens.font.sans,
                     fontSize: "13px",
                     fontWeight: tokens.weight.medium,
-                    color: tokens.color.ink,
+                    color: "var(--text-dark)",
                   }}
                 >
                   {item.label}
@@ -155,7 +155,7 @@ const StepsComparison: FC = () => {
                   style={{
                     fontFamily: tokens.font.sans,
                     fontSize: "12px",
-                    color: tokens.color.muted,
+                    color: "var(--text-muted)",
                   }}
                 >
                   {item.desc}

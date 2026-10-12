@@ -65,7 +65,7 @@ const VeriSupplyCaseStudy: FC = () => {
       <section id="intro" style={{ paddingBottom: 96 }} className="section-reveal">
         <Reveal>
           <div style={{ marginBottom: 16 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
               Supply-chain risk meets decision support.
             </span>
           </div>
@@ -74,7 +74,7 @@ const VeriSupplyCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: tokens.leading.snug,
               margin: "0 0 20px",
               maxWidth: 480,
@@ -139,7 +139,7 @@ const VeriSupplyCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               margin: "0 0 40px",
               lineHeight: tokens.leading.snug,
             }}
@@ -158,7 +158,7 @@ const VeriSupplyCaseStudy: FC = () => {
           `}</style>
           <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
             {/* Numbers without meaning - Purple for confusion/complexity */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Bar chart - purple for confusion/complexity */}
                 <rect x="15" y="45" width="8" height="25" fill="#8B5CF6" opacity="0.5" />
@@ -171,16 +171,16 @@ const VeriSupplyCaseStudy: FC = () => {
                   ?
                 </text>
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
                 Numbers without meaning
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
                 Risk scores lack business context
               </p>
             </div>
 
             {/* Blind spots - Dark blue for invisibility/unseen */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Eye symbol - dark blue to show invisibility */}
                 <circle cx="40" cy="40" r="14" fill="none" stroke="#1E3A8A" strokeWidth="2" />
@@ -190,16 +190,16 @@ const VeriSupplyCaseStudy: FC = () => {
                 <polygon points="25,60 40,58 55,60 48,68 32,68" fill="#1E3A8A" opacity="0.3" />
                 <polygon points="30,65 40,64 50,65 45,70 35,70" fill="#1E3A8A" opacity="0.1" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
                 Blind spots beyond Tier 1
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
                 Upstream disruptions go unseen
               </p>
             </div>
 
             {/* Slow analysis - Amber for time pressure/caution */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Hourglass shape - amber for time pressure */}
                 <path d="M 25 18 L 55 18 L 50 40 L 55 62 L 25 62 L 30 40 Z" fill="none" stroke="#F59E0B" strokeWidth="2.5" />
@@ -208,16 +208,16 @@ const VeriSupplyCaseStudy: FC = () => {
                 <circle cx="40" cy="54" r="1.8" fill="#F59E0B" opacity="0.5" />
                 <circle cx="40" cy="60" r="1.5" fill="#F59E0B" opacity="0.2" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
                 Analysis is too slow
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
                 Manual investigation misses decision windows
               </p>
             </div>
 
             {/* Black box automation - Red for danger/risk */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 {/* Locked box - red for danger/risk */}
                 <rect x="22" y="28" width="36" height="28" fill="none" stroke="#DC2626" strokeWidth="2.5" rx="3" />
@@ -233,10 +233,10 @@ const VeriSupplyCaseStudy: FC = () => {
                 <path d="M 12 44 L 22 44" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
                 <path d="M 58 44 L 68 44" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
                 Automation without evidence
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
                 Can't defend decisions to stakeholders
               </p>
             </div>
@@ -254,7 +254,7 @@ const VeriSupplyCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               margin: "0 0 40px",
               lineHeight: tokens.leading.snug,
             }}
@@ -264,40 +264,40 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
             We challenged the assumption that risk visibility was the problem. Interviews with procurement leaders across multiple companies revealed the real bottleneck: <strong>decision-making, not data.</strong>
           </p>
         </Reveal>
 
         <Reveal>
-          <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
-            <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
+          <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
+            <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
               The Real Problem (What Teams Actually Said)
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
                   "Don't give me another place to look — tell me what matters."
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   Strategic Sourcing Lead at Fortune 500 Manufacturer
                 </p>
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
                   "People don't have time to read 50-page reports. We need it condensed to what actually matters."
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   Operations Director, Supply Chain
                 </p>
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.ink, margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
                   "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   VP Procurement, Tech Company
                 </p>
               </div>
@@ -314,52 +314,52 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <div className="gaps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginTop: 0 }}>
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
               <div style={{ fontSize: 24, marginBottom: 8 }}>🔗</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
                 Fragmentation
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Data scattered across disconnected tools
               </p>
             </div>
 
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
               <div style={{ fontSize: 24, marginBottom: 8 }}>👁️</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
                 Invisibility
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Tier 2+ suppliers unseen
               </p>
             </div>
 
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
               <div style={{ fontSize: 24, marginBottom: 8 }}>❓</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
                 No Context
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Risk without business impact
               </p>
             </div>
 
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
               <div style={{ fontSize: 24, marginBottom: 8 }}>⏱️</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
                 Slow Action
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Manual analysis misses windows
               </p>
             </div>
 
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
               <div style={{ fontSize: 24, marginBottom: 8 }}>🔐</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 4px" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
                 Undefendable
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Automation without evidence
               </p>
             </div>
@@ -375,7 +375,7 @@ const VeriSupplyCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               margin: "0 0 40px",
               lineHeight: tokens.leading.snug,
             }}
@@ -394,18 +394,18 @@ const VeriSupplyCaseStudy: FC = () => {
           `}</style>
           <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
             {/* Layer 1: Monitor */}
-            <rect x="50" y="40" width="250" height="200" fill={tokens.color.offWhite} rx="12" />
+            <rect x="50" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
             {/* Monitor icon: signal waves */}
             <circle cx="175" cy="80" r="28" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.5" />
             <circle cx="175" cy="80" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
             <circle cx="175" cy="80" r="8" fill={tokens.color.accent} />
-            <text x="175" y="150" fontSize={tokens.text.lg} fill={tokens.color.ink} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+            <text x="175" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
               Monitor
             </text>
-            <text x="175" y="180" fontSize={tokens.text.base} fill={tokens.color.body} textAnchor="middle" fontFamily={tokens.font.sans}>
+            <text x="175" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
               Detect changes
             </text>
-            <text x="175" y="202" fontSize={tokens.text.base} fill={tokens.color.body} textAnchor="middle" fontFamily={tokens.font.sans}>
+            <text x="175" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
               across suppliers & data
             </text>
 
@@ -414,19 +414,19 @@ const VeriSupplyCaseStudy: FC = () => {
             <polygon points="365,140 375,135 375,145" fill={tokens.color.accent} />
 
             {/* Layer 2: Understand */}
-            <rect x="385" y="40" width="250" height="200" fill={tokens.color.offWhite} rx="12" />
+            <rect x="385" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
             {/* Understand icon: connected data */}
             <rect x="460" y="60" width="30" height="15" fill={tokens.color.accent} opacity="0.3" rx="2" />
             <rect x="460" y="80" width="30" height="15" fill={tokens.color.accent} opacity="0.6" rx="2" />
             <rect x="495" y="70" width="20" height="20" fill={tokens.color.accent} rx="2" />
             <path d="M 480 68 L 495 78" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.4" />
-            <text x="510" y="150" fontSize={tokens.text.lg} fill={tokens.color.ink} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+            <text x="510" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
               Understand
             </text>
-            <text x="510" y="180" fontSize={tokens.text.base} fill={tokens.color.body} textAnchor="middle" fontFamily={tokens.font.sans}>
+            <text x="510" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
               Assess impact on
             </text>
-            <text x="510" y="202" fontSize={tokens.text.base} fill={tokens.color.body} textAnchor="middle" fontFamily={tokens.font.sans}>
+            <text x="510" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
               business & revenue
             </text>
 
@@ -435,17 +435,17 @@ const VeriSupplyCaseStudy: FC = () => {
             <polygon points="690,140 700,135 700,145" fill={tokens.color.accent} />
 
             {/* Layer 3: Act - Green for positive outcome */}
-            <rect x="700" y="40" width="250" height="200" fill={tokens.color.offWhite} rx="12" />
+            <rect x="700" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
             {/* Act icon: checkmark in success circle */}
             <circle cx="825" cy="80" r="28" fill="#10B981" opacity="0.1" />
             <path d="M 815 82 L 821 88 L 835 74" stroke="#10B981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <text x="825" y="150" fontSize={tokens.text.lg} fill={tokens.color.ink} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+            <text x="825" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
               Act
             </text>
-            <text x="825" y="180" fontSize={tokens.text.base} fill={tokens.color.body} textAnchor="middle" fontFamily={tokens.font.sans}>
+            <text x="825" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
               Make informed decisions
             </text>
-            <text x="825" y="202" fontSize={tokens.text.base} fill={tokens.color.body} textAnchor="middle" fontFamily={tokens.font.sans}>
+            <text x="825" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
               with evidence
             </text>
           </svg>
@@ -485,7 +485,7 @@ const VeriSupplyCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               margin: "0 0 40px",
               lineHeight: tokens.leading.snug,
             }}
@@ -504,7 +504,7 @@ const VeriSupplyCaseStudy: FC = () => {
           `}</style>
           <div className="design-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
             {/* Dashboard */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Frame */}
                 {/* Header bar */}
@@ -518,16 +518,16 @@ const VeriSupplyCaseStudy: FC = () => {
                 <line x1="24" y1="115" x2="200" y2="115" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
                 <line x1="24" y1="125" x2="200" y2="125" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
                 Dashboard
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
                 Central hub showing AI summary, priorities, business impact, and supply-chain risk map. One screen to see what matters most.
               </p>
             </div>
 
             {/* Engineering Changes */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Source box */}
                 <rect x="80" y="15" width="80" height="35" fill={tokens.color.accent} opacity="0.15" rx="4" />
@@ -548,16 +548,16 @@ const VeriSupplyCaseStudy: FC = () => {
                 <circle cx="60" cy="154" r="4" fill={tokens.color.accent} />
                 <line x1="70" y1="154" x2="180" y2="154" stroke={tokens.color.accent} strokeWidth="1.5" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
                 Engineering Changes
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
                 Automatically links design changes to supplier and sourcing impact. Catch risks before they become problems.
               </p>
             </div>
 
             {/* Supplier Comparison */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Option A */}
                 <rect x="10" y="12" width="60" height="140" fill={tokens.color.accent} opacity="0.08" rx="4" />
@@ -584,16 +584,16 @@ const VeriSupplyCaseStudy: FC = () => {
                 {/* Comparison indicator */}
                 <path d="M 40 160 L 120 160 L 180 160" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
                 Supplier Comparison
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
                 AI-generated options with cost, quality, and risk tradeoffs side-by-side. Make faster sourcing decisions.
               </p>
             </div>
 
             {/* Bill of Materials */}
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Header */}
                 <rect x="14" y="12" width="212" height="22" fill={tokens.color.accent} opacity="0.1" rx="3" />
@@ -619,10 +619,10 @@ const VeriSupplyCaseStudy: FC = () => {
                 <path d="M 120 115 L 120 130" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" strokeDasharray="2,2" />
                 <circle cx="120" cy="138" r="3" fill={tokens.color.accent} />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 8px" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
                 Bill of Materials
               </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.normal }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
                 Connected view of all parts, suppliers, costs, and supply-chain exposure in one view.
               </p>
             </div>
@@ -637,7 +637,7 @@ const VeriSupplyCaseStudy: FC = () => {
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.lg,
                 fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
+                color: "var(--text-dark)",
               }}
             >
               Real interface: Market analysis & supplier insights
@@ -677,7 +677,7 @@ const VeriSupplyCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               margin: "0 0 40px",
               lineHeight: tokens.leading.snug,
             }}
@@ -687,52 +687,52 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
+          <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P0: Validation
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
                   1–2 months
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
                   Prototype testing, interviews, validate core workflow, identify MVP
                 </p>
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P1: Definition
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
                   0.5–1 month
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
                   Finalize MVP scope, requirements, success metrics, technical requirements
                 </p>
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P2: Design
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
                   1–2 months
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
                   High-fidelity UX/UI, workflows, usability testing, design iteration
                 </p>
               </div>
 
               <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
                   P3: Build
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
                   3–5 months
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
                   Build core product, data architecture, integrations, core workflows
                 </p>
               </div>
@@ -749,7 +749,7 @@ const VeriSupplyCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               margin: "0 0 40px",
               lineHeight: tokens.leading.snug,
             }}
@@ -767,29 +767,29 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <div className="learnings-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
                 Ask the Right Questions
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Narrow hypothesis → Problem reframing. Visibility wasn't the bottleneck; decision-making was.
               </p>
             </div>
 
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
                 Prototype to Validate
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Low-fidelity testing with users revealed workflow gaps that would've been expensive in dev.
               </p>
             </div>
 
-            <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 28 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.muted, letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
                 Build Smarter, Not Bigger
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Shifted from "comprehensive database" to "decision support." Less scope, higher impact.
               </p>
             </div>

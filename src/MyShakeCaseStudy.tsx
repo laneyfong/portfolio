@@ -65,7 +65,7 @@ const WireListRow: FC = () => (
     style={{
       height: 12,
       borderRadius: tokens.radius.xs,
-      background: tokens.color.stroke,
+      background: "var(--stroke)",
       width: "100%",
     }}
     aria-hidden
@@ -77,7 +77,7 @@ const WireMap: FC<{ flex: number }> = ({ flex }) => (
     style={{
       flex,
       borderRadius: tokens.radius.md,
-      background: tokens.color.offWhite,
+      background: "var(--surface-light)",
       display: "flex",
       flexDirection: "column",
       gap: 8,
@@ -92,7 +92,7 @@ const WireMap: FC<{ flex: number }> = ({ flex }) => (
         width: 60,
         height: 60,
         borderRadius: 50,
-        background: tokens.color.cardBorder,
+        background: "var(--border-color)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -100,7 +100,7 @@ const WireMap: FC<{ flex: number }> = ({ flex }) => (
     >
       <div style={{ width: 30, height: 30, borderRadius: 50, background: tokens.color.accent, opacity: 0.6 }} />
     </div>
-    <div style={{ height: 4, width: "70%", borderRadius: 2, background: tokens.color.stroke }} />
+    <div style={{ height: 4, width: "70%", borderRadius: 2, background: "var(--stroke)" }} />
   </div>
 );
 
@@ -111,7 +111,7 @@ const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
     style={{
       height: 200,
       borderRadius: tokens.radius.md,
-      background: tokens.color.white,
+      background: "var(--bg-primary)",
       padding: 12,
       display: "flex",
       gap: 8,
@@ -137,7 +137,7 @@ const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
         <div
           style={{
             borderRadius: tokens.radius.xs,
-            background: tokens.color.offWhite,
+            background: "var(--surface-light)",
             display: "flex",
             flexDirection: "column",
             gap: 6,
@@ -145,13 +145,13 @@ const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
             padding: "0 10px",
           }}
         >
-          <div style={{ height: 4, width: "60%", borderRadius: 2, background: tokens.color.cardBorder }} />
-          <div style={{ height: 4, width: "40%", borderRadius: 2, background: tokens.color.stroke }} />
+          <div style={{ height: 4, width: "60%", borderRadius: 2, background: "var(--border-color)" }} />
+          <div style={{ height: 4, width: "40%", borderRadius: 2, background: "var(--stroke)" }} />
         </div>
         <div
           style={{
             borderRadius: tokens.radius.xs,
-            background: tokens.color.offWhite,
+            background: "var(--surface-light)",
             display: "flex",
             alignItems: "center",
             gap: 8,
@@ -159,7 +159,7 @@ const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
           }}
         >
           <div style={{ width: 16, height: 16, borderRadius: 4, background: tokens.color.accent, flexShrink: 0 }} />
-          <div style={{ height: 4, width: "50%", borderRadius: 2, background: tokens.color.cardBorder }} />
+          <div style={{ height: 4, width: "50%", borderRadius: 2, background: "var(--border-color)" }} />
         </div>
       </div>
     )}
@@ -266,7 +266,7 @@ const ScrollDrivenProductShowcase: FC<{
                       transition:
                         "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
                       willChange: "opacity, transform",
-                      background: tokens.color.white,
+                      background: "var(--bg-primary)",
                       padding: "20px",
                       borderRadius: "12px",
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
@@ -277,7 +277,7 @@ const ScrollDrivenProductShowcase: FC<{
                         fontFamily: tokens.font.sans,
                         fontSize: "16px",
                         fontWeight: tokens.weight.medium,
-                        color: tokens.color.textDark,
+                        color: "var(--text-dark)",
                         margin: "0 0 10px",
                         lineHeight: tokens.leading.snug,
                         wordWrap: "break-word",
@@ -290,7 +290,7 @@ const ScrollDrivenProductShowcase: FC<{
                       style={{
                         fontFamily: tokens.font.sans,
                         fontSize: "14px",
-                        color: tokens.color.body,
+                        color: "var(--text-secondary)",
                         margin: 0,
                         lineHeight: tokens.leading.normal,
                         wordWrap: "break-word",
@@ -343,7 +343,7 @@ const ScrollDrivenProductShowcase: FC<{
                       transition:
                         "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
                       willChange: "opacity, transform",
-                      background: tokens.color.white,
+                      background: "var(--bg-primary)",
                       padding: "20px",
                       borderRadius: "12px",
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
@@ -354,7 +354,7 @@ const ScrollDrivenProductShowcase: FC<{
                         fontFamily: tokens.font.sans,
                         fontSize: "16px",
                         fontWeight: tokens.weight.medium,
-                        color: tokens.color.textDark,
+                        color: "var(--text-dark)",
                         margin: "0 0 10px",
                         lineHeight: tokens.leading.snug,
                         wordWrap: "break-word",
@@ -367,7 +367,7 @@ const ScrollDrivenProductShowcase: FC<{
                       style={{
                         fontFamily: tokens.font.sans,
                         fontSize: "14px",
-                        color: tokens.color.body,
+                        color: "var(--text-secondary)",
                         margin: 0,
                         lineHeight: tokens.leading.normal,
                         wordWrap: "break-word",
@@ -422,7 +422,7 @@ const MyShakeCaseStudy: FC = () => {
       <section id="intro" style={{ paddingBottom: 96 }} className="section-reveal">
         <Reveal>
           <div style={{ marginBottom: 16 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
               Earthquake alerts. High anxiety. Low clarity.
             </span>
           </div>
@@ -431,7 +431,7 @@ const MyShakeCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
               fontSize: tokens.text.xl,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: tokens.leading.snug,
               margin: "0 0 20px",
               maxWidth: 480,
@@ -496,30 +496,30 @@ const MyShakeCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <div style={{ background: tokens.color.offWhite, padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
+            <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
                 <div style={{ textAlign: "center" }}>
                   <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
                     <AlertIcon size={28} />
                   </div>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
                     EEW (Early Warning)
                   </div>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                     Seconds before shaking starts
                   </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                  <div style={{ fontSize: "20px", opacity: 0.3, color: tokens.color.ink }}>→</div>
+                  <div style={{ fontSize: "20px", opacity: 0.3, color: "var(--text-dark)" }}>→</div>
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
                     <PinIcon size={28} />
                   </div>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 8 }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
                     CEN (Post-Earthquake)
                   </div>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal }}>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                     Notification after shaking detected
                   </div>
                 </div>
@@ -531,10 +531,10 @@ const MyShakeCaseStudy: FC = () => {
         <div style={{ marginBottom: 80 }}>
           <Kicker>The Challenge: Grow from 5% to 12.5% active users in 3 months</Kicker>
           <Reveal>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 480 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 480 }}>
               With only 5% of MyShake's 3.8M users actively engaging with the app during earthquakes, the team needed to increase engagement to 12.5%.
             </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
               The current interface's data-heavy approach and confusing alert system meant users weren't finding the information they needed when seconds mattered most.
             </p>
           </Reveal>
@@ -564,7 +564,7 @@ const MyShakeCaseStudy: FC = () => {
                 margin: "0 auto 24px",
               }}
             />
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.muted, textAlign: "center", margin: 0 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", textAlign: "center", margin: 0 }}>
               The existing app prioritized earthquake data over personal safety.
             </p>
           </div>
@@ -575,7 +575,7 @@ const MyShakeCaseStudy: FC = () => {
       <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <div style={{ marginBottom: 12 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
               Research
             </span>
           </div>
@@ -584,7 +584,7 @@ const MyShakeCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: tokens.leading.snug,
               margin: "0 0 8px",
               maxWidth: 480,
@@ -608,7 +608,7 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ marginBottom: 60 }}>
             <Kicker>What users actually want</Kicker>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
               From 5 interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision.
             </p>
             <ExpandableRankedList
@@ -656,7 +656,7 @@ const MyShakeCaseStudy: FC = () => {
 
         <Reveal>
           <div style={{ marginTop: 80 }}>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 32px" }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 32px" }}>
               Competitive Landscape
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 16, marginBottom: 40 }}>
@@ -669,22 +669,22 @@ const MyShakeCaseStudy: FC = () => {
                 <div
                   key={app.name}
                   style={{
-                    background: i === 3 ? tokens.color.accent : tokens.color.offWhite,
+                    background: i === 3 ? tokens.color.accent : "var(--surface-light)",
                     borderRadius: tokens.radius.md,
                     padding: 16,
-                    border: i === 3 ? "none" : `1px solid ${tokens.color.cardBorder}`,
+                    border: i === 3 ? "none" : `1px solid ${"var(--border-color)"}`,
                   }}
                 >
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: i === 3 ? tokens.color.white : tokens.color.ink, margin: "0 0 8px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: i === 3 ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 8px" }}>
                     {app.name}
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "20px", fontWeight: tokens.weight.medium, color: i === 3 ? tokens.color.white : tokens.color.ink, margin: "0 0 4px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "20px", fontWeight: tokens.weight.medium, color: i === 3 ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 4px" }}>
                     {app.rating}★
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: i === 3 ? "rgba(255,255,255,0.8)" : tokens.color.muted, margin: "0 0 12px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: i === 3 ? "rgba(255,255,255,0.8)" : "var(--text-muted)", margin: "0 0 12px" }}>
                     {app.reviews} reviews
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: i === 3 ? "rgba(255,255,255,0.9)" : tokens.color.body, margin: 0 }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: i === 3 ? "rgba(255,255,255,0.9)" : "var(--text-secondary)", margin: 0 }}>
                     {app.strength}
                   </p>
                 </div>
@@ -693,27 +693,27 @@ const MyShakeCaseStudy: FC = () => {
             <div style={{ background: "#f5f5f5", borderRadius: tokens.radius.md, padding: 24 }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
                 <div>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px" }}>
                     Competitors excel at:
                   </p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {["Speed & Accuracy", "Multiple data sources", "Clean interfaces"].map(item => (
                       <div key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
                         <span style={{ color: tokens.color.accent, fontWeight: "bold", flexShrink: 0 }}>•</span>
-                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>{item}</span>
+                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px" }}>
                     Our advantage:
                   </p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {["Personalized for loved ones", "Better visual hierarchy", "Smooth, delightful UX"].map(item => (
                       <div key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
                         <span style={{ color: tokens.color.accent, fontWeight: "bold", flexShrink: 0 }}>✓</span>
-                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>{item}</span>
+                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>{item}</span>
                       </div>
                     ))}
                   </div>
@@ -728,7 +728,7 @@ const MyShakeCaseStudy: FC = () => {
       <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <div style={{ marginBottom: 12 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
               Synthesis
             </span>
           </div>
@@ -737,7 +737,7 @@ const MyShakeCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: tokens.leading.snug,
               margin: "0 0 8px",
               maxWidth: 480,
@@ -751,19 +751,19 @@ const MyShakeCaseStudy: FC = () => {
         <div style={{ marginBottom: 80 }}>
           <Reveal>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 32 }}>
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.ink, margin: "0 0 12px" }}>
+              <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 24 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px" }}>
                   Before: 7 Taps
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.muted, lineHeight: tokens.leading.snug, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", lineHeight: tokens.leading.snug, margin: 0 }}>
                   Launch → search → enter name → wait → verify location → check status → confirm safety
                 </p>
               </div>
-              <div style={{ background: tokens.color.offWhite, borderRadius: tokens.radius.md, padding: 24 }}>
+              <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 24 }}>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.accent, margin: "0 0 12px" }}>
                   After: 3 Taps
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body, lineHeight: tokens.leading.snug, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: tokens.leading.snug, margin: 0 }}>
                   Pinned contacts on dashboard with instant status checks
                 </p>
               </div>
@@ -799,7 +799,7 @@ const MyShakeCaseStudy: FC = () => {
       <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <div style={{ marginBottom: 12 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
               Ideation
             </span>
           </div>
@@ -808,7 +808,7 @@ const MyShakeCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: tokens.leading.snug,
               margin: "0 0 8px",
               maxWidth: 480,
@@ -844,7 +844,7 @@ const MyShakeCaseStudy: FC = () => {
             <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
               <ABWireframe variant={abVariant} />
               <div key={abVariant} className="case-fade-in">
-                <div className="case-variation-buttons" style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: tokens.color.offWhite, marginBottom: 24 }}>
+                <div className="case-variation-buttons" style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: "var(--surface-light)", marginBottom: 24 }}>
                   {[
                     { label: "Variation 1", title: "Half-list + half-map", description: "A split landing page: a list of nearby earthquakes on one side, a live map on the other." },
                     { label: "Variation 2", title: "Bento-style dashboard", description: "A bento grid surfacing pinned locations, nearby earthquakes, and education cards at a glance." },
@@ -859,8 +859,8 @@ const MyShakeCaseStudy: FC = () => {
                         borderRadius: tokens.radius.full,
                         border: "none",
                         cursor: "pointer",
-                        background: abVariant === i ? tokens.color.ink : "transparent",
-                        color: abVariant === i ? tokens.color.white : tokens.color.body,
+                        background: abVariant === i ? "var(--text-dark)" : "transparent",
+                        color: abVariant === i ? "var(--bg-primary)" : "var(--text-secondary)",
                         fontFamily: tokens.font.sans,
                         fontSize: tokens.text.sm,
                         fontWeight: tokens.weight.medium,
@@ -870,13 +870,13 @@ const MyShakeCaseStudy: FC = () => {
                     </button>
                   ))}
                 </div>
-                <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: tokens.color.ink, marginBottom: 8 }}>
+                <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: "var(--text-dark)", marginBottom: 8 }}>
                   {[
                     { title: "Half-list + half-map" },
                     { title: "Bento-style dashboard" },
                   ][abVariant]?.title}
                 </div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, margin: 0 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, margin: 0 }}>
                   {[
                     { description: "A split landing page: a list of nearby earthquakes on one side, a live map on the other." },
                     { description: "A bento grid surfacing pinned locations, nearby earthquakes, and education cards at a glance." },
@@ -924,7 +924,7 @@ const MyShakeCaseStudy: FC = () => {
       <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <div style={{ marginBottom: 12 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
               Solution
             </span>
           </div>
@@ -933,7 +933,7 @@ const MyShakeCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: tokens.leading.snug,
               margin: "0 0 8px",
               maxWidth: 480,
@@ -1022,10 +1022,10 @@ const MyShakeCaseStudy: FC = () => {
           <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
             <Reveal>
               <div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
                   Dashboard-First Layout
                 </div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
                   Pinned loved ones appear instantly on launch. No search, no navigation layers. In an earthquake, every second matters—users shouldn't have to dig.
                 </div>
               </div>
@@ -1033,10 +1033,10 @@ const MyShakeCaseStudy: FC = () => {
 
             <Reveal>
               <div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
                   Two-Alert System
                 </div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
                   EEW alerts arrive seconds after shaking starts; CEN notifications come after. Distinct visual treatment (color, language) helps users understand timing and urgency without thinking.
                 </div>
               </div>
@@ -1046,10 +1046,10 @@ const MyShakeCaseStudy: FC = () => {
           <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
             <Reveal>
               <div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
                   Gesture Design for Mobile
                 </div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
                   Tap-to-expand locations and swipe between pinned contacts. Designed for one-handed use during stressful moments, minimizing the mental load of complex interactions.
                 </div>
               </div>
@@ -1057,10 +1057,10 @@ const MyShakeCaseStudy: FC = () => {
 
             <Reveal>
               <div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: tokens.color.ink, marginBottom: 16 }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
                   Responsive Grid System
                 </div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: tokens.color.body }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
                   Mobile uses single-column stacking; tablet expands to a 2-column layout with the map on left and content on right. The grid adapts layout without rethinking information hierarchy.
                 </div>
               </div>
@@ -1098,7 +1098,7 @@ const MyShakeCaseStudy: FC = () => {
         <section style={{ paddingTop: 60, paddingBottom: 60 }} className="section-reveal">
           <Reveal dramatic>
             <div style={{ marginBottom: 10 }}>
-              <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
+              <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", marginBottom: 12, display: "block" }}>
                 Key Design Details
               </span>
             </div>
@@ -1113,10 +1113,10 @@ const MyShakeCaseStudy: FC = () => {
                   alt="Alert notification screens showing EEW vs CEN differentiation"
                   style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }}
                 />
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.textDark, marginBottom: 4 }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
                   Alert Flows
                 </div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   EEW and CEN alerts visually distinct
                 </div>
               </div>
@@ -1126,10 +1126,10 @@ const MyShakeCaseStudy: FC = () => {
                   alt="Detailed information screens with optimized content hierarchy"
                   style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }}
                 />
-                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.textDark, marginBottom: 4 }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
                   Detail Screens
                 </div>
-                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: tokens.color.body }}>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
                   Information hierarchy optimized for crisis moments
                 </div>
               </div>
@@ -1139,7 +1139,7 @@ const MyShakeCaseStudy: FC = () => {
           <Reveal>
             <div style={{ marginTop: 60 }}>
               <div style={{ marginBottom: 32 }}>
-                <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, marginBottom: 12, display: "block" }}>
+                <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", marginBottom: 12, display: "block" }}>
                   MyShake's first design system
                 </span>
               </div>
@@ -1163,7 +1163,7 @@ const MyShakeCaseStudy: FC = () => {
       <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
         <Reveal dramatic>
           <div style={{ marginBottom: 12 }}>
-            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: tokens.color.muted, display: "block" }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
               Reflection
             </span>
           </div>
@@ -1172,7 +1172,7 @@ const MyShakeCaseStudy: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: tokens.text.xl,
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: tokens.leading.snug,
               margin: "0 0 8px",
               maxWidth: 480,
@@ -1183,10 +1183,10 @@ const MyShakeCaseStudy: FC = () => {
           <PullQuote>This is my proudest work.</PullQuote>
         </Reveal>
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
             The most important moment was saying no to immediate redesign pressure and advocating for research instead. Those 5 interviews and 50+ survey responses fundamentally shaped the information architecture. We built MyShake's first design system—every component battle-tested for crisis moments. Cutting user friction from 7 steps to 3, increasing engagement by 45%, and seeing the app shipped with our foundation meant everything.
           </p>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: tokens.color.body, lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
             I'm deeply proud of what we took as a win together. This redesign shipped because my two engineering partners believed in user research, ruthless iteration, and accessibility-first thinking. To the team: thank you for building something that helps people stay safe during earthquakes.
           </p>
         </Reveal>
@@ -1219,7 +1219,7 @@ const MyShakeCaseStudy: FC = () => {
                   fontFamily: tokens.font.sans,
                   fontSize: tokens.text.sm,
                   fontWeight: tokens.weight.regular,
-                  color: tokens.color.muted,
+                  color: "var(--text-muted)",
                   marginBottom: 12,
                 }}
               >
@@ -1230,7 +1230,7 @@ const MyShakeCaseStudy: FC = () => {
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.medium,
                   fontSize: tokens.text.lg,
-                  color: tokens.color.textDark,
+                  color: "var(--text-dark)",
                   margin: 0,
                 }}
               >
@@ -1240,7 +1240,7 @@ const MyShakeCaseStudy: FC = () => {
                 style={{
                   fontFamily: tokens.font.sans,
                   fontSize: tokens.text.base,
-                  color: tokens.color.body,
+                  color: "var(--text-secondary)",
                   margin: "8px 0 0",
                   maxWidth: 400,
                 }}
@@ -1257,13 +1257,13 @@ const MyShakeCaseStudy: FC = () => {
                 width: 48,
                 height: 48,
                 borderRadius: "50%",
-                color: tokens.color.ink,
+                color: "var(--text-dark)",
                 cursor: "pointer",
                 fontSize: 20,
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = tokens.color.offWhite;
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "var(--surface-light)";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";

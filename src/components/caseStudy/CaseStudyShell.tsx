@@ -215,8 +215,8 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             height: 40,
             borderRadius: "50%",
             background: "transparent",
-            border: `1px solid ${tokens.color.cardBorder}`,
-            color: tokens.color.textDark,
+            border: `1px solid ${"var(--border-color)"}`,
+            color: "var(--text-dark)",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -226,12 +226,12 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             transition: "all 0.2s ease",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = tokens.color.offWhite;
-            e.currentTarget.style.borderColor = tokens.color.muted;
+            e.currentTarget.style.background = "var(--surface-light)";
+            e.currentTarget.style.borderColor = "var(--text-muted)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.borderColor = tokens.color.cardBorder;
+            e.currentTarget.style.borderColor = "var(--border-color)";
           }}
         >
           <BackArrowIcon />
@@ -267,7 +267,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                   fontFamily: tokens.font.sans,
                   fontSize: 13,
                   lineHeight: 1.3,
-                  color: active === s.id ? tokens.color.textDark : tokens.color.muted,
+                  color: active === s.id ? "var(--text-dark)" : "var(--text-muted)",
                   fontWeight: tokens.weight.regular,
                   transition: "color 0.2s ease",
                   letterSpacing: "-0.3px",
@@ -298,7 +298,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                 fontSize: 12,
                 lineHeight: 1.2,
                 fontWeight: tokens.weight.regular,
-                color: tokens.color.muted,
+                color: "var(--text-muted)",
                 letterSpacing: "-0.3px",
               }}
             >
@@ -330,7 +330,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                         width: 4,
                         height: 4,
                         borderRadius: "50%",
-                        background: tokens.color.muted,
+                        background: "var(--text-muted)",
                       }}
                     />
                     {item}
@@ -356,8 +356,8 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           height: 40,
           borderRadius: "50%",
           background: tokens.color.white,
-          border: `1px solid ${tokens.color.cardBorder}`,
-          color: tokens.color.ink,
+          border: `1px solid ${"var(--border-color)"}`,
+          color: "var(--text-dark)",
           cursor: "pointer",
           alignItems: "center",
           justifyContent: "center",
@@ -366,11 +366,11 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           transition: "all 0.2s ease",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = tokens.color.muted;
-          e.currentTarget.style.background = tokens.color.offWhite;
+          e.currentTarget.style.borderColor = "var(--text-muted)";
+          e.currentTarget.style.background = "var(--surface-light)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = tokens.color.cardBorder;
+          e.currentTarget.style.borderColor = "var(--border-color)";
           e.currentTarget.style.background = tokens.color.white;
         }}
       >
@@ -405,8 +405,8 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
               flexShrink: 0,
               padding: "6px 14px",
               borderRadius: tokens.radius.full,
-              background: active === s.id ? tokens.color.ink : tokens.color.white,
-              color: active === s.id ? tokens.color.white : tokens.color.body,
+              background: active === s.id ? "var(--text-dark)" : tokens.color.white,
+              color: active === s.id ? tokens.color.white : "var(--text-secondary)",
               fontFamily: tokens.font.sans,
               fontSize: 13,
               fontWeight: tokens.weight.medium,

@@ -27,7 +27,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
         minHeight: "100vh",
         background: tokens.color.white,
         fontFamily: tokens.font.sans,
-        color: tokens.color.body,
+        color: "var(--text-secondary)",
       }}
     >
       <ScrollProgressBar />
@@ -49,7 +49,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
               fontFamily: tokens.font.sans,
               fontSize: "44px",
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               lineHeight: 1.2,
             }}
           >
@@ -63,7 +63,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
               fontFamily: tokens.font.sans,
               fontSize: "16px",
               fontWeight: tokens.weight.regular,
-              color: tokens.color.body,
+              color: "var(--text-secondary)",
               lineHeight: 1.6,
               opacity: 0.85,
             }}
@@ -80,8 +80,8 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
                   fontSize: "12px",
                   fontFamily: tokens.font.sans,
                   fontWeight: tokens.weight.regular,
-                  color: tokens.color.body,
-                  backgroundColor: tokens.color.offWhite,
+                  color: "var(--text-secondary)",
+                  backgroundColor: "var(--surface-light)",
 
                   padding: "6px 12px",
                   borderRadius: "6px",
@@ -102,7 +102,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
                       fontFamily: tokens.font.sans,
                       fontSize: "24px",
                       fontWeight: tokens.weight.medium,
-                      color: tokens.color.ink,
+                      color: "var(--text-dark)",
                       lineHeight: 1.2,
                       marginBottom: 4,
                     }}
@@ -114,7 +114,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
                       fontFamily: tokens.font.sans,
                       fontSize: "13px",
                       fontWeight: tokens.weight.regular,
-                      color: tokens.color.body,
+                      color: "var(--text-secondary)",
                       opacity: 0.7,
                     }}
                   >
@@ -150,7 +150,7 @@ const VisualCaseStudyShell: FC<VisualCaseStudyShellProps> = ({
                   style={{
                     borderRadius: tokens.radius.sm,
                     overflow: "hidden",
-                    backgroundColor: tokens.color.offWhite,
+                    backgroundColor: "var(--surface-light)",
 
                     aspectRatio: "4/3",
                   }}

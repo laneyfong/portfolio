@@ -68,7 +68,7 @@ const DesignChallenges: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "14px",
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
             }}
           >
             {challenge.title}
@@ -77,7 +77,7 @@ const DesignChallenges: FC = () => {
             style={{
               fontFamily: tokens.font.sans,
               fontSize: "12px",
-              color: tokens.color.body,
+              color: "var(--text-secondary)",
               lineHeight: 1.4,
               fontWeight: tokens.weight.medium,
             }}

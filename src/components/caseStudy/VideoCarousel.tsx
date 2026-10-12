@@ -92,7 +92,7 @@ export const VideoCarousel: FC<{
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.lg,
                 fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
+                color: "var(--text-dark)",
               }}
             >
               {title}
@@ -104,7 +104,7 @@ export const VideoCarousel: FC<{
                 margin: 0,
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.base,
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 lineHeight: tokens.leading.normal,
                 maxWidth: 600,
               }}
@@ -121,7 +121,7 @@ export const VideoCarousel: FC<{
           position: "relative",
           borderRadius: tokens.radius.md,
           overflow: "hidden",
-          background: tokens.color.ink,
+          background: "var(--text-dark)",
           aspectRatio: `${aspectRatio}`,
           cursor: "pointer",
         }}
@@ -286,7 +286,7 @@ export const VideoCarousel: FC<{
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.base,
                 fontWeight: tokens.weight.medium,
-                color: tokens.color.ink,
+                color: "var(--text-dark)",
               }}
             >
               {currentItem.title}
@@ -298,7 +298,7 @@ export const VideoCarousel: FC<{
                 margin: 0,
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.sm,
-                color: tokens.color.body,
+                color: "var(--text-secondary)",
                 lineHeight: tokens.leading.normal,
                 maxWidth: 600,
               }}

@@ -36,7 +36,7 @@ const IconHighlight: FC<IconHighlightProps> = ({ icon, title, description, color
             fontFamily: tokens.font.sans,
             fontSize: "14px",
             fontWeight: tokens.weight.medium,
-            color: tokens.color.ink,
+            color: "var(--text-dark)",
             marginBottom: 4,
           }}
         >
@@ -46,7 +46,7 @@ const IconHighlight: FC<IconHighlightProps> = ({ icon, title, description, color
           style={{
             fontFamily: tokens.font.sans,
             fontSize: "13px",
-            color: tokens.color.body,
+            color: "var(--text-secondary)",
             lineHeight: 1.5,
           }}
         >

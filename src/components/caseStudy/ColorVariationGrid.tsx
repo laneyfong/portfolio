@@ -51,7 +51,7 @@ const ColorVariationGrid: FC = () => {
               fontFamily: tokens.font.sans,
               fontSize: "14px",
               fontWeight: tokens.weight.medium,
-              color: tokens.color.ink,
+              color: "var(--text-dark)",
               letterSpacing: "-0.3px",
             }}
           >
@@ -65,7 +65,7 @@ const ColorVariationGrid: FC = () => {
               alignItems: "center",
               gap: 12,
               padding: "12px 16px",
-              backgroundColor: tokens.color.offWhite,
+              backgroundColor: "var(--surface-light)",
               borderRadius: tokens.radius.sm,
 
             }}
@@ -101,7 +101,7 @@ const ColorVariationGrid: FC = () => {
                   fontFamily: tokens.font.sans,
                   fontSize: "13px",
                   fontWeight: tokens.weight.medium,
-                  color: tokens.color.ink,
+                  color: "var(--text-dark)",
                   marginBottom: 2,
                 }}
               >
@@ -111,7 +111,7 @@ const ColorVariationGrid: FC = () => {
                 style={{
                   fontFamily: tokens.font.sans,
                   fontSize: "12px",
-                  color: tokens.color.muted,
+                  color: "var(--text-muted)",
                   opacity: 0.7,
                 }}
               >
@@ -123,7 +123,7 @@ const ColorVariationGrid: FC = () => {
             <div
               style={{
                 fontSize: "18px",
-                color: tokens.color.muted,
+                color: "var(--text-muted)",
                 opacity: 0.5,
                 flexShrink: 0,
               }}
@@ -138,7 +138,7 @@ const ColorVariationGrid: FC = () => {
               style={{
                 fontFamily: tokens.font.sans,
                 fontSize: "11px",
-                color: tokens.color.muted,
+                color: "var(--text-muted)",
                 opacity: 0.6,
               }}
             >
