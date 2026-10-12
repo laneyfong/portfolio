@@ -101,7 +101,7 @@ const VeriSupplyCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <div style={{ marginBottom: 80, borderRadius: 20, overflow: "hidden", background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)", padding: 60, display: "flex", justifyContent: "center", alignItems: "center", minHeight: 600 }}>
+            <div style={{ marginBottom: 80, borderRadius: 20, overflow: "hidden", background: "var(--gradient-soft)", padding: 60, display: "flex", justifyContent: "center", alignItems: "center", minHeight: 600 }}>
               <img
                 src={verisupplyThumbnail}
                 alt="VeriSupply dashboard interface"

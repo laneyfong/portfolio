@@ -368,7 +368,7 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ marginTop: 80, marginBottom: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "#1a1a1a", display: "flex", justifyContent: "center", alignItems: "center", maxHeight: "70vh" }}>
+          <div style={{ marginTop: 80, marginBottom: 80, borderRadius: 20, overflow: "hidden", backgroundColor: "var(--bg-secondary)", display: "flex", justifyContent: "center", alignItems: "center", maxHeight: "70vh" }}>
             <video
               src={nvidiaPrototype}
               style={{

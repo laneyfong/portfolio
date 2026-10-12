@@ -20,6 +20,7 @@ const GlobalStyles: FC = () => (
       --card-bg: #F0F0F0;
       --stroke: #F1F0EE;
       --surface-light: #FAFAFB;
+      --gradient-soft: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
     }
 
     [data-theme="dark"] {
@@ -37,6 +38,7 @@ const GlobalStyles: FC = () => (
       --card-bg: #2A2A2A;
       --stroke: #2F2F2F;
       --surface-light: #1E1E1E;
+      --gradient-soft: linear-gradient(135deg, #252525 0%, #1A1A1A 100%);
     }
 
     html {

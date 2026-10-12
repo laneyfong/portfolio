@@ -690,7 +690,7 @@ const MyShakeCaseStudy: FC = () => {
                 </div>
               ))}
             </div>
-            <div style={{ background: "#f5f5f5", borderRadius: tokens.radius.md, padding: 24 }}>
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 24 }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
                 <div>
                   <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px" }}>
@@ -948,7 +948,7 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <div
             style={{
-              background: "linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)",
+              background: "var(--gradient-soft)",
               padding: "60px 40px",
               borderRadius: tokens.radius.md,
               display: "flex",
