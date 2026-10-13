@@ -112,19 +112,6 @@ const IDBridgeCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Reveal>
-          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
-            <FeatureCard title="The Barrier">
-              Lack of verifiable identity blocks housing access.
-            </FeatureCard>
-            <FeatureCard title="Our Solution">
-              Platform for verified documents and social worker connection.
-            </FeatureCard>
-            <FeatureCard title="The Process">
-              Offline-first, privacy-centered design built in 6 hours.
-            </FeatureCard>
-          </div>
-        </Reveal>
       </section>
 
       {/* Context */}
