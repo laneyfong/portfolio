@@ -681,10 +681,10 @@ const MyShakeCaseStudy: FC = () => {
                   <p style={{ fontFamily: tokens.font.sans, fontSize: "20px", fontWeight: tokens.weight.medium, color: i === 3 ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 4px" }}>
                     {app.rating}★
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: i === 3 ? "rgba(255,255,255,0.8)" : "var(--text-muted)", margin: "0 0 12px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: i === 3 ? "var(--bg-primary)" : "var(--text-muted)", margin: "0 0 12px" }}>
                     {app.reviews} reviews
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: i === 3 ? "rgba(255,255,255,0.9)" : "var(--text-secondary)", margin: 0 }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: i === 3 ? "var(--bg-primary)" : "var(--text-secondary)", margin: 0 }}>
                     {app.strength}
                   </p>
                 </div>
