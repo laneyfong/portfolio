@@ -168,8 +168,13 @@ const TopNav: FC = () => {
           border: none;
           cursor: pointer;
           padding: 8px;
-          color: ${tokens.color.ink};
+          color: var(--text-dark);
           font-size: 20px;
+          transition: color 0.3s ease;
+        }
+
+        [data-theme="dark"] .mobile-menu-btn {
+          color: var(--text-secondary);
         }
 
         @media (max-width: 900px) {
