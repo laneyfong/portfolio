@@ -9,13 +9,13 @@ const DarkModeToggle: FC = () => {
       onClick={toggleDarkMode}
       style={{
         position: "relative",
-        width: "clamp(32px, 3.5vw, 42px)",
-        height: "clamp(16px, 1.2vw, 18px)",
+        width: "44px",
+        height: "22px",
         border: "none",
         background: isDarkMode ? "rgba(100, 100, 100, 0.3)" : "rgba(200, 200, 200, 0.4)",
         borderRadius: "50px",
         cursor: "pointer",
-        padding: "2px",
+        padding: "1px",
         transition: "background 0.3s ease",
         display: "flex",
         alignItems: "center",
@@ -26,13 +26,6 @@ const DarkModeToggle: FC = () => {
         flexShrink: 0,
       }}
       aria-label="Toggle dark mode"
-      onFocus={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.outline = "2px solid #4060c8";
-        (e.currentTarget as HTMLButtonElement).style.outlineOffset = "2px";
-      }}
-      onBlur={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.outline = "none";
-      }}
     >
       <style>{`
         button {
@@ -42,33 +35,6 @@ const DarkModeToggle: FC = () => {
 
         button:active {
           filter: none;
-        }
-
-        /* Mobile: 36px × 18px, dot 16px */
-        @media (max-width: 640px) {
-          button {
-            width: 36px !important;
-            height: 18px !important;
-            --dot-size: 16px;
-          }
-        }
-
-        /* Tablet: 40px × 20px, dot 18px */
-        @media (min-width: 641px) and (max-width: 1024px) {
-          button {
-            width: 40px !important;
-            height: 20px !important;
-            --dot-size: 18px;
-          }
-        }
-
-        /* Desktop: 44px × 22px, dot 20px */
-        @media (min-width: 1025px) {
-          button {
-            width: 44px !important;
-            height: 22px !important;
-            --dot-size: 20px;
-          }
         }
 
         @keyframes toggle-slide-left {
@@ -142,6 +108,8 @@ const DarkModeToggle: FC = () => {
 
         .toggle-dot {
           position: absolute;
+          width: 20px;
+          height: 20px;
           background: white;
           border-radius: 50%;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -150,30 +118,6 @@ const DarkModeToggle: FC = () => {
           align-items: center;
           justify-content: center;
           transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* Mobile: 16px dot */
-        @media (max-width: 640px) {
-          .toggle-dot {
-            width: 16px;
-            height: 16px;
-          }
-        }
-
-        /* Tablet: 18px dot */
-        @media (min-width: 641px) and (max-width: 1024px) {
-          .toggle-dot {
-            width: 18px;
-            height: 18px;
-          }
-        }
-
-        /* Desktop: 20px dot */
-        @media (min-width: 1025px) {
-          .toggle-dot {
-            width: 20px;
-            height: 20px;
-          }
         }
 
         .icon-enter {
