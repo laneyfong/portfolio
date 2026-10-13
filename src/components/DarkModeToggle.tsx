@@ -9,19 +9,19 @@ const DarkModeToggle: FC = () => {
       onClick={toggleDarkMode}
       style={{
         position: "relative",
-        width: "clamp(32px, 3.8vw, 42px)",
-        height: "clamp(13px, 1.6vw, 16px)",
+        width: "52px",
+        height: "28px",
         border: "none",
         background: isDarkMode ? "rgba(100, 100, 100, 0.3)" : "rgba(200, 200, 200, 0.4)",
-        borderRadius: "100px",
+        borderRadius: "14px",
         cursor: "pointer",
         padding: "2px",
-        transition: "background 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+        transition: "background 0.3s ease",
         display: "flex",
         alignItems: "center",
         boxShadow: isDarkMode
-          ? "inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 12px rgba(100, 150, 255, 0.1)"
-          : "inset 0 1px 3px rgba(255, 255, 255, 0.2), 0 0 12px rgba(255, 180, 0, 0.1)",
+          ? "inset 0 1px 2px rgba(0, 0, 0, 0.2)"
+          : "inset 0 1px 2px rgba(255, 255, 255, 0.15)",
         outline: "none",
       }}
       aria-label="Toggle dark mode"
@@ -35,13 +35,13 @@ const DarkModeToggle: FC = () => {
     >
       <style>{`
         @keyframes toggle-slide-left {
-          from { transform: translateX(clamp(10px, 1.5vw, 18px)); }
+          from { transform: translateX(24px); }
           to { transform: translateX(0); }
         }
 
         @keyframes toggle-slide-right {
           from { transform: translateX(0); }
-          to { transform: translateX(clamp(10px, 1.5vw, 18px)); }
+          to { transform: translateX(24px); }
         }
 
         @keyframes icon-pop-in {
@@ -71,20 +71,20 @@ const DarkModeToggle: FC = () => {
 
         .toggle-thumb {
           position: absolute;
-          width: clamp(10px, 1.8vw, 13px);
-          height: clamp(10px, 1.8vw, 13px);
+          width: 24px;
+          height: 24px;
           background: #FFFFFF;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-          transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: left 0.3s ease;
         }
 
         .toggle-icon-small {
-          width: clamp(6px, 1vw, 7px);
-          height: clamp(6px, 1vw, 7px);
+          width: 12px;
+          height: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -114,7 +114,7 @@ const DarkModeToggle: FC = () => {
       <div
         className="toggle-thumb"
         style={{
-          left: isDarkMode ? "clamp(10px, 1.5vw, 18px)" : "2px",
+          left: isDarkMode ? "26px" : "2px",
         }}
       >
         <div className="toggle-icon-small">
