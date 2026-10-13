@@ -11,14 +11,19 @@ const DarkModeToggle: FC = () => {
         position: "relative",
         width: "44px",
         height: "22px",
+        minWidth: "44px",
+        maxWidth: "44px",
+        minHeight: "22px",
+        maxHeight: "22px",
         border: "none",
         background: isDarkMode ? "rgba(100, 100, 100, 0.3)" : "rgba(200, 200, 200, 0.4)",
         borderRadius: "50px",
         cursor: "pointer",
         padding: "1px",
         transition: "background 0.3s ease",
-        display: "flex",
+        display: "inline-flex",
         alignItems: "center",
+        justifyContent: "flex-start",
         boxShadow: isDarkMode
           ? "inset 0 1px 2px rgba(0, 0, 0, 0.2)"
           : "inset 0 1px 2px rgba(255, 255, 255, 0.15)",
@@ -88,6 +93,8 @@ const DarkModeToggle: FC = () => {
         .toggle-icon-small {
           width: 60%;
           height: 60%;
+          min-width: 0;
+          min-height: 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -110,6 +117,10 @@ const DarkModeToggle: FC = () => {
           position: absolute;
           width: 20px;
           height: 20px;
+          min-width: 20px;
+          max-width: 20px;
+          min-height: 20px;
+          max-height: 20px;
           background: white;
           border-radius: 50%;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -118,6 +129,7 @@ const DarkModeToggle: FC = () => {
           align-items: center;
           justify-content: center;
           transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          flex-shrink: 0;
         }
 
         .icon-enter {
@@ -136,6 +148,7 @@ const DarkModeToggle: FC = () => {
           height: "100%",
           display: "flex",
           alignItems: "center",
+          overflow: "hidden",
         }}
       >
         {/* Sliding dot inside pill */}
