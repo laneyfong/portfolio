@@ -9,8 +9,8 @@ const DarkModeToggle: FC = () => {
       onClick={toggleDarkMode}
       style={{
         position: "relative",
-        width: "clamp(28px, 3.5vw, 42px)",
-        height: "clamp(11px, 1.35vw, 16px)",
+        width: "clamp(32px, 3.8vw, 42px)",
+        height: "clamp(13px, 1.6vw, 16px)",
         border: "none",
         background: isDarkMode ? "rgba(100, 100, 100, 0.3)" : "rgba(200, 200, 200, 0.4)",
         borderRadius: "100px",
@@ -27,13 +27,13 @@ const DarkModeToggle: FC = () => {
     >
       <style>{`
         @keyframes toggle-slide-left {
-          from { transform: translateX(clamp(9px, 1.25vw, 16px)); }
+          from { transform: translateX(clamp(10px, 1.5vw, 18px)); }
           to { transform: translateX(0); }
         }
 
         @keyframes toggle-slide-right {
           from { transform: translateX(0); }
-          to { transform: translateX(clamp(9px, 1.25vw, 16px)); }
+          to { transform: translateX(clamp(10px, 1.5vw, 18px)); }
         }
 
         @keyframes icon-pop-in {
@@ -63,8 +63,8 @@ const DarkModeToggle: FC = () => {
 
         .toggle-thumb {
           position: absolute;
-          width: clamp(9px, 1.6vw, 13px);
-          height: clamp(9px, 1.6vw, 13px);
+          width: clamp(10px, 1.8vw, 13px);
+          height: clamp(10px, 1.8vw, 13px);
           background: #FFFFFF;
           border-radius: 50%;
           display: flex;
@@ -75,8 +75,8 @@ const DarkModeToggle: FC = () => {
         }
 
         .toggle-icon-small {
-          width: clamp(5px, 0.85vw, 7px);
-          height: clamp(5px, 0.85vw, 7px);
+          width: clamp(6px, 1vw, 7px);
+          height: clamp(6px, 1vw, 7px);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -106,7 +106,7 @@ const DarkModeToggle: FC = () => {
       <div
         className="toggle-thumb"
         style={{
-          left: isDarkMode ? "clamp(9px, 1.25vw, 16px)" : "2px",
+          left: isDarkMode ? "clamp(10px, 1.5vw, 18px)" : "2px",
         }}
       >
         <div className="toggle-icon-small">
