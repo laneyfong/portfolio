@@ -518,11 +518,18 @@ const VeriSupplyCaseStudy: FC = () => {
                 <line x1="24" y1="115" x2="200" y2="115" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
                 <line x1="24" y1="125" x2="200" y2="125" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
-                Dashboard
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
-                Central hub showing AI summary, priorities, business impact, and supply-chain risk map. One screen to see what matters most.
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
+                    Dashboard
+                  </h3>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
+                    Central hub showing AI summary, priorities, business impact, and supply-chain risk map. One screen to see what matters most.
+                  </p>
+                </div>
+              </div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: "var(--text-muted)", margin: "12px 0 0", padding: "8px 12px", background: "rgba(64, 96, 200, 0.05)", borderRadius: "4px", borderLeft: "2px solid var(--text-muted)" }}>
+                ↪ Directly addresses: <em>"Don't give me another place to look — tell me what matters."</em>
               </p>
             </div>
 
@@ -584,11 +591,18 @@ const VeriSupplyCaseStudy: FC = () => {
                 {/* Comparison indicator */}
                 <path d="M 40 160 L 120 160 L 180 160" stroke={tokens.color.accent} strokeWidth="1" opacity="0.3" />
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
-                Supplier Comparison
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
-                AI-generated options with cost, quality, and risk tradeoffs side-by-side. Make faster sourcing decisions.
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
+                    Supplier Comparison
+                  </h3>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
+                    AI-generated options with cost, quality, and risk tradeoffs side-by-side. Every recommendation includes an expandable <strong>Trace Evidence</strong> drawer linking back to raw ERP metrics and sourcing history.
+                  </p>
+                </div>
+              </div>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: "var(--text-muted)", margin: "12px 0 0", padding: "8px 12px", background: "rgba(64, 96, 200, 0.05)", borderRadius: "4px", borderLeft: "2px solid var(--text-muted)" }}>
+                ↪ Addresses: <em>"We need the data and reasoning behind it so we can defend the decision."</em> — Defendable AI by design.
               </p>
             </div>
 
@@ -682,7 +696,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            Product roadmap
+            Product roadmap: From discovery to scale
           </h2>
         </Reveal>
 
@@ -691,49 +705,49 @@ const VeriSupplyCaseStudy: FC = () => {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  P0: Validation
+                  P0: Discovery & Definition
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
                   1–2 months
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
-                  Prototype testing, interviews, validate core workflow, identify MVP
+                  User research, problem validation, MVP scope definition, success metrics, technical requirements
                 </p>
               </div>
 
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  P1: Definition
+                  P1: Prototyping & Validation
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
                   0.5–1 month
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
-                  Finalize MVP scope, requirements, success metrics, technical requirements
+                  Low-fidelity prototype, usability testing, workflow validation, core feature prioritization
                 </p>
               </div>
 
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  P2: Design
+                  P2: Design Partner Pilot
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
-                  1–2 months
+                  2–3 months
                 </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
-                  High-fidelity UX/UI, workflows, usability testing, design iteration
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
+                  High-fidelity design, design partner feedback loops, iterative refinement, edge-case discovery
                 </p>
               </div>
 
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 8px" }}>
-                  P3: Build
+                  P3: Scale & Launch
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0 }}>
-                  3–5 months
+                  3+ months
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: "8px 0 0", lineHeight: tokens.leading.snug }}>
-                  Build core product, data architecture, integrations, core workflows
+                  Full product build, feature expansion, performance tuning, GTM preparation
                 </p>
               </div>
             </div>
