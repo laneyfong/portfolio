@@ -37,37 +37,37 @@ const DarkModeToggle: FC = () => {
       <style>{`
         button {
           -webkit-tap-highlight-color: transparent;
-          --thumb-size: 18px;
+          --dot-size: 20px;
         }
 
         button:active {
           filter: none;
         }
 
-        /* Mobile: small pill */
+        /* Mobile: 36px × 18px, dot 16px */
         @media (max-width: 640px) {
           button {
-            width: 32px !important;
+            width: 36px !important;
             height: 18px !important;
-            --thumb-size: 14px;
+            --dot-size: 16px;
           }
         }
 
-        /* Tablet: medium pill */
+        /* Tablet: 40px × 20px, dot 18px */
         @media (min-width: 641px) and (max-width: 1024px) {
           button {
-            width: 36px !important;
+            width: 40px !important;
             height: 20px !important;
-            --thumb-size: 16px;
+            --dot-size: 18px;
           }
         }
 
-        /* Desktop: larger pill */
+        /* Desktop: 44px × 22px, dot 20px */
         @media (min-width: 1025px) {
           button {
-            width: 40px !important;
+            width: 44px !important;
             height: 22px !important;
-            --thumb-size: 18px;
+            --dot-size: 20px;
           }
         }
 
@@ -120,34 +120,13 @@ const DarkModeToggle: FC = () => {
         }
 
         .toggle-icon-small {
-          width: clamp(8px, 1.2vw, 12px);
-          height: clamp(8px, 1.2vw, 12px);
+          width: 60%;
+          height: 60%;
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
           flex-shrink: 0;
-        }
-
-        @media (max-width: 640px) {
-          .toggle-icon-small {
-            width: 10px;
-            height: 10px;
-          }
-        }
-
-        @media (min-width: 641px) and (max-width: 1024px) {
-          .toggle-icon-small {
-            width: 11px;
-            height: 11px;
-          }
-        }
-
-        @media (min-width: 1025px) {
-          .toggle-icon-small {
-            width: 12px;
-            height: 12px;
-          }
         }
 
         .toggle-icon-small svg {
@@ -163,8 +142,6 @@ const DarkModeToggle: FC = () => {
 
         .toggle-dot {
           position: absolute;
-          width: var(--thumb-size);
-          height: var(--thumb-size);
           background: white;
           border-radius: 50%;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -172,7 +149,31 @@ const DarkModeToggle: FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+          transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Mobile: 16px dot */
+        @media (max-width: 640px) {
+          .toggle-dot {
+            width: 16px;
+            height: 16px;
+          }
+        }
+
+        /* Tablet: 18px dot */
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .toggle-dot {
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+        /* Desktop: 20px dot */
+        @media (min-width: 1025px) {
+          .toggle-dot {
+            width: 20px;
+            height: 20px;
+          }
         }
 
         .icon-enter {
@@ -193,11 +194,13 @@ const DarkModeToggle: FC = () => {
           alignItems: "center",
         }}
       >
-        {/* Sliding thumb with icon */}
+        {/* Sliding dot inside pill */}
         <div
           className="toggle-dot"
           style={{
-            left: isDarkMode ? "calc(100% - var(--thumb-size) - 2px)" : "2px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            left: isDarkMode ? "calc(100% - var(--dot-size) - 1px)" : "1px",
           }}
         >
           {/* Icon on the dot */}
