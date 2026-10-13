@@ -38,28 +38,7 @@ const TopNav: FC = () => {
 
   return (
     <>
-      <a href="#main-content" className="skip-to-content">
-        Skip to main content
-      </a>
       <style>{`
-        .skip-to-content {
-          position: absolute;
-          top: -40px;
-          left: 0;
-          background: #4060c8;
-          color: white;
-          padding: 8px 16px;
-          text-decoration: none;
-          z-index: 100;
-          border-radius: 0 0 4px 0;
-          font-family: 'Manrope', sans-serif;
-          font-size: 14px;
-        }
-
-        .skip-to-content:focus {
-          top: 0;
-        }
-
         .top-nav {
           position: fixed;
           top: 0;
