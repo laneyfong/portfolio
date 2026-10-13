@@ -273,9 +273,9 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
                   flex: 1,
                 }}
               >
-                Automated friction detection at
+                Design system for internal
                 <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "var(--text-dark)" }}>
-                  {" "}scale
+                  {" "}tooling
                 </span>
               </span>
 
