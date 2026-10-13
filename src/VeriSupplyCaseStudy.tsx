@@ -630,26 +630,28 @@ const VeriSupplyCaseStudy: FC = () => {
         <Callout>Decision support with evidence to increase confidence.</Callout>
 
         <Reveal>
-          <VideoCarousel
-            title="Platform in action"
-            description="See how VeriSupply transforms raw supply-chain data into actionable insights. The platform combines real-time monitoring, impact assessment, and decision support to help procurement teams act with confidence."
-            items={[
-              {
-                type: "video",
-                src: verisupplyBom,
-                title: "BOM Analysis & Risk Assessment",
-                description: "Real-time monitoring of Bill of Materials with automated risk scoring and supplier dependency mapping.",
-              },
-              {
-                type: "video",
-                src: verisupplyEngineering,
-                title: "Engineering Changes & Impact Tracking",
-                description: "Track supplier engineering changes with downstream impact visualization to manufacturing and revenue.",
-              },
-            ]}
-            aspectRatio={16 / 9}
-            hideControls
-          />
+          <div style={{ marginLeft: "-52px", marginRight: "-52px", paddingLeft: "52px", paddingRight: "52px" }}>
+            <VideoCarousel
+              title="Platform in action"
+              description="See how VeriSupply transforms raw supply-chain data into actionable insights. The platform combines real-time monitoring, impact assessment, and decision support to help procurement teams act with confidence."
+              items={[
+                {
+                  type: "video",
+                  src: verisupplyBom,
+                  title: "BOM Analysis & Risk Assessment",
+                  description: "Real-time monitoring of Bill of Materials with automated risk scoring and supplier dependency mapping.",
+                },
+                {
+                  type: "video",
+                  src: verisupplyEngineering,
+                  title: "Engineering Changes & Impact Tracking",
+                  description: "Track supplier engineering changes with downstream impact visualization to manufacturing and revenue.",
+                },
+              ]}
+              aspectRatio={16 / 9}
+              hideControls
+            />
+          </div>
         </Reveal>
       </section>
 
@@ -856,18 +858,21 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ marginTop: 80, marginBottom: 60 }}>
-            <h3
-              style={{
-                margin: "0 0 24px",
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.lg,
-                fontWeight: tokens.weight.medium,
-                color: "var(--text-dark)",
-              }}
-            >
-              Real interface: Market analysis & supplier insights
-            </h3>
+          <div style={{ marginTop: 80, marginBottom: 60, marginLeft: "-52px", marginRight: "-52px", paddingLeft: "52px", paddingRight: "52px" }}>
+            <div style={{ marginBottom: 32 }}>
+              <h3
+                style={{
+                  margin: 0,
+                  fontFamily: tokens.font.sans,
+                  fontSize: tokens.text.lg,
+                  fontWeight: tokens.weight.medium,
+                  color: "var(--text-dark)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Real interface: Market analysis & supplier insights
+              </h3>
+            </div>
             <VideoCarousel
               items={[
                 {

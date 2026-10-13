@@ -79,20 +79,55 @@ export const VideoCarousel: FC<{
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: 24,
+        gap: 32,
         marginBottom: 80,
       }}
     >
+      <style>{`
+        @keyframes carouselFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .carousel-container {
+          animation: carouselFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .carousel-glass-background {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, rgba(20, 184, 184, 0.04) 50%, transparent 70%);
+          filter: blur(48px);
+          pointer-events: none;
+          z-index: 0;
+        }
+      `}</style>
+
       {(title || description) && (
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+            animation: "carouselFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards",
+            opacity: 0,
+          }}
+        >
           {title && (
             <h3
               style={{
-                margin: "0 0 12px",
+                margin: 0,
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.lg,
                 fontWeight: tokens.weight.medium,
                 color: "var(--text-dark)",
+                letterSpacing: "-0.02em",
               }}
             >
               {title}
@@ -106,7 +141,7 @@ export const VideoCarousel: FC<{
                 fontSize: tokens.text.base,
                 color: "var(--text-secondary)",
                 lineHeight: tokens.leading.normal,
-                maxWidth: 600,
+                maxWidth: 700,
               }}
             >
               {description}
@@ -116,17 +151,40 @@ export const VideoCarousel: FC<{
       )}
 
       <div
-        ref={containerRef}
         style={{
           position: "relative",
-          borderRadius: tokens.radius.md,
-          overflow: "hidden",
-          background: "var(--text-dark)",
-          aspectRatio: `${aspectRatio}`,
-          cursor: "pointer",
+          animation: "carouselFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards",
+          opacity: 0,
         }}
-        onClick={() => setIsFullscreen(true)}
       >
+        {/* Ambient backlighting */}
+        <div className="carousel-glass-background" />
+
+        <div
+          ref={containerRef}
+          style={{
+            position: "relative",
+            borderRadius: "20px",
+            overflow: "hidden",
+            background: "rgba(255, 255, 255, 0.05)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+            aspectRatio: `${aspectRatio}`,
+            cursor: "pointer",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1), inset 1px 1px 2px rgba(255, 255, 255, 0.05)",
+            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            zIndex: 1,
+          }}
+          onClick={() => setIsFullscreen(true)}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLDivElement).style.background = "rgba(255, 255, 255, 0.07)";
+            (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(0, 0, 0, 0.15), inset 1px 1px 2px rgba(255, 255, 255, 0.08)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLDivElement).style.background = "rgba(255, 255, 255, 0.05)";
+            (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.1), inset 1px 1px 2px rgba(255, 255, 255, 0.05)";
+          }}
+        >
         {/* Content */}
         <div style={{ width: "100%", height: "100%", position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
           {currentItem.type === "video" ? (
@@ -157,19 +215,68 @@ export const VideoCarousel: FC<{
           )}
         </div>
 
+        {/* Integrated Caption Bar */}
+        {(currentItem.title || currentItem.description) && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              background: "linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), transparent)",
+              padding: "32px 24px 24px",
+              pointerEvents: "none",
+            }}
+          >
+            {currentItem.title && (
+              <p
+                style={{
+                  margin: "0 0 6px",
+                  fontFamily: tokens.font.sans,
+                  fontSize: "13px",
+                  fontWeight: tokens.weight.medium,
+                  color: "rgba(255, 255, 255, 0.7)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                {currentItem.title}
+              </p>
+            )}
+            {currentItem.description && (
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: tokens.font.sans,
+                  fontSize: "14px",
+                  color: "rgba(255, 255, 255, 0.9)",
+                  lineHeight: tokens.leading.snug,
+                  maxWidth: 500,
+                }}
+              >
+                {currentItem.description}
+              </p>
+            )}
+          </div>
+        )}
+
         {/* Fullscreen hint */}
         <div
           style={{
             position: "absolute",
-            bottom: 16,
+            top: 16,
             right: 16,
-            background: "rgba(0, 0, 0, 0.5)",
-            color: "white",
-            padding: "8px 12px",
-            borderRadius: tokens.radius.sm,
+            background: "rgba(255, 255, 255, 0.15)",
+            backdropFilter: "blur(8px)",
+            color: "rgba(255, 255, 255, 0.8)",
+            padding: "8px 14px",
+            borderRadius: "8px",
             fontSize: "12px",
             fontFamily: tokens.font.sans,
             pointerEvents: "none",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            letterSpacing: "0.3px",
+            fontWeight: 500,
           }}
         >
           Click to expand
@@ -276,38 +383,7 @@ export const VideoCarousel: FC<{
         )}
       </div>
 
-      {/* Item Descriptions */}
-      {currentItem.title || currentItem.description ? (
-        <div style={{ paddingBottom: 20 }}>
-          {currentItem.title && (
-            <p
-              style={{
-                margin: "0 0 8px",
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.base,
-                fontWeight: tokens.weight.medium,
-                color: "var(--text-dark)",
-              }}
-            >
-              {currentItem.title}
-            </p>
-          )}
-          {currentItem.description && (
-            <p
-              style={{
-                margin: 0,
-                fontFamily: tokens.font.sans,
-                fontSize: tokens.text.sm,
-                color: "var(--text-secondary)",
-                lineHeight: tokens.leading.normal,
-                maxWidth: 600,
-              }}
-            >
-              {currentItem.description}
-            </p>
-          )}
-        </div>
-      ) : null}
+      {/* Item Descriptions moved to integrated caption bar - no separate text block needed */}
 
       {/* Fullscreen Modal Overlay */}
       {isFullscreen && (
