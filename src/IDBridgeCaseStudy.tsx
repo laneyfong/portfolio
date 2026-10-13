@@ -99,16 +99,16 @@ const IDBridgeCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ marginBottom: 48, maxWidth: 600 }}>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 20 }}>
-              <strong>The context:</strong> Unhoused individuals face systemic barriers to accessing shelter and housing. The most overlooked obstacle: they lack verifiable identity and documentation required by every housing program.
-            </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 20 }}>
-              <strong>What made this unique:</strong> This was a 6-hour designathon with 0 prior research. Most teams would sketch surface solutions. We chose to spend the first 2 hours understanding the actual problem through empathy mapping and research, not rushing to design.
-            </p>
-            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
-              <strong>The outcome:</strong> Won first place by designing a privacy-first, offline platform that lets individuals build verified document trails. We also explored how AI could accelerate the design process — and where it falls short in empathy-driven work.
-            </p>
+          <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 48 }}>
+            <FeatureCard title="The Context">
+              Unhoused individuals face systemic barriers to accessing shelter and housing. The most overlooked obstacle: they lack verifiable identity and documentation required by every housing program.
+            </FeatureCard>
+            <FeatureCard title="What Made This Unique">
+              This was a 6-hour designathon with 0 prior research. Most teams would sketch surface solutions. We chose to spend the first 2 hours understanding the actual problem through empathy mapping and research, not rushing to design.
+            </FeatureCard>
+            <FeatureCard title="The Outcome">
+              Won first place by designing a privacy-first, offline platform that lets individuals build verified document trails. We also explored how AI could accelerate the design process — and where it falls short in empathy-driven work.
+            </FeatureCard>
           </div>
         </Reveal>
 
