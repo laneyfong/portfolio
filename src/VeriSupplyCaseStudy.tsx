@@ -11,14 +11,11 @@ import {
   PullQuote,
 } from "./components/caseStudy/CaseStudyKit";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
-import VideoCarousel from "./components/caseStudy/VideoCarousel";
 import PasswordProtection from "./components/PasswordProtection";
 import verisupplyThumbnail from "./assets/verisupply-thumbnail.png";
 import verisupplyBom from "./assets/verisupply-bom.mp4?url";
 import verisupplyEngineering from "./assets/verisupply-engineering.mp4?url";
 import verisupplyCompAnalysis from "./assets/verisupply-comp-analysis.png";
-import verisupplyImage1 from "./assets/verisupply-image-1.png";
-import verisupplyImage2 from "./assets/verisupply-image-2.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -37,6 +34,172 @@ const HIGHLIGHTS = [
   "Designed a three-phase MVP approach (Monitor → Understand → Act) to address core workflow gaps",
   "Validated hypothesis through prototype testing that decision-making, not just risk scores, was the primary pain point",
 ];
+
+const PlatformWalkthrough: FC<{ verisupplyBom: string; verisupplyEngineering: string }> = ({ verisupplyBom, verisupplyEngineering }) => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const features = [
+    { id: 0, label: "BOM Analysis", title: "BOM Analysis & Risk Assessment", description: "Real-time monitoring of Bill of Materials with automated risk scoring and supplier dependency mapping.", src: verisupplyBom },
+    { id: 1, label: "Engineering Changes", title: "Engineering Changes & Impact Tracking", description: "Track supplier engineering changes with downstream impact visualization to manufacturing and revenue.", src: verisupplyEngineering },
+  ];
+
+  const activeFeature = features[activeTab];
+
+  return (
+    <div className="feature-tabs">
+      <div className="feature-tab-list">
+        {features.map((feature) => (
+          <button
+            key={feature.id}
+            className={`feature-tab ${activeTab === feature.id ? 'active' : ''}`}
+            onClick={() => setActiveTab(feature.id)}
+          >
+            {feature.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="feature-video-container">
+        <video
+          src={activeFeature.src}
+          style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", background: "rgba(0, 0, 0, 0.2)" }}
+          controls={false}
+          autoPlay
+          loop
+          muted
+        />
+        <div className="feature-video-label">
+          <p className="feature-video-title">{activeFeature.title}</p>
+          <p className="feature-video-desc">{activeFeature.description}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }> = ({ verisupplyCompAnalysis, tokens }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const takeaways = [
+    "AI-generated supplier alternatives reduce evaluation time from weeks to hours while maintaining rigor",
+    "Cost-risk tradeoff visualization enables procurement teams to defend decisions to stakeholders with hard data",
+    "Automated scoring on quality, delivery, and sustainability removes bias from supplier selection process",
+  ];
+
+  return (
+    <>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: 32, alignItems: "start" }}>
+        <div
+          style={{
+            position: "relative",
+            borderRadius: "16px",
+            overflow: "hidden",
+            background: "rgba(255, 255, 255, 0.02)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+            cursor: "pointer",
+            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+          onClick={() => setIsExpanded(true)}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255, 255, 255, 0.15)";
+            (e.currentTarget as HTMLDivElement).style.background = "rgba(255, 255, 255, 0.04)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255, 255, 255, 0.08)";
+            (e.currentTarget as HTMLDivElement).style.background = "rgba(255, 255, 255, 0.02)";
+          }}
+        >
+          <img src={verisupplyCompAnalysis} alt="Market analysis spreadsheet" style={{ width: "100%", height: "auto", display: "block" }} />
+          <div
+            style={{
+              position: "absolute",
+              top: 16,
+              right: 16,
+              background: "rgba(255, 255, 255, 0.15)",
+              backdropFilter: "blur(8px)",
+              color: "rgba(255, 255, 255, 0.8)",
+              padding: "8px 14px",
+              borderRadius: "8px",
+              fontSize: "12px",
+              fontFamily: tokens.font.sans,
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              letterSpacing: "0.3px",
+              fontWeight: 500,
+            }}
+          >
+            Click to expand
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+            Key takeaways
+          </p>
+          {takeaways.map((takeaway, idx) => (
+            <div key={idx} style={{ display: "flex", gap: 12 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4060C8", flexShrink: 0, marginTop: 8 }} />
+              <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
+                {takeaway}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {isExpanded && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "rgba(0, 0, 0, 0.95)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+            backdropFilter: "blur(2px)",
+          }}
+          onClick={() => setIsExpanded(false)}
+        >
+          <div style={{ position: "relative", maxWidth: "90vw", maxHeight: "90vh" }} onClick={(e) => e.stopPropagation()}>
+            <img src={verisupplyCompAnalysis} alt="Market analysis spreadsheet expanded" style={{ width: "100%", height: "auto", borderRadius: "12px" }} />
+            <button
+              onClick={() => setIsExpanded(false)}
+              style={{
+                position: "absolute",
+                top: 20,
+                right: 20,
+                width: 40,
+                height: 40,
+                background: "rgba(255, 255, 255, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                color: "white",
+                borderRadius: "50%",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 24,
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.2)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.1)";
+              }}
+              aria-label="Close expanded view"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 
 const VeriSupplyCaseStudy: FC = () => {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -630,27 +793,133 @@ const VeriSupplyCaseStudy: FC = () => {
         <Callout>Decision support with evidence to increase confidence.</Callout>
 
         <Reveal>
-          <div style={{ marginLeft: "-52px", marginRight: "-52px", paddingLeft: "52px", paddingRight: "52px" }}>
-            <VideoCarousel
-              title="Platform in action"
-              description="See how VeriSupply transforms raw supply-chain data into actionable insights. The platform combines real-time monitoring, impact assessment, and decision support to help procurement teams act with confidence."
-              items={[
-                {
-                  type: "video",
-                  src: verisupplyBom,
-                  title: "BOM Analysis & Risk Assessment",
-                  description: "Real-time monitoring of Bill of Materials with automated risk scoring and supplier dependency mapping.",
-                },
-                {
-                  type: "video",
-                  src: verisupplyEngineering,
-                  title: "Engineering Changes & Impact Tracking",
-                  description: "Track supplier engineering changes with downstream impact visualization to manufacturing and revenue.",
-                },
-              ]}
-              aspectRatio={16 / 9}
-              hideControls
-            />
+          <div style={{ display: "flex", flexDirection: "column", gap: 32, marginBottom: 40 }}>
+            <div>
+              <h3 style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.lg, fontWeight: tokens.weight.medium, color: "var(--text-dark)", letterSpacing: "-0.02em", marginBottom: 8 }}>
+                Platform in action
+              </h3>
+              <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, maxWidth: 700 }}>
+                See how VeriSupply transforms raw supply-chain data into actionable insights. The platform combines real-time monitoring, impact assessment, and decision support to help procurement teams act with confidence.
+              </p>
+            </div>
+
+            <style>{`
+              .feature-tabs {
+                display: grid;
+                grid-template-columns: 200px 1fr;
+                gap: 32;
+                align-items: start;
+              }
+
+              .feature-tab-list {
+                display: flex;
+                flex-direction: column;
+                gap: 8;
+              }
+
+              .feature-tab {
+                padding: 16px 20px;
+                border: 1px solid rgba(64, 96, 200, 0);
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0);
+                font-family: ${tokens.font.sans};
+                font-size: ${tokens.text.sm};
+                font-weight: ${tokens.weight.medium};
+                color: var(--text-secondary);
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                text-align: left;
+                border-left: 2px solid transparent;
+                padding-left: 18px;
+              }
+
+              .feature-tab:hover {
+                background: rgba(64, 96, 200, 0.05);
+                color: var(--text-dark);
+              }
+
+              .feature-tab.active {
+                background: rgba(64, 96, 200, 0.08);
+                color: var(--text-dark);
+                border-left-color: #4060C8;
+              }
+
+              .feature-video-container {
+                position: relative;
+                border-radius: 16px;
+                overflow: hidden;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                aspect-ratio: 16 / 9;
+                animation: fadeInScale 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+              }
+
+              .feature-video-container video,
+              .feature-video-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+                background: rgba(0, 0, 0, 0.2);
+              }
+
+              .feature-video-label {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), transparent);
+                padding: 32px 24px 24px;
+              }
+
+              .feature-video-label p {
+                margin: 0;
+                font-family: ${tokens.font.sans};
+              }
+
+              .feature-video-title {
+                font-size: 14px;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 6px;
+              }
+
+              .feature-video-desc {
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.5;
+              }
+
+              @keyframes fadeInScale {
+                from {
+                  opacity: 0;
+                  transform: scale(0.98);
+                }
+                to {
+                  opacity: 1;
+                  transform: scale(1);
+                }
+              }
+
+              @media (max-width: 768px) {
+                .feature-tabs {
+                  grid-template-columns: 1fr;
+                  gap: 24;
+                }
+
+                .feature-tab-list {
+                  flex-direction: row;
+                  flex-wrap: wrap;
+                }
+
+                .feature-tab {
+                  flex: 1;
+                  min-width: 150px;
+                }
+              }
+            `}</style>
+
+            <PlatformWalkthrough verisupplyBom={verisupplyBom} verisupplyEngineering={verisupplyEngineering} />
           </div>
         </Reveal>
       </section>
@@ -858,44 +1127,66 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ marginTop: 80, marginBottom: 60, marginLeft: "-52px", marginRight: "-52px", paddingLeft: "52px", paddingRight: "52px" }}>
-            <div style={{ marginBottom: 32 }}>
-              <h3
-                style={{
-                  margin: 0,
-                  fontFamily: tokens.font.sans,
-                  fontSize: tokens.text.lg,
-                  fontWeight: tokens.weight.medium,
-                  color: "var(--text-dark)",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Real interface: Market analysis & supplier insights
-              </h3>
-            </div>
-            <VideoCarousel
-              items={[
-                {
-                  type: "image",
-                  src: verisupplyCompAnalysis,
-                  title: "Competitive Analysis",
-                  description: "Market landscape showing alternative suppliers and cost/risk tradeoffs for decision-making.",
-                },
-                {
-                  type: "image",
-                  src: verisupplyImage1,
-                  title: "Supplier Risk Dashboard",
-                  description: "Centralized view of supplier health metrics, risk indicators, and recommended actions.",
-                },
-                {
-                  type: "image",
-                  src: verisupplyImage2,
-                  title: "Decision Support Interface",
-                  description: "Evidence-backed recommendations with business impact analysis for informed decision-making.",
-                },
-              ]}
-              aspectRatio={4 / 3}
-            />
+          <div style={{ marginTop: 80, marginBottom: 60 }}>
+            <h3 style={{ margin: "0 0 8px", fontFamily: tokens.font.sans, fontSize: tokens.text.lg, fontWeight: tokens.weight.medium, color: "var(--text-dark)", letterSpacing: "-0.02em" }}>
+              Real interface: Market analysis & supplier insights
+            </h3>
+            <p style={{ margin: "0 0 32px", fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, maxWidth: 700 }}>
+              See how procurement teams use VeriSupply to analyze competitive alternatives and make data-backed supplier decisions with confidence.
+            </p>
+
+            <style>{`
+              .market-image-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                backdrop-filter: blur(2px);
+              }
+
+              .market-image-modal-content {
+                position: relative;
+                max-width: 90vw;
+                max-height: 90vh;
+              }
+
+              .market-image-modal img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+              }
+
+              .market-image-modal-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: white;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                transition: all 0.2s ease;
+              }
+
+              .market-image-modal-close:hover {
+                background: rgba(255, 255, 255, 0.2);
+              }
+            `}</style>
+
+            <MarketAnalysisGallery verisupplyCompAnalysis={verisupplyCompAnalysis} tokens={tokens} />
           </div>
         </Reveal>
       </section>
