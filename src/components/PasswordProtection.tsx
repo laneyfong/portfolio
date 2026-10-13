@@ -16,13 +16,11 @@ const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
     setIsSubmitting(true);
     setError("");
 
-    // Simulate slight delay for UX
     setTimeout(() => {
-      // Password is "verisupply" - hash this in production
       if (password === "verisupply") {
         onUnlock();
       } else {
-        setError("Incorrect password. Please try again.");
+        setError("Incorrect password");
         setPassword("");
       }
       setIsSubmitting(false);
@@ -40,49 +38,66 @@ const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "rgba(255, 255, 255, 0.95)",
-        backdropFilter: "blur(4px)",
+        background: "var(--bg-primary)",
         zIndex: 9999,
+        transition: "background 0.3s ease",
       }}
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .password-container {
+            padding: 40px 20px !important;
+            max-width: 100% !important;
+          }
+          .password-input {
+            font-size: 16px !important;
+          }
+        }
+      `}</style>
+
       <div
+        className="password-container"
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: 32,
-          maxWidth: 480,
+          gap: "24px",
+          maxWidth: "400px",
+          width: "100%",
           padding: "60px 40px",
-          textAlign: "center",
+          boxSizing: "border-box",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <h1
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: tokens.text["2xl"],
-              color: tokens.color.ink,
+              fontSize: tokens.text.lg,
+              color: "var(--text-dark)",
               margin: 0,
+              letterSpacing: "-0.05em",
             }}
           >
-            Confidential Case Study
+            Password required
           </h1>
           <p
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.regular,
-              fontSize: tokens.text.base,
-              color: tokens.color.body,
+              fontSize: tokens.text.sm,
+              color: "var(--text-secondary)",
               margin: 0,
+              lineHeight: tokens.leading.normal,
             }}
           >
-            This case study is password-protected.
+            This case study is confidential. Enter the password to continue.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             <input
+              className="password-input"
               type="password"
               value={password}
               onChange={(e) => {
@@ -94,15 +109,17 @@ const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
               style={{
                 fontFamily: tokens.font.sans,
                 fontSize: tokens.text.base,
-                padding: "12px 16px",
-                borderRadius: tokens.radius.md,
-                border: error ? `1px solid #cc3333` : `1px solid ${tokens.color.cardBorder}`,
-                backgroundColor: tokens.color.white,
-                color: tokens.color.ink,
+                padding: "12px 14px",
+                borderRadius: tokens.radius.sm,
+                border: error ? "1px solid #DC2626" : "1px solid var(--border-color)",
+                background: "var(--bg-primary)",
+                color: "var(--text-dark)",
                 outline: "none",
-                transition: "border-color 0.2s ease",
+                transition: "border-color 0.2s ease, background 0.3s ease",
                 opacity: isSubmitting ? 0.6 : 1,
                 cursor: isSubmitting ? "not-allowed" : "text",
+                boxSizing: "border-box",
+                WebkitFontSmoothing: "antialiased",
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter" && !isSubmitting) {
@@ -115,8 +132,9 @@ const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
                 style={{
                   fontFamily: tokens.font.sans,
                   fontSize: tokens.text.sm,
-                  color: "#cc3333",
+                  color: "#DC2626",
                   margin: 0,
+                  letterSpacing: "-0.05em",
                 }}
               >
                 {error}
@@ -130,25 +148,26 @@ const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
-              fontSize: tokens.text.base,
-              padding: "12px 24px",
-              borderRadius: tokens.radius.md,
+              fontSize: tokens.text.sm,
+              padding: "11px 16px",
+              borderRadius: tokens.radius.sm,
               border: "none",
-              backgroundColor: password.trim() && !isSubmitting ? tokens.color.ink : tokens.color.stroke,
-              color: tokens.color.white,
+              backgroundColor: password.trim() && !isSubmitting ? "var(--text-dark)" : "var(--border-color)",
+              color: password.trim() && !isSubmitting ? "white" : "var(--text-muted)",
               cursor: password.trim() && !isSubmitting ? "pointer" : "default",
-              transition: "background-color 0.2s ease",
+              transition: "background-color 0.2s ease, color 0.2s ease",
+              letterSpacing: "-0.05em",
               opacity: isSubmitting ? 0.7 : 1,
             }}
             onMouseEnter={(e) => {
               if (password.trim() && !isSubmitting) {
-                e.currentTarget.style.backgroundColor = tokens.color.ink;
-                e.currentTarget.style.opacity = "0.85";
+                e.currentTarget.style.backgroundColor = "var(--text-dark)";
+                e.currentTarget.style.opacity = "0.9";
               }
             }}
             onMouseLeave={(e) => {
               if (password.trim() && !isSubmitting) {
-                e.currentTarget.style.backgroundColor = tokens.color.ink;
+                e.currentTarget.style.backgroundColor = "var(--text-dark)";
                 e.currentTarget.style.opacity = "1";
               }
             }}
@@ -156,18 +175,6 @@ const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
             {isSubmitting ? "Unlocking..." : "Unlock"}
           </button>
         </form>
-
-        <p
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: tokens.weight.regular,
-            fontSize: tokens.text.sm,
-            color: tokens.color.muted,
-            margin: 0,
-          }}
-        >
-          🔒 This content is confidential and password-protected.
-        </p>
       </div>
     </div>
   );
