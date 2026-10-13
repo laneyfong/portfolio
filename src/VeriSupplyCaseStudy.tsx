@@ -41,13 +41,10 @@ const HIGHLIGHTS = [
 const VeriSupplyCaseStudy: FC = () => {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
-  // Check if password was previously entered in this session
   useEffect(() => {
     const sessionKey = "verisupply_unlocked";
-    const wasUnlocked = sessionStorage.getItem(sessionKey);
-    if (wasUnlocked === "true") {
-      setIsUnlocked(true);
-    }
+    // Clear the unlock state to always show password protection
+    sessionStorage.removeItem(sessionKey);
   }, []);
 
   const handleUnlock = () => {
