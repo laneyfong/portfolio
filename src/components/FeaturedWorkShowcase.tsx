@@ -12,9 +12,25 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, classNa
   return (
     <>
       <style>{`
+        .featured-work-showcase {
+          display: grid;
+          width: 100%;
+          height: fit-content;
+          gap: clamp(8px, 2vw, 20px);
+        }
+
+        /* Mobile: single column */
         @media (max-width: 768px) {
           .featured-work-showcase {
             grid-template-columns: 1fr !important;
+            gap: clamp(12px, 3vw, 16px);
+          }
+        }
+
+        /* Desktop: 2 columns */
+        @media (min-width: 769px) {
+          .featured-work-showcase {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
       `}</style>
@@ -23,7 +39,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, classNa
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "8px",
+          gap: "12px",
           width: "100%",
           height: "fit-content",
         }}
@@ -31,7 +47,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, classNa
       {Array.isArray(children) &&
         children.map((child, index) => {
           const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: true } as any) : child;
-          return <div key={index}>{childWithProps}</div>;
+          return <div key={index} style={{ minWidth: 0 }}>{childWithProps}</div>;
         })}
       </div>
     </>
