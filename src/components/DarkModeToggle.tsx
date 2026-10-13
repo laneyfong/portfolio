@@ -10,7 +10,7 @@ const DarkModeToggle: FC = () => {
       style={{
         position: "relative",
         width: "clamp(32px, 3.5vw, 42px)",
-        height: "clamp(18px, 1.8vw, 22px)",
+        height: "clamp(16px, 1.2vw, 18px)",
         border: "none",
         background: isDarkMode ? "rgba(100, 100, 100, 0.3)" : "rgba(200, 200, 200, 0.4)",
         borderRadius: "50px",
