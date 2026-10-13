@@ -183,7 +183,7 @@ const TopNav: FC = () => {
 
           .mobile-menu {
             position: fixed;
-            top: 45px;
+            top: 55px;
             left: 0;
             right: 0;
             background: white;
@@ -193,7 +193,7 @@ const TopNav: FC = () => {
             gap: 0;
             list-style: none;
             margin: 0;
-            padding: 0;
+            padding: 12px 0;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
@@ -206,7 +206,7 @@ const TopNav: FC = () => {
         }
 
         .mobile-menu-item {
-          padding: 14px 16px;
+          padding: 16px 16px;
           font-family: 'Manrope', ${tokens.font.sans};
           font-size: 14px;
           font-weight: 500;
@@ -220,6 +220,9 @@ const TopNav: FC = () => {
           background: none;
           width: 100%;
           text-align: left;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
         }
 
         .mobile-menu-item:hover {
@@ -239,7 +242,8 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu {
-            padding: 12px 0;
+            top: 50px;
+            padding: 8px 0;
           }
 
           .mobile-menu.open {
@@ -247,10 +251,28 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu-item {
-            padding: 12px 12px;
+            padding: 14px 12px;
             font-size: 14px;
             color: #333333;
+            min-height: 40px;
           }
+        }
+
+        [data-theme="dark"] .mobile-menu {
+          background: var(--bg-primary);
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .mobile-menu-item {
+          color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .mobile-menu-item:hover {
+          color: #4060c8;
+        }
+
+        [data-theme="dark"] .mobile-menu-item.active {
+          color: var(--text-primary);
         }
       `}</style>
 
