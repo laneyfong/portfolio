@@ -14,8 +14,8 @@ import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStu
 import VideoCarousel from "./components/caseStudy/VideoCarousel";
 import PasswordProtection from "./components/PasswordProtection";
 import verisupplyThumbnail from "./assets/verisupply-thumbnail.png";
-import verisupplyBom from "./assets/verisupply-bom.mp4";
-import verisupplyEngineering from "./assets/verisupply-engineering.mp4";
+import verisupplyBom from "./assets/verisupply-bom.mp4?url";
+import verisupplyEngineering from "./assets/verisupply-engineering.mp4?url";
 import verisupplyCompAnalysis from "./assets/verisupply-comp-analysis.png";
 import verisupplyImage1 from "./assets/verisupply-image-1.png";
 import verisupplyImage2 from "./assets/verisupply-image-2.png";
