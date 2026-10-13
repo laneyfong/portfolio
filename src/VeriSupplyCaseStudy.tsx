@@ -201,13 +201,12 @@ const VeriSupplyCaseStudy: FC = () => {
           <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
             <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
               <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="12" y="36" width="6" height="24" fill="#8B5CF6" opacity="0.4" />
-                  <rect x="22" y="26" width="6" height="34" fill="#8B5CF6" opacity="0.6" />
-                  <rect x="32" y="16" width="6" height="44" fill="#8B5CF6" opacity="0.8" />
-                  <rect x="42" y="30" width="6" height="30" fill="#8B5CF6" opacity="0.5" />
-                  <circle cx="36" cy="10" r="5" fill="none" />
-                  <text x="36" y="13" fontSize="10" fill="#8B5CF6" textAnchor="middle" fontWeight="600">?</text>
+                <g fill="none" stroke="#8B5CF6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="16" y="28" width="10" height="28" rx="1" />
+                  <rect x="28" y="20" width="10" height="36" rx="1" />
+                  <rect x="40" y="32" width="10" height="24" rx="1" />
+                  <circle cx="36" cy="10" r="6" fill="none" strokeWidth="2.5" />
+                  <path d="M 33 8 L 39 14 M 39 8 L 33 14" strokeWidth="2.5" />
                 </g>
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
@@ -220,11 +219,12 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
               <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#1E3A8A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <ellipse cx="36" cy="32" rx="12" ry="14" />
-                  <circle cx="36" cy="32" r="6" fill="#1E3A8A" opacity="0.2" />
-                  <path d="M 22 48 Q 36 44 50 48" stroke="#1E3A8A" strokeWidth="2" opacity="0.6" />
-                  <path d="M 26 54 Q 36 51 46 54" stroke="#1E3A8A" strokeWidth="1.5" opacity="0.3" />
+                <g fill="none" stroke="#1E3A8A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M 12 24 L 36 12 L 60 24 L 60 36 L 36 48 L 12 36 Z" />
+                  <path d="M 12 36 L 36 48 L 60 36" />
+                  <path d="M 36 12 L 36 48" />
+                  <circle cx="36" cy="30" r="4" fill="#1E3A8A" opacity="0.3" />
+                  <path d="M 36 54 L 36 62" strokeWidth="2.5" opacity="0.4" />
                 </g>
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
@@ -237,11 +237,12 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
               <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M 20 16 L 52 16 L 48 36 L 52 56 L 20 56 L 24 36 Z" />
-                  <circle cx="36" cy="42" r="2.5" fill="#F59E0B" />
-                  <circle cx="36" cy="48" r="2" fill="#F59E0B" opacity="0.6" />
-                  <circle cx="36" cy="54" r="1.5" fill="#F59E0B" opacity="0.3" />
+                <g fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="36" cy="36" r="20" />
+                  <path d="M 36 20 L 36 36" strokeWidth="2.5" />
+                  <path d="M 36 36 L 46 46" strokeWidth="2.5" />
+                  <circle cx="36" cy="36" r="3" fill="#F59E0B" opacity="0.4" />
+                  <path d="M 54 18 L 62 10 M 54 18 L 62 26" strokeWidth="2" opacity="0.5" />
                 </g>
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
@@ -254,11 +255,13 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
               <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="18" y="26" width="36" height="24" rx="2" />
-                  <path d="M 28 32 Q 28 26 36 26 Q 44 26 44 32" />
-                  <circle cx="36" cy="40" r="2.5" fill="#DC2626" />
-                  <path d="M 8 40 L 18 40 M 54 40 L 64 40" strokeWidth="1.5" opacity="0.5" />
+                <g fill="none" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="16" y="24" width="40" height="32" rx="2" />
+                  <line x1="24" y1="32" x2="48" y2="32" />
+                  <line x1="24" y1="40" x2="48" y2="40" />
+                  <line x1="24" y1="48" x2="40" y2="48" />
+                  <circle cx="56" cy="28" r="6" fill="none" strokeWidth="2.5" />
+                  <path d="M 54 26 L 58 30 M 58 26 L 54 30" strokeWidth="2" opacity="0.6" />
                 </g>
               </svg>
               <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
@@ -382,8 +385,12 @@ const VeriSupplyCaseStudy: FC = () => {
             <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
               <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
                 <g fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M 8 12 L 18 12 M 8 12 L 8 22 M 18 12 L 18 22 M 30 12 L 40 12 M 30 12 L 30 22 M 40 12 L 40 22" />
-                  <path d="M 18 22 Q 24 26 30 22" opacity="0.4" />
+                  <rect x="8" y="10" width="12" height="12" rx="1" />
+                  <rect x="28" y="10" width="12" height="12" rx="1" />
+                  <rect x="8" y="28" width="12" height="12" rx="1" />
+                  <rect x="28" y="28" width="12" height="12" rx="1" />
+                  <line x1="20" y1="16" x2="28" y2="16" opacity="0.3" strokeWidth="1.5" />
+                  <line x1="20" y1="34" x2="28" y2="34" opacity="0.3" strokeWidth="1.5" />
                 </g>
               </svg>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
@@ -397,10 +404,10 @@ const VeriSupplyCaseStudy: FC = () => {
             <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
               <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
                 <g fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <ellipse cx="24" cy="18" rx="8" ry="10" />
-                  <circle cx="24" cy="18" r="4" fill="#8B5CF6" opacity="0.2" />
-                  <path d="M 16 32 Q 24 28 32 32" />
-                  <path d="M 18 36 Q 24 34 30 36" opacity="0.4" />
+                  <path d="M 8 24 C 12 16 18 12 24 12 C 30 12 36 16 40 24" />
+                  <circle cx="24" cy="24" r="4" />
+                  <path d="M 8 24 C 12 32 18 36 24 36 C 30 36 36 32 40 24" opacity="0.3" />
+                  <line x1="12" y1="20" x2="36" y2="28" opacity="0.4" strokeWidth="1.5" />
                 </g>
               </svg>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
@@ -413,9 +420,10 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
               <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
-                <g fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <g fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="24" cy="20" r="6" />
+                  <path d="M 24 28 L 24 32 M 20 36 L 28 36" strokeWidth="2.5" />
                   <circle cx="24" cy="24" r="12" />
-                  <path d="M 24 18 L 24 24 M 24 24 L 28 28" strokeWidth="2.5" />
                 </g>
               </svg>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
@@ -428,10 +436,11 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
               <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
-                <g fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="24" cy="12" r="6" />
-                  <path d="M 24 18 L 24 30 M 18 24 L 30 24" />
-                  <path d="M 24 30 L 18 36 M 24 30 L 30 36" />
+                <g fill="none" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="24" cy="24" r="14" />
+                  <path d="M 24 14 L 24 24 L 32 32" />
+                  <circle cx="24" cy="24" r="3" fill="#06B6D4" opacity="0.3" />
+                  <path d="M 38 10 L 44 4 M 44 10 L 38 4" opacity="0.5" strokeWidth="2" />
                 </g>
               </svg>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
@@ -444,11 +453,10 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
               <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
-                <g fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="14" y="16" width="20" height="16" rx="1" />
-                  <path d="M 22 16 Q 22 12 24 12 Q 26 12 26 16" />
-                  <circle cx="24" cy="22" r="1.5" fill="#DC2626" />
-                  <path d="M 10 24 L 14 24 M 34 24 L 38 24" strokeWidth="1.5" opacity="0.5" />
+                <g fill="none" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M 24 8 L 36 14 L 36 24 C 36 32 24 40 24 40 C 24 40 12 32 12 24 L 12 14 Z" />
+                  <circle cx="28" cy="20" r="6" fill="none" strokeWidth="2" />
+                  <path d="M 26 18 L 30 22 M 30 18 L 26 22" strokeWidth="2" opacity="0.6" />
                 </g>
               </svg>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
