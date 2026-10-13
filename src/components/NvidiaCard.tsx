@@ -273,9 +273,9 @@ const NvidiaCard: FC<NvidiaCardProps> = ({ isActive = false }) => {
                   flex: 1,
                 }}
               >
-                Design system for internal
+                Internal tooling to conduct
                 <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "var(--text-dark)" }}>
-                  {" "}tooling
+                  {" "}synthetic user testing
                 </span>
               </span>
 
