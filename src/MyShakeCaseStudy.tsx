@@ -498,7 +498,7 @@ const MyShakeCaseStudy: FC = () => {
           <Reveal>
             <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
-                <div style={{ textAlign: "center", border: "2px solid var(--text-dark)", padding: "20px", borderRadius: tokens.radius.sm }}>
+                <div style={{ textAlign: "center", padding: "20px" }}>
                   <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
                     <AlertIcon size={28} />
                   </div>
@@ -515,7 +515,7 @@ const MyShakeCaseStudy: FC = () => {
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                   <div style={{ fontSize: "20px", opacity: 0.3, color: "var(--text-dark)" }}>→</div>
                 </div>
-                <div style={{ textAlign: "center", border: "2px solid var(--text-secondary)", padding: "20px", borderRadius: tokens.radius.sm }}>
+                <div style={{ textAlign: "center", padding: "20px" }}>
                   <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
                     <PinIcon size={28} />
                   </div>
