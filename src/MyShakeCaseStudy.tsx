@@ -678,7 +678,6 @@ const MyShakeCaseStudy: FC = () => {
                     background: app.isCurrent ? tokens.color.accent : "var(--surface-light)",
                     borderRadius: tokens.radius.md,
                     padding: 16,
-                    border: app.isCurrent ? "none" : `1px solid ${"var(--border-color)"}`,
                   }}
                   role={app.isCurrent ? "doc-tip" : undefined}
                   aria-label={app.isCurrent ? "Current state - MyShake before redesign" : undefined}
