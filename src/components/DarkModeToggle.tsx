@@ -37,10 +37,38 @@ const DarkModeToggle: FC = () => {
       <style>{`
         button {
           -webkit-tap-highlight-color: transparent;
+          --thumb-size: 18px;
         }
 
         button:active {
           filter: none;
+        }
+
+        /* Mobile: small pill */
+        @media (max-width: 640px) {
+          button {
+            width: 32px !important;
+            height: 18px !important;
+            --thumb-size: 14px;
+          }
+        }
+
+        /* Tablet: medium pill */
+        @media (min-width: 641px) and (max-width: 1024px) {
+          button {
+            width: 36px !important;
+            height: 20px !important;
+            --thumb-size: 16px;
+          }
+        }
+
+        /* Desktop: larger pill */
+        @media (min-width: 1025px) {
+          button {
+            width: 40px !important;
+            height: 22px !important;
+            --thumb-size: 18px;
+          }
         }
 
         @keyframes toggle-slide-left {
@@ -101,6 +129,27 @@ const DarkModeToggle: FC = () => {
           flex-shrink: 0;
         }
 
+        @media (max-width: 640px) {
+          .toggle-icon-small {
+            width: 10px;
+            height: 10px;
+          }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .toggle-icon-small {
+            width: 11px;
+            height: 11px;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          .toggle-icon-small {
+            width: 12px;
+            height: 12px;
+          }
+        }
+
         .toggle-icon-small svg {
           width: 100%;
           height: 100%;
@@ -110,6 +159,20 @@ const DarkModeToggle: FC = () => {
           stroke-linecap: round;
           stroke-linejoin: round;
           position: absolute;
+        }
+
+        .toggle-dot {
+          position: absolute;
+          width: var(--thumb-size);
+          height: var(--thumb-size);
+          background: white;
+          border-radius: 50%;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          pointer-events: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
         }
 
         .icon-enter {
@@ -132,19 +195,9 @@ const DarkModeToggle: FC = () => {
       >
         {/* Sliding thumb with icon */}
         <div
+          className="toggle-dot"
           style={{
-            position: "absolute",
-            width: "clamp(12px, 1.5vw, 16px)",
-            height: "clamp(12px, 1.5vw, 16px)",
-            background: "white",
-            borderRadius: "50%",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-            left: isDarkMode ? "calc(100% - clamp(12px, 1.5vw, 16px) - 2px)" : "2px",
-            transition: "left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease",
-            pointerEvents: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            left: isDarkMode ? "calc(100% - var(--thumb-size) - 2px)" : "2px",
           }}
         >
           {/* Icon on the dot */}
