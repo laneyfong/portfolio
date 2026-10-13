@@ -816,43 +816,43 @@ const VeriSupplyCaseStudy: FC = () => {
 
             <style>{`
               .feature-tabs {
-                display: grid;
-                grid-template-columns: 200px 1fr;
-                gap: 32;
-                align-items: start;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
               }
 
               .feature-tab-list {
                 display: flex;
-                flex-direction: column;
-                gap: 8;
+                flex-direction: row;
+                gap: 12px;
+                flex-wrap: wrap;
               }
 
               .feature-tab {
-                padding: 16px 20px;
-                border: 1px solid rgba(64, 96, 200, 0);
-                border-radius: 10px;
-                background: rgba(255, 255, 255, 0);
+                padding: 10px 18px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.05);
                 font-family: ${tokens.font.sans};
                 font-size: ${tokens.text.sm};
                 font-weight: ${tokens.weight.medium};
                 color: var(--text-secondary);
                 cursor: pointer;
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                text-align: left;
-                border-left: 2px solid transparent;
-                padding-left: 18px;
+                text-align: center;
+                white-space: nowrap;
               }
 
               .feature-tab:hover {
-                background: rgba(64, 96, 200, 0.05);
+                background: rgba(64, 96, 200, 0.15);
                 color: var(--text-dark);
+                border-color: rgba(64, 96, 200, 0.3);
               }
 
               .feature-tab.active {
-                background: rgba(64, 96, 200, 0.08);
-                color: var(--text-dark);
-                border-left-color: #4060C8;
+                background: #4060C8;
+                color: white;
+                border-color: #4060C8;
               }
 
               .feature-video-container {
@@ -913,19 +913,17 @@ const VeriSupplyCaseStudy: FC = () => {
               }
 
               @media (max-width: 768px) {
-                .feature-tabs {
-                  grid-template-columns: 1fr;
-                  gap: 24;
-                }
-
                 .feature-tab-list {
-                  flex-direction: row;
-                  flex-wrap: wrap;
+                  gap: 8px;
                 }
 
                 .feature-tab {
-                  flex: 1;
-                  min-width: 150px;
+                  padding: 8px 14px;
+                  font-size: 13px;
+                }
+
+                .feature-video-container {
+                  aspect-ratio: 16 / 9;
                 }
               }
             `}</style>

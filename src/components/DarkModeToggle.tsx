@@ -35,6 +35,14 @@ const DarkModeToggle: FC = () => {
       }}
     >
       <style>{`
+        button {
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        button:active {
+          filter: none;
+        }
+
         @keyframes toggle-slide-left {
           from { transform: translateX(clamp(14px, 4vw, 24px)); }
           to { transform: translateX(0); }
