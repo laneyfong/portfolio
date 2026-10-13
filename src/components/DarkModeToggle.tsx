@@ -9,8 +9,8 @@ const DarkModeToggle: FC = () => {
       onClick={toggleDarkMode}
       style={{
         position: "relative",
-        width: "clamp(36px, 6vw, 44px)",
-        height: "clamp(20px, 3vw, 24px)",
+        width: "clamp(32px, 3.5vw, 42px)",
+        height: "clamp(18px, 1.8vw, 22px)",
         border: "none",
         background: isDarkMode ? "rgba(100, 100, 100, 0.3)" : "rgba(200, 200, 200, 0.4)",
         borderRadius: "50px",
@@ -92,8 +92,8 @@ const DarkModeToggle: FC = () => {
         }
 
         .toggle-icon-small {
-          width: clamp(10px, 1.8vw, 14px);
-          height: clamp(10px, 1.8vw, 14px);
+          width: clamp(8px, 1.2vw, 12px);
+          height: clamp(8px, 1.2vw, 12px);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -134,12 +134,12 @@ const DarkModeToggle: FC = () => {
         <div
           style={{
             position: "absolute",
-            width: "clamp(14px, 2.2vw, 18px)",
-            height: "clamp(14px, 2.2vw, 18px)",
+            width: "clamp(12px, 1.5vw, 16px)",
+            height: "clamp(12px, 1.5vw, 16px)",
             background: "white",
             borderRadius: "50%",
             boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-            left: isDarkMode ? "calc(100% - clamp(14px, 2.2vw, 18px) - 2px)" : "2px",
+            left: isDarkMode ? "calc(100% - clamp(12px, 1.5vw, 16px) - 2px)" : "2px",
             transition: "left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease",
             pointerEvents: "none",
             display: "flex",
