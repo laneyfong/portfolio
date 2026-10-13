@@ -498,12 +498,15 @@ const MyShakeCaseStudy: FC = () => {
           <Reveal>
             <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
-                <div style={{ textAlign: "center" }}>
+                <div style={{ textAlign: "center", border: "2px solid var(--text-dark)", padding: "20px", borderRadius: tokens.radius.sm }}>
                   <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
                     <AlertIcon size={28} />
                   </div>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
-                    EEW (Early Warning)
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
+                    EEW: Early Warning
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: tokens.color.accent, marginBottom: 8 }}>
+                    HIGH PRIORITY
                   </div>
                   <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                     Seconds before shaking starts
@@ -512,12 +515,15 @@ const MyShakeCaseStudy: FC = () => {
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                   <div style={{ fontSize: "20px", opacity: 0.3, color: "var(--text-dark)" }}>→</div>
                 </div>
-                <div style={{ textAlign: "center" }}>
+                <div style={{ textAlign: "center", border: "2px solid var(--text-secondary)", padding: "20px", borderRadius: tokens.radius.sm }}>
                   <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
                     <PinIcon size={28} />
                   </div>
-                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 8 }}>
-                    CEN (Post-Earthquake)
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
+                    CEN: Post-Earthquake
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", marginBottom: 8 }}>
+                    INFORMATION UPDATE
                   </div>
                   <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                     Notification after shaking detected
@@ -553,7 +559,7 @@ const MyShakeCaseStudy: FC = () => {
           <div style={{ marginBottom: 60 }}>
             <img
               src={myshakeBeforeScreens}
-              alt="MyShake existing screens showing data-first approach"
+              alt="MyShake existing app screens showing data-first approach with multiple screens required to locate family members"
               style={{
                 width: "100%",
                 maxWidth: "640px",
@@ -664,27 +670,30 @@ const MyShakeCaseStudy: FC = () => {
                 { name: "My Earthquakes Alert", rating: "4.7", reviews: "87.3K", strength: "Speed & Accuracy", gap: "⭐⭐⭐⭐" },
                 { name: "QuakeFeed", rating: "4.8", reviews: "80K", strength: "Data Sources", gap: "⭐⭐⭐⭐" },
                 { name: "Earthquake - Alerts & Map", rating: "4.7", reviews: "36K", strength: "Clean UI", gap: "⭐⭐⭐" },
-                { name: "MyShake", rating: "3.0", reviews: "1.2K", strength: "Personalization", gap: "⭐⭐" },
-              ].map((app, i) => (
+                { name: "MyShake", rating: "3.0", reviews: "1.2K", strength: "Personalization", gap: "⭐⭐", isCurrent: true },
+              ].map((app) => (
                 <div
                   key={app.name}
                   style={{
-                    background: i === 3 ? tokens.color.accent : "var(--surface-light)",
+                    background: app.isCurrent ? tokens.color.accent : "var(--surface-light)",
                     borderRadius: tokens.radius.md,
                     padding: 16,
-                    border: i === 3 ? "none" : `1px solid ${"var(--border-color)"}`,
+                    border: app.isCurrent ? "none" : `1px solid ${"var(--border-color)"}`,
                   }}
+                  role={app.isCurrent ? "doc-tip" : undefined}
+                  aria-label={app.isCurrent ? "Current state - MyShake before redesign" : undefined}
                 >
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: i === 3 ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 8px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: app.isCurrent ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 8px" }}>
                     {app.name}
+                    {app.isCurrent && <span style={{ marginLeft: "6px" }}>↓ Below market</span>}
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "20px", fontWeight: tokens.weight.medium, color: i === 3 ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 4px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "20px", fontWeight: tokens.weight.medium, color: app.isCurrent ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 4px" }}>
                     {app.rating}★
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: i === 3 ? "var(--bg-primary)" : "var(--text-muted)", margin: "0 0 12px" }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: app.isCurrent ? "var(--bg-primary)" : "var(--text-muted)", margin: "0 0 12px" }}>
                     {app.reviews} reviews
                   </p>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: i === 3 ? "var(--bg-primary)" : "var(--text-secondary)", margin: 0 }}>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: app.isCurrent ? "var(--bg-primary)" : "var(--text-secondary)", margin: 0 }}>
                     {app.strength}
                   </p>
                 </div>
@@ -891,7 +900,7 @@ const MyShakeCaseStudy: FC = () => {
           <div style={{ marginBottom: 80 }}>
             <img
               src={myshakeInformationArchitecture}
-              alt="MyShake Information Architecture"
+              alt="MyShake information architecture diagram showing dashboard-first navigation with pinned contacts, alert hierarchy, and safety status flows"
               style={{
                 width: "100%",
                 maxWidth: "100%",
@@ -1145,7 +1154,7 @@ const MyShakeCaseStudy: FC = () => {
               </div>
               <img
                 src={myshakeDesignSystem}
-                alt="MyShake design system"
+                alt="MyShake design system with typography, color palette, button states, and component library"
                 style={{
                   width: "100%",
                   maxWidth: "100%",

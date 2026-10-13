@@ -10,12 +10,12 @@ const GlobalStyles: FC = () => (
       --bg-secondary: #FAFAFB;
       --text-primary: #1A1A1A;
       --text-secondary: #626262;
-      --text-muted: #ABADAF;
+      --text-muted: #8D8D8D;
       --text-dark: #111111;
-      --text-grey-light: #979797;
-      --text-grey-medium: #A0A0A0;
-      --text-grey-dark: #929292;
-      --text-grey-lighter: #808080;
+      --text-grey-light: #8B8B8B;
+      --text-grey-medium: #8D8D8D;
+      --text-grey-dark: #7A7A7A;
+      --text-grey-lighter: #6A6A6A;
       --border-color: rgba(26, 26, 26, 0.08);
       --card-bg: #F0F0F0;
       --stroke: #F1F0EE;
