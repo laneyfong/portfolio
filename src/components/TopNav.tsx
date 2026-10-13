@@ -152,10 +152,18 @@ const TopNav: FC = () => {
           cursor: pointer;
           position: relative;
           transition: color 0.2s ease;
+          padding: 4px 6px;
+          border-radius: 4px;
+          outline: none;
         }
 
         .top-nav-link:hover {
           color: #4060c8;
+        }
+
+        .top-nav-link:focus-visible {
+          outline: 2px solid #4060c8;
+          outline-offset: 2px;
         }
 
         .top-nav-link.active {
@@ -228,11 +236,18 @@ const TopNav: FC = () => {
           min-height: 44px;
           display: flex;
           align-items: center;
+          outline: none;
         }
 
         .mobile-menu-item:hover {
           color: #4060c8;
           text-decoration: none !important;
+        }
+
+        .mobile-menu-item:focus-visible {
+          outline: 2px solid #4060c8;
+          outline-offset: -2px;
+          background: rgba(64, 96, 200, 0.05);
         }
 
         .mobile-menu-item.active {

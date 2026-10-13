@@ -577,19 +577,19 @@ const IDBridgeCaseStudy: FC = () => {
         <Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeThumbnail} alt="Home screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <img src={idbridgeThumbnail} alt="IDbridge home screen showing user profile and account overview for accessing financial services" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>Home</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeDocuments} alt="Documents screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <img src={idbridgeDocuments} alt="IDbridge documents screen displaying stored identity and financial documents" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>Documents</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeHistory} alt="History screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <img src={idbridgeHistory} alt="IDbridge history screen showing transaction and activity records" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>History</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              <img src={idbridgeMap} alt="Map screen" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
+              <img src={idbridgeMap} alt="IDbridge map screen showing locations of nearby financial services and ATMs" style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md }} />
               <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", textAlign: "center" }}>Map</span>
             </div>
           </div>

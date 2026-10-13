@@ -22,8 +22,16 @@ const DarkModeToggle: FC = () => {
         boxShadow: isDarkMode
           ? "inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 12px rgba(100, 150, 255, 0.1)"
           : "inset 0 1px 3px rgba(255, 255, 255, 0.2), 0 0 12px rgba(255, 180, 0, 0.1)",
+        outline: "none",
       }}
       aria-label="Toggle dark mode"
+      onFocus={(e) => {
+        (e.currentTarget as HTMLButtonElement).style.outline = "2px solid #4060c8";
+        (e.currentTarget as HTMLButtonElement).style.outlineOffset = "2px";
+      }}
+      onBlur={(e) => {
+        (e.currentTarget as HTMLButtonElement).style.outline = "none";
+      }}
     >
       <style>{`
         @keyframes toggle-slide-left {
