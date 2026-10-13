@@ -92,14 +92,13 @@ const DarkModeToggle: FC = () => {
         }
 
         .toggle-icon-small {
-          width: clamp(14px, 2.5vw, 18px);
-          height: clamp(14px, 2.5vw, 18px);
+          width: clamp(10px, 1.8vw, 14px);
+          height: clamp(10px, 1.8vw, 14px);
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
           flex-shrink: 0;
-          margin: 0 auto;
         }
 
         .toggle-icon-small svg {
@@ -107,7 +106,7 @@ const DarkModeToggle: FC = () => {
           height: 100%;
           stroke: #333333;
           fill: none;
-          stroke-width: 1.5;
+          stroke-width: 2;
           stroke-linecap: round;
           stroke-linejoin: round;
           position: absolute;
@@ -131,7 +130,7 @@ const DarkModeToggle: FC = () => {
           alignItems: "center",
         }}
       >
-        {/* Sliding thumb */}
+        {/* Sliding thumb with icon */}
         <div
           style={{
             position: "absolute",
@@ -143,27 +142,31 @@ const DarkModeToggle: FC = () => {
             left: isDarkMode ? "calc(100% - clamp(14px, 2.2vw, 18px) - 2px)" : "2px",
             transition: "left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease",
             pointerEvents: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-        />
-        {/* Icon */}
-        <div className="toggle-icon-small" style={{ position: "relative", zIndex: 1 }}>
-          {isDarkMode ? (
-            <svg key="moon" viewBox="0 0 24 24" className="icon-enter">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          ) : (
-            <svg key="sun" viewBox="0 0 24 24" className="icon-enter">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-          )}
+        >
+          {/* Icon on the dot */}
+          <div className="toggle-icon-small">
+            {isDarkMode ? (
+              <svg key="moon" viewBox="0 0 24 24" className="icon-enter">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            ) : (
+              <svg key="sun" viewBox="0 0 24 24" className="icon-enter">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            )}
+          </div>
         </div>
       </div>
     </button>
