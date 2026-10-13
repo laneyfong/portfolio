@@ -17,8 +17,6 @@ const Portfolio: FC = () => {
   const [videoReady] = useState(true);
   const [, setHoveredCaseStudy] = useState<string | null>(null);
   const [scrollY, setScrollY] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0.3);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,24 +25,6 @@ const Portfolio: FC = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-
-      // Breathing effect based on mouse position
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const distX = (e.clientX - centerX) / centerX;
-      const distY = (e.clientY - centerY) / centerY;
-      const distance = Math.sqrt(distX * distX + distY * distY);
-      const newOpacity = Math.max(0.15, Math.min(0.5, 0.3 + distance * 0.1));
-      setOpacity(newOpacity);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   useEffect(() => {
@@ -410,55 +390,6 @@ const Portfolio: FC = () => {
           </p>
         </div>
 
-        {/* ASCII Text Graphic */}
-        <div
-          style={{
-            position: "absolute",
-            top: "100px",
-            right: "40px",
-            width: "320px",
-            height: "auto",
-            fontFamily: "monospace",
-            fontSize: "11px",
-            lineHeight: "1.6",
-            color: `rgba(180, 180, 180, ${Math.max(opacity, 0.25)})`,
-            whiteSpace: "pre-wrap",
-            wordWrap: "break-word",
-            pointerEvents: "none",
-            userSelect: "none",
-            opacity: Math.max(opacity, 0.2),
-            transform: `translate(${(mousePos.x - window.innerWidth / 2) * 0.008}px, ${(mousePos.y - window.innerHeight / 2) * 0.008}px)`,
-            transition: "opacity 0.4s ease-out, color 0.4s ease-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-            zIndex: 1,
-            padding: "16px",
-            borderRadius: "6px",
-          }}
-        >
-{`0_to_1
-├─ HCI_UCSC
-├─ IA_Restructure
-├─ Growth_45%
-├─ Frictionless
-├─ Accessibility
-│  └─ WCAG_AAA
-├─ SF_Bay_Area
-├─ Complex_Systems
-├─ Research_Backed
-├─ Scale_&_Engage
-├─ Multi_Step_Flow
-├─ Business_Growth
-├─ MyShake_Impact
-├─ VeriSupply_6hr
-├─ IDBridge_Design
-└─ Meticulous_Craft
-
-tokens:
-color.primary=#D0D0D0
-color.accent=#4060C8
-depth.layer=atmospheric
-motion.parallax=subtle
-opacity.breathing=0.15-0.5`}
-        </div>
       </main>
 
       <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
