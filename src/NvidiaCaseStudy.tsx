@@ -133,7 +133,7 @@ const NvidiaCaseStudy: FC = () => {
           >
             <img
               src={nvidiaLogo}
-              alt="NVIDIA Logo"
+              alt="NVIDIA company logo"
               style={{
                 maxWidth: "280px",
                 height: "auto",

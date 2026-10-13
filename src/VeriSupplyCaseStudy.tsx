@@ -47,19 +47,23 @@ const PlatformWalkthrough: FC<{ verisupplyBom: string; verisupplyEngineering: st
 
   return (
     <div className="feature-tabs">
-      <div className="feature-tab-list">
+      <div className="feature-tab-list" role="tablist">
         {features.map((feature) => (
           <button
             key={feature.id}
             className={`feature-tab ${activeTab === feature.id ? 'active' : ''}`}
             onClick={() => setActiveTab(feature.id)}
+            role="tab"
+            aria-selected={activeTab === feature.id}
+            aria-controls={`panel-${feature.id}`}
+            tabIndex={activeTab === feature.id ? 0 : -1}
           >
             {feature.label}
           </button>
         ))}
       </div>
 
-      <div className="feature-video-container">
+      <div className="feature-video-container" role="tabpanel" id={`panel-${activeTab}`}>
         <video
           src={activeFeature.src}
           style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", background: "rgba(0, 0, 0, 0.2)" }}
@@ -67,6 +71,7 @@ const PlatformWalkthrough: FC<{ verisupplyBom: string; verisupplyEngineering: st
           autoPlay
           loop
           muted
+          aria-label={`${activeFeature.title}: ${activeFeature.description}`}
         />
         <div className="feature-video-label">
           <p className="feature-video-title">{activeFeature.title}</p>
@@ -89,7 +94,7 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
   return (
     <>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: 32, alignItems: "start" }}>
-        <div
+        <button
           style={{
             position: "relative",
             borderRadius: "16px",
@@ -98,18 +103,21 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
             border: "1px solid rgba(255, 255, 255, 0.08)",
             cursor: "pointer",
             transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            padding: 0,
+            width: "100%",
           }}
           onClick={() => setIsExpanded(true)}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255, 255, 255, 0.15)";
-            (e.currentTarget as HTMLDivElement).style.background = "rgba(255, 255, 255, 0.04)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255, 255, 255, 0.15)";
+            (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.04)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255, 255, 255, 0.08)";
-            (e.currentTarget as HTMLDivElement).style.background = "rgba(255, 255, 255, 0.02)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255, 255, 255, 0.08)";
+            (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.02)";
           }}
+          aria-label="Expand competitive analysis view"
         >
-          <img src={verisupplyCompAnalysis} alt="Market analysis spreadsheet" style={{ width: "100%", height: "auto", display: "block" }} />
+          <img src={verisupplyCompAnalysis} alt="Competitive analysis spreadsheet showing feature comparison across supply chain monitoring platforms" style={{ width: "100%", height: "auto", display: "block" }} />
           <div
             style={{
               position: "absolute",
@@ -129,7 +137,7 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
           >
             Click to expand
           </div>
-        </div>
+        </button>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.5px" }}>
@@ -137,7 +145,10 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
           </p>
           {takeaways.map((takeaway, idx) => (
             <div key={idx} style={{ display: "flex", gap: 12 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4060C8", flexShrink: 0, marginTop: 8 }} />
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 2 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4060C8", flexShrink: 0, marginBottom: 2 }} aria-hidden="true" />
+                <span style={{ fontSize: "10px", fontWeight: "bold", color: "#4060C8", letterSpacing: "0.3px" }}>KEY</span>
+              </div>
               <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                 {takeaway}
               </p>
@@ -164,7 +175,7 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
           onClick={() => setIsExpanded(false)}
         >
           <div style={{ position: "relative", maxWidth: "90vw", maxHeight: "90vh" }} onClick={(e) => e.stopPropagation()}>
-            <img src={verisupplyCompAnalysis} alt="Market analysis spreadsheet expanded" style={{ width: "100%", height: "auto", borderRadius: "12px" }} />
+            <img src={verisupplyCompAnalysis} alt="Expanded competitive analysis showing detailed feature matrix and strategic positioning of VeriSupply versus competitors" style={{ width: "100%", height: "auto", borderRadius: "12px" }} />
             <button
               onClick={() => setIsExpanded(false)}
               style={{
@@ -264,7 +275,7 @@ const VeriSupplyCaseStudy: FC = () => {
             <div style={{ marginBottom: 80, borderRadius: 20, overflow: "hidden", background: "var(--gradient-soft)", padding: 60, display: "flex", justifyContent: "center", alignItems: "center", minHeight: 600 }}>
               <img
                 src={verisupplyThumbnail}
-                alt="VeriSupply dashboard interface"
+                alt="VeriSupply dashboard showing real-time supply chain monitoring with risk indicators and dependency visualization"
                 style={{
                   width: "100%",
                   maxWidth: "800px",
