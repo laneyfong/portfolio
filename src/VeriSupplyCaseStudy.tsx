@@ -147,6 +147,51 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <style>{`
+            @keyframes slideInUp {
+              from {
+                opacity: 0;
+                transform: translateY(24px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes iconFloat {
+              0%, 100% {
+                transform: translateY(0);
+              }
+              50% {
+                transform: translateY(-4px);
+              }
+            }
+
+            .problem-card {
+              animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+              opacity: 0;
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .problem-card:nth-child(1) { animation-delay: 0.1s; }
+            .problem-card:nth-child(2) { animation-delay: 0.2s; }
+            .problem-card:nth-child(3) { animation-delay: 0.3s; }
+            .problem-card:nth-child(4) { animation-delay: 0.4s; }
+
+            .problem-card:hover {
+              transform: translateY(-8px);
+              box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            }
+
+            .problem-icon {
+              animation: iconFloat 3s ease-in-out infinite;
+            }
+
+            .problem-card:hover .problem-icon {
+              animation: none;
+              transform: scale(1.1);
+            }
+
             @media (max-width: 768px) {
               .problem-grid {
                 grid-template-columns: 1fr !important;
@@ -154,21 +199,18 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
-            {/* Numbers without meaning - Purple for confusion/complexity */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Bar chart - purple for confusion/complexity */}
-                <rect x="15" y="45" width="8" height="25" fill="#8B5CF6" opacity="0.5" />
-                <rect x="28" y="35" width="8" height="35" fill="#8B5CF6" opacity="0.7" />
-                <rect x="41" y="25" width="8" height="45" fill="#8B5CF6" opacity="0.85" />
-                <rect x="54" y="40" width="8" height="30" fill="#8B5CF6" opacity="0.6" />
-                {/* Question mark */}
-                <circle cx="40" cy="18" r="8" fill="#8B5CF6" opacity="0.15" />
-                <text x="40" y="22" fontSize="14" fill="#8B5CF6" textAnchor="middle" fontWeight="bold">
-                  ?
-                </text>
+            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
+              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <g fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="12" y="36" width="6" height="24" fill="#8B5CF6" opacity="0.4" />
+                  <rect x="22" y="26" width="6" height="34" fill="#8B5CF6" opacity="0.6" />
+                  <rect x="32" y="16" width="6" height="44" fill="#8B5CF6" opacity="0.8" />
+                  <rect x="42" y="30" width="6" height="30" fill="#8B5CF6" opacity="0.5" />
+                  <circle cx="36" cy="10" r="5" fill="none" />
+                  <text x="36" y="13" fontSize="10" fill="#8B5CF6" textAnchor="middle" fontWeight="600">?</text>
+                </g>
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
                 Numbers without meaning
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
@@ -176,18 +218,16 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Blind spots - Dark blue for invisibility/unseen */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Eye symbol - dark blue to show invisibility */}
-                <circle cx="40" cy="40" r="14" fill="none" stroke="#1E3A8A" strokeWidth="2" />
-                <circle cx="40" cy="40" r="6" fill="#1E3A8A" opacity="0.3" />
-                {/* Fading pyramid showing decreasing visibility */}
-                <polygon points="20,55 40,50 60,55 50,65 30,65" fill="#1E3A8A" opacity="0.6" />
-                <polygon points="25,60 40,58 55,60 48,68 32,68" fill="#1E3A8A" opacity="0.3" />
-                <polygon points="30,65 40,64 50,65 45,70 35,70" fill="#1E3A8A" opacity="0.1" />
+            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
+              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <g fill="none" stroke="#1E3A8A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <ellipse cx="36" cy="32" rx="12" ry="14" />
+                  <circle cx="36" cy="32" r="6" fill="#1E3A8A" opacity="0.2" />
+                  <path d="M 22 48 Q 36 44 50 48" stroke="#1E3A8A" strokeWidth="2" opacity="0.6" />
+                  <path d="M 26 54 Q 36 51 46 54" stroke="#1E3A8A" strokeWidth="1.5" opacity="0.3" />
+                </g>
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
                 Blind spots beyond Tier 1
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
@@ -195,17 +235,16 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Slow analysis - Amber for time pressure/caution */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Hourglass shape - amber for time pressure */}
-                <path d="M 25 18 L 55 18 L 50 40 L 55 62 L 25 62 L 30 40 Z" fill="none" stroke="#F59E0B" strokeWidth="2.5" />
-                {/* Sand falling slowly */}
-                <circle cx="40" cy="48" r="2" fill="#F59E0B" />
-                <circle cx="40" cy="54" r="1.8" fill="#F59E0B" opacity="0.5" />
-                <circle cx="40" cy="60" r="1.5" fill="#F59E0B" opacity="0.2" />
+            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
+              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <g fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M 20 16 L 52 16 L 48 36 L 52 56 L 20 56 L 24 36 Z" />
+                  <circle cx="36" cy="42" r="2.5" fill="#F59E0B" />
+                  <circle cx="36" cy="48" r="2" fill="#F59E0B" opacity="0.6" />
+                  <circle cx="36" cy="54" r="1.5" fill="#F59E0B" opacity="0.3" />
+                </g>
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
                 Analysis is too slow
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
@@ -213,24 +252,16 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            {/* Black box automation - Red for danger/risk */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 240 }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 16, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                {/* Locked box - red for danger/risk */}
-                <rect x="22" y="28" width="36" height="28" fill="none" stroke="#DC2626" strokeWidth="2.5" rx="3" />
-                {/* Lock symbol */}
-                <path d="M 32 38 Q 32 32 40 32 Q 48 32 48 38" fill="none" stroke="#DC2626" strokeWidth="2" />
-                <circle cx="40" cy="44" r="3" fill="#DC2626" />
-                {/* Question mark */}
-                <circle cx="40" cy="56" r="6" fill="#DC2626" opacity="0.15" />
-                <text x="40" y="59" fontSize="12" fill="#DC2626" textAnchor="middle" fontWeight="bold">
-                  ?
-                </text>
-                {/* Data flow arrows */}
-                <path d="M 12 44 L 22 44" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
-                <path d="M 58 44 L 68 44" stroke="#DC2626" strokeWidth="1.5" opacity="0.5" />
+            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
+              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <g fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="18" y="26" width="36" height="24" rx="2" />
+                  <path d="M 28 32 Q 28 26 36 26 Q 44 26 44 32" />
+                  <circle cx="36" cy="40" r="2.5" fill="#DC2626" />
+                  <path d="M 8 40 L 18 40 M 54 40 L 64 40" strokeWidth="1.5" opacity="0.5" />
+                </g>
               </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", textAlign: "center" }}>
+              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
                 Automation without evidence
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
@@ -304,59 +335,126 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <style>{`
+            @keyframes slideInUp {
+              from {
+                opacity: 0;
+                transform: translateY(24px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            .gap-card {
+              animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+              opacity: 0;
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .gap-card:nth-child(1) { animation-delay: 0.05s; }
+            .gap-card:nth-child(2) { animation-delay: 0.15s; }
+            .gap-card:nth-child(3) { animation-delay: 0.25s; }
+            .gap-card:nth-child(4) { animation-delay: 0.35s; }
+            .gap-card:nth-child(5) { animation-delay: 0.45s; }
+
+            .gap-card:hover {
+              background: rgba(64, 96, 200, 0.06);
+              transform: translateY(-6px);
+              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            }
+
+            .gap-icon {
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .gap-card:hover .gap-icon {
+              transform: scale(1.12) rotate(2deg);
+            }
+
             @media (max-width: 768px) {
               .gaps-grid {
                 grid-template-columns: 1fr !important;
               }
             }
           `}</style>
-          <div className="gaps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginTop: 0 }}>
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>🔗</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
+          <div className="gaps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 24, marginTop: 0 }}>
+            <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+              <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
+                <g fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M 8 12 L 18 12 M 8 12 L 8 22 M 18 12 L 18 22 M 30 12 L 40 12 M 30 12 L 30 22 M 40 12 L 40 22" />
+                  <path d="M 18 22 Q 24 26 30 22" opacity="0.4" />
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
                 Fragmentation
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Data scattered across disconnected tools
               </p>
             </div>
 
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>👁️</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
+            <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+              <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
+                <g fill="none" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <ellipse cx="24" cy="18" rx="8" ry="10" />
+                  <circle cx="24" cy="18" r="4" fill="#8B5CF6" opacity="0.2" />
+                  <path d="M 16 32 Q 24 28 32 32" />
+                  <path d="M 18 36 Q 24 34 30 36" opacity="0.4" />
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
                 Invisibility
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Tier 2+ suppliers unseen
               </p>
             </div>
 
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>❓</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
+            <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+              <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
+                <g fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="24" cy="24" r="12" />
+                  <path d="M 24 18 L 24 24 M 24 24 L 28 28" strokeWidth="2.5" />
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
                 No Context
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Risk without business impact
               </p>
             </div>
 
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>⏱️</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
+            <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+              <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
+                <g fill="none" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="24" cy="12" r="6" />
+                  <path d="M 24 18 L 24 30 M 18 24 L 30 24" />
+                  <path d="M 24 30 L 18 36 M 24 30 L 30 36" />
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
                 Slow Action
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Manual analysis misses windows
               </p>
             </div>
 
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 20, textAlign: "center", minHeight: 160, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ fontSize: 24, marginBottom: 8 }}>🔐</div>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 4px" }}>
+            <div className="gap-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28, textAlign: "center", minHeight: 180, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+              <svg className="gap-icon" width="48" height="48" viewBox="0 0 48 48" style={{ marginBottom: 12 }} aria-hidden="true">
+                <g fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="14" y="16" width="20" height="16" rx="1" />
+                  <path d="M 22 16 Q 22 12 24 12 Q 26 12 26 16" />
+                  <circle cx="24" cy="22" r="1.5" fill="#DC2626" />
+                  <path d="M 10 24 L 14 24 M 34 24 L 38 24" strokeWidth="1.5" opacity="0.5" />
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 6px" }}>
                 Undefendable
               </p>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Automation without evidence
               </p>
             </div>
@@ -383,6 +481,66 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <style>{`
+            @keyframes flowBoxSlideIn {
+              from {
+                opacity: 0;
+                transform: translateY(20px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes arrowDraw {
+              from {
+                stroke-dasharray: 100;
+                stroke-dashoffset: 100;
+              }
+              to {
+                stroke-dasharray: 100;
+                stroke-dashoffset: 0;
+              }
+            }
+
+            @keyframes iconPulse {
+              0%, 100% {
+                opacity: 1;
+              }
+              50% {
+                opacity: 0.6;
+              }
+            }
+
+            .solution-flow-box-1 {
+              animation: flowBoxSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+              opacity: 0;
+            }
+
+            .solution-flow-box-2 {
+              animation: flowBoxSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+              opacity: 0;
+            }
+
+            .solution-flow-box-3 {
+              animation: flowBoxSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+              opacity: 0;
+            }
+
+            .solution-arrow {
+              animation: arrowDraw 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+              stroke-dasharray: 100;
+              stroke-dashoffset: 100;
+            }
+
+            .solution-arrow:last-of-type {
+              animation-delay: 0.4s;
+            }
+
+            .solution-icon {
+              animation: iconPulse 2s ease-in-out infinite;
+            }
+
             @media (max-width: 768px) {
               .solution-flow {
                 height: auto !important;
@@ -391,60 +549,73 @@ const VeriSupplyCaseStudy: FC = () => {
           `}</style>
           <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
             {/* Layer 1: Monitor */}
-            <rect x="50" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
-            {/* Monitor icon: signal waves */}
-            <circle cx="175" cy="80" r="28" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.5" />
-            <circle cx="175" cy="80" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
-            <circle cx="175" cy="80" r="8" fill={tokens.color.accent} />
-            <text x="175" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
-              Monitor
-            </text>
-            <text x="175" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-              Detect changes
-            </text>
-            <text x="175" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-              across suppliers & data
-            </text>
+            <g className="solution-flow-box-1">
+              <rect x="50" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
+              <g className="solution-icon">
+                <circle cx="175" cy="80" r="28" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.5" />
+                <circle cx="175" cy="80" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
+                <circle cx="175" cy="80" r="8" fill={tokens.color.accent} />
+              </g>
+              <text x="175" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+                Monitor
+              </text>
+              <text x="175" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                Detect changes
+              </text>
+              <text x="175" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                across suppliers & data
+              </text>
+            </g>
 
             {/* Arrow 1 */}
-            <path d="M 310 140 L 365 140" stroke={tokens.color.accent} strokeWidth="2.5" />
-            <polygon points="365,140 375,135 375,145" fill={tokens.color.accent} />
+            <g className="solution-arrow">
+              <path d="M 310 140 L 365 140" stroke={tokens.color.accent} strokeWidth="2.5" strokeLinecap="round" />
+              <polygon points="365,140 375,135 375,145" fill={tokens.color.accent} />
+            </g>
 
             {/* Layer 2: Understand */}
-            <rect x="385" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
-            {/* Understand icon: connected data */}
-            <rect x="460" y="60" width="30" height="15" fill={tokens.color.accent} opacity="0.3" rx="2" />
-            <rect x="460" y="80" width="30" height="15" fill={tokens.color.accent} opacity="0.6" rx="2" />
-            <rect x="495" y="70" width="20" height="20" fill={tokens.color.accent} rx="2" />
-            <path d="M 480 68 L 495 78" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.4" />
-            <text x="510" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
-              Understand
-            </text>
-            <text x="510" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-              Assess impact on
-            </text>
-            <text x="510" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-              business & revenue
-            </text>
+            <g className="solution-flow-box-2">
+              <rect x="385" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
+              <g className="solution-icon">
+                <rect x="460" y="60" width="30" height="15" fill={tokens.color.accent} opacity="0.3" rx="2" />
+                <rect x="460" y="80" width="30" height="15" fill={tokens.color.accent} opacity="0.6" rx="2" />
+                <rect x="495" y="70" width="20" height="20" fill={tokens.color.accent} rx="2" />
+                <path d="M 480 68 L 495 78" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.4" />
+              </g>
+              <text x="510" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+                Understand
+              </text>
+              <text x="510" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                Assess impact on
+              </text>
+              <text x="510" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                business & revenue
+              </text>
+            </g>
 
             {/* Arrow 2 */}
-            <path d="M 635 140 L 690 140" stroke={tokens.color.accent} strokeWidth="2.5" />
-            <polygon points="690,140 700,135 700,145" fill={tokens.color.accent} />
+            <g className="solution-arrow">
+              <path d="M 635 140 L 690 140" stroke={tokens.color.accent} strokeWidth="2.5" strokeLinecap="round" />
+              <polygon points="690,140 700,135 700,145" fill={tokens.color.accent} />
+            </g>
 
-            {/* Layer 3: Act - Green for positive outcome */}
-            <rect x="700" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
-            {/* Act icon: checkmark in success circle */}
-            <circle cx="825" cy="80" r="28" fill="#10B981" opacity="0.1" />
-            <path d="M 815 82 L 821 88 L 835 74" stroke="#10B981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <text x="825" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
-              Act
-            </text>
-            <text x="825" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-              Make informed decisions
-            </text>
-            <text x="825" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-              with evidence
-            </text>
+            {/* Layer 3: Act */}
+            <g className="solution-flow-box-3">
+              <rect x="700" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
+              <g className="solution-icon">
+                <circle cx="825" cy="80" r="28" fill="#10B981" opacity="0.1" />
+                <path d="M 815 82 L 821 88 L 835 74" stroke="#10B981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </g>
+              <text x="825" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+                Act
+              </text>
+              <text x="825" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                Make informed decisions
+              </text>
+              <text x="825" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                with evidence
+              </text>
+            </g>
           </svg>
         </Reveal>
 
@@ -493,6 +664,42 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <style>{`
+            @keyframes designCardSlideIn {
+              from {
+                opacity: 0;
+                transform: translateY(24px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            .design-card {
+              animation: designCardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+              opacity: 0;
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .design-card:nth-child(1) { animation-delay: 0.15s; }
+            .design-card:nth-child(2) { animation-delay: 0.25s; }
+            .design-card:nth-child(3) { animation-delay: 0.35s; }
+            .design-card:nth-child(4) { animation-delay: 0.45s; }
+
+            .design-card:hover {
+              transform: translateY(-8px);
+              box-shadow: 0 12px 32px rgba(64, 96, 200, 0.1);
+              border-color: rgba(64, 96, 200, 0.2);
+            }
+
+            .design-card svg {
+              transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .design-card:hover svg {
+              filter: brightness(1.05);
+            }
+
             @media (max-width: 768px) {
               .design-grid {
                 grid-template-columns: 1fr !important;
@@ -501,7 +708,7 @@ const VeriSupplyCaseStudy: FC = () => {
           `}</style>
           <div className="design-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
             {/* Dashboard */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div className="design-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280, border: "1px solid rgba(64, 96, 200, 0)" }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Frame */}
                 {/* Header bar */}
@@ -531,7 +738,7 @@ const VeriSupplyCaseStudy: FC = () => {
             </div>
 
             {/* Engineering Changes */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div className="design-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280, border: "1px solid rgba(64, 96, 200, 0)" }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Source box */}
                 <rect x="80" y="15" width="80" height="35" fill={tokens.color.accent} opacity="0.15" rx="4" />
@@ -561,7 +768,7 @@ const VeriSupplyCaseStudy: FC = () => {
             </div>
 
             {/* Supplier Comparison */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div className="design-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280, border: "1px solid rgba(64, 96, 200, 0)" }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Option A */}
                 <rect x="10" y="12" width="60" height="140" fill={tokens.color.accent} opacity="0.08" rx="4" />
@@ -604,7 +811,7 @@ const VeriSupplyCaseStudy: FC = () => {
             </div>
 
             {/* Bill of Materials */}
-            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280 }}>
+            <div className="design-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 32, minHeight: 280, border: "1px solid rgba(64, 96, 200, 0)" }}>
               <svg width="100%" height="180" viewBox="0 0 240 180" style={{ marginBottom: 16 }} aria-hidden="true">
                 {/* Header */}
                 <rect x="14" y="12" width="212" height="22" fill={tokens.color.accent} opacity="0.1" rx="3" />
