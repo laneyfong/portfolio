@@ -1083,7 +1083,7 @@ const AboutPage: FC = () => {
                   { name: "Figma", url: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg" },
                   { name: "Claude", url: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg" },
                   { name: "Cursor", url: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cursor.svg" },
-                  { name: "Lovable", url: "https://cdn.jsdelivr.net/gh/lovable-dev/brand/logo.svg" },
+                  { name: "Lovable", url: "https://unpkg.com/@lovable.dev/logo@latest/logo.svg" },
                   { name: "GitHub", url: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" },
                   { name: "Adobe CC", url: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobe.svg" },
                 ].map((tool) => (
