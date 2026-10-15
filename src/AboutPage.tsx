@@ -52,6 +52,7 @@ const AboutPage: FC = () => {
   const communities: CommunitiesEntry[] = [
     { role: "Internal President", organization: "UX@Berkeley" },
     { role: "Campus Ambassador", organization: "Partiful" },
+    { role: "UX Design Mentor", organization: "Crunch Tutor" },
   ];
 
   const certifications: CertificationEntry[] = [
