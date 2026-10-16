@@ -38,7 +38,7 @@ const AboutPage: FC = () => {
   const experiences: ExperienceEntry[] = [
     { role: "Product Designer (Capstone)", company: "Nvidia", year: "2026" },
     { role: "Product Growth & Design Intern", company: "Sensitel", year: "2026" },
-    { role: "Product Designer (Contract)", company: "MyShake", year: "2024, 2025" },
+    { role: "Contract", company: "MyShake", year: "2024, 2025" },
     { role: "Product Design Intern", company: "Eximlabs", year: "2023" },
     { role: "UI Designer (Contract)", company: "Mind Coffee", year: "2023" },
     { role: "UX Design Intern", company: "Advanced Health Academy", year: "2022" },
