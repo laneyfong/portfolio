@@ -615,13 +615,13 @@ const MyShakeCaseStudy: FC = () => {
           <div style={{ marginBottom: 60 }}>
             <Kicker>What users actually want</Kicker>
             <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
-              From 5 interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision.
+              From 10 user interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision.
             </p>
             <ExpandableRankedList
               items={[
                 { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do. This insight shaped the dashboard-first design, putting personal location and alerts at the top of the experience." },
                 { rank: 2, title: "Family Safety", detail: "After personal safety, knowing loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes—often requiring just 1-3 taps. This led to the pinned contacts feature and the 2-alert system (EEW vs CEN) to clarify communication timing." },
-                { rank: 3, title: "Property Damage", detail: "While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first. However, 2 of 5 users mentioned confusion between alert types, requiring clearer visual distinction in the design." },
+                { rank: 3, title: "Property Damage", detail: "While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first. However, 2 of 10 users mentioned confusion between alert types, requiring clearer visual distinction in the design." },
               ]}
             />
           </div>
@@ -1192,7 +1192,7 @@ const MyShakeCaseStudy: FC = () => {
         </Reveal>
         <Reveal>
           <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
-            The most important moment was saying no to immediate redesign pressure and advocating for research instead. Those 5 interviews and 50+ survey responses fundamentally shaped the information architecture. We built MyShake's first design system—every component battle-tested for crisis moments. Cutting user friction from 7 steps to 3, increasing engagement by 45%, and seeing the app shipped with our foundation meant everything.
+            The most important moment was saying no to immediate redesign pressure and advocating for research instead. Those 10 user interviews and 50+ survey responses fundamentally shaped the information architecture. We built MyShake's first design system—every component battle-tested for crisis moments. Cutting user friction from 7 steps to 3, increasing engagement by 45%, and seeing the app shipped with our foundation meant everything.
           </p>
           <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
             I'm deeply proud of what we took as a win together. This redesign shipped because my two engineering partners believed in user research, ruthless iteration, and accessibility-first thinking. To the team: thank you for building something that helps people stay safe during earthquakes.
