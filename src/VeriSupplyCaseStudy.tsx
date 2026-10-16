@@ -94,7 +94,7 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
 
   return (
     <>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: 32, alignItems: "start" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
         <button
           style={{
             position: "relative",
