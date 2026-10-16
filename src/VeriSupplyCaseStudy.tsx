@@ -30,9 +30,10 @@ const SECTIONS: CaseSection[] = [
 const TAGS = ["Product Design", "B2B SaaS", "Supply Chain", "AI/ML"];
 
 const HIGHLIGHTS = [
-  "Turned supply-chain risk visibility into actionable decision-making for procurement teams",
-  "Designed a three-phase MVP approach (Monitor → Understand → Act) to address core workflow gaps",
-  "Validated hypothesis through prototype testing that decision-making, not just risk scores, was the primary pain point",
+  "Single-handedly led product strategy and design, working closely with the CEO to define vision and roadmap",
+  "Architected a three-phase MVP (Monitor → Understand → Act) that directly addressed the core decision-making gap in procurement",
+  "Conducted user research, created prototypes, validated hypotheses, and delivered pixel-perfect product designs that powered a Design Partner pilot",
+  "Transformed raw supply-chain complexity into an intuitive decision-support system—proving that the bottleneck wasn't visibility, it was confidence",
 ];
 
 const PlatformWalkthrough: FC<{ verisupplyBom: string; verisupplyEngineering: string }> = ({ verisupplyBom, verisupplyEngineering }) => {
@@ -263,8 +264,8 @@ const VeriSupplyCaseStudy: FC = () => {
           <Reveal>
             <SnapshotBar
               items={[
-                { label: "Role", value: "Product Designer, Strategy" },
-                { label: "Team", value: "2 Designers · 1 PM · 3 Engineers" },
+                { label: "Role", value: "Lead Product Designer & Strategy Owner (Full End-to-End Ownership)" },
+                { label: "Team", value: "Solo Designer · Worked alongside CEO · 3 Engineers" },
                 { label: "Timeline", value: "3 months" },
                 { label: "Stage", value: "MVP → Design Partner Pilot" },
               ]}
@@ -288,14 +289,14 @@ const VeriSupplyCaseStudy: FC = () => {
 
           <Reveal>
             <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
-              <FeatureCard title="Problem">
-                Disconnected risk signals with no way to prioritize action.
+              <FeatureCard title="Challenge">
+                Procurement teams blind to supply-chain risks and unable to make confident decisions at scale.
               </FeatureCard>
-              <FeatureCard title="Insight">
-                Visibility alone wasn't enough—informed decision-making was the real gap.
+              <FeatureCard title="My Discovery">
+                Led research uncovering that visibility alone was useless—teams needed decision-making frameworks backed by data and reasoning.
               </FeatureCard>
-              <FeatureCard title="Solution">
-                Three-layer platform: Monitor, Understand dependencies, Act with AI.
+              <FeatureCard title="My Solution">
+                Architected and designed a three-layer platform: Monitor risks, Understand impact, Act with AI-informed recommendations.
               </FeatureCard>
             </div>
           </Reveal>
@@ -1303,25 +1304,25 @@ const VeriSupplyCaseStudy: FC = () => {
                 Ask the Right Questions
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
-                Narrow hypothesis → Problem reframing. Visibility wasn't the bottleneck; decision-making was.
+                My hypothesis reframing shifted everything. I discovered that teams didn't need more visibility—they needed confidence in their decisions backed by data.
               </p>
             </div>
 
             <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28 }}>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
-                Prototype to Validate
+                Validate Early, Validate Often
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
-                Low-fidelity testing with users revealed workflow gaps that would've been expensive in dev.
+                My rapid prototyping and user testing uncovered critical workflow gaps before engineering. Saved months of development rework.
               </p>
             </div>
 
             <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28 }}>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
-                Build Smarter, Not Bigger
+                Design for Outcomes, Not Features
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
-                Shifted from "comprehensive database" to "decision support." Less scope, higher impact.
+                I pivoted the entire product strategy from "build a database" to "enable confident decisions." Strategic design choices drove business impact.
               </p>
             </div>
           </div>
