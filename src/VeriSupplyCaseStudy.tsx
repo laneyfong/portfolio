@@ -264,7 +264,7 @@ const VeriSupplyCaseStudy: FC = () => {
           <Reveal>
             <SnapshotBar
               items={[
-                { label: "Role", value: "Lead Product Designer & Strategy Owner (Full End-to-End Ownership)" },
+                { label: "Role", value: "Lead Product Designer & Strategy Owner" },
                 { label: "Team", value: "Solo Designer · Worked alongside CEO · 3 Engineers" },
                 { label: "Timeline", value: "3 months" },
                 { label: "Stage", value: "MVP → Design Partner Pilot" },
