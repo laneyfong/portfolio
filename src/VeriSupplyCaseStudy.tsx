@@ -316,7 +316,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            The problem: Complexity without clarity
+            The challenge: Procurement teams drowning in risk signals, paralyzed by complexity
           </h2>
         </Reveal>
 
@@ -465,7 +465,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            Research: Reframing the problem
+            My discovery: Visibility was the wrong target—confidence was the real need
           </h2>
         </Reveal>
 
@@ -658,7 +658,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            The solution: Three layers of decision support
+            The architecture: Three-layer platform designed to move teams from uncertainty to action
           </h2>
         </Reveal>
 
@@ -947,7 +947,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            Design: Making complexity approachable
+            Execution: Every design decision optimized for confident decision-making under pressure
           </h2>
         </Reveal>
 
@@ -1214,7 +1214,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            Product roadmap: From discovery to scale
+            Strategic roadmap: Building phase-by-phase for procurement team confidence at scale
           </h2>
         </Reveal>
 
@@ -1286,7 +1286,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            Key learnings
+            What I learned: The power of reframing, rapid validation, and designing for outcomes
           </h2>
         </Reveal>
 
