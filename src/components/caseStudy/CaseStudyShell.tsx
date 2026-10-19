@@ -307,7 +307,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             </button>
 
             {highlightsOpen && (
-              <ul style={{ margin: "16px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
+              <ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
                 {highlights.map((item, i) => (
                   <li
                     key={item}
@@ -316,8 +316,8 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
                       position: "relative",
                       paddingLeft: 14,
                       fontFamily: tokens.font.sans,
-                      fontSize: 12.5,
-                      lineHeight: 1.4,
+                      fontSize: 12,
+                      lineHeight: 1.3,
                       color: "var(--text-secondary)",
                       animationDelay: `${i * 80}ms`,
                     }}
