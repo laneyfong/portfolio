@@ -1123,9 +1123,35 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 700 }}>
             Enterprise supply-chain data is inherently dense. Most tools overwhelm users with information architecture. My approach inverted this: ruthless information hierarchy (what's actionable vs. context), AI-driven recommendations with transparent reasoning (no black boxes), and micro-interactions that reward fast scanning. Every interface teaches the user's mental model in under 3 seconds.
           </p>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ background: "rgba(139, 92, 246, 0.05)", border: "1px solid rgba(139, 92, 246, 0.2)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+              KEY DESIGN PRINCIPLES
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16 }}>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 4px", fontWeight: 500 }}>Information Hierarchy</p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>80% actionable, 20% context</p>
+              </div>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 4px", fontWeight: 500 }}>Transparent Reasoning</p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>AI with evidence, not black boxes</p>
+              </div>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 4px", fontWeight: 500 }}>Fast Scanning</p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>Micro-interactions guide attention</p>
+              </div>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 4px", fontWeight: 500 }}>3-Second Mental Model</p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>Every interface self-teaches</p>
+              </div>
+            </div>
+          </div>
         </Reveal>
 
         <Reveal>
