@@ -16,6 +16,7 @@ import verisupplyThumbnail from "./assets/verisupply-thumbnail.png";
 import verisupplyBom from "./assets/verisupply-bom.mp4?url";
 import verisupplyEngineering from "./assets/verisupply-engineering.mp4?url";
 import verisupplyCompAnalysis from "./assets/verisupply-comp-analysis.png";
+import verisupplyRoadmapMatrix from "./assets/verisupply-roadmap-matrix.png";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -499,6 +500,24 @@ const VeriSupplyCaseStudy: FC = () => {
             <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
               Strategic Sourcing Lead, Fortune 500 Manufacturer
             </p>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginBottom: 60 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
+              STRATEGIC PRIORITIZATION FRAMEWORK
+            </p>
+            <img
+              src={verisupplyRoadmapMatrix}
+              alt="Impact/Effort matrix showing feature prioritization: Quick Wins (Sourcing priorities, Visual dashboard, Noise reduction), Core Product Roadmap (Supplier-Part-BOM mapping, BOM intelligence, Business impact analysis), Deprioritize (CAD-heavy viz, Full 3D product), and Future/Validate (Supply vs. demand, Capacity allocation)"
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                borderRadius: "12px",
+              }}
+            />
           </div>
         </Reveal>
 
