@@ -87,9 +87,9 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
   const [isExpanded, setIsExpanded] = useState(false);
 
   const takeaways = [
-    "AI-generated supplier alternatives reduce evaluation time from weeks to hours while maintaining rigor",
-    "Cost-risk tradeoff visualization enables procurement teams to defend decisions to stakeholders with hard data",
-    "Automated scoring on quality, delivery, and sustainability removes bias from supplier selection process",
+    "Moves procurement teams from weeks of supplier research to hours of informed decision-making—without sacrificing due diligence",
+    "Gives procurement leaders the data-backed confidence to defend every decision to finance, operations, and executives",
+    "Removes human bias from supplier selection by automating quality, delivery, and sustainability scoring across the entire supply chain",
   ];
 
   return (
