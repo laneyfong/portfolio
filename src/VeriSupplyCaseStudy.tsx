@@ -291,7 +291,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <FeatureCard title="My Insight">
                 Confidence, not visibility, unblocks decision-making velocity. Teams need transparent reasoning they can defend—not black-box recommendations.
               </FeatureCard>
-              <FeatureCard title="My Bet">
+              <FeatureCard title="Solution">
                 Design a decision engine that surfaces AI-backed recommendations with transparent reasoning—fast enough to move in real-time, defensible enough to survive executive scrutiny.
               </FeatureCard>
             </div>
