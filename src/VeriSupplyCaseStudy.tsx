@@ -141,7 +141,7 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
         </button>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+          <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: "0.5px" }}>
             Why this drives better outcomes
           </p>
           {takeaways.map((takeaway, idx) => (
