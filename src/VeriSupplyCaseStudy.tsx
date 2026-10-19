@@ -292,7 +292,7 @@ const VeriSupplyCaseStudy: FC = () => {
                 Confidence, not visibility, unblocks decision-making velocity. Teams need transparent reasoning they can defend—not black-box recommendations.
               </FeatureCard>
               <FeatureCard title="Solution">
-                Design a decision engine that surfaces AI-backed recommendations with transparent reasoning—fast enough to move in real-time, defensible enough to survive executive scrutiny.
+                Design an AI decision engine—transparent reasoning, real-time execution, executive-defensible.
               </FeatureCard>
             </div>
           </Reveal>
@@ -492,38 +492,13 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
-            <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
-              What Teams Actually Said
-            </h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-              <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "Don't give me another place to look — tell me what matters."
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
-                  Strategic Sourcing Lead at Fortune 500 Manufacturer
-                </p>
-              </div>
-
-              <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "People don't have time to read 50-page reports. We need it condensed to what actually matters."
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
-                  Operations Director, Supply Chain
-                </p>
-              </div>
-
-              <div>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
-                </p>
-                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
-                  VP Procurement, Tech Company
-                </p>
-              </div>
-            </div>
+          <div style={{ borderLeft: "4px solid var(--text-accent, #4060C8)", paddingLeft: 28, marginBottom: 60 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.lg, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug, fontStyle: "italic" }}>
+              "Don't give me another place to look — tell me what matters."
+            </p>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
+              Strategic Sourcing Lead, Fortune 500 Manufacturer
+            </p>
           </div>
         </Reveal>
 
@@ -1244,7 +1219,7 @@ const VeriSupplyCaseStudy: FC = () => {
                     Dashboard
                   </h3>
                   <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
-                    Central hub showing AI summary, priorities, business impact, and supply-chain risk map. One screen to see what matters most.
+                    AI summary, priorities, business impact, and risk map in one view.
                   </p>
                 </div>
               </div>
@@ -1357,7 +1332,7 @@ const VeriSupplyCaseStudy: FC = () => {
                 Bill of Materials
               </h3>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.normal }}>
-                Connected view of all parts, suppliers, costs, and supply-chain exposure in one view.
+                All parts, suppliers, costs, and supply-chain exposure at a glance.
               </p>
             </div>
           </div>
