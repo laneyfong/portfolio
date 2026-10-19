@@ -269,7 +269,7 @@ const VeriSupplyCaseStudy: FC = () => {
           </Reveal>
 
           <Reveal>
-            <div style={{ marginBottom: 80, width: "100%", overflow: "hidden" }}>
+            <div style={{ marginBottom: 80, width: "100%", overflow: "hidden", borderRadius: "12px" }}>
               <img
                 src={verisupplyThumbnail}
                 alt="VeriSupply dashboard showing real-time supply chain monitoring with risk indicators and dependency visualization"
@@ -277,6 +277,7 @@ const VeriSupplyCaseStudy: FC = () => {
                   width: "100%",
                   height: "auto",
                   display: "block",
+                  borderRadius: "12px",
                 }}
               />
             </div>
