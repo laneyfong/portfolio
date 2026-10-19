@@ -487,51 +487,17 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <style>{`
-            @keyframes truthIconSlideIn {
-              from {
-                opacity: 0;
-                transform: translateY(20px);
-              }
-              to {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-
-            @keyframes truthBounce {
-              0%, 100% {
-                transform: translateY(0);
-              }
-              50% {
-                transform: translateY(-4px);
-              }
-            }
-
-            @keyframes truthPulse {
-              0%, 100% {
-                opacity: 1;
-              }
-              50% {
-                opacity: 0.6;
-              }
-            }
-
             .truth-item {
-              animation: truthIconSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-              opacity: 0;
+              border: 1px solid var(--border-color);
+              border-radius: tokens.radius.md;
+              transition: all 0.2s ease;
             }
 
-            .truth-item:nth-child(1) { animation-delay: 0.1s; }
-            .truth-item:nth-child(2) { animation-delay: 0.3s; }
-            .truth-item:nth-child(3) { animation-delay: 0.5s; }
-
-            .truth-icon {
-              animation: truthBounce 3s ease-in-out infinite;
+            .truth-item:hover {
+              background: rgba(64, 96, 200, 0.03);
+              border-color: rgba(64, 96, 200, 0.2);
+              transform: translateY(-2px);
             }
-
-            .truth-item:nth-child(1) .truth-icon { animation-delay: 0s; }
-            .truth-item:nth-child(2) .truth-icon { animation-delay: 0.2s; }
-            .truth-item:nth-child(3) .truth-icon { animation-delay: 0.4s; }
 
             @media (max-width: 768px) {
               .truths-grid {
@@ -540,7 +506,7 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <div className="truths-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginBottom: 60 }}>
-            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: 32, borderRadius: tokens.radius.md }}>
               <svg className="truth-icon" width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 20 }} aria-hidden="true">
                 <g fill="none" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   {/* Bucket overflowing with data */}
@@ -900,46 +866,33 @@ const VeriSupplyCaseStudy: FC = () => {
               }
             }
 
-            @keyframes radarScan {
-              0%, 100% {
-                opacity: 0.3;
-              }
-              50% {
-                opacity: 0.8;
-              }
-            }
 
-            @keyframes gearRotate {
-              from {
-                transform: rotate(0deg);
-              }
-              to {
-                transform: rotate(360deg);
-              }
-            }
-
-            @keyframes pulseGlow {
-              0%, 100% {
-                opacity: 0.5;
-              }
-              50% {
-                opacity: 1;
-              }
+            .solution-flow-box-1,
+            .solution-flow-box-2,
+            .solution-flow-box-3 {
+              animation: flowBoxSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+              opacity: 0;
+              transition: all 0.2s ease;
+              cursor: pointer;
             }
 
             .solution-flow-box-1 {
-              animation: flowBoxSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
-              opacity: 0;
+              animation-delay: 0.1s;
             }
 
             .solution-flow-box-2 {
-              animation: flowBoxSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-              opacity: 0;
+              animation-delay: 0.3s;
             }
 
             .solution-flow-box-3 {
-              animation: flowBoxSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
-              opacity: 0;
+              animation-delay: 0.5s;
+            }
+
+            .solution-flow-box-1:hover,
+            .solution-flow-box-2:hover,
+            .solution-flow-box-3:hover {
+              filter: drop-shadow(0 4px 12px rgba(64, 96, 200, 0.15));
+              transform: translateY(-2px);
             }
 
             .solution-arrow {
@@ -952,18 +905,6 @@ const VeriSupplyCaseStudy: FC = () => {
               animation-delay: 0.4s;
             }
 
-            .radar-circle {
-              animation: radarScan 3s ease-in-out infinite;
-            }
-
-            .gear-icon {
-              animation: gearRotate 8s linear infinite;
-              transform-origin: 50% 50%;
-            }
-
-            .decision-glow {
-              animation: pulseGlow 2.5s ease-in-out infinite;
-            }
 
             @media (max-width: 768px) {
               .solution-flow {
@@ -978,7 +919,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <g style={{ transform: "translate(175px, 90px)" }}>
                 {/* Radar rings */}
                 <circle cx="0" cy="0" r="24" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.3" />
-                <circle cx="0" cy="0" r="16" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" className="radar-circle" />
+                <circle cx="0" cy="0" r="16" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.5" />
                 <circle cx="0" cy="0" r="8" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
                 <circle cx="0" cy="0" r="4" fill={tokens.color.accent} />
               </g>
@@ -1004,7 +945,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <rect x="385" y="40" width="250" height="220" fill={"var(--surface-light)"} rx="12" />
               <g style={{ transform: "translate(510px, 95px)" }}>
                 {/* Gear icon */}
-                <g className="gear-icon">
+                <g>
                   <circle cx="0" cy="0" r="5" fill={tokens.color.accent} />
                   <path d="M 0,-16 L 2,-10 L 8,-12 L 5,-8 L 8,-2 L 2,-4 L 0,2 L -2,-4 L -8,-2 L -5,-8 L -8,-12 L -2,-10 Z" fill={tokens.color.accent} opacity="0.7" />
                 </g>
@@ -1035,7 +976,7 @@ const VeriSupplyCaseStudy: FC = () => {
               <rect x="700" y="40" width="250" height="220" fill={"var(--surface-light)"} rx="12" />
               <g style={{ transform: "translate(825px, 95px)" }}>
                 {/* Decision circle with checkmark */}
-                <circle cx="0" cy="0" r="20" fill="#10B981" opacity="0.15" className="decision-glow" />
+                <circle cx="0" cy="0" r="20" fill="#10B981" opacity="0.15" />
                 <circle cx="0" cy="0" r="20" fill="none" stroke="#10B981" strokeWidth="2" opacity="0.5" />
                 <path d="M -8 0 L -2 6 L 10 -6" stroke="#10B981" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
               </g>
