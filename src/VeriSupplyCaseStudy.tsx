@@ -482,7 +482,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
         <Reveal>
           <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
-            We challenged the assumption that risk visibility was the problem. Interviews with procurement leaders across multiple companies revealed the real bottleneck: <strong>decision-making, not data.</strong>
+            I conducted <strong>15 user interviews</strong> with procurement leaders and analyzed the <strong>top 5 direct and indirect competitors</strong>. This research challenged the assumption that risk visibility was the problem. The real bottleneck: <strong>decision-making, not data.</strong>
           </p>
         </Reveal>
 
@@ -1348,6 +1348,15 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
                 I pivoted the entire product strategy from "build a database" to "enable confident decisions." Strategic design choices drove business impact.
+              </p>
+            </div>
+
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+                Thought Leadership & Finding Your Audience
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
+                Understanding procurement teams' pain points meant becoming fluent in their language, their constraints, and their strategic priorities. The best product strategy comes from seeking the right audience and truly understanding what drives their decisions.
               </p>
             </div>
           </div>
