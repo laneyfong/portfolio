@@ -901,12 +901,30 @@ const VeriSupplyCaseStudy: FC = () => {
               }
             }
 
-            @keyframes iconPulse {
+            @keyframes radarScan {
               0%, 100% {
-                opacity: 1;
+                opacity: 0.3;
               }
               50% {
-                opacity: 0.6;
+                opacity: 0.8;
+              }
+            }
+
+            @keyframes gearRotate {
+              from {
+                transform: rotate(0deg);
+              }
+              to {
+                transform: rotate(360deg);
+              }
+            }
+
+            @keyframes pulseGlow {
+              0%, 100% {
+                opacity: 0.5;
+              }
+              50% {
+                opacity: 1;
               }
             }
 
@@ -935,8 +953,17 @@ const VeriSupplyCaseStudy: FC = () => {
               animation-delay: 0.4s;
             }
 
-            .solution-icon {
-              animation: iconPulse 2s ease-in-out infinite;
+            .radar-circle {
+              animation: radarScan 3s ease-in-out infinite;
+            }
+
+            .gear-icon {
+              animation: gearRotate 8s linear infinite;
+              transform-origin: 50% 50%;
+            }
+
+            .decision-glow {
+              animation: pulseGlow 2.5s ease-in-out infinite;
             }
 
             @media (max-width: 768px) {
@@ -945,73 +972,82 @@ const VeriSupplyCaseStudy: FC = () => {
               }
             }
           `}</style>
-          <svg className="solution-flow" width="100%" height="280" viewBox="0 0 1000 280" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-            {/* Layer 1: Monitor */}
+          <svg className="solution-flow" width="100%" height="300" viewBox="0 0 1000 300" style={{ marginBottom: 60, maxWidth: "100%" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            {/* Layer 1: Monitor - Real-time Detection */}
             <g className="solution-flow-box-1">
-              <rect x="50" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
-              <g className="solution-icon">
-                <circle cx="175" cy="80" r="28" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.5" />
-                <circle cx="175" cy="80" r="18" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
-                <circle cx="175" cy="80" r="8" fill={tokens.color.accent} />
+              <rect x="50" y="40" width="250" height="220" fill={"var(--surface-light)"} rx="12" />
+              <g style={{ transform: "translate(175px, 90px)" }}>
+                {/* Radar rings */}
+                <circle cx="0" cy="0" r="24" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.3" />
+                <circle cx="0" cy="0" r="16" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" className="radar-circle" />
+                <circle cx="0" cy="0" r="8" fill="none" stroke={tokens.color.accent} strokeWidth="2" opacity="0.7" />
+                <circle cx="0" cy="0" r="4" fill={tokens.color.accent} />
               </g>
-              <text x="175" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+              <text x="175" y="165" fontSize="18" fill={"var(--text-dark)"} textAnchor="middle" fontWeight="500" fontFamily={tokens.font.sans}>
                 Monitor
               </text>
-              <text x="175" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-                Detect changes
+              <text x="175" y="190" fontSize="14" fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                Real-time
               </text>
-              <text x="175" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-                across suppliers & data
+              <text x="175" y="208" fontSize="14" fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                detection & tracking
               </text>
             </g>
 
             {/* Arrow 1 */}
             <g className="solution-arrow">
-              <path d="M 310 140 L 365 140" stroke={tokens.color.accent} strokeWidth="2.5" strokeLinecap="round" />
-              <polygon points="365,140 375,135 375,145" fill={tokens.color.accent} />
+              <path d="M 310 150 L 365 150" stroke={tokens.color.accent} strokeWidth="2.5" strokeLinecap="round" />
+              <polygon points="365,150 377,145 377,155" fill={tokens.color.accent} />
             </g>
 
-            {/* Layer 2: Understand */}
+            {/* Layer 2: Understand - AI with Transparency */}
             <g className="solution-flow-box-2">
-              <rect x="385" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
-              <g className="solution-icon">
-                <rect x="460" y="60" width="30" height="15" fill={tokens.color.accent} opacity="0.3" rx="2" />
-                <rect x="460" y="80" width="30" height="15" fill={tokens.color.accent} opacity="0.6" rx="2" />
-                <rect x="495" y="70" width="20" height="20" fill={tokens.color.accent} rx="2" />
-                <path d="M 480 68 L 495 78" stroke={tokens.color.accent} strokeWidth="1.5" opacity="0.4" />
+              <rect x="385" y="40" width="250" height="220" fill={"var(--surface-light)"} rx="12" />
+              <g style={{ transform: "translate(510px, 95px)" }}>
+                {/* Gear icon */}
+                <g className="gear-icon">
+                  <circle cx="0" cy="0" r="5" fill={tokens.color.accent} />
+                  <path d="M 0,-16 L 2,-10 L 8,-12 L 5,-8 L 8,-2 L 2,-4 L 0,2 L -2,-4 L -8,-2 L -5,-8 L -8,-12 L -2,-10 Z" fill={tokens.color.accent} opacity="0.7" />
+                </g>
+                {/* Document/reasoning symbol */}
+                <rect x="16" y="-12" width="12" height="16" fill="none" stroke={tokens.color.accent} strokeWidth="1.5" rx="1" opacity="0.6" />
+                <line x1="18" y1="-8" x2="26" y2="-8" stroke={tokens.color.accent} strokeWidth="1" opacity="0.5" />
+                <line x1="18" y1="-4" x2="26" y2="-4" stroke={tokens.color.accent} strokeWidth="1" opacity="0.5" />
               </g>
-              <text x="510" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+              <text x="510" y="165" fontSize="18" fill={"var(--text-dark)"} textAnchor="middle" fontWeight="500" fontFamily={tokens.font.sans}>
                 Understand
               </text>
-              <text x="510" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-                Assess impact on
+              <text x="510" y="190" fontSize="14" fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                AI analysis with
               </text>
-              <text x="510" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-                business & revenue
+              <text x="510" y="208" fontSize="14" fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                transparent reasoning
               </text>
             </g>
 
             {/* Arrow 2 */}
             <g className="solution-arrow">
-              <path d="M 635 140 L 690 140" stroke={tokens.color.accent} strokeWidth="2.5" strokeLinecap="round" />
-              <polygon points="690,140 700,135 700,145" fill={tokens.color.accent} />
+              <path d="M 635 150 L 690 150" stroke={tokens.color.accent} strokeWidth="2.5" strokeLinecap="round" />
+              <polygon points="690,150 702,145 702,155" fill={tokens.color.accent} />
             </g>
 
-            {/* Layer 3: Act */}
+            {/* Layer 3: Act - Confident Decisions */}
             <g className="solution-flow-box-3">
-              <rect x="700" y="40" width="250" height="200" fill={"var(--surface-light)"} rx="12" />
-              <g className="solution-icon">
-                <circle cx="825" cy="80" r="28" fill="#10B981" opacity="0.1" />
-                <path d="M 815 82 L 821 88 L 835 74" stroke="#10B981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              <rect x="700" y="40" width="250" height="220" fill={"var(--surface-light)"} rx="12" />
+              <g style={{ transform: "translate(825px, 95px)" }}>
+                {/* Decision circle with checkmark */}
+                <circle cx="0" cy="0" r="20" fill="#10B981" opacity="0.15" className="decision-glow" />
+                <circle cx="0" cy="0" r="20" fill="none" stroke="#10B981" strokeWidth="2" opacity="0.5" />
+                <path d="M -8 0 L -2 6 L 10 -6" stroke="#10B981" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
               </g>
-              <text x="825" y="150" fontSize={tokens.text.lg} fill={"var(--text-dark)"} textAnchor="middle" fontWeight={tokens.weight.medium} fontFamily={tokens.font.sans}>
+              <text x="825" y="165" fontSize="18" fill={"var(--text-dark)"} textAnchor="middle" fontWeight="500" fontFamily={tokens.font.sans}>
                 Act
               </text>
-              <text x="825" y="180" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-                Make informed decisions
+              <text x="825" y="190" fontSize="14" fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                Confident, defensible
               </text>
-              <text x="825" y="202" fontSize={tokens.text.base} fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
-                with evidence
+              <text x="825" y="208" fontSize="14" fill={"var(--text-secondary)"} textAnchor="middle" fontFamily={tokens.font.sans}>
+                decisions with evidence
               </text>
             </g>
           </svg>
