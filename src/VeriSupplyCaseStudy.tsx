@@ -30,10 +30,9 @@ const SECTIONS: CaseSection[] = [
 const TAGS = ["Product Design", "B2B SaaS", "Supply Chain", "AI/ML"];
 
 const HIGHLIGHTS = [
-  "Single-handedly led product strategy and design, working closely with the CEO to define vision and roadmap",
-  "Architected a three-phase MVP (Monitor → Understand → Act) that directly addressed the core decision-making gap in procurement",
-  "Conducted user research, created prototypes, validated hypotheses, and delivered pixel-perfect product designs that powered a Design Partner pilot",
-  "Transformed raw supply-chain complexity into an intuitive decision-support system—proving that the bottleneck wasn't visibility, it was confidence",
+  "Led solo product strategy and design, architected three-layer decision engine (Monitor → Understand → Act) under 3-month timeline",
+  "Validated through 15 rapid user interviews that decision-making confidence—not data visibility—unblocks procurement velocity",
+  "Shipped MVP to Design Partner pilots with defensible AI-backed recommendations and transparent reasoning",
 ];
 
 const PlatformWalkthrough: FC<{ verisupplyBom: string; verisupplyEngineering: string }> = ({ verisupplyBom, verisupplyEngineering }) => {
