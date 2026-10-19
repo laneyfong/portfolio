@@ -654,6 +654,70 @@ const VeriSupplyCaseStudy: FC = () => {
             </div>
           </div>
         </Reveal>
+
+        <Reveal>
+          <div style={{ marginTop: 80, marginBottom: 60 }}>
+            <h3 style={{ margin: "0 0 8px", fontFamily: tokens.font.sans, fontSize: tokens.text.lg, fontWeight: tokens.weight.medium, color: "var(--text-dark)", letterSpacing: "-0.02em" }}>
+              Real interface: Market analysis & supplier insights
+            </h3>
+            <p style={{ margin: "0 0 32px", fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, maxWidth: 700 }}>
+              See how procurement teams use VeriSupply to analyze competitive alternatives and make data-backed supplier decisions with confidence.
+            </p>
+
+            <style>{`
+              .market-image-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                backdrop-filter: blur(2px);
+              }
+
+              .market-image-modal-content {
+                position: relative;
+                max-width: 90vw;
+                max-height: 90vh;
+              }
+
+              .market-image-modal img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+              }
+
+              .market-image-modal-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: white;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                transition: all 0.2s ease;
+              }
+
+              .market-image-modal-close:hover {
+                background: rgba(255, 255, 255, 0.2);
+              }
+            `}</style>
+
+            <MarketAnalysisGallery verisupplyCompAnalysis={verisupplyCompAnalysis} tokens={tokens} />
+          </div>
+        </Reveal>
       </section>
 
       {/* Solution */}
@@ -1158,70 +1222,6 @@ const VeriSupplyCaseStudy: FC = () => {
                 Connected view of all parts, suppliers, costs, and supply-chain exposure in one view.
               </p>
             </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div style={{ marginTop: 80, marginBottom: 60 }}>
-            <h3 style={{ margin: "0 0 8px", fontFamily: tokens.font.sans, fontSize: tokens.text.lg, fontWeight: tokens.weight.medium, color: "var(--text-dark)", letterSpacing: "-0.02em" }}>
-              Real interface: Market analysis & supplier insights
-            </h3>
-            <p style={{ margin: "0 0 32px", fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, maxWidth: 700 }}>
-              See how procurement teams use VeriSupply to analyze competitive alternatives and make data-backed supplier decisions with confidence.
-            </p>
-
-            <style>{`
-              .market-image-modal {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.95);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-                backdrop-filter: blur(2px);
-              }
-
-              .market-image-modal-content {
-                position: relative;
-                max-width: 90vw;
-                max-height: 90vh;
-              }
-
-              .market-image-modal img {
-                width: 100%;
-                height: auto;
-                display: block;
-                border-radius: 12px;
-              }
-
-              .market-image-modal-close {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                color: white;
-                border-radius: 50%;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 24px;
-                transition: all 0.2s ease;
-              }
-
-              .market-image-modal-close:hover {
-                background: rgba(255, 255, 255, 0.2);
-              }
-            `}</style>
-
-            <MarketAnalysisGallery verisupplyCompAnalysis={verisupplyCompAnalysis} tokens={tokens} />
           </div>
         </Reveal>
       </section>
