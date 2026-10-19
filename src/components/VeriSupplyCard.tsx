@@ -221,9 +221,9 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({ isActive = false }) => {
               overflowWrap: "break-word",
             }}
           >
-            Reduced intake time from 1-2 weeks to{" "}
+            Validated that procurement decisions are driven by{" "}
             <span style={{ fontFamily: tokens.font.sans, fontWeight: 500, color: "var(--text-dark)" }}>
-              1-2 hours
+              confidence, not visibility
             </span>
           </span>
         </div>
