@@ -146,10 +146,7 @@ const MarketAnalysisGallery: FC<{ verisupplyCompAnalysis: string; tokens: any }>
           </p>
           {takeaways.map((takeaway, idx) => (
             <div key={idx} style={{ display: "flex", gap: 12 }}>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 2 }}>
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4060C8", flexShrink: 0, marginBottom: 2 }} aria-hidden="true" />
-                <span style={{ fontSize: "10px", fontWeight: "bold", color: "#4060C8", letterSpacing: "0.3px" }}>KEY</span>
-              </div>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4060C8", flexShrink: 0, marginTop: 6 }} aria-hidden="true" />
               <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
                 {takeaway}
               </p>
