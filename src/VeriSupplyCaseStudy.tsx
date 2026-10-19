@@ -326,7 +326,7 @@ const VeriSupplyCaseStudy: FC = () => {
         <Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 48, marginBottom: 60, alignItems: "stretch" }}>
             {/* Before */}
-            <div style={{ border: "1px solid var(--border-color)", borderRadius: tokens.radius.md, padding: 40 }}>
+            <div style={{ borderRadius: tokens.radius.md, padding: 40 }}>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
                 WITHOUT CONFIDENCE ENGINE
               </p>
@@ -355,7 +355,7 @@ const VeriSupplyCaseStudy: FC = () => {
             </div>
 
             {/* After */}
-            <div style={{ border: "1px solid var(--border-color)", borderRadius: tokens.radius.md, padding: 40, background: "rgba(16, 185, 129, 0.03)" }}>
+            <div style={{ borderRadius: tokens.radius.md, padding: 40, background: "rgba(16, 185, 129, 0.03)" }}>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
                 WITH VERISUPPLY
               </p>
@@ -413,7 +413,7 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ background: "rgba(16, 185, 129, 0.05)", border: "1px solid rgba(16, 185, 129, 0.2)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
+          <div style={{ background: "rgba(16, 185, 129, 0.05)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
             <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
               RESEARCH METHODOLOGY
             </p>
@@ -439,14 +439,12 @@ const VeriSupplyCaseStudy: FC = () => {
         <Reveal>
           <style>{`
             .truth-item {
-              border: 1px solid var(--border-color);
               border-radius: tokens.radius.md;
               transition: all 0.2s ease;
             }
 
             .truth-item:hover {
-              background: rgba(64, 96, 200, 0.03);
-              border-color: rgba(64, 96, 200, 0.2);
+              background: rgba(64, 96, 200, 0.06);
               transform: translateY(-2px);
             }
 
@@ -794,7 +792,7 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ background: "rgba(64, 96, 200, 0.05)", border: "1px solid rgba(64, 96, 200, 0.2)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
+          <div style={{ background: "rgba(64, 96, 200, 0.05)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
             <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
               DESIGN UNDER EXTREME CONSTRAINTS
             </p>
@@ -1129,7 +1127,7 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ background: "rgba(139, 92, 246, 0.05)", border: "1px solid rgba(139, 92, 246, 0.2)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
+          <div style={{ background: "rgba(139, 92, 246, 0.05)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
             <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
               KEY DESIGN PRINCIPLES
             </p>
