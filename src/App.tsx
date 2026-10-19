@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Portfolio from "./Portfolio";
 import AboutPage from "./AboutPage";
 import LabPage from "./LabPage";
@@ -77,6 +78,7 @@ function App() {
         <ScrollToTop />
         <GlobalStyles />
         <PageFadeInWrapper />
+        <Analytics />
       </BrowserRouter>
     </DarkModeProvider>
   );
