@@ -324,130 +324,63 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <style>{`
-            @keyframes slideInUp {
-              from {
-                opacity: 0;
-                transform: translateY(24px);
-              }
-              to {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-
-            @keyframes iconFloat {
-              0%, 100% {
-                transform: translateY(0);
-              }
-              50% {
-                transform: translateY(-4px);
-              }
-            }
-
-            .problem-card {
-              animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-              opacity: 0;
-              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            .problem-card:nth-child(1) { animation-delay: 0.1s; }
-            .problem-card:nth-child(2) { animation-delay: 0.2s; }
-            .problem-card:nth-child(3) { animation-delay: 0.3s; }
-            .problem-card:nth-child(4) { animation-delay: 0.4s; }
-
-            .problem-card:hover {
-              transform: translateY(-8px);
-              box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-            }
-
-            .problem-icon {
-              animation: iconFloat 3s ease-in-out infinite;
-            }
-
-            .problem-card:hover .problem-icon {
-              animation: none;
-              transform: scale(1.1);
-            }
-
-            @media (max-width: 768px) {
-              .problem-grid {
-                grid-template-columns: 1fr !important;
-              }
-            }
-          `}</style>
-          <div className="problem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32, marginBottom: 60 }}>
-            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
-              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#8B5CF6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="16" y="28" width="10" height="28" rx="1" />
-                  <rect x="28" y="20" width="10" height="36" rx="1" />
-                  <rect x="40" y="32" width="10" height="24" rx="1" />
-                  <circle cx="36" cy="10" r="6" fill="none" strokeWidth="2.5" />
-                  <path d="M 33 8 L 39 14 M 39 8 L 33 14" strokeWidth="2.5" />
-                </g>
-              </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
-                Numbers without meaning
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
-                Risk scores lack business context
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 48, marginBottom: 60, alignItems: "stretch" }}>
+            {/* Before */}
+            <div style={{ border: "1px solid var(--border-color)", borderRadius: tokens.radius.md, padding: 40 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
+                WITHOUT CONFIDENCE ENGINE
               </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>50+ page supplier reports</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>2-4 weeks per decision</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Can't defend to executives</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Human bias in scoring</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Analysis paralysis</p>
+                </div>
+              </div>
             </div>
 
-            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
-              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#1E3A8A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M 12 24 L 36 12 L 60 24 L 60 36 L 36 48 L 12 36 Z" />
-                  <path d="M 12 36 L 36 48 L 60 36" />
-                  <path d="M 36 12 L 36 48" />
-                  <circle cx="36" cy="30" r="4" fill="#1E3A8A" opacity="0.3" />
-                  <path d="M 36 54 L 36 62" strokeWidth="2.5" opacity="0.4" />
-                </g>
-              </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
-                Blind spots beyond Tier 1
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
-                Upstream disruptions go unseen
+            {/* After */}
+            <div style={{ border: "1px solid var(--border-color)", borderRadius: tokens.radius.md, padding: 40, background: "rgba(16, 185, 129, 0.03)" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
+                WITH VERISUPPLY
               </p>
-            </div>
-
-            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
-              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="36" cy="36" r="20" />
-                  <path d="M 36 20 L 36 36" strokeWidth="2.5" />
-                  <path d="M 36 36 L 46 46" strokeWidth="2.5" />
-                  <circle cx="36" cy="36" r="3" fill="#F59E0B" opacity="0.4" />
-                  <path d="M 54 18 L 62 10 M 54 18 L 62 26" strokeWidth="2" opacity="0.5" />
-                </g>
-              </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
-                Analysis is too slow
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
-                Manual investigation misses decision windows
-              </p>
-            </div>
-
-            <div className="problem-card" style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260, cursor: "pointer" }}>
-              <svg className="problem-icon" width="72" height="72" viewBox="0 0 72 72" style={{ marginBottom: 20, maxWidth: "100%", height: "auto" }} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <g fill="none" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="16" y="24" width="40" height="32" rx="2" />
-                  <line x1="24" y1="32" x2="48" y2="32" />
-                  <line x1="24" y1="40" x2="48" y2="40" />
-                  <line x1="24" y1="48" x2="40" y2="48" />
-                  <circle cx="56" cy="28" r="6" fill="none" strokeWidth="2.5" />
-                  <path d="M 54 26 L 58 30 M 58 26 L 54 30" strokeWidth="2" opacity="0.6" />
-                </g>
-              </svg>
-              <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px", textAlign: "center" }}>
-                Automation without evidence
-              </h3>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", margin: 0, textAlign: "center", lineHeight: tokens.leading.normal }}>
-                Can't defend decisions to stakeholders
-              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Glanceable dashboard</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>2-4 hours per decision</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Data-backed reasoning</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Automated scoring</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Confident action</p>
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>
@@ -480,8 +413,26 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
+          <div style={{ background: "rgba(16, 185, 129, 0.05)", border: "1px solid rgba(16, 185, 129, 0.2)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+              RESEARCH METHODOLOGY
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 4px" }}>15 rapid interviews</p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>Procurement leaders across manufacturing, logistics, and tech</p>
+              </div>
+              <div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 4px" }}>Top 5 competitor analysis</p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>Direct and indirect competitors in supply-chain visibility</p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
           <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
-            Through <strong>15 rapid interviews</strong> with procurement leaders (CEO-led scheduling for speed) and competitive analysis of the <strong>top 5 direct and indirect competitors</strong>, I uncovered three universal truths that forced a ruthless MVP scope decision:
+            This uncovered three universal truths that forced a ruthless MVP scope decision:
           </p>
         </Reveal>
 
@@ -837,9 +788,31 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 700 }}>
             The design philosophy: <strong>Make complex supply-chain analysis as fast and glanceable as a TikTok feed.</strong> Your brain should never struggle to understand what matters. Every pixel had to earn its place.
           </p>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ background: "rgba(64, 96, 200, 0.05)", border: "1px solid rgba(64, 96, 200, 0.2)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 48 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+              DESIGN UNDER EXTREME CONSTRAINTS
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "flex", gap: 12 }}>
+                <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>3 months (not 12)</p>
+              </div>
+              <div style={{ display: "flex", gap: 12 }}>
+                <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>Solo designer (high autonomy)</p>
+              </div>
+              <div style={{ display: "flex", gap: 12 }}>
+                <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>Real-time execution (not batch processing)</p>
+              </div>
+            </div>
+          </div>
         </Reveal>
 
         <Reveal>
