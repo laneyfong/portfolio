@@ -248,7 +248,7 @@ const VeriSupplyCaseStudy: FC = () => {
               maxWidth: 480,
             }}
           >
-            I designed a <Italic>high-stakes decision engine</Italic> for procurement teams operating under extreme time pressure.
+            Supply Chain Intelligence That <Italic>Actually Moves Decisions</Italic>
           </h1>
 
           <div className="case-study-tags" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
