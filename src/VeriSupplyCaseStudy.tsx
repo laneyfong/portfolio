@@ -313,7 +313,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            The challenge: Procurement teams drowning in risk signals, paralyzed by complexity
+            I uncovered the real problem: Teams had visibility but lacked confidence to act
           </h2>
         </Reveal>
 
@@ -462,7 +462,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            My discovery: Visibility was the wrong target—confidence was the real need
+            I reframed the problem: The real bottleneck was decision-making, not data
           </h2>
         </Reveal>
 
@@ -655,7 +655,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            The architecture: Three-layer platform designed to move teams from uncertainty to action
+            I architected a three-layer system: Monitor, Understand, Act
           </h2>
         </Reveal>
 
@@ -944,7 +944,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            Execution: Every design decision optimized for confident decision-making under pressure
+            I designed every pixel for confident decision-making in high-stakes moments
           </h2>
         </Reveal>
 
@@ -1211,7 +1211,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            Strategic roadmap: Building phase-by-phase for procurement team confidence at scale
+            I mapped a phased go-to-market: From MVP validation to Design Partner pilots
           </h2>
         </Reveal>
 
@@ -1283,7 +1283,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            What I learned: The power of reframing, rapid validation, and designing for outcomes
+            I learned: Problem reframing beats perfect execution, and every pixel should serve the user
           </h2>
         </Reveal>
 
