@@ -455,7 +455,7 @@ const VeriSupplyCaseStudy: FC = () => {
             }
           `}</style>
           <div className="truths-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginBottom: 60 }}>
-            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: 32, borderRadius: tokens.radius.md }}>
+            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: 32, borderRadius: tokens.radius.md, minHeight: 300, justifyContent: "center" }}>
               <svg className="truth-icon" width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 20 }} aria-hidden="true">
                 <g fill="none" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   {/* Bucket overflowing with data */}
@@ -478,7 +478,7 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: 32, borderRadius: tokens.radius.md, minHeight: 300, justifyContent: "center" }}>
               <svg className="truth-icon" width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 20 }} aria-hidden="true">
                 <g fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   {/* Hourglass */}
@@ -501,7 +501,7 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
             </div>
 
-            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: 32, borderRadius: tokens.radius.md, minHeight: 300, justifyContent: "center" }}>
               <svg className="truth-icon" width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 20 }} aria-hidden="true">
                 <g fill="none" stroke="#8B5CF6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   {/* Locked box (black box) */}
