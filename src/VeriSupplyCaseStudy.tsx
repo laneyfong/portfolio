@@ -487,14 +487,141 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
+          <style>{`
+            @keyframes truthIconSlideIn {
+              from {
+                opacity: 0;
+                transform: translateY(20px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes truthBounce {
+              0%, 100% {
+                transform: translateY(0);
+              }
+              50% {
+                transform: translateY(-4px);
+              }
+            }
+
+            @keyframes truthPulse {
+              0%, 100% {
+                opacity: 1;
+              }
+              50% {
+                opacity: 0.6;
+              }
+            }
+
+            .truth-item {
+              animation: truthIconSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+              opacity: 0;
+            }
+
+            .truth-item:nth-child(1) { animation-delay: 0.1s; }
+            .truth-item:nth-child(2) { animation-delay: 0.3s; }
+            .truth-item:nth-child(3) { animation-delay: 0.5s; }
+
+            .truth-icon {
+              animation: truthBounce 3s ease-in-out infinite;
+            }
+
+            .truth-item:nth-child(1) .truth-icon { animation-delay: 0s; }
+            .truth-item:nth-child(2) .truth-icon { animation-delay: 0.2s; }
+            .truth-item:nth-child(3) .truth-icon { animation-delay: 0.4s; }
+
+            @media (max-width: 768px) {
+              .truths-grid {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}</style>
+          <div className="truths-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginBottom: 60 }}>
+            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <svg className="truth-icon" width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 20 }} aria-hidden="true">
+                <g fill="none" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  {/* Bucket overflowing with data */}
+                  <path d="M 20 60 L 25 30 L 55 30 L 60 60 Z" />
+                  <path d="M 25 30 L 22 20 M 40 30 L 40 18 M 55 30 L 58 20" strokeWidth="2" opacity="0.7" />
+                  <circle cx="30" cy="25" r="3" fill="#06B6D4" opacity="0.8" />
+                  <circle cx="40" cy="20" r="3" fill="#06B6D4" opacity="0.8" />
+                  <circle cx="50" cy="27" r="3" fill="#06B6D4" opacity="0.8" />
+                  <circle cx="35" cy="35" r="2.5" fill="#06B6D4" opacity="0.6" />
+                  <circle cx="45" cy="38" r="2.5" fill="#06B6D4" opacity="0.6" />
+                  {/* X mark */}
+                  <path d="M 20 45 L 30 55 M 30 45 L 20 55" stroke="#FF6B6B" strokeWidth="2.5" />
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
+                More data ≠ faster decisions
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: 1.4 }}>
+                "Don't give me another place to look — tell me what matters."
+              </p>
+            </div>
+
+            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <svg className="truth-icon" width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 20 }} aria-hidden="true">
+                <g fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  {/* Hourglass */}
+                  <path d="M 25 20 L 25 35 Q 25 40 40 40 Q 55 40 55 35 L 55 20 Z" />
+                  <path d="M 25 60 L 25 45 Q 25 40 40 40 Q 55 40 55 45 L 55 60 Z" />
+                  <path d="M 20 40 L 60 40" strokeWidth="2" />
+                  {/* Sand falling */}
+                  <circle cx="40" cy="42" r="2" fill="#F59E0B" opacity="0.8" />
+                  <circle cx="38" cy="46" r="1.5" fill="#F59E0B" opacity="0.6" />
+                  <circle cx="42" cy="46" r="1.5" fill="#F59E0B" opacity="0.6" />
+                  {/* Edges */}
+                  <path d="M 25 20 L 55 20 M 25 60 L 55 60" strokeWidth="1.5" opacity="0.5" />
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
+                Time is their scarcest resource
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: 1.4 }}>
+                "We need it condensed to what actually matters."
+              </p>
+            </div>
+
+            <div className="truth-item" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <svg className="truth-icon" width="80" height="80" viewBox="0 0 80 80" style={{ marginBottom: 20 }} aria-hidden="true">
+                <g fill="none" stroke="#8B5CF6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  {/* Locked box (black box) */}
+                  <rect x="22" y="28" width="36" height="28" rx="3" />
+                  {/* Padlock */}
+                  <path d="M 33 38 Q 33 32 40 32 Q 47 32 47 38" />
+                  <circle cx="40" cy="48" r="2.5" fill="#8B5CF6" />
+                  <path d="M 40 48 L 40 53" strokeWidth="2" />
+                  {/* Checkmark (reasoning visible) */}
+                  <g transform="translate(58, 50)">
+                    <circle cx="0" cy="0" r="12" fill="none" stroke="#10B981" strokeWidth="2" />
+                    <path d="M -6 0 L -2 4 L 6 -4" stroke="#10B981" strokeWidth="2.5" />
+                  </g>
+                </g>
+              </svg>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 8px" }}>
+                Reasoning beats black boxes
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", color: "var(--text-muted)", margin: 0, lineHeight: 1.4 }}>
+                "We need the data behind it to defend the decision."
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
           <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
             <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
-              Three Universal Truths (What Teams Actually Said)
+              What Teams Actually Said
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  <strong>More data ≠ faster decisions.</strong> "Don't give me another place to look — tell me what matters."
+                  "Don't give me another place to look — tell me what matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   Strategic Sourcing Lead at Fortune 500 Manufacturer
@@ -503,7 +630,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  <strong>Time is their scarcest resource.</strong> "People don't have time to read 50-page reports. We need it condensed to what actually matters."
+                  "People don't have time to read 50-page reports. We need it condensed to what actually matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   Operations Director, Supply Chain
@@ -512,7 +639,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  <strong>Recommendations without reasoning = undefendable decisions.</strong> "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
+                  "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   VP Procurement, Tech Company
