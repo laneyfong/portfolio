@@ -235,7 +235,7 @@ const VeriSupplyCaseStudy: FC = () => {
         <Reveal>
           <div style={{ marginBottom: 16 }}>
             <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
-              Supply-chain risk meets decision support.
+              When every decision has a deadline.
             </span>
           </div>
           <h1
@@ -249,7 +249,7 @@ const VeriSupplyCaseStudy: FC = () => {
               maxWidth: 480,
             }}
           >
-            Turn complexity into <Italic>confident decisions</Italic>.
+            I designed a <Italic>high-stakes decision engine</Italic> for procurement teams operating under extreme time pressure.
           </h1>
 
           <div className="case-study-tags" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
@@ -286,14 +286,14 @@ const VeriSupplyCaseStudy: FC = () => {
 
           <Reveal>
             <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
-              <FeatureCard title="Challenge">
-                Procurement teams blind to supply-chain risks and unable to make confident decisions at scale.
+              <FeatureCard title="The Conflict">
+                Procurement leaders are drowning in data but paralyzed by uncertainty. More information ≠ faster decisions.
               </FeatureCard>
-              <FeatureCard title="My Discovery">
-                Led research uncovering that visibility alone was useless—teams needed decision-making frameworks backed by data and reasoning.
+              <FeatureCard title="My Insight">
+                Confidence, not visibility, unblocks decision-making velocity. Teams need transparent reasoning they can defend—not black-box recommendations.
               </FeatureCard>
-              <FeatureCard title="My Solution">
-                Architected and designed a three-layer platform: Monitor risks, Understand impact, Act with AI-informed recommendations.
+              <FeatureCard title="My Bet">
+                Design a decision engine that surfaces AI-backed recommendations with transparent reasoning—fast enough to move in real-time, defensible enough to survive executive scrutiny.
               </FeatureCard>
             </div>
           </Reveal>
@@ -320,7 +320,7 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            I uncovered the real problem: Teams had visibility but lacked confidence to act
+            I diagnosed the bottleneck: Data abundance creates <Italic>decision paralysis</Italic>.
           </h2>
         </Reveal>
 
@@ -476,25 +476,25 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            I reframed the problem: The real bottleneck was decision-making, not data
+            I reframed through rapid iteration: Decision-making <Italic>confidence</Italic>, not data, unblocks velocity.
           </h2>
         </Reveal>
 
         <Reveal>
           <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
-            I conducted <strong>15 user interviews</strong> with procurement leaders and analyzed the <strong>top 5 direct and indirect competitors</strong>. This research challenged the assumption that risk visibility was the problem. The real bottleneck: <strong>decision-making, not data.</strong>
+            Through <strong>15 rapid interviews</strong> with procurement leaders (CEO-led scheduling for speed) and competitive analysis of the <strong>top 5 direct and indirect competitors</strong>, I uncovered three universal truths that forced a ruthless MVP scope decision:
           </p>
         </Reveal>
 
         <Reveal>
           <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 60 }}>
             <h3 style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 24px" }}>
-              The Real Problem (What Teams Actually Said)
+              Three Universal Truths (What Teams Actually Said)
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "Don't give me another place to look — tell me what matters."
+                  <strong>More data ≠ faster decisions.</strong> "Don't give me another place to look — tell me what matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   Strategic Sourcing Lead at Fortune 500 Manufacturer
@@ -503,7 +503,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "People don't have time to read 50-page reports. We need it condensed to what actually matters."
+                  <strong>Time is their scarcest resource.</strong> "People don't have time to read 50-page reports. We need it condensed to what actually matters."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   Operations Director, Supply Chain
@@ -512,7 +512,7 @@ const VeriSupplyCaseStudy: FC = () => {
 
               <div>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: "0 0 8px", lineHeight: tokens.leading.snug }}>
-                  "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
+                  <strong>Recommendations without reasoning = undefendable decisions.</strong> "An AI recommendation is good, but we need the data and reasoning behind it so we can defend the decision."
                 </p>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", margin: 0 }}>
                   VP Procurement, Tech Company
@@ -740,8 +740,14 @@ const VeriSupplyCaseStudy: FC = () => {
               lineHeight: tokens.leading.snug,
             }}
           >
-            I architected a three-layer system: Monitor, Understand, Act
+            I architected a three-layer decision engine under extreme constraints: 3 months, one designer, built for real-time execution.
           </h2>
+        </Reveal>
+
+        <Reveal>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
+            The design philosophy: <strong>Make complex supply-chain analysis as fast and glanceable as a TikTok feed.</strong> Your brain should never struggle to understand what matters. Every pixel had to earn its place.
+          </p>
         </Reveal>
 
         <Reveal>
@@ -1038,6 +1044,12 @@ const VeriSupplyCaseStudy: FC = () => {
           >
             I designed every pixel for confident decision-making in high-stakes moments
           </h2>
+        </Reveal>
+
+        <Reveal>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 700 }}>
+            Enterprise supply-chain data is inherently dense. Most tools overwhelm users with information architecture. My approach inverted this: ruthless information hierarchy (what's actionable vs. context), AI-driven recommendations with transparent reasoning (no black boxes), and micro-interactions that reward fast scanning. Every interface teaches the user's mental model in under 3 seconds.
+          </p>
         </Reveal>
 
         <Reveal>
@@ -1357,6 +1369,15 @@ const VeriSupplyCaseStudy: FC = () => {
               </p>
               <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
                 Understanding procurement teams' pain points meant becoming fluent in their language, their constraints, and their strategic priorities. The best product strategy comes from seeking the right audience and truly understanding what drives their decisions.
+              </p>
+            </div>
+
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 28 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", letterSpacing: tokens.tracking.tight, margin: "0 0 12px" }}>
+                Speed Beats Perfection
+              </p>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", margin: 0, lineHeight: tokens.leading.snug }}>
+                Shipping a 3-month MVP that solved the core problem (decision confidence under time pressure) proved far more valuable than 12 months of perfect architecture. Iteration with real users beats theoretical optimization every time.
               </p>
             </div>
           </div>
