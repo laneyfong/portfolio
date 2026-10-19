@@ -324,62 +324,26 @@ const VeriSupplyCaseStudy: FC = () => {
         </Reveal>
 
         <Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 48, marginBottom: 60, alignItems: "stretch" }}>
-            {/* Before */}
-            <div style={{ borderRadius: tokens.radius.md, padding: 40 }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
-                WITHOUT CONFIDENCE ENGINE
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>50+ page supplier reports</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>2-4 weeks per decision</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Can't defend to executives</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Human bias in scoring</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Analysis paralysis</p>
-                </div>
+          <div style={{ background: "rgba(220, 38, 38, 0.05)", borderRadius: tokens.radius.md, padding: 28, marginBottom: 60 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+              THE BUSINESS PROBLEM
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "flex", gap: 12 }}>
+                <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>Low product adoption with significant customer dropoff</p>
               </div>
-            </div>
-
-            {/* After */}
-            <div style={{ borderRadius: tokens.radius.md, padding: 40, background: "rgba(16, 185, 129, 0.03)" }}>
-              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
-                WITH VERISUPPLY
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Glanceable dashboard</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>2-4 hours per decision</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Data-backed reasoning</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Automated scoring</p>
-                </div>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
-                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Confident action</p>
-                </div>
+              <div style={{ display: "flex", gap: 12 }}>
+                <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>Teams overwhelmed by data visibility—no actionable direction</p>
+              </div>
+              <div style={{ display: "flex", gap: 12 }}>
+                <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>Procurement teams paralyzed by manual analysis workflows</p>
+              </div>
+              <div style={{ display: "flex", gap: 12 }}>
+                <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>Need new features and product direction to attract and retain customers</p>
               </div>
             </div>
           </div>
@@ -808,6 +772,68 @@ const VeriSupplyCaseStudy: FC = () => {
               <div style={{ display: "flex", gap: 12 }}>
                 <span style={{ color: "var(--text-dark)", fontWeight: "bold", marginTop: 2 }}>•</span>
                 <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0 }}>Real-time execution (not batch processing)</p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 48, marginBottom: 48, alignItems: "stretch" }}>
+            {/* Before */}
+            <div style={{ borderRadius: tokens.radius.md, padding: 40 }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
+                WITHOUT VERISUPPLY
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>50+ page supplier reports</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>2-4 weeks per decision</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Can't defend to executives</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Human bias in scoring</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#DC2626", fontWeight: "bold", marginTop: 2 }}>✕</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Analysis paralysis</p>
+                </div>
+              </div>
+            </div>
+
+            {/* After */}
+            <div style={{ borderRadius: tokens.radius.md, padding: 40, background: "rgba(16, 185, 129, 0.03)" }}>
+              <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-muted)", margin: "0 0 24px", letterSpacing: "-0.02em" }}>
+                WITH VERISUPPLY
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Glanceable dashboard</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>2-4 hours per decision</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Data-backed reasoning</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Automated scoring</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <span style={{ color: "#10B981", fontWeight: "bold", marginTop: 2 }}>✓</span>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-dark)", margin: 0, lineHeight: tokens.leading.snug }}>Confident action</p>
+                </div>
               </div>
             </div>
           </div>
