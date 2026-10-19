@@ -302,6 +302,13 @@ const VeriSupplyCaseStudy: FC = () => {
 
       {/* Problem */}
       <section id="problem" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal>
+          <div style={{ marginBottom: 24 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
+              Understanding the landscape
+            </span>
+          </div>
+        </Reveal>
         <Reveal dramatic>
           <h2
             style={{
@@ -451,6 +458,13 @@ const VeriSupplyCaseStudy: FC = () => {
 
       {/* Research */}
       <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal>
+          <div style={{ marginBottom: 24 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
+              What teams actually needed
+            </span>
+          </div>
+        </Reveal>
         <Reveal dramatic>
           <h2
             style={{
@@ -644,6 +658,13 @@ const VeriSupplyCaseStudy: FC = () => {
 
       {/* Solution */}
       <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal>
+          <div style={{ marginBottom: 24 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
+              The three-layer approach
+            </span>
+          </div>
+        </Reveal>
         <Reveal dramatic>
           <h2
             style={{
@@ -933,6 +954,13 @@ const VeriSupplyCaseStudy: FC = () => {
 
       {/* Design */}
       <section id="design" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal>
+          <div style={{ marginBottom: 24 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
+              Building for clarity under pressure
+            </span>
+          </div>
+        </Reveal>
         <Reveal dramatic>
           <h2
             style={{
