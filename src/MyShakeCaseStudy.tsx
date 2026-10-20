@@ -604,7 +604,7 @@ const MyShakeCaseStudy: FC = () => {
         <Reveal>
           <StatRow
             items={[
-              { value: "5", label: "User Interviews" },
+              { value: "10", label: "User Interviews" },
               { value: "50+", label: "Survey Responses" },
               { value: "3", label: "Competitors Analyzed" },
             ]}
