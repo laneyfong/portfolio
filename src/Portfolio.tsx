@@ -8,6 +8,7 @@ import VeriSupplyCard from "./components/VeriSupplyCard";
 import NvidiaCard from "./components/NvidiaCard";
 import FeaturedWorkShowcase from "./components/FeaturedWorkShowcase";
 import Footer from "./components/Footer";
+import { PortfolioAssistant } from "./components/PortfolioAssistant";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import kinoSvg from "./assets/kino.svg";
 
@@ -427,6 +428,8 @@ const Portfolio: FC = () => {
       <div className="content-reveal">
         <Footer />
       </div>
+
+      <PortfolioAssistant />
     </div>
   );
 };
