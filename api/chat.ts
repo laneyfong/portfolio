@@ -42,19 +42,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Convert messages to Gemini format
-    // Skip the initial assistant message and start with user messages
+    // Build chat history with simplified system context
     const allMessages = messages.slice(0, -1);
-    let history = allMessages
-      .map((msg: any) => ({
-        role: msg.role === "assistant" ? "model" : "user",
-        parts: [{ text: msg.content }],
-      }));
-
-    // Remove initial model messages - Gemini requires chat to start with user
-    while (history.length > 0 && history[0].role === "model") {
-      history = history.slice(1);
-    }
+    const history = allMessages.map((msg: any) => ({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.content }],
+    }));
 
     const currentMessage = messages[messages.length - 1];
 
@@ -62,15 +55,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: "Invalid current message" });
     }
 
+    // Use chat without systemInstruction to avoid formatting issues
     const chat = model.startChat({
       history,
       generationConfig: {
         maxOutputTokens: 256,
       },
-      systemInstruction: SYSTEM_PROMPT,
     });
 
-    const result = await chat.sendMessage(currentMessage.content);
+    // Prepend system context to current message
+    const userQuery = `You are Laney's Portfolio Assistant. Help with: MyShake (45% engagement boost), VeriSupply (supply chain), IDBridge (ID verification), NVIDIA (testing tools). Respond in 2-3 sentences.\n\nUser question: ${currentMessage.content}`;
+    const result = await chat.sendMessage(userQuery);
     const response = await result.response;
     const text = response.text();
 
