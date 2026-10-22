@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { tokens } from "../tokens";
 
 interface Message {
@@ -13,6 +14,7 @@ const formatTime = (date: Date) => {
 };
 
 export const PortfolioAssistant = () => {
+  const location = useLocation();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
@@ -23,7 +25,23 @@ export const PortfolioAssistant = () => {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  // Check if we're on a case study page
+  const isCaseStudy = [
+    "/myshake-design",
+    "/verisupply",
+    "/idbridge-design",
+    "/nvidia-ai-ux-agent",
+  ].includes(location.pathname);
+
+  // Default to closed on case studies, open elsewhere
+  useEffect(() => {
+    setIsOpen(!isCaseStudy);
+  }, [isCaseStudy]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -32,6 +50,26 @@ export const PortfolioAssistant = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const handleDragStart = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    const startX = e.clientX;
+    const handleDragMove = (moveEvent: MouseEvent) => {
+      const dragDistance = startX - moveEvent.clientX;
+      if (dragDistance > 50) {
+        setIsOpen(false);
+      } else if (dragDistance < -50) {
+        setIsOpen(true);
+      }
+    };
+    const handleDragEnd = () => {
+      setIsDragging(false);
+      document.removeEventListener("mousemove", handleDragMove);
+      document.removeEventListener("mouseup", handleDragEnd);
+    };
+    document.addEventListener("mousemove", handleDragMove);
+    document.addEventListener("mouseup", handleDragEnd);
+  };
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,8 +122,25 @@ export const PortfolioAssistant = () => {
 
   return (
     <>
+      {/* Drag Handle */}
+      <div
+        onMouseDown={handleDragStart}
+        style={{
+          position: "fixed",
+          right: isOpen ? "25%" : "0",
+          top: 0,
+          bottom: 0,
+          width: "8px",
+          background: "transparent",
+          cursor: "col-resize",
+          zIndex: 901,
+          transition: "right 0.3s ease",
+        }}
+      />
+
       {/* Right Sidebar Chat */}
       <div
+        ref={sidebarRef}
         style={{
           position: "fixed",
           right: 0,
@@ -102,6 +157,8 @@ export const PortfolioAssistant = () => {
           overflowY: "auto",
           boxSizing: "border-box",
           minWidth: "280px",
+          transform: isOpen ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.3s ease",
         }}
       >
         {/* Header */}
