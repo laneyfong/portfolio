@@ -80,6 +80,21 @@ const GlobalStyles: FC = () => (
     .skip-link:focus {
       top: 0;
     }
+
+    /* Nav bar responsive to chat visibility */
+    @media (min-width: 1025px) {
+      .top-nav {
+        right: 25%;
+      }
+
+      .page-wrapper.case-study ~ .top-nav {
+        right: 0;
+      }
+
+      .page-wrapper.case-study.chat-open ~ .top-nav {
+        right: 25%;
+      }
+    }
   `}</style>
 );
 
