@@ -70,18 +70,22 @@ function PageFadeInWrapper() {
           .page-wrapper {
             box-sizing: border-box;
             transition: padding-right 0.3s ease;
+            max-width: 75%;
           }
 
           .page-wrapper:not(.case-study) {
-            padding-right: 25%;
+            padding-right: 0;
+            max-width: 75%;
           }
 
           .page-wrapper.case-study {
             padding-right: 0;
+            max-width: 100%;
           }
 
           .page-wrapper.case-study.chat-open {
-            padding-right: 25%;
+            padding-right: 0;
+            max-width: 75%;
           }
         }
       `}</style>
