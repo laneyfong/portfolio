@@ -62,7 +62,7 @@ const TopNav: FC = () => {
           max-width: 100%;
           width: 100%;
           margin: 0;
-          padding: 8px 52px;
+          padding: 4px 52px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -73,13 +73,13 @@ const TopNav: FC = () => {
 
         @media (max-width: 1200px) {
           .top-nav-content {
-            padding: 8px 16px;
+            padding: 4px 16px;
           }
         }
 
         @media (max-width: 640px) {
           .top-nav-content {
-            padding: 8px 12px;
+            padding: 4px 12px;
           }
         }
 
