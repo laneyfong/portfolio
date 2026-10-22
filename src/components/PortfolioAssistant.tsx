@@ -109,36 +109,25 @@ export const PortfolioAssistant = () => {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "flex-start",
+            alignItems: "flex-end",
             width: "100%",
+            height: "30px",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <p
               style={{
                 margin: 0,
                 fontSize: "14px",
-                fontWeight: 500,
+                fontWeight: 400,
                 color: "#8D8D8D",
                 fontFamily: tokens.font.sans,
                 letterSpacing: "-0.7px",
+                lineHeight: "22px",
               }}
             >
-              AI assistant
+              LAINEY
             </p>
-            <h2
-              style={{
-                margin: 0,
-                fontSize: "24px",
-                fontWeight: 500,
-                color: "#1A1A1A",
-                fontFamily: tokens.font.sans,
-                letterSpacing: "-1.2px",
-                lineHeight: "33px",
-              }}
-            >
-              Laney AI
-            </h2>
           </div>
 
           {/* Status Pill */}
@@ -168,7 +157,7 @@ export const PortfolioAssistant = () => {
                 fontWeight: 500,
                 color: "#1A1A1A",
                 fontFamily: tokens.font.sans,
-                letterSpacing: "0.5px",
+                letterSpacing: "-0.7px",
               }}
             >
               Online
@@ -177,15 +166,15 @@ export const PortfolioAssistant = () => {
         </div>
 
         {/* Intro */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <p
             style={{
               margin: 0,
-              fontSize: "13px",
+              fontSize: "14px",
               fontWeight: 400,
-              color: "#8D8D8D",
+              color: "#808080",
               fontFamily: tokens.font.sans,
-              lineHeight: "20px",
+              lineHeight: "22px",
               letterSpacing: "-0.7px",
             }}
           >
@@ -195,11 +184,11 @@ export const PortfolioAssistant = () => {
             style={{
               margin: 0,
               fontSize: "11px",
-              fontWeight: 500,
+              fontWeight: 400,
               color: "#808080",
               fontFamily: tokens.font.sans,
-              lineHeight: "16px",
-              letterSpacing: "0.5px",
+              lineHeight: "11px",
+              letterSpacing: "-0.4px",
             }}
           >
             Responses are generated based on this portfolio.
@@ -212,24 +201,24 @@ export const PortfolioAssistant = () => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            gap: "12px",
+            gap: "8px",
             overflowY: "auto",
             paddingRight: "8px",
           }}
         >
           {messages.map((msg) => (
-            <div key={msg.id} style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+            <div key={msg.id} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               <div
                 style={{
-                  padding: "12px 14px",
+                  padding: "14px 16px",
                   background: "#FFFFFF",
                   border: "1px solid rgba(26, 26, 26, 0.08)",
-                  borderRadius: "20px",
-                  fontSize: "13px",
+                  borderRadius: "22px",
+                  fontSize: "14px",
                   fontWeight: 400,
                   color: "#1A1A1A",
                   fontFamily: tokens.font.sans,
-                  lineHeight: "20px",
+                  lineHeight: "22px",
                   letterSpacing: "-0.7px",
                 }}
               >
@@ -238,12 +227,13 @@ export const PortfolioAssistant = () => {
               <p
                 style={{
                   margin: 0,
-                  fontSize: "11px",
+                  fontSize: "12px",
                   fontWeight: 500,
                   color: "#8D8D8D",
                   fontFamily: tokens.font.sans,
                   letterSpacing: "0.5px",
-                  paddingLeft: "14px",
+                  paddingLeft: "16px",
+                  lineHeight: "19px",
                 }}
               >
                 {formatTime(msg.timestamp)}
@@ -291,11 +281,11 @@ export const PortfolioAssistant = () => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            gap: "10px",
-            padding: "12px 14px",
+            gap: "12px",
+            padding: "10px 16px 14px",
             background: "#FFFFFF",
             border: "1px solid rgba(26, 26, 26, 0.08)",
-            borderRadius: "20px",
+            borderRadius: "9999px",
             marginTop: "auto",
           }}
         >
@@ -310,24 +300,24 @@ export const PortfolioAssistant = () => {
               border: "none",
               background: "none",
               fontFamily: tokens.font.sans,
-              fontSize: "13px",
+              fontSize: "14px",
               fontWeight: 400,
               color: "#1A1A1A",
               outline: "none",
               letterSpacing: "-0.7px",
-              lineHeight: "20px",
-              padding: 0,
+              lineHeight: "19px",
+              padding: "1px 0px 2px",
             }}
           />
           <button
             type="submit"
             disabled={isLoading || !inputValue.trim()}
             style={{
-              width: "36px",
-              height: "36px",
+              width: "40px",
+              height: "40px",
               background: "#4060C8",
               border: "none",
-              borderRadius: "20px",
+              borderRadius: "22px",
               cursor: isLoading || !inputValue.trim() ? "not-allowed" : "pointer",
               display: "flex",
               alignItems: "center",
@@ -338,7 +328,7 @@ export const PortfolioAssistant = () => {
             }}
             aria-label="Send message"
           >
-            <span style={{ fontSize: "15px" }}>→</span>
+            <span style={{ fontSize: "16px" }}>→</span>
           </button>
         </form>
 
