@@ -91,7 +91,7 @@ export const PortfolioAssistant = () => {
           right: 0,
           top: 0,
           bottom: 0,
-          width: "20%",
+          width: "25%",
           padding: "32px",
           background: "#FAFAFB",
           borderLeft: "1px solid rgba(26, 26, 26, 0.08)",
