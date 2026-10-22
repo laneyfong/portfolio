@@ -8,13 +8,16 @@ interface Message {
   timestamp: Date;
 }
 
+const formatTime = (date: Date) => {
+  return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
+};
+
 export const PortfolioAssistant = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       role: "assistant",
-      content: "Hi! 👋 I'm here to help you learn about Laney's work. Ask me about their projects, skills, or how to get in touch.",
+      content: "Hi — I can help with case studies, design decisions, or quick summaries of the work on this page.",
       timestamp: new Date(),
     },
   ]);
@@ -81,224 +84,278 @@ export const PortfolioAssistant = () => {
 
   return (
     <>
-      {/* Floating Chat Bubble (Hidden on Mobile) */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
+      {/* Right Sidebar Chat */}
+      <div
         style={{
           position: "fixed",
-          bottom: "24px",
-          right: "24px",
-          width: "56px",
-          height: "56px",
-          borderRadius: "50%",
-          background: tokens.color.accent,
-          border: "none",
-          cursor: "pointer",
-          boxShadow: "0 4px 12px rgba(64, 96, 200, 0.3)",
-          display: isOpen ? "none" : "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 999,
-          transition: "all 0.2s ease",
-          color: "white",
-          fontSize: "24px",
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: "480px",
+          padding: "40px",
+          background: "#FAFAFB",
+          borderLeft: "1px solid rgba(26, 26, 26, 0.08)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "24px",
+          zIndex: 900,
+          overflowY: "auto",
+          boxSizing: "border-box",
         }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.1)";
-          (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 20px rgba(64, 96, 200, 0.4)";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
-          (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 12px rgba(64, 96, 200, 0.3)";
-        }}
-        aria-label="Open chat"
       >
-        💬
-      </button>
-
-      {/* Chat Window */}
-      {isOpen && (
+        {/* Header */}
         <div
           style={{
-            position: "fixed",
-            bottom: "24px",
-            right: "24px",
-            width: "380px",
-            height: "600px",
-            background: "var(--bg-primary)",
-            borderRadius: "12px",
-            boxShadow: "0 12px 40px rgba(0, 0, 0, 0.15)",
             display: "flex",
-            flexDirection: "column",
-            zIndex: 1000,
-            border: "1px solid var(--border-color)",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            width: "100%",
           }}
         >
-          {/* Header */}
-          <div
-            style={{
-              padding: "16px",
-              borderBottom: "1px solid var(--border-color)",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <h3 style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: "16px", fontWeight: 600, color: "var(--text-dark)" }}>
-              Portfolio Assistant
-            </h3>
-            <button
-              onClick={() => setIsOpen(false)}
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <p
               style={{
-                background: "none",
-                border: "none",
-                fontSize: "20px",
-                cursor: "pointer",
-                color: "var(--text-muted)",
-              }}
-              aria-label="Close chat"
-            >
-              ✕
-            </button>
-          </div>
-
-          {/* Messages */}
-          <div
-            style={{
-              flex: 1,
-              overflowY: "auto",
-              padding: "16px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "12px",
-            }}
-          >
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                style={{
-                  display: "flex",
-                  justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
-                }}
-              >
-                <div
-                  style={{
-                    maxWidth: "80%",
-                    padding: "10px 14px",
-                    borderRadius: "8px",
-                    background: msg.role === "user" ? tokens.color.accent : "var(--surface-light)",
-                    color: msg.role === "user" ? "white" : "var(--text-secondary)",
-                    fontSize: "14px",
-                    lineHeight: "1.4",
-                    fontFamily: tokens.font.sans,
-                  }}
-                >
-                  {msg.content}
-                </div>
-              </div>
-            ))}
-            {isLoading && (
-              <div style={{ display: "flex", gap: "4px", alignItems: "center" }}>
-                <div
-                  style={{
-                    width: "8px",
-                    height: "8px",
-                    borderRadius: "50%",
-                    background: "var(--text-muted)",
-                    animation: "bounce 1.4s infinite",
-                  }}
-                />
-                <div
-                  style={{
-                    width: "8px",
-                    height: "8px",
-                    borderRadius: "50%",
-                    background: "var(--text-muted)",
-                    animation: "bounce 1.4s infinite 0.2s",
-                  }}
-                />
-                <div
-                  style={{
-                    width: "8px",
-                    height: "8px",
-                    borderRadius: "50%",
-                    background: "var(--text-muted)",
-                    animation: "bounce 1.4s infinite 0.4s",
-                  }}
-                />
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input */}
-          <form
-            onSubmit={handleSendMessage}
-            style={{
-              padding: "12px",
-              borderTop: "1px solid var(--border-color)",
-              display: "flex",
-              gap: "8px",
-            }}
-          >
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask about my work..."
-              disabled={isLoading}
-              style={{
-                flex: 1,
-                padding: "10px 12px",
-                border: "1px solid var(--border-color)",
-                borderRadius: "6px",
-                fontFamily: tokens.font.sans,
+                margin: 0,
                 fontSize: "14px",
-                background: "var(--bg-primary)",
-                color: "var(--text-dark)",
-                outline: "none",
+                fontWeight: 500,
+                color: "#8D8D8D",
+                fontFamily: tokens.font.sans,
+                letterSpacing: "-0.7px",
+              }}
+            >
+              AI assistant
+            </p>
+            <h2
+              style={{
+                margin: 0,
+                fontSize: "24px",
+                fontWeight: 500,
+                color: "#1A1A1A",
+                fontFamily: tokens.font.sans,
+                letterSpacing: "-1.2px",
+                lineHeight: "33px",
+              }}
+            >
+              Laney AI
+            </h2>
+          </div>
+
+          {/* Status Pill */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "6px 10px",
+              background: "#FFFFFF",
+              border: "1px solid rgba(26, 26, 26, 0.08)",
+              borderRadius: "9999px",
+              height: "30px",
+            }}
+          >
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                background: "#4060C8",
               }}
             />
-            <button
-              type="submit"
-              disabled={isLoading || !inputValue.trim()}
+            <span
               style={{
-                padding: "10px 16px",
-                background: tokens.color.accent,
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-                cursor: isLoading ? "not-allowed" : "pointer",
+                fontSize: "12px",
+                fontWeight: 500,
+                color: "#1A1A1A",
                 fontFamily: tokens.font.sans,
-                fontWeight: 600,
-                fontSize: "14px",
-                opacity: isLoading ? 0.6 : 1,
+                letterSpacing: "0.5px",
               }}
             >
-              Send
-            </button>
-          </form>
-
-          <style>{`
-            @keyframes bounce {
-              0%, 80%, 100% {
-                opacity: 0.5;
-                transform: translateY(0);
-              }
-              40% {
-                opacity: 1;
-                transform: translateY(-8px);
-              }
-            }
-          `}</style>
+              Online
+            </span>
+          </div>
         </div>
-      )}
 
-      {/* Mobile Hidden Styles */}
+        {/* Intro */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <p
+            style={{
+              margin: 0,
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "#8D8D8D",
+              fontFamily: tokens.font.sans,
+              lineHeight: "22px",
+              letterSpacing: "-0.7px",
+            }}
+          >
+            Ask about projects, design systems, or how I approach 0 to 1 product work.
+          </p>
+          <p
+            style={{
+              margin: 0,
+              fontSize: "12px",
+              fontWeight: 500,
+              color: "#808080",
+              fontFamily: tokens.font.sans,
+              lineHeight: "18px",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Responses are generated based on this portfolio.
+          </p>
+        </div>
+
+        {/* Messages */}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+            overflowY: "auto",
+          }}
+        >
+          {messages.map((msg) => (
+            <div key={msg.id} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <div
+                style={{
+                  padding: "14px 16px",
+                  background: "#FFFFFF",
+                  border: "1px solid rgba(26, 26, 26, 0.08)",
+                  borderRadius: "22px",
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  color: "#1A1A1A",
+                  fontFamily: tokens.font.sans,
+                  lineHeight: "22px",
+                  letterSpacing: "-0.7px",
+                }}
+              >
+                {msg.content}
+              </div>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  color: "#8D8D8D",
+                  fontFamily: tokens.font.sans,
+                  letterSpacing: "0.5px",
+                  paddingLeft: "16px",
+                }}
+              >
+                {formatTime(msg.timestamp)}
+              </p>
+            </div>
+          ))}
+          {isLoading && (
+            <div style={{ display: "flex", gap: "4px", alignItems: "center", paddingLeft: "16px" }}>
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  background: "#8D8D8D",
+                  animation: "bounce 1.4s infinite",
+                }}
+              />
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  background: "#8D8D8D",
+                  animation: "bounce 1.4s infinite 0.2s",
+                }}
+              />
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  background: "#8D8D8D",
+                  animation: "bounce 1.4s infinite 0.4s",
+                }}
+              />
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Composer */}
+        <form
+          onSubmit={handleSendMessage}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "12px",
+            padding: "14px 16px",
+            background: "#FFFFFF",
+            border: "1px solid rgba(26, 26, 26, 0.08)",
+            borderRadius: "22px",
+          }}
+        >
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Ask me anything…"
+            disabled={isLoading}
+            style={{
+              flex: 1,
+              border: "none",
+              background: "none",
+              fontFamily: tokens.font.sans,
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "#1A1A1A",
+              outline: "none",
+              letterSpacing: "-0.7px",
+              lineHeight: "22px",
+              padding: 0,
+            }}
+          />
+          <button
+            type="submit"
+            disabled={isLoading || !inputValue.trim()}
+            style={{
+              width: "40px",
+              height: "40px",
+              background: "#4060C8",
+              border: "none",
+              borderRadius: "22px",
+              cursor: isLoading || !inputValue.trim() ? "not-allowed" : "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: isLoading || !inputValue.trim() ? 0.6 : 1,
+              transition: "opacity 0.2s ease",
+            }}
+            aria-label="Send message"
+          >
+            <span style={{ fontSize: "16px" }}>→</span>
+          </button>
+        </form>
+
+        <style>{`
+          @keyframes bounce {
+            0%, 80%, 100% {
+              opacity: 0.5;
+              transform: translateY(0);
+            }
+            40% {
+              opacity: 1;
+              transform: translateY(-8px);
+            }
+          }
+        `}</style>
+      </div>
+
+      {/* Hide on tablets/mobile */}
       <style>{`
-        @media (max-width: 768px) {
-          [aria-label="Open chat"],
-          [role="dialog"] {
+        @media (max-width: 1024px) {
+          div[style*="position: fixed"][style*="right: 0"] {
             display: none !important;
           }
         }
