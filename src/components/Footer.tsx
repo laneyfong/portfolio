@@ -38,14 +38,14 @@ const FooterLink: FC<{ label: string }> = ({ label }) => {
         fontFamily: tokens.font.sans,
         fontWeight: 400,
         fontSize: "14px",
-        color: "#1A1A1A",
+        color: "#FFFFFF",
         textDecoration: "none",
         cursor: path ? "pointer" : "default",
         letterSpacing: "-0.05em",
         transition: "color 0.2s ease",
       }}
       onMouseEnter={(e) => (e.currentTarget.style.color = "#4060c8")}
-      onMouseLeave={(e) => (e.currentTarget.style.color = "#1A1A1A")}
+      onMouseLeave={(e) => (e.currentTarget.style.color = "#FFFFFF")}
     >
       {label}
     </a>
@@ -85,11 +85,11 @@ const Footer: FC = () => (
         bottom: 0;
         background: linear-gradient(
           -45deg,
-          rgba(255, 127, 80, 0.08) 0%,
-          rgba(64, 96, 200, 0.1) 25%,
-          rgba(255, 140, 0, 0.07) 50%,
-          rgba(64, 96, 200, 0.09) 75%,
-          rgba(255, 127, 80, 0.08) 100%
+          rgba(255, 127, 80, 0.25) 0%,
+          rgba(64, 96, 200, 0.3) 25%,
+          rgba(255, 140, 0, 0.22) 50%,
+          rgba(64, 96, 200, 0.28) 75%,
+          rgba(255, 127, 80, 0.25) 100%
         );
         background-size: 400% 400%;
         animation: gradientShift 18s ease-in-out infinite;
@@ -118,7 +118,7 @@ const Footer: FC = () => (
         right: -50px;
         width: 600px;
         height: 400px;
-        background: radial-gradient(ellipse at center, rgba(255, 127, 80, 0.05) 0%, rgba(64, 96, 200, 0.03) 40%, transparent 70%);
+        background: radial-gradient(ellipse at center, rgba(255, 127, 80, 0.15) 0%, rgba(64, 96, 200, 0.12) 40%, transparent 70%);
         filter: blur(60px);
         pointer-events: none;
         animation: gradientShift 22s ease-in-out infinite;
@@ -151,7 +151,7 @@ const Footer: FC = () => (
             fontFamily: tokens.font.sans,
             fontWeight: 400,
             fontSize: "14px",
-            color: "#1A1A1A",
+            color: "#FFFFFF",
             letterSpacing: "-0.05em",
             margin: "0 0 16px 0",
           }}
@@ -174,7 +174,7 @@ const Footer: FC = () => (
             fontFamily: tokens.font.sans,
             fontWeight: 500,
             fontSize: "14px",
-            color: "#1A1A1A",
+            color: "#FFFFFF",
             letterSpacing: "-0.05em",
             lineHeight: "21px",
             margin: "0 0 16px 0",
