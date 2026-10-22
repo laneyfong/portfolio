@@ -24,6 +24,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: "Invalid current message" });
     }
 
+    // Check if user is asking about resume
+    const resumeKeywords = ["resume", "cv", "download resume", "your resume", "cv download"];
+    const isResume = resumeKeywords.some(keyword =>
+      currentMessage.content.toLowerCase().includes(keyword)
+    );
+
+    if (isResume) {
+      return res.status(200).json({
+        content: "Here's my resume! Feel free to download it to learn more about my experience, skills, and design background.",
+        hasResume: true,
+        resumeUrl: "/LaneyFongResume-ProductDesigner.pdf"
+      });
+    }
+
     // Use simple generateContent API
     const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 

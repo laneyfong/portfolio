@@ -8,6 +8,8 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   timestamp: Date;
+  hasResume?: boolean;
+  resumeUrl?: string;
 }
 
 const formatTime = (date: Date) => {
@@ -112,6 +114,8 @@ export const PortfolioAssistant = () => {
         role: "assistant",
         content: data.content,
         timestamp: new Date(),
+        hasResume: data.hasResume,
+        resumeUrl: data.resumeUrl,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
@@ -334,6 +338,40 @@ export const PortfolioAssistant = () => {
                 >
                   {msg.content}
                 </div>
+                {msg.hasResume && msg.resumeUrl && (
+                  <a
+                    href={msg.resumeUrl}
+                    download
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      padding: "10px 14px",
+                      background: "#4060C8",
+                      color: "#FFFFFF",
+                      border: "none",
+                      borderRadius: "18px",
+                      fontSize: "13px",
+                      fontWeight: 500,
+                      fontFamily: tokens.font.sans,
+                      textDecoration: "none",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      marginLeft: "36px",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#3050B0";
+                      e.currentTarget.style.transform = "scale(1.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "#4060C8";
+                      e.currentTarget.style.transform = "scale(1)";
+                    }}
+                  >
+                    <span>📄</span>
+                    <span>Download Resume</span>
+                  </a>
+                )}
                 <p
                   style={{
                     margin: 0,
