@@ -39,6 +39,12 @@ function ScrollToTop() {
 
 function PageFadeInWrapper() {
   const { pathname } = useLocation();
+  const isCaseStudy = [
+    "/myshake-design",
+    "/verisupply",
+    "/idbridge-design",
+    "/nvidia-ai-ux-agent",
+  ].includes(pathname);
 
   return (
     <div
@@ -46,7 +52,7 @@ function PageFadeInWrapper() {
       style={{
         animation: "pageFadeIn 1.2s ease-out forwards",
       }}
-      className="page-wrapper"
+      className={`page-wrapper ${isCaseStudy ? "case-study" : ""}`}
     >
       <style>{`
         @keyframes pageFadeIn {
@@ -60,8 +66,20 @@ function PageFadeInWrapper() {
 
         @media (min-width: 1025px) {
           .page-wrapper {
-            padding-right: 25%;
             box-sizing: border-box;
+            transition: padding-right 0.3s ease;
+          }
+
+          .page-wrapper:not(.case-study) {
+            padding-right: 25%;
+          }
+
+          .page-wrapper.case-study {
+            padding-right: 0;
+          }
+
+          .page-wrapper.case-study.chat-open {
+            padding-right: 25%;
           }
         }
       `}</style>

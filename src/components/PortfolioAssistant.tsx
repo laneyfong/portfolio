@@ -50,6 +50,17 @@ export const PortfolioAssistant = () => {
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+    const pageWrapper = document.querySelector(".page-wrapper");
+    if (pageWrapper && isCaseStudy) {
+      if (isOpen) {
+        pageWrapper.classList.add("chat-open");
+      } else {
+        pageWrapper.classList.remove("chat-open");
+      }
+    }
+  }, [isOpen, isCaseStudy]);
+
   const handleDragStart = (e: React.MouseEvent) => {
     const startX = e.clientX;
     const handleDragMove = (moveEvent: MouseEvent) => {
@@ -119,12 +130,39 @@ export const PortfolioAssistant = () => {
 
   return (
     <>
+      {/* Peek Tab (visible when closed on case studies) */}
+      {isCaseStudy && !isOpen && (
+        <div
+          style={{
+            position: "fixed",
+            right: 0,
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "32px",
+            height: "80px",
+            background: "#FAFAFB",
+            border: "1px solid rgba(26, 26, 26, 0.08)",
+            borderRadius: "12px 0 0 12px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            zIndex: 899,
+            transition: "all 0.3s ease",
+          }}
+          onMouseDown={handleDragStart}
+          title="Drag to open chat"
+        >
+          <span style={{ fontSize: "16px", transform: "rotate(-90deg)" }}>⌵</span>
+        </div>
+      )}
+
       {/* Drag Handle */}
       <div
         onMouseDown={handleDragStart}
         style={{
           position: "fixed",
-          right: isOpen ? "25%" : "0",
+          right: isOpen ? "25%" : isCaseStudy && !isOpen ? "32px" : "0",
           top: 0,
           bottom: 0,
           width: "8px",
