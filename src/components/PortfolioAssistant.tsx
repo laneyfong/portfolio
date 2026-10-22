@@ -51,8 +51,14 @@ export const PortfolioAssistant = () => {
 
   useEffect(() => {
     const pageWrapper = document.querySelector(".page-wrapper");
-    if (pageWrapper && isCaseStudy) {
+    if (pageWrapper) {
       if (isOpen) {
+        pageWrapper.classList.add("chat-visible");
+      } else {
+        pageWrapper.classList.remove("chat-visible");
+      }
+
+      if (isCaseStudy && isOpen) {
         pageWrapper.classList.add("chat-open");
       } else {
         pageWrapper.classList.remove("chat-open");

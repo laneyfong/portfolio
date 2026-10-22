@@ -70,22 +70,19 @@ function PageFadeInWrapper() {
         @media (min-width: 1025px) {
           .page-wrapper {
             box-sizing: border-box;
-            transition: padding-right 0.3s ease;
-            max-width: 75%;
+            transition: max-width 0.3s ease;
+            max-width: 100%;
           }
 
-          .page-wrapper:not(.case-study) {
-            padding-right: 0;
+          .page-wrapper.chat-visible {
             max-width: 75%;
           }
 
           .page-wrapper.case-study {
-            padding-right: 0;
             max-width: 100%;
           }
 
-          .page-wrapper.case-study.chat-open {
-            padding-right: 0;
+          .page-wrapper.case-study.chat-visible {
             max-width: 75%;
           }
         }
