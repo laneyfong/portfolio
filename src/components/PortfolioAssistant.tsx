@@ -26,7 +26,6 @@ export const PortfolioAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
-  const [isDragging, setIsDragging] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +51,6 @@ export const PortfolioAssistant = () => {
   }, [messages]);
 
   const handleDragStart = (e: React.MouseEvent) => {
-    setIsDragging(true);
     const startX = e.clientX;
     const handleDragMove = (moveEvent: MouseEvent) => {
       const dragDistance = startX - moveEvent.clientX;
@@ -63,7 +61,6 @@ export const PortfolioAssistant = () => {
       }
     };
     const handleDragEnd = () => {
-      setIsDragging(false);
       document.removeEventListener("mousemove", handleDragMove);
       document.removeEventListener("mouseup", handleDragEnd);
     };
