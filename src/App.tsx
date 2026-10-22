@@ -46,6 +46,7 @@ function PageFadeInWrapper() {
       style={{
         animation: "pageFadeIn 1.2s ease-out forwards",
       }}
+      className="page-wrapper"
     >
       <style>{`
         @keyframes pageFadeIn {
@@ -54,6 +55,13 @@ function PageFadeInWrapper() {
           }
           to {
             opacity: 1;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          .page-wrapper {
+            padding-right: 480px;
+            box-sizing: border-box;
           }
         }
       `}</style>
