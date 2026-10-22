@@ -42,12 +42,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Build chat history with simplified system context
+    // Build chat history - skip all initial assistant messages
     const allMessages = messages.slice(0, -1);
-    const history = allMessages.map((msg: any) => ({
+    let convertedMessages = allMessages.map((msg: any) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
+
+    // Remove all leading model messages - Gemini requires chat to start with user
+    while (convertedMessages.length > 0 && convertedMessages[0].role === "model") {
+      convertedMessages = convertedMessages.slice(1);
+    }
 
     const currentMessage = messages[messages.length - 1];
 
@@ -57,7 +62,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Use chat without systemInstruction to avoid formatting issues
     const chat = model.startChat({
-      history,
+      history: convertedMessages,
       generationConfig: {
         maxOutputTokens: 256,
       },
