@@ -64,24 +64,24 @@ const TopNav: FC = () => {
           max-width: 100%;
           width: 100%;
           margin: 0;
-          padding: 4px 52px;
+          padding: 0px 52px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           height: auto;
-          min-height: 45px;
+          min-height: auto;
           box-sizing: border-box;
         }
 
         @media (max-width: 1200px) {
           .top-nav-content {
-            padding: 4px 16px;
+            padding: 0px 16px;
           }
         }
 
         @media (max-width: 640px) {
           .top-nav-content {
-            padding: 4px 12px;
+            padding: 0px 12px;
           }
         }
 
