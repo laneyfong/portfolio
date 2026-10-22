@@ -24,11 +24,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: "Invalid current message" });
     }
 
-    // Check if user is asking about resume
-    const resumeKeywords = ["resume", "cv", "download resume", "your resume", "cv download"];
-    const isResume = resumeKeywords.some(keyword =>
-      currentMessage.content.toLowerCase().includes(keyword)
-    );
+    // Check if user is asking about resume (any mention catches it)
+    const userInput = currentMessage.content.toLowerCase();
+    const isResume = userInput.includes("resume") || userInput.includes("cv") || userInput.includes("pdf");
 
     if (isResume) {
       return res.status(200).json({
