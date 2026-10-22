@@ -99,6 +99,8 @@ const TopNav: FC = () => {
           display: flex;
           align-items: center;
           gap: 12px;
+          line-height: 1;
+          height: 14px;
         }
 
         .top-nav-brand:hover {
@@ -120,6 +122,7 @@ const TopNav: FC = () => {
           letter-spacing: -0.05em;
           color: var(--text-muted);
           text-decoration: none;
+          line-height: 1;
         }
 
         .top-nav.scrolled .top-nav-brand {
@@ -147,6 +150,7 @@ const TopNav: FC = () => {
           padding: 4px 6px;
           border-radius: 4px;
           outline: none;
+          line-height: 1;
         }
 
         .top-nav-link:hover {
