@@ -217,19 +217,21 @@ export const PortfolioAssistant = () => {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <p
+            <div
               style={{
                 margin: 0,
                 fontSize: "14px",
                 fontWeight: 400,
-                color: "#8D8D8D",
                 fontFamily: tokens.font.sans,
                 letterSpacing: "-0.7px",
                 lineHeight: "22px",
+                display: "flex",
+                gap: "2px",
               }}
             >
-              LAINEY
-            </p>
+              <span style={{ color: "#254DFA" }}>AI</span>
+              <span style={{ color: "#8D8D8D" }}>ney</span>
+            </div>
           </div>
 
           <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
