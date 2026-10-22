@@ -91,7 +91,7 @@ export const PortfolioAssistant = () => {
           right: 0,
           top: 0,
           bottom: 0,
-          width: "30%",
+          width: "20%",
           padding: "32px",
           background: "#FAFAFB",
           borderLeft: "1px solid rgba(26, 26, 26, 0.08)",
@@ -101,7 +101,7 @@ export const PortfolioAssistant = () => {
           zIndex: 900,
           overflowY: "auto",
           boxSizing: "border-box",
-          minWidth: "300px",
+          minWidth: "280px",
         }}
       >
         {/* Header */}
