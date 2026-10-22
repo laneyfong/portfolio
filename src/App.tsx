@@ -50,7 +50,7 @@ function PageFadeInWrapper() {
     <div
       key={pathname}
       style={{
-        animation: "pageFadeIn 1.2s ease-out forwards",
+        animation: "pageFadeIn 2.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
       }}
       className={`page-wrapper ${isCaseStudy ? "case-study" : ""}`}
     >
@@ -58,9 +58,11 @@ function PageFadeInWrapper() {
         @keyframes pageFadeIn {
           from {
             opacity: 0;
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
+            transform: translateY(0);
           }
         }
 
