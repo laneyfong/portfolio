@@ -10,6 +10,7 @@ import IDBridgeCaseStudy from "./IDBridgeCaseStudy";
 import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import VeriSupplyCaseStudy from "./VeriSupplyCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
+import { PortfolioAssistant } from "./components/PortfolioAssistant";
 import { DarkModeProvider } from "./context/DarkModeContext";
 
 function ScrollToTop() {
@@ -86,6 +87,7 @@ function App() {
         <ScrollToTop />
         <GlobalStyles />
         <PageFadeInWrapper />
+        <PortfolioAssistant />
         <Analytics />
       </BrowserRouter>
     </DarkModeProvider>
