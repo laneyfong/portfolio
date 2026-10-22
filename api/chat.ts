@@ -1,9 +1,7 @@
-import { Anthropic } from "@anthropic-ai/sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 const SYSTEM_PROMPT = `You are Laney's Portfolio Assistant. You help visitors learn about Laney's work, projects, and how to get in touch.
 
@@ -36,22 +34,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: "Invalid messages format" });
     }
 
-    const response = await client.messages.create({
-      model: "claude-3-5-sonnet-20241022",
-      max_tokens: 256,
-      system: SYSTEM_PROMPT,
-      messages: messages.map((msg: { role: string; content: string }) => ({
-        role: msg.role as "user" | "assistant",
-        content: msg.content,
-      })),
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    // Convert messages to Gemini format
+    const history = messages.slice(0, -1).map((msg: { role: string; content: string }) => ({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.content }],
+    }));
+
+    const currentMessage = messages[messages.length - 1];
+
+    const chat = model.startChat({
+      history,
+      generationConfig: {
+        maxOutputTokens: 256,
+      },
+      systemInstruction: SYSTEM_PROMPT,
     });
 
-    const textContent = response.content.find((block) => block.type === "text");
-    if (!textContent || textContent.type !== "text") {
-      return res.status(500).json({ error: "No text in response" });
-    }
+    const result = await chat.sendMessage(currentMessage.content);
+    const response = await result.response;
+    const text = response.text();
 
-    return res.status(200).json({ content: textContent.text });
+    return res.status(200).json({ content: text });
   } catch (error) {
     console.error("Chat error:", error);
     return res.status(500).json({
