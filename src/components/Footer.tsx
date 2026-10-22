@@ -57,7 +57,7 @@ const Footer: FC = () => (
     style={{
       width: "100%",
       boxSizing: "border-box",
-      background: "#FFFFFF",
+      background: "#F3F3F3",
       borderTop: "1px solid var(--border-color)",
       position: "relative",
       overflow: "hidden",
