@@ -60,7 +60,7 @@ function PageFadeInWrapper() {
 
         @media (min-width: 1025px) {
           .page-wrapper {
-            padding-right: 480px;
+            padding-right: 30%;
             box-sizing: border-box;
           }
         }
