@@ -24,8 +24,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: "Invalid current message" });
     }
 
-    // Use simple generateContent API with the free tier model
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // Use simple generateContent API
+    const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
     const prompt = `You are Laney Fong's Portfolio Assistant. Answer questions about her work.
 
