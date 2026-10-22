@@ -11,6 +11,7 @@ import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import VeriSupplyCaseStudy from "./VeriSupplyCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
 import { PortfolioAssistant } from "./components/PortfolioAssistant";
+import { ChatProvider } from "./ChatContext";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -106,11 +107,13 @@ function PageFadeInWrapper() {
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <GlobalStyles />
-      <PageFadeInWrapper />
-      <PortfolioAssistant />
-      <Analytics />
+      <ChatProvider>
+        <ScrollToTop />
+        <GlobalStyles />
+        <PageFadeInWrapper />
+        <PortfolioAssistant />
+        <Analytics />
+      </ChatProvider>
     </BrowserRouter>
   );
 }

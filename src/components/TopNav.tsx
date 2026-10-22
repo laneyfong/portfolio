@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import { RESUME_URL } from "./SocialIcons";
+import { useChatState } from "../ChatContext";
 
 interface NavItem {
   label: string;
@@ -23,6 +24,7 @@ const TopNav: FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const { isOpen, setIsOpen } = useChatState();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -310,8 +312,9 @@ const TopNav: FC = () => {
             ))}
           </ul>
 
-          {/* AIney Badge */}
-          <div
+          {/* AIney Badge - Toggle Chat */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
             style={{
               display: "flex",
               alignItems: "center",
@@ -320,7 +323,19 @@ const TopNav: FC = () => {
               background: "#E4E4E4",
               borderRadius: "100px",
               height: "23px",
+              border: "none",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
             }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#D0D0D0";
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#E4E4E4";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+            title={isOpen ? "Close chat" : "Open chat"}
           >
             <div
               style={{
@@ -340,7 +355,7 @@ const TopNav: FC = () => {
             >
               AIney
             </span>
-          </div>
+          </button>
 
           <button
             className="mobile-menu-btn"

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { tokens } from "../tokens";
 import profilePhoto from "../assets/laney-photo.webp";
+import { useChatState } from "../ChatContext";
 
 interface Message {
   id: string;
@@ -18,6 +19,7 @@ const formatTime = (date: Date) => {
 
 export const PortfolioAssistant = () => {
   const location = useLocation();
+  const { isOpen, setIsOpen } = useChatState();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
@@ -28,7 +30,6 @@ export const PortfolioAssistant = () => {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -39,11 +40,6 @@ export const PortfolioAssistant = () => {
     "/idbridge-design",
     "/nvidia-ai-ux-agent",
   ].includes(location.pathname);
-
-  // Default to closed on case studies, open elsewhere
-  useEffect(() => {
-    setIsOpen(!isCaseStudy);
-  }, [isCaseStudy]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
