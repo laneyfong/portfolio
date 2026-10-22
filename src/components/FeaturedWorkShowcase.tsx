@@ -14,10 +14,10 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, classNa
       <style>{`
         .featured-work-showcase {
           display: grid;
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(2, 1fr);
           width: 100%;
           height: fit-content;
-          gap: clamp(12px, 3vw, 20px);
+          gap: clamp(12px, 2vw, 20px);
         }
 
         /* Mobile: single column */
@@ -32,7 +32,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, classNa
         className={`featured-work-showcase ${className}`}
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr",
+          gridTemplateColumns: "repeat(2, 1fr)",
           gap: "16px",
           width: "100%",
           height: "fit-content",
