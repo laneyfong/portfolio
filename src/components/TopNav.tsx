@@ -337,14 +337,20 @@ const TopNav: FC = () => {
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
-            <div
-              style={{
-                width: "11px",
-                height: "11px",
-                background: "#254DFA",
-                borderRadius: "2px",
-              }}
-            />
+            {/* Sparkle Icon */}
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 11 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ flexShrink: 0 }}
+            >
+              <path
+                d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
+                fill="#254DFA"
+              />
+            </svg>
             <span
               style={{
                 fontSize: "12px",
