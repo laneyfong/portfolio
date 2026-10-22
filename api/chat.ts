@@ -43,10 +43,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // Convert messages to Gemini format
-    const history = messages.slice(0, -1).map((msg: any) => ({
-      role: msg.role === "assistant" ? "model" : "user",
-      parts: [{ text: msg.content }],
-    }));
+    // Skip the initial assistant message and start with user messages
+    const allMessages = messages.slice(0, -1);
+    let history = allMessages
+      .map((msg: any) => ({
+        role: msg.role === "assistant" ? "model" : "user",
+        parts: [{ text: msg.content }],
+      }));
+
+    // Remove initial model messages - Gemini requires chat to start with user
+    while (history.length > 0 && history[0].role === "model") {
+      history = history.slice(1);
+    }
 
     const currentMessage = messages[messages.length - 1];
 
