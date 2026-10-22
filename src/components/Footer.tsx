@@ -85,11 +85,11 @@ const Footer: FC = () => (
         bottom: 0;
         background: linear-gradient(
           -45deg,
-          rgba(255, 127, 80, 0.25) 0%,
-          rgba(64, 96, 200, 0.3) 25%,
-          rgba(255, 140, 0, 0.22) 50%,
-          rgba(64, 96, 200, 0.28) 75%,
-          rgba(255, 127, 80, 0.25) 100%
+          rgba(200, 100, 60, 0.12) 0%,
+          rgba(40, 60, 150, 0.15) 25%,
+          rgba(200, 110, 50, 0.1) 50%,
+          rgba(40, 60, 150, 0.13) 75%,
+          rgba(200, 100, 60, 0.12) 100%
         );
         background-size: 400% 400%;
         animation: gradientShift 18s ease-in-out infinite;
@@ -118,7 +118,7 @@ const Footer: FC = () => (
         right: -50px;
         width: 600px;
         height: 400px;
-        background: radial-gradient(ellipse at center, rgba(255, 127, 80, 0.15) 0%, rgba(64, 96, 200, 0.12) 40%, transparent 70%);
+        background: radial-gradient(ellipse at center, rgba(200, 100, 60, 0.07) 0%, rgba(40, 60, 150, 0.06) 40%, transparent 70%);
         filter: blur(60px);
         pointer-events: none;
         animation: gradientShift 22s ease-in-out infinite;
