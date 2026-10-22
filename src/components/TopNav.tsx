@@ -64,24 +64,23 @@ const TopNav: FC = () => {
           max-width: 100%;
           width: 100%;
           margin: 0;
-          padding: 0px 52px;
+          padding: 6px 52px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           height: auto;
-          min-height: auto;
           box-sizing: border-box;
         }
 
         @media (max-width: 1200px) {
           .top-nav-content {
-            padding: 0px 16px;
+            padding: 6px 16px;
           }
         }
 
         @media (max-width: 640px) {
           .top-nav-content {
-            padding: 0px 12px;
+            padding: 6px 12px;
           }
         }
 
@@ -99,8 +98,7 @@ const TopNav: FC = () => {
           display: flex;
           align-items: center;
           gap: 12px;
-          line-height: 1;
-          height: 14px;
+          line-height: 1.2;
         }
 
         .top-nav-brand:hover {
@@ -122,7 +120,7 @@ const TopNav: FC = () => {
           letter-spacing: -0.05em;
           color: var(--text-muted);
           text-decoration: none;
-          line-height: 1;
+          line-height: 1.2;
         }
 
         .top-nav.scrolled .top-nav-brand {
@@ -150,7 +148,7 @@ const TopNav: FC = () => {
           padding: 4px 6px;
           border-radius: 4px;
           outline: none;
-          line-height: 1;
+          line-height: 1.2;
         }
 
         .top-nav-link:hover {
