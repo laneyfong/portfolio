@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import { RESUME_URL } from "./SocialIcons";
-import DarkModeToggle from "./DarkModeToggle";
 
 interface NavItem {
   label: string;
@@ -53,19 +52,10 @@ const TopNav: FC = () => {
           border-bottom: 1px solid var(--border-color);
         }
 
-        [data-theme="dark"] .top-nav {
-          background-color: rgba(15, 15, 15, 0.8);
-          border-bottom: 1px solid var(--border-color);
-        }
-
         .top-nav.scrolled {
           background-color: rgba(255, 255, 255, 0.92);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
-        }
-
-        [data-theme="dark"] .top-nav.scrolled {
-          background-color: rgba(26, 26, 26, 0.95);
         }
 
         .top-nav-content {
@@ -181,10 +171,6 @@ const TopNav: FC = () => {
           transition: color 0.3s ease;
         }
 
-        [data-theme="dark"] .mobile-menu-btn {
-          color: var(--text-secondary);
-        }
-
         @media (max-width: 900px) {
           .top-nav-links {
             display: none;
@@ -277,23 +263,6 @@ const TopNav: FC = () => {
             min-height: 40px;
           }
         }
-
-        [data-theme="dark"] .mobile-menu {
-          background: var(--bg-primary);
-          border-bottom: 1px solid var(--border-color);
-        }
-
-        [data-theme="dark"] .mobile-menu-item {
-          color: var(--text-secondary);
-        }
-
-        [data-theme="dark"] .mobile-menu-item:hover {
-          color: #4060c8;
-        }
-
-        [data-theme="dark"] .mobile-menu-item.active {
-          color: var(--text-primary);
-        }
       `}</style>
 
       <nav
@@ -340,8 +309,6 @@ const TopNav: FC = () => {
               </li>
             ))}
           </ul>
-
-          <DarkModeToggle />
 
           <button
             className="mobile-menu-btn"

@@ -11,7 +11,6 @@ import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import VeriSupplyCaseStudy from "./VeriSupplyCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
 import { PortfolioAssistant } from "./components/PortfolioAssistant";
-import { DarkModeProvider } from "./context/DarkModeContext";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -82,15 +81,13 @@ function PageFadeInWrapper() {
 
 function App() {
   return (
-    <DarkModeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <GlobalStyles />
-        <PageFadeInWrapper />
-        <PortfolioAssistant />
-        <Analytics />
-      </BrowserRouter>
-    </DarkModeProvider>
+    <BrowserRouter>
+      <ScrollToTop />
+      <GlobalStyles />
+      <PageFadeInWrapper />
+      <PortfolioAssistant />
+      <Analytics />
+    </BrowserRouter>
   );
 }
 

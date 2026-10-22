@@ -91,6 +91,6 @@
 
 @media (max-width: 768px) {
   .myshake-video {
-    border-radius: 8px;
+    border-radius: 8px !important;
   }
 }

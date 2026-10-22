@@ -23,24 +23,6 @@ const GlobalStyles: FC = () => (
       --gradient-soft: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
     }
 
-    [data-theme="dark"] {
-      --bg-primary: #121212;
-      --bg-secondary: #1E1E1E;
-      --text-primary: #D0D0D0;
-      --text-secondary: #C0C0C0;
-      --text-muted: #A8A8A8;
-      --text-dark: #FFFFFF;
-      --text-grey-light: #B8B8B8;
-      --text-grey-medium: #B0B0B0;
-      --text-grey-dark: #A8A8A8;
-      --text-grey-lighter: #A0A0A0;
-      --border-color: rgba(208, 208, 208, 0.1);
-      --card-bg: #2A2A2A;
-      --stroke: #2F2F2F;
-      --surface-light: #1E1E1E;
-      --gradient-soft: linear-gradient(135deg, #252525 0%, #1A1A1A 100%);
-    }
-
     html {
       background: var(--bg-primary);
       color: var(--text-primary);
