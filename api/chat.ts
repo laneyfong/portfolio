@@ -28,6 +28,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    // Check if API key exists
+    if (!process.env.GEMINI_API_KEY) {
+      console.error("GEMINI_API_KEY not found in environment variables");
+      return res.status(500).json({ error: "API key not configured" });
+    }
+
     const { messages } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
@@ -37,12 +43,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // Convert messages to Gemini format
-    const history = messages.slice(0, -1).map((msg: { role: string; content: string }) => ({
+    const history = messages.slice(0, -1).map((msg: any) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
 
     const currentMessage = messages[messages.length - 1];
+
+    if (!currentMessage || !currentMessage.content) {
+      return res.status(400).json({ error: "Invalid current message" });
+    }
 
     const chat = model.startChat({
       history,
@@ -59,9 +69,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ content: text });
   } catch (error) {
     console.error("Chat error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    console.error("Error details:", errorMessage);
     return res.status(500).json({
       error: "Failed to process chat request",
-      message: error instanceof Error ? error.message : "Unknown error",
+      message: errorMessage,
     });
   }
 }
