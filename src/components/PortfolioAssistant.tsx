@@ -133,15 +133,16 @@ export const PortfolioAssistant = () => {
       {/* Peek Tab (visible when closed on case studies) */}
       {isCaseStudy && !isOpen && (
         <div
+          data-chat-peek
           style={{
             position: "fixed",
             right: 0,
             top: "50%",
             transform: "translateY(-50%)",
-            width: "32px",
-            height: "80px",
-            background: "#FAFAFB",
-            border: "1px solid rgba(26, 26, 26, 0.08)",
+            width: "40px",
+            height: "100px",
+            background: "#4060C8",
+            border: "none",
             borderRadius: "12px 0 0 12px",
             display: "flex",
             alignItems: "center",
@@ -149,11 +150,13 @@ export const PortfolioAssistant = () => {
             cursor: "pointer",
             zIndex: 899,
             transition: "all 0.3s ease",
+            boxShadow: "0 4px 12px rgba(64, 96, 200, 0.3)",
           }}
           onMouseDown={handleDragStart}
-          title="Drag to open chat"
+          onClick={() => setIsOpen(true)}
+          title="Click or drag to open chat"
         >
-          <span style={{ fontSize: "16px", transform: "rotate(-90deg)" }}>⌵</span>
+          <span style={{ fontSize: "20px", color: "#FFFFFF", fontWeight: "bold" }}>💬</span>
         </div>
       )}
 
@@ -434,6 +437,11 @@ export const PortfolioAssistant = () => {
               opacity: 1;
               transform: translateY(-8px);
             }
+          }
+
+          [data-chat-peek]:hover {
+            box-shadow: 0 8px 20px rgba(64, 96, 200, 0.4) !important;
+            transform: translateY(-50%) scale(1.05);
           }
         `}</style>
       </div>
