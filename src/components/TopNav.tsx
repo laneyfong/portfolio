@@ -310,6 +310,38 @@ const TopNav: FC = () => {
             ))}
           </ul>
 
+          {/* AIney Badge */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+              padding: "4px 6px",
+              background: "#E4E4E4",
+              borderRadius: "100px",
+              height: "23px",
+            }}
+          >
+            <div
+              style={{
+                width: "11px",
+                height: "11px",
+                background: "#254DFA",
+                borderRadius: "2px",
+              }}
+            />
+            <span
+              style={{
+                fontSize: "12px",
+                fontWeight: 400,
+                color: "#254DFA",
+                fontFamily: tokens.font.sans,
+              }}
+            >
+              AIney
+            </span>
+          </div>
+
           <button
             className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
