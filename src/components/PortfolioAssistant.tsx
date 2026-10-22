@@ -161,7 +161,7 @@ export const PortfolioAssistant = () => {
           onClick={() => setIsOpen(true)}
           title="Click or drag to open chat"
         >
-          <span style={{ fontSize: "20px", color: "#FFFFFF", fontWeight: "bold" }}>💬</span>
+          <span style={{ fontSize: "12px", color: "#FFFFFF", fontWeight: "bold", letterSpacing: "-0.5px" }}>CHAT</span>
         </div>
       )}
 
@@ -230,38 +230,64 @@ export const PortfolioAssistant = () => {
             </p>
           </div>
 
-          {/* Status Pill */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "6px 10px",
-              background: "#FFFFFF",
-              border: "1px solid rgba(26, 26, 26, 0.08)",
-              borderRadius: "9999px",
-              height: "30px",
-            }}
-          >
+          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+            {/* Status Pill */}
             <div
               style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                background: "#4060C8",
-              }}
-            />
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 500,
-                color: "#1A1A1A",
-                fontFamily: tokens.font.sans,
-                letterSpacing: "-0.7px",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "6px 10px",
+                background: "#FFFFFF",
+                border: "1px solid rgba(26, 26, 26, 0.08)",
+                borderRadius: "9999px",
+                height: "30px",
               }}
             >
-              Online
-            </span>
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  background: "#4060C8",
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  color: "#1A1A1A",
+                  fontFamily: tokens.font.sans,
+                  letterSpacing: "-0.7px",
+                }}
+              >
+                Online
+              </span>
+            </div>
+
+            {/* Close Button (for case studies) */}
+            {isCaseStudy && (
+              <button
+                onClick={() => setIsOpen(false)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  color: "#8D8D8D",
+                  padding: "4px 8px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#1A1A1A")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#8D8D8D")}
+                title="Close chat"
+              >
+                ✕
+              </button>
+            )}
           </div>
         </div>
 
@@ -368,7 +394,6 @@ export const PortfolioAssistant = () => {
                       e.currentTarget.style.transform = "scale(1)";
                     }}
                   >
-                    <span>📄</span>
                     <span>Download Resume</span>
                   </a>
                 )}
