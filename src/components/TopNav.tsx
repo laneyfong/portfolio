@@ -145,7 +145,7 @@ const TopNav: FC = () => {
           cursor: pointer;
           position: relative;
           transition: color 0.2s ease;
-          padding: 4px 6px;
+          padding: 0px 6px;
           border-radius: 4px;
           outline: none;
           line-height: 1.2;
@@ -321,13 +321,13 @@ const TopNav: FC = () => {
               display: "flex",
               alignItems: "center",
               gap: "4px",
-              padding: "4px 6px",
+              padding: "2px 6px",
               background: "#E4E4E4",
               borderRadius: "100px",
-              height: "23px",
               border: "none",
               cursor: "pointer",
               transition: "all 0.2s ease",
+              lineHeight: "1.2",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "#D0D0D0";
