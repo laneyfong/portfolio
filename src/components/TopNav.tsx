@@ -71,7 +71,7 @@ const TopNav: FC = () => {
           box-sizing: border-box;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1200px) {
           .top-nav-content {
             padding: 8px 16px;
           }
@@ -171,7 +171,7 @@ const TopNav: FC = () => {
           transition: color 0.3s ease;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1200px) {
           .top-nav-links {
             display: none;
           }
