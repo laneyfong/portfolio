@@ -1,19 +1,17 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { tokens } from "../tokens";
-
-let selectedTextGlobal = "";
 
 export const SelectionButton = () => {
   const [showButton, setShowButton] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [selectedText, setSelectedText] = useState("");
 
   useEffect(() => {
     const handleMouseUp = () => {
       const selection = window.getSelection();
       if (selection && selection.toString().length > 0) {
         const text = selection.toString().trim();
-        selectedTextGlobal = text;
+        setSelectedText(text);
 
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
@@ -43,26 +41,20 @@ export const SelectionButton = () => {
   }, []);
 
   const handleClick = () => {
-    console.log("🔥 SELECTION BUTTON CLICKED");
-    console.log("Selected text:", selectedTextGlobal);
-
-    // Store the text and open signal in localStorage
-    localStorage.setItem("ainey:open-chat", "true");
-    localStorage.setItem("ainey:prefill-text", selectedTextGlobal);
-    console.log("Stored in localStorage");
-
-    // Dispatch event to make sure PortfolioAssistant picks it up
-    window.dispatchEvent(new CustomEvent("ainey:open-and-prefill"));
-    console.log("Event dispatched");
-
-    setShowButton(false);
+    // Call the global function that PortfolioAssistant sets up
+    const openChat = (window as any).__openAineyChat;
+    if (openChat && typeof openChat === "function") {
+      openChat(selectedText);
+      setShowButton(false);
+    } else {
+      console.error("__openAineyChat function not found");
+    }
   };
 
   if (!showButton) return null;
 
   return (
     <button
-      ref={buttonRef}
       onClick={handleClick}
       style={{
         position: "fixed",
@@ -98,7 +90,6 @@ export const SelectionButton = () => {
       }}
       title="Ask AIney about this"
     >
-      {/* AI Icon */}
       <svg
         width="18"
         height="18"

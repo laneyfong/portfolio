@@ -11,6 +11,7 @@ import NvidiaCaseStudy from "./NvidiaCaseStudy";
 import VeriSupplyCaseStudy from "./VeriSupplyCaseStudy";
 import GlobalStyles from "./components/GlobalStyles";
 import { PortfolioAssistant } from "./components/PortfolioAssistant";
+import { SelectionButton } from "./components/SelectionButton";
 import { ChatProvider } from "./ChatContext";
 
 function ScrollToTop() {
@@ -109,6 +110,7 @@ function App() {
         <GlobalStyles />
         <PageFadeInWrapper />
         <PortfolioAssistant />
+        <SelectionButton />
         <Analytics />
       </ChatProvider>
     </BrowserRouter>

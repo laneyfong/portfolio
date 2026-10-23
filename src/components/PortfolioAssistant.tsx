@@ -64,24 +64,17 @@ export const PortfolioAssistant = () => {
   }, [isOpen, setIsOpen]);
 
   useEffect(() => {
-    const handleOpenAndPrefill = () => {
-      // Check if we should open
-      const shouldOpen = localStorage.getItem("ainey:open-chat");
-      if (shouldOpen === "true") {
-        setIsOpen(true);
-        localStorage.removeItem("ainey:open-chat");
-      }
-
-      // Check if we should prefill
-      const prefillText = localStorage.getItem("ainey:prefill-text");
-      if (prefillText) {
-        setInputValue(`Ask about: "${prefillText}"`);
-        localStorage.removeItem("ainey:prefill-text");
+    // Register global function for SelectionButton to call
+    (window as any).__openAineyChat = (selectedText: string) => {
+      setIsOpen(true);
+      if (selectedText) {
+        setInputValue(`Ask about: "${selectedText}"`);
       }
     };
 
-    window.addEventListener("ainey:open-and-prefill", handleOpenAndPrefill);
-    return () => window.removeEventListener("ainey:open-and-prefill", handleOpenAndPrefill);
+    return () => {
+      delete (window as any).__openAineyChat;
+    };
   }, [setIsOpen]);
 
   const scrollToBottom = () => {
