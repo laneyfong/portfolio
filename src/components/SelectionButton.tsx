@@ -43,12 +43,17 @@ export const SelectionButton = () => {
   }, []);
 
   const handleClick = () => {
+    console.log("🔥 SELECTION BUTTON CLICKED");
+    console.log("Selected text:", selectedTextGlobal);
+
     // Store the text and open signal in localStorage
     localStorage.setItem("ainey:open-chat", "true");
     localStorage.setItem("ainey:prefill-text", selectedTextGlobal);
+    console.log("Stored in localStorage");
 
     // Dispatch event to make sure PortfolioAssistant picks it up
     window.dispatchEvent(new CustomEvent("ainey:open-and-prefill"));
+    console.log("Event dispatched");
 
     setShowButton(false);
   };
