@@ -113,10 +113,11 @@ export const SelectionButton = () => {
         className="ask-text"
         style={{
           fontSize: "12px",
-          fontWeight: 400,
+          fontWeight: "400",
           color: "#808080",
           fontFamily: tokens.font.sans,
           transition: "color 0.6s ease",
+          letterSpacing: "-0.05em",
         }}
       >
         Ask
@@ -125,10 +126,11 @@ export const SelectionButton = () => {
         className="ainey-text"
         style={{
           fontSize: "12px",
-          fontWeight: 400,
+          fontWeight: "400",
           color: "#4060C8",
           fontFamily: tokens.font.sans,
           transition: "color 0.6s ease",
+          letterSpacing: "-0.05em",
         }}
       >
         AIney
