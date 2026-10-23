@@ -377,9 +377,9 @@ export const PortfolioAssistant = () => {
                     fontFamily: tokens.font.sans,
                     letterSpacing: "0px",
                     paddingLeft: msg.role === "assistant" ? "53px" : "16px",
-                    paddingRight: "0px",
+                    paddingRight: msg.role === "user" ? "16px" : "0px",
                     lineHeight: "19px",
-                    textAlign: "left",
+                    textAlign: msg.role === "assistant" ? "left" : "right",
                   }}
                 >
                   {formatTime(msg.timestamp)}
