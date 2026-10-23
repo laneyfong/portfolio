@@ -288,7 +288,7 @@ export const PortfolioAssistant = () => {
               alignItems: "center",
               justifyContent: "center",
               transition: "all 0.6s ease",
-              borderRadius: "8px",
+              borderRadius: "100px",
               width: "36px",
               height: "36px",
               zIndex: 1000,
