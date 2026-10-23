@@ -51,7 +51,7 @@ const TopNav: FC = () => {
           background-color: rgba(255, 255, 255, 0.08);
           backdrop-filter: blur(4px);
           -webkit-backdrop-filter: blur(4px);
-          border-bottom: 1px solid var(--border-color);
+          border-bottom: 0.5px solid var(--border-color);
         }
 
         .top-nav.scrolled {
