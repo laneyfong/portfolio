@@ -75,11 +75,36 @@ Answer the question directly. If about availability/salary/logistics, be honest 
 
 Question: ${currentMessage.content}`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    // Stream the response
+    const encoder = new TextEncoder();
 
-    return res.status(200).json({ content: text });
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
+    const stream = await model.generateContentStream(prompt);
+
+    let fullText = "";
+    for await (const chunk of stream.stream) {
+      const chunkText = chunk.text();
+      fullText += chunkText;
+      res.write(`data: ${JSON.stringify({ text: chunkText })}\n\n`);
+    }
+
+    // Final message with resume detection
+    const hasResume = currentMessage.content.toLowerCase().includes("resume") ||
+                      currentMessage.content.toLowerCase().includes("cv") ||
+                      currentMessage.content.toLowerCase().includes("pdf");
+
+    res.write(`data: ${JSON.stringify({
+      text: "",
+      done: true,
+      hasResume,
+      resumeUrl: hasResume ? "/LaneyFongResume-ProductDesigner.pdf" : null
+    })}\n\n`);
+
+    res.end();
   } catch (error) {
     console.error("Chat error:", error);
     const errorMessage = error instanceof Error ? error.message : "Unknown error";

@@ -132,6 +132,11 @@ export const PortfolioAssistant = () => {
     setInputValue("");
     setIsLoading(true);
 
+    const assistantMessageId = (Date.now() + 1).toString();
+    let fullContent = "";
+    let hasResume = false;
+    let resumeUrl: string | undefined;
+
     try {
       console.log("Sending message:", inputValue);
       const response = await fetch("/api/chat", {
@@ -143,24 +148,65 @@ export const PortfolioAssistant = () => {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`API error: ${response.status} - ${errorText}`);
+        throw new Error(`API error: ${response.status}`);
       }
 
-      const data = await response.json();
-      console.log("Got response:", data);
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: data.content,
-        timestamp: new Date(),
-        hasResume: data.hasResume,
-        resumeUrl: data.resumeUrl,
-      };
+      if (!response.body) {
+        throw new Error("Response body is empty");
+      }
 
-      setMessages((prev) => [...prev, assistantMessage]);
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      // Add empty assistant message
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: assistantMessageId,
+          role: "assistant",
+          content: "",
+          timestamp: new Date(),
+        },
+      ]);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split("\n").filter((line) => line.startsWith("data: "));
+
+        for (const line of lines) {
+          try {
+            const json = JSON.parse(line.slice(6));
+            if (json.done) {
+              hasResume = json.hasResume;
+              resumeUrl = json.resumeUrl;
+            } else if (json.text) {
+              fullContent += json.text;
+              // Update the message with new content
+              setMessages((prev) =>
+                prev.map((msg) =>
+                  msg.id === assistantMessageId ? { ...msg, content: fullContent } : msg
+                )
+              );
+            }
+          } catch (e) {
+            // Skip parsing errors
+          }
+        }
+      }
+
+      // Update final message with resume info
+      if (hasResume) {
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === assistantMessageId ? { ...msg, hasResume, resumeUrl } : msg
+          )
+        );
+      }
     } catch (error) {
-      console.error("Chat error details:", error);
+      console.error("Chat error:", error);
       const errorMessage: Message = {
         id: (Date.now() + 2).toString(),
         role: "assistant",
