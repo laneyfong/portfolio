@@ -184,7 +184,7 @@ export const PortfolioAssistant = () => {
             right: 0,
             top: "50%",
             transform: "translateY(-50%)",
-            padding: "12px 8px",
+            padding: "16px 12px",
             background: "#F3F3F3",
             border: "1px solid rgba(26, 26, 26, 0.08)",
             borderRadius: "12px 0 0 12px",
@@ -192,10 +192,11 @@ export const PortfolioAssistant = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "8px",
+            gap: "10px",
             cursor: "pointer",
             zIndex: 899,
             transition: "all 0.3s ease",
+            boxShadow: "0 4px 12px rgba(64, 96, 200, 0.15)",
           }}
           onMouseDown={handleDragStart}
           onClick={() => setIsOpen(true)}
@@ -203,8 +204,8 @@ export const PortfolioAssistant = () => {
         >
           {/* Sparkle Icon */}
           <svg
-            width="16"
-            height="16"
+            width="20"
+            height="20"
             viewBox="0 0 11 11"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -216,8 +217,8 @@ export const PortfolioAssistant = () => {
           </svg>
           <span
             style={{
-              fontSize: "11px",
-              fontWeight: 500,
+              fontSize: "13px",
+              fontWeight: 600,
               color: "#254DFA",
               fontFamily: tokens.font.sans,
               letterSpacing: "-0.5px",
