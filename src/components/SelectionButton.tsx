@@ -52,7 +52,7 @@ export const SelectionButton = () => {
 
   return (
     <button
-      onClick={handleClick}
+      onMouseDown={handleClick}
       style={{
         position: "fixed",
         top: position.top,
@@ -70,6 +70,8 @@ export const SelectionButton = () => {
         transition: "all 0.6s ease",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         whiteSpace: "nowrap",
+        pointerEvents: "auto",
+        userSelect: "none",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.background = "#254DFA";
