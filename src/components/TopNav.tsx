@@ -330,10 +330,20 @@ const TopNav: FC = () => {
               lineHeight: "1.2",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#D0D0D0";
+              e.currentTarget.style.background = "#254DFA";
+              // Update svg and text color to white
+              const svg = e.currentTarget.querySelector("svg path");
+              if (svg) svg.setAttribute("fill", "#FFFFFF");
+              const span = e.currentTarget.querySelector("span");
+              if (span) span.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "#E4E4E4";
+              // Reset svg and text color
+              const svg = e.currentTarget.querySelector("svg path");
+              if (svg) svg.setAttribute("fill", "#254DFA");
+              const span = e.currentTarget.querySelector("span");
+              if (span) span.style.color = "#254DFA";
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
@@ -344,7 +354,7 @@ const TopNav: FC = () => {
               viewBox="0 0 11 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ flexShrink: 0 }}
+              style={{ flexShrink: 0, transition: "fill 0.6s ease" }}
             >
               <path
                 d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
@@ -357,6 +367,7 @@ const TopNav: FC = () => {
                 fontWeight: 400,
                 color: "#254DFA",
                 fontFamily: tokens.font.sans,
+                transition: "color 0.6s ease",
               }}
             >
               AIney

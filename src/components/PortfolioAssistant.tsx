@@ -286,17 +286,19 @@ export const PortfolioAssistant = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              transition: "background 0.6s ease",
+              transition: "all 0.6s ease",
               borderRadius: "8px",
               width: "36px",
               height: "36px",
               zIndex: 1000,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#D0D0D0";
+              e.currentTarget.style.background = "#254DFA";
+              e.currentTarget.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "#E4E4E4";
+              e.currentTarget.style.color = "#1A1A1A";
             }}
             title="Close chat (Esc)"
           >
