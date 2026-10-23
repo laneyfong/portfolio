@@ -186,7 +186,7 @@ export const PortfolioAssistant = () => {
             transform: "translateY(-50%)",
             padding: "16px 12px",
             background: "#F3F3F3",
-            border: "1px solid rgba(26, 26, 26, 0.08)",
+            border: "none",
             borderRadius: "12px 0 0 12px",
             display: "flex",
             flexDirection: "column",
