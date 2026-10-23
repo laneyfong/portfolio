@@ -62,13 +62,13 @@ export const SocialIconLink: FC<SocialIconLinkProps> = ({ href, label, external,
         width: isDark ? 44 : 40,
         height: isDark ? 44 : 40,
         borderRadius: "50%",
-        border: isDark ? `1.5px solid rgba(255, 255, 255, ${hovered ? 0.8 : 0.35})` : "none",
-        background: isDark ? `rgba(255, 255, 255, ${hovered ? 0.15 : 0.08})` : hovered ? tokens.color.dark : tokens.color.ink,
+        border: "none",
+        background: isDark ? `rgba(255, 255, 255, ${hovered ? 0.25 : 0.15})` : hovered ? tokens.color.dark : tokens.color.ink,
         boxShadow: isDark ? "none" : tokens.shadow.subtle,
         color: isDark ? tokens.color.white : tokens.color.white,
         opacity: isDark ? (hovered ? 1 : 1) : 1,
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
-        transition: "opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease",
+        transition: "opacity 0.2s ease, transform 0.2s ease, background 0.2s ease",
       }}
     >
       {children}
