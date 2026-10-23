@@ -374,8 +374,8 @@ export const PortfolioAssistant = () => {
                   src={profilePhoto}
                   alt="Laney"
                   style={{
-                    width: "28px",
-                    height: "28px",
+                    width: "45px",
+                    height: "45px",
                     borderRadius: "50%",
                     objectFit: "cover",
                     flexShrink: 0,
@@ -386,12 +386,12 @@ export const PortfolioAssistant = () => {
                 <div
                   style={{
                     padding: "14px 16px",
-                    background: msg.role === "assistant" ? "#FFFFFF" : "#4060C8",
+                    background: msg.role === "assistant" ? "#FFFFFF" : "#5B7DB5",
                     border: msg.role === "assistant" ? "1px solid rgba(26, 26, 26, 0.08)" : "none",
                     borderRadius: "22px",
                     fontSize: "14px",
                     fontWeight: 400,
-                    color: msg.role === "assistant" ? "#1A1A1A" : "#FFFFFF",
+                    color: msg.role === "assistant" ? "#1A1A1A" : "#FAFAFB",
                     fontFamily: tokens.font.sans,
                     lineHeight: "22px",
                     letterSpacing: "-0.7px",
@@ -404,37 +404,38 @@ export const PortfolioAssistant = () => {
                     href={msg.resumeUrl}
                     download
                     style={{
-                      display: "inline-flex",
+                      display: "flex",
                       alignItems: "center",
-                      gap: "8px",
-                      padding: "12px 18px",
-                      background: "#254DFA",
+                      justifyContent: "center",
+                      padding: "14px 24px",
+                      background: "#5B7DB5",
                       color: "#FFFFFF",
                       border: "none",
-                      borderRadius: "8px",
-                      fontSize: "13px",
+                      borderRadius: "9999px",
+                      fontSize: "14px",
                       fontWeight: 600,
                       fontFamily: tokens.font.sans,
                       textDecoration: "none",
                       cursor: "pointer",
                       transition: "all 0.2s ease",
-                      marginLeft: "36px",
-                      marginTop: "4px",
-                      boxShadow: "0 2px 8px rgba(37, 77, 250, 0.3)",
+                      marginLeft: "0px",
+                      marginTop: "8px",
+                      boxShadow: "0 4px 12px rgba(91, 125, 181, 0.3)",
+                      width: "100%",
+                      maxWidth: "280px",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#1E3FB8";
-                      e.currentTarget.style.boxShadow = "0 4px 16px rgba(37, 77, 250, 0.5)";
-                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.background = "#4A6A9E";
+                      e.currentTarget.style.boxShadow = "0 6px 20px rgba(91, 125, 181, 0.4)";
+                      e.currentTarget.style.transform = "scale(1.02)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#254DFA";
-                      e.currentTarget.style.boxShadow = "0 2px 8px rgba(37, 77, 250, 0.3)";
-                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.background = "#5B7DB5";
+                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(91, 125, 181, 0.3)";
+                      e.currentTarget.style.transform = "scale(1)";
                     }}
                   >
-                    <span>↓</span>
-                    <span>Download Resume</span>
+                    Download Resume
                   </a>
                 )}
                 <p
