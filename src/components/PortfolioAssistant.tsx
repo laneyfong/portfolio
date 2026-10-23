@@ -13,10 +13,6 @@ interface Message {
   resumeUrl?: string;
 }
 
-const formatTime = (date: Date) => {
-  return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
-};
-
 export const PortfolioAssistant = () => {
   const location = useLocation();
   const { isOpen, setIsOpen } = useChatState();
@@ -489,22 +485,6 @@ export const PortfolioAssistant = () => {
                     </svg>
                   </a>
                 )}
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "12px",
-                    fontWeight: 500,
-                    color: "rgba(141,141,141,1)",
-                    fontFamily: tokens.font.sans,
-                    letterSpacing: "0px",
-                    paddingLeft: msg.role === "assistant" ? "53px" : "16px",
-                    paddingRight: msg.role === "user" ? "16px" : "0px",
-                    lineHeight: "19px",
-                    textAlign: msg.role === "assistant" ? "left" : "right",
-                  }}
-                >
-                  {formatTime(msg.timestamp)}
-                </p>
               </div>
             </div>
           ))}
