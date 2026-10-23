@@ -41,13 +41,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Use simple generateContent API
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-    // Check cache first
-    const cacheKey = `chat:${currentMessage.content.toLowerCase()}`;
-    const cachedResponse = global[cacheKey as keyof typeof global];
-    if (cachedResponse) {
-      console.log("Cache hit:", cacheKey);
-      return res.status(200).json(cachedResponse);
-    }
 
     const prompt = `You are Laney Fong, a product designer. Answer in 1 sentence max.
 
@@ -61,16 +54,11 @@ Q: ${currentMessage.content}`;
     const response = await result.response;
     const text = response.text();
 
-    const responseData = {
+    return res.status(200).json({
       content: text,
       hasResume: isResume,
       resumeUrl: isResume ? "/LaneyFongResume-ProductDesigner.pdf" : null
-    };
-
-    // Cache the response (in-memory for this request lifecycle)
-    global[cacheKey as keyof typeof global] = responseData;
-
-    return res.status(200).json(responseData);
+    });
   } catch (error) {
     console.error("Chat error:", error);
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
