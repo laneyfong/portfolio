@@ -63,31 +63,76 @@ export const SelectionButton = () => {
         left: position.left,
         transform: "translateX(-50%)",
         zIndex: 10000,
-        padding: "8px 16px",
-        background: "#4060C8",
-        color: "white",
+        display: "flex",
+        alignItems: "center",
+        gap: "6px",
+        padding: "6px 12px",
+        background: "#E4E4E4",
         border: "none",
-        borderRadius: "8px",
-        fontSize: "13px",
-        fontWeight: 500,
-        fontFamily: tokens.font.sans,
+        borderRadius: "100px",
         cursor: "pointer",
-        letterSpacing: "-0.5px",
-        boxShadow: "0 4px 12px rgba(64, 96, 200, 0.3)",
+        transition: "all 0.6s ease",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         whiteSpace: "nowrap",
-        transition: "all 0.2s ease",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = "#2A4B99";
-        e.currentTarget.style.transform = "translateX(-50%) scale(1.05)";
+        e.currentTarget.style.background = "#4060C8";
+        const svg = e.currentTarget.querySelector("svg path") as SVGPathElement;
+        if (svg) svg.setAttribute("fill", "#FFFFFF");
+        const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
+        if (askSpan) askSpan.style.color = "#FFFFFF";
+        const aineySpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
+        if (aineySpan) aineySpan.style.color = "#FFFFFF";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = "#4060C8";
-        e.currentTarget.style.transform = "translateX(-50%) scale(1)";
+        e.currentTarget.style.background = "#E4E4E4";
+        const svg = e.currentTarget.querySelector("svg path") as SVGPathElement;
+        if (svg) svg.setAttribute("fill", "#4060C8");
+        const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
+        if (askSpan) askSpan.style.color = "#808080";
+        const aineySpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
+        if (aineySpan) aineySpan.style.color = "#4060C8";
       }}
       title="Ask AIney about this"
     >
-      Ask AIney
+      {/* Sparkle Icon */}
+      <svg
+        width="11"
+        height="11"
+        viewBox="0 0 11 11"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ flexShrink: 0, transition: "fill 0.6s ease" }}
+      >
+        <path
+          d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
+          fill="#4060C8"
+        />
+      </svg>
+      <span
+        className="ask-text"
+        style={{
+          fontSize: "12px",
+          fontWeight: 400,
+          color: "#808080",
+          fontFamily: tokens.font.sans,
+          transition: "color 0.6s ease",
+        }}
+      >
+        Ask
+      </span>
+      <span
+        className="ainey-text"
+        style={{
+          fontSize: "12px",
+          fontWeight: 400,
+          color: "#4060C8",
+          fontFamily: tokens.font.sans,
+          transition: "color 0.6s ease",
+        }}
+      >
+        AIney
+      </span>
     </button>
   );
 };
