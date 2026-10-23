@@ -151,24 +151,49 @@ export const PortfolioAssistant = () => {
             right: 0,
             top: "50%",
             transform: "translateY(-50%)",
-            width: "40px",
-            height: "100px",
-            background: "#4060C8",
-            border: "none",
+            padding: "12px 8px",
+            background: "#F3F3F3",
+            border: "1px solid rgba(26, 26, 26, 0.08)",
             borderRadius: "12px 0 0 12px",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            gap: "8px",
             cursor: "pointer",
             zIndex: 899,
             transition: "all 0.3s ease",
-            boxShadow: "0 4px 12px rgba(64, 96, 200, 0.3)",
           }}
           onMouseDown={handleDragStart}
           onClick={() => setIsOpen(true)}
           title="Click or drag to open chat"
         >
-          <span style={{ fontSize: "12px", color: "#FFFFFF", fontWeight: "bold", letterSpacing: "-0.5px" }}>CHAT</span>
+          {/* Sparkle Icon */}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 11 11"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
+              fill="#254DFA"
+            />
+          </svg>
+          <span
+            style={{
+              fontSize: "11px",
+              fontWeight: 500,
+              color: "#254DFA",
+              fontFamily: tokens.font.sans,
+              letterSpacing: "-0.5px",
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)",
+            }}
+          >
+            AI
+          </span>
         </div>
       )}
 
