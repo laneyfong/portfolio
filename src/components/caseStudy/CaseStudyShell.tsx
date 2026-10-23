@@ -195,15 +195,15 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         style={{
           position: "sticky",
           top: 0,
-          left: 0,
-          height: "100vh",
           width: SIDEBAR_WIDTH,
+          height: "100vh",
           background: "transparent",
           display: "flex",
           flexDirection: "column",
           padding: "32px 20px",
           zIndex: 10,
           boxSizing: "border-box",
+          flexShrink: 0,
         }}
       >
         <button
