@@ -42,12 +42,20 @@ export const PortfolioAssistant = () => {
   ].includes(location.pathname);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      const chatContainer = messagesEndRef.current.closest('[style*="overflowY"]');
+      if (chatContainer) {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+    }
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    // Only scroll if chat is open and not on initial load
+    if (isOpen && messages.length > 1) {
+      scrollToBottom();
+    }
+  }, [messages, isOpen]);
 
   useEffect(() => {
     const pageWrapper = document.querySelector(".page-wrapper");
