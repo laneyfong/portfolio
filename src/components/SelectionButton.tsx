@@ -43,13 +43,18 @@ export const SelectionButton = () => {
     };
   }, []);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("Ask AIney clicked, opening chat...");
     setIsOpen(true);
-    // Dispatch custom event with selected text
-    window.dispatchEvent(
-      new CustomEvent("ainey:selected-text", { detail: selectedText })
-    );
     setShowButton(false);
+    // Dispatch custom event with selected text
+    setTimeout(() => {
+      window.dispatchEvent(
+        new CustomEvent("ainey:selected-text", { detail: selectedText })
+      );
+    }, 100);
   };
 
   if (!showButton) return null;
