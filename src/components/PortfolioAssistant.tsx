@@ -55,7 +55,7 @@ export const PortfolioAssistant = () => {
     const handleClickOutside = (e: MouseEvent) => {
       if (isOpen && sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
         const target = e.target as HTMLElement;
-        if (!target.closest('[data-chat-peek]') && !target.closest('button[title*="AIney"]')) {
+        if (!target.closest('[data-chat-peek]') && !target.closest('button[title*="LaneyLM"]')) {
           setIsOpen(false);
         }
       }
@@ -66,18 +66,18 @@ export const PortfolioAssistant = () => {
 
   useEffect(() => {
     // Register global function for SelectionButton to call
-    (window as any).__openAineyChat = (selectedText: string) => {
-      console.log("✅ __openAineyChat called with:", selectedText);
+    (window as any).__openLaneyLMChat = (selectedText: string) => {
+      console.log("✅ __openLaneyLMChat called with:", selectedText);
       setIsOpen(true);
       if (selectedText) {
         setInputValue(`Ask about: "${selectedText}"`);
       }
     };
 
-    console.log("✅ __openAineyChat function registered on window");
+    console.log("✅ __openLaneyLMChat function registered on window");
 
     return () => {
-      delete (window as any).__openAineyChat;
+      delete (window as any).__openLaneyLMChat;
     };
   }, [setIsOpen]);
 
@@ -221,7 +221,7 @@ export const PortfolioAssistant = () => {
           }}
           onMouseDown={handleDragStart}
           onClick={() => setIsOpen(true)}
-          title="Click or drag to open chat"
+          title="Click or drag to open LaneyLM"
         >
           {/* AI Icon */}
           <svg

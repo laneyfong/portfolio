@@ -315,7 +315,7 @@ const TopNav: FC = () => {
             ))}
           </ul>
 
-          {/* AIney Icon Button - Toggle Chat */}
+          {/* LaneyLM Icon Button - Toggle Chat */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
@@ -340,7 +340,7 @@ const TopNav: FC = () => {
                 path.setAttribute("fill", "#254DFA");
               });
               // Show text
-              const textSpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
+              const textSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
               if (textSpan) {
                 textSpan.style.opacity = "1";
                 textSpan.style.maxWidth = "200px";
@@ -354,7 +354,7 @@ const TopNav: FC = () => {
                 path.setAttribute("fill", "#808080");
               });
               // Hide text
-              const textSpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
+              const textSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
               if (textSpan) {
                 textSpan.style.opacity = "0";
                 textSpan.style.maxWidth = "0px";
@@ -377,7 +377,7 @@ const TopNav: FC = () => {
               <path d="M561.984 656.599C571.669 655.579 582.048 658.326 584.529 669.067C589.976 692.649 570.495 720.364 557.356 738.53C547.65 751.946 532.073 767.828 516.398 772.312C477.73 777.453 496.525 726 507.793 709.308C520.889 689.903 538 662.786 561.984 656.599Z" fill="#808080"/>
             </svg>
             <span
-              className="ainey-text"
+              className="laneyLM-text"
               style={{
                 fontSize: "13px",
                 fontWeight: "400",
@@ -391,7 +391,7 @@ const TopNav: FC = () => {
                 whiteSpace: "nowrap",
               }}
             >
-              Ask AIney
+              Ask LaneyLM
             </span>
           </button>
 

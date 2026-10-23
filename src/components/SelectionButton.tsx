@@ -41,7 +41,7 @@ export const SelectionButton = () => {
   }, []);
 
   const handleClick = () => {
-    const openChat = (window as any).__openAineyChat;
+    const openChat = (window as any).__openLaneyLMChat;
     if (openChat && typeof openChat === "function") {
       openChat(selectedText);
       setShowButton(false);
@@ -77,17 +77,17 @@ export const SelectionButton = () => {
         e.currentTarget.style.background = "#254DFA";
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
         if (askSpan) askSpan.style.color = "#FFFFFF";
-        const aineySpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
-        if (aineySpan) aineySpan.style.color = "#FFFFFF";
+        const lmSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
+        if (lmSpan) lmSpan.style.color = "#FFFFFF";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.background = "#E4E4E4";
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
         if (askSpan) askSpan.style.color = "#808080";
-        const aineySpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
-        if (aineySpan) aineySpan.style.color = "#254DFA";
+        const lmSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
+        if (lmSpan) lmSpan.style.color = "#254DFA";
       }}
-      title="Ask AIney about this"
+      title="Ask LaneyLM about this"
     >
       <svg
         width="18"
@@ -116,7 +116,7 @@ export const SelectionButton = () => {
         Ask
       </span>
       <span
-        className="ainey-text"
+        className="laneyLM-text"
         style={{
           fontSize: "14px",
           fontWeight: "400",
@@ -126,7 +126,7 @@ export const SelectionButton = () => {
           letterSpacing: "-0.05em",
         }}
       >
-        AIney
+        LaneyLM
       </span>
     </button>
   );
