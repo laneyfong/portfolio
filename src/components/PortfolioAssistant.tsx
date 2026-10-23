@@ -226,7 +226,8 @@ export const PortfolioAssistant = () => {
                 letterSpacing: "-0.7px",
                 lineHeight: "22px",
                 display: "flex",
-                gap: "2px",
+                gap: "4px",
+                padding: "4px 8px",
               }}
             >
               <span style={{ color: "#254DFA" }}>AI</span>
