@@ -85,11 +85,11 @@ const Footer: FC = () => (
         bottom: 0;
         background: linear-gradient(
           -45deg,
-          rgba(150, 70, 40, 0.08) 0%,
-          rgba(30, 45, 120, 0.1) 25%,
-          rgba(150, 80, 35, 0.07) 50%,
-          rgba(30, 45, 120, 0.09) 75%,
-          rgba(150, 70, 40, 0.08) 100%
+          rgba(200, 100, 60, 0.22) 0%,
+          rgba(60, 80, 180, 0.28) 25%,
+          rgba(200, 110, 50, 0.20) 50%,
+          rgba(60, 80, 180, 0.26) 75%,
+          rgba(200, 100, 60, 0.22) 100%
         );
         background-size: 400% 400%;
         animation: gradientShift 18s ease-in-out infinite;
