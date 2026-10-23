@@ -193,10 +193,10 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
       <div
         className="case-sidebar"
         style={{
-          position: "fixed",
+          position: "sticky",
           top: 0,
           left: 0,
-          bottom: 0,
+          height: "100vh",
           width: SIDEBAR_WIDTH,
           background: "transparent",
           display: "flex",
