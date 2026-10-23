@@ -330,7 +330,7 @@ const TopNav: FC = () => {
               lineHeight: "1.2",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#254DFA";
+              e.currentTarget.style.background = "#4060C8";
               // Update svg and text color to white
               const svg = e.currentTarget.querySelector("svg path");
               if (svg) svg.setAttribute("fill", "#FFFFFF");
@@ -341,9 +341,9 @@ const TopNav: FC = () => {
               e.currentTarget.style.background = "#E4E4E4";
               // Reset svg and text color
               const svg = e.currentTarget.querySelector("svg path");
-              if (svg) svg.setAttribute("fill", "#254DFA");
+              if (svg) svg.setAttribute("fill", "#4060C8");
               const span = e.currentTarget.querySelector("span");
-              if (span) span.style.color = "#254DFA";
+              if (span) span.style.color = "#4060C8";
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
@@ -358,14 +358,14 @@ const TopNav: FC = () => {
             >
               <path
                 d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
-                fill="#254DFA"
+                fill="#4060C8"
               />
             </svg>
             <span
               style={{
                 fontSize: "12px",
                 fontWeight: 400,
-                color: "#254DFA",
+                color: "#4060C8",
                 fontFamily: tokens.font.sans,
                 transition: "color 0.6s ease",
               }}
