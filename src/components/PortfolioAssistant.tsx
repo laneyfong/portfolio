@@ -100,6 +100,7 @@ export const PortfolioAssistant = () => {
     setIsLoading(true);
 
     try {
+      console.log("Sending message:", inputValue);
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -108,9 +109,13 @@ export const PortfolioAssistant = () => {
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to get response");
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`API error: ${response.status} - ${errorText}`);
+      }
 
       const data = await response.json();
+      console.log("Got response:", data);
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
@@ -122,7 +127,7 @@ export const PortfolioAssistant = () => {
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
-      console.error("Chat error:", error);
+      console.error("Chat error details:", error);
       const errorMessage: Message = {
         id: (Date.now() + 2).toString(),
         role: "assistant",
