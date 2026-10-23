@@ -282,7 +282,7 @@ export const PortfolioAssistant = () => {
                 gap: "6px",
                 padding: "6px 10px",
                 background: "#FFFFFF",
-                border: "1px solid rgba(26, 26, 26, 0.08)",
+                border: "none",
                 borderRadius: "9999px",
                 height: "30px",
               }}
@@ -341,7 +341,7 @@ export const PortfolioAssistant = () => {
               margin: 0,
               fontSize: "14px",
               fontWeight: 400,
-              color: "#808080",
+              color: "#1A1A1A",
               fontFamily: tokens.font.sans,
               lineHeight: "22px",
               letterSpacing: "-0.7px",
@@ -395,7 +395,7 @@ export const PortfolioAssistant = () => {
                   style={{
                     padding: "14px 16px",
                     background: msg.role === "assistant" ? "#FFFFFF" : "#5B7DB5",
-                    border: msg.role === "assistant" ? "1px solid rgba(26, 26, 26, 0.08)" : "none",
+                    border: "none",
                     borderRadius: "22px",
                     fontSize: "14px",
                     fontWeight: 400,
@@ -522,9 +522,9 @@ export const PortfolioAssistant = () => {
             flexDirection: "row",
             alignItems: "center",
             gap: "12px",
-            padding: "10px 16px 14px",
+            padding: "10px 16px",
             background: "#FFFFFF",
-            border: "1px solid rgba(26, 26, 26, 0.08)",
+            border: "none",
             borderRadius: "9999px",
             marginTop: "auto",
           }}
