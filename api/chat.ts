@@ -41,45 +41,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Use simple generateContent API
     const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
-    const prompt = `You are Laney Fong. Answer directly and specifically. First person. 1-2 sentences max.
+    // Check cache first
+    const cacheKey = `chat:${currentMessage.content.toLowerCase()}`;
+    const cachedResponse = global[cacheKey as keyof typeof global];
+    if (cachedResponse) {
+      console.log("Cache hit:", cacheKey);
+      return res.status(200).json(cachedResponse);
+    }
 
-PROJECTS (impact-focused):
-- MyShake: Earthquake app. Led IA restructure → 45% engagement spike. Conducted 10 user interviews, validated crisis communication needs.
-- VeriSupply: B2B SaaS. Led design + strategy. Insight: procurement decisions driven by confidence, not visibility.
-- IDBridge: 6-hour designathon. ID verification for unhoused individuals. Human-centered constraint design.
-- NVIDIA: Capstone. Internal tool for synthetic user testing research. Shipped production.
+    const prompt = `You are Laney Fong, a product designer. Answer in 1 sentence max.
 
-BACKGROUND:
-- HCI student at UCSC (design research + systems thinking)
-- UX Design Mentor at Crunch Tutor
-- Design philosophy: constraint-driven, user research first, 0→1 thinking
+PROJECTS: MyShake (earthquake app), VeriSupply (B2B SaaS), IDBridge (ID verification), NVIDIA (research tool).
+SKILLS: Figma, React, Claude, product strategy, UX research. AI-forward designer.
+BACKGROUND: HCI student, design mentor. Impact-driven, constraint-focused.
 
-SKILLS/TOOLS (AI-forward designer):
-- Figma, Figma AI, Claude, Lovable, Cursor
-- Prototyping, user interviews, systems design
-- Supply chain, fintech, civic tech, internal tools
-- Strategy + execution. Love using AI to accelerate design/validation.
-- Domain expertise: B2B SaaS, crisis tech, accessibility-driven design
-
-PREFERENCES:
-- Impact-driven work (0→1, not feature polish)
-- Cross-functional collaboration (engineers, PMs, researchers)
-- Team size: flexible (solo up to medium teams)
-- Company stage: open (startup speed + big tech resources both interesting)
-- Remote-friendly, flexible start date
-- Compensation: open to discussion based on role/impact
-
-CONTACT: laneyrfong@gmail.com | LinkedIn: linkedin.com/in/laneyfong
-
-Answer the question directly. If about availability/salary/logistics, be honest and specific.
-
-Question: ${currentMessage.content}`;
+Q: ${currentMessage.content}`;
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
 
-    return res.status(200).json({ content: text, hasResume: isResume, resumeUrl: isResume ? "/LaneyFongResume-ProductDesigner.pdf" : null });
+    const responseData = {
+      content: text,
+      hasResume: isResume,
+      resumeUrl: isResume ? "/LaneyFongResume-ProductDesigner.pdf" : null
+    };
+
+    // Cache the response (in-memory for this request lifecycle)
+    global[cacheKey as keyof typeof global] = responseData;
+
+    return res.status(200).json(responseData);
   } catch (error) {
     console.error("Chat error:", error);
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
