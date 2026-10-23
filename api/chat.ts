@@ -39,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Use simple generateContent API
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
     const prompt = `You are Laney Fong, a product designer. Answer in 1 sentence max.
