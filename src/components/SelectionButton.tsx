@@ -66,7 +66,7 @@ export const SelectionButton = () => {
         display: "flex",
         alignItems: "center",
         gap: "6px",
-        padding: "6px 12px",
+        padding: "10px 16px",
         background: "#E4E4E4",
         border: "none",
         borderRadius: "100px",
