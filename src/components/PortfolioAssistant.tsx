@@ -64,15 +64,25 @@ export const PortfolioAssistant = () => {
   }, [isOpen, setIsOpen]);
 
   useEffect(() => {
-    const handlePrefillText = (e: Event) => {
-      const customEvent = e as CustomEvent<string>;
-      const selectedText = customEvent.detail;
-      setInputValue(`Ask about: "${selectedText}"`);
+    const handleOpenAndPrefill = () => {
+      // Check if we should open
+      const shouldOpen = localStorage.getItem("ainey:open-chat");
+      if (shouldOpen === "true") {
+        setIsOpen(true);
+        localStorage.removeItem("ainey:open-chat");
+      }
+
+      // Check if we should prefill
+      const prefillText = localStorage.getItem("ainey:prefill-text");
+      if (prefillText) {
+        setInputValue(`Ask about: "${prefillText}"`);
+        localStorage.removeItem("ainey:prefill-text");
+      }
     };
 
-    window.addEventListener("ainey:prefill-text", handlePrefillText);
-    return () => window.removeEventListener("ainey:prefill-text", handlePrefillText);
-  }, []);
+    window.addEventListener("ainey:open-and-prefill", handleOpenAndPrefill);
+    return () => window.removeEventListener("ainey:open-and-prefill", handleOpenAndPrefill);
+  }, [setIsOpen]);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {

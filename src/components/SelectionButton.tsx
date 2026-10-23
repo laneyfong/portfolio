@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useChatState } from "../ChatContext";
 import { tokens } from "../tokens";
 
 let selectedTextGlobal = "";
 
 export const SelectionButton = () => {
-  const { setIsOpen } = useChatState();
   const [showButton, setShowButton] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -45,10 +43,13 @@ export const SelectionButton = () => {
   }, []);
 
   const handleClick = () => {
-    setIsOpen(true);
-    window.dispatchEvent(
-      new CustomEvent("ainey:prefill-text", { detail: selectedTextGlobal })
-    );
+    // Store the text and open signal in localStorage
+    localStorage.setItem("ainey:open-chat", "true");
+    localStorage.setItem("ainey:prefill-text", selectedTextGlobal);
+
+    // Dispatch event to make sure PortfolioAssistant picks it up
+    window.dispatchEvent(new CustomEvent("ainey:open-and-prefill"));
+
     setShowButton(false);
   };
 
