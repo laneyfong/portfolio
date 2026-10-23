@@ -223,12 +223,12 @@ export const PortfolioAssistant = () => {
           <svg
             width="20"
             height="20"
-            viewBox="0 0 11 11"
+            viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
+              d="M10 1L12 7L18 9L12 11L10 17L8 11L2 9L8 7L10 1Z"
               fill="#254DFA"
             />
           </svg>

@@ -345,17 +345,17 @@ const TopNav: FC = () => {
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
-            {/* Sparkle Icon - Bigger */}
+            {/* Sparkle Icon - Better shaped */}
             <svg
-              width="16"
-              height="16"
-              viewBox="0 0 11 11"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               style={{ flexShrink: 0, transition: "fill 0.6s ease" }}
             >
               <path
-                d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
+                d="M10 1L12 7L18 9L12 11L10 17L8 11L2 9L8 7L10 1Z"
                 fill="#254DFA"
               />
             </svg>
