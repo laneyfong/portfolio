@@ -371,8 +371,8 @@ export const PortfolioAssistant = () => {
                 style={{
                   padding: "12px 16px",
                   background: "rgba(64, 96, 200, 0.08)",
-                  border: "0.5px solid rgba(64, 96, 200, 0.2)",
-                  borderRadius: "12px",
+                  border: "none",
+                  borderRadius: "20px",
                   fontSize: "14px",
                   fontWeight: 400,
                   color: "rgba(26,26,26,1)",
@@ -381,14 +381,13 @@ export const PortfolioAssistant = () => {
                   letterSpacing: "-0.7px",
                   textAlign: "left",
                   transition: "all 0.2s ease",
+                  outline: "none",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "rgba(64, 96, 200, 0.15)";
-                  e.currentTarget.style.borderColor = "rgba(64, 96, 200, 0.35)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "rgba(64, 96, 200, 0.08)";
-                  e.currentTarget.style.borderColor = "rgba(64, 96, 200, 0.2)";
                 }}
               >
                 {prompt}
