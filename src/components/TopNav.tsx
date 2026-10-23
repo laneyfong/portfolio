@@ -371,7 +371,7 @@ const TopNav: FC = () => {
                 transition: "color 0.6s ease",
               }}
             >
-              AIney
+              Ask AIney
             </span>
           </button>
 
