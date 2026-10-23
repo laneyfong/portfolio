@@ -218,7 +218,7 @@ export const PortfolioAssistant = () => {
           <span
             style={{
               fontSize: "13px",
-              fontWeight: 600,
+              fontWeight: 400,
               color: "#4060C8",
               fontFamily: tokens.font.sans,
               letterSpacing: "-0.5px",
