@@ -10,9 +10,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     if (!process.env.GEMINI_API_KEY) {
+      console.error("GEMINI_API_KEY not found in environment variables");
       return res.status(500).json({ error: "API key not configured" });
     }
 
+    console.log("API Key exists, length:", process.env.GEMINI_API_KEY.length);
     const { messages } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
