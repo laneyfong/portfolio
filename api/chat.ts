@@ -38,7 +38,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    // Use simple generateContent API
+    // Use gemini-3.8-flash with streaming
     const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
     const prompt = `You are Laney Fong. Answer directly and specifically. First person. 1-2 sentences max.
@@ -83,8 +83,7 @@ Question: ${currentMessage.content}`;
     res.setHeader("Connection", "keep-alive");
     res.setHeader("Access-Control-Allow-Origin", "*");
 
-    const streamModel = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
-    const stream = await streamModel.generateContentStream(prompt);
+    const stream = await model.generateContentStream(prompt);
 
     let fullText = "";
     for await (const chunk of stream.stream) {
