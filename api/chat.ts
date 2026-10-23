@@ -36,8 +36,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    // Use simple generateContent API with stable pro model
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    // Use simple generateContent API
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const prompt = `You are Laney Fong answering questions about your work and projects. Respond in first person as if you are Laney speaking directly to the person.
 
