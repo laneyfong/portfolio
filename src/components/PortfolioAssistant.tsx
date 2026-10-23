@@ -407,28 +407,33 @@ export const PortfolioAssistant = () => {
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "8px",
-                      padding: "10px 14px",
-                      background: "#4060C8",
+                      padding: "12px 18px",
+                      background: "#254DFA",
                       color: "#FFFFFF",
                       border: "none",
-                      borderRadius: "18px",
+                      borderRadius: "8px",
                       fontSize: "13px",
-                      fontWeight: 500,
+                      fontWeight: 600,
                       fontFamily: tokens.font.sans,
                       textDecoration: "none",
                       cursor: "pointer",
                       transition: "all 0.2s ease",
                       marginLeft: "36px",
+                      marginTop: "4px",
+                      boxShadow: "0 2px 8px rgba(37, 77, 250, 0.3)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#3050B0";
-                      e.currentTarget.style.transform = "scale(1.05)";
+                      e.currentTarget.style.background = "#1E3FB8";
+                      e.currentTarget.style.boxShadow = "0 4px 16px rgba(37, 77, 250, 0.5)";
+                      e.currentTarget.style.transform = "translateY(-2px)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#4060C8";
-                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.background = "#254DFA";
+                      e.currentTarget.style.boxShadow = "0 2px 8px rgba(37, 77, 250, 0.3)";
+                      e.currentTarget.style.transform = "translateY(0)";
                     }}
                   >
+                    <span>↓</span>
                     <span>Download Resume</span>
                   </a>
                 )}
