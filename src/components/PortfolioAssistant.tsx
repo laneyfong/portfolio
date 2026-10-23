@@ -41,6 +41,31 @@ export const PortfolioAssistant = () => {
     "/nvidia-ai-ux-agent",
   ].includes(location.pathname);
 
+  // Close chat on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen, setIsOpen]);
+
+  // Close chat when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (isOpen && sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
+        const target = e.target as HTMLElement;
+        if (!target.closest('[data-chat-peek]') && !target.closest('button[title*="AIney"]')) {
+          setIsOpen(false);
+        }
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen, setIsOpen]);
+
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       const chatContainer = messagesEndRef.current.closest('[style*="overflowY"]');
@@ -244,6 +269,43 @@ export const PortfolioAssistant = () => {
           transition: "transform 0.3s ease",
         }}
       >
+        {/* Close Button - visible on all pages when open */}
+        {isOpen && (
+          <button
+            onClick={() => setIsOpen(false)}
+            style={{
+              position: "absolute",
+              top: "16px",
+              right: "16px",
+              background: "#E4E4E4",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "20px",
+              color: "#1A1A1A",
+              padding: "8px 10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.2s ease",
+              borderRadius: "8px",
+              width: "36px",
+              height: "36px",
+              zIndex: 1000,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#D0D0D0";
+              e.currentTarget.style.transform = "scale(1.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#E4E4E4";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+            title="Close chat (Esc)"
+          >
+            ✕
+          </button>
+        )}
+
         {/* Intro */}
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <p
