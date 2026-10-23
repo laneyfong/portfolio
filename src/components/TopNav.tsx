@@ -322,27 +322,26 @@ const TopNav: FC = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "4px",
-              background: "#E4E4E4",
-              borderRadius: "50%",
+              padding: "0",
+              background: "transparent",
               border: "none",
               cursor: "pointer",
-              transition: "background 0.6s ease",
-              width: "36px",
-              height: "36px",
+              transition: "transform 0.2s ease",
+              width: "auto",
+              height: "auto",
               flexShrink: 0,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#254DFA";
-              // Update svg color to white
+              // Update svg color on hover
               const svg = e.currentTarget.querySelector("svg path");
-              if (svg) svg.setAttribute("fill", "#FFFFFF");
+              if (svg) svg.setAttribute("fill", "#254DFA");
+              e.currentTarget.style.transform = "scale(1.1)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#E4E4E4";
               // Reset svg color
               const svg = e.currentTarget.querySelector("svg path");
               if (svg) svg.setAttribute("fill", "#254DFA");
+              e.currentTarget.style.transform = "scale(1)";
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
