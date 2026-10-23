@@ -74,7 +74,7 @@ export const SelectionButton = () => {
         userSelect: "none",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = "#254DFA";
+        e.currentTarget.style.background = "#4060c8";
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
         if (askSpan) askSpan.style.color = "#FFFFFF";
         const lmSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
@@ -85,7 +85,7 @@ export const SelectionButton = () => {
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
         if (askSpan) askSpan.style.color = "#808080";
         const lmSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
-        if (lmSpan) lmSpan.style.color = "#254DFA";
+        if (lmSpan) lmSpan.style.color = "#4060c8";
       }}
       title="Ask LaneyLM about this"
     >
@@ -120,9 +120,9 @@ export const SelectionButton = () => {
         style={{
           fontSize: "14px",
           fontWeight: "400",
-          color: "#254DFA",
+          color: "#4060c8",
           fontFamily: tokens.font.sans,
-          transition: "color 0.6s ease",
+          transition: "color 0.8s ease",
           letterSpacing: "-0.05em",
         }}
       >

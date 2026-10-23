@@ -337,7 +337,7 @@ const TopNav: FC = () => {
               const paths = e.currentTarget.querySelectorAll("svg path");
               paths.forEach((path) => {
                 (path as SVGElement).style.transition = "fill 0.8s ease";
-                path.setAttribute("fill", "#254DFA");
+                path.setAttribute("fill", "#4060c8");
               });
               // Show text
               const textSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
@@ -381,7 +381,7 @@ const TopNav: FC = () => {
               style={{
                 fontSize: "13px",
                 fontWeight: "400",
-                color: "#254DFA",
+                color: "#4060c8",
                 fontFamily: tokens.font.sans,
                 transition: "opacity 0.8s ease, max-width 0.8s ease",
                 letterSpacing: "-0.05em",
