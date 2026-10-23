@@ -321,7 +321,7 @@ const TopNav: FC = () => {
               display: "flex",
               alignItems: "center",
               gap: "4px",
-              padding: "2px 6px",
+              padding: "6px 6px",
               background: "#E4E4E4",
               borderRadius: "100px",
               border: "none",
