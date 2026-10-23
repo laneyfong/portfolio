@@ -46,15 +46,17 @@ export const SelectionButton = () => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Ask AIney clicked, opening chat...");
+    console.log("Ask AIney clicked, opening chat with text:", selectedText);
+    // Open chat first
     setIsOpen(true);
-    setShowButton(false);
-    // Dispatch custom event with selected text
+    // Then dispatch event with selected text
+    window.dispatchEvent(
+      new CustomEvent("ainey:selected-text", { detail: selectedText })
+    );
+    // Hide button last
     setTimeout(() => {
-      window.dispatchEvent(
-        new CustomEvent("ainey:selected-text", { detail: selectedText })
-      );
-    }, 100);
+      setShowButton(false);
+    }, 50);
   };
 
   if (!showButton) return null;
