@@ -32,6 +32,7 @@ export const PortfolioAssistant = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
 
   // Check if we're on a case study page
   const isCaseStudy = [
@@ -76,8 +77,12 @@ export const PortfolioAssistant = () => {
   };
 
   useEffect(() => {
-    // Only scroll if chat is open and not on initial load
-    if (isOpen && messages.length > 1) {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    // Only scroll if chat is open
+    if (isOpen) {
       scrollToBottom();
     }
   }, [messages, isOpen]);
