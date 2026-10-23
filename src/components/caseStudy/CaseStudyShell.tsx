@@ -249,17 +249,17 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             aria-hidden
             style={{
               position: "absolute",
-              left: 3,
-              top: indicatorTop + 6,
-              width: 8,
-              height: 8,
+              left: 4,
+              top: indicatorTop + 7,
+              width: 5,
+              height: 5,
               borderRadius: "50%",
               background: tokens.color.accent,
               opacity: 0.6,
               transition: "top 0.25s ease",
             }}
           />
-          <div ref={navListRef} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div ref={navListRef} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {sections.map((s) => (
               <button
                 key={s.id}
