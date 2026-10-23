@@ -27,6 +27,7 @@ export const PortfolioAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [inputFocused, setInputFocused] = useState(false);
+  const [conversationStarted, setConversationStarted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const isInitialMount = useRef(true);
@@ -152,6 +153,8 @@ export const PortfolioAssistant = () => {
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
     setIsLoading(true);
+    setConversationStarted(true);
+    setInputFocused(false);
 
     try {
       console.log("Sending message:", inputValue);
@@ -490,8 +493,8 @@ export const PortfolioAssistant = () => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Suggested Prompts - show when input focused and no messages yet */}
-        {inputFocused && messages.length === 1 && (
+        {/* Suggested Prompts - show when input focused or at start, and no conversation yet */}
+        {messages.length === 1 && (inputFocused || !conversationStarted) && (
           <div style={{ display: "flex", flexDirection: "column", gap: "8px", animation: "slideUpFade 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
             {[
               "What's your design approach?",
