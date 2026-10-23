@@ -39,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Use simple generateContent API
-    const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const prompt = `You are Laney Fong. Answer directly and specifically. First person. 1-2 sentences max.
 
