@@ -83,7 +83,8 @@ Question: ${currentMessage.content}`;
     res.setHeader("Connection", "keep-alive");
     res.setHeader("Access-Control-Allow-Origin", "*");
 
-    const stream = await model.generateContentStream(prompt);
+    const streamModel = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    const stream = await streamModel.generateContentStream(prompt);
 
     let fullText = "";
     for await (const chunk of stream.stream) {
