@@ -41,13 +41,14 @@ export const SelectionButton = () => {
   }, []);
 
   const handleClick = () => {
+    alert("Button clicked! Text: " + selectedText);
     // Call the global function that PortfolioAssistant sets up
     const openChat = (window as any).__openAineyChat;
     if (openChat && typeof openChat === "function") {
       openChat(selectedText);
       setShowButton(false);
     } else {
-      console.error("__openAineyChat function not found");
+      alert("ERROR: __openAineyChat function not found on window!");
     }
   };
 
