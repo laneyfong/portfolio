@@ -358,44 +358,6 @@ export const PortfolioAssistant = () => {
           </p>
         </div>
 
-        {/* Suggested Prompts - only show when chat is fresh */}
-        {messages.length === 1 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            {[
-              "What's your design approach?",
-              "Tell me about your background",
-              "Why me?"
-            ].map((prompt) => (
-              <button
-                key={prompt}
-                onClick={(e) => handleSendMessage(e, prompt)}
-                style={{
-                  padding: "12px 16px",
-                  background: "rgba(64, 96, 200, 0.08)",
-                  border: "none",
-                  borderRadius: "20px",
-                  fontSize: "14px",
-                  fontWeight: 400,
-                  color: "rgba(26,26,26,1)",
-                  fontFamily: tokens.font.sans,
-                  cursor: "pointer",
-                  letterSpacing: "-0.7px",
-                  textAlign: "left",
-                  transition: "all 0.2s ease",
-                  outline: "none",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.15)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.08)";
-                }}
-              >
-                {prompt}
-              </button>
-            ))}
-          </div>
-        )}
 
         {/* Messages */}
         <div
@@ -530,12 +492,12 @@ export const PortfolioAssistant = () => {
 
         {/* Suggested Prompts - show when input focused and no messages yet */}
         {inputFocused && messages.length === 1 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px", animation: "slideUpFade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
             {[
               "What's your design approach?",
               "Tell me about your background",
               "Why me?"
-            ].map((prompt) => (
+            ].map((prompt, index) => (
               <button
                 key={prompt}
                 onClick={(e) => {
@@ -556,6 +518,7 @@ export const PortfolioAssistant = () => {
                   textAlign: "left",
                   transition: "all 0.2s ease",
                   outline: "none",
+                  animation: `slideUpFade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.08}s backwards`,
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "rgba(64, 96, 200, 0.15)";
@@ -652,6 +615,17 @@ export const PortfolioAssistant = () => {
             40% {
               opacity: 1;
               transform: translateY(-8px);
+            }
+          }
+
+          @keyframes slideUpFade {
+            from {
+              opacity: 0;
+              transform: translateY(16px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
             }
           }
 
