@@ -210,7 +210,7 @@ export const PortfolioAssistant = () => {
         onMouseDown={handleDragStart}
         style={{
           position: "fixed",
-          right: isOpen ? "25%" : isCaseStudy && !isOpen ? "32px" : "0",
+          right: isOpen ? "520px" : isCaseStudy && !isOpen ? "32px" : "0",
           top: 0,
           bottom: 0,
           width: "8px",
@@ -221,7 +221,7 @@ export const PortfolioAssistant = () => {
         }}
       />
 
-      {/* Right Sidebar Chat */}
+      {/* Right Sidebar Chat - FIXED WIDTH matching Figma */}
       <div
         ref={sidebarRef}
         style={{
@@ -229,111 +229,20 @@ export const PortfolioAssistant = () => {
           right: 0,
           top: 0,
           bottom: 0,
-          width: "25%",
-          padding: "32px",
-          background: "#FAFAFB",
+          width: "480px",
+          padding: "16px 40px",
+          background: "rgba(250,250,251,1)",
           borderLeft: "1px solid rgba(26, 26, 26, 0.08)",
           display: "flex",
           flexDirection: "column",
-          gap: "20px",
+          gap: "16px",
           zIndex: 900,
           overflowY: "auto",
           boxSizing: "border-box",
-          minWidth: "280px",
           transform: isOpen ? "translateX(0)" : "translateX(100%)",
           transition: "transform 0.3s ease",
         }}
       >
-        {/* Header */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            width: "100%",
-            height: "30px",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div
-              style={{
-                margin: 0,
-                fontSize: "14px",
-                fontWeight: 400,
-                fontFamily: tokens.font.sans,
-                letterSpacing: "-0.7px",
-                lineHeight: "22px",
-                display: "flex",
-                gap: "4px",
-                padding: "4px 8px",
-              }}
-            >
-              <span style={{ color: "#254DFA" }}>AI</span>
-              <span style={{ color: "#8D8D8D" }}>ney</span>
-            </div>
-          </div>
-
-          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-            {/* Status Pill */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-                padding: "6px 10px",
-                background: "#FFFFFF",
-                border: "none",
-                borderRadius: "9999px",
-                height: "30px",
-              }}
-            >
-              <div
-                style={{
-                  width: "8px",
-                  height: "8px",
-                  borderRadius: "50%",
-                  background: "#4060C8",
-                }}
-              />
-              <span
-                style={{
-                  fontSize: "12px",
-                  fontWeight: 500,
-                  color: "#1A1A1A",
-                  fontFamily: tokens.font.sans,
-                  letterSpacing: "-0.7px",
-                }}
-              >
-                Online
-              </span>
-            </div>
-
-            {/* Close Button (for case studies) */}
-            {isCaseStudy && (
-              <button
-                onClick={() => setIsOpen(false)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "18px",
-                  color: "#8D8D8D",
-                  padding: "4px 8px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "color 0.2s ease",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#1A1A1A")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#8D8D8D")}
-                title="Close chat"
-              >
-                ✕
-              </button>
-            )}
-          </div>
-        </div>
-
         {/* Intro */}
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <p
@@ -341,7 +250,7 @@ export const PortfolioAssistant = () => {
               margin: 0,
               fontSize: "14px",
               fontWeight: 400,
-              color: "#1A1A1A",
+              color: "rgba(26,26,26,1)",
               fontFamily: tokens.font.sans,
               lineHeight: "22px",
               letterSpacing: "-0.7px",
@@ -354,7 +263,7 @@ export const PortfolioAssistant = () => {
               margin: 0,
               fontSize: "11px",
               fontWeight: 400,
-              color: "#808080",
+              color: "rgba(128,128,128,1)",
               fontFamily: tokens.font.sans,
               lineHeight: "11px",
               letterSpacing: "-0.4px",
@@ -370,13 +279,13 @@ export const PortfolioAssistant = () => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            gap: "8px",
+            gap: "12px",
             overflowY: "auto",
             paddingRight: "8px",
           }}
         >
           {messages.map((msg) => (
-            <div key={msg.id} style={{ display: "flex", flexDirection: msg.role === "assistant" ? "row" : "row-reverse", gap: "8px", alignItems: "flex-end" }}>
+            <div key={msg.id} style={{ display: "flex", flexDirection: msg.role === "assistant" ? "row" : "row-reverse", gap: "8px", width: "100%" }}>
               {msg.role === "assistant" && (
                 <img
                   src={profilePhoto}
@@ -390,16 +299,15 @@ export const PortfolioAssistant = () => {
                   }}
                 />
               )}
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "4px", flex: 1, maxWidth: "346px" }}>
                 <div
                   style={{
                     padding: "14px 16px",
-                    background: msg.role === "assistant" ? "#FFFFFF" : "#5B7DB5",
-                    border: "none",
+                    background: msg.role === "assistant" ? "rgba(255,255,255,1)" : "rgba(91,125,181,1)",
                     borderRadius: "22px",
                     fontSize: "14px",
                     fontWeight: 400,
-                    color: msg.role === "assistant" ? "#1A1A1A" : "#FAFAFB",
+                    color: msg.role === "assistant" ? "rgba(26,26,26,1)" : "rgba(250,250,251,1)",
                     fontFamily: tokens.font.sans,
                     lineHeight: "22px",
                     letterSpacing: "-0.7px",
@@ -420,7 +328,6 @@ export const PortfolioAssistant = () => {
                       padding: "10px 16px",
                       background: "#35489B",
                       color: "#FFFFFF",
-                      border: "none",
                       borderRadius: "100px",
                       fontSize: "14px",
                       fontWeight: 400,
@@ -428,11 +335,9 @@ export const PortfolioAssistant = () => {
                       textDecoration: "none",
                       cursor: "pointer",
                       transition: "all 0.2s ease",
-                      marginLeft: "0px",
-                      marginTop: "8px",
-                      width: "100%",
-                      maxWidth: "346px",
                       height: "42px",
+                      width: "100%",
+                      boxSizing: "border-box",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = "#2A3A7F";
@@ -467,12 +372,13 @@ export const PortfolioAssistant = () => {
                     margin: 0,
                     fontSize: "12px",
                     fontWeight: 500,
-                    color: "#8D8D8D",
+                    color: "rgba(141,141,141,1)",
                     fontFamily: tokens.font.sans,
-                    letterSpacing: "0.5px",
-                    paddingLeft: msg.role === "assistant" ? "36px" : "16px",
+                    letterSpacing: "0px",
+                    paddingLeft: msg.role === "assistant" ? "53px" : "16px",
                     paddingRight: msg.role === "user" ? "16px" : "0px",
                     lineHeight: "19px",
+                    textAlign: msg.role === "user" ? "right" : "left",
                   }}
                 >
                   {formatTime(msg.timestamp)}
@@ -481,7 +387,7 @@ export const PortfolioAssistant = () => {
             </div>
           ))}
           {isLoading && (
-            <div style={{ display: "flex", gap: "4px", alignItems: "center", paddingLeft: "16px" }}>
+            <div style={{ display: "flex", gap: "4px", alignItems: "center", paddingLeft: "53px" }}>
               <div
                 style={{
                   width: "8px",
@@ -523,8 +429,7 @@ export const PortfolioAssistant = () => {
             alignItems: "center",
             gap: "12px",
             padding: "10px 16px",
-            background: "#FFFFFF",
-            border: "none",
+            background: "rgba(255,255,255,1)",
             borderRadius: "9999px",
             marginTop: "auto",
           }}
@@ -542,11 +447,11 @@ export const PortfolioAssistant = () => {
               fontFamily: tokens.font.sans,
               fontSize: "14px",
               fontWeight: 400,
-              color: "#1A1A1A",
+              color: "rgba(117,117,117,1)",
               outline: "none",
               letterSpacing: "-0.7px",
               lineHeight: "19px",
-              padding: "1px 0px 2px",
+              padding: "0px",
             }}
           />
           <button
@@ -555,7 +460,7 @@ export const PortfolioAssistant = () => {
             style={{
               width: "40px",
               height: "40px",
-              background: "#4060C8",
+              background: "rgba(64,96,200,1)",
               border: "none",
               borderRadius: "22px",
               cursor: isLoading || !inputValue.trim() ? "not-allowed" : "pointer",
@@ -568,7 +473,21 @@ export const PortfolioAssistant = () => {
             }}
             aria-label="Send message"
           >
-            <span style={{ fontSize: "16px" }}>→</span>
+            <svg
+              width="15"
+              height="14"
+              viewBox="0 0 15 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 1L14 7M14 7L8 13M14 7H1"
+                stroke="rgba(255,255,255,1)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
         </form>
 
