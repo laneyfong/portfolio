@@ -425,6 +425,28 @@ const Portfolio: FC = () => {
       </div>
 
       <div className="content-reveal">
+        <div
+          style={{
+            padding: "80px 52px",
+            textAlign: "center",
+            background: "var(--bg-primary)",
+            borderTop: "1px solid var(--border-color)",
+          }}
+        >
+          <p
+            style={{
+              margin: 0,
+              fontSize: "18px",
+              fontWeight: 500,
+              color: "var(--text-secondary)",
+              fontFamily: tokens.font.sans,
+              letterSpacing: "-0.05em",
+              lineHeight: "28px",
+            }}
+          >
+            More projects coming soon
+          </p>
+        </div>
         <Footer />
       </div>
     </div>
