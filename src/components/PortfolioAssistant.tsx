@@ -67,6 +67,17 @@ export const PortfolioAssistant = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen, setIsOpen]);
 
+  useEffect(() => {
+    const handlePrefillText = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      const selectedText = customEvent.detail;
+      setInputValue(`Ask about: "${selectedText}"`);
+    };
+
+    window.addEventListener("ainey:prefill-text", handlePrefillText);
+    return () => window.removeEventListener("ainey:prefill-text", handlePrefillText);
+  }, []);
+
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       const chatContainer = messagesEndRef.current.closest('[style*="overflowY"]');
@@ -87,16 +98,6 @@ export const PortfolioAssistant = () => {
     }
   }, [messages, isOpen]);
 
-  useEffect(() => {
-    const handleSelectedText = (e: Event) => {
-      const customEvent = e as CustomEvent<string>;
-      const selectedText = customEvent.detail;
-      setInputValue(`Ask about: "${selectedText}"`);
-    };
-
-    window.addEventListener("ainey:selected-text", handleSelectedText);
-    return () => window.removeEventListener("ainey:selected-text", handleSelectedText);
-  }, []);
 
   useEffect(() => {
     const pageWrapper = document.querySelector(".page-wrapper");
