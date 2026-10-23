@@ -57,7 +57,7 @@ const Footer: FC = () => (
     style={{
       width: "100%",
       boxSizing: "border-box",
-      background: "#1A1A1A",
+      background: "#2F2F2F",
       borderTop: "1px solid var(--border-color)",
       position: "relative",
       overflow: "hidden",
@@ -85,11 +85,11 @@ const Footer: FC = () => (
         bottom: 0;
         background: linear-gradient(
           -45deg,
-          rgba(200, 100, 60, 0.32) 0%,
-          rgba(60, 80, 180, 0.38) 25%,
-          rgba(200, 110, 50, 0.30) 50%,
-          rgba(60, 80, 180, 0.36) 75%,
-          rgba(200, 100, 60, 0.32) 100%
+          rgba(220, 120, 60, 0.55) 0%,
+          rgba(80, 120, 220, 0.65) 25%,
+          rgba(220, 140, 60, 0.50) 50%,
+          rgba(80, 120, 220, 0.60) 75%,
+          rgba(220, 120, 60, 0.55) 100%
         );
         background-size: 400% 400%;
         animation: gradientShift 18s ease-in-out infinite;
