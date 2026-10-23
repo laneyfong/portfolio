@@ -1,24 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useChatState } from "../ChatContext";
 import { tokens } from "../tokens";
+
+let selectedTextGlobal = "";
 
 export const SelectionButton = () => {
   const { setIsOpen } = useChatState();
   const [showButton, setShowButton] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
-  const [selectedText, setSelectedText] = useState("");
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleMouseUp = () => {
       const selection = window.getSelection();
       if (selection && selection.toString().length > 0) {
         const text = selection.toString().trim();
-        setSelectedText(text);
+        selectedTextGlobal = text;
 
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
 
-        // Position button above selection
         setPosition({
           top: window.scrollY + rect.top - 50,
           left: window.scrollX + rect.left + rect.width / 2,
@@ -43,21 +44,11 @@ export const SelectionButton = () => {
     };
   }, []);
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log("Selection button clicked with text:", selectedText);
-
-    // Open chat immediately
+  const handleClick = () => {
     setIsOpen(true);
-    console.log("Chat should be opening now...");
-
-    // Send event to populate the input
     window.dispatchEvent(
-      new CustomEvent("ainey:prefill-text", { detail: selectedText })
+      new CustomEvent("ainey:prefill-text", { detail: selectedTextGlobal })
     );
-
-    // Hide the button
     setShowButton(false);
   };
 
@@ -65,6 +56,7 @@ export const SelectionButton = () => {
 
   return (
     <button
+      ref={buttonRef}
       onClick={handleClick}
       style={{
         position: "fixed",
@@ -86,8 +78,6 @@ export const SelectionButton = () => {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.background = "#254DFA";
-        const svg = e.currentTarget.querySelector("svg path") as SVGPathElement;
-        if (svg) svg.setAttribute("fill", "#FFFFFF");
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
         if (askSpan) askSpan.style.color = "#FFFFFF";
         const aineySpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
@@ -95,8 +85,6 @@ export const SelectionButton = () => {
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.background = "#E4E4E4";
-        const svg = e.currentTarget.querySelector("svg path") as SVGPathElement;
-        if (svg) svg.setAttribute("fill", "#254DFA");
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
         if (askSpan) askSpan.style.color = "#808080";
         const aineySpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
@@ -136,7 +124,7 @@ export const SelectionButton = () => {
         style={{
           fontSize: "14px",
           fontWeight: "400",
-          color: "#4060C8",
+          color: "#254DFA",
           fontFamily: tokens.font.sans,
           transition: "color 0.6s ease",
           letterSpacing: "-0.05em",
