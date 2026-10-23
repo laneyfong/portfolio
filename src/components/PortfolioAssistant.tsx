@@ -66,11 +66,14 @@ export const PortfolioAssistant = () => {
   useEffect(() => {
     // Register global function for SelectionButton to call
     (window as any).__openAineyChat = (selectedText: string) => {
+      console.log("✅ __openAineyChat called with:", selectedText);
       setIsOpen(true);
       if (selectedText) {
         setInputValue(`Ask about: "${selectedText}"`);
       }
     };
+
+    console.log("✅ __openAineyChat function registered on window");
 
     return () => {
       delete (window as any).__openAineyChat;
