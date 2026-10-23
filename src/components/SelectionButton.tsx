@@ -83,7 +83,7 @@ export const SelectionButton = () => {
         whiteSpace: "nowrap",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = "#4060C8";
+        e.currentTarget.style.background = "#254DFA";
         const svg = e.currentTarget.querySelector("svg path") as SVGPathElement;
         if (svg) svg.setAttribute("fill", "#FFFFFF");
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
@@ -94,11 +94,11 @@ export const SelectionButton = () => {
       onMouseLeave={(e) => {
         e.currentTarget.style.background = "#E4E4E4";
         const svg = e.currentTarget.querySelector("svg path") as SVGPathElement;
-        if (svg) svg.setAttribute("fill", "#4060C8");
+        if (svg) svg.setAttribute("fill", "#254DFA");
         const askSpan = e.currentTarget.querySelector(".ask-text") as HTMLElement;
         if (askSpan) askSpan.style.color = "#808080";
         const aineySpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
-        if (aineySpan) aineySpan.style.color = "#4060C8";
+        if (aineySpan) aineySpan.style.color = "#254DFA";
       }}
       title="Ask AIney about this"
     >
@@ -113,7 +113,7 @@ export const SelectionButton = () => {
       >
         <path
           d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
-          fill="#4060C8"
+          fill="#254DFA"
         />
       </svg>
       <span

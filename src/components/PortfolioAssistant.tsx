@@ -224,14 +224,14 @@ export const PortfolioAssistant = () => {
           >
             <path
               d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
-              fill="#4060C8"
+              fill="#254DFA"
             />
           </svg>
           <span
             style={{
               fontSize: "13px",
               fontWeight: 400,
-              color: "#4060C8",
+              color: "#254DFA",
               fontFamily: tokens.font.sans,
               letterSpacing: "-0.5px",
               writingMode: "vertical-rl",
@@ -306,7 +306,7 @@ export const PortfolioAssistant = () => {
               zIndex: 1000,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#4060C8";
+              e.currentTarget.style.background = "#254DFA";
               e.currentTarget.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {

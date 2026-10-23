@@ -333,7 +333,7 @@ const TopNav: FC = () => {
               flexShrink: 0,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#4060C8";
+              e.currentTarget.style.background = "#254DFA";
               // Update svg color to white
               const svg = e.currentTarget.querySelector("svg path");
               if (svg) svg.setAttribute("fill", "#FFFFFF");
@@ -342,14 +342,14 @@ const TopNav: FC = () => {
               e.currentTarget.style.background = "#E4E4E4";
               // Reset svg color
               const svg = e.currentTarget.querySelector("svg path");
-              if (svg) svg.setAttribute("fill", "#4060C8");
+              if (svg) svg.setAttribute("fill", "#254DFA");
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
             {/* Sparkle Icon - Bigger */}
             <svg
-              width="22"
-              height="22"
+              width="16"
+              height="16"
               viewBox="0 0 11 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +357,7 @@ const TopNav: FC = () => {
             >
               <path
                 d="M5.5 0.5L6.5 3L9 4.5L6.5 6L5.5 8.5L4.5 6L2 4.5L4.5 3L5.5 0.5Z"
-                fill="#4060C8"
+                fill="#254DFA"
               />
             </svg>
           </button>
