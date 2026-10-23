@@ -445,7 +445,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
             marginRight: "auto",
             paddingLeft: "clamp(20px, 3.5%, 48px)",
             paddingRight: "clamp(20px, 3.5%, 48px)",
-            paddingTop: "0",
+            paddingTop: "40px",
             marginTop: "0",
             boxSizing: "border-box",
           }}
