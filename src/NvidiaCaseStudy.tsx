@@ -143,11 +143,7 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Paragraph>
-          <strong>The context:</strong> Engineering-heavy teams at startups and enterprises often lack dedicated UX resources. When they do test, it's late—after prototyping or shipping. Design debt compounds quietly until it becomes a crisis. <strong>The problem:</strong> By then, fixing usability issues is expensive and disruptive. <strong>The opportunity:</strong> What if AI could simulate user behavior and flag friction early, before engineering even starts building?
-        </Paragraph>
-
-        <Reveal>
+<Reveal>
           <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             <FeatureCard title="The Gap">
               Usability issues surface late—after features ship.
