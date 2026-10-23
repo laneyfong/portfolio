@@ -210,7 +210,7 @@ export const PortfolioAssistant = () => {
         onMouseDown={handleDragStart}
         style={{
           position: "fixed",
-          right: isOpen ? "520px" : isCaseStudy && !isOpen ? "32px" : "0",
+          right: isOpen ? "calc(25% - 4px)" : isCaseStudy && !isOpen ? "32px" : "0",
           top: 0,
           bottom: 0,
           width: "8px",
@@ -221,7 +221,7 @@ export const PortfolioAssistant = () => {
         }}
       />
 
-      {/* Right Sidebar Chat - FIXED WIDTH matching Figma */}
+      {/* Right Sidebar Chat - 25% responsive width */}
       <div
         ref={sidebarRef}
         style={{
@@ -229,8 +229,8 @@ export const PortfolioAssistant = () => {
           right: 0,
           top: 0,
           bottom: 0,
-          width: "480px",
-          padding: "16px 40px",
+          width: "25%",
+          padding: "40px 40px 16px",
           background: "rgba(250,250,251,1)",
           borderLeft: "1px solid rgba(26, 26, 26, 0.08)",
           display: "flex",
@@ -239,6 +239,7 @@ export const PortfolioAssistant = () => {
           zIndex: 900,
           overflowY: "auto",
           boxSizing: "border-box",
+          minWidth: "320px",
           transform: isOpen ? "translateX(0)" : "translateX(100%)",
           transition: "transform 0.3s ease",
         }}
@@ -376,9 +377,9 @@ export const PortfolioAssistant = () => {
                     fontFamily: tokens.font.sans,
                     letterSpacing: "0px",
                     paddingLeft: msg.role === "assistant" ? "53px" : "16px",
-                    paddingRight: msg.role === "user" ? "16px" : "0px",
+                    paddingRight: "0px",
                     lineHeight: "19px",
-                    textAlign: msg.role === "user" ? "right" : "left",
+                    textAlign: "left",
                   }}
                 >
                   {formatTime(msg.timestamp)}
