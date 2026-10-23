@@ -327,7 +327,7 @@ const TopNav: FC = () => {
               background: "transparent",
               border: "none",
               cursor: "pointer",
-              transition: "all 0.5s ease",
+              transition: "all 0.8s ease",
               width: "auto",
               height: "auto",
               flexShrink: 0,
@@ -336,7 +336,7 @@ const TopNav: FC = () => {
               // Change icon color to blue
               const paths = e.currentTarget.querySelectorAll("svg path");
               paths.forEach((path) => {
-                (path as SVGElement).style.transition = "fill 0.5s ease";
+                (path as SVGElement).style.transition = "fill 0.8s ease";
                 path.setAttribute("fill", "#254DFA");
               });
               // Show text
@@ -350,7 +350,7 @@ const TopNav: FC = () => {
               // Change icon color back to grey
               const paths = e.currentTarget.querySelectorAll("svg path");
               paths.forEach((path) => {
-                (path as SVGElement).style.transition = "fill 0.5s ease";
+                (path as SVGElement).style.transition = "fill 0.8s ease";
                 path.setAttribute("fill", "#808080");
               });
               // Hide text
@@ -383,7 +383,7 @@ const TopNav: FC = () => {
                 fontWeight: "400",
                 color: "#254DFA",
                 fontFamily: tokens.font.sans,
-                transition: "opacity 0.3s ease, max-width 0.3s ease",
+                transition: "opacity 0.8s ease, max-width 0.8s ease",
                 letterSpacing: "-0.05em",
                 opacity: 0,
                 maxWidth: 0,

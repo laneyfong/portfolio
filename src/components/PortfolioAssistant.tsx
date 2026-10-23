@@ -492,7 +492,7 @@ export const PortfolioAssistant = () => {
 
         {/* Suggested Prompts - show when input focused and no messages yet */}
         {inputFocused && messages.length === 1 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px", animation: "slideUpFade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px", animation: "slideUpFade 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
             {[
               "What's your design approach?",
               "Tell me about your background",
@@ -516,9 +516,9 @@ export const PortfolioAssistant = () => {
                   cursor: "pointer",
                   letterSpacing: "-0.7px",
                   textAlign: "left",
-                  transition: "all 0.2s ease",
+                  transition: "all 0.3s ease",
                   outline: "none",
-                  animation: `slideUpFade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.08}s backwards`,
+                  animation: `slideUpFade 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.12}s backwards`,
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "rgba(64, 96, 200, 0.15)";
