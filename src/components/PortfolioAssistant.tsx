@@ -26,6 +26,7 @@ export const PortfolioAssistant = () => {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [inputFocused, setInputFocused] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const isInitialMount = useRef(true);
@@ -527,6 +528,48 @@ export const PortfolioAssistant = () => {
           <div ref={messagesEndRef} />
         </div>
 
+        {/* Suggested Prompts - show when input focused and no messages yet */}
+        {inputFocused && messages.length === 1 && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            {[
+              "What's your design approach?",
+              "Tell me about your background",
+              "Why me?"
+            ].map((prompt) => (
+              <button
+                key={prompt}
+                onClick={(e) => {
+                  handleSendMessage(e, prompt);
+                  setInputFocused(false);
+                }}
+                style={{
+                  padding: "12px 16px",
+                  background: "rgba(64, 96, 200, 0.08)",
+                  border: "none",
+                  borderRadius: "20px",
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  color: "rgba(26,26,26,1)",
+                  fontFamily: tokens.font.sans,
+                  cursor: "pointer",
+                  letterSpacing: "-0.7px",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                  outline: "none",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.15)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.08)";
+                }}
+              >
+                {prompt}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Composer */}
         <form
           onSubmit={handleSendMessage}
@@ -545,6 +588,8 @@ export const PortfolioAssistant = () => {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
             placeholder="Ask me anything…"
             disabled={isLoading}
             style={{

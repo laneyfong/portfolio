@@ -386,7 +386,7 @@ const Portfolio: FC = () => {
             margin: 0,
             padding: 0,
           }}>
-            Currently studying HCI @ UCSC, Prev. @ MyShake
+            Prev. @ MyShake
           </p>
         </div>
 

@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 
 interface PasswordProtectionProps {
@@ -7,6 +8,7 @@ interface PasswordProtectionProps {
 }
 
 const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
+  const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,6 +47,49 @@ const PasswordProtection: FC<PasswordProtectionProps> = ({ onUnlock }) => {
         transition: "background 0.3s ease",
       }}
     >
+      {/* Back Button */}
+      <button
+        onClick={() => navigate("/")}
+        aria-label="Back to home"
+        style={{
+          position: "fixed",
+          top: 20,
+          left: 20,
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          background: "transparent",
+          border: "1px solid var(--border-color)",
+          color: "var(--text-dark)",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 10000,
+          transition: "all 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = "var(--surface-light)";
+          e.currentTarget.style.borderColor = "var(--text-muted)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = "transparent";
+          e.currentTarget.style.borderColor = "var(--border-color)";
+        }}
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
       <style>{`
         @media (max-width: 768px) {
           .password-container {

@@ -327,7 +327,7 @@ const TopNav: FC = () => {
               background: "transparent",
               border: "none",
               cursor: "pointer",
-              transition: "all 0.3s ease",
+              transition: "all 0.5s ease",
               width: "auto",
               height: "auto",
               flexShrink: 0,
@@ -335,7 +335,10 @@ const TopNav: FC = () => {
             onMouseEnter={(e) => {
               // Change icon color to blue
               const paths = e.currentTarget.querySelectorAll("svg path");
-              paths.forEach((path) => path.setAttribute("fill", "#254DFA"));
+              paths.forEach((path) => {
+                (path as SVGElement).style.transition = "fill 0.5s ease";
+                path.setAttribute("fill", "#254DFA");
+              });
               // Show text
               const textSpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
               if (textSpan) {
@@ -346,7 +349,10 @@ const TopNav: FC = () => {
             onMouseLeave={(e) => {
               // Change icon color back to grey
               const paths = e.currentTarget.querySelectorAll("svg path");
-              paths.forEach((path) => path.setAttribute("fill", "#808080"));
+              paths.forEach((path) => {
+                (path as SVGElement).style.transition = "fill 0.5s ease";
+                path.setAttribute("fill", "#808080");
+              });
               // Hide text
               const textSpan = e.currentTarget.querySelector(".ainey-text") as HTMLElement;
               if (textSpan) {
@@ -363,7 +369,7 @@ const TopNav: FC = () => {
               viewBox="0 0 1430 1100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ flexShrink: 0, transition: "fill 0.3s ease" }}
+              style={{ flexShrink: 0 }}
             >
               <path d="M681.334 163.718C698.242 161.314 715.628 174.162 720.691 189.864C726.954 209.279 726.633 231.393 728.204 251.638C732.037 301.075 746.658 349.661 772.787 391.93C810.136 454.32 886.684 471.188 954.155 475.057C983.726 476.753 1033.69 468.749 1051.81 498.971C1055.94 505.778 1057.22 513.944 1055.35 521.686C1048.5 548.954 1009.59 550.031 987.112 551.336C943.954 553.843 900.537 557.495 862.685 581.1C797.944 621.473 772.018 711.04 774.211 783.424C775.202 816.011 785.99 850.101 778.617 882.989C773.876 905.003 755.421 922.98 731.618 916.904C688.579 903.46 694.826 825.342 694.715 790.212C694.803 773.087 693.908 755.976 692.034 738.949C686.683 693.138 668.903 640.628 631.354 611.149C593.463 581.4 555.207 585.956 511.613 595.391C485.792 601.671 464.464 604.999 438.166 609.81C404.374 615.992 363.227 597.624 384.846 558.427C398.156 534.293 439.95 530.07 466.184 523.745C480.891 520.199 495.342 515.663 509.438 510.167C542.952 497.188 572.863 478.477 595.677 450.045C630.066 407.189 645.835 345.488 642.784 291.115C641.442 270.251 636.786 249.912 634.037 229.17C629.453 194.58 644.396 167.222 681.334 163.718Z" fill="#808080"/>
               <path d="M906.584 667.186C915.41 666.22 924.242 667.8 932.649 672.571C959.929 688.052 996.699 733.369 981.428 766.25C978.349 772.878 970.466 777.285 963.463 779.177C928.92 781.762 897.681 738.984 887.047 709.567C880.407 691.189 886.747 672.883 906.584 667.186Z" fill="#808080"/>
