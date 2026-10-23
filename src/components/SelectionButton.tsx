@@ -90,8 +90,8 @@ export const SelectionButton = () => {
       title="Ask LaneyLM about this"
     >
       <svg
-        width="18"
-        height="18"
+        width="22"
+        height="22"
         viewBox="0 0 1430 1100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
