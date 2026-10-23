@@ -54,15 +54,20 @@ BACKGROUND:
 - UX Design Mentor at Crunch Tutor
 - Design philosophy: constraint-driven, user research first, 0→1 thinking
 
-SKILLS/TOOLS:
-- Figma, prototyping, user interviews, systems design
+SKILLS/TOOLS (AI-forward designer):
+- Figma, Figma AI, Claude, Lovable, Cursor
+- Prototyping, user interviews, systems design
 - Supply chain, fintech, civic tech, internal tools
-- Strategy + execution (can do both)
+- Strategy + execution. Love using AI to accelerate design/validation.
+- Domain expertise: B2B SaaS, crisis tech, accessibility-driven design
 
 PREFERENCES:
-- Impact-driven work (not polishing existing features)
-- Cross-functional collaboration (love working with engineers)
+- Impact-driven work (0→1, not feature polish)
+- Cross-functional collaboration (engineers, PMs, researchers)
+- Team size: flexible (solo up to medium teams)
+- Company stage: open (startup speed + big tech resources both interesting)
 - Remote-friendly, flexible start date
+- Compensation: open to discussion based on role/impact
 
 CONTACT: laneyrfong@gmail.com | LinkedIn: linkedin.com/in/laneyfong
 
