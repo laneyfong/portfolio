@@ -46,19 +46,22 @@ PROJECTS: MyShake (earthquake app), VeriSupply (B2B SaaS), IDBridge (ID verifica
 SKILLS: Figma, React, Claude, product strategy, UX research. AI-forward designer.
 BACKGROUND: HCI student, design mentor. Impact-driven, constraint-focused.`;
 
-    const response = await openai.messages.create({
+    const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       max_tokens: 150,
       messages: [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
         {
           role: "user",
           content: currentMessage.content,
         },
       ],
-      system: systemPrompt,
     });
 
-    const text = response.content[0].type === "text" ? response.content[0].text : "";
+    const text = response.choices[0]?.message?.content || "";
 
     return res.status(200).json({
       content: text,
