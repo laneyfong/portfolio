@@ -322,14 +322,14 @@ const TopNav: FC = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "8px",
+              padding: "4px",
               background: "#E4E4E4",
               borderRadius: "50%",
               border: "none",
               cursor: "pointer",
               transition: "background 0.6s ease",
-              width: "40px",
-              height: "40px",
+              width: "36px",
+              height: "36px",
               flexShrink: 0,
             }}
             onMouseEnter={(e) => {
@@ -348,8 +348,8 @@ const TopNav: FC = () => {
           >
             {/* Sparkle Icon - Bigger */}
             <svg
-              width="18"
-              height="18"
+              width="22"
+              height="22"
               viewBox="0 0 11 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
