@@ -64,23 +64,24 @@ const TopNav: FC = () => {
           max-width: 100%;
           width: 100%;
           margin: 0;
-          padding: 6px 52px;
+          padding: ${isScrolled ? "4px 52px" : "6px 52px"};
           display: flex;
           justify-content: space-between;
           align-items: center;
           height: auto;
           box-sizing: border-box;
+          transition: padding 0.3s ease;
         }
 
         @media (max-width: 1200px) {
           .top-nav-content {
-            padding: 6px 16px;
+            padding: ${isScrolled ? "4px 16px" : "6px 16px"};
           }
         }
 
         @media (max-width: 640px) {
           .top-nav-content {
-            padding: 6px 12px;
+            padding: ${isScrolled ? "4px 12px" : "6px 12px"};
           }
         }
 
