@@ -315,43 +315,41 @@ const TopNav: FC = () => {
             ))}
           </ul>
 
-          {/* AIney Badge - Toggle Chat */}
+          {/* AIney Icon Button - Toggle Chat */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "4px",
-              padding: "6px 10px",
+              justifyContent: "center",
+              padding: "8px",
               background: "#E4E4E4",
-              borderRadius: "100px",
+              borderRadius: "50%",
               border: "none",
               cursor: "pointer",
               transition: "background 0.6s ease",
-              lineHeight: "1.2",
+              width: "40px",
+              height: "40px",
+              flexShrink: 0,
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "#4060C8";
-              // Update svg and text color to white
+              // Update svg color to white
               const svg = e.currentTarget.querySelector("svg path");
               if (svg) svg.setAttribute("fill", "#FFFFFF");
-              const span = e.currentTarget.querySelector("span");
-              if (span) span.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "#E4E4E4";
-              // Reset svg and text color
+              // Reset svg color
               const svg = e.currentTarget.querySelector("svg path");
               if (svg) svg.setAttribute("fill", "#4060C8");
-              const span = e.currentTarget.querySelector("span");
-              if (span) span.style.color = "#4060C8";
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
-            {/* Sparkle Icon */}
+            {/* Sparkle Icon - Bigger */}
             <svg
-              width="11"
-              height="11"
+              width="18"
+              height="18"
               viewBox="0 0 11 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -362,17 +360,6 @@ const TopNav: FC = () => {
                 fill="#4060C8"
               />
             </svg>
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 400,
-                color: "#4060C8",
-                fontFamily: tokens.font.sans,
-                transition: "color 0.6s ease",
-              }}
-            >
-              Ask AIney
-            </span>
           </button>
 
           <button
