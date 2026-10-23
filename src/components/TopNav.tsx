@@ -326,16 +326,14 @@ const TopNav: FC = () => {
               borderRadius: "100px",
               border: "none",
               cursor: "pointer",
-              transition: "all 0.2s ease",
+              transition: "background 0.6s ease",
               lineHeight: "1.2",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "#D0D0D0";
-              e.currentTarget.style.transform = "scale(1.05)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "#E4E4E4";
-              e.currentTarget.style.transform = "scale(1)";
             }}
             title={isOpen ? "Close chat" : "Open chat"}
           >
