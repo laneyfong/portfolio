@@ -217,7 +217,7 @@ export const PortfolioAssistant = () => {
             cursor: "pointer",
             zIndex: 899,
             transition: "all 0.3s ease",
-            boxShadow: "0 4px 12px rgba(64, 96, 200, 0.15)",
+            boxShadow: "0 4px 12px rgba(37, 77, 250, 0.15)",
           }}
           onMouseDown={handleDragStart}
           onClick={() => setIsOpen(true)}
@@ -506,7 +506,7 @@ export const PortfolioAssistant = () => {
                 }}
                 style={{
                   padding: "12px 16px",
-                  background: "rgba(64, 96, 200, 0.08)",
+                  background: "rgba(37, 77, 250, 0.08)",
                   border: "none",
                   borderRadius: "20px",
                   fontSize: "14px",
@@ -521,10 +521,10 @@ export const PortfolioAssistant = () => {
                   animation: `slideUpFade 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.12}s backwards`,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.15)";
+                  e.currentTarget.style.background = "rgba(37, 77, 250, 0.15)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.08)";
+                  e.currentTarget.style.background = "rgba(37, 77, 250, 0.08)";
                 }}
               >
                 {prompt}
@@ -630,7 +630,7 @@ export const PortfolioAssistant = () => {
           }
 
           [data-chat-peek]:hover {
-            box-shadow: 0 8px 20px rgba(64, 96, 200, 0.4) !important;
+            box-shadow: 0 8px 20px rgba(37, 77, 250, 0.4) !important;
             transform: translateY(-50%) scale(1.05);
           }
         `}</style>
