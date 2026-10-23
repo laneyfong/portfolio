@@ -258,7 +258,7 @@ export const PortfolioAssistant = () => {
           width: "25%",
           padding: "40px 40px 16px",
           background: "rgba(250,250,251,1)",
-          borderLeft: "0.5px solid rgba(26, 26, 26, 0.08)",
+          borderLeft: "0.5px solid rgba(26, 26, 26, 0.05)",
           display: "flex",
           flexDirection: "column",
           gap: "16px",

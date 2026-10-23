@@ -16,7 +16,7 @@ const GlobalStyles: FC = () => (
       --text-grey-medium: #8D8D8D;
       --text-grey-dark: #7A7A7A;
       --text-grey-lighter: #6A6A6A;
-      --border-color: rgba(26, 26, 26, 0.08);
+      --border-color: rgba(26, 26, 26, 0.05);
       --card-bg: #F0F0F0;
       --stroke: #F1F0EE;
       --surface-light: #FAFAFB;
