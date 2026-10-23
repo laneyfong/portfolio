@@ -117,14 +117,15 @@ export const PortfolioAssistant = () => {
     document.addEventListener("mouseup", handleDragEnd);
   };
 
-  const handleSendMessage = async (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent | { preventDefault: () => void }, promptText?: string) => {
     e.preventDefault();
-    if (!inputValue.trim()) return;
+    const messageText = promptText || inputValue.trim();
+    if (!messageText) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: inputValue,
+      content: messageText,
       timestamp: new Date(),
     };
 
@@ -336,6 +337,46 @@ export const PortfolioAssistant = () => {
             Responses are generated based on this portfolio.
           </p>
         </div>
+
+        {/* Suggested Prompts - only show when chat is fresh */}
+        {messages.length === 1 && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            {[
+              "What's your design approach?",
+              "Tell me about your background",
+              "Why me?"
+            ].map((prompt) => (
+              <button
+                key={prompt}
+                onClick={(e) => handleSendMessage(e, prompt)}
+                style={{
+                  padding: "12px 16px",
+                  background: "rgba(64, 96, 200, 0.08)",
+                  border: "0.5px solid rgba(64, 96, 200, 0.2)",
+                  borderRadius: "12px",
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  color: "rgba(26,26,26,1)",
+                  fontFamily: tokens.font.sans,
+                  cursor: "pointer",
+                  letterSpacing: "-0.7px",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.15)";
+                  e.currentTarget.style.borderColor = "rgba(64, 96, 200, 0.35)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(64, 96, 200, 0.08)";
+                  e.currentTarget.style.borderColor = "rgba(64, 96, 200, 0.2)";
+                }}
+              >
+                {prompt}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Messages */}
         <div
