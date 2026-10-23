@@ -65,7 +65,7 @@ export const SelectionButton = () => {
         zIndex: 10000,
         display: "flex",
         alignItems: "center",
-        gap: "6px",
+        gap: "4px",
         padding: "10px 16px",
         background: "#E4E4E4",
         border: "none",
@@ -112,7 +112,7 @@ export const SelectionButton = () => {
       <span
         className="ask-text"
         style={{
-          fontSize: "12px",
+          fontSize: "14px",
           fontWeight: "400",
           color: "#808080",
           fontFamily: tokens.font.sans,
@@ -125,7 +125,7 @@ export const SelectionButton = () => {
       <span
         className="ainey-text"
         style={{
-          fontSize: "12px",
+          fontSize: "14px",
           fontWeight: "400",
           color: "#4060C8",
           fontFamily: tokens.font.sans,
