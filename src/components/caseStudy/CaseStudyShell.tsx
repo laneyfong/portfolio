@@ -88,7 +88,14 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
   };
 
   return (
-    <div className="case-page-fade-in" style={{ minHeight: "100vh", background: "var(--bg-primary)", fontFamily: tokens.font.sans, transition: "background 0.3s ease", color: "var(--text-secondary)" }}>
+    <div className="case-page-fade-in" style={{
+      display: "flex",
+      minHeight: "100vh",
+      background: "var(--bg-primary)",
+      fontFamily: tokens.font.sans,
+      transition: "background 0.3s ease",
+      color: "var(--text-secondary)"
+    }}>
       <style>{`
         @media (prefers-reduced-motion: no-preference) {
           .case-page-fade-in { animation: case-page-fade-in 0.7s ease; }
@@ -194,7 +201,7 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
         className="case-sidebar"
         style={{
           position: "sticky",
-          top: 0,
+          top: "env(safe-area-inset-top, 0px)",
           width: SIDEBAR_WIDTH,
           height: "100vh",
           background: "transparent",
@@ -422,10 +429,11 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
       <main
         className="case-main"
         style={{
-          marginLeft: SIDEBAR_WIDTH,
+          flex: 1,
           padding: "0",
           boxSizing: "border-box",
-          marginTop: "0",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <div
