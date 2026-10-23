@@ -405,37 +405,53 @@ export const PortfolioAssistant = () => {
                     download
                     style={{
                       display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
                       alignItems: "center",
-                      justifyContent: "center",
-                      padding: "14px 24px",
-                      background: "#5B7DB5",
+                      gap: "10px",
+                      padding: "10px 16px",
+                      background: "#35489B",
                       color: "#FFFFFF",
                       border: "none",
-                      borderRadius: "9999px",
+                      borderRadius: "100px",
                       fontSize: "14px",
-                      fontWeight: 600,
+                      fontWeight: 400,
                       fontFamily: tokens.font.sans,
                       textDecoration: "none",
                       cursor: "pointer",
                       transition: "all 0.2s ease",
                       marginLeft: "0px",
                       marginTop: "8px",
-                      boxShadow: "0 4px 12px rgba(91, 125, 181, 0.3)",
                       width: "100%",
-                      maxWidth: "280px",
+                      maxWidth: "346px",
+                      height: "42px",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#4A6A9E";
-                      e.currentTarget.style.boxShadow = "0 6px 20px rgba(91, 125, 181, 0.4)";
+                      e.currentTarget.style.background = "#2A3A7F";
                       e.currentTarget.style.transform = "scale(1.02)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#5B7DB5";
-                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(91, 125, 181, 0.3)";
+                      e.currentTarget.style.background = "#35489B";
                       e.currentTarget.style.transform = "scale(1)";
                     }}
                   >
-                    Download Resume
+                    <span style={{ letterSpacing: "-0.7px" }}>Download Resume</span>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style={{ flexShrink: 0 }}
+                    >
+                      <path
+                        d="M10 3V17M3 10L10 17L17 10"
+                        stroke="#FFFFFF"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </a>
                 )}
                 <p
