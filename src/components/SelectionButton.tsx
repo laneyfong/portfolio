@@ -51,7 +51,8 @@ export const SelectionButton = () => {
   if (!showButton) return null;
 
   return (
-    <button
+    <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: 999999 }}>
+      <button
       onMouseDown={handleClick}
       style={{
         position: "fixed",
@@ -128,6 +129,7 @@ export const SelectionButton = () => {
       >
         LaneyLM
       </span>
-    </button>
+      </button>
+    </div>
   );
 };
