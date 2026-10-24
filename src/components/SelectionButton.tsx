@@ -16,6 +16,9 @@ export const SelectionButton = () => {
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
 
+        console.log("✅ Text selected:", text);
+        console.log("Selection position:", {top: window.scrollY + rect.top - 50, left: window.scrollX + rect.left + rect.width / 2});
+
         setPosition({
           top: window.scrollY + rect.top - 50,
           left: window.scrollX + rect.left + rect.width / 2,
