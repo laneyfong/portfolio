@@ -493,13 +493,13 @@ export const PortfolioAssistant = () => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Suggested Prompts - show when input focused or at start, and no user messages yet */}
-        {messages.filter(m => m.role === 'user').length === 0 && (inputFocused || !conversationStarted) && (
+        {/* Suggested Prompts - show when input clicked or when chat opens */}
+        {(inputFocused || !conversationStarted) && (
           <div style={{ display: "flex", flexDirection: "column", gap: "8px", animation: "slideUpFade 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
             {[
-              "What's your design approach?",
-              "Tell me about your background",
-              "Why me?"
+              "What's your design process?",
+              "Tell me about MyShake",
+              "How do you approach user research?"
             ].map((prompt, index) => (
               <button
                 key={prompt}
