@@ -16,12 +16,16 @@ export const SelectionButton = () => {
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
 
-        console.log("✅ Text selected:", text);
-        console.log("Selection position:", {top: window.scrollY + rect.top - 50, left: window.scrollX + rect.left + rect.width / 2});
+        // Calculate position and clamp to viewport
+        const topPos = window.scrollY + rect.top - 50;
+        const leftPos = window.scrollX + rect.left + rect.width / 2;
+
+        // Ensure button stays within viewport bounds
+        const clampedLeft = Math.max(50, Math.min(leftPos, window.innerWidth - 50));
 
         setPosition({
-          top: window.scrollY + rect.top - 50,
-          left: window.scrollX + rect.left + rect.width / 2,
+          top: Math.max(0, topPos),
+          left: clampedLeft,
         });
 
         setShowButton(true);
