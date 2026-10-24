@@ -40,6 +40,20 @@ export const PortfolioAssistant = () => {
     "/nvidia-ai-ux-agent",
   ].includes(location.pathname);
 
+  // Different prompt suggestion sets
+  const promptSets = [
+    ["What's your design process?", "Tell me about MyShake", "How do you approach user research?"],
+    ["What's your favorite project?", "How do you solve complex problems?", "What's your design philosophy?"],
+    ["Tell me about VeriSupply", "How do you work with engineers?", "What tools do you use most?"],
+    ["What's your experience with design systems?", "How do you iterate on designs?", "Tell me about IDBridge"],
+    ["What's your take on accessibility?", "How do you handle user testing?", "What drives your design decisions?"],
+    ["Tell me about your NVIDIA work", "How do you approach constraint-focused design?", "What's your mentoring style?"]
+  ];
+
+  // Get current prompt set based on message count (for rotation)
+  const currentPromptIndex = messages.filter(m => m.role === 'user').length % promptSets.length;
+  const currentPrompts = promptSets[currentPromptIndex];
+
   // Close chat on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -496,11 +510,7 @@ export const PortfolioAssistant = () => {
         {/* Suggested Prompts - show when input clicked or when chat opens */}
         {(inputFocused || !conversationStarted) && (
           <div style={{ display: "flex", flexDirection: "column", gap: "8px", animation: "slideUpFade 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
-            {[
-              "What's your design process?",
-              "Tell me about MyShake",
-              "How do you approach user research?"
-            ].map((prompt, index) => (
+            {currentPrompts.map((prompt, index) => (
               <button
                 key={prompt}
                 onClick={(e) => {
