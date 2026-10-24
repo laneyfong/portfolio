@@ -30,7 +30,6 @@ export const PortfolioAssistant = () => {
   const [conversationStarted, setConversationStarted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const isInitialMount = useRef(true);
 
   // Check if we're on a case study page
   const isCaseStudy = [
@@ -97,6 +96,7 @@ export const PortfolioAssistant = () => {
   }, [setIsOpen]);
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const messageCountRef = useRef(messages.length);
 
   const scrollToBottom = () => {
     // Use a small delay to ensure DOM has updated
@@ -108,12 +108,11 @@ export const PortfolioAssistant = () => {
   };
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
+    // Only scroll if a NEW message was added (not on initial mount or reload)
+    if (messages.length > messageCountRef.current) {
+      scrollToBottom();
     }
-    // Scroll whenever messages change
-    scrollToBottom();
+    messageCountRef.current = messages.length;
   }, [messages]);
 
 
