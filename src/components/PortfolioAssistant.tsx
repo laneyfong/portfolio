@@ -96,13 +96,15 @@ export const PortfolioAssistant = () => {
     };
   }, [setIsOpen]);
 
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
   const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      const chatContainer = messagesEndRef.current.closest('[style*="overflowY"]');
-      if (chatContainer) {
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+    // Use a small delay to ensure DOM has updated
+    setTimeout(() => {
+      if (messagesContainerRef.current) {
+        messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
       }
-    }
+    }, 0);
   };
 
   useEffect(() => {
@@ -110,11 +112,9 @@ export const PortfolioAssistant = () => {
       isInitialMount.current = false;
       return;
     }
-    // Only scroll if chat is open
-    if (isOpen) {
-      scrollToBottom();
-    }
-  }, [messages, isOpen]);
+    // Scroll whenever messages change
+    scrollToBottom();
+  }, [messages]);
 
 
   useEffect(() => {
@@ -378,6 +378,7 @@ export const PortfolioAssistant = () => {
 
         {/* Messages */}
         <div
+          ref={messagesContainerRef}
           style={{
             flex: 1,
             display: "flex",
