@@ -58,7 +58,7 @@ export const SelectionButton = () => {
         top: position.top,
         left: position.left,
         transform: "translateX(-50%)",
-        zIndex: 10000,
+        zIndex: 999999,
         display: "flex",
         alignItems: "center",
         gap: "4px",
