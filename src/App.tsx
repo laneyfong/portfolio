@@ -24,10 +24,11 @@ function ScrollToTop() {
       document.body.scrollTop = 0;
     };
 
+    // Scroll immediately
     scrollToTopNow();
 
-    // Multiple timing attempts with increasing delays to ensure layout is fully ready
-    const timers = [0, 50, 100, 200, 300].map(delay =>
+    // Ensure it stays at top even after render
+    const timers = [50, 100, 150, 300, 500, 1000].map(delay =>
       setTimeout(scrollToTopNow, delay)
     );
 
