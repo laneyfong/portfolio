@@ -96,24 +96,6 @@ export const PortfolioAssistant = () => {
   }, [setIsOpen]);
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
-  const messageCountRef = useRef(messages.length);
-
-  const scrollToBottom = () => {
-    // Use a small delay to ensure DOM has updated
-    setTimeout(() => {
-      if (messagesContainerRef.current) {
-        messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
-      }
-    }, 0);
-  };
-
-  useEffect(() => {
-    // Only scroll if a NEW message was added (not on initial mount or reload)
-    if (messages.length > messageCountRef.current) {
-      scrollToBottom();
-    }
-    messageCountRef.current = messages.length;
-  }, [messages]);
 
 
   useEffect(() => {
