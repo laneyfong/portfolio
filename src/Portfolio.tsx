@@ -408,7 +408,7 @@ const Portfolio: FC = () => {
             <MyShakeCard
               caption="Increased engagement by 45% through "
               captionItalic="IA restructure"
-              context="Contract"
+              context="B2C Mobile Product"
               to="/myshake-design"
               boldMetrics={["45%"]}
             />
