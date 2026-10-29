@@ -139,11 +139,11 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           flex-direction: column;
           gap: 12px;
           justify-content: flex-start;
-          transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .idbridge-video.blurred ~ .idbridge-text {
-          color: #4060c8;
+        .idbridge-card:has(.idbridge-video.blurred) .idbridge-text {
+          filter: blur(4px);
         }
 
         @media (max-width: 768px) {

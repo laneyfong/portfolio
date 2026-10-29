@@ -86,11 +86,11 @@
   flex-direction: column;
   gap: 12px;
   justify-content: flex-start;
-  transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.myshake-video.blurred ~ .myshake-text {
-  color: #4060c8;
+.myshake-card:has(.myshake-video.blurred) .myshake-text {
+  filter: blur(4px);
 }
 
 @media (max-width: 768px) {

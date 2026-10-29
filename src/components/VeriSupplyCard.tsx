@@ -115,11 +115,11 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({
           flex-direction: column;
           gap: 12px;
           justify-content: flex-start;
-          transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .verisupply-image.blurred ~ .verisupply-text {
-          color: #4060c8;
+        .verisupply-card:has(.verisupply-image.blurred) .verisupply-text {
+          filter: blur(4px);
         }
 
         @media (max-width: 768px) {
