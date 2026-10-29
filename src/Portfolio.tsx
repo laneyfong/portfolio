@@ -375,7 +375,7 @@ const Portfolio: FC = () => {
             padding: 0,
             textWrap: "balance",
           }}>
-            I design <strong style={{ fontWeight: 500, color: "var(--text-dark)" }}>0 to 1</strong> digital experiences that bridge complex systems, drive growth, and scale with meticulous craft
+            I'm a <strong style={{ fontWeight: 500, color: "var(--text-dark)" }}>0→1 designer</strong> who's AI-forward, creating digital experiences with a diverse background. I specialize in <strong style={{ fontWeight: 500, color: "var(--text-dark)" }}>design systems</strong> and am deeply interested in technology and growth
           </h1>
           <p style={{
             fontFamily: tokens.font.sans,
