@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import idbridgeScreenRecording from "../assets/idbridge-screen-recording.mp4";
@@ -11,6 +11,10 @@ interface IDbridgeCardProps {
   context: string;
   to: string;
   isActive?: boolean;
+  hoveredIndex?: number | null;
+  currentIndex?: number;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const IDbridgeCard: FC<IDbridgeCardProps> = ({
@@ -20,11 +24,17 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
   context,
   to,
   isActive = false,
+  hoveredIndex = null,
+  currentIndex = 0,
+  onMouseEnter,
+  onMouseLeave,
 }) => {
   const navigate = useNavigate();
-  const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const isDesktop = window.innerWidth > 768;
+
+  const isThisCardHovered = hoveredIndex === currentIndex;
+  const isAnyCardHovered = hoveredIndex !== null;
 
   const captionParts = caption.split(captionItalic);
 
@@ -67,8 +77,8 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           flex-shrink: 0;
           background-color: #1a1a1a;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-          transition: box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          will-change: filter, box-shadow;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: filter, box-shadow, transform;
         }
 
         .idbridge-video::before {
@@ -80,19 +90,18 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           bottom: 0;
           background: rgba(0, 0, 0, 0);
           pointer-events: none;
-          transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           z-index: 2;
           border-radius: ${isDesktop ? 20 : 0}px;
-          backdrop-filter: blur(0px);
         }
 
         .idbridge-video.hovered {
-          box-shadow: 0 0 40px rgba(64, 96, 200, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 20px rgba(64, 96, 200, 0.25), 0 12px 32px rgba(0, 0, 0, 0.2);
+          transform: translateY(-8px);
         }
 
-        .idbridge-video.hovered::before {
-          background: rgba(0, 0, 0, 0.4);
-          backdrop-filter: blur(8px);
+        .idbridge-video.blurred {
+          filter: blur(6px);
         }
 
         .idbridge-label {
@@ -161,10 +170,10 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
             }
           }
         }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        <div className={`idbridge-video ${hovered ? "hovered" : ""}`}>
+        <div className={`idbridge-video ${isThisCardHovered ? "hovered" : ""} ${isAnyCardHovered && !isThisCardHovered ? "blurred" : ""}`}>
               <video
                 ref={videoRef}
                 src={idbridgeScreenRecording}

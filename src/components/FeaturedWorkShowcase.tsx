@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { cloneElement, isValidElement } from "react";
+import { cloneElement, isValidElement, useState } from "react";
 
 interface FeaturedWorkShowcaseProps {
   children: ReactNode[];
@@ -8,6 +8,7 @@ interface FeaturedWorkShowcaseProps {
 }
 
 const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, className }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <>
@@ -40,7 +41,7 @@ const FeaturedWorkShowcase: FC<FeaturedWorkShowcaseProps> = ({ children, classNa
       >
       {Array.isArray(children) &&
         children.map((child, index) => {
-          const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: true } as any) : child;
+          const childWithProps = isValidElement(child) ? cloneElement(child, { isActive: true, hoveredIndex, currentIndex: index, onMouseEnter: () => setHoveredIndex(index), onMouseLeave: () => setHoveredIndex(null) } as any) : child;
           return <div key={index} style={{ minWidth: 0 }}>{childWithProps}</div>;
         })}
       </div>

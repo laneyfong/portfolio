@@ -76,7 +76,8 @@ const Portfolio: FC = () => {
           height: "400px",
           zIndex: 0,
           pointerEvents: "none",
-          opacity: Math.max(0.8 - scrollY / 1000, 0),
+          opacity: 0,
+          display: "none",
           transform: `translateY(-${Math.min(scrollY * 0.4, 300)}px)`,
           transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
         }}

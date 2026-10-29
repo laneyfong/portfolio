@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
 import "../myshake-card.css";
@@ -13,6 +13,10 @@ interface MyShakeCardProps {
   to: string;
   isActive?: boolean;
   boldMetrics?: string[];
+  hoveredIndex?: number | null;
+  currentIndex?: number;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const boldifyMetrics = (text: string, metrics: string[] = []): ReactNode => {
@@ -46,12 +50,19 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
   to,
   isActive = false,
   boldMetrics = [],
+  hoveredIndex = null,
+  currentIndex = 0,
+  onMouseEnter,
+  onMouseLeave,
 }) => {
   const navigate = useNavigate();
-  const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const captionParts = caption.split(captionItalic);
+
+  // Check if this card is hovered or if another is hovered
+  const isThisCardHovered = hoveredIndex === currentIndex;
+  const isAnyCardHovered = hoveredIndex !== null;
 
   useEffect(() => {
     if (videoRef.current) {
@@ -89,11 +100,11 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
             }
           }
         }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         <div
-          className={`myshake-video ${hovered ? "hovered" : ""}`}
+          className={`myshake-video ${isThisCardHovered ? "hovered" : ""} ${isAnyCardHovered && !isThisCardHovered ? "blurred" : ""}`}
           style={{
             borderRadius: isDesktop ? "20px" : "0px",
           }}

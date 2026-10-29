@@ -263,6 +263,7 @@ const AboutPage: FC = () => {
               pointerEvents: "none",
               animation: "blobFlow 6s ease-in-out infinite",
               transformOrigin: "center center",
+              display: "none",
             }}
           />
 
