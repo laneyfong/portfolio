@@ -101,7 +101,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         }
 
         .idbridge-video.blurred {
-          filter: blur(6px);
+          filter: blur(6px) brightness(0.6);
         }
 
         .idbridge-label {
@@ -119,10 +119,11 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           pointer-events: none;
           opacity: 0;
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          display: none;
         }
 
         .idbridge-video.hovered .idbridge-label {
-          opacity: 1;
+          opacity: 0;
         }
 
         .idbridge-arrow {

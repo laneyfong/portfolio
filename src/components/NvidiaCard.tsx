@@ -89,7 +89,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
         }
 
         .nvidia-video.blurred {
-          filter: blur(6px);
+          filter: blur(6px) brightness(0.6);
         }
 
         .nvidia-label {
@@ -107,10 +107,11 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
           pointer-events: none;
           opacity: 0;
           transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          display: none;
         }
 
         .nvidia-video.hovered .nvidia-label {
-          opacity: 1;
+          opacity: 0;
         }
 
         .nvidia-arrow {
