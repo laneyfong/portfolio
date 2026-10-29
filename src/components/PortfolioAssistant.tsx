@@ -96,6 +96,7 @@ export const PortfolioAssistant = () => {
   }, [setIsOpen]);
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const messageCountRef = useRef(messages.length);
 
 
   useEffect(() => {
@@ -114,6 +115,18 @@ export const PortfolioAssistant = () => {
       }
     }
   }, [isOpen, isCaseStudy]);
+
+  // Auto-scroll to new messages (like iMessage)
+  useEffect(() => {
+    if (messages.length > messageCountRef.current && messagesContainerRef.current) {
+      setTimeout(() => {
+        if (messagesContainerRef.current) {
+          messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+        }
+      }, 0);
+    }
+    messageCountRef.current = messages.length;
+  }, [messages]);
 
   const handleDragStart = (e: React.MouseEvent) => {
     const startX = e.clientX;
@@ -297,28 +310,25 @@ export const PortfolioAssistant = () => {
               position: "absolute",
               top: "16px",
               right: "16px",
-              background: "#E4E4E4",
+              background: "transparent",
               border: "none",
               cursor: "pointer",
-              fontSize: "20px",
-              color: "#1A1A1A",
-              padding: "8px 10px",
+              fontSize: "16px",
+              color: "rgba(128, 128, 128, 0.6)",
+              padding: "0",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              transition: "all 0.6s ease",
-              borderRadius: "100px",
-              width: "36px",
-              height: "36px",
+              transition: "all 0.2s ease",
+              width: "24px",
+              height: "24px",
               zIndex: 1000,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#254DFA";
-              e.currentTarget.style.color = "#FFFFFF";
+              e.currentTarget.style.color = "#4060c8";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#E4E4E4";
-              e.currentTarget.style.color = "#1A1A1A";
+              e.currentTarget.style.color = "rgba(128, 128, 128, 0.6)";
             }}
             title="Close chat (Esc)"
           >
