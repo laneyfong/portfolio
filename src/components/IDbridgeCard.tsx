@@ -101,7 +101,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
         }
 
         .idbridge-video.blurred {
-          filter: blur(6px) brightness(0.6);
+          filter: blur(12px) brightness(0.5);
         }
 
         .idbridge-label {

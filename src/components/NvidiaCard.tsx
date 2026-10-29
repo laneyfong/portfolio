@@ -89,7 +89,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
         }
 
         .nvidia-video.blurred {
-          filter: blur(6px) brightness(0.6);
+          filter: blur(12px) brightness(0.5);
         }
 
         .nvidia-label {

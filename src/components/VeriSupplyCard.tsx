@@ -77,7 +77,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({
         }
 
         .verisupply-image.blurred {
-          filter: blur(6px) brightness(0.6);
+          filter: blur(12px) brightness(0.5);
         }
 
         .verisupply-label {
