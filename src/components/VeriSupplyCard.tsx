@@ -72,7 +72,6 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({
         }
 
         .verisupply-image.hovered {
-          box-shadow: 0 0 20px rgba(64, 96, 200, 0.25), 0 12px 32px rgba(0, 0, 0, 0.2);
           transform: translateY(-8px);
         }
 
@@ -116,6 +115,11 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({
           flex-direction: column;
           gap: 12px;
           justify-content: flex-start;
+          transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .verisupply-image.blurred ~ .verisupply-text {
+          color: #4060c8;
         }
 
         @media (max-width: 768px) {
