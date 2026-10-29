@@ -61,7 +61,11 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           outline: none;
           padding: 14px 0 12px 0;
           height: fit-content;
-          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .idbridge-card:has(.idbridge-video.blurred) {
+          filter: blur(8px);
         }
 
         .idbridge-card:hover {
@@ -139,11 +143,6 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
           flex-direction: column;
           gap: 12px;
           justify-content: flex-start;
-          transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .idbridge-card:has(.idbridge-video.blurred) .idbridge-text {
-          filter: blur(8px);
         }
 
         @media (max-width: 768px) {
