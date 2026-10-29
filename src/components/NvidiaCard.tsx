@@ -65,7 +65,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
           flex-shrink: 0;
           background-color: #1a1a1a;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-          transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: filter, box-shadow, transform;
         }
 
@@ -127,11 +127,11 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
           flex-direction: column;
           gap: 12px;
           justify-content: flex-start;
-          transition: filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nvidia-card:has(.nvidia-video.blurred) .nvidia-text {
-          filter: blur(4px);
+          filter: blur(8px);
         }
 
         @media (max-width: 768px) {
