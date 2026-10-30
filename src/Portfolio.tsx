@@ -83,6 +83,45 @@ const Portfolio: FC = () => {
         }}
       />
       <style>{`
+        @keyframes dotPulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.3);
+            opacity: 0.6;
+          }
+        }
+
+        @keyframes dotColorShift {
+          0%, 100% {
+            background-color: #4060c8;
+          }
+          50% {
+            background-color: rgba(220, 120, 60, 0.8);
+          }
+        }
+
+        .section-indicator {
+          width: 12px;
+          height: 12px;
+          margin: 60px auto;
+          border-radius: 50%;
+          background-color: #4060c8;
+          animation: dotPulse 2s ease-in-out infinite, dotColorShift 4s ease-in-out infinite;
+        }
+
+        .work-section-bg {
+          position: relative;
+          background: linear-gradient(
+            180deg,
+            rgba(64, 96, 200, 0.02) 0%,
+            rgba(220, 120, 60, 0.01) 50%,
+            transparent 100%
+          );
+        }
+
         .work-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -393,7 +432,10 @@ const Portfolio: FC = () => {
 
       </main>
 
-      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
+      <div className="section-indicator"></div>
+
+      <div className="work-section-bg">
+        <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
         <section id="work" style={{ width: "100%" }}>
           <FeaturedWorkShowcase
             className={`work-section-cards ${workVisible ? "visible" : ""} ${scrollY > 400 ? "scrolled" : ""} ${scrollY > 1400 ? "scrolled-out" : ""}`}
@@ -423,6 +465,7 @@ const Portfolio: FC = () => {
             <NvidiaCard />
           </FeaturedWorkShowcase>
         </section>
+      </div>
       </div>
 
       <div className="content-reveal">
