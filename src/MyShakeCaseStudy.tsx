@@ -1,143 +1,1287 @@
 import type { FC } from "react";
-import { Reveal, Callout, BigImpactStat } from "./components/caseStudy/CaseStudyKit";
+import { useState, useEffect, useRef } from "react";
+import { tokens } from "./tokens";
+import {
+  Reveal,
+  Italic,
+  Emphasis,
+  TagPill,
+  Callout,
+  Kicker,
+  SkillRow,
+  SnapshotBar,
+  FeatureCard,
+  PullQuote,
+  BarCompare,
+  TypeCompare,
+  UserJourney,
+  ProcessFlow,
+  StatRow,
+  BigImpactStat,
+  HMWStatement,
+  ExpandableRankedList,
+} from "./components/caseStudy/CaseStudyKit";
+import ColorVariationGrid from "./components/caseStudy/ColorVariationGrid";
+import EffortImpactMatrix from "./components/caseStudy/EffortImpactMatrix";
+import ResearchInsights from "./components/caseStudy/ResearchInsights";
+import SolutionBreakdown from "./components/caseStudy/SolutionBreakdown";
+import StepsComparison from "./components/caseStudy/StepsComparison";
+import DesignPrinciples from "./components/caseStudy/DesignPrinciples";
 import { CaseStudyShell, type CaseSection } from "./components/caseStudy/CaseStudyShell";
-import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
-import myshakeDashboard from "./assets/myshake-dashboard.png";
-import myshakeStoryboard from "./assets/myshake-storyboard.png";
+import { AlertIcon, PinIcon } from "./components/icons/CaseStudyIcons";
+import myshakeScreenRecording from "./assets/myshake-screen-recording.mp4";
 import myshakeAlert from "./assets/myshake-alert.png";
+import myshakeDetails from "./assets/myshake-details.png";
+import myshakeBeforeScreens from "./assets/myshake-before-screens.png";
+import myshakeDesignSystem from "./assets/myshake-design-system.png";
+import myshakeStoryboard from "./assets/myshake-storyboard.png";
+import myshakeHomeExplanation from "./assets/myshake-home-explanation.png";
+import myshakeDashboard from "./assets/myshake-dashboard.png";
+import myshakeCarouselNote from "./assets/myshake-carousel-note.png";
+import myshakePrepareNote from "./assets/myshake-prepare-note.png";
+import myshakeNotificationsNote from "./assets/myshake-notifications-note.png";
+import myshakeTeam from "./assets/myshake-team.png";
+import myshakeInformationArchitecture from "./assets/myshake-information-architecture.png";
 
 const SECTIONS: CaseSection[] = [
-  { id: "problem", label: "Problem" },
+  { id: "intro", label: "Intro" },
+  { id: "research", label: "Research" },
+  { id: "synthesis", label: "Synthesis" },
+  { id: "ideation", label: "Ideation" },
   { id: "solution", label: "Solution" },
-  { id: "impact", label: "Impact" },
+  { id: "reflection", label: "Reflection" },
 ];
+
+const TAGS = ["Product/UX Design", "Design Systems", "Product Strategy", "Shipped"];
 
 const HIGHLIGHTS = [
-  "Increased user engagement 45% by restructuring IA around personal safety.",
-  "Reduced steps from 7 to 3 — two taps instead of multi-screen search.",
-  "Navigated a no-research constraint into a scoped study that shaped every decision.",
+  "Increased user engagement 45% by restructuring the IA around personal safety, not data visualization.",
+  "Cut the steps to check on a loved one from 7 to 3 — from a multi-screen search to two taps.",
+  "Talked through a no-research mandate with the client and landed on a scoped study plan that shaped every decision.",
 ];
 
-const MyShakeCaseStudy: FC = () => {
-  return (
-    <CaseStudyShell sections={SECTIONS} highlights={HIGHLIGHTS}>
-      <div id="problem" style={{ padding: "60px 52px", maxWidth: "900px" }}>
-        <h2 style={{ fontSize: "32px", fontWeight: 600, marginBottom: "32px" }}>The Problem</h2>
+const WireListRow: FC = () => (
+  <div
+    style={{
+      height: 12,
+      borderRadius: tokens.radius.xs,
+      background: "var(--stroke)",
+      width: "100%",
+    }}
+    aria-hidden
+  />
+);
 
+const WireMap: FC<{ flex: number }> = ({ flex }) => (
+  <div
+    style={{
+      flex,
+      borderRadius: tokens.radius.md,
+      background: "var(--surface-light)",
+      display: "flex",
+      flexDirection: "column",
+      gap: 8,
+      padding: 12,
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+    aria-hidden
+  >
+    <div
+      style={{
+        width: 60,
+        height: 60,
+        borderRadius: 50,
+        background: "var(--border-color)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div style={{ width: 30, height: 30, borderRadius: 50, background: tokens.color.accent, opacity: 0.6 }} />
+    </div>
+    <div style={{ height: 4, width: "70%", borderRadius: 2, background: "var(--stroke)" }} />
+  </div>
+);
+
+const ABWireframe: FC<{ variant: 0 | 1 }> = ({ variant }) => (
+  <div
+    key={variant}
+    className="case-fade-in"
+    style={{
+      height: 200,
+      borderRadius: tokens.radius.md,
+      background: "var(--bg-primary)",
+      padding: 12,
+      display: "flex",
+      gap: 8,
+      boxSizing: "border-box",
+    }}
+    aria-hidden
+  >
+    {variant === 0 ? (
+      <>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14, justifyContent: "center" }}>
+          <WireListRow />
+          <WireListRow />
+          <WireListRow />
+          <WireListRow />
+        </div>
+        <WireMap flex={1.2} />
+      </>
+    ) : (
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1.3fr 1fr", gridTemplateRows: "1fr 1fr", gap: 8 }}>
+        <div style={{ gridRow: "1 / 3", height: "100%" }}>
+          <WireMap flex={1} />
+        </div>
+        <div
+          style={{
+            borderRadius: tokens.radius.xs,
+            background: "var(--surface-light)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 6,
+            justifyContent: "center",
+            padding: "0 10px",
+          }}
+        >
+          <div style={{ height: 4, width: "60%", borderRadius: 2, background: "var(--border-color)" }} />
+          <div style={{ height: 4, width: "40%", borderRadius: 2, background: "var(--stroke)" }} />
+        </div>
+        <div
+          style={{
+            borderRadius: tokens.radius.xs,
+            background: "var(--surface-light)",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "0 10px",
+          }}
+        >
+          <div style={{ width: 16, height: 16, borderRadius: 4, background: tokens.color.accent, flexShrink: 0 }} />
+          <div style={{ height: 4, width: "50%", borderRadius: 2, background: "var(--border-color)" }} />
+        </div>
+      </div>
+    )}
+  </div>
+);
+
+interface AnnotationConfig {
+  threshold: number;
+  side: "left" | "right";
+  title: string;
+  description: string;
+  image: string;
+}
+
+const ScrollDrivenProductShowcase: FC<{
+  dashboardImage: string;
+  annotations: AnnotationConfig[];
+}> = ({ dashboardImage, annotations }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const rect = container.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const scrolled = windowHeight - rect.top;
+        const totalHeight = rect.height;
+        const progress = Math.max(0, Math.min(1, scrolled / totalHeight));
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getAnnotationState = (annotation: AnnotationConfig) => {
+    const transitionWindow = 0.15;
+    const threshold = annotation.threshold;
+    const entryStart = threshold - 0.02;
+    const entryEnd = threshold + transitionWindow;
+    const exitStart = threshold + transitionWindow;
+    const exitEnd = threshold + transitionWindow * 2;
+
+    let opacity = 0;
+    let progress = 0;
+
+    if (scrollProgress >= entryStart && scrollProgress < entryEnd) {
+      progress = (scrollProgress - entryStart) / transitionWindow;
+      opacity = progress;
+    } else if (scrollProgress >= exitStart && scrollProgress < exitEnd) {
+      progress = 1 - (scrollProgress - exitStart) / transitionWindow;
+      opacity = progress;
+    }
+
+    const offset = annotation.side === "left"
+      ? -32 * (1 - Math.max(opacity, 0))
+      : 32 * (1 - Math.max(opacity, 0));
+
+    return { opacity: Math.max(0, Math.min(1, opacity)), offset };
+  };
+
+  return (
+    <section
+      style={{ paddingTop: 0, paddingBottom: 0, position: "relative" }}
+      className="section-reveal"
+      ref={containerRef}
+    >
+      <div style={{ position: "relative", minHeight: "350vh" }}>
+        {/* Sticky Container - Three Column Layout */}
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "40px",
+            zIndex: 10,
+            pointerEvents: "none",
+            padding: "60px 40px",
+            boxSizing: "border-box",
+          }}
+        >
+          {/* LEFT ANNOTATIONS COLUMN */}
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px", alignItems: "flex-start" }}>
+            {annotations
+              .filter((a) => a.side === "left")
+              .map((annotation, idx) => {
+                const { opacity, offset } = getAnnotationState(annotation);
+
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      opacity,
+                      transform: `translateX(${offset}px)`,
+                      transition:
+                        "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      willChange: "opacity, transform",
+                      background: "var(--bg-primary)",
+                      padding: "20px",
+                      borderRadius: "12px",
+                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "16px",
+                        fontWeight: tokens.weight.medium,
+                        color: "var(--text-dark)",
+                        margin: "0 0 10px",
+                        lineHeight: tokens.leading.snug,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "14px",
+                        color: "var(--text-secondary)",
+                        margin: 0,
+                        lineHeight: tokens.leading.normal,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.description}
+                    </p>
+                  </div>
+                );
+              })}
+          </div>
+
+          {/* CENTER PRODUCT COLUMN */}
+          <div
+            style={{
+              maxWidth: "300px",
+              width: "100%",
+              pointerEvents: "auto",
+              zIndex: 20,
+              flexShrink: 0,
+            }}
+          >
+            <img
+              src={dashboardImage}
+              alt="MyShake dashboard showing pinned locations and earthquakes"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderTopLeftRadius: "24px",
+                borderTopRightRadius: "24px",
+                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.12)",
+                display: "block",
+              }}
+            />
+          </div>
+
+          {/* RIGHT ANNOTATIONS COLUMN */}
+          <div style={{ width: "320px", flexShrink: 0, pointerEvents: "auto", display: "flex", flexDirection: "column", gap: "20px", alignItems: "flex-end" }}>
+            {annotations
+              .filter((a) => a.side === "right")
+              .map((annotation, idx) => {
+                const { opacity, offset } = getAnnotationState(annotation);
+
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      opacity,
+                      transform: `translateX(${-offset}px)`,
+                      transition:
+                        "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      willChange: "opacity, transform",
+                      background: "var(--bg-primary)",
+                      padding: "20px",
+                      borderRadius: "12px",
+                      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "16px",
+                        fontWeight: tokens.weight.medium,
+                        color: "var(--text-dark)",
+                        margin: "0 0 10px",
+                        lineHeight: tokens.leading.snug,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontFamily: tokens.font.sans,
+                        fontSize: "14px",
+                        color: "var(--text-secondary)",
+                        margin: 0,
+                        lineHeight: tokens.leading.normal,
+                        wordWrap: "break-word",
+                      }}
+                    >
+                      {annotation.description}
+                    </p>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MYSHAKE_EXTRA_STYLE = `
+  @media (prefers-reduced-motion: no-preference) {
+    .case-shake-in { animation: case-shake-in 0.7s ease; }
+  }
+  @keyframes case-shake-in {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    15% { transform: translate(-7px, 2px) rotate(-1deg); }
+    30% { transform: translate(6px, -2px) rotate(1deg); }
+    45% { transform: translate(-4px, 2px) rotate(-0.6deg); }
+    60% { transform: translate(3px, -1px) rotate(0.4deg); }
+    75% { transform: translate(-2px, 1px) rotate(-0.2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+
+  @media (max-width: 768px) {
+    button, a, input, .case-btn-press { min-width: 48px !important; min-height: 48px !important; }
+    .case-grid-3, .case-grid-2, .case-intro-shots { grid-template-columns: 1fr !important; gap: clamp(16px, 4vw, 32px); }
+    [style*="display: flex"] { flex-direction: column !important; }
+    .case-main { padding: clamp(16px, 5vw, 60px) !important; }
+  }
+  @media (max-width: 640px) {
+    button, a, .case-btn-press { min-width: 44px !important; min-height: 44px !important; padding: 12px 16px !important; }
+    .case-main { padding: clamp(12px, 3vw, 40px) !important; }
+    body, html { overflow-x: hidden; }
+    * { box-sizing: border-box; }
+  }
+`;
+
+const MyShakeCaseStudy: FC = () => {
+  const [abVariant, setAbVariant] = useState<0 | 1>(0);
+
+  return (
+    <CaseStudyShell sections={SECTIONS} highlights={HIGHLIGHTS} extraStyle={MYSHAKE_EXTRA_STYLE}>
+      {/* Intro */}
+      <section id="intro" style={{ paddingBottom: 96 }} className="section-reveal">
         <Reveal>
-          <p style={{ fontSize: "18px", lineHeight: 1.6, color: "var(--text-primary)", marginBottom: "24px" }}>
-            MyShake is an earthquake detection app by UC Berkeley that detects seismic activity through smartphone sensors. The app had users but engagement was low — people didn't know <em>why</em> they should check on loved ones, or <em>how</em> to find them quickly.
-          </p>
+          <div style={{ marginBottom: 16 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)" }}>
+              Earthquake alerts. High anxiety. Low clarity.
+            </span>
+          </div>
+          <h1
+            style={{
+              fontFamily: tokens.font.sans,
+              fontWeight: tokens.weight.medium,
+              fontSize: tokens.text.xl,
+              color: "var(--text-dark)",
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 20px",
+              maxWidth: 480,
+            }}
+          >
+            Redesigning earthquake alerts for <Italic>intuitive, high-stakes navigation</Italic>.
+          </h1>
+
+          <div className="case-study-tags" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
+            {TAGS.map((tag) => (
+              <TagPill key={tag}>{tag}</TagPill>
+            ))}
+          </div>
+
+          <Reveal>
+            <SnapshotBar
+              items={[
+                { label: "Role", value: "Product Designer, End-to-end" },
+                { label: "Team", value: "5 Designers · 1 PM · 2 Engineers" },
+                { label: "Timeline", value: "3 months" },
+                { label: "Impact", value: "45% ↑ engagement" },
+              ]}
+            />
+          </Reveal>
+
+          <Reveal delay={100}>
+            <div
+              style={{
+                marginBottom: 60,
+                borderRadius: tokens.radius.md,
+                overflow: "hidden",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+              }}
+            >
+              <video
+                src={myshakeScreenRecording}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+                autoPlay
+                playsInline
+                loop
+                muted
+              />
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 60 }}>
+              <FeatureCard title="Problem">
+                Outdated app with poor onboarding and low engagement.
+              </FeatureCard>
+              <FeatureCard title="Solution">
+                Redesigned as safety-first utility for instant status checks.
+              </FeatureCard>
+              <FeatureCard title="Result">
+                45% engagement increase. Steps reduced from 7 to 3.
+              </FeatureCard>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div style={{ background: "var(--surface-light)", padding: "40px", borderRadius: tokens.radius.md, marginBottom: 48 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
+                <div style={{ textAlign: "center", padding: "20px" }}>
+                  <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
+                    <AlertIcon size={28} />
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
+                    EEW: Early Warning
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: tokens.color.accent, marginBottom: 8 }}>
+                    HIGH PRIORITY
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
+                    Seconds before shaking starts
+                  </div>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                  <div style={{ fontSize: "20px", opacity: 0.3, color: "var(--text-dark)" }}>→</div>
+                </div>
+                <div style={{ textAlign: "center", padding: "20px" }}>
+                  <div style={{ display: "flex", justifyContent: "center", marginBottom: 12, color: tokens.color.accent }}>
+                    <PinIcon size={28} />
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
+                    CEN: Post-Earthquake
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: "var(--text-secondary)", marginBottom: 8 }}>
+                    INFORMATION UPDATE
+                  </div>
+                  <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
+                    Notification after shaking detected
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </Reveal>
 
+        <div style={{ marginBottom: 80 }}>
+          <Kicker>The Challenge: Grow from 5% to 12.5% active users in 3 months</Kicker>
+          <Reveal>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 480 }}>
+              With only 5% of MyShake's 3.8M users actively engaging with the app during earthquakes, the team needed to increase engagement to 12.5%.
+            </p>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
+              The current interface's data-heavy approach and confusing alert system meant users weren't finding the information they needed when seconds mattered most.
+            </p>
+          </Reveal>
+          <Reveal>
+            <BarCompare
+              title="Engagement goal"
+              bars={[
+                { label: "Current", value: 5, display: "3.8M users · 5% active" },
+                { label: "Target", value: 12.5, display: "4M users · 12.5% active" },
+              ]}
+            />
+          </Reveal>
+        </div>
+
         <Reveal delay={100}>
-          <img
-            src={myshakeBeforeScreens}
-            alt="Before: confusing navigation with data visualization focus"
-            style={{ width: "100%", borderRadius: "12px", marginBottom: "24px" }}
+          <div style={{ marginBottom: 60 }}>
+            <img
+              src={myshakeBeforeScreens}
+              alt="MyShake existing app screens showing data-first approach with multiple screens required to locate family members"
+              style={{
+                width: "100%",
+                maxWidth: "640px",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                marginBottom: 24,
+                display: "block",
+                margin: "0 auto 24px",
+              }}
+            />
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-muted)", textAlign: "center", margin: 0 }}>
+              The existing app prioritized earthquake data over personal safety.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Research */}
+      <section id="research" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal dramatic>
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
+              Research
+            </span>
+          </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.xl,
+              fontWeight: tokens.weight.medium,
+              color: "var(--text-dark)",
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 480,
+            }}
+          >
+            Understanding why engagement and active user rates are low
+          </h2>
+          <SkillRow items={["User Interviews", "Competitive Analysis", "Survey Design"]} />
+        </Reveal>
+
+        <Reveal>
+          <StatRow
+            items={[
+              { value: "10", label: "User Interviews" },
+              { value: "50+", label: "Survey Responses" },
+              { value: "3", label: "Competitors Analyzed" },
+            ]}
           />
         </Reveal>
 
-        <Reveal delay={200}>
-          <Callout>
-            <strong>The core issue:</strong> The IA prioritized earthquake data over human connection. Users had to navigate through maps and graphs to check on loved ones.
-          </Callout>
+        <Reveal>
+          <div style={{ marginBottom: 60 }}>
+            <Kicker>What users actually want</Kicker>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
+              From 10 user interviews and 50+ survey responses, we discovered three clear priorities that would guide every design decision.
+            </p>
+            <ExpandableRankedList
+              items={[
+                { rank: 1, title: "Personal Safety", detail: "In interviews and usability testing, users prioritized their own safety above all else. They want instant access to earthquake information for their location and immediate guidance on what to do. This insight shaped the dashboard-first design, putting personal location and alerts at the top of the experience." },
+                { rank: 2, title: "Family Safety", detail: "After personal safety, knowing loved ones are safe was the second priority. Users want to quickly check on family members' locations and safety status during earthquakes—often requiring just 1-3 taps. This led to the pinned contacts feature and the 2-alert system (EEW vs CEN) to clarify communication timing." },
+                { rank: 3, title: "Property Damage", detail: "While important, property damage ranked third. Users acknowledged property concerns but the immediate focus is always on human safety first. However, 2 of 10 users mentioned confusion between alert types, requiring clearer visual distinction in the design." },
+              ]}
+            />
+          </div>
         </Reveal>
-      </div>
-
-      <div id="solution" style={{ padding: "60px 52px", maxWidth: "900px" }}>
-        <h2 style={{ fontSize: "32px", fontWeight: 600, marginBottom: "32px" }}>The Shift</h2>
 
         <Reveal>
-          <p style={{ fontSize: "18px", lineHeight: 1.6, color: "var(--text-primary)", marginBottom: "24px" }}>
-            The insight: <strong>Reframe the app around personal safety, not data visualization.</strong> Make "check on loved ones" the primary action, not buried in a secondary tab.
-          </p>
+          <ResearchInsights />
         </Reveal>
 
-        <Reveal delay={100}>
-          <div style={{ marginBottom: "32px" }}>
-            <p style={{ fontSize: "14px", fontWeight: 500, color: "var(--text-secondary)", marginBottom: "12px" }}>
-              Before: 7 steps to check on someone
-            </p>
-            <img
-              src={myshakeStoryboard}
-              alt="User journey: old multi-step flow"
-              style={{ width: "100%", borderRadius: "12px" }}
+        <div style={{ marginTop: 60 }}>
+          <Reveal>
+            <UserJourney
+              stages={[
+                {
+                  label: "Awareness",
+                  description: "Users worry about earthquake safety and want timely alerts",
+                  color: "#FF6B6B",
+                },
+                {
+                  label: "Evaluation",
+                  description: "They search for apps but aren't sure which one is worth trusting",
+                  color: "#FFA500",
+                },
+                {
+                  label: "Adoption",
+                  description: "Downloaded, but the confusing interface means they don't come back",
+                  color: "#FFD93D",
+                },
+                {
+                  label: "Churn",
+                  description: "Without a real earthquake, it's just another app they'll uninstall",
+                  color: "#A8A8A8",
+                },
+              ]}
             />
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
-        <Reveal delay={200}>
-          <div style={{ marginBottom: "32px" }}>
-            <p style={{ fontSize: "14px", fontWeight: 500, color: "var(--text-secondary)", marginBottom: "12px" }}>
-              After: 2 taps to check on a loved one
+        <Reveal>
+          <div style={{ marginTop: 80 }}>
+            <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 32px" }}>
+              Competitive Landscape
             </p>
-            <img
-              src={myshakeDashboard}
-              alt="New design: dashboard-first with quick contact checks"
-              style={{ width: "100%", borderRadius: "12px" }}
-            />
-          </div>
-        </Reveal>
-
-        <Reveal delay={300}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-            <div>
-              <p style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-secondary)", marginBottom: "8px" }}>
-                Alert System
-              </p>
-              <img src={myshakeAlert} alt="Alert notification design" style={{ width: "100%", borderRadius: "8px" }} />
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 16, marginBottom: 40 }}>
+              {[
+                { name: "My Earthquakes Alert", rating: "4.7", reviews: "87.3K", strength: "Speed & Accuracy", gap: "⭐⭐⭐⭐" },
+                { name: "QuakeFeed", rating: "4.8", reviews: "80K", strength: "Data Sources", gap: "⭐⭐⭐⭐" },
+                { name: "Earthquake - Alerts & Map", rating: "4.7", reviews: "36K", strength: "Clean UI", gap: "⭐⭐⭐" },
+                { name: "MyShake", rating: "3.0", reviews: "1.2K", strength: "Personalization", gap: "⭐⭐", isCurrent: true },
+              ].map((app) => (
+                <div
+                  key={app.name}
+                  style={{
+                    background: app.isCurrent ? tokens.color.accent : "var(--surface-light)",
+                    borderRadius: tokens.radius.md,
+                    padding: 16,
+                  }}
+                  role={app.isCurrent ? "doc-tip" : undefined}
+                  aria-label={app.isCurrent ? "Current state - MyShake before redesign" : undefined}
+                >
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "12px", fontWeight: tokens.weight.medium, color: app.isCurrent ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 8px" }}>
+                    {app.name}
+                    {app.isCurrent && <span style={{ marginLeft: "6px" }}>↓ Below market</span>}
+                  </p>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "20px", fontWeight: tokens.weight.medium, color: app.isCurrent ? "var(--bg-primary)" : "var(--text-dark)", margin: "0 0 4px" }}>
+                    {app.rating}★
+                  </p>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", color: app.isCurrent ? "var(--bg-primary)" : "var(--text-muted)", margin: "0 0 12px" }}>
+                    {app.reviews} reviews
+                  </p>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "11px", fontWeight: tokens.weight.medium, color: app.isCurrent ? "var(--bg-primary)" : "var(--text-secondary)", margin: 0 }}>
+                    {app.strength}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div>
-              <p style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-secondary)", marginBottom: "8px" }}>
-                Clear Action
-              </p>
-              <div style={{ background: "var(--bg-secondary)", borderRadius: "8px", padding: "16px", textAlign: "center", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <p style={{ color: "var(--text-secondary)", fontSize: "14px" }}>
-                  Prominent "Check Loved Ones" button
+            <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 24 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+                <div>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px" }}>
+                    Competitors excel at:
+                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {["Speed & Accuracy", "Multiple data sources", "Clean interfaces"].map(item => (
+                      <div key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                        <span style={{ color: tokens.color.accent, fontWeight: "bold", flexShrink: 0 }}>•</span>
+                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px" }}>
+                    Our advantage:
+                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {["Personalized for loved ones", "Better visual hierarchy", "Smooth, delightful UX"].map(item => (
+                      <div key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                        <span style={{ color: tokens.color.accent, fontWeight: "bold", flexShrink: 0 }}>✓</span>
+                        <span style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Synthesis */}
+      <section id="synthesis" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal dramatic>
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
+              Synthesis
+            </span>
+          </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.xl,
+              fontWeight: tokens.weight.medium,
+              color: "var(--text-dark)",
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 480,
+            }}
+          >
+            I synthesized insights into a user-centered solution
+          </h2>
+          <SkillRow items={["Information Architecture", "Storyboarding"]} />
+        </Reveal>
+
+        <div style={{ marginBottom: 80 }}>
+          <Reveal>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 32 }}>
+              <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 24 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", margin: "0 0 12px" }}>
+                  Before: 7 Taps
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-muted)", lineHeight: tokens.leading.snug, margin: 0 }}>
+                  Launch → search → enter name → wait → verify location → check status → confirm safety
+                </p>
+              </div>
+              <div style={{ background: "var(--surface-light)", borderRadius: tokens.radius.md, padding: 24 }}>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: tokens.color.accent, margin: "0 0 12px" }}>
+                  After: 3 Taps
+                </p>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)", lineHeight: tokens.leading.snug, margin: 0 }}>
+                  Pinned contacts on dashboard with instant status checks
                 </p>
               </div>
             </div>
-          </div>
-        </Reveal>
-      </div>
+          </Reveal>
+          <Reveal>
+            <StepsComparison />
+          </Reveal>
+        </div>
 
-      <div id="impact" style={{ padding: "60px 52px", maxWidth: "900px" }}>
-        <h2 style={{ fontSize: "32px", fontWeight: 600, marginBottom: "32px" }}>Results</h2>
+        <div style={{ marginBottom: 60 }}>
+          <Reveal>
+            <HMWStatement>How might we help users find <Emphasis>a loved one's safety status</Emphasis> in under <Emphasis>3 taps</Emphasis>?</HMWStatement>
+          </Reveal>
+        </div>
 
         <Reveal>
-          <BigImpactStat value="45%" label="Increase in user engagement" />
+          <img
+            src={myshakeStoryboard}
+            alt="User storyboard showing the ideal emergency flow"
+            style={{
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+              borderRadius: tokens.radius.md,
+              display: "block",
+            }}
+          />
+        </Reveal>
+      </section>
+
+      {/* Ideation */}
+      <section id="ideation" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal dramatic>
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
+              Ideation
+            </span>
+          </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.xl,
+              fontWeight: tokens.weight.medium,
+              color: "var(--text-dark)",
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 480,
+            }}
+          >
+            I explored multiple design directions and tested with users
+          </h2>
+          <SkillRow items={["A/B Testing", "Design Systems", "Accessibility (WCAG)"]} />
         </Reveal>
 
-        <Reveal delay={100}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", marginBottom: "32px" }}>
-            <div>
-              <p style={{ fontSize: "14px", fontWeight: 500, color: "var(--text-secondary)", marginBottom: "8px" }}>
-                Step Reduction
-              </p>
-              <div style={{ fontSize: "32px", fontWeight: 600, color: "var(--text-primary)" }}>
-                7 <span style={{ fontSize: "18px", color: "var(--text-secondary)" }}>→</span> 3
+        <div style={{ marginBottom: 80 }}>
+          <Reveal>
+            <style>{`
+              @media (max-width: 768px) {
+                .case-grid-2 {
+                  grid-template-columns: 1fr !important;
+                  gap: 24px !important;
+                }
+              }
+
+              .case-variation-buttons {
+                display: inline-flex;
+                flex-direction: row;
+                width: 100%;
+              }
+
+              @media (max-width: 768px) {
+                .case-variation-buttons {
+                  width: 100% !important;
+                }
+              }
+            `}</style>
+            <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
+              <ABWireframe variant={abVariant} />
+              <div key={abVariant} className="case-fade-in">
+                <div className="case-variation-buttons" style={{ display: "inline-flex", padding: 4, borderRadius: tokens.radius.full, background: "var(--surface-light)", marginBottom: 24 }}>
+                  {[
+                    { label: "Variation 1", title: "Half-list + half-map", description: "A split landing page: a list of nearby earthquakes on one side, a live map on the other." },
+                    { label: "Variation 2", title: "Bento-style dashboard", description: "A bento grid surfacing pinned locations, nearby earthquakes, and education cards at a glance." },
+                  ].map((v, i) => (
+                    <button
+                      key={v.label}
+                      onClick={() => setAbVariant(i as 0 | 1)}
+                      aria-pressed={abVariant === i}
+                      className="case-btn-press"
+                      style={{
+                        padding: "8px 18px",
+                        borderRadius: tokens.radius.full,
+                        border: "none",
+                        cursor: "pointer",
+                        background: abVariant === i ? "var(--text-dark)" : "transparent",
+                        color: abVariant === i ? "var(--bg-primary)" : "var(--text-secondary)",
+                        fontFamily: tokens.font.sans,
+                        fontSize: tokens.text.sm,
+                        fontWeight: tokens.weight.medium,
+                      }}
+                    >
+                      {v.label}
+                    </button>
+                  ))}
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontWeight: tokens.weight.medium, fontSize: tokens.text.base, color: "var(--text-dark)", marginBottom: 8 }}>
+                  {[
+                    { title: "Half-list + half-map" },
+                    { title: "Bento-style dashboard" },
+                  ][abVariant]?.title}
+                </div>
+                <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, margin: 0 }}>
+                  {[
+                    { description: "A split landing page: a list of nearby earthquakes on one side, a live map on the other." },
+                    { description: "A bento grid surfacing pinned locations, nearby earthquakes, and education cards at a glance." },
+                  ][abVariant]?.description}
+                </p>
               </div>
-              <p style={{ fontSize: "12px", color: "var(--text-secondary)" }}>steps to check on loved ones</p>
             </div>
-            <div>
-              <p style={{ fontSize: "14px", fontWeight: 500, color: "var(--text-secondary)", marginBottom: "8px" }}>
-                Status Checks
-              </p>
-              <div style={{ fontSize: "32px", fontWeight: 600, color: "var(--text-primary)" }}>
-                2x
-              </div>
-              <p style={{ fontSize: "12px", color: "var(--text-secondary)" }}>more frequent post-launch</p>
-            </div>
+          </Reveal>
+        </div>
+
+        <Reveal>
+          <div style={{ marginBottom: 80 }}>
+            <img
+              src={myshakeInformationArchitecture}
+              alt="MyShake information architecture diagram showing dashboard-first navigation with pinned contacts, alert hierarchy, and safety status flows"
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                display: "block",
+              }}
+            />
           </div>
         </Reveal>
 
-        <Reveal delay={200}>
-          <Callout>
-            <strong>Key takeaway:</strong> Reframing a feature's purpose — making personal safety the hero, not the data — changed how users engaged with the app. Sometimes the best design decision is organizational, not visual.
-          </Callout>
+        <Reveal>
+          <ColorVariationGrid />
         </Reveal>
-      </div>
+
+        <Reveal>
+          <DesignPrinciples />
+        </Reveal>
+
+        <Reveal>
+          <TypeCompare />
+        </Reveal>
+
+        <Reveal>
+          <EffortImpactMatrix />
+        </Reveal>
+      </section>
+
+      {/* Solution */}
+      <section id="solution" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal dramatic>
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
+              Solution
+            </span>
+          </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.xl,
+              fontWeight: tokens.weight.medium,
+              color: "var(--text-dark)",
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 480,
+            }}
+          >
+            The final design prioritizes safety and clarity during emergencies
+          </h2>
+          <SkillRow items={["Interaction Design", "Visual Design", "Prototyping"]} />
+          <Callout>Transforming MyShake from a passive alert tool into an active earthquake companion.</Callout>
+        </Reveal>
+
+        <Reveal>
+          <div
+            style={{
+              background: "var(--gradient-soft)",
+              padding: "60px 40px",
+              borderRadius: tokens.radius.md,
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: 80,
+            }}
+          >
+            <img
+              src={myshakeHomeExplanation}
+              alt="MyShake app features and interaction design"
+              style={{
+                width: "100%",
+                maxWidth: "640px",
+                height: "auto",
+                borderRadius: tokens.radius.md,
+                display: "block",
+              }}
+            />
+          </div>
+        </Reveal>
+
+        <div style={{ marginBottom: 60 }}>
+          <Callout>Core features of the redesign</Callout>
+        </div>
+        <Reveal>
+          <SolutionBreakdown />
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginBottom: 80 }}>
+            <BigImpactStat value="45%" label="Increase in user engagement" color={tokens.color.accent} />
+          </div>
+        </Reveal>
+
+        <div style={{ marginBottom: 60 }}>
+          <Callout>The Solution: 3 steps instead of 7.</Callout>
+        </div>
+
+        <Reveal>
+          <ProcessFlow
+            steps={[
+              {
+                title: "Open App",
+                description: "Dashboard immediately visible with pinned loved ones",
+                color: "#6BCB77",
+                icon: "1",
+              },
+              {
+                title: "Tap Contact",
+                description: "One tap to see location and safety status in real-time",
+                color: "#4D96FF",
+                icon: "2",
+              },
+              {
+                title: "Get Status",
+                description: "Critical information displayed instantly and clearly",
+                color: "#FFB84D",
+                icon: "3",
+              },
+            ]}
+          />
+        </Reveal>
+
+        <div style={{ marginTop: 0 }}>
+          <Reveal dramatic>
+            <div style={{ marginBottom: 10 }}>
+              <Callout>Design Decisions</Callout>
+            </div>
+          </Reveal>
+
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
+                  Dashboard-First Layout
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
+                  Pinned loved ones appear instantly on launch. No search, no navigation layers. In an earthquake, every second matters—users shouldn't have to dig.
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
+                  Two-Alert System
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
+                  EEW alerts arrive seconds after shaking starts; CEN notifications come after. Distinct visual treatment (color, language) helps users understand timing and urgency without thinking.
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 60 }}>
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
+                  Gesture Design for Mobile
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
+                  Tap-to-expand locations and swipe between pinned contacts. Designed for one-handed use during stressful moments, minimizing the mental load of complex interactions.
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.md, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 16 }}>
+                  Responsive Grid System
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, lineHeight: tokens.leading.normal, color: "var(--text-secondary)" }}>
+                  Mobile uses single-column stacking; tablet expands to a 2-column layout with the map on left and content on right. The grid adapts layout without rethinking information hierarchy.
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        <ScrollDrivenProductShowcase
+          dashboardImage={myshakeDashboard}
+          annotations={[
+            {
+              threshold: 0.15,
+              side: "right",
+              title: "Swipe Between Pinned Contacts",
+              description: "Users can quickly swipe left/right to check each pinned loved one's status. No searching, no waiting.",
+              image: myshakeCarouselNote,
+            },
+            {
+              threshold: 0.5,
+              side: "left",
+              title: "One-Tap Prepare Mode",
+              description: "Before an earthquake, users can arm alerts and set preferences. When shaking starts, the app is ready.",
+              image: myshakePrepareNote,
+            },
+            {
+              threshold: 0.8,
+              side: "right",
+              title: "Clear Alert Hierarchy",
+              description: "EEW (seconds before shaking) and CEN (post-earthquake) are visually distinct. No confusion.",
+              image: myshakeNotificationsNote,
+            },
+          ]}
+        />
+
+        <section style={{ paddingTop: 60, paddingBottom: 60 }} className="section-reveal">
+          <Reveal dramatic>
+            <div style={{ marginBottom: 10 }}>
+              <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", marginBottom: 12, display: "block" }}>
+                Key Design Details
+              </span>
+            </div>
+            <SkillRow items={["Micro-interactions", "Accessibility", "User Testing Refinements"]} />
+          </Reveal>
+
+          <Reveal>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+              <div>
+                <img
+                  src={myshakeAlert}
+                  alt="Alert notification screens showing EEW vs CEN differentiation"
+                  style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }}
+                />
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
+                  Alert Flows
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
+                  EEW and CEN alerts visually distinct
+                </div>
+              </div>
+              <div>
+                <img
+                  src={myshakeDetails}
+                  alt="Detailed information screens with optimized content hierarchy"
+                  style={{ width: "100%", height: "auto", borderRadius: tokens.radius.md, marginBottom: 16 }}
+                />
+                <div style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.medium, color: "var(--text-dark)", marginBottom: 4 }}>
+                  Detail Screens
+                </div>
+                <div style={{ fontFamily: tokens.font.sans, fontSize: "13px", color: "var(--text-secondary)" }}>
+                  Information hierarchy optimized for crisis moments
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div style={{ marginTop: 60 }}>
+              <div style={{ marginBottom: 32 }}>
+                <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", marginBottom: 12, display: "block" }}>
+                  MyShake's first design system
+                </span>
+              </div>
+              <img
+                src={myshakeDesignSystem}
+                alt="MyShake design system with typography, color palette, button states, and component library"
+                style={{
+                  width: "100%",
+                  maxWidth: "100%",
+                  height: "auto",
+                  borderRadius: tokens.radius.md,
+                  display: "block",
+                }}
+              />
+            </div>
+          </Reveal>
+        </section>
+      </section>
+
+      {/* Reflection */}
+      <section id="reflection" style={{ paddingTop: 120, paddingBottom: 120 }} className="section-reveal">
+        <Reveal dramatic>
+          <div style={{ marginBottom: 12 }}>
+            <span style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.sm, fontWeight: tokens.weight.regular, color: "var(--text-muted)", display: "block" }}>
+              Reflection
+            </span>
+          </div>
+          <h2
+            style={{
+              fontFamily: tokens.font.sans,
+              fontSize: tokens.text.xl,
+              fontWeight: tokens.weight.medium,
+              color: "var(--text-dark)",
+              lineHeight: tokens.leading.snug,
+              margin: "0 0 8px",
+              maxWidth: 480,
+            }}
+          >
+            This project taught me the power of saying no and advocating for research
+          </h2>
+          <PullQuote>This is my proudest work.</PullQuote>
+        </Reveal>
+        <Reveal>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 480 }}>
+            The most important moment was saying no to immediate redesign pressure and advocating for research instead. Those 10 user interviews and 50+ survey responses fundamentally shaped the information architecture. We built MyShake's first design system—every component battle-tested for crisis moments. Cutting user friction from 7 steps to 3, increasing engagement by 45%, and seeing the app shipped with our foundation meant everything.
+          </p>
+          <p style={{ fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 24, maxWidth: 480 }}>
+            I'm deeply proud of what we took as a win together. This redesign shipped because my two engineering partners believed in user research, ruthless iteration, and accessibility-first thinking. To the team: thank you for building something that helps people stay safe during earthquakes.
+          </p>
+        </Reveal>
+
+        <Reveal>
+          <div style={{ marginTop: 40 }}>
+            <img
+              src={myshakeTeam}
+              alt="MyShake team celebrating the project launch"
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                aspectRatio: "16/9",
+                objectFit: "cover",
+                borderRadius: tokens.radius.md,
+                display: "block",
+              }}
+            />
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Next Case Study */}
+      <section style={{ paddingTop: 96, paddingBottom: 100 }} className="section-reveal">
+        <Reveal dramatic>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
+            <div>
+              <div
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: tokens.text.sm,
+                  fontWeight: tokens.weight.regular,
+                  color: "var(--text-muted)",
+                  marginBottom: 12,
+                }}
+              >
+                Next case study
+              </div>
+              <h2
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontWeight: tokens.weight.medium,
+                  fontSize: tokens.text.lg,
+                  color: "var(--text-dark)",
+                  margin: 0,
+                }}
+              >
+                NVIDIA AI UX Agent
+              </h2>
+              <p
+                style={{
+                  fontFamily: tokens.font.sans,
+                  fontSize: tokens.text.base,
+                  color: "var(--text-secondary)",
+                  margin: "8px 0 0",
+                  maxWidth: 400,
+                }}
+              >
+                Designing an AI UX agent that engineers actually trust.
+              </p>
+            </div>
+            <a
+              href="/nvidia-ai-ux-agent"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 48,
+                height: 48,
+                borderRadius: "50%",
+                color: "var(--text-dark)",
+                cursor: "pointer",
+                fontSize: 20,
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "var(--surface-light)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
+              }}
+            >
+              →
+            </a>
+          </div>
+        </Reveal>
+      </section>
     </CaseStudyShell>
   );
 };
