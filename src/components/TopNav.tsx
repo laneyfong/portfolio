@@ -247,6 +247,15 @@ const TopNav: FC = () => {
           text-decoration: none !important;
         }
 
+        .laneyLM-btn {
+          transition: all 0.8s ease;
+        }
+
+        .laneyLM-btn:hover svg path {
+          fill: #4060c8 !important;
+          transition: fill 0.8s ease;
+        }
+
         @media (max-width: 640px) {
           .top-nav-brand {
             font-size: 14px;
@@ -317,6 +326,7 @@ const TopNav: FC = () => {
 
           {/* LaneyLM Icon Button - Toggle Chat */}
           <button
+            className="laneyLM-btn"
             onClick={() => setIsOpen(!isOpen)}
             style={{
               display: "flex",
@@ -333,12 +343,6 @@ const TopNav: FC = () => {
               flexShrink: 0,
             }}
             onMouseEnter={(e) => {
-              // Change icon color to blue
-              const paths = e.currentTarget.querySelectorAll("svg path");
-              paths.forEach((path) => {
-                (path as SVGElement).style.transition = "fill 0.8s ease";
-                path.setAttribute("fill", "#4060c8");
-              });
               // Show text
               const textSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
               if (textSpan) {
@@ -347,12 +351,6 @@ const TopNav: FC = () => {
               }
             }}
             onMouseLeave={(e) => {
-              // Change icon color back to grey
-              const paths = e.currentTarget.querySelectorAll("svg path");
-              paths.forEach((path) => {
-                (path as SVGElement).style.transition = "fill 0.8s ease";
-                path.setAttribute("fill", "#808080");
-              });
               // Hide text
               const textSpan = e.currentTarget.querySelector(".laneyLM-text") as HTMLElement;
               if (textSpan) {
