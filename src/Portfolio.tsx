@@ -116,8 +116,8 @@ const Portfolio: FC = () => {
           position: relative;
           background: linear-gradient(
             180deg,
-            rgba(64, 96, 200, 0.02) 0%,
-            rgba(220, 120, 60, 0.01) 50%,
+            rgba(64, 96, 200, 0.1) 0%,
+            rgba(220, 120, 60, 0.08) 50%,
             transparent 100%
           );
         }
