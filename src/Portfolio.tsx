@@ -83,33 +83,29 @@ const Portfolio: FC = () => {
         }}
       />
       <style>{`
-        @keyframes dotPulse {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-          50% {
-            transform: scale(1.3);
-            opacity: 0.6;
-          }
+        .cta-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 16px;
+          padding: 10px 20px;
+          background: #4060c8;
+          color: #FFFFFF;
+          border: none;
+          border-radius: 24px;
+          font-family: ${tokens.font.sans};
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: "-0.05em";
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
         }
 
-        @keyframes dotColorShift {
-          0%, 100% {
-            background-color: #4060c8;
-          }
-          50% {
-            background-color: rgba(220, 120, 60, 0.8);
-          }
-        }
-
-        .section-indicator {
-          width: 12px;
-          height: 12px;
-          margin: 60px auto;
-          border-radius: 50%;
-          background-color: #4060c8;
-          animation: dotPulse 2s ease-in-out infinite, dotColorShift 4s ease-in-out infinite;
+        .cta-button:hover {
+          background: #2d4699;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(64, 96, 200, 0.3);
         }
 
         .work-section-bg {
@@ -425,14 +421,16 @@ const Portfolio: FC = () => {
             color: "#808080",
             margin: 0,
             padding: 0,
+            marginBottom: "16px",
           }}>
             Prev. @ MyShake
           </p>
+          <a href="#work" className="cta-button">
+            View Work →
+          </a>
         </div>
 
       </main>
-
-      <div className="section-indicator"></div>
 
       <div className="work-section-bg">
         <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
