@@ -233,6 +233,7 @@ const VeriSupplyCard: FC<VeriSupplyCardProps> = ({
               lineHeight: 1.4,
               wordWrap: "break-word",
               overflowWrap: "break-word",
+              letterSpacing: "-0.02em",
             }}
           >
             Validated that procurement decisions are driven by{" "}

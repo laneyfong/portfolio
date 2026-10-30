@@ -286,6 +286,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
                   wordWrap: "break-word",
                   overflowWrap: "break-word",
                   flex: 1,
+                  letterSpacing: "-0.02em",
                 }}
               >
                 Internal tooling to conduct

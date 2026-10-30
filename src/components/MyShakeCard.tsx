@@ -211,6 +211,7 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
               lineHeight: 1.4,
               wordWrap: "break-word",
               overflowWrap: "break-word",
+              letterSpacing: "-0.02em",
             }}
           >
             {boldifyMetrics(captionParts[0], boldMetrics)}

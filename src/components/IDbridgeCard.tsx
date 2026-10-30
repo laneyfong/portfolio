@@ -280,6 +280,7 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
               lineHeight: 1.4,
               wordWrap: "break-word",
               overflowWrap: "break-word",
+              letterSpacing: "-0.02em",
             }}
           >
             {captionParts[0]}
