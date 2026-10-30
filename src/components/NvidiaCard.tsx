@@ -36,13 +36,6 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
     }
   }, [isActive]);
 
-  // Pause video when card is blurred (another card is hovered)
-  useEffect(() => {
-    if (videoRef.current && isAnyCardHovered && !isThisCardHovered) {
-      videoRef.current.pause();
-    }
-  }, [isAnyCardHovered, isThisCardHovered]);
-
   return (
     <>
       <style>{`
