@@ -83,6 +83,33 @@ const Portfolio: FC = () => {
         }}
       />
       <style>{`
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        .section-divider {
+          width: 60px;
+          height: 2px;
+          margin: 60px auto;
+          background: linear-gradient(
+            90deg,
+            rgba(64, 96, 200, 0.3) 0%,
+            rgba(220, 120, 60, 0.4) 50%,
+            rgba(64, 96, 200, 0.3) 100%
+          );
+          background-size: 200% 100%;
+          animation: gradientShift 6s ease-in-out infinite;
+          opacity: 0.7;
+        }
+
         .work-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -392,6 +419,8 @@ const Portfolio: FC = () => {
         </div>
 
       </main>
+
+      <div className="section-divider"></div>
 
       <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
         <section id="work" style={{ width: "100%" }}>
