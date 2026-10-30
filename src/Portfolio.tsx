@@ -96,18 +96,18 @@ const Portfolio: FC = () => {
         }
 
         .section-divider {
-          width: 60px;
-          height: 2px;
-          margin: 60px auto;
+          width: 300px;
+          height: 3px;
+          margin: 80px auto;
           background: linear-gradient(
             90deg,
             rgba(64, 96, 200, 0.3) 0%,
-            rgba(220, 120, 60, 0.4) 50%,
+            rgba(220, 120, 60, 0.5) 50%,
             rgba(64, 96, 200, 0.3) 100%
           );
           background-size: 200% 100%;
           animation: gradientShift 6s ease-in-out infinite;
-          opacity: 0.7;
+          opacity: 0.8;
         }
 
         .work-grid {
