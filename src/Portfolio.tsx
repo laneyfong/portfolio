@@ -83,41 +83,6 @@ const Portfolio: FC = () => {
         }}
       />
       <style>{`
-        .cta-button {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          margin-top: 16px;
-          padding: 10px 20px;
-          background: #4060c8;
-          color: #FFFFFF;
-          border: none;
-          border-radius: 24px;
-          font-family: ${tokens.font.sans};
-          font-size: 14px;
-          font-weight: 500;
-          letter-spacing: "-0.05em";
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-decoration: none;
-        }
-
-        .cta-button:hover {
-          background: #2d4699;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(64, 96, 200, 0.3);
-        }
-
-        .work-section-bg {
-          position: relative;
-          background: linear-gradient(
-            180deg,
-            rgba(64, 96, 200, 0.1) 0%,
-            rgba(220, 120, 60, 0.08) 50%,
-            transparent 100%
-          );
-        }
-
         .work-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -421,19 +386,14 @@ const Portfolio: FC = () => {
             color: "#808080",
             margin: 0,
             padding: 0,
-            marginBottom: "16px",
           }}>
             Prev. @ MyShake
           </p>
-          <a href="#work" className="cta-button">
-            View Work →
-          </a>
         </div>
 
       </main>
 
-      <div className="work-section-bg">
-        <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
+      <div ref={workSectionRef} id="work-container" className="work-section-reveal" style={{ width: "100%", paddingTop: "8px", paddingBottom: "clamp(200px, 20vw, 400px)", paddingLeft: "52px", paddingRight: "52px", boxSizing: "border-box" }}>
         <section id="work" style={{ width: "100%" }}>
           <FeaturedWorkShowcase
             className={`work-section-cards ${workVisible ? "visible" : ""} ${scrollY > 400 ? "scrolled" : ""} ${scrollY > 1400 ? "scrolled-out" : ""}`}
@@ -463,7 +423,6 @@ const Portfolio: FC = () => {
             <NvidiaCard />
           </FeaturedWorkShowcase>
         </section>
-      </div>
       </div>
 
       <div className="content-reveal">
