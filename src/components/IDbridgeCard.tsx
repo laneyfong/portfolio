@@ -40,13 +40,13 @@ const IDbridgeCard: FC<IDbridgeCardProps> = ({
 
   useEffect(() => {
     if (videoRef.current) {
-      if (isActive) {
+      if (isThisCardHovered) {
         videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
       }
     }
-  }, [isActive]);
+  }, [isThisCardHovered]);
 
   return (
     <>

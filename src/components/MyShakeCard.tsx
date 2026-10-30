@@ -66,13 +66,13 @@ const MyShakeCard: FC<MyShakeCardProps> = ({
 
   useEffect(() => {
     if (videoRef.current) {
-      if (isActive) {
+      if (isThisCardHovered) {
         videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
       }
     }
-  }, [isActive]);
+  }, [isThisCardHovered]);
 
   const isDesktop = window.innerWidth > 768;
 
