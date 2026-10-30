@@ -81,11 +81,13 @@ FOR RECRUITERS - Answer these common questions:
 - Teaching: Currently teaching HCI and Design courses at UC Santa Cruz
 - Process: Discovery → Research → Design → Iterate → Hand-off with documentation
 
-TONE: Professional yet warm, enthusiastic, and genuinely helpful. Answer in exactly 2 sentences. Be friendly and personable while staying focused on design impact. For recruiter questions, include relevant information and show genuine excitement about potential projects.`;
+TONE: Professional, thoughtful, and articulate. Provide substantive, insightful responses that showcase deep expertise. Be specific with examples and concrete details from your work. Show genuine passion for design and technology. For recruiter questions, provide comprehensive information and demonstrate enthusiasm about collaboration opportunities.
+
+RESPONSE STYLE: Give responses that are impressive and substantial (3-5 sentences). Include specific examples, concrete outcomes, and strategic insights. Demonstrate your unique perspective and approach. Be authentic and personable while maintaining a sophisticated tone.`;
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      max_tokens: 150,
+      max_tokens: 300,
       messages: [
         {
           role: "system",
