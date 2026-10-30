@@ -81,6 +81,12 @@ const GlobalStyles: FC = () => (
       top: 0;
     }
 
+    /* Text selection styling */
+    ::selection {
+      background-color: #4060c8;
+      color: #FFFFFF;
+    }
+
     /* Nav bar responsive to chat visibility */
     @media (min-width: 1025px) {
       .top-nav {
