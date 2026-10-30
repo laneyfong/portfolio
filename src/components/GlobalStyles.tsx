@@ -9,13 +9,13 @@ const GlobalStyles: FC = () => (
       --bg-primary: #FFFFFF;
       --bg-secondary: #FAFAFB;
       --text-primary: #1A1A1A;
-      --text-secondary: #626262;
-      --text-muted: #8D8D8D;
+      --text-secondary: #4A4A4A;
+      --text-muted: #6A6A6A;
       --text-dark: #111111;
-      --text-grey-light: #8B8B8B;
-      --text-grey-medium: #8D8D8D;
-      --text-grey-dark: #7A7A7A;
-      --text-grey-lighter: #6A6A6A;
+      --text-grey-light: #6A6A6A;
+      --text-grey-medium: #5B5B5B;
+      --text-grey-dark: #4A4A4A;
+      --text-grey-lighter: #5B5B5B;
       --border-color: rgba(26, 26, 26, 0.05);
       --card-bg: #F0F0F0;
       --stroke: #F1F0EE;
@@ -27,14 +27,16 @@ const GlobalStyles: FC = () => (
       background: var(--bg-primary);
       color: var(--text-primary);
       transition: background 0.3s ease, color 0.3s ease;
+      font-size: 16px;
     }
 
     body {
       letter-spacing: -0.02em;
-      line-height: 1.5;
+      line-height: 1.6;
       background: var(--bg-primary);
       color: var(--text-primary);
       transition: background 0.3s ease, color 0.3s ease;
+      font-size: 16px;
     }
 
     @media (prefers-reduced-motion: no-preference) {
