@@ -198,11 +198,11 @@ const TopNav: FC = () => {
           margin: 16px 0 0;
           padding: 10px 0;
           list-style: none;
-          border-radius: 14px;
-          background: rgba(26, 26, 26, 0.035);
+          border-radius: 0;
+          background: rgba(26, 26, 26, 0.08);
           backdrop-filter: blur(0px);
           -webkit-backdrop-filter: blur(0px);
-          border: 0.5px solid rgba(26, 26, 26, 0.06);
+          border: none;
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
