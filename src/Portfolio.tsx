@@ -11,12 +11,42 @@ import Footer from "./components/Footer";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import kinoSvg from "./assets/kino.svg";
 
+// Hoverable phrases in the hero headline. Hovering (or focusing) one swaps the
+// subtext under the headline for its `detail`.
+const HEADLINE_HIGHLIGHTS = [
+  {
+    text: "0 to 1",
+    detail: "I take ideas from zero to a shipped product, from first research and sketches through launch.",
+  },
+  {
+    text: "empathize with humans",
+    detail: "HCI is about understanding that technology is designed to be used by humans like you and me, so I focus on experiences, which is something I deeply value.",
+  },
+  {
+    text: "bridge complex systems",
+    detail: "I translate complicated systems, like data, policy, and multi-team infrastructure, into clear experiences people can actually use.",
+  },
+  {
+    text: "drive growth",
+    detail: "I tie design decisions to measurable outcomes like engagement, retention, and adoption.",
+  },
+  {
+    text: "scale with meticulous craft",
+    detail: "Good design has to hold up as products grow, so I build systems and details that stay consistent at every size.",
+  },
+];
+
+// Headline split into plain strings and indexes into HEADLINE_HIGHLIGHTS.
+const HEADLINE_PARTS: (string | number)[] = [
+  "I design ", 0, " digital experiences that ", 1, ", ", 2, ", ", 3, ", and ", 4,
+];
 
 const Portfolio: FC = () => {
   const { ref: workSectionRef, isVisible: workVisible } = useScrollReveal();
   const [videoReady] = useState(true);
   const [, setHoveredCaseStudy] = useState<string | null>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [activeHighlight, setActiveHighlight] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -376,7 +406,38 @@ const Portfolio: FC = () => {
             padding: 0,
             textWrap: "balance",
           }}>
-            I design <strong style={{ fontWeight: 500, color: "var(--text-dark)" }}>0 to 1</strong> digital experiences that empathize with humans, bridge complex systems, drive growth, and scale with meticulous craft
+            {HEADLINE_PARTS.map((part, i) => {
+              if (typeof part === "string") {
+                return (
+                  <span key={i} style={{ color: activeHighlight === null ? "#BEBEBE" : "#6E6E6E", transition: "color 0.2s ease" }}>
+                    {part}
+                  </span>
+                );
+              }
+              const isActive = activeHighlight === part;
+              return (
+                <span
+                  key={i}
+                  tabIndex={0}
+                  onMouseEnter={() => setActiveHighlight(part)}
+                  onMouseLeave={() => setActiveHighlight(null)}
+                  onFocus={() => setActiveHighlight(part)}
+                  onBlur={() => setActiveHighlight(null)}
+                  style={{
+                    fontWeight: 500,
+                    color: isActive
+                      ? "var(--text-dark)"
+                      : activeHighlight === null
+                        ? "#BEBEBE"
+                        : "#6E6E6E",
+                    transition: "color 0.2s ease",
+                    cursor: "default",
+                  }}
+                >
+                  {HEADLINE_HIGHLIGHTS[part].text}
+                </span>
+              );
+            })}
           </h1>
           <p style={{
             fontFamily: tokens.font.sans,
@@ -387,7 +448,7 @@ const Portfolio: FC = () => {
             margin: 0,
             padding: 0,
           }}>
-            Prev. @ MyShake
+            {activeHighlight === null ? "Prev. @ MyShake" : HEADLINE_HIGHLIGHTS[activeHighlight].detail}
           </p>
         </div>
 
