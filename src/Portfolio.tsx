@@ -409,7 +409,7 @@ const Portfolio: FC = () => {
             {HEADLINE_PARTS.map((part, i) => {
               if (typeof part === "string") {
                 return (
-                  <span key={i} style={{ color: activeHighlight === null ? "#595959" : "#4D4D4D", transition: "color 0.2s ease" }}>
+                  <span key={i} style={{ color: activeHighlight === null ? "#595959" : "#939393", transition: "color 0.2s ease" }}>
                     {part}
                   </span>
                 );
@@ -429,7 +429,7 @@ const Portfolio: FC = () => {
                       ? "var(--text-dark)"
                       : activeHighlight === null
                         ? "#595959"
-                        : "#4D4D4D",
+                        : "#939393",
                     transition: "color 0.2s ease",
                     cursor: "default",
                   }}
