@@ -9,10 +9,20 @@ interface NavItem {
   label: string;
   path: string;
   external?: boolean;
+  children?: { label: string; path: string }[];
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Work", path: "/" },
+  {
+    label: "Work",
+    path: "/",
+    children: [
+      { label: "MyShake", path: "/myshake-design" },
+      { label: "VeriSupply", path: "/verisupply" },
+      { label: "IDBridge", path: "/idbridge-design" },
+      { label: "NVIDIA", path: "/nvidia-ai-ux-agent" },
+    ],
+  },
   { label: "About", path: "/about" },
   { label: "Lab", path: "/lab" },
   { label: "Resume", path: RESUME_URL, external: true },
@@ -23,6 +33,7 @@ const TopNav: FC = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [workMenuOpen, setWorkMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen } = useChatState();
 
@@ -165,6 +176,65 @@ const TopNav: FC = () => {
           color: var(--text-primary);
         }
 
+        .top-nav-dropdown-wrap {
+          position: relative;
+        }
+
+        .top-nav-dropdown {
+          position: absolute;
+          top: 100%;
+          left: -12px;
+          min-width: 180px;
+          margin: 10px 0 0;
+          padding: 8px 0;
+          list-style: none;
+          background: rgba(255, 255, 255, 0.96);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 0.5px solid var(--border-color);
+          border-radius: 8px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+          opacity: 0;
+          transform: translateY(-6px);
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        }
+
+        .top-nav-dropdown.open {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+          pointer-events: auto;
+        }
+
+        .top-nav-dropdown-link {
+          display: block;
+          padding: 8px 16px;
+          font-family: 'Manrope', ${tokens.font.sans};
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: -0.05em;
+          color: #333333;
+          text-decoration: none;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: color 0.2s ease, background-color 0.2s ease;
+          outline: none;
+        }
+
+        .top-nav-dropdown-link:hover,
+        .top-nav-dropdown-link:focus-visible {
+          color: #4060c8;
+          background: rgba(64, 96, 200, 0.06);
+        }
+
+        .mobile-submenu-item {
+          padding-left: 32px !important;
+          font-size: 13px !important;
+          color: #666666 !important;
+        }
+
         .mobile-menu-btn {
           display: none;
           background: none;
@@ -267,7 +337,7 @@ const TopNav: FC = () => {
           }
 
           .mobile-menu.open {
-            max-height: 300px;
+            max-height: 480px;
           }
 
           .mobile-menu-item {
@@ -303,25 +373,77 @@ const TopNav: FC = () => {
           </div>
 
           <ul className="top-nav-links">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.path}
-                  className={`top-nav-link ${!item.external && isActive(item.path) ? "active" : ""}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (item.external) {
-                      window.open(item.path, "_blank");
-                    } else {
-                      navigate(item.path);
-                      setMobileMenuOpen(false);
+            {NAV_ITEMS.map((item) => {
+              if (!item.children) {
+                return (
+                  <li key={item.label}>
+                    <a
+                      href={item.path}
+                      className={`top-nav-link ${!item.external && isActive(item.path) ? "active" : ""}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (item.external) {
+                          window.open(item.path, "_blank");
+                        } else {
+                          navigate(item.path);
+                          setMobileMenuOpen(false);
+                        }
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              }
+
+              const isDropdownOpen = workMenuOpen;
+              return (
+                <li
+                  key={item.label}
+                  className="top-nav-dropdown-wrap"
+                  onMouseEnter={() => setWorkMenuOpen(true)}
+                  onMouseLeave={() => setWorkMenuOpen(false)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                      setWorkMenuOpen(false);
                     }
                   }}
                 >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+                  <a
+                    href={item.path}
+                    className={`top-nav-link ${isActive(item.path) ? "active" : ""}`}
+                    aria-haspopup="true"
+                    aria-expanded={isDropdownOpen}
+                    onFocus={() => setWorkMenuOpen(true)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate(item.path);
+                      setWorkMenuOpen(false);
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                  <ul className={`top-nav-dropdown ${isDropdownOpen ? "open" : ""}`}>
+                    {item.children.map((child) => (
+                      <li key={child.path}>
+                        <a
+                          href={child.path}
+                          className="top-nav-dropdown-link"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            navigate(child.path);
+                            setWorkMenuOpen(false);
+                          }}
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })}
           </ul>
 
           {/* LaneyLM Icon Button - Toggle Chat */}
@@ -406,25 +528,43 @@ const TopNav: FC = () => {
 
       {mobileMenuOpen && (
         <ul className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
-          {NAV_ITEMS.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.path}
-                className={`mobile-menu-item ${!item.external && isActive(item.path) ? "active" : ""}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (item.external) {
-                    window.open(item.path, "_blank");
-                  } else {
-                    navigate(item.path);
-                  }
-                  setMobileMenuOpen(false);
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {NAV_ITEMS.flatMap((item) => {
+            const parent = (
+              <li key={item.label}>
+                <a
+                  href={item.path}
+                  className={`mobile-menu-item ${!item.external && isActive(item.path) ? "active" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.external) {
+                      window.open(item.path, "_blank");
+                    } else {
+                      navigate(item.path);
+                    }
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+            const children = (item.children ?? []).map((child) => (
+              <li key={child.path}>
+                <a
+                  href={child.path}
+                  className="mobile-menu-item mobile-submenu-item"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(child.path);
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  {child.label}
+                </a>
+              </li>
+            ));
+            return [parent, ...children];
+          })}
         </ul>
       )}
     </>
