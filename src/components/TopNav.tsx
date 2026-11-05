@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { CSSProperties, FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
@@ -180,32 +180,52 @@ const TopNav: FC = () => {
           position: relative;
         }
 
+        /* Invisible bridge so the pointer can travel from "Work" into the panel. */
+        .top-nav-dropdown-wrap::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: -12px;
+          right: -12px;
+          height: 18px;
+        }
+
         .top-nav-dropdown {
           position: absolute;
           top: 100%;
           left: -12px;
-          min-width: 180px;
-          margin: 10px 0 0;
-          padding: 8px 0;
+          min-width: 200px;
+          margin: 16px 0 0;
+          padding: 10px 0;
           list-style: none;
-          background: rgba(255, 255, 255, 0.96);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          border: 0.5px solid var(--border-color);
-          border-radius: 8px;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+          border-radius: 14px;
+          background: rgba(26, 26, 26, 0.035);
+          backdrop-filter: blur(0px);
+          -webkit-backdrop-filter: blur(0px);
+          border: 0.5px solid rgba(26, 26, 26, 0.06);
           opacity: 0;
-          transform: translateY(-6px);
           visibility: hidden;
           pointer-events: none;
-          transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+          /* Closing: quick and quiet. */
+          transition:
+            opacity 0.35s ease,
+            backdrop-filter 0.35s ease,
+            -webkit-backdrop-filter 0.35s ease,
+            visibility 0s linear 0.35s;
         }
 
         .top-nav-dropdown.open {
           opacity: 1;
-          transform: translateY(0);
           visibility: visible;
           pointer-events: auto;
+          backdrop-filter: blur(22px) saturate(140%);
+          -webkit-backdrop-filter: blur(22px) saturate(140%);
+          /* Opening: slow, so the glass blur fades in and the panel settles. */
+          transition:
+            opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+            backdrop-filter 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+            -webkit-backdrop-filter 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+            visibility 0s;
         }
 
         .top-nav-dropdown-link {
@@ -219,14 +239,29 @@ const TopNav: FC = () => {
           text-decoration: none;
           white-space: nowrap;
           cursor: pointer;
-          transition: color 0.2s ease, background-color 0.2s ease;
           outline: none;
+          opacity: 0;
+          transform: translateY(-8px);
+          /* Closing: items fade out together, quickly. */
+          transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            color 0.4s ease;
+        }
+
+        /* Opening: items arrive one at a time, top to bottom. */
+        .top-nav-dropdown.open .top-nav-dropdown-link {
+          opacity: 1;
+          transform: translateY(0);
+          transition:
+            opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) var(--item-delay, 0ms),
+            transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) var(--item-delay, 0ms),
+            color 0.4s ease;
         }
 
         .top-nav-dropdown-link:hover,
         .top-nav-dropdown-link:focus-visible {
           color: #4060c8;
-          background: rgba(64, 96, 200, 0.06);
         }
 
         .mobile-submenu-item {
@@ -425,8 +460,11 @@ const TopNav: FC = () => {
                     {item.label}
                   </a>
                   <ul className={`top-nav-dropdown ${isDropdownOpen ? "open" : ""}`}>
-                    {item.children.map((child) => (
-                      <li key={child.path}>
+                    {item.children.map((child, index) => (
+                      <li
+                        key={child.path}
+                        style={{ "--item-delay": `${250 + index * 160}ms` } as CSSProperties}
+                      >
                         <a
                           href={child.path}
                           className="top-nav-dropdown-link"
