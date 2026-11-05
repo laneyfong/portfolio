@@ -20,7 +20,7 @@ const HEADLINE_HIGHLIGHTS = [
   },
   {
     text: "empathize with humans",
-    detail: "HCI is about understanding that technology is designed to be used by humans like you and me, so I focus on experiences, which is something I deeply value.",
+    detail: "Technology only works when it's built for the people using it. Human-computer interaction is about understanding how real people think, feel, and behave, so I start every design with empathy and care deeply about the experience it creates.",
   },
   {
     text: "bridge complex systems",
