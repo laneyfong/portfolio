@@ -20,7 +20,7 @@ const HEADLINE_HIGHLIGHTS = [
   },
   {
     text: "empathize with humans",
-    detail: "Technology only works when it's built for the people using it. Human-computer interaction is about understanding how real people think, feel, and behave, so I start every design with empathy and care deeply about the experience it creates.",
+    detail: "Technology only works when it's built around how real people think, feel, and behave, so I start every design with empathy.",
   },
   {
     text: "bridge complex systems",
