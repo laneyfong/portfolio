@@ -263,6 +263,16 @@ const Portfolio: FC = () => {
           }
         }
 
+        /* Headline subtext: a slow, soft crossfade when the hovered phrase changes. */
+        @keyframes subtextFade {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
         @keyframes fadeOut {
           from {
             opacity: 1;
@@ -366,7 +376,8 @@ const Portfolio: FC = () => {
           .badge-reveal,
           .hero-reveal,
           .content-reveal,
-          .work-section-reveal {
+          .work-section-reveal,
+          .headline-subtext {
             animation: none !important;
             opacity: 1 !important;
             transform: none !important;
@@ -448,7 +459,13 @@ const Portfolio: FC = () => {
             margin: 0,
             padding: 0,
           }}>
-            {activeHighlight === null ? "Prev. @ MyShake" : HEADLINE_HIGHLIGHTS[activeHighlight].detail}
+            <span
+              key={activeHighlight ?? "default"}
+              className="headline-subtext"
+              style={{ display: "inline-block", animation: "subtextFade 1.1s ease-in-out both" }}
+            >
+              {activeHighlight === null ? "Prev. @ MyShake" : HEADLINE_HIGHLIGHTS[activeHighlight].detail}
+            </span>
           </p>
         </div>
 
