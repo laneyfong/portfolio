@@ -199,7 +199,7 @@ const TopNav: FC = () => {
           padding: 10px 0;
           list-style: none;
           border-radius: 0;
-          background: rgba(26, 26, 26, 0.08);
+          background: rgba(26, 26, 26, 0.03);
           backdrop-filter: blur(0px);
           -webkit-backdrop-filter: blur(0px);
           border: none;
