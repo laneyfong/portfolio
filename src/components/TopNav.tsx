@@ -199,7 +199,7 @@ const TopNav: FC = () => {
           padding: 10px 0;
           list-style: none;
           border-radius: 0;
-          background: rgba(26, 26, 26, 0.03);
+          background: rgba(26, 26, 26, 0.015);
           backdrop-filter: blur(0px);
           -webkit-backdrop-filter: blur(0px);
           border: none;
@@ -235,7 +235,7 @@ const TopNav: FC = () => {
           font-size: 14px;
           font-weight: 500;
           letter-spacing: -0.05em;
-          color: #333333;
+          color: #808080;
           text-decoration: none;
           white-space: nowrap;
           cursor: pointer;
