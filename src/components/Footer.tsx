@@ -156,7 +156,7 @@ const Footer: FC = () => (
             margin: "0 0 16px 0",
           }}
         >
-          Designed with intention
+          Designed intentionally with Figma + Claude + Cursor
         </p>
         <img
           src={nameLogoCharacter}
