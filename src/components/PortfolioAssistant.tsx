@@ -265,6 +265,7 @@ export const PortfolioAssistant = () => {
 
       {/* Drag Handle */}
       <div
+        data-chat-drag
         onMouseDown={handleDragStart}
         style={{
           position: "fixed",
@@ -282,6 +283,7 @@ export const PortfolioAssistant = () => {
       {/* Right Sidebar Chat - 25% responsive width */}
       <div
         ref={sidebarRef}
+        data-chat-sidebar
         style={{
           position: "fixed",
           right: 0,
@@ -394,7 +396,7 @@ export const PortfolioAssistant = () => {
                   }}
                 />
               )}
-              <div style={{ display: "flex", flexDirection: "column", gap: "4px", flex: 1, maxWidth: "346px" }}>
+              <div data-chat-bubble style={{ display: "flex", flexDirection: "column", gap: "4px", flex: 1, maxWidth: "346px" }}>
                 <div
                   style={{
                     padding: "14px 16px",
@@ -641,11 +643,32 @@ export const PortfolioAssistant = () => {
         `}</style>
       </div>
 
-      {/* Hide on tablets/mobile */}
+      {/* Responsive: the sidebar stays usable on tablets and phones.
+          Tablets (<=1024px): drag handle hidden, sidebar keeps a fixed width.
+          Phones (<=768px): sidebar fills the screen when open and bubbles use the full width. */}
       <style>{`
         @media (max-width: 1024px) {
-          div[style*="position: fixed"][style*="right: 0"] {
+          [data-chat-drag] {
             display: none !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          [data-chat-peek] {
+            padding: 12px 8px !important;
+          }
+
+          [data-chat-sidebar] {
+            width: 100% !important;
+            min-width: 0 !important;
+            padding: 56px 20px 20px !important;
+            border-left: none !important;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          [data-chat-bubble] {
+            max-width: 100% !important;
           }
         }
       `}</style>
