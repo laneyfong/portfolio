@@ -146,6 +146,21 @@ const Footer: FC = () => (
       }}
     >
       <div>
+        <p
+          style={{
+            fontFamily: tokens.font.sans,
+            fontWeight: 400,
+            fontSize: "14px",
+            lineHeight: "21px",
+            color: "#FFFFFF",
+            letterSpacing: "-0.05em",
+            margin: "0 0 16px 0",
+          }}
+        >
+          Designed with intention,
+          <br />
+          built with Figma, Claude, and Cursor
+        </p>
         <img
           src={nameLogoCharacter}
           alt="Name logo character"
@@ -155,18 +170,6 @@ const Footer: FC = () => (
             display: "block",
           }}
         />
-        <p
-          style={{
-            fontFamily: tokens.font.sans,
-            fontWeight: 400,
-            fontSize: "14px",
-            color: "#FFFFFF",
-            letterSpacing: "-0.05em",
-            margin: "16px 0 0 0",
-          }}
-        >
-          Designed with intention, built with Figma, Claude, and Cursor
-        </p>
       </div>
 
       <div>
