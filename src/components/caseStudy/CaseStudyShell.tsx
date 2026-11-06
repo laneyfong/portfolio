@@ -153,6 +153,9 @@ export const CaseStudyShell: FC<CaseStudyShellProps> = ({ sections, highlights, 
           .case-main { padding-top: 132px !important; }
         }
         @media (max-width: 768px) {
+          /* Let the main column shrink to the screen instead of being pushed wider by content. */
+          .case-main, .case-content-wrapper { min-width: 0 !important; }
+
           /* Ensure minimum 48x48px touch targets on mobile */
           button, a, input, .case-btn-press { min-width: 48px !important; min-height: 48px !important; }
 
