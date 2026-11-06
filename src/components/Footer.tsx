@@ -146,6 +146,15 @@ const Footer: FC = () => (
       }}
     >
       <div>
+        <img
+          src={nameLogoCharacter}
+          alt="Name logo character"
+          style={{
+            maxWidth: "120px",
+            height: "auto",
+            display: "block",
+          }}
+        />
         <p
           style={{
             fontFamily: tokens.font.sans,
@@ -153,19 +162,11 @@ const Footer: FC = () => (
             fontSize: "14px",
             color: "#FFFFFF",
             letterSpacing: "-0.05em",
-            margin: "0 0 16px 0",
+            margin: "16px 0 0 0",
           }}
         >
           Designed with intention, built with Figma, Claude, and Cursor
         </p>
-        <img
-          src={nameLogoCharacter}
-          alt="Name logo character"
-          style={{
-            maxWidth: "120px",
-            height: "auto",
-          }}
-        />
       </div>
 
       <div>
