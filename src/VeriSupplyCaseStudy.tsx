@@ -238,7 +238,17 @@ const VeriSupplyCaseStudy: FC = () => {
               When every decision has a deadline.
             </span>
           </div>
+          <style>{`
+            @media (max-width: 768px) {
+              .verisupply-headline {
+                font-size: clamp(32px, 9.5vw, 40px) !important;
+                line-height: 1.12 !important;
+                max-width: none !important;
+              }
+            }
+          `}</style>
           <h1
+            className="verisupply-headline"
             style={{
               fontFamily: tokens.font.sans,
               fontWeight: tokens.weight.medium,
