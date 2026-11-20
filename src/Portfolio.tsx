@@ -15,30 +15,26 @@ import kinoSvg from "./assets/kino.svg";
 // subtext under the headline for its `detail`.
 const HEADLINE_HIGHLIGHTS = [
   {
+    text: "cognitive overload",
+    detail: "I cut the noise: fewer decisions, clearer hierarchy, and information people can take in without effort.",
+  },
+  {
+    text: "AI and complex products",
+    detail: "AI and complex products often hide their logic. I make the reasoning visible so people know what's happening and why.",
+  },
+  {
+    text: "trust and return to",
+    detail: "People trust what they can verify and come back to what feels intuitive and worth their time, so I design for both.",
+  },
+  {
     text: "0 to 1",
     detail: "I take ideas from zero to a shipped product, from first research and sketches through launch.",
-  },
-  {
-    text: "empathize with humans",
-    detail: "Technology only works when it's built around how real people think, feel, and behave, so I start every design with empathy.",
-  },
-  {
-    text: "bridge complex systems",
-    detail: "I translate complicated systems, like data, policy, and multi-team infrastructure, into clear experiences people can actually use.",
-  },
-  {
-    text: "drive growth",
-    detail: "I tie design decisions to measurable outcomes like engagement, retention, and adoption.",
-  },
-  {
-    text: "scale with meticulous craft",
-    detail: "Good design has to hold up as products grow, so I build systems and details that stay consistent at every size.",
   },
 ];
 
 // Headline split into plain strings and indexes into HEADLINE_HIGHLIGHTS.
 const HEADLINE_PARTS: (string | number)[] = [
-  "I design ", 0, " digital experiences that ", 1, ", ", 2, ", ", 3, ", and ", 4,
+  "I reduce ", 0, " in ", 1, ", building experiences people ", 2, ", from ", 3, ".",
 ];
 
 const Portfolio: FC = () => {
