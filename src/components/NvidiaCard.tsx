@@ -56,7 +56,7 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
           width: 100%;
           aspect-ratio: 4 / 3;
           flex-shrink: 0;
-          background-color: #1a1a1a;
+          background-color: #D9D9D9;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
           transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: filter, box-shadow, transform;
