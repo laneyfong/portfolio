@@ -477,7 +477,7 @@ const Portfolio: FC = () => {
             className={`work-section-cards ${workVisible ? "visible" : ""} ${scrollY > 400 ? "scrolled" : ""} ${scrollY > 1400 ? "scrolled-out" : ""}`}
             onActiveIndexChange={(index) => {
               if (workVisible) {
-                const caseStudies = ["MyShake", "VeriSupply", "IDBridge", "Nvidia"];
+                const caseStudies = ["MyShake", "Nvidia", "VeriSupply", "IDBridge"];
                 setHoveredCaseStudy(caseStudies[index] || null);
               } else {
                 setHoveredCaseStudy(null);
@@ -491,6 +491,7 @@ const Portfolio: FC = () => {
               to="/myshake-design"
               boldMetrics={["45%"]}
             />
+            <NvidiaCard />
             <VeriSupplyCard />
             <IDbridgeCard
               caption="A solution to verify unhoused individuals in "
@@ -498,7 +499,6 @@ const Portfolio: FC = () => {
               context="Designathon"
               to="/idbridge-design"
             />
-            <NvidiaCard />
           </FeaturedWorkShowcase>
         </section>
       </div>
