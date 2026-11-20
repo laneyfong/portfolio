@@ -1,8 +1,7 @@
 import type { FC } from "react";
-import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../tokens";
-import nvidiaPrototype from "../assets/nvidia-prototype.mp4";
+import nvidiaProduct from "../assets/nvidia-product.png";
 
 interface NvidiaCardProps {
   isActive?: boolean;
@@ -20,21 +19,11 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
   onMouseLeave,
 }) => {
   const navigate = useNavigate();
-  const videoRef = useRef<HTMLVideoElement>(null);
   const isDesktop = window.innerWidth > 768;
 
   const isThisCardHovered = hoveredIndex === currentIndex;
   const isAnyCardHovered = hoveredIndex !== null;
 
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isThisCardHovered) {
-        videoRef.current.play().catch(() => {});
-      } else {
-        videoRef.current.pause();
-      }
-    }
-  }, [isThisCardHovered]);
 
   return (
     <>
@@ -166,23 +155,20 @@ const NvidiaCard: FC<NvidiaCardProps> = ({
         onMouseLeave={onMouseLeave}
       >
         <div className={`nvidia-video ${isThisCardHovered ? "hovered" : ""} ${isAnyCardHovered && !isThisCardHovered ? "blurred" : ""}`}>
-            <video
-              ref={videoRef}
-              src={nvidiaPrototype}
+            <img
+              src={nvidiaProduct}
+              alt="Screenshot of the NVIDIA AI UX agent"
               style={{
                 position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "86%",
+                height: "auto",
+                borderRadius: 12,
+                boxShadow: "0 18px 40px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3)",
                 display: "block",
               }}
-              autoPlay
-              playsInline
-              loop
-              muted
-              preload="metadata"
             />
 
             <div
