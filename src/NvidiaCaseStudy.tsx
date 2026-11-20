@@ -30,6 +30,7 @@ const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
   { id: "research", label: "Research" },
   { id: "synthesis", label: "Synthesis" },
+  { id: "iterations", label: "Iterations" },
   { id: "status", label: "Status" },
   { id: "reflection", label: "Reflection" },
 ];
@@ -39,9 +40,10 @@ const TAGS = ["UX Research", "AI/UX", "Product Strategy", "In Progress"];
 // Restates facts already established elsewhere on the page — not new claims, just a
 // scannable summary for the sidebar panel.
 const HIGHLIGHTS = [
-  "Led a 4-person research team investigating trust in AI-generated usability insights.",
-  "Cut a planned survey mid-study when low response rates meant it wouldn't yield usable data.",
-  "Found the real gap isn't a UI problem: what engineers say they want and what their workflows show are different.",
+  "Shaped discovery and synthesis for a 5-person capstone team, including 7 interviews across ML engineering, QA, and UX.",
+  "Cut a survey that drew zero responses and pivoted to Reddit threads and a competitive analysis.",
+  "Found a say-vs-do gap: engineers value trustworthy AI, but their workflows run on Slack and feedback buttons.",
+  "Changed the design four times as engineer needs and sponsor goals pulled in different directions.",
 ];
 
 // Quoted lines are reproduced verbatim from interview transcripts, attributed to the
@@ -112,9 +114,9 @@ const NvidiaCaseStudy: FC = () => {
           <SnapshotBar
             items={[
               { label: "Role", value: "PM / Designer" },
-              { label: "Team", value: "4 collaborators · Research, Visual Design, Dev" },
-              { label: "Timeline", value: "Ongoing" },
-              { label: "Status", value: "Research & synthesis complete" },
+              { label: "Team", value: "5 collaborators · Research, Visual Design, UX Dev" },
+              { label: "Timeline", value: "Spring – Fall 2026" },
+              { label: "Status", value: "Research & synthesis complete · Prototype in progress" },
             ]}
           />
         </Reveal>
@@ -143,31 +145,74 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-<Reveal>
+        <Reveal>
           <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             <FeatureCard title="The Gap">
-              Usability issues surface late—after features ship.
+              Usability issues surface late—after features ship, through Slack and user complaints.
             </FeatureCard>
             <FeatureCard title="The Idea">
-              AI UX agent for pre-screening before implementation.
+              An AI UX agent that tests staging builds before release and hands engineers evidence they can verify.
             </FeatureCard>
             <FeatureCard title="The Challenge">
-              Make AI insights trustworthy for early action.
+              Make AI findings trustworthy enough that engineers act on them, with minimal setup.
             </FeatureCard>
           </div>
         </Reveal>
+
+        <Paragraph>
+          Our UCSC HCI Capstone team partnered with NVIDIA mentor Mamta Kumari on a tool that works like an automated
+          usability test suite. It runs persona-driven agents against a staging URL, catches friction before release,
+          and gives each finding screenshots, step-by-step logs, a confidence rating, and a recommended fix that
+          engineers can export to Jira.
+        </Paragraph>
+
+        <div style={{ marginTop: 48 }}>
+          <Kicker>How it works</Kicker>
+          <Reveal>
+            <ProcessFlow
+              steps={[
+                {
+                  title: "Stage the build",
+                  description: "A web tool build is deployed to a staging URL",
+                  color: "#4D96FF",
+                  icon: "1",
+                },
+                {
+                  title: "Run agents",
+                  description: "Persona agents execute test intents against the build",
+                  color: "#6BCB77",
+                  icon: "2",
+                },
+                {
+                  title: "Review evidence",
+                  description: "Annotated screenshots and log traces explain each finding",
+                  color: "#FFB84D",
+                  icon: "3",
+                },
+                {
+                  title: "Fix & ship",
+                  description: "Findings export to Jira with recommended fixes",
+                  color: "#A78BFA",
+                  icon: "4",
+                },
+              ]}
+            />
+          </Reveal>
+        </div>
       </section>
 
       {/* Research */}
       <section id="research" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>I started with deep user research to understand AI UX challenges</SectionHeading>
-          <SkillRow items={["Semi-structured Interviews", "Survey Design", "Secondary Research"]} />
+          <SkillRow items={["Semi-structured Interviews", "Survey Design", "Competitive Analysis", "Secondary Research"]} />
         </Reveal>
 
         <Paragraph>
-          We talked with a mix of NVIDIA engineers and designers, plus external designers, to get a view that wasn't
-          filtered entirely through one company's internal tooling.
+          In the spring discovery phase, we set out to map how internal NVIDIA teams currently evaluate usability, and
+          what would make a developer trust AI-generated evaluation insights. We interviewed 7 people across machine
+          learning engineering, QA, and UX design, and compared market alternatives like UXIA, Synthetic Users, and
+          Outset.ai.
         </Paragraph>
 
         <Reveal>
@@ -175,16 +220,25 @@ const NvidiaCaseStudy: FC = () => {
             <IconCard
               icon={<ChatIcon />}
               title="Semi-structured Interviews"
-              items={["NVIDIA engineers & designers", "External designers"]}
+              items={["7 interviews", "ML engineering, QA, and UX design"]}
             />
             <IconCard
               icon={<FlaskIcon />}
               title="Survey"
-              items={["Built to gather quantitative data", "Scrapped — response yield too low"]}
+              items={["Piloted with hardware engineers", "Scrapped — zero responses"]}
             />
-            <IconCard icon={<SearchIcon />} title="Secondary Research" items={["Analysis of Reddit threads"]} />
+            <IconCard
+              icon={<SearchIcon />}
+              title="Secondary Research"
+              items={["Reddit threads on AI evaluation tools", "Competitive matrix of existing products"]}
+            />
           </div>
         </Reveal>
+
+        <Paragraph>
+          The survey was the first setback. Scheduling delays across internal Slack channels meant no one responded,
+          so we scrapped it and leaned on qualitative interviews and community discussions instead.
+        </Paragraph>
 
         <div style={{ marginBottom: 48 }}>
           <Callout>Key research themes from engineer interviews.</Callout>
@@ -198,28 +252,28 @@ const NvidiaCaseStudy: FC = () => {
             <FindingRow method="Trust & Transparency in AI Systems">
               <div>
                 <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
-                  Engineers want to be able to verify an AI finding themselves, and they're unclear on where
-                  accountability sits when an automated insight turns out to be wrong.
+                  Engineers are skeptical of black-box summaries and hallucinated bugs. Every finding needs hard proof,
+                  like screenshots, DOM logs, and reproduction steps, before they'll act on it.
                 </p>
                 <QuoteLine attribution="P2">You should be able to, like, track down and reach the same conclusion yourself.</QuoteLine>
                 <QuoteLine attribution="P2">Where does the accountability lie when things fail?</QuoteLine>
               </div>
             </FindingRow>
-            <FindingRow method="Difficulty Collecting Useful User Data">
+            <FindingRow method="Feedback Arrives After Launch">
               <div>
                 <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
-                  Internal feedback loops are thin and inconsistent — a lot of what teams know about usability comes
-                  from Slack messages after launch, not structured testing.
+                  Internal feedback loops are thin and reactive. Most usability knowledge comes from Slack messages
+                  after launch, not structured testing. Engineers want to catch issues on staging, before shipping.
                 </p>
                 <QuoteLine attribution="P1">Feedback for internal tools comes from Slack post launch.</QuoteLine>
                 <QuoteLine attribution="P2">Everything that we develop has tiny feedback buttons.</QuoteLine>
               </div>
             </FindingRow>
-            <FindingRow method="Engineering Priorities Driven by Timelines & Severity">
+            <FindingRow method="Engineering Priorities Follow Severity">
               <div>
                 <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
-                  Code-breaking bugs and approval workflows (a +1 then +2 review) crowd out usability fixes, which
-                  have to clear a "worth the time" bar to get prioritized at all.
+                  Code-breaking bugs and approval workflows crowd out usability fixes. To get prioritized, a usability
+                  issue has to be sorted by severity, from P0 (critical) to P3 (low), and clear a "worth the time" bar.
                 </p>
                 <QuoteLine attribution="P2">Main code breaking bugs are the priority.</QuoteLine>
                 <QuoteLine attribution="P2">The usability fixes need to be worth the time it takes to fix them.</QuoteLine>
@@ -228,8 +282,8 @@ const NvidiaCaseStudy: FC = () => {
             <FindingRow method="Engineers Prefer Simple, Actionable Tools">
               <div>
                 <p style={{ margin: 0, fontFamily: tokens.font.sans, fontSize: tokens.text.base, color: "var(--text-secondary)", lineHeight: tokens.leading.normal }}>
-                  No appetite for a learning curve — a tool earns its place by doing something engineers would
-                  otherwise have to do manually, with zero onboarding.
+                  Teams already juggle bloated toolstacks, so a new tool has to earn its place. It needs near-zero setup,
+                  sensible defaults, and to do something engineers would otherwise do by hand.
                 </p>
                 <QuoteLine attribution="P2">Just log in and not have to train myself on how to use it.</QuoteLine>
                 <QuoteLine attribution="P1">The point of the tool was to be able to do something that you would do manually.</QuoteLine>
@@ -260,8 +314,14 @@ const NvidiaCaseStudy: FC = () => {
       <section id="synthesis" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
         <Reveal dramatic>
           <SectionHeading>I synthesized insights into a collaborative AI design system</SectionHeading>
-          <SkillRow items={["Insight Framing", "How Might We"]} />
+          <SkillRow items={["Affinity Mapping", "Insight Framing", "How Might We"]} />
         </Reveal>
+
+        <Paragraph>
+          Affinity mapping showed that roles overlapped more than our personas assumed. ML engineers were writing code
+          and also running QA and judging UX. So we stopped designing for job titles and designed for the
+          pre-launch staging review, where those roles converge.
+        </Paragraph>
 
         <div style={{ marginBottom: 60 }}>
           <Callout>The core challenge: Say/Do Gap</Callout>
@@ -321,7 +381,7 @@ const NvidiaCaseStudy: FC = () => {
           </Reveal>
         </div>
 
-        <div>
+        <div style={{ marginBottom: 100 }}>
           <Kicker>Design Question 2: Trust Through Transparency</Kicker>
           <Callout>
             How might we design AI-supported insights that provide clear reasoning so engineers can confidently act on recommendations?
@@ -355,6 +415,68 @@ const NvidiaCaseStudy: FC = () => {
             />
           </Reveal>
         </div>
+
+        <div>
+          <Kicker>Four pillars of trust</Kicker>
+          <Paragraph>
+            Those two questions became three product commitments. Every answer has to be checkable.
+          </Paragraph>
+          <Reveal>
+            <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+              <FeatureCard title="Annotated screenshots">
+                Each issue links to a high-resolution screenshot that highlights the visual problem.
+              </FeatureCard>
+              <FeatureCard title="Reproducible traces">
+                Step-by-step logs show exactly how the agent reached each finding, so engineers can retrace it.
+              </FeatureCard>
+              <FeatureCard title="Recommendations & Jira">
+                Findings come with expected vs. actual behavior, a recommended fix, and a one-click export to the sprint backlog.
+              </FeatureCard>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Iterations */}
+      <section id="iterations" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
+        <Reveal dramatic>
+          <SectionHeading>Four pivots shaped the design as we learned what engineers needed</SectionHeading>
+          <SkillRow items={["Design Critique", "Iteration", "Prototyping"]} />
+        </Reveal>
+
+        <Paragraph>
+          The design didn't arrive fully formed. Each pivot came from a real constraint: usability testing with
+          engineers, weekly syncs with our sponsor, and peer critique of our poster drafts.
+        </Paragraph>
+
+        <Reveal>
+          <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 24 }}>
+            <FeatureCard title="Pivot 1 · From roles to workflows">
+              Role personas (ML engineer, QA, UX) overlapped too much to design around. We built the system around the
+              pre-launch staging workflow instead.
+            </FeatureCard>
+            <FeatureCard title="Pivot 2 · Per-agent token budgets">
+              A single global budget hid which agent used what. Each agent now gets its own cap, with a "May stop early"
+              warning when a cap falls below its recommended budget. When an agent hits its limit, it halts and returns
+              a partial coverage report instead of failing silently.
+            </FeatureCard>
+            <FeatureCard title="Pivot 3 · Chat-based agent">
+              Engineers wanted control over setup and custom intents. Our sponsor wanted one-click, minimal effort. The
+              answer was one conversational interface backed by a live execution engine: engineers prompt the agent,
+              review its test strategy in conversation, and watch runs as they happen.
+            </FeatureCard>
+            <FeatureCard title="Pivot 4 · Cleaner, standardized findings">
+              Peer critique flagged dense text, a confusing reading order, small screenshots, and mixed naming like
+              "P0 Blocker" next to "High/Medium." We moved to compact summary bars, removed redundant cards, and
+              standardized on P0–P3.
+            </FeatureCard>
+          </div>
+        </Reveal>
+
+        <Paragraph>
+          The thread through all four: when engineers and sponsors wanted different things, we went back to the
+          workflow and asked what would earn trust.
+        </Paragraph>
       </section>
 
       {/* Status */}
@@ -383,27 +505,49 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>This case study is a work in progress.</Callout>
+        <Callout>Research and synthesis are complete. The prototype is in progress.</Callout>
         <Paragraph>
-          What's above reflects where the project actually stands today: research and synthesis are done, and
-          they're driving two clear design questions. The design solution itself hasn't been built yet.
+          The chat-based agent is in active development, with frontend and backend work underway. Recent backend fixes
+          made duplicate severity ratings deduplicate correctly, and it hasn't been tested with engineers yet.
         </Paragraph>
 
         <Reveal>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
             <StagePill label="Research" state="done" />
             <StagePill label="Synthesis" state="done" />
-            <StagePill label="Design exploration" state="active" />
-            <StagePill label="Prototyping" state="next" />
-            <StagePill label="Vibe-coding" state="next" />
+            <StagePill label="Prototyping" state="active" />
+            <StagePill label="Engineer testing" state="next" />
+            <StagePill label="Iteration" state="next" />
           </div>
         </Reveal>
 
         <Paragraph>
           <strong style={{ fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>Next phase: </strong>
-          continuing with design, prototypes, and vibe-coding to turn the two How-Might-We questions above into an
-          actual interface — then testing whether engineers trust it enough to act on what it tells them.
+          finish the prototype, then test whether engineers trust its findings enough to act on them.
         </Paragraph>
+
+        <div style={{ marginTop: 80 }}>
+          <Kicker>Success targets</Kicker>
+          <Paragraph>
+            These are the thresholds we set for judging the tool. They are targets, not measured results yet.
+          </Paragraph>
+          <Reveal>
+            <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              <FeatureCard title="Early detection · >80%">
+                Usability issues caught on staging, before features reach production channels.
+              </FeatureCard>
+              <FeatureCard title="System trust · >80%">
+                Engineers' confidence in findings, built on screenshots, log traces, and confidence ratings.
+              </FeatureCard>
+              <FeatureCard title="Actionability · >80%">
+                Engineers rate the recommendations as useful, with expected vs. actual behavior for each.
+              </FeatureCard>
+              <FeatureCard title="Efficiency · >80%">
+                Perceived cut in manual effort, without waiting days to recruit users for basic pre-screening.
+              </FeatureCard>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* Reflection */}
@@ -413,13 +557,17 @@ const NvidiaCaseStudy: FC = () => {
         </Reveal>
         <Reveal>
           <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
-            The biggest insight from leading research across a 4-person team was recognizing when data wasn't working. We cut the survey when response rates showed it wouldn't be usable, rather than forcing it to a finish line.
+            The biggest lesson was knowing when to change course. We cut a survey that couldn't reach enough people,
+            then changed the design four times as engineers and our sponsor pulled in different directions.
           </p>
           <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 32, maxWidth: 440 }}>
-            But the real breakthrough was understanding engineers' gap between what they want (trustworthy AI, simple tools) and what they actually do (rely on Slack threads and feedback buttons). This is a workflow-trust problem, not a screen redesign.
+            The real breakthrough was the gap between what engineers want (trustworthy AI, simple tools) and what they
+            actually do (rely on Slack threads and feedback buttons). That's a workflow-trust problem, not a screen
+            redesign.
           </p>
           <p style={{ fontFamily: tokens.font.sans, fontSize: "16px", color: "var(--text-secondary)", lineHeight: tokens.leading.normal, marginBottom: 48, maxWidth: 440 }}>
-            I'm incredibly proud of the win we're taking together. To the research, design, and engineering team: thank you for believing that understanding engineers deeply would change how we build AI that they can trust.
+            I'm proud of what our team built together. Thank you to the research, design, and engineering team, and to
+            our NVIDIA mentor, for believing that understanding engineers deeply would change how we build AI they can trust.
           </p>
         </Reveal>
       </section>
