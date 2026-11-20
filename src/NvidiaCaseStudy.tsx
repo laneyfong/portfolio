@@ -40,7 +40,7 @@ const TAGS = ["UX Research", "AI/UX", "Product Strategy", "In Progress"];
 // Restates facts already established elsewhere on the page — not new claims, just a
 // scannable summary for the sidebar panel.
 const HIGHLIGHTS = [
-  "Shaped discovery and synthesis for a 5-person capstone team, including 7 interviews across ML engineering, QA, and UX.",
+  "Lead product designer on a 5-person capstone team, with 7 interviews across ML engineering, QA, and UX.",
   "Cut a survey that drew zero responses and pivoted to Reddit threads and a competitive analysis.",
   "Found a say-vs-do gap: engineers value trustworthy AI, but their workflows run on Slack and feedback buttons.",
   "Changed the design four times as engineer needs and sponsor goals pulled in different directions.",
@@ -113,10 +113,10 @@ const NvidiaCaseStudy: FC = () => {
         <Reveal>
           <SnapshotBar
             items={[
-              { label: "Role", value: "PM / Designer" },
+              { label: "Role", value: "Lead Product Designer" },
               { label: "Team", value: "5 collaborators · Research, Visual Design, UX Dev" },
               { label: "Timeline", value: "Spring – Fall 2026" },
-              { label: "Status", value: "Research & synthesis complete · Prototype in progress" },
+              { label: "Status", value: "Research, synthesis & engineer testing complete · Working product" },
             ]}
           />
         </Reveal>
@@ -505,31 +505,31 @@ const NvidiaCaseStudy: FC = () => {
           </div>
         </Reveal>
 
-        <Callout>Research and synthesis are complete. The prototype is in progress.</Callout>
+        <Callout>Research, synthesis, and engineer testing are complete. The product is built and working.</Callout>
         <Paragraph>
-          The chat-based agent is in active development, with frontend and backend work underway. Recent backend fixes
-          made duplicate severity ratings deduplicate correctly, and it hasn't been tested with engineers yet.
+          The chat-based agent is a working product, with frontend and backend built and running. We tested it with
+          engineers at NVIDIA, and recent backend fixes made duplicate severity ratings deduplicate correctly.
         </Paragraph>
 
         <Reveal>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
             <StagePill label="Research" state="done" />
             <StagePill label="Synthesis" state="done" />
-            <StagePill label="Prototyping" state="active" />
-            <StagePill label="Engineer testing" state="next" />
-            <StagePill label="Iteration" state="next" />
+            <StagePill label="Prototyping" state="done" />
+            <StagePill label="Engineer testing" state="done" />
+            <StagePill label="Iteration" state="active" />
           </div>
         </Reveal>
 
         <Paragraph>
           <strong style={{ fontWeight: tokens.weight.medium, color: "var(--text-dark)" }}>Next phase: </strong>
-          finish the prototype, then test whether engineers trust its findings enough to act on them.
+          iterate on the product based on what engineers told us in testing, and measure it against the success targets below.
         </Paragraph>
 
         <div style={{ marginTop: 80 }}>
           <Kicker>Success targets</Kicker>
           <Paragraph>
-            These are the thresholds we set for judging the tool. They are targets, not measured results yet.
+            These are the thresholds we set for judging the tool. They are targets; the measured results are still to come.
           </Paragraph>
           <Reveal>
             <div className="case-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
