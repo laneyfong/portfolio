@@ -31,6 +31,7 @@ const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
   { id: "research", label: "Research" },
   { id: "synthesis", label: "Synthesis" },
+  { id: "solution", label: "Solution" },
   { id: "iterations", label: "Iterations" },
   { id: "status", label: "Status" },
   { id: "reflection", label: "Reflection" },
@@ -417,10 +418,24 @@ const NvidiaCaseStudy: FC = () => {
           </Reveal>
         </div>
 
+      </section>
+
+      {/* Solution */}
+      <section id="solution" style={{ paddingTop: 96, paddingBottom: 96 }} className="section-reveal">
+        <Reveal dramatic>
+          <SectionHeading>The solution is a chat-based agent that shows its evidence</SectionHeading>
+          <SkillRow items={["Conversational UI", "Evidence Design", "Jira Integration"]} />
+        </Reveal>
+
+        <Paragraph>
+          Engineers prompt the agent in a single conversation. It runs against a staging build, and every finding comes
+          with the proof needed to check it: a screenshot, a step-by-step trace, and a recommended fix.
+        </Paragraph>
+
         <div>
           <Kicker>Four pillars of trust</Kicker>
           <Paragraph>
-            Those two questions became three product commitments. Every answer has to be checkable.
+            Trust comes from evidence engineers can check for themselves.
           </Paragraph>
           <Reveal>
             <div className="case-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
