@@ -25,6 +25,7 @@ import ResearchThemes from "./components/caseStudy/ResearchThemes";
 import DesignChallenges from "./components/caseStudy/DesignChallenges";
 import nvidiaLogo from "./assets/nvidia-logo.webp";
 import nvidiaPrototype from "./assets/nvidia-prototype.mp4";
+import nvidiaSolution from "./assets/nvidia-solution.mov";
 
 const SECTIONS: CaseSection[] = [
   { id: "intro", label: "Intro" },
@@ -434,6 +435,26 @@ const NvidiaCaseStudy: FC = () => {
               </FeatureCard>
             </div>
           </Reveal>
+
+          <div style={{ marginTop: 80 }}>
+            <Kicker>The solution in action</Kicker>
+            <Paragraph>
+              The agent runs against a staging build, and every finding it reports can be traced back to the screen and steps behind it.
+            </Paragraph>
+            <Reveal>
+              <div style={{ borderRadius: 20, overflow: "hidden", backgroundColor: "var(--bg-secondary)", display: "flex", justifyContent: "center", alignItems: "center", maxHeight: "70vh" }}>
+                <video
+                  src={nvidiaSolution}
+                  style={{ width: "100%", height: "auto", maxHeight: "70vh", objectFit: "contain", display: "block" }}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
