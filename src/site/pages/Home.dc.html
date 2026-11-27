@@ -240,7 +240,10 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <div aria-hidden="true" style="position: sticky; top: 0; z-index: 3; height: 2px; background: rgba(31, 31, 31, 0.07)"><div class="lf-prog" style="height: 100%; background: #1F1F1F"></div></div>
 <article style="box-sizing: border-box; max-width: 1180px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 80px) 160px; display: flex; flex-direction: column">
 
-<div style="overflow: hidden; border-radius: 8px"><img class="lf-hero" src="{{ cur.img }}" alt="{{ cur.alt }}" style="display: block; width: 100%; height: auto"></div>
+<div style="overflow: hidden; border-radius: 8px; background: {{ cur.bg }}">
+<sc-if value="{{ cur.noVid }}" hint-placeholder-val="{{ true }}"><img class="lf-hero" src="{{ cur.img }}" alt="{{ cur.alt }}" style="display: block; width: 100%; height: auto"></sc-if>
+<sc-if value="{{ cur.hasVid }}" hint-placeholder-val="{{ false }}"><video class="lf-hero" src="{{ cur.vid }}" poster="{{ cur.poster }}" data-loop-start="{{ cur.loopStart }}" data-loop-end="{{ cur.loopEnd }}" autoplay="true" loop="true" muted="true" playsinline="true" preload="auto" disablepictureinpicture="true" aria-label="{{ cur.alt }}" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; pointer-events: none"></video></sc-if>
+</div>
 
 <div class="lf-rv" style="width: 100%; max-width: 560px; margin: 64px auto 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 24px; animation-delay: 0.35s">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px">
