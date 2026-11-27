@@ -167,7 +167,7 @@ var n = 0;
 n += 2; // one word plus the space after it
 var finished = n >= parts.length;
 setBubble(finished ? text : parts.slice(0, n).join(''), !finished);
-if (!finished) setTimeout(step, 35);
+if (!finished) setTimeout(step, 70);
 })();
 }
 this.setState({ chat: withQ.concat([{ who: 'bot', text: 'Thinking\u2026', id: pendingId }]) });
