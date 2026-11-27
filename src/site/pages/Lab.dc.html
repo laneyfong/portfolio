@@ -63,8 +63,11 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 .lf-pop:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(31,31,31,.16)}
 .lf-pop:active{transform:translateY(-1px) scale(.98)}
 @media (prefers-reduced-motion:reduce){.lf-rv{animation:none}.lf-pop{animation:none}.lf-sr,.lf-sr-img,.lf-wipe,.lf-hero{animation:none !important}.lf-tile:hover,.lf-cta:hover,.lf-btn:hover{transform:none}.lf-sheet{transition:none !important}.lf-tile img{transition:none}}
-@media (min-width:1100px){.lf-page{display:grid !important;max-width:1280px !important;grid-template-columns:152px minmax(0,700px) 152px;justify-content:center;column-gap:48px !important}.lf-page>main{max-width:none !important}}
-@media (min-width:1100px){.lf-dockrow{display:grid !important;max-width:1280px !important;grid-template-columns:152px minmax(0,700px) 152px;justify-content:center;column-gap:48px !important}.lf-dockrow>div:last-child{max-width:none !important}}
+@media (min-width:1100px){.lf-page{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-page>header.lf-side{grid-column:1;grid-row:1;justify-self:start;width:152px}.lf-page>main{grid-column:2;grid-row:1;max-width:none !important}.lf-page>.lf-clock{grid-column:3;grid-row:1;justify-self:end}}
+/* Frame: live Bay Area time, top-right, level with the name. Wide screens only. */
+.lf-clock{display:none}
+@media (min-width:1100px){.lf-clock{display:block;position:sticky;top:80px;font-size:15px;line-height:22px;color:#6E6A66;white-space:nowrap;font-variant-numeric:tabular-nums}}
+@media (min-width:1100px){.lf-dockrow{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-dockrow>div:last-child{max-width:none !important}}
 @media (min-width:821px){.lf-side{height:calc(100vh - 106px);min-height:300px;box-sizing:border-box;z-index:12}}
 .lf-sbsig{display:block;height:46px;width:auto;margin:0 0 4px 0;transform:rotate(30deg);transform-origin:center;opacity:.9;pointer-events:none;user-select:none}
 .lf-ic{position:relative;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;color:#8C8782;transition:color .2s ease,background-color .2s ease}
@@ -194,6 +197,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </section>
 
 </main>
+<aside class="lf-clock" aria-label="Laney&#8217;s local time">Bay Area &#183; {{ clock }}</aside>
 
 
 </div>
@@ -299,7 +303,20 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1600}}'>
 class Component extends DCLogic {
+startClock() {
+// Live Bay Area time for the top-right of the frame, updated on each minute.
+var self = this;
+var fmt = function () { try { return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit' }).format(new Date()); } catch (e) { return ''; } };
+var tick = function () { self.setState({ clock: fmt() }); };
+tick();
+this.clockT = setTimeout(function () { tick(); self.clockI = setInterval(tick, 60000); }, 60000 - (Date.now() % 60000) + 50);
+}
+stopClock() { clearTimeout(this.clockT); clearInterval(this.clockI); }
+componentWillUnmount() {
+this.stopClock();
+}
 componentDidMount() {
+this.startClock();
 // /lab#exp-N (from the homepage cards) opens experiment N straight away.
 var m = /^#exp-(\d+)$/.exec(window.location.hash || '');
 if (!m) return;
@@ -411,6 +428,7 @@ requestAnimationFrame(function () { requestAnimationFrame(function () { self.set
 });
 });
 return {
+clock: (this.state || {}).clock || '',
 experiments: experiments,
 total: ('0' + n).slice(-2),
 isOpen: open >= 0,

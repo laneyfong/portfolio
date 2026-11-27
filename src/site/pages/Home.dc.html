@@ -99,7 +99,10 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 @keyframes lf-ring{0%{opacity:.5;transform:scale(.85)}70%{opacity:0;transform:scale(1.45)}100%{opacity:0}}
 .lf-flow-pulse{stroke-dasharray:9 91;stroke-dashoffset:100;animation:lf-flowdash 3.2s linear infinite}
 @keyframes lf-flowdash{to{stroke-dashoffset:0}}
-@media (min-width:1100px){.lf-page{display:grid !important;max-width:1280px !important;grid-template-columns:152px minmax(0,700px) 152px;justify-content:center;column-gap:48px !important}.lf-page>main{max-width:none !important}}
+@media (min-width:1100px){.lf-page{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-page>header.lf-side{grid-column:1;grid-row:1;justify-self:start;width:152px}.lf-page>main{grid-column:2;grid-row:1;max-width:none !important}.lf-page>.lf-clock{grid-column:3;grid-row:1;justify-self:end}}
+/* Frame: live Bay Area time, top-right, level with the name. Wide screens only. */
+.lf-clock{display:none}
+@media (min-width:1100px){.lf-clock{display:block;position:sticky;top:80px;font-size:15px;line-height:22px;color:#6E6A66;white-space:nowrap;font-variant-numeric:tabular-nums}}
 .lf-eyebrow{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:15px;line-height:22px;color:#6E6A66}
 .lf-eyebrow i{font-style:normal;color:#C9C5BF}
 .lf-eb-co{color:#1F1F1F}
@@ -221,6 +224,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <p class="lf-colophon">Designed by me, built with Figma, Claude &amp; Cursor &#183; Set in Neue&nbsp;Montreal &amp; Averia.</p>
 
 </main>
+<aside class="lf-clock" aria-label="Laney&#8217;s local time">Bay Area &#183; {{ clock }}</aside>
 
 </div>
 
@@ -519,7 +523,20 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
 class Component extends DCLogic {
+startClock() {
+// Live Bay Area time for the top-right of the frame, updated on each minute.
+var self = this;
+var fmt = function () { try { return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit' }).format(new Date()); } catch (e) { return ''; } };
+var tick = function () { self.setState({ clock: fmt() }); };
+tick();
+this.clockT = setTimeout(function () { tick(); self.clockI = setInterval(tick, 60000); }, 60000 - (Date.now() % 60000) + 50);
+}
+stopClock() { clearTimeout(this.clockT); clearInterval(this.clockI); }
+componentWillUnmount() {
+this.stopClock();
+}
 componentDidMount() {
+this.startClock();
 // Tile videos with data-loop-end loop between data-loop-start and data-loop-end,
 // so clips with a fade from/to black at either end loop without flashing black.
 if (window.__lfTrimLoop) return;
@@ -849,6 +866,7 @@ curP.moreLine = moreCount > 0
 ? moreCount + ' more ' + (moreCount === 1 ? 'section' : 'sections') + ' — ' + sections.slice(1, 4).map(function (s) { return s.label.toLowerCase(); }).join(', ') + (moreCount > 3 ? ', and more' : '')
 : '';
 return Object.assign(chatVals, {
+clock: (this.state || {}).clock || '',
 projects: projects,
 isOpen: open >= 0,
 cur: curP,
