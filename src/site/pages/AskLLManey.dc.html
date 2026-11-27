@@ -72,7 +72,10 @@ this.onDocClick = function (e) {
 var t = e.target && e.target.closest ? e.target.closest('a[href="#ask"], [data-ask]') : null;
 if (t) { e.preventDefault(); self.setState({ ctx: (t.getAttribute && t.getAttribute('data-ask-ctx')) || '' }); self.show(); return; }
 if (self.state && self.state.open) {
-var inside = e.target && e.target.closest ? e.target.closest('[data-ask-panel]') : null;
+// Use the click's original path: a suggested question removes itself from the page when clicked,
+// so checking e.target afterwards would wrongly look like a click outside the panel.
+var path = e.composedPath ? e.composedPath() : [];
+var inside = path.some(function (n) { return n && n.hasAttribute && n.hasAttribute('data-ask-panel'); }) || (e.target && e.target.closest ? e.target.closest('[data-ask-panel]') : null);
 if (!inside) self.hide();
 }
 };
