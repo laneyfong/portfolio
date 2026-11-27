@@ -157,11 +157,11 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 @media (min-width:1100px){.lf-mm{display:flex;align-items:center;position:sticky;top:80px;height:calc(100vh - 106px);min-height:300px;box-sizing:border-box}}
 .lf-mm-nav{position:relative;height:120px;display:flex;flex-direction:column;justify-content:space-between}
 .lf-mm-line{position:absolute;left:11.5px;top:12px;bottom:12px;width:1px;background:#E2DED9}
-.lf-mm-dot{position:relative;width:24px;height:24px;margin:-12px 0;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font:inherit;letter-spacing:inherit}
+.lf-mm-dot{position:relative;width:36px;height:24px;margin:-12px 0;padding:0 0 0 12px;border:0;border-radius:4px;background:none;cursor:pointer;display:flex;align-items:center;justify-content:flex-start;font:inherit;letter-spacing:inherit}
 .lf-mm-dot:first-of-type{margin-top:0}.lf-mm-dot:last-of-type{margin-bottom:0}
-.lf-mm-pip{display:block;box-sizing:border-box;width:7px;height:7px;border-radius:50%;border:1px solid;transition:background-color .25s ease,transform .25s ease}
-.lf-mm-dot.lf-mm-on .lf-mm-pip{transform:scale(1.2857)}
-.lf-mm-lbl{position:absolute;left:28px;top:50%;transform:translateY(-50%);font-size:13px;line-height:18px;color:#6E6A66;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.lf-mm-pip{display:block;width:10px;height:2px;border-radius:1px;transform-origin:0 50%;transition:transform .25s ease}
+.lf-mm-dot.lf-mm-on .lf-mm-pip{transform:scaleX(2)}
+.lf-mm-lbl{position:absolute;left:40px;top:50%;transform:translateY(-50%);font-size:13px;line-height:18px;color:#6E6A66;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s ease}
 .lf-mm-dot:hover .lf-mm-lbl,.lf-mm-dot:focus-visible .lf-mm-lbl{opacity:1}
 .lf-mm-dot:focus{outline:none}
 .lf-mm-dot:focus-visible{outline:1px solid #6E6A66;outline-offset:1px}
@@ -235,7 +235,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <nav aria-label="Project mini-map" class="lf-mm-nav">
 <span class="lf-mm-line" aria-hidden="true"></span>
 <sc-for list="{{ mmDots }}" as="d" hint-placeholder-count="3">
-<button type="button" class="lf-mm-dot {{ d.cls }}" aria-label="Jump to {{ d.title }}" aria-current="{{ d.current }}" onClick="{{ d.go }}"><span class="lf-mm-pip" aria-hidden="true" style="border-color: {{ d.color }}; background: {{ d.fill }}"></span><span class="lf-mm-lbl" aria-hidden="true">{{ d.title }}</span></button>
+<button type="button" class="lf-mm-dot {{ d.cls }}" aria-label="Jump to {{ d.title }}" aria-current="{{ d.current }}" onClick="{{ d.go }}"><span class="lf-mm-pip" aria-hidden="true" style="background: {{ d.color }}"></span><span class="lf-mm-lbl" aria-hidden="true">{{ d.title }}</span></button>
 </sc-for>
 </nav>
 </aside>
@@ -897,7 +897,7 @@ var MM_COLORS = { 'MyShake': '#C4D6CF', 'NVIDIA Scout': '#D5CFC5', 'IDBridge': '
 var mmActive = typeof st.mmActive === 'number' ? st.mmActive : -1;
 var mmDots = projects.map(function (p, i) {
 var on = i === mmActive, color = MM_COLORS[p.title] || '#D5CFC5';
-return { title: p.title, color: color, fill: on ? color : '#FFFFFF', cls: on ? 'lf-mm-on' : '', current: on ? 'location' : 'false',
+return { title: p.title, color: color, cls: on ? 'lf-mm-on' : '', current: on ? 'location' : 'false',
 go: function () {
 var tile = document.querySelectorAll('section[aria-label="Selected work"] button.lf-tile')[i];
 if (!tile) return;
