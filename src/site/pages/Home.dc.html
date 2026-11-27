@@ -103,16 +103,8 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 /* Frame: live Bay Area time, top-right, level with the name. Wide screens only. */
 .lf-topright{display:none}
 @media (min-width:1100px){.lf-topright{display:block;position:sticky;top:80px;font-size:14px;line-height:22px;white-space:nowrap}.lf-topright a{display:inline-flex;align-items:center;gap:6px;color:#6E6A66}.lf-topright a:hover,.lf-topright a[aria-current]{color:#1F1F1F}.lf-nav-resume{display:none !important}}
-.lf-eyebrow{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:14px;line-height:22px;color:#6E6A66}
-.lf-eyebrow i{font-style:normal;color:#C9C5BF}
-.lf-eb-co{color:#1F1F1F}
-.lf-eyerow{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 16px}
-.lf-avail{color:#6E6A66}
-@media (max-width:480px){.lf-now{flex-direction:column;align-items:flex-start;gap:2px}.lf-now i{display:none}}
-@media (min-width:1100px){.lf-avail-sm{display:none !important}.lf-topright-stack{display:flex !important;flex-direction:column;align-items:flex-end;gap:2px}}
+
 .lf-dot{display:inline-block;flex:none;width:7px;height:7px;border-radius:50%;background:#7FB7A4;box-shadow:0 0 0 3px rgba(127,183,164,.18)}
-.lf-h1{margin:0;max-width:680px;font-weight:400;font-size:clamp(25px,calc(2.75vw - 1px),33px);line-height:1.16;letter-spacing:-.035em;color:#1F1F1F;text-wrap:balance}
-.lf-h1 span{color:#8A857F}
 .lf-labstrip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 @media (max-width:640px){.lf-labstrip{grid-template-columns:minmax(0,1fr)}}
 .lf-labtile{display:block;color:inherit;text-decoration:none}
@@ -170,6 +162,13 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 .lf-tile:hover .lf-tile-pill{opacity:1}
 }
 @media (prefers-reduced-motion:reduce){.lf-tile-pill{transition:none}}
+
+/* Index profile block: label + text */
+.lf-prof{display:flex;flex-direction:column;gap:30px;padding:0}
+.lf-pb h2{margin:0 0 8px;font-weight:400;font-size:15px;line-height:24px;color:#1F1F1F}
+.lf-pb p{margin:0;max-width:600px;font-size:15px;line-height:24px;color:#6E6A66;text-wrap:pretty}
+.lf-pb p+p{margin-top:4px}
+.lf-pk{color:#1F1F1F}
 </style>
 </helmet>
 <div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; letter-spacing: -0.02em">
@@ -199,10 +198,14 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 
 <main style="flex: 1 1 400px; min-width: 0; max-width: 700px; display: flex; flex-direction: column; gap: 28px">
 
-<section class="lf-rv lf-hero2" style="display: flex; flex-direction: column; gap: 18px; padding: 0 0 12px">
-<div class="lf-eyerow"><span class="lf-eyebrow">Product Designer</span><span class="lf-eyebrow lf-avail-sm">Open to full-time roles</span></div>
-<h1 class="lf-h1">I reduce cognitive overload in AI and complex&nbsp;products, <span>building experiences people trust and return to, from 0&nbsp;to&nbsp;1.</span></h1>
-<div class="lf-eyebrow lf-now"><span>Currently <span class="lf-eb-co">NVIDIA capstone</span></span><i aria-hidden="true">&#183;</i><span>Previously <span class="lf-eb-co">MyShake, Sensitel, Eximlabs</span></span></div>
+<section class="lf-rv lf-prof" aria-label="About Laney">
+<div class="lf-pb"><h2>Product Designer</h2>
+<p>I reduce cognitive overload in AI and complex products, building experiences people trust and return to, from 0&nbsp;to&nbsp;1.</p></div>
+<div class="lf-pb"><h2>Current</h2>
+<p>Designing <span class="lf-pk">Scout</span>, an AI QA agent, with <span class="lf-pk">NVIDIA</span></p>
+<p>M.S. HCI at UC Santa Cruz &#183; open to full-time roles</p></div>
+<div class="lf-pb"><h2>Past</h2>
+<p><span class="lf-pk">MyShake</span>, <span class="lf-pk">Sensitel</span>, <span class="lf-pk">Eximlabs</span>, <span class="lf-pk">Mind Coffee</span></p></div>
 </section>
 
 <section class="lf-rv" aria-label="Selected work" style="display: flex; flex-direction: column; gap: 20px; padding-top: 28px; animation-delay: 0.24s">
@@ -238,7 +241,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <p class="lf-colophon">Designed by me, built with Figma, Claude &amp; Cursor &#183; Set in Neue&nbsp;Montreal &amp; Averia.</p>
 
 </main>
-<div class="lf-topright lf-topright-stack"><span class="lf-avail">Open to full-time roles</span><a href="/resume"><span style="border-bottom: 1px dotted #A8A39D">Resume</span><svg aria-hidden="true" width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l7-7"></path><path d="M5 3.5h5.5V9"></path></svg></a></div>
+<div class="lf-topright"><a href="/resume"><span style="border-bottom: 1px dotted #A8A39D">Resume</span><svg aria-hidden="true" width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l7-7"></path><path d="M5 3.5h5.5V9"></path></svg></a></div>
 
 </div>
 
