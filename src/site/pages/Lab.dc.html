@@ -76,13 +76,19 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 
 /* Mobile: compact sticky top bar instead of the stacked sidebar list. */
 @media (max-width:820px){
-.lf-side{position:sticky !important;top:0;z-index:20;flex:1 1 100% !important;flex-direction:row !important;flex-wrap:wrap !important;align-items:center !important;justify-content:space-between !important;gap:6px 16px !important;height:auto !important;min-height:0 !important;margin:-80px calc(-1 * clamp(20px, 5vw, 80px)) 0;padding:14px clamp(20px, 5vw, 80px) 4px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(31,31,31,.07)}
-.lf-side>div:first-child,.lf-side>.lf-sb{display:contents !important}
-.lf-side>div:first-child>a{order:1}
-.lf-side .lf-sbsig{display:none !important}
-.lf-side nav[aria-label="Contact"]{order:2;margin:0 -7px 0 0 !important}
-.lf-side nav[aria-label="Primary"]{order:3;flex:1 1 100%;flex-direction:row !important;align-items:center !important;gap:22px;font-size:15px !important}
-.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
+header.lf-side{position:sticky !important;top:0;z-index:20;flex:1 1 100% !important;flex-direction:row !important;flex-wrap:wrap !important;align-items:center !important;justify-content:space-between !important;gap:6px 16px !important;height:auto !important;min-height:0 !important;margin:-80px calc(-1 * clamp(20px, 5vw, 80px)) 0;padding:14px clamp(20px, 5vw, 80px) 4px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(31,31,31,.07)}
+header.lf-side>div:first-child,header.lf-side>.lf-sb{display:contents !important}
+header.lf-side>div:first-child>a{order:1}
+header.lf-side .lf-sbsig{display:none !important}
+header.lf-side nav[aria-label="Contact"]{order:2;margin:0 -7px 0 0 !important}
+header.lf-side nav[aria-label="Primary"]{order:3;flex:1 1 100%;flex-direction:row !important;align-items:center !important;gap:22px;font-size:15px !important}
+header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
+}
+
+/* Mobile: experiment detail fills the screen, info stacked above the demo. */
+@media (max-width:820px){
+.lf-sheet{background:rgba(255,255,255,.94) !important}
+.lf-sheet aside.lf-side{flex:1 1 100% !important;max-width:none !important;border-right:none !important;border-bottom:1px solid rgba(31,31,31,.08)}
 }
 </style>
 </helmet>
@@ -300,6 +306,18 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1600}}'>
 class Component extends DCLogic {
+componentDidMount() {
+// /lab#exp-N (from the homepage cards) opens experiment N straight away.
+var m = /^#exp-(\d+)$/.exec(window.location.hash || '');
+if (!m) return;
+var i = parseInt(m[1], 10) - 1;
+if (i < 0 || i > 3) return;
+var self = this;
+var from = 'inset(50% 50% 50% 50% round 6px)';
+history.replaceState(null, '', window.location.pathname);
+this.setState({ open: i, from: from, clip: from });
+requestAnimationFrame(function () { requestAnimationFrame(function () { self.setState({ clip: 'inset(0px 0px 0px 0px round 0px)' }); }); });
+}
 renderVals() {
 var self = this;
 var st = this.state || {};
