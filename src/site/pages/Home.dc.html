@@ -169,6 +169,10 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 .lf-pb p{margin:0;max-width:600px;font-size:15px;line-height:24px;color:#6E6A66;text-wrap:pretty}
 .lf-pb p+p{margin-top:4px}
 .lf-pk{color:#1F1F1F}
+.lf-pb .lf-pb-label{margin:0 0 8px;font-weight:400;font-size:15px;line-height:24px;color:#1F1F1F}
+/* The intro is the page's main statement: larger, first half dark, the rest grey. */
+.lf-intro{margin:0;max-width:640px;font-weight:400;font-size:clamp(20px,1.6vw,22px);line-height:1.36;letter-spacing:-0.02em;color:#1F1F1F;text-wrap:pretty}
+.lf-intro span{color:#8A857F}
 </style>
 </helmet>
 <div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; letter-spacing: -0.02em">
@@ -199,8 +203,8 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <main style="flex: 1 1 400px; min-width: 0; max-width: 700px; display: flex; flex-direction: column; gap: 28px">
 
 <section class="lf-rv lf-prof" aria-label="About Laney">
-<div class="lf-pb"><h2>Product Designer</h2>
-<p>I reduce cognitive overload in AI and complex products, building experiences people trust and return to, from 0&nbsp;to&nbsp;1.</p></div>
+<div class="lf-pb"><p class="lf-pb-label">Product Designer</p>
+<h1 class="lf-intro">I reduce cognitive overload in AI and complex&nbsp;products, <span>building experiences people trust and return to, from 0&nbsp;to&nbsp;1.</span></h1></div>
 <div class="lf-pb"><h2>Current</h2>
 <p>Designing <span class="lf-pk">Scout</span>, an AI QA agent, with <span class="lf-pk">NVIDIA</span></p>
 <p>M.S. HCI at UC Santa Cruz &#183; open to full-time roles</p></div>
