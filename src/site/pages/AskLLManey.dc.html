@@ -131,10 +131,32 @@ q = (q || '').trim();
 if (!q) return;
 var chat = (this.state && this.state.chat) || [];
 var withQ = chat.concat([{ who: 'user', text: q }]);
+var pendingId = 'p' + Date.now() + Math.random();
 function toEnd() { var el = document.querySelector('[data-lf-msgs]'); if (el) el.scrollTop = el.scrollHeight; }
-this.setState({ chat: withQ });
+// Replace this question's "Thinking…" bubble with the reply, keeping any messages sent since.
+function reply(text) {
+var cur = (self.state && self.state.chat) || [];
+self.setState({ chat: cur.map(function (m) { return m.id === pendingId ? { who: 'bot', text: text } : m; }) });
 setTimeout(toEnd, 30);
-setTimeout(function () { self.setState({ chat: withQ.concat([{ who: 'bot', text: canned || self.answer(q) }]) }); setTimeout(toEnd, 30); }, 500);
+}
+this.setState({ chat: withQ.concat([{ who: 'bot', text: 'Thinking\u2026', id: pendingId }]) });
+setTimeout(toEnd, 30);
+// Preset prompts keep their curated answers.
+if (canned) { setTimeout(function () { reply(canned); }, 500); return; }
+// Typed questions go to the LLManey AI (/api/chat). Falls back to the local answers if it fails or is slow.
+var history = withQ.map(function (m) { return { role: m.who === 'user' ? 'user' : 'assistant', content: m.text }; });
+var done = false;
+var timer = setTimeout(function () { if (!done) { done = true; reply(self.answer(q)); } }, 15000);
+fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history }) })
+.then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
+.then(function (d) {
+if (done) return;
+done = true; clearTimeout(timer);
+var text = (d && d.content) || self.answer(q);
+if (d && d.hasResume && d.resumeUrl) text += ' Download it here: ' + window.location.origin + d.resumeUrl;
+reply(text);
+})
+.catch(function () { if (done) return; done = true; clearTimeout(timer); reply(self.answer(q)); });
 }
 renderVals() {
 var self = this;
