@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ask LLManey — chat dock</title>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.lf-ask-form{transition:box-shadow .25s cubic-bezier(.23,1,.32,1)}
+.lf-ask-form:focus-within{box-shadow:0px 2px 30px 0px rgba(0,0,0,0.2),0 0 0 1.5px #3F6C9B}
+#lf-ask-input:focus{outline:none}
+#lf-ask-input:focus-visible{outline:none}
+</style>
+</helmet>
+<div>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
+<div role="dialog" aria-label="Ask LLManey" data-ask-panel="1" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; box-sizing: border-box; padding-top: 110px; pointer-events: none; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; letter-spacing: -0.02em; opacity: {{ op }}; transform: {{ tf }}; transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1), transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)">
+
+<div aria-hidden="true" style="position: absolute; inset: 0; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); mask-image: linear-gradient(to bottom, transparent 0%, #000 18%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%)"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); mask-image: linear-gradient(to bottom, transparent 12%, #000 34%); -webkit-mask-image: linear-gradient(to bottom, transparent 12%, #000 34%)"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); mask-image: linear-gradient(to bottom, transparent 26%, #000 52%); -webkit-mask-image: linear-gradient(to bottom, transparent 26%, #000 52%)"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; backdrop-filter: blur(28px) saturate(1.5); -webkit-backdrop-filter: blur(28px) saturate(1.5); mask-image: linear-gradient(to bottom, transparent 40%, #000 70%); -webkit-mask-image: linear-gradient(to bottom, transparent 40%, #000 70%)"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 36%, rgba(255, 255, 255, 0.72) 100%)"></div>
+
+<div style="position: relative; pointer-events: auto; box-sizing: border-box; width: 100%; max-width: 720px; margin: 0 auto; padding: 0 20px 24px; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px">
+<div style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ heading }}</div>
+<button type="button" aria-label="Close chat" onClick="{{ close }}" style="width: 44px; height: 44px; margin-right: -12px; border: 0; border-radius: 50%; background: none; color: #1F1F1F; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"></path></svg>
+</button>
+</div>
+
+<sc-if value="{{ hasMsgs }}" hint-placeholder-val="{{ false }}">
+<div data-lf-msgs="1" aria-live="polite" style="max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 4px">
+<sc-for list="{{ msgs }}" as="m" hint-placeholder-count="2">
+<div style="max-width: 680px; align-self: {{ m.align }}; color: {{ m.fg }}; text-align: {{ m.ta }}">{{ m.text }}</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ showPrompts }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; align-items: flex-start">
+<sc-for list="{{ prompts }}" as="q" hint-placeholder-count="3">
+<button type="button" onClick="{{ q.ask }}" style="min-height: 33px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #1F1F1F; text-align: left">{{ q.text }}</button>
+</sc-for>
+</div>
+</sc-if>
+
+<form class="lf-ask-form" onSubmit="{{ send }}" style="display: flex; align-items: center; gap: 8px; box-sizing: border-box; width: 100%; height: 48px; padding: 0 6px 0 22px; border-radius: 100px; background: #ffffff; box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.2)">
+<label for="lf-ask-input" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%)">Message LLManey</label>
+<input id="lf-ask-input" type="text" autocomplete="off" placeholder="Ask about projects, process, or Laney" style="flex: 1 1 auto; min-width: 0; height: 44px; padding: 0; border: 0; background: transparent; outline: none; font: inherit; letter-spacing: inherit; color: #1F1F1F">
+<button type="submit" aria-label="Send message" style="flex: none; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #1F1F1F; color: #ffffff; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11.5v-9M3.5 6L7 2.5 10.5 6"></path></svg>
+</button>
+</form>
+
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startOpen":{"editor":"boolean","default":true},"$preview":{"width":854,"height":402}}'>
+class Component extends DCLogic {
+componentDidMount() {
+var self = this;
+this.onDocClick = function (e) {
+var t = e.target && e.target.closest ? e.target.closest('a[href="#ask"], [data-ask]') : null;
+if (t) { e.preventDefault(); self.setState({ ctx: (t.getAttribute && t.getAttribute('data-ask-ctx')) || '' }); self.show(); return; }
+if (self.state && self.state.open) {
+var inside = e.target && e.target.closest ? e.target.closest('[data-ask-panel]') : null;
+if (!inside) self.hide();
+}
+};
+this.onDocKey = function (e) {
+if ((e.key === 'Escape' || e.key === 'Esc') && self.state && self.state.open) self.hide();
+};
+document.addEventListener('click', this.onDocClick);
+document.addEventListener('keydown', this.onDocKey);
+if (this.props.startOpen !== false) this.show();
+}
+componentWillUnmount() {
+document.removeEventListener('click', this.onDocClick);
+document.removeEventListener('keydown', this.onDocKey);
+}
+triggers(on) {
+var list = document.querySelectorAll('[data-ask-dock]');
+for (var i = 0; i < list.length; i++) {
+list[i].style.opacity = on ? '1' : '0';
+list[i].style.transform = on ? 'none' : 'translateY(10px)';
+list[i].style.visibility = on ? 'visible' : 'hidden';
+}
+}
+show() {
+var self = this;
+if (this.state && this.state.open) { this.hide(); return; }
+this.triggers(false);
+this.setState({ open: true, shown: false });
+requestAnimationFrame(function () { requestAnimationFrame(function () {
+self.setState({ shown: true });
+var input = document.getElementById('lf-ask-input');
+if (input) input.focus();
+}); });
+}
+hide() {
+var self = this;
+this.triggers(true);
+this.setState({ shown: false });
+setTimeout(function () { self.setState({ open: false }); }, 450);
+}
+answer(q) {
+var t = q.toLowerCase();
+if (/approach.*design|philosophy|principle/.test(t)) return 'Research-backed decisions, obsessive attention to accessibility, and a collaborative, open-ended mindset where every pixel serves a purpose.';
+if (/process/.test(t)) return 'Laney starts with research, then synthesis, ideation and testing. On MyShake she saw that the team\u2019s priorities and what users valued were misaligned, pushed for research into actual user needs, and ran 10 user interviews and a 50+ response survey; that research shaped the information architecture.';
+if (/research|interview|survey/.test(t)) return 'She mixes interviews, surveys, competitive analysis and secondary research, and changes course when a method fails. On the NVIDIA AI UX agent the survey got zero responses, so the team scrapped it and leaned on 7 interviews across ML engineering, QA and UX design.';
+if (/myshake|earthquake|shake/.test(t)) return 'MyShake is an earthquake alert app. Laney was Lead Product Designer on a team of 3 designers, 1 PM and 2 engineers for 3 months. The redesign cut finding a loved one from 7 steps to 3 and raised engagement 45%. It shipped.';
+if (/nvidia|scout|agent|capstone/.test(t)) return 'NVIDIA Scout is an AI UX agent built with NVIDIA for her UCSC HCI capstone, with Laney as Lead Product Designer. It runs persona-driven agents against a staging build and gives engineers screenshots, step-by-step logs and a recommended fix they can export to Jira. It is a working product, tested with engineers.';
+if (/idbridge|id bridge|hackathon|designathon|unhoused|housing/.test(t)) return 'IDBridge is a verified identity platform for unhoused individuals, designed in a 6-hour designathon in October 2025. The team spent the first 2 hours on research and won first place with a privacy-first, offline design.';
+if (/verisupply|sensitel|confidential|password/.test(t)) return 'VeriSupply is her 2026 work as Product Growth & Design Intern at Sensitel. It is confidential, so there is no case study here — it is listed under experience on the About and Resume pages.';
+if (/resume|experience|education|school|degree|background/.test(t)) return 'M.S. Human Computer Interaction at UC Santa Cruz (2026) and B.A. Cognitive Science at UC Berkeley (2024). Experience includes NVIDIA (capstone), Sensitel, MyShake, Eximlabs, Mind Coffee and Advanced Health Academy. The Resume page has the full list.';
+if (/who|about|laney|hobb|fun/.test(t)) return 'Laney is a product designer from the Bay Area, raised by a designer and an engineer. She describes herself as an artist, foodie, dog-lover, and traveler.';
+return 'I can only answer from what is in this portfolio. Try asking about MyShake, NVIDIA Scout, IDBridge, her design process or how she approaches design.';
+}
+ask(q, canned) {
+var self = this;
+q = (q || '').trim();
+if (!q) return;
+var chat = (this.state && this.state.chat) || [];
+var withQ = chat.concat([{ who: 'user', text: q }]);
+function toEnd() { var el = document.querySelector('[data-lf-msgs]'); if (el) el.scrollTop = el.scrollHeight; }
+this.setState({ chat: withQ });
+setTimeout(toEnd, 30);
+setTimeout(function () { self.setState({ chat: withQ.concat([{ who: 'bot', text: canned || self.answer(q) }]) }); setTimeout(toEnd, 30); }, 500);
+}
+renderVals() {
+var self = this;
+var st = this.state || {};
+var chat = st.chat || [];
+return {
+open: !!st.open,
+op: st.shown ? '1' : '0',
+tf: st.shown ? 'translateY(0px)' : 'translateY(28px)',
+close: function () { self.hide(); },
+hasMsgs: chat.length > 0,
+msgs: chat.map(function (m) {
+var u = m.who === 'user';
+return { text: m.text, align: u ? 'flex-end' : 'flex-start', ta: u ? 'right' : 'left', fg: u ? '#6E6A66' : '#1F1F1F' };
+}),
+showPrompts: chat.length === 0,
+heading: st.ctx ? ('Ask LLManey \u00b7 ' + st.ctx) : 'Ask LLManey',
+prompts: (({
+'MyShake': [
+['Why research before redesigning?', 'The team\u2019s priorities and what users valued were misaligned. The app led with earthquake data, but 10 interviews and 50+ survey responses showed people open it for their family. Laney pushed for research into actual user needs first, and it decided the information architecture.'],
+['How did seven taps become three?', 'Finding a loved one\u2019s status took seven taps: launch, search, type a name, wait, verify a location, check a status, confirm. The redesign pins people to the dashboard, so a status is three taps.'],
+['What changed after it shipped?', 'Engagement rose 45%, a safety status went from seven taps to three, the two alerts became distinct, and the redesign shipped on MyShake\u2019s first design system.']
+],
+'NVIDIA Scout': [
+['Why won\u2019t engineers act on an AI verdict?', 'In interviews they said they need to reach the same conclusion themselves. So every Scout finding comes with an annotated screenshot, a step-by-step trace and a recommended fix, rather than a score to trust.'],
+['What made the MVP?', 'A staging URL as the way in, personas as sliders, findings ranked highest to lowest with a screenshot and explanation, a hallucination guard, human accept / reject / defer, and export to Jira.'],
+['What did testing change?', 'Four pivots: designing around the staging review instead of job titles, per-agent token budgets, one chat interface, and findings standardised onto a single P0\u2013P3 scale.']
+],
+'IDBridge': [
+['What can you design in six hours?', 'The team spent the first two hours on research, then designed three things: ID verification with a QR-carried history, a social worker chat, and shelter listings with real-time bed counts. It won first place.'],
+['Where did AI help, and where did it fall short?', 'It helped with speed, breadth and synthesis for a small team. It fell short on human context: AI-sourced claims got mixed with real ones, and the team had to backtrack and verify every insight against lived accounts.'],
+['Why offline-first?', 'The people it is for often have no data plan. Offline-first means no data plan is required, and privacy-first means the user controls what is shared.']
+]
+})[st.ctx] || [
+['What is your design process?', ''], ['Tell me about MyShake', ''], ['How do you approach design?', '']
+]).map(function (p) { return { text: p[0], ask: function () { self.ask(p[0], p[1]); } }; }),
+send: function (e) {
+e.preventDefault();
+var input = e.currentTarget.querySelector('input');
+var v = input ? input.value : '';
+if (input) input.value = '';
+self.ask(v);
+}
+};
+}
+}
+</script>
+</body>
+</html>

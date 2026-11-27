@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Read more, read less — live prototype</title>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:transparent}
+.rm{position:relative;box-sizing:border-box;width:100%;max-width:560px;margin:0 auto;padding:20px 22px 10px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(31,40,50,.05),0 12px 28px -16px rgba(31,40,50,.22);font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;color:#1F1F1F}
+.rm-k{font-size:12px;line-height:17px;color:#6E6A66;margin-bottom:8px}
+.rm-t{margin:0 0 12px;font-weight:400;font-size:19px;line-height:25px;letter-spacing:-.02em}
+.rm-clip{position:relative;overflow:hidden;max-height:150px;transition:max-height .7s cubic-bezier(.32,.72,0,1)}
+.rm.open .rm-clip{max-height:900px;transition:max-height .9s cubic-bezier(.32,.72,0,1)}
+.rm-body{font-size:16px;line-height:1.55;color:#1F1F1F}
+.rm-body p{margin:0 0 .9em}
+.rm-body p:last-child{margin-bottom:0}
+.rm-blur{position:absolute;left:-2px;right:-2px;bottom:0;height:128px;pointer-events:none;transition:opacity .5s ease}
+.rm-blur i{position:absolute;inset:0;display:block}
+.rm-blur i:nth-child(1){-webkit-backdrop-filter:blur(.6px);backdrop-filter:blur(.6px);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 20%,#000 45%,transparent 60%);mask-image:linear-gradient(to bottom,transparent 0%,#000 20%,#000 45%,transparent 60%)}
+.rm-blur i:nth-child(2){-webkit-backdrop-filter:blur(1.6px);backdrop-filter:blur(1.6px);-webkit-mask-image:linear-gradient(to bottom,transparent 20%,#000 40%,#000 62%,transparent 78%);mask-image:linear-gradient(to bottom,transparent 20%,#000 40%,#000 62%,transparent 78%)}
+.rm-blur i:nth-child(3){-webkit-backdrop-filter:blur(3.5px);backdrop-filter:blur(3.5px);-webkit-mask-image:linear-gradient(to bottom,transparent 40%,#000 60%,#000 80%,transparent 92%);mask-image:linear-gradient(to bottom,transparent 40%,#000 60%,#000 80%,transparent 92%)}
+.rm-blur i:nth-child(4){-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);-webkit-mask-image:linear-gradient(to bottom,transparent 60%,#000 82%);mask-image:linear-gradient(to bottom,transparent 60%,#000 82%)}
+.rm-blur i:nth-child(5){background:linear-gradient(to bottom,rgba(255,255,255,0) 35%,rgba(255,255,255,.85) 92%,#FFFFFF)}
+.rm.open .rm-blur{opacity:0}
+.rm-row{display:flex;justify-content:center;margin-top:-34px;position:relative;transition:margin-top .62s cubic-bezier(.32,.72,0,1)}
+.rm.open .rm-row{margin-top:14px}
+.rm-btn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:transparent;font:inherit;font-size:15px;line-height:22px;color:#55514B;cursor:pointer;transition:background .25s ease,color .25s ease}
+.rm-btn:hover{background:rgba(31,31,31,.05);color:#1F1F1F}
+.rm-btn:focus-visible{outline:2px solid #3F6C9B;outline-offset:2px}
+.rm-chev{display:inline-block;width:8px;height:8px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .5s cubic-bezier(.32,.72,0,1)}
+.rm.open .rm-chev{transform:translateY(2px) rotate(-135deg)}
+.rm-lbl{display:inline-grid}
+.rm-lbl span{grid-area:1/1;transition:opacity .3s ease,transform .45s cubic-bezier(.32,.72,0,1)}
+.rm-lbl .b{opacity:0;transform:translateY(6px)}
+.rm.open .rm-lbl .a{opacity:0;transform:translateY(-6px)}
+.rm.open .rm-lbl .b{opacity:1;transform:none}
+.rm.auto .rm-clip{animation:rm-a-clip 7s cubic-bezier(.32,.72,0,1) infinite}
+.rm.auto .rm-blur{animation:rm-a-blur 7s ease infinite}
+.rm.auto .rm-row{animation:rm-a-row 7s cubic-bezier(.32,.72,0,1) infinite}
+.rm.auto .rm-lbl .a{animation:rm-a-la 7s ease infinite}
+.rm.auto .rm-lbl .b{animation:rm-a-lb 7s ease infinite}
+.rm.auto .rm-chev{animation:rm-a-chev 7s cubic-bezier(.32,.72,0,1) infinite}
+.rm.auto .rm-fake{animation:rm-a-press 7s ease infinite}
+.rm-frame.rm-fixed{height:300px;overflow:hidden;position:relative}
+.rm-frame.rm-fixed .rm{animation:rm-a-scroll 7s cubic-bezier(.45,0,.2,1) infinite}
+.rm-frame.rm-fixed::after{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;background:linear-gradient(rgba(226,234,238,0),#E2EAEE);pointer-events:none}
+@keyframes rm-a-scroll{0%,36%{transform:translateY(0)}58%,70%{transform:translateY(calc(-100% + 232px))}84%,100%{transform:translateY(0)}}
+@keyframes rm-a-clip{0%,24%{max-height:150px}40%,70%{max-height:700px}86%,100%{max-height:150px}}
+@keyframes rm-a-blur{0%,24%{opacity:1}34%,72%{opacity:0}84%,100%{opacity:1}}
+@keyframes rm-a-row{0%,24%{margin-top:-34px}36%,72%{margin-top:14px}86%,100%{margin-top:-34px}}
+@keyframes rm-a-la{0%,25%{opacity:1;transform:none}31%,73%{opacity:0;transform:translateY(-6px)}79%,100%{opacity:1;transform:none}}
+@keyframes rm-a-lb{0%,25%{opacity:0;transform:translateY(6px)}31%,73%{opacity:1;transform:none}79%,100%{opacity:0;transform:translateY(6px)}}
+@keyframes rm-a-chev{0%,25%{transform:translateY(-2px) rotate(45deg)}36%,73%{transform:translateY(2px) rotate(-135deg)}84%,100%{transform:translateY(-2px) rotate(45deg)}}
+@keyframes rm-a-press{0%,19%,27%,67%,75%,100%{background:transparent;transform:none}22%,70%{background:rgba(31,31,31,.07);transform:scale(.95)}}
+@media (prefers-reduced-motion:reduce){.rm.auto *{animation:none !important}.rm-clip,.rm-row,.rm-blur,.rm-chev,.rm-lbl span{transition:none}}
+</style>
+</helmet>
+<div class="rm-frame {{ frameCls }}" style="box-sizing: border-box; width: 100%; padding: 22px; background: radial-gradient(120% 100% at 50% 30%, #F6F9F8 0%, #EAF1F1 55%, #E2EAEE 100%); border-radius: 10px">
+<div class="rm {{ cls }}">
+<div class="rm-k">Synopsis &#183; 2026 &#183; 1h 48m</div>
+<h3 class="rm-t">The Lighthouse Keeper&#8217;s Daughter</h3>
+<div class="rm-clip" data-rm-clip="1">
+<div class="rm-body" data-rm-body="1" id="rm-body">
+<p>When the last lighthouse on a remote northern coast is scheduled for automation, eleven-year-old Wren refuses to leave the only home she has known. Her father, the keeper, has one winter left before the lamp is switched to a timer and the island is closed for good.</p>
+<p>As storms cut them off from the mainland, Wren starts finding notes tucked into the lamp room, written in a hand she doesn&#8217;t recognise and dated decades apart. Each one points to a ship the light once guided home.</p>
+<p>With the help of a retired radio operator and a very stubborn goat, she pieces together the island&#8217;s forgotten history, and a reason the light might still be worth keeping on by hand.</p>
+</div>
+<div class="rm-blur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+<div class="rm-row">
+<sc-if value="{{ live }}" hint-placeholder-val="{{ true }}"><button type="button" class="rm-btn" onClick="{{ rmTap }}" aria-expanded="{{ open }}" aria-controls="rm-body"><span class="rm-lbl"><span class="a">Read more</span><span class="b">Show less</span></span><span class="rm-chev" aria-hidden="true"></span></button></sc-if><sc-if value="{{ still }}" hint-placeholder-val="{{ false }}"><span class="rm-btn rm-fake" aria-hidden="true"><span class="rm-lbl"><span class="a">Read more</span><span class="b">Show less</span></span><span class="rm-chev"></span></span></sc-if>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"preview":{"editor":"boolean","default":false}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var still = !!(this.props && this.props.preview);
+var open = !still && !!(this.state && this.state.rmOpen);
+return {
+open: open,
+live: !still,
+still: still,
+cls: still ? 'auto' : (open ? 'open' : ''),
+frameCls: still ? 'rm-fixed' : '',
+rmTap: function () { self.setState({ rmOpen: !open }); }
+};
+}
+}
+</script>
+</body>
+</html>
