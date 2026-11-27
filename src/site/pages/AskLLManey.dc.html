@@ -36,7 +36,7 @@ body{margin:0}
 </div>
 
 <sc-if value="{{ hasMsgs }}" hint-placeholder-val="{{ false }}">
-<div data-lf-msgs="1" aria-live="polite" style="max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 4px">
+<div data-lf-msgs="1" aria-live="polite" aria-busy="{{ typing }}" style="max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 4px">
 <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="2">
 <div style="max-width: 680px; align-self: {{ m.align }}; color: {{ m.fg }}; text-align: {{ m.ta }}">{{ m.text }}</div>
 </sc-for>
@@ -133,11 +133,39 @@ var chat = (this.state && this.state.chat) || [];
 var withQ = chat.concat([{ who: 'user', text: q }]);
 var pendingId = 'p' + Date.now() + Math.random();
 function toEnd() { var el = document.querySelector('[data-lf-msgs]'); if (el) el.scrollTop = el.scrollHeight; }
-// Replace this question's "Thinking…" bubble with the reply, keeping any messages sent since.
-function reply(text) {
+// Keep the newest words in view, unless the reader has scrolled up to reread.
+// The messages box remembers (on scroll) whether it is at the bottom; scrolling back down resumes following.
+function follow(update) {
+var el = document.querySelector('[data-lf-msgs]');
+if (el && !el.__lfBound) {
+el.__lfBound = true; el.__lfAtEnd = true;
+el.addEventListener('scroll', function () { el.__lfAtEnd = el.scrollHeight - el.scrollTop - el.clientHeight < 80; }, { passive: true });
+}
+update();
+requestAnimationFrame(function () {
+var box = document.querySelector('[data-lf-msgs]');
+if (box && box.__lfAtEnd !== false) toEnd();
+});
+}
+// Update this question's bubble in place, keeping any messages sent since.
+function setBubble(text, typing) {
+follow(function () {
 var cur = (self.state && self.state.chat) || [];
-self.setState({ chat: cur.map(function (m) { return m.id === pendingId ? { who: 'bot', text: text } : m; }) });
-setTimeout(toEnd, 30);
+self.setState({ chat: cur.map(function (m) { return m.id === pendingId ? { who: 'bot', text: text, id: pendingId, typing: typing } : m; }) });
+});
+}
+// Replace the "Thinking…" bubble with the reply, revealed one word at a time.
+function reply(text) {
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var parts = String(text).split(/(\s+)/);
+if (reduce || parts.length < 3) { setBubble(text, false); return; }
+var n = 0;
+(function step() {
+n += 2; // one word plus the space after it
+var finished = n >= parts.length;
+setBubble(finished ? text : parts.slice(0, n).join(''), !finished);
+if (!finished) setTimeout(step, 35);
+})();
 }
 this.setState({ chat: withQ.concat([{ who: 'bot', text: 'Thinking\u2026', id: pendingId }]) });
 setTimeout(toEnd, 30);
@@ -168,6 +196,7 @@ op: st.shown ? '1' : '0',
 tf: st.shown ? 'translateY(0px)' : 'translateY(28px)',
 close: function () { self.hide(); },
 hasMsgs: chat.length > 0,
+typing: chat.some(function (m) { return m.typing; }) ? 'true' : 'false',
 msgs: chat.map(function (m) {
 var u = m.who === 'user';
 return { text: m.text, align: u ? 'flex-end' : 'flex-start', ta: u ? 'right' : 'left', fg: u ? '#6E6A66' : '#1F1F1F' };
