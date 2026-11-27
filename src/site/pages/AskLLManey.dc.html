@@ -18,7 +18,7 @@ body{margin:0}
 </helmet>
 <div>
 <sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
-<div role="dialog" aria-label="Ask LLManey" data-ask-panel="1" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; box-sizing: border-box; padding-top: 110px; pointer-events: none; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; letter-spacing: -0.02em; opacity: {{ op }}; transform: {{ tf }}; transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1), transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)">
+<div role="dialog" aria-label="Ask LLManey" data-ask-panel="1" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; box-sizing: border-box; padding-top: 110px; pointer-events: none; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; letter-spacing: -0.02em; opacity: {{ op }}; transform: {{ tf }}; transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1), transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)">
 
 <div aria-hidden="true" style="position: absolute; inset: 0; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); mask-image: linear-gradient(to bottom, transparent 0%, #000 18%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%)"></div>
 <div aria-hidden="true" style="position: absolute; inset: 0; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); mask-image: linear-gradient(to bottom, transparent 12%, #000 34%); -webkit-mask-image: linear-gradient(to bottom, transparent 12%, #000 34%)"></div>
@@ -29,7 +29,7 @@ body{margin:0}
 <div style="position: relative; pointer-events: auto; box-sizing: border-box; width: 100%; max-width: 720px; margin: 0 auto; padding: 0 20px 24px; display: flex; flex-direction: column; gap: 14px">
 
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px">
-<div style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ heading }}</div>
+<div style="font-size: 14px; line-height: 22px; color: #6E6A66">{{ heading }}</div>
 <button type="button" aria-label="Close chat" onClick="{{ close }}" style="width: 44px; height: 44px; margin-right: -12px; border: 0; border-radius: 50%; background: none; color: #1F1F1F; cursor: pointer; display: flex; align-items: center; justify-content: center">
 <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"></path></svg>
 </button>

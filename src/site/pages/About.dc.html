@@ -33,9 +33,9 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 .dk-ph{position:relative;aspect-ratio:1;overflow:hidden;background:#2A2724}
 .dk-ph img,.dk-frame img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;filter:sepia(.22) saturate(.86) contrast(.95) brightness(1.04)}
 .dk-ph::after,.dk-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 120% at 50% 45%,transparent 55%,rgba(40,25,10,.28)),linear-gradient(160deg,rgba(255,214,150,.14),rgba(120,140,160,.08));mix-blend-mode:multiply}
-.dk-cap{padding:.35em 0 .6em;font-family:'Averia Serif Libre',Georgia,serif;font-weight:300;font-size:clamp(13px,2.4cqw,19px);line-height:1.15;color:#3E3A36;text-align:center;transform:rotate(-1.5deg)}
+.dk-cap{padding:.35em 0 .6em;font-family:'Averia Serif Libre',Georgia,serif;font-weight:300;font-size:clamp(12px,calc(2.4cqw - 1px),18px);line-height:1.15;color:#3E3A36;text-align:center;transform:rotate(-1.5deg)}
 .dk-paperclip{position:absolute;right:14%;top:-6%;width:6%;height:auto;z-index:2;filter:drop-shadow(0 1px 1px rgba(31,31,31,.25))}
-.dk-card2{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.62),rgba(246,245,243,.42) 55%,rgba(255,255,255,.55));-webkit-backdrop-filter:blur(7px) saturate(.92) brightness(1.04);backdrop-filter:blur(7px) saturate(.92) brightness(1.04);padding:1.6em 1.1em 1.2em;font-family:'Averia Serif Libre',Georgia,serif;font-weight:300;font-size:clamp(12px,1.9cqw,15px);line-height:1.4em;letter-spacing:0;color:#2A2724;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1px 0 rgba(255,255,255,.9),0 1px 2px rgba(31,31,31,.06),0 10px 24px -8px rgba(31,31,31,.12)}
+.dk-card2{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.62),rgba(246,245,243,.42) 55%,rgba(255,255,255,.55));-webkit-backdrop-filter:blur(7px) saturate(.92) brightness(1.04);backdrop-filter:blur(7px) saturate(.92) brightness(1.04);padding:1.6em 1.1em 1.2em;font-family:'Averia Serif Libre',Georgia,serif;font-weight:300;font-size:clamp(11px,calc(1.9cqw - 1px),14px);line-height:1.4em;letter-spacing:0;color:#2A2724;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1px 0 rgba(255,255,255,.9),0 1px 2px rgba(31,31,31,.06),0 10px 24px -8px rgba(31,31,31,.12)}
 .dk-lift:has(.dk-card2){filter:none}
 .dk-item:hover .dk-lift:has(.dk-card2),.dk-item.dk-drag .dk-lift:has(.dk-card2){filter:none}
 .dk-tt{letter-spacing:.08em;color:#7A746D}
@@ -60,8 +60,8 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 .dk-frame{position:relative;aspect-ratio:1;overflow:hidden;background:#3A3430;cursor:grab;transition:transform .35s cubic-bezier(.23,1,.32,1),box-shadow .35s ease}
 .dk-frame img{filter:sepia(.32) saturate(.78) contrast(1.02) brightness(1.03)}
 .dk-frame.dk-on{transform:scale(1.035);box-shadow:0 0 0 2px #F2C38E,0 6px 14px rgba(31,31,31,.18);z-index:1}
-.dk-bt{padding:.9em 0 1em;font-size:clamp(9px,1.4cqw,12px);line-height:1;letter-spacing:.12em;color:#7A746D;text-align:center;white-space:nowrap}
-.dk-tix{display:flex;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(180deg,#E3E9EE,#D7E0E7);background-size:160px 160px,100% 100%;border-radius:4px;color:#24365C;font-size:clamp(9px,1.45cqw,12px);line-height:1.25;overflow:hidden}
+.dk-bt{padding:.9em 0 1em;font-size:clamp(8px,calc(1.4cqw - 1px),11px);line-height:1;letter-spacing:.12em;color:#7A746D;text-align:center;white-space:nowrap}
+.dk-tix{display:flex;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(180deg,#E3E9EE,#D7E0E7);background-size:160px 160px,100% 100%;border-radius:4px;color:#24365C;font-size:clamp(8px,calc(1.45cqw - 1px),11px);line-height:1.25;overflow:hidden}
 .dk-tix-main{flex:1 1 auto;display:flex;flex-direction:column;gap:.35em;padding:1em 1em .9em 1.1em;border-right:1.5px dashed rgba(36,54,92,.35)}
 .dk-tix-k{letter-spacing:.1em;font-size:.82em;white-space:nowrap}
 .dk-tix-main b{font-family:'Averia Serif Libre',Georgia,serif;font-weight:400;font-size:1.9em;line-height:1;letter-spacing:-.01em}
@@ -70,7 +70,7 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 .dk-tix-stub{flex:0 0 26%;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:1em .4em}
 .dk-tix-v{writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Averia Serif Libre',Georgia,serif;font-size:1.5em;letter-spacing:.06em}
 .dk-tix-n{font-size:.8em;letter-spacing:.06em}
-.dk-mp{display:flex;align-items:center;justify-content:space-between;padding:1.6em 2em;box-sizing:border-box;border-radius:18px;background:linear-gradient(150deg,#F4F4F3,#DCDCDA 70%,#CFCFCD);box-shadow:inset 0 1px 0 #fff,inset 0 -2px 4px rgba(31,31,31,.08);font-size:clamp(6px,1cqw,10px);line-height:1.2}
+.dk-mp{display:flex;align-items:center;justify-content:space-between;padding:1.6em 2em;box-sizing:border-box;border-radius:18px;background:linear-gradient(150deg,#F4F4F3,#DCDCDA 70%,#CFCFCD);box-shadow:inset 0 1px 0 #fff,inset 0 -2px 4px rgba(31,31,31,.08);font-size:clamp(5px,calc(1cqw - 1px),9px);line-height:1.2}
 .dk-mp-scr{flex:0 0 21em;height:13.4em;box-sizing:border-box;overflow:hidden;border-radius:10px;padding:5% 6% 6%;background:linear-gradient(160deg,#3D2632,#1E1419);box-shadow:0 0 0 3px #141012;color:#F5EEE9;display:flex;flex-direction:column;gap:.45em}
 .dk-mp-top{display:flex;justify-content:space-between;align-items:center;font-size:.9em;opacity:.85}
 .dk-mp-dot{width:.6em;height:.6em;border-radius:50%;background:#7C6A60}
@@ -101,7 +101,7 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 .cv-wrap.st-out{padding-top:min(196px,44cqw)}
 .cv{position:relative;width:min(100%,440px);aspect-ratio:100/64;margin:0 auto;perspective:1400px}
 .cv-back{position:absolute;inset:0;border-radius:8px;background:linear-gradient(180deg,rgba(226,220,211,.78),rgba(214,207,197,.7));box-shadow:inset 0 0 0 1px rgba(255,255,255,.75),0 18px 40px -22px rgba(31,31,31,.35)}
-.cv-card{position:absolute;left:6%;right:6%;top:7%;height:86%;z-index:2;box-sizing:border-box;padding:5.5% 6.5%;border-radius:10px;background:linear-gradient(160deg,#242426,#141416);color:#F4F1EC;display:flex;flex-direction:column;font-size:clamp(10px,2.9cqw,13px);line-height:1.3;transform:translateY(0);transition:transform .72s cubic-bezier(.33,0,.15,1),box-shadow .5s ease;box-shadow:0 10px 30px -12px rgba(0,0,0,.45)}
+.cv-card{position:absolute;left:6%;right:6%;top:7%;height:86%;z-index:2;box-sizing:border-box;padding:5.5% 6.5%;border-radius:10px;background:linear-gradient(160deg,#242426,#141416);color:#F4F1EC;display:flex;flex-direction:column;font-size:clamp(9px,calc(2.9cqw - 1px),12px);line-height:1.3;transform:translateY(0);transition:transform .72s cubic-bezier(.33,0,.15,1),box-shadow .5s ease;box-shadow:0 10px 30px -12px rgba(0,0,0,.45)}
 .cv-wrap.st-half .cv-card{transform:translateY(-46%)}
 .cv-wrap.st-rise .cv-card,.cv-wrap.st-lift .cv-card,.cv-wrap.st-drop .cv-card{transform:translateY(-110%)}
 .cv-wrap.st-out .cv-card,.cv-wrap.st-lift .cv-card{z-index:6}
@@ -136,25 +136,25 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 .cv-wrap.st-out .cv-hit{inset:auto 0 0 0;height:30%}
 .cv:hover .cv-flap{transform:rotateX(14deg)}
 .cv-wrap:not(.st-closed) .cv:hover .cv-flap{transform:rotateX(180deg)}
-.cv-btn{display:block;margin:18px auto 0;border:0;border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;line-height:18px;color:#6E6A66;background:#fff;box-shadow:0 0 0 1px #EFECE8,0 2px 6px rgba(31,31,31,.06);cursor:pointer}
+.cv-btn{display:block;margin:18px auto 0;border:0;border-radius:999px;padding:6px 14px;font:inherit;font-size:12px;line-height:18px;color:#6E6A66;background:#fff;box-shadow:0 0 0 1px #EFECE8,0 2px 6px rgba(31,31,31,.06);cursor:pointer}
 .cv-btn:hover{color:#1F1F1F}
 .cv-btn:focus-visible{outline:2px solid #3F6C9B;outline-offset:2px}
 .cv-btn{min-height:44px;padding:0 18px}
 @container (max-width:560px){
 .cv{width:100%;aspect-ratio:100/94}
-.cv-card{left:4%;right:4%;top:5%;height:90%;padding:6% 6%;font-size:14px;line-height:1.3}
+.cv-card{left:4%;right:4%;top:5%;height:90%;padding:6% 6%;font-size:13px;line-height:1.3}
 .cv-c-name{margin-top:.6em;font-size:1.75em}
 .cv-c-links{margin-top:.9em;gap:6px}
 .cv-c-links a{min-height:48px;justify-content:center;padding:.4em .8em;box-sizing:border-box}
 .cv-c-links a:first-child,.cv-c-links a:last-child{grid-column:1 / -1}
-.cv-c-links span{font-size:12px}
+.cv-c-links span{font-size:11px}
 .cv-wrap.st-flap,.cv-wrap.st-rise,.cv-wrap.st-out,.cv-wrap.st-lift,.cv-wrap.st-drop,.cv-wrap.st-sink,.cv-wrap.st-closing{padding-top:68cqw}
 .cv-wrap.st-out .cv-card{transform:translateY(-38%) rotate(-.8deg)}
 .cv-wrap.st-out .cv-hit{height:22%}
 .cv-wrap{margin-bottom:24px}
 }
 @media (prefers-reduced-motion:reduce){.cv-card,.cv-flap,.cv-wrap{transition:none}}
-.dk-tidy{position:absolute;right:12px;bottom:12px;z-index:60;border:0;border-radius:999px;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:6px 12px;font:inherit;font-size:13px;line-height:18px;color:#6E6A66;cursor:pointer;box-shadow:0 0 0 1px #EFECE8}
+.dk-tidy{position:absolute;right:12px;bottom:12px;z-index:60;border:0;border-radius:999px;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:6px 12px;font:inherit;font-size:12px;line-height:18px;color:#6E6A66;cursor:pointer;box-shadow:0 0 0 1px #EFECE8}
 .dk-tidy:hover{color:#1F1F1F}
 .dk-tidy:focus-visible{outline:2px solid #3F6C9B;outline-offset:2px}
 .dk-story{animation:lf-rv .5s cubic-bezier(.23,1,.32,1) both}
@@ -166,13 +166,13 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 @media (min-width:1100px){.lf-page{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-page>header.lf-side{grid-column:1;grid-row:1;justify-self:start;width:152px}.lf-page>main{grid-column:2;grid-row:1;max-width:none !important}.lf-page>.lf-clock{grid-column:3;grid-row:1;justify-self:end}}
 /* Frame: live Bay Area time, top-right, level with the name. Wide screens only. */
 .lf-clock{display:none}
-@media (min-width:1100px){.lf-clock{display:block;position:sticky;top:80px;font-size:15px;line-height:22px;color:#6E6A66;white-space:nowrap;font-variant-numeric:tabular-nums}}
+@media (min-width:1100px){.lf-clock{display:block;position:sticky;top:80px;font-size:14px;line-height:22px;color:#6E6A66;white-space:nowrap;font-variant-numeric:tabular-nums}}
 @media (min-width:1100px){.lf-dockrow{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-dockrow>div:last-child{max-width:none !important}}
 @media (min-width:821px){.lf-side{height:calc(100vh - 106px);min-height:300px;box-sizing:border-box;z-index:12}}
 .lf-sbsig{display:block;height:46px;width:auto;margin:0 0 4px 0;transform:rotate(30deg);transform-origin:center;opacity:.9;pointer-events:none;user-select:none}
 .lf-ic{position:relative;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;color:#8C8782;transition:color .2s ease,background-color .2s ease}
 .lf-ic:hover,.lf-ic:focus-visible{color:#1F1F1F;background:#F3F2F0}
-.lf-ic::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,3px);padding:3px 7px;border-radius:6px;background:#1F1F1F;color:#fff;font-size:12px;line-height:16px;letter-spacing:0;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.23,1,.32,1)}
+.lf-ic::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,3px);padding:3px 7px;border-radius:6px;background:#1F1F1F;color:#fff;font-size:11px;line-height:16px;letter-spacing:0;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.23,1,.32,1)}
 .lf-ic:hover::after,.lf-ic:focus-visible::after{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.lf-ic,.lf-ic::after{transition:none}}
 @media (max-width:820px){.lf-page{justify-content:flex-start !important}}
@@ -184,19 +184,19 @@ header.lf-side>div:first-child,header.lf-side>.lf-sb{display:contents !important
 header.lf-side>div:first-child>a{order:1}
 header.lf-side .lf-sbsig{display:none !important}
 header.lf-side nav[aria-label="Contact"]{order:2;margin:0 -7px 0 0 !important}
-header.lf-side nav[aria-label="Primary"]{order:3;flex:1 1 100%;flex-direction:row !important;align-items:center !important;gap:22px;font-size:15px !important}
+header.lf-side nav[aria-label="Primary"]{order:3;flex:1 1 100%;flex-direction:row !important;align-items:center !important;gap:22px;font-size:14px !important}
 header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 }
 </style>
 </helmet>
-<div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; letter-spacing: -0.02em">
+<div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; letter-spacing: -0.02em">
 
 <div class="lf-page" style="box-sizing: border-box; max-width: 1180px; margin: 0 auto; padding: 80px clamp(20px, 5vw, 80px) 120px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; column-gap: 56px; row-gap: 32px">
 
 <header class="lf-side" style="flex: 0 0 152px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px">
 <div style="display: flex; flex-direction: column; gap: 20px">
-<a href="/" style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 300; font-size: 22px; line-height: 21px; letter-spacing: -0.5px; color: #1F1F1F">Laney Fong</a>
-<nav aria-label="Primary" style="display: flex; flex-direction: column; align-items: flex-start; font-size: 15px; line-height: 22px">
+<a href="/" style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 300; font-size: 21px; line-height: 21px; letter-spacing: -0.5px; color: #1F1F1F">Laney Fong</a>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; align-items: flex-start; font-size: 14px; line-height: 22px">
 <a href="/" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Index</span></a>
 <a href="/about" aria-current="page" style="display: block; padding: 4px 0; color: #1F1F1F"><span style="border-bottom: 1px solid #1F1F1F">About</span></a>
 <a href="/lab" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Lab</span></a>
@@ -218,8 +218,8 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 
 <section class="lf-rv" style="display: flex; flex-direction: column; gap: 20px">
 <div style="display: flex; flex-direction: column; gap: 12px">
-<div style="font-size: 15px; line-height: 22px; color: #6E6A66">About</div>
-<h1 style="margin: 0; max-width: 560px; font-weight: 400; font-size: clamp(20px, 2.1vw, 24px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">Raised by a designer and an engineer, I grew up where art meets technology.</h1>
+<div style="font-size: 14px; line-height: 22px; color: #6E6A66">About</div>
+<h1 style="margin: 0; max-width: 560px; font-weight: 400; font-size: clamp(19px, calc(2.1vw - 1px), 23px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">Raised by a designer and an engineer, I grew up where art meets technology.</h1>
 </div>
 
 <div data-desk="1" class="dk-desk" aria-label="Laney's board: drag the things around, hover or focus one to read its story">
@@ -293,7 +293,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </section>
 
 <section class="lf-rv" style="display: flex; flex-direction: column; gap: 10px; animation-delay: 0.16s">
-<h2 style="margin: 0; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">What I believe</h2>
+<h2 style="margin: 0; font-weight: 400; font-size: 15px; line-height: 24px; color: #1F1F1F">What I believe</h2>
 <div style="display: flex; flex-direction: column">
 <sc-for list="{{ beliefs }}" as="c" hint-placeholder-count="3">
 <div style="border-top: 1px solid #EFECE8">
@@ -305,7 +305,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <div style="display: grid; grid-template-rows: {{ c.rows }}; transition: grid-template-rows 0.55s cubic-bezier(.23,1,.32,1)">
 <div style="min-height: 0; overflow: hidden">
 <div style="display: flex; gap: 20px; padding: 0 0 16px; opacity: {{ c.op }}; transition: opacity 0.4s ease">
-<div style="flex: 0 0 72px; color: #A8A39D; font-size: 15px; line-height: 22px">{{ c.where }}</div>
+<div style="flex: 0 0 72px; color: #A8A39D; font-size: 14px; line-height: 22px">{{ c.where }}</div>
 <div style="flex: 1 1 auto; min-width: 0; color: #6E6A66">{{ c.proof }}</div>
 </div>
 </div>
@@ -325,7 +325,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <div style="min-height: 0; overflow: hidden">
 <div style="display: flex; flex-direction: column; gap: 36px; padding-top: 28px; opacity: {{ resOp }}; transition: opacity 0.4s ease">
 <section style="display: flex; flex-direction: column; gap: 4px; animation-delay: 0.24s">
-<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">Experience</h2>
+<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 15px; line-height: 24px; color: #1F1F1F">Experience</h2>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">NVIDIA</span>, Product Designer (Capstone)</div><div style="margin-left: auto; color: #6E6A66">2026</div></div>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">Sensitel</span>, Product Growth &amp; Design Intern</div><div style="margin-left: auto; color: #6E6A66">2026</div></div>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">MyShake</span>, Contract</div><div style="margin-left: auto; color: #6E6A66">2024, 2025</div></div>
@@ -335,13 +335,13 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </section>
 
 <section style="display: flex; flex-direction: column; gap: 4px; animation-delay: 0.32s">
-<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">Education</h2>
+<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 15px; line-height: 24px; color: #1F1F1F">Education</h2>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">University of California, Santa Cruz</span>, M.S. Human Computer Interaction</div><div style="margin-left: auto; color: #6E6A66">2026</div></div>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">University of California, Berkeley</span>, B.A. Cognitive Science</div><div style="margin-left: auto; color: #6E6A66">2024</div></div>
 </section>
 
 <section style="display: flex; flex-direction: column; gap: 4px; animation-delay: 0.40s">
-<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">Recognition &amp; community</h2>
+<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 15px; line-height: 24px; color: #1F1F1F">Recognition &amp; community</h2>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">Google Designathon</span>, First place</div><div style="margin-left: auto; color: #6E6A66">2025</div></div>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">UX@Berkeley</span>, Co-President</div></div>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; padding: 9px 0; border-top: 1px solid #EFECE8"><div style="color: #6E6A66"><span style="color: #1F1F1F">Partiful</span>, Campus Ambassador</div></div>
@@ -349,7 +349,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </section>
 
 <section style="display: flex; flex-direction: column; gap: 4px; animation-delay: 0.48s">
-<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">Tools</h2>
+<h2 style="margin: 0 0 6px; font-weight: 400; font-size: 15px; line-height: 24px; color: #1F1F1F">Tools</h2>
 <p style="margin: 0; color: #6E6A66">Figma, Claude, Cursor, Lovable, GitHub, Adobe CC</p>
 </section>
 
@@ -359,7 +359,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </section>
 
 <section class="lf-rv cv-sec" style="display: flex; flex-direction: column; gap: 10px; animation-delay: 0.48s">
-<h2 style="margin: 0; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">Contact</h2>
+<h2 style="margin: 0; font-weight: 400; font-size: 15px; line-height: 24px; color: #1F1F1F">Contact</h2>
 <p style="margin: 0; color: #6E6A66">{{ envHint }}</p>
 <div class="cv-wrap st-{{ envStage }}">
 <div class="cv">
@@ -400,7 +400,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <div class="lf-dockrow" style="box-sizing: border-box; max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); display: flex; justify-content: center; column-gap: 56px">
 <div class="lf-dock-sp" style="flex: 0 0 152px"></div>
 <div style="flex: 1 1 400px; min-width: 0; max-width: 700px; display: flex; justify-content: center">
-<button type="button" data-ask="1" aria-haspopup="dialog" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 10px; border: 0; background: none; cursor: pointer; font: inherit; font-size: 15px; line-height: 22px; letter-spacing: inherit; color: #3F6C9B">
+<button type="button" data-ask="1" aria-haspopup="dialog" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 10px; border: 0; background: none; cursor: pointer; font: inherit; font-size: 14px; line-height: 22px; letter-spacing: inherit; color: #3F6C9B">
 <span style="border-bottom: 1px dotted #3F6C9B">Ask LLManey</span>
 </button>
 </div>
