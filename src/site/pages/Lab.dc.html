@@ -90,6 +90,11 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 .lf-sheet{background:rgba(255,255,255,.94) !important}
 .lf-sheet aside.lf-side{flex:1 1 100% !important;max-width:none !important;border-right:none !important;border-bottom:1px solid rgba(31,31,31,.08)}
 }
+
+/* Captions match Index: centered "Title — category", title underline draws in on hover. */
+.lf-tile .lf-cap>span{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s cubic-bezier(.23,1,.32,1)}
+.lf-tile:hover .lf-cap>span{background-size:100% 1px}
+@media (prefers-reduced-motion:reduce){.lf-tile .lf-cap,.lf-tile .lf-cap>span{transition:none}}
 </style>
 </helmet>
 <div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; letter-spacing: -0.02em">
@@ -133,10 +138,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <span class="lf-wipe" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; border-radius: 8px; background: #FFFFFF; border: 1px solid rgba(31, 31, 31, 0.08); overflow: hidden; pointer-events: none">
 <dc-import name="ReadMore" preview="{{ true }}" hint-size="100%,340px"></dc-import>
 </span>
-<span style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 12px">
-<span class="lf-cap" style="color: #1F1F1F">{{ e.num }}&nbsp;&nbsp;{{ e.title }}</span>
-<span style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ e.cat }}</span>
-</span>
+<span class="lf-cap" style="display: block; text-align: center; color: #6E6A66"><span style="color: #1F1F1F">{{ e.title }}</span> — {{ e.cat }}</span>
 </button>
 </sc-if>
 <sc-if value="{{ e.isLd }}" hint-placeholder-val="{{ false }}">
@@ -144,10 +146,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <span class="lf-wipe" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; border-radius: 8px; background: #FFFFFF; border: 1px solid rgba(31, 31, 31, 0.08); overflow: hidden; pointer-events: none">
 <dc-import name="Loader" preview="{{ true }}" hint-size="100%,300px"></dc-import>
 </span>
-<span style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 12px">
-<span class="lf-cap" style="color: #1F1F1F">{{ e.num }}&nbsp;&nbsp;{{ e.title }}</span>
-<span style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ e.cat }}</span>
-</span>
+<span class="lf-cap" style="display: block; text-align: center; color: #6E6A66"><span style="color: #1F1F1F">{{ e.title }}</span> — {{ e.cat }}</span>
 </button>
 </sc-if>
 <sc-if value="{{ e.isNav }}" hint-placeholder-val="{{ false }}">
@@ -155,10 +154,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <span class="lf-wipe" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; border-radius: 8px; background: #FFFFFF; border: 1px solid rgba(31, 31, 31, 0.08); overflow: hidden; pointer-events: none">
 <dc-import name="NavBar" preview="{{ true }}" hint-size="100%,460px"></dc-import>
 </span>
-<span style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 12px">
-<span class="lf-cap" style="color: #1F1F1F">{{ e.num }}&nbsp;&nbsp;{{ e.title }}</span>
-<span style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ e.cat }}</span>
-</span>
+<span class="lf-cap" style="display: block; text-align: center; color: #6E6A66"><span style="color: #1F1F1F">{{ e.title }}</span> — {{ e.cat }}</span>
 </button>
 </sc-if>
 <sc-if value="{{ e.plainTile }}" hint-placeholder-val="{{ true }}">
@@ -185,10 +181,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <sc-if value="{{ e.noImg }}" hint-placeholder-val="{{ false }}">
 <span class="lf-wipe" style="display: flex; align-items: center; justify-content: center; aspect-ratio: {{ e.ratio }}; border-radius: 8px; background: none; border: 1px dashed #D5D1CC; color: #6E6A66">[Capture]</span>
 </sc-if>
-<span style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 12px">
-<span class="lf-cap" style="color: #1F1F1F">{{ e.num }}&nbsp;&nbsp;{{ e.title }}</span>
-<span style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ e.cat }}</span>
-</span>
+<span class="lf-cap" style="display: block; text-align: center; color: #6E6A66"><span style="color: #1F1F1F">{{ e.title }}</span> — {{ e.cat }}</span>
 </button>
 </sc-if>
 </sc-for>
