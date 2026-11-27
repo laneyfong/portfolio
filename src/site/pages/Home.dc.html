@@ -151,6 +151,38 @@ header.lf-side nav[aria-label="Contact"]{order:2;margin:0 -7px 0 0 !important}
 header.lf-side nav[aria-label="Primary"]{order:3;flex:1 1 100%;flex-direction:row !important;align-items:center !important;gap:22px;font-size:15px !important}
 header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 }
+
+/* Postcard (landing page ending): a lighter preview of the About envelope. */
+.lf-pc{position:relative;width:min(360px,100%);aspect-ratio:3/2;perspective:1200px;transform:rotate(-3deg);transition:transform .6s cubic-bezier(.23,1,.32,1);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lf-pc-in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.23,1,.32,1)}
+.lf-pc-face{position:absolute;inset:0;box-sizing:border-box;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(180deg,#FCFAF5,#F2EDE2);background-size:160px 160px,100% 100%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1px 0 rgba(255,255,255,.9),0 1px 2px rgba(31,31,31,.06),0 14px 30px -10px rgba(31,31,31,.18);color:#2A2724;font-family:'Averia Serif Libre',Georgia,serif;font-weight:300;letter-spacing:0}
+.lf-pc-front{padding:22px 24px;display:flex;flex-direction:column;justify-content:flex-end}
+.lf-pc-back{transform:rotateY(180deg);padding:20px 22px;display:grid;grid-template-columns:1fr 1fr;column-gap:18px}
+.lf-pc-back::before{content:"";position:absolute;left:50%;top:18px;bottom:18px;border-left:1px solid rgba(47,44,41,.16)}
+.lf-pc-stamp{position:absolute;top:14px;right:16px;width:62px;height:auto;transform:rotate(4deg);filter:drop-shadow(0 1px 1px rgba(31,31,31,.14))}
+.lf-pc-st{font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:600;font-size:8.4px;letter-spacing:.05em;fill:#1F1B24}
+.lf-pc-sb{font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:600;font-size:19px;letter-spacing:-.04em;fill:#1F1B24}
+.lf-pc-mark{position:absolute;top:26px;right:54px;width:112px;height:auto;transform:rotate(-8deg);pointer-events:none}
+.lf-pc-mk{font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:7px;letter-spacing:.08em;fill:#3F6C9B;opacity:.7}
+.lf-pc-hi{margin:0;font-size:clamp(22px,6.4vw,27px);line-height:1.15;color:#1F1F1F}
+.lf-pc-msg{margin:6px 0 0;font-size:17px;line-height:1.35;color:#5A554F}
+.lf-pc-from{margin-top:12px;font-size:15px;color:#7A746D}
+.lf-pc-note{display:flex;flex-direction:column;gap:6px;min-width:0}
+.lf-pc-hi2{margin:0;font-size:19px;line-height:1.2;color:#1F1F1F}
+.lf-pc-msg2{margin:0;font-size:14px;line-height:1.4;color:#5A554F}
+.lf-pc-about{margin-top:auto;font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;letter-spacing:-.01em;color:#3F6C9B}
+.lf-pc-addr{display:flex;flex-direction:column;justify-content:flex-end;gap:2px;min-width:0}
+.lf-pc-lbl{font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#A8A39D}
+.lf-pc-line{display:block;min-height:26px;padding-top:6px;box-sizing:border-box;border-bottom:1px dotted rgba(47,44,41,.32);font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;letter-spacing:-.01em;color:#1F1F1F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+a.lf-pc-line:hover,a.lf-pc-line:focus-visible,.lf-pc-about:hover,.lf-pc-about:focus-visible{color:#1F1F1F}
+.lf-pc-hint{font-size:15px;line-height:22px;color:#A8A39D}
+.lf-pc-hint-t{display:none}
+@media (hover:hover){.lf-pc:hover{transform:rotate(-1deg) translateY(-3px)}.lf-pc:hover .lf-pc-in{transform:rotateY(180deg)}}
+@media (hover:none){.lf-pc-hint-h{display:none}.lf-pc-hint-t{display:inline}}
+.lf-pc:focus-within .lf-pc-in,.lf-pc.lf-pc-on .lf-pc-in{transform:rotateY(180deg)}
+.lf-pc:focus-within,.lf-pc.lf-pc-on{transform:rotate(-1deg)}
+@media (max-width:420px){.lf-pc-back{padding:16px 16px;column-gap:14px}.lf-pc-msg2{font-size:13px}.lf-pc-line{font-size:12px}}
+@media (prefers-reduced-motion:reduce){.lf-pc,.lf-pc-in{transition:none}}
 </style>
 </helmet>
 <div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; letter-spacing: -0.02em">
@@ -212,6 +244,42 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <a href="/lab#exp-4" class="lf-labtile " aria-label="Lab experiment: Quick-add tab bar"><span class="lf-labframe"><span class="lf-labzoom lf-labzoom-nav"><dc-import name="NavBar" preview="{{ true }}" hint-size="100%,350px"></dc-import></span></span></a>
 </div>
 <a href="/lab" style="align-self: flex-end; font-size: 15px; line-height: 22px; color: #6E6A66"><span style="border-bottom: 1px dotted #A8A39D">More in the Lab &#8594;</span></a>
+</section>
+
+<section class="lf-rv" aria-label="Say hello" style="display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 72px; animation-delay: 0.4s">
+<div class="lf-pc {{ pcCls }}" onClick="{{ flipCard }}">
+<div class="lf-pc-in">
+<div class="lf-pc-face lf-pc-front">
+<svg class="lf-pc-stamp" viewBox="-2 -2 104 126" aria-hidden="true">
+<defs><filter id="pcInk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="4" result="t"></feTurbulence><feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8 5.7" result="m"></feColorMatrix><feComposite in="SourceGraphic" in2="m" operator="in" result="c"></feComposite><feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="9" result="w"></feTurbulence><feDisplacementMap in="c" in2="w" scale="1.4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs>
+<path d="M0,0 L2.30,0.00 A2.70,2.70 0 0 1 7.70,0.00 L12.30,0.00 A2.70,2.70 0 0 1 17.70,0.00 L22.30,0.00 A2.70,2.70 0 0 1 27.70,0.00 L32.30,0.00 A2.70,2.70 0 0 1 37.70,0.00 L42.30,0.00 A2.70,2.70 0 0 1 47.70,0.00 L52.30,0.00 A2.70,2.70 0 0 1 57.70,0.00 L62.30,0.00 A2.70,2.70 0 0 1 67.70,0.00 L72.30,0.00 A2.70,2.70 0 0 1 77.70,0.00 L82.30,0.00 A2.70,2.70 0 0 1 87.70,0.00 L92.30,0.00 A2.70,2.70 0 0 1 97.70,0.00 L100.00,0.00 L100.00,2.38 A2.70,2.70 0 0 1 100.00,7.78 L100.00,12.55 A2.70,2.70 0 0 1 100.00,17.95 L100.00,22.72 A2.70,2.70 0 0 1 100.00,28.12 L100.00,32.88 A2.70,2.70 0 0 1 100.00,38.28 L100.00,43.05 A2.70,2.70 0 0 1 100.00,48.45 L100.00,53.22 A2.70,2.70 0 0 1 100.00,58.62 L100.00,63.38 A2.70,2.70 0 0 1 100.00,68.78 L100.00,73.55 A2.70,2.70 0 0 1 100.00,78.95 L100.00,83.72 A2.70,2.70 0 0 1 100.00,89.12 L100.00,93.88 A2.70,2.70 0 0 1 100.00,99.28 L100.00,104.05 A2.70,2.70 0 0 1 100.00,109.45 L100.00,114.22 A2.70,2.70 0 0 1 100.00,119.62 L100.00,122.00 L97.70,122.00 A2.70,2.70 0 0 1 92.30,122.00 L87.70,122.00 A2.70,2.70 0 0 1 82.30,122.00 L77.70,122.00 A2.70,2.70 0 0 1 72.30,122.00 L67.70,122.00 A2.70,2.70 0 0 1 62.30,122.00 L57.70,122.00 A2.70,2.70 0 0 1 52.30,122.00 L47.70,122.00 A2.70,2.70 0 0 1 42.30,122.00 L37.70,122.00 A2.70,2.70 0 0 1 32.30,122.00 L27.70,122.00 A2.70,2.70 0 0 1 22.30,122.00 L17.70,122.00 A2.70,2.70 0 0 1 12.30,122.00 L7.70,122.00 A2.70,2.70 0 0 1 2.30,122.00 L0.00,122.00 L0.00,119.62 A2.70,2.70 0 0 1 0.00,114.22 L0.00,109.45 A2.70,2.70 0 0 1 0.00,104.05 L0.00,99.28 A2.70,2.70 0 0 1 0.00,93.88 L0.00,89.12 A2.70,2.70 0 0 1 0.00,83.72 L0.00,78.95 A2.70,2.70 0 0 1 0.00,73.55 L0.00,68.78 A2.70,2.70 0 0 1 0.00,63.38 L0.00,58.62 A2.70,2.70 0 0 1 0.00,53.22 L0.00,48.45 A2.70,2.70 0 0 1 0.00,43.05 L0.00,38.28 A2.70,2.70 0 0 1 0.00,32.88 L0.00,28.12 A2.70,2.70 0 0 1 0.00,22.72 L0.00,17.95 A2.70,2.70 0 0 1 0.00,12.55 L0.00,7.78 A2.70,2.70 0 0 1 0.00,2.38 L0.00,0.00 Z" fill="#EE9A3C"></path>
+<g filter="url(#pcInk)">
+<text x="12" y="17" class="lf-pc-st">LANEY · 2026</text>
+<path fill="#1F1B24" fill-rule="evenodd" d="M50,20 L58.5,37 H41.5 Z M40.5,37 H59.5 V55 H40.5 Z M44,52 V45 a2,2 0 0 1 4,0 V52 Z M52,52 V45 a2,2 0 0 1 4,0 V52 Z M42.5,55 H57.5 V90 H42.5 Z M50,59 m-3.2,0 a3.2,3.2 0 1 0 6.4,0 a3.2,3.2 0 1 0 -6.4,0 Z M36,90 H64 V96 H36 Z"></path><g stroke="#1F1B24" fill="none" stroke-linecap="round" stroke-width="2"><path d="M27,92 C25,78 26,64 31,50"></path><path d="M26.4,84 l-5,-3 M26.2,76 l-5,-3.5 M27,68 l-4.6,-4 M28.6,60 l-4,-4.5 M30,53 l-3,-4.8 M26.6,80 l4,-3.6 M26.8,72 l4.4,-3.4 M28,64 l4.4,-3 M29.6,56 l4,-2.6"></path></g><path fill="#1F1B24" d="M71,26 l1.6,3.6 3.9,.4 -2.9,2.6 .8,3.8 -3.4,-2 -3.4,2 .8,-3.8 -2.9,-2.6 3.9,-.4 Z M78,42 l1,2.2 2.4,.3 -1.8,1.6 .5,2.4 -2.1,-1.2 -2.1,1.2 .5,-2.4 -1.8,-1.6 2.4,-.3 Z"></path>
+<text x="11" y="113" class="lf-pc-sb" textLength="78" lengthAdjust="spacingAndGlyphs">Bay Area</text>
+</g>
+</svg>
+<svg class="lf-pc-mark" viewBox="0 0 120 60" aria-hidden="true"><g fill="none" stroke="#3F6C9B" stroke-width="1.3" stroke-linecap="round" opacity=".55"><circle cx="30" cy="30" r="21"></circle><circle cx="30" cy="30" r="16.5"></circle><path d="M56 18c8-4 14 4 22 0s14-4 22 0 14 4 18 0M56 30c8-4 14 4 22 0s14-4 22 0 14 4 18 0M56 42c8-4 14 4 22 0s14-4 22 0 14 4 18 0"></path></g><text x="30" y="33" text-anchor="middle" class="lf-pc-mk">CA · 2026</text></svg>
+<p class="lf-pc-hi">Wish you were here.</p>
+<p class="lf-pc-msg">Let&#8217;s make something.</p>
+<span class="lf-pc-from">&#8212; Laney</span>
+</div>
+<div class="lf-pc-face lf-pc-back">
+<div class="lf-pc-note">
+<p class="lf-pc-hi2">Say hello.</p>
+<p class="lf-pc-msg2">I&#8217;d love to hear what you&#8217;re working on.</p>
+<a href="/about" class="lf-pc-about">More on the About page &#8594;</a>
+</div>
+<div class="lf-pc-addr">
+<span class="lf-pc-lbl">To</span>
+<a href="mailto:laneyrfong@gmail.com" class="lf-pc-line">laneyrfong@gmail.com</a>
+<a href="https://www.linkedin.com/in/laneyfong/" class="lf-pc-line">linkedin.com/in/laneyfong</a>
+<span class="lf-pc-line lf-pc-blank" aria-hidden="true"></span>
+</div>
+</div>
+</div>
+</div>
+<span class="lf-pc-hint"><span class="lf-pc-hint-h">Hover to flip</span><span class="lf-pc-hint-t">Tap to flip</span></span>
 </section>
 
 </main>
@@ -845,6 +913,13 @@ curP.moreLine = moreCount > 0
 ? moreCount + ' more ' + (moreCount === 1 ? 'section' : 'sections') + ' — ' + sections.slice(1, 4).map(function (s) { return s.label.toLowerCase(); }).join(', ') + (moreCount > 3 ? ', and more' : '')
 : '';
 return Object.assign(chatVals, {
+pcCls: st.pcFlip ? 'lf-pc-on' : '',
+// Touch screens have no hover, so a tap flips the postcard (links on the back still work).
+flipCard: function (e) {
+if (e && e.target && e.target.closest && e.target.closest('a')) return;
+if (window.matchMedia && window.matchMedia('(hover: hover)').matches) return;
+self.setState({ pcFlip: !st.pcFlip });
+},
 projects: projects,
 isOpen: open >= 0,
 cur: curP,
