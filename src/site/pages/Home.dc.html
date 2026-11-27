@@ -102,12 +102,12 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 @media (min-width:1100px){.lf-page{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-page>header.lf-side{grid-column:1;grid-row:1;justify-self:start;width:152px}.lf-page>main{grid-column:2;grid-row:1;max-width:none !important}.lf-page>.lf-clock{grid-column:3;grid-row:1;justify-self:end}}
 /* Frame: live Bay Area time, top-right, level with the name. Wide screens only. */
 .lf-clock{display:none}
-@media (min-width:1100px){.lf-clock{display:block;position:sticky;top:80px;font-size:15px;line-height:22px;color:#6E6A66;white-space:nowrap;font-variant-numeric:tabular-nums}}
-.lf-eyebrow{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:15px;line-height:22px;color:#6E6A66}
+@media (min-width:1100px){.lf-clock{display:block;position:sticky;top:80px;font-size:14px;line-height:22px;color:#6E6A66;white-space:nowrap;font-variant-numeric:tabular-nums}}
+.lf-eyebrow{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:14px;line-height:22px;color:#6E6A66}
 .lf-eyebrow i{font-style:normal;color:#C9C5BF}
 .lf-eb-co{color:#1F1F1F}
 .lf-dot{display:inline-block;flex:none;width:7px;height:7px;border-radius:50%;background:#7FB7A4;box-shadow:0 0 0 3px rgba(127,183,164,.18)}
-.lf-h1{margin:0;max-width:680px;font-weight:400;font-size:clamp(28px,3.1vw,38px);line-height:1.16;letter-spacing:-.035em;color:#1F1F1F;text-wrap:balance}
+.lf-h1{margin:0;max-width:680px;font-weight:400;font-size:clamp(27px,calc(3.1vw - 1px),37px);line-height:1.16;letter-spacing:-.035em;color:#1F1F1F;text-wrap:balance}
 .lf-h1 span{color:#8A857F}
 .lf-labstrip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 @media (max-width:640px){.lf-labstrip{grid-template-columns:minmax(0,1fr)}}
@@ -129,11 +129,11 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 .lf-sbsig{display:block;height:46px;width:auto;margin:0 0 4px 0;transform:rotate(30deg);transform-origin:center;opacity:.9;pointer-events:none;user-select:none}
 .lf-ic{position:relative;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;color:#8C8782;transition:color .2s ease,background-color .2s ease}
 .lf-ic:hover,.lf-ic:focus-visible{color:#1F1F1F;background:#F3F2F0}
-.lf-ic::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,3px);padding:3px 7px;border-radius:6px;background:#1F1F1F;color:#fff;font-size:12px;line-height:16px;letter-spacing:0;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.23,1,.32,1)}
+.lf-ic::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,3px);padding:3px 7px;border-radius:6px;background:#1F1F1F;color:#fff;font-size:11px;line-height:16px;letter-spacing:0;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.23,1,.32,1)}
 .lf-ic:hover::after,.lf-ic:focus-visible::after{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.lf-ic,.lf-ic::after{transition:none}}
-.lf-vcur{position:fixed;left:0;top:0;z-index:30;width:0;height:0;pointer-events:none;will-change:transform;font-size:13px;line-height:18px;color:#1F1F1F;font-size:0}
-.lf-vcur::after{content:"View";position:absolute;left:0;top:0;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);box-shadow:0 0 0 1px rgba(31,31,31,.06),0 6px 18px -6px rgba(31,31,31,.18);font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;letter-spacing:-.01em;white-space:nowrap;opacity:0;transform:translate(-50%,-50%) scale(.4);transition:opacity .2s ease,transform .35s cubic-bezier(.23,1,.32,1)}
+.lf-vcur{position:fixed;left:0;top:0;z-index:30;width:0;height:0;pointer-events:none;will-change:transform;font-size:12px;line-height:18px;color:#1F1F1F;font-size:0}
+.lf-vcur::after{content:"View";position:absolute;left:0;top:0;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);box-shadow:0 0 0 1px rgba(31,31,31,.06),0 6px 18px -6px rgba(31,31,31,.18);font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;letter-spacing:-.01em;white-space:nowrap;opacity:0;transform:translate(-50%,-50%) scale(.4);transition:opacity .2s ease,transform .35s cubic-bezier(.23,1,.32,1)}
 .lf-vcur.on::after{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .lf-vcur.on.down::after{transform:translate(-50%,-50%) scale(.92)}
 @media (hover:hover) and (pointer:fine){.lf-tile,.lf-tile *{cursor:none !important}}
@@ -151,23 +151,23 @@ header.lf-side>div:first-child,header.lf-side>.lf-sb{display:contents !important
 header.lf-side>div:first-child>a{order:1}
 header.lf-side .lf-sbsig{display:none !important}
 header.lf-side nav[aria-label="Contact"]{order:2;margin:0 -7px 0 0 !important}
-header.lf-side nav[aria-label="Primary"]{order:3;flex:1 1 100%;flex-direction:row !important;align-items:center !important;gap:22px;font-size:15px !important}
+header.lf-side nav[aria-label="Primary"]{order:3;flex:1 1 100%;flex-direction:row !important;align-items:center !important;gap:22px;font-size:14px !important}
 header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 }
 
 
 /* Colophon: a tiny closing line at the very bottom of the Index. */
-.lf-colophon{margin:72px 0 0;font-size:13px;line-height:18px;color:#A8A39D}
+.lf-colophon{margin:72px 0 0;font-size:12px;line-height:18px;color:#A8A39D}
 </style>
 </helmet>
-<div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; letter-spacing: -0.02em">
+<div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; letter-spacing: -0.02em">
 
 <div class="lf-page" style="box-sizing: border-box; max-width: 1180px; margin: 0 auto; padding: 80px clamp(20px, 5vw, 80px) 120px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; column-gap: 56px; row-gap: 32px">
 
 <header class="lf-side" style="flex: 0 0 152px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px">
 <div style="display: flex; flex-direction: column; gap: 20px">
-<a href="/" style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 300; font-size: 22px; line-height: 21px; letter-spacing: -0.5px; color: #1F1F1F">Laney Fong</a>
-<nav aria-label="Primary" style="display: flex; flex-direction: column; align-items: flex-start; font-size: 15px; line-height: 22px">
+<a href="/" style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 300; font-size: 21px; line-height: 21px; letter-spacing: -0.5px; color: #1F1F1F">Laney Fong</a>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; align-items: flex-start; font-size: 14px; line-height: 22px">
 <a href="/" aria-current="page" style="display: block; padding: 4px 0; color: #1F1F1F"><span style="border-bottom: 1px solid #1F1F1F">Index</span></a>
 <a href="/about" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">About</span></a>
 <a href="/lab" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Lab</span></a>
@@ -193,7 +193,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </section>
 
 <section class="lf-rv" aria-label="Selected work" style="display: flex; flex-direction: column; gap: 20px; padding-top: 28px; animation-delay: 0.24s">
-<h2 style="margin: 0; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">Selected work</h2>
+<h2 style="margin: 0; font-weight: 400; font-size: 15px; line-height: 24px; color: #1F1F1F">Selected work</h2>
 <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
 <button type="button" class="lf-tile" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding: 0 0 20px; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: inherit">
 <span class="lf-wipe" style="position: relative; display: block; overflow: hidden; border-radius: 6px; background: {{ p.bg }}; aspect-ratio: 3 / 2">
@@ -218,7 +218,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <a href="/lab#exp-3" class="lf-labtile " aria-label="Lab experiment: Blind box"><span class="lf-labframe"><video src="/media/lab-box-loop.mp4" poster="/media/lab-box-poster.webp" autoplay="true" loop="true" muted="true" playsinline="true" preload="auto" disablepictureinpicture="true" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none"></video></span></a>
 <a href="/lab#exp-4" class="lf-labtile " aria-label="Lab experiment: Quick-add tab bar"><span class="lf-labframe"><span class="lf-labzoom lf-labzoom-nav"><dc-import name="NavBar" preview="{{ true }}" hint-size="100%,350px"></dc-import></span></span></a>
 </div>
-<a href="/lab" style="align-self: flex-end; font-size: 15px; line-height: 22px; color: #6E6A66"><span style="border-bottom: 1px dotted #A8A39D">More in the Lab &#8594;</span></a>
+<a href="/lab" style="align-self: flex-end; font-size: 14px; line-height: 22px; color: #6E6A66"><span style="border-bottom: 1px dotted #A8A39D">More in the Lab &#8594;</span></a>
 </section>
 
 <p class="lf-colophon">Designed by me, built with Figma, Claude &amp; Cursor &#183; Set in Neue&nbsp;Montreal &amp; Averia.</p>
@@ -237,7 +237,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </div>
 
 <div data-ask-dock="1" style="position: fixed; left: 0; right: 0; bottom: 20px; z-index: 11; display: flex; justify-content: center; pointer-events: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.23,1,.32,1)">
-<button type="button" data-ask="1" aria-haspopup="dialog" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 10px; border: 0; background: none; cursor: pointer; font: inherit; font-size: 15px; line-height: 22px; letter-spacing: inherit; color: #3F6C9B">
+<button type="button" data-ask="1" aria-haspopup="dialog" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 10px; border: 0; background: none; cursor: pointer; font: inherit; font-size: 14px; line-height: 22px; letter-spacing: inherit; color: #3F6C9B">
 <span style="border-bottom: 1px dotted #3F6C9B">Ask LLManey</span>
 </button>
 </div>
@@ -253,10 +253,10 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <sc-if value="{{ cur.hasVid }}" hint-placeholder-val="{{ false }}"><video class="lf-hero" src="{{ cur.vid }}" poster="{{ cur.poster }}" data-loop-start="{{ cur.loopStart }}" data-loop-end="{{ cur.loopEnd }}" autoplay="true" loop="true" muted="true" playsinline="true" preload="auto" disablepictureinpicture="true" aria-label="{{ cur.alt }}" style="display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; pointer-events: none"></video></sc-if>
 </div>
 
-<div class="lf-rv" style="width: 100%; max-width: 560px; margin: 64px auto 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 24px; animation-delay: 0.35s">
+<div class="lf-rv" style="width: 100%; max-width: 560px; margin: 64px auto 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 24px; animation-delay: 0.35s">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px">
-<h2 style="margin: 0; font-weight: 500; font-size: 16px; line-height: 24px; color: #1F1F1F">{{ cur.title }}</h2>
-<div role="group" aria-label="Detail level" style="display: flex; gap: 2px; padding: 3px; border-radius: 10px; background: rgba(31, 31, 31, 0.05); font-size: 15px; line-height: 22px">
+<h2 style="margin: 0; font-weight: 500; font-size: 15px; line-height: 24px; color: #1F1F1F">{{ cur.title }}</h2>
+<div role="group" aria-label="Detail level" style="display: flex; gap: 2px; padding: 3px; border-radius: 10px; background: rgba(31, 31, 31, 0.05); font-size: 14px; line-height: 22px">
 <button type="button" class="lf-seg" onClick="{{ showTldr }}" aria-pressed="{{ isTldr }}" style="min-height: 38px; padding: 0 14px; border: 0; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 500; letter-spacing: inherit; background: {{ tldrBg }}; box-shadow: {{ tldrShadow }}; color: {{ tldrColor }}">TL;DR</button>
 <button type="button" class="lf-seg" onClick="{{ showFull }}" aria-pressed="{{ isFull }}" style="min-height: 38px; padding: 0 14px; border: 0; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 500; letter-spacing: inherit; background: {{ fullBg }}; box-shadow: {{ fullShadow }}; color: {{ fullColor }}">Full</button>
 </div>
@@ -273,21 +273,21 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 
 <sc-for list="{{ shown }}" as="b" hint-placeholder-count="6">
 <div class="lf-sr" id="{{ b.anchor }}" style="box-sizing: border-box; width: 100%; max-width: {{ b.maxw }}; margin: {{ b.mt }} auto 0">
-<sc-if value="{{ b.isSign }}" hint-placeholder-val="{{ false }}"><div style="display: flex; align-items: center; gap: 14px; color: #A8A39D"><span style="flex: 0 0 28px; height: 1px; background: #E9E6E2"></span><span style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 400; font-size: 18px; line-height: 1; letter-spacing: 0.14em; color: #6E6A66">{{ b.text }}</span></div></sc-if>
+<sc-if value="{{ b.isSign }}" hint-placeholder-val="{{ false }}"><div style="display: flex; align-items: center; gap: 14px; color: #A8A39D"><span style="flex: 0 0 28px; height: 1px; background: #E9E6E2"></span><span style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 400; font-size: 17px; line-height: 1; letter-spacing: 0.14em; color: #6E6A66">{{ b.text }}</span></div></sc-if>
 <sc-if value="{{ b.isLabel }}" hint-placeholder-val="{{ false }}"><div style="padding-top: 20px; border-top: 1px solid #E9E6E2; color: #6E6A66">{{ b.text }}</div></sc-if>
-<sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><h3 style="margin: 0; max-width: 620px; font-weight: 400; font-size: clamp(20px, 2.1vw, 24px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">{{ b.text }}</h3></sc-if>
-<sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 16px; line-height: 24px; color: #6E6A66">{{ b.text }}</p></sc-if>
-<sc-if value="{{ b.isQ }}" hint-placeholder-val="{{ false }}"><blockquote style="margin: 0; max-width: 620px; font-size: clamp(20px, 2.1vw, 24px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">{{ b.text }}</blockquote></sc-if>
-<sc-if value="{{ b.isTags }}" hint-placeholder-val="{{ false }}"><div style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</div></sc-if>
+<sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><h3 style="margin: 0; max-width: 620px; font-weight: 400; font-size: clamp(19px, calc(2.1vw - 1px), 23px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">{{ b.text }}</h3></sc-if>
+<sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 15px; line-height: 24px; color: #6E6A66">{{ b.text }}</p></sc-if>
+<sc-if value="{{ b.isQ }}" hint-placeholder-val="{{ false }}"><blockquote style="margin: 0; max-width: 620px; font-size: clamp(19px, calc(2.1vw - 1px), 23px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">{{ b.text }}</blockquote></sc-if>
+<sc-if value="{{ b.isTags }}" hint-placeholder-val="{{ false }}"><div style="font-size: 14px; line-height: 22px; color: #6E6A66">{{ b.text }}</div></sc-if>
 <sc-if value="{{ b.isStats }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-wrap: wrap; gap: 16px 48px">
 <sc-for list="{{ b.stats }}" as="st" hint-placeholder-count="3">
-<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 32px; line-height: 1.1; letter-spacing: -0.025em; color: #1F1F1F">{{ st.n }}</div><div style="color: #6E6A66">{{ st.l }}</div></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 31px; line-height: 1.1; letter-spacing: -0.025em; color: #1F1F1F">{{ st.n }}</div><div style="color: #6E6A66">{{ st.l }}</div></div>
 </sc-for>
 </div>
 </sc-if>
 <sc-if value="{{ b.isItems }}" hint-placeholder-val="{{ false }}">
-<div style="display: flex; flex-direction: column; font-size: 16px; line-height: 24px">
+<div style="display: flex; flex-direction: column; font-size: 15px; line-height: 24px">
 <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
 <div style="display: flex; flex-wrap: wrap; gap: 2px 16px; padding: 11px 0; border-bottom: 1px solid #E9E6E2"><div style="flex: 0 0 170px; color: #1F1F1F">{{ it.k }}</div><div style="flex: 1 1 240px; min-width: 0; color: #6E6A66">{{ it.v }}</div></div>
 </sc-for>
@@ -301,7 +301,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <sc-if value="{{ b.plain }}" hint-placeholder-val="{{ false }}">
 <video class="lf-wipe" src="{{ b.src }}" poster="{{ b.poster }}" autoplay="true" loop="true" muted="true" preload="auto" playsinline="true" disablepictureinpicture="true" aria-label="{{ b.alt }}" style="display: block; width: 100%; height: auto; border-radius: 8px; background: #F3F3F1; pointer-events: none"></video>
 </sc-if>
-<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+<figcaption style="text-align: center; font-size: 14px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
 </figure>
 </sc-if>
 <sc-if value="{{ b.isHot }}" hint-placeholder-val="{{ false }}">
@@ -310,23 +310,23 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <div style="position: relative; width: 100%; max-width: {{ b.inner }}">
 <img src="{{ b.src }}" alt="{{ b.alt }}" style="display: block; width: 100%; height: auto">
 <sc-for list="{{ b.hots }}" as="h" hint-placeholder-count="4">
-<button type="button" class="lf-dot" onClick="{{ h.toggle }}" aria-pressed="{{ h.isOpen }}" aria-label="{{ h.label }}" style="left: {{ h.x }}%; top: {{ h.y }}%; display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1.5px solid #FFFFFF; border-radius: 50%; background: {{ h.bg }}; box-shadow: 0 3px 10px rgba(31, 31, 31, 0.28); cursor: pointer; font: inherit; font-size: 12px; line-height: 1; letter-spacing: 0; color: #FFFFFF">{{ h.n }}</button>
+<button type="button" class="lf-dot" onClick="{{ h.toggle }}" aria-pressed="{{ h.isOpen }}" aria-label="{{ h.label }}" style="left: {{ h.x }}%; top: {{ h.y }}%; display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1.5px solid #FFFFFF; border-radius: 50%; background: {{ h.bg }}; box-shadow: 0 3px 10px rgba(31, 31, 31, 0.28); cursor: pointer; font: inherit; font-size: 11px; line-height: 1; letter-spacing: 0; color: #FFFFFF">{{ h.n }}</button>
 </sc-for>
 </div>
 </div>
-<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: {{ b.capColor }}">{{ b.capText }}</figcaption>
+<figcaption style="text-align: center; font-size: 14px; line-height: 22px; color: {{ b.capColor }}">{{ b.capText }}</figcaption>
 </figure>
 </sc-if>
 <sc-if value="{{ b.isBoard }}" hint-placeholder-val="{{ false }}">
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
 <div class="lf-wipe" style="position: relative; overflow: hidden; border-radius: 10px; background: #F3F3F1">
 <img src="{{ b.src }}" alt="{{ b.alt }}" style="display: block; width: 100%; height: auto">
-<div class="lf-cur lf-cur1" aria-hidden="true" style="left: 21%; top: 28%; animation-duration: 30s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#6B7A99" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #6B7A99; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 1</span></div></div>
-<div class="lf-cur lf-cur2" aria-hidden="true" style="left: 44%; top: 20%; animation-duration: 34s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#F24E1E" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #F24E1E; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 2</span></div></div>
-<div class="lf-cur lf-cur3" aria-hidden="true" style="left: 60%; top: 30%; animation-duration: 27s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#2F6FDE" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #2F6FDE; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 3</span></div></div>
-<div class="lf-cur lf-cur4" aria-hidden="true" style="left: 76%; top: 28%; animation-duration: 32s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#E8A41E" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #E8A41E; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 4</span></div></div>
+<div class="lf-cur lf-cur1" aria-hidden="true" style="left: 21%; top: 28%; animation-duration: 30s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#6B7A99" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #6B7A99; color: #FFFFFF; font-size: 11px; line-height: 17px; white-space: nowrap">Tester 1</span></div></div>
+<div class="lf-cur lf-cur2" aria-hidden="true" style="left: 44%; top: 20%; animation-duration: 34s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#F24E1E" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #F24E1E; color: #FFFFFF; font-size: 11px; line-height: 17px; white-space: nowrap">Tester 2</span></div></div>
+<div class="lf-cur lf-cur3" aria-hidden="true" style="left: 60%; top: 30%; animation-duration: 27s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#2F6FDE" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #2F6FDE; color: #FFFFFF; font-size: 11px; line-height: 17px; white-space: nowrap">Tester 3</span></div></div>
+<div class="lf-cur lf-cur4" aria-hidden="true" style="left: 76%; top: 28%; animation-duration: 32s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#E8A41E" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #E8A41E; color: #FFFFFF; font-size: 11px; line-height: 17px; white-space: nowrap">Tester 4</span></div></div>
 </div>
-<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+<figcaption style="text-align: center; font-size: 14px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
 </figure>
 </sc-if>
 <sc-if value="{{ b.isFlow }}" hint-placeholder-val="{{ false }}">
@@ -393,7 +393,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <path class="lf-flow-pulse" d="M641 431 H1203 a20 20 0 0 0 20 -20 V354" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 0.9s"></path>
 </svg>
 </div>
-<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+<figcaption style="text-align: center; font-size: 14px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
 </figure>
 </sc-if>
 <sc-if value="{{ b.isScreens }}" hint-placeholder-val="{{ false }}">
@@ -407,8 +407,8 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <sc-for list="{{ b.screens }}" as="sc" hint-placeholder-count="3">
 <button type="button" onClick="{{ sc.pick }}" aria-pressed="{{ sc.on }}" style="position: relative; display: block; width: 100%; padding: 15px 0 15px 22px; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; text-align: left">
 <span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E9E6E2"><span style="display: block; width: 100%; height: 100%; background: #1F1F1F; transform-origin: 50% 0; transform: {{ sc.barTf }}; animation: {{ sc.barAnim }}"></span></span>
-<span style="display: flex; align-items: baseline; gap: 10px; font-size: 15px; line-height: 22px; color: {{ sc.labelColor }}; transition: color 0.3s ease"><span style="flex: 0 0 auto; font-size: 13px; color: {{ sc.numColor }}">{{ sc.num }}</span><span>{{ sc.title }}</span></span>
-<span style="display: grid; grid-template-rows: {{ sc.rows }}; transition: grid-template-rows 0.5s cubic-bezier(.23,1,.32,1)"><span style="overflow: hidden; min-height: 0"><span style="display: block; padding: 7px 0 0 27px; font-size: 15px; line-height: 22px; color: #6E6A66; opacity: {{ sc.capOp }}; transition: opacity 0.4s ease">{{ sc.text }}</span></span></span>
+<span style="display: flex; align-items: baseline; gap: 10px; font-size: 14px; line-height: 22px; color: {{ sc.labelColor }}; transition: color 0.3s ease"><span style="flex: 0 0 auto; font-size: 12px; color: {{ sc.numColor }}">{{ sc.num }}</span><span>{{ sc.title }}</span></span>
+<span style="display: grid; grid-template-rows: {{ sc.rows }}; transition: grid-template-rows 0.5s cubic-bezier(.23,1,.32,1)"><span style="overflow: hidden; min-height: 0"><span style="display: block; padding: 7px 0 0 27px; font-size: 14px; line-height: 22px; color: #6E6A66; opacity: {{ sc.capOp }}; transition: opacity 0.4s ease">{{ sc.text }}</span></span></span>
 </button>
 </sc-for>
 </div>
@@ -423,15 +423,15 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </div>
 </div>
 <div style="display: flex; justify-content: center">
-<button type="button" data-camreplay="1" class="lf-btn" style="display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 13px; border: 1px solid rgba(31, 31, 31, 0.1); border-radius: 999px; background: #FFFFFF; cursor: pointer; font: inherit; font-size: 13px; line-height: 18px; letter-spacing: inherit; color: #6E6A66"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7a5 5 0 1 1-1.6-3.7"></path><path d="M12 2v3H9"></path></svg>Replay</button>
+<button type="button" data-camreplay="1" class="lf-btn" style="display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 13px; border: 1px solid rgba(31, 31, 31, 0.1); border-radius: 999px; background: #FFFFFF; cursor: pointer; font: inherit; font-size: 12px; line-height: 18px; letter-spacing: inherit; color: #6E6A66"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7a5 5 0 1 1-1.6-3.7"></path><path d="M12 2v3H9"></path></svg>Replay</button>
 </div>
-<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+<figcaption style="text-align: center; font-size: 14px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
 </figure>
 </sc-if>
 <sc-if value="{{ b.isLines }}" hint-placeholder-val="{{ false }}">
-<div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 24px">
 <sc-for list="{{ b.lines }}" as="ln" hint-placeholder-count="4">
-<div class="lf-cap-line" style="animation-range: {{ ln.range }}; display: flex; gap: 14px; color: #1F1F1F"><span style="flex: 0 0 auto; font-size: 13px; line-height: 24px; color: #B9B4AE">{{ ln.i }}</span><span style="flex: 1 1 auto; min-width: 0">{{ ln.t }}</span></div>
+<div class="lf-cap-line" style="animation-range: {{ ln.range }}; display: flex; gap: 14px; color: #1F1F1F"><span style="flex: 0 0 auto; font-size: 12px; line-height: 24px; color: #B9B4AE">{{ ln.i }}</span><span style="flex: 1 1 auto; min-width: 0">{{ ln.t }}</span></div>
 </sc-for>
 </div>
 </sc-if>
@@ -448,11 +448,11 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <sc-if value="{{ b.noSrc }}" hint-placeholder-val="{{ false }}">
 <div class="lf-wipe" style="aspect-ratio: 16 / 9; border-radius: 8px; border: 1px dashed #B9B4AE; background: #F8F8F7"></div>
 </sc-if>
-<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+<figcaption style="text-align: center; font-size: 14px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
 </figure>
 </sc-if>
 <sc-if value="{{ b.isLink }}" hint-placeholder-val="{{ false }}">
-<a class="lf-cta" href="{{ b.url }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #1F1F1F; color: #FFFFFF; font-size: 16px; line-height: 24px">{{ b.text }}
+<a class="lf-cta" href="{{ b.url }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #1F1F1F; color: #FFFFFF; font-size: 15px; line-height: 24px">{{ b.text }}
 <svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l7-7"></path><path d="M5 3.5h5.5V9"></path></svg>
 </a>
 </sc-if>
@@ -470,7 +470,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 
 <sc-if value="{{ showMore }}" hint-placeholder-val="{{ true }}">
 <div class="lf-sr" style="width: 100%; max-width: 560px; margin: 64px auto 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
-<button type="button" class="lf-cta" onClick="{{ openFull }}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #1F1F1F; color: #FFFFFF; cursor: pointer; font: inherit; font-size: 16px; letter-spacing: inherit">Read the full story
+<button type="button" class="lf-cta" onClick="{{ openFull }}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #1F1F1F; color: #FFFFFF; cursor: pointer; font: inherit; font-size: 15px; letter-spacing: inherit">Read the full story
 <svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5"></path></svg>
 </button>
 
@@ -482,7 +482,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <button type="button" data-ask="1" data-ask-ctx="{{ cur.title }}" aria-haspopup="dialog" style="min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #3F6C9B"><span style="border-bottom: 1px dotted #3F6C9B">Ask LLManey</span></button>
 </div>
 
-<div class="lf-sr" style="width: 100%; max-width: 560px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid #E9E6E2; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 16px">
+<div class="lf-sr" style="width: 100%; max-width: 560px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid #E9E6E2; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 15px">
 <button type="button" onClick="{{ close }}" style="min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #6E6A66">Back to index</button>
 <button type="button" onClick="{{ next }}" style="min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #1F1F1F">Next: {{ cur.nextTitle }}</button>
 </div>
@@ -495,13 +495,13 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
 <div role="menu" aria-label="Jump to a section" class="lf-fan" style="opacity: {{ menuOp }}; transform: {{ menuTf }}; transition: opacity 0.2s ease, transform 0.2s cubic-bezier(.23,1,.32,1); pointer-events: auto; display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; max-width: min(1184px, calc(100vw - 28px)); padding: 26px 22px 40px; margin: -26px -22px -40px; overflow-x: auto">
 <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="5">
-<button type="button" role="menuitem" class="lf-pop" onClick="{{ sec.go }}" style="flex: 0 0 auto; display: inline-flex; align-items: center; height: 34px; padding: 0 13px; border: 1px solid rgba(31, 31, 31, 0.08); border-radius: 999px; background: {{ sec.bg }}; box-shadow: 0 6px 18px rgba(31, 31, 31, 0.10); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); cursor: pointer; font: inherit; font-size: 13px; line-height: 17px; letter-spacing: inherit; white-space: nowrap; color: {{ sec.fg }}">{{ sec.label }}</button>
+<button type="button" role="menuitem" class="lf-pop" onClick="{{ sec.go }}" style="flex: 0 0 auto; display: inline-flex; align-items: center; height: 34px; padding: 0 13px; border: 1px solid rgba(31, 31, 31, 0.08); border-radius: 999px; background: {{ sec.bg }}; box-shadow: 0 6px 18px rgba(31, 31, 31, 0.10); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); cursor: pointer; font: inherit; font-size: 12px; line-height: 17px; letter-spacing: inherit; white-space: nowrap; color: {{ sec.fg }}">{{ sec.label }}</button>
 </sc-for>
 </div>
 </sc-if>
 
 <div data-ask-dock="1" style="pointer-events: auto; display: flex; align-items: center; gap: 10px; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.23,1,.32,1)">
-<button type="button" class="lf-btn" data-ask="1" data-ask-ctx="{{ cur.title }}" aria-haspopup="dialog" style="height: 44px; padding: 0 17px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.7); box-shadow: 0 6px 24px rgba(31, 31, 31, 0.16); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); color: #3F6C9B; cursor: pointer; font: inherit; font-size: 14px; line-height: 20px; letter-spacing: inherit; white-space: nowrap">Ask LLManey</button>
+<button type="button" class="lf-btn" data-ask="1" data-ask-ctx="{{ cur.title }}" aria-haspopup="dialog" style="height: 44px; padding: 0 17px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.7); box-shadow: 0 6px 24px rgba(31, 31, 31, 0.16); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); color: #3F6C9B; cursor: pointer; font: inherit; font-size: 13px; line-height: 20px; letter-spacing: inherit; white-space: nowrap">Ask LLManey</button>
 <button type="button" class="lf-btn" aria-expanded="{{ menuOpen }}" aria-label="Jump to a section" onClick="{{ toggleMenu }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.7); box-shadow: 0 6px 24px rgba(31, 31, 31, 0.16); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); color: #1F1F1F; cursor: pointer; display: flex; align-items: center; justify-content: center">
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
 <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5L7 9.5 11.5 5"></path></svg>
