@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quick-add tab bar — live prototype</title>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:transparent}
+.nv-wrap{box-sizing:border-box;width:100%;display:flex;justify-content:center;align-items:center;padding:28px 16px;background:radial-gradient(120% 100% at 50% 35%,#FFFFFF 0%,#F2F1EE 55%,#E9E8E4 100%);border-radius:10px;font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif}
+.nv-phone{position:relative;width:256px;height:530px;flex:none;border-radius:46px;padding:3px;box-sizing:border-box;background:linear-gradient(135deg,#D9D6D0 0%,#9E9A93 18%,#E9E6E0 34%,#86827B 52%,#CFCBC4 70%,#8F8B84 86%,#D6D2CB 100%);box-shadow:0 30px 60px -28px rgba(20,20,30,.55),0 8px 18px -8px rgba(20,20,30,.25),inset 0 0 0 .5px rgba(255,255,255,.5)}
+.nv-bezel{position:relative;width:100%;height:100%;border-radius:43px;padding:6px;box-sizing:border-box;background:#050506;box-shadow:inset 0 0 0 1px #1a1a1c}
+.nv-btn{position:absolute;width:3px;border-radius:2px;background:linear-gradient(90deg,#77736C,#C9C5BE 60%,#8C8881)}
+.nv-btn.l1{left:-2px;top:96px;height:22px}.nv-btn.l2{left:-2px;top:136px;height:40px}.nv-btn.l3{left:-2px;top:184px;height:40px}.nv-btn.r1{right:-2px;left:auto;top:150px;height:62px}
+.nv-glass{position:absolute;inset:0;border-radius:37px;pointer-events:none;z-index:20;background:linear-gradient(118deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 100%)}
+.nv-screen{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;background:#F6F6F3;color:#1F1F1F}
+.nv-island{position:absolute;left:50%;top:8px;width:72px;height:22px;margin-left:-36px;border-radius:999px;background:#000;z-index:21}
+.nv-island::after{content:"";position:absolute;right:9px;top:7px;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b3a5a,#0a0d18 70%)}
+.nv-status{position:relative;z-index:21;display:flex;justify-content:space-between;align-items:center;height:38px;padding:0 18px 0 26px;font-size:12px;font-weight:600;letter-spacing:-.01em;box-sizing:border-box}
+.nv-status svg{display:block}
+.nv-pages{position:absolute;inset:40px 0 0 0;transition:filter .4s ease,transform .5s cubic-bezier(.23,1,.32,1)}
+.nv-open .nv-pages{filter:blur(3px) saturate(.9);transform:scale(.985)}
+.nv-page{position:absolute;inset:0;padding:4px 16px 100px;box-sizing:border-box;transition:opacity .35s ease,transform .45s cubic-bezier(.23,1,.32,1)}
+.nv-page.off{opacity:0;transform:translateX(14px);pointer-events:none}
+.nv-h{margin:6px 0 2px;font-size:22px;line-height:28px;font-weight:500;letter-spacing:-.02em}
+.nv-sub{font-size:12px;line-height:16px;color:#8A857F;margin-bottom:14px}
+.nv-card{height:92px;border-radius:14px;background:#FFFFFF;box-shadow:0 1px 2px rgba(31,31,31,.05);margin-bottom:10px;padding:12px;box-sizing:border-box;display:flex;flex-direction:column;gap:7px}
+.nv-card i{display:block;height:8px;border-radius:99px;background:#ECEBE8}
+.nv-card i:nth-child(1){width:55%;height:10px;background:#E2E0DC}
+.nv-card i:nth-child(2){width:85%}
+.nv-card i:nth-child(3){width:70%}
+.nv-card.short{height:64px}
+.nv-tint u{display:block;width:26px;height:26px;border-radius:8px;background:var(--t);margin-bottom:4px}
+.nv-li{flex-direction:row;align-items:center;gap:10px}
+.nv-li u{flex:none;width:36px;height:36px;border-radius:10px}
+.nv-li span{flex:1;display:flex;flex-direction:column;gap:7px}
+.nv-li span i{display:block;height:8px;border-radius:99px;background:#ECEBE8}
+.nv-li span i:first-child{width:60%;height:10px;background:#E2E0DC}
+.nv-li span i:last-child{width:85%}
+.nv-row{display:flex;gap:10px}
+.nv-row .nv-card{flex:1;height:96px}
+.nv-ev{display:flex;gap:10px;padding:12px;border-radius:16px;background:#FFFFFF;box-shadow:0 1px 2px rgba(31,31,31,.05),0 6px 16px -10px rgba(31,31,31,.18);margin-bottom:10px}
+.nv-ev-t{display:flex;flex-direction:column;align-items:center;justify-content:center;width:42px;border-radius:10px;background:#1F1F1F;color:#fff;font-size:12px;line-height:14px;font-weight:600}
+.nv-ev-t span:last-child{font-size:9px;font-weight:500;opacity:.7}
+.nv-ev-b{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nv-ev-b b{font-weight:600;font-size:13px;line-height:17px}
+.nv-ev-b span{font-size:11px;line-height:14px;color:#8A857F}
+.nv-av{display:flex;align-items:center;margin-top:5px}
+.nv-av i{width:18px;height:18px;border-radius:50%;border:2px solid #fff;margin-right:-6px}
+.nv-av em{margin-left:10px;font-style:normal;font-size:10px;color:#8A857F}
+.nv-tile{flex:1;display:flex;flex-direction:column;gap:3px;padding:11px;border-radius:16px;box-sizing:border-box}
+.nv-tile b{font-size:17px;line-height:21px;font-weight:600;letter-spacing:-.02em}
+.nv-k{font-size:10px;line-height:12px;color:rgba(31,31,31,.55);font-weight:500}
+.nv-bar2{display:block;height:4px;border-radius:99px;background:rgba(255,255,255,.7);margin-top:5px;overflow:hidden}
+.nv-bar2 i{display:block;height:100%;border-radius:99px}
+.nv-li2{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid rgba(31,31,31,.06)}
+.nv-li2 span:last-child{display:flex;flex-direction:column;min-width:0}
+.nv-li2 b{font-weight:500;font-size:13px;line-height:17px}
+.nv-li2 em{font-style:normal;font-size:11px;line-height:14px;color:#8A857F}
+.nv-chk{flex:none;width:18px;height:18px;border-radius:6px;border:1.6px solid #C9C5BF;box-sizing:border-box}
+.nv-chk.on{background:#1F1F1F;border-color:#1F1F1F;position:relative}
+.nv-chk.on::after{content:"";position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid #fff;border-width:0 1.8px 1.8px 0;transform:rotate(45deg)}
+.nv-li2:has(.nv-chk.on) b{color:#A8A39D;text-decoration:line-through}
+.nv-file{flex:none;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
+.nv-row{display:flex;gap:10px;margin-bottom:6px}
+.nv-scrim{position:absolute;inset:0;z-index:4;background:rgba(247,247,245,.35);opacity:0;pointer-events:none;transition:opacity .35s ease}
+.nv-open .nv-scrim{opacity:1;pointer-events:auto}
+.nv-home{position:absolute;left:50%;bottom:6px;width:96px;height:4px;margin-left:-48px;border-radius:99px;background:#1F1F1F;opacity:.85;z-index:7}
+.nv-bar{position:absolute;left:50%;transform:translateX(-50%);width:max-content;padding:0 6px;bottom:20px;height:44px;z-index:6;border-radius:999px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 0 0 1px rgba(31,31,31,.05),0 10px 24px -12px rgba(31,31,31,.25);display:grid;grid-template-columns:50px 50px 50px;column-gap:2px;align-items:center}
+.nv-tab{position:relative;height:100%;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#A8A39D;font:inherit;font-size:9px;line-height:11px;transition:color .3s ease}
+.nv-tab svg{width:18px;height:18px;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.nv-tab.on{color:#1F1F1F}
+.nv-tab.on svg{transform:translateY(-1px)}
+.nv-tab:active svg{transform:scale(.88)}
+.nv-tab:focus-visible,.nv-fab:focus-visible,.nv-act:focus-visible{outline:2px solid #3F6C9B;outline-offset:2px;border-radius:14px}
+.nv-fabcell{display:flex;justify-content:center}
+.nv-fab{position:relative;width:38px;height:38px;margin-top:0;border:0;border-radius:50%;cursor:pointer;background:#1F1F1F;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px -6px rgba(31,31,31,.45);transition:transform .45s cubic-bezier(.3,1.5,.5,1),background .3s ease}
+.nv-fab svg{width:18px;height:18px;transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
+.nv-open .nv-fab svg{transform:rotate(135deg)}
+.nv-fab:active{transform:scale(.92)}
+.nv-acts{position:absolute;left:0;right:0;bottom:76px;z-index:7;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+.nv-act{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 8px;border:0;border-radius:999px;background:#FFFFFF;color:#1F1F1F;font:inherit;font-size:13px;line-height:16px;cursor:pointer;box-shadow:0 0 0 1px rgba(31,31,31,.05),0 10px 22px -12px rgba(31,31,31,.35);opacity:0;transform:translateY(26px) scale(.7);transition:opacity .22s ease,transform .3s cubic-bezier(.6,0,.4,1)}
+.nv-act b{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:400}
+.nv-act b svg{width:16px;height:16px}
+.nv-act:nth-child(1){transition-delay:.06s}
+.nv-act:nth-child(2){transition-delay:.03s}
+.nv-open .nv-acts{pointer-events:auto}
+.nv-open .nv-act{opacity:1;transform:none;transition:opacity .25s ease,transform .5s cubic-bezier(.3,1.45,.5,1)}
+.nv-open .nv-act:nth-child(1){transition-delay:.1s}
+.nv-open .nv-act:nth-child(2){transition-delay:.05s}
+.nv-open .nv-act:nth-child(3){transition-delay:0s}
+.nv-act:active{transform:scale(.96)}
+.nv-toast{position:absolute;left:50%;top:52px;z-index:8;transform:translate(-50%,-16px);opacity:0;padding:8px 14px;border-radius:999px;background:#1F1F1F;color:#fff;font-size:12px;line-height:16px;white-space:nowrap;transition:opacity .3s ease,transform .45s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
+.nv-toast.on{opacity:1;transform:translate(-50%,0)}
+.nv-preview{position:relative;height:350px;padding:0 16px 26px;align-items:flex-end;overflow:hidden}
+.nv-preview .nv-phone{pointer-events:none;width:300px;height:620px;border-radius:54px}
+.nv-preview .nv-bezel{border-radius:51px;padding:7px}
+.nv-preview .nv-screen,.nv-preview .nv-glass{border-radius:44px}
+.nv-preview::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:2;pointer-events:none;background:linear-gradient(#F5F4F1,rgba(245,244,241,0))}
+@media (prefers-reduced-motion:reduce){.nv-wrap *{transition:none !important}}
+</style>
+</helmet>
+<div class="nv-wrap {{ previewCls }}">
+<div class="nv-phone">
+<span class="nv-btn l1"></span><span class="nv-btn l2"></span><span class="nv-btn l3"></span><span class="nv-btn r1"></span>
+<div class="nv-bezel">
+<div class="nv-screen {{ openCls }}">
+<div class="nv-glass"></div>
+<div class="nv-island"></div>
+<div class="nv-status"><span>9:41</span><span style="display: flex; gap: 4px; align-items: center"><svg width="15" height="10" viewBox="0 0 17 11"><rect x="0" y="7" width="3" height="4" rx="1" fill="#1F1F1F"></rect><rect x="4.5" y="5" width="3" height="6" rx="1" fill="#1F1F1F"></rect><rect x="9" y="2.5" width="3" height="8.5" rx="1" fill="#1F1F1F"></rect><rect x="13.5" y="0" width="3" height="11" rx="1" fill="#1F1F1F"></rect></svg><svg width="13" height="10" viewBox="0 0 15 11"><path d="M7.5 10.5 5.3 8.2a3.1 3.1 0 0 1 4.4 0zM3.2 6.1a6.1 6.1 0 0 1 8.6 0l-1.4 1.4a4.1 4.1 0 0 0-5.8 0zM1 3.9a9.2 9.2 0 0 1 13 0l-1.4 1.4a7.2 7.2 0 0 0-10.2 0z" fill="#1F1F1F"></path></svg><svg width="22" height="11" viewBox="0 0 25 12"><rect x=".5" y=".5" width="21" height="11" rx="3.5" fill="none" stroke="#1F1F1F" opacity=".4"></rect><rect x="2" y="2" width="16" height="8" rx="2" fill="#1F1F1F"></rect><path d="M23 4v4a2 2 0 0 0 0-4z" fill="#1F1F1F" opacity=".45"></path></svg></span></div>
+<div class="nv-pages">
+<div class="nv-page {{ homeOff }}">
+<div class="nv-sub" style="margin: 4px 0 0">Thursday, Nov 27</div>
+<div class="nv-h" style="margin: 0 0 12px">Today</div>
+<div class="nv-ev"><div class="nv-ev-t"><span>10:30</span><span>AM</span></div><div class="nv-ev-b"><b>Design review</b><span>Onboarding &#183; Studio B</span><div class="nv-av"><i style="background: #C2B4E2"></i><i style="background: #F2B9A0"></i><i style="background: #9FCFB8"></i><em>+2</em></div></div></div>
+<div class="nv-row">
+<div class="nv-tile" style="background: linear-gradient(155deg, #EEE8F8, #E2D9F2)"><span class="nv-k">Focus</span><b>3h 20m</b><span class="nv-bar2"><i style="width: 68%; background: #8B79C2"></i></span></div>
+<div class="nv-tile" style="background: linear-gradient(155deg, #E3F2E9, #D3EADD)"><span class="nv-k">Tasks</span><b>5 of 8</b><span class="nv-bar2"><i style="width: 62%; background: #4F9A6E"></i></span></div>
+</div>
+<div class="nv-li2"><span class="nv-chk on"></span><span><b>Send research recap</b><em>Done &#183; 9:12 AM</em></span></div>
+<div class="nv-li2"><span class="nv-chk"></span><span><b>Prototype tab bar motion</b><em>Due today</em></span></div>
+<div class="nv-li2"><span class="nv-chk"></span><span><b>Book user interviews</b><em>Tomorrow</em></span></div>
+</div>
+<div class="nv-page {{ docsOff }}">
+<div class="nv-sub" style="margin: 4px 0 0">Recently edited</div>
+<div class="nv-h" style="margin: 0 0 12px">Files</div>
+<div class="nv-li2"><span class="nv-file" style="background: #EAE4F5; color: #6A5A92">Aa</span><span><b>Research synthesis</b><em>Edited 2h ago</em></span></div>
+<div class="nv-li2"><span class="nv-file" style="background: #FBE6DC; color: #A0604A">&#9638;</span><span><b>Onboarding wireframes</b><em>Edited yesterday</em></span></div>
+<div class="nv-li2"><span class="nv-file" style="background: #DDF0E5; color: #4C8564">&#10003;</span><span><b>Usability test plan</b><em>Edited Mon</em></span></div>
+<div class="nv-li2"><span class="nv-file" style="background: #F6ECC8; color: #8C7330">&#9733;</span><span><b>Design principles</b><em>Edited last week</em></span></div>
+</div>
+</div>
+<div class="nv-scrim" onClick="{{ navClose }}"></div>
+<div class="nv-toast {{ toastCls }}" aria-live="polite">{{ toast }}</div>
+<div class="nv-acts" aria-hidden="{{ actsHidden }}">
+<button type="button" class="nv-act" tabindex="{{ actTab }}" onClick="{{ pick0 }}"><b style="background: #EAE4F5; color: #6A5A92"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4z"></path><path d="M13.5 6.5l4 4"></path></svg></b>New note</button>
+<button type="button" class="nv-act" tabindex="{{ actTab }}" onClick="{{ pick1 }}"><b style="background: #FBE6DC; color: #A0604A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="3"></rect><circle cx="9" cy="10.5" r="1.6"></circle><path d="M20 16l-4.5-4.5L7 19"></path></svg></b>Upload photo</button>
+<button type="button" class="nv-act" tabindex="{{ actTab }}" onClick="{{ pick2 }}"><b style="background: #DDF0E5; color: #4C8564"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"></rect><path d="M8.5 12.2l2.4 2.4 4.6-5"></path></svg></b>Add task</button>
+</div>
+<div class="nv-home" aria-hidden="true"></div>
+<div class="nv-bar">
+<button type="button" class="nv-tab {{ homeOn }}" onClick="{{ goHome }}" aria-label="Home" aria-current="{{ homeCur }}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 10.6 12 3.8l8.5 6.8V19a1.8 1.8 0 0 1-1.8 1.8H15v-5.6a1.2 1.2 0 0 0-1.2-1.2h-3.6A1.2 1.2 0 0 0 9 15.2v5.6H5.3A1.8 1.8 0 0 1 3.5 19z"></path></svg><span>Home</span></button>
+<div class="nv-fabcell"><button type="button" class="nv-fab" onClick="{{ navFab }}" aria-expanded="{{ open }}" aria-label="{{ fabLabel }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+<button type="button" class="nv-tab {{ docsOn }}" onClick="{{ goDocs }}" aria-label="Files" aria-current="{{ docsCur }}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 2.8h7.2L19.5 8.6v10.6a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V4.8a2 2 0 0 1 2-2z"></path><path d="M13.6 2.9v4.3a1.5 1.5 0 0 0 1.5 1.5h4.3" fill="#FFFFFF" opacity=".55"></path></svg><span>Files</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"preview":{"editor":"boolean","default":false}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var st = this.state || {};
+var open = !!st.nvOpen;
+var tab = st.nvTab || 'home';
+var still = !!(this.props && this.props.preview);
+var names = ['New note', 'Upload photo', 'Add task'];
+function pick(i) { return function () { self.nvPick(names[i]); }; }
+return {
+previewCls: still ? 'nv-preview' : '',
+openCls: open ? 'nv-open' : '',
+open: open,
+fabLabel: open ? 'Close quick add' : 'Quick add',
+actsHidden: open ? 'false' : 'true',
+actTab: open ? '0' : '-1',
+homeOn: tab === 'home' ? 'on' : '', docsOn: tab === 'docs' ? 'on' : '',
+homeCur: tab === 'home' ? 'page' : 'false', docsCur: tab === 'docs' ? 'page' : 'false',
+homeOff: tab === 'home' ? '' : 'off', docsOff: tab === 'docs' ? '' : 'off',
+toast: st.nvToast || '', toastCls: st.nvToastOn ? 'on' : '',
+navFab: function () { self.setState({ nvOpen: !open }); },
+navClose: function () { self.setState({ nvOpen: false }); },
+goHome: function () { self.setState({ nvTab: 'home', nvOpen: false }); },
+goDocs: function () { self.setState({ nvTab: 'docs', nvOpen: false }); },
+pick0: pick(0), pick1: pick(1), pick2: pick(2)
+};
+}
+nvPick(name) {
+var self = this;
+clearTimeout(this._nvT);
+this.setState({ nvOpen: false, nvToast: name + ' · created', nvToastOn: true });
+this._nvT = setTimeout(function () { self.setState({ nvToastOn: false }); }, 1600);
+}
+componentDidMount() {
+var self = this;
+if (!(this.props && this.props.preview)) return;
+var step = 0;
+var seq = [
+function () { self.setState({ nvOpen: true }); },
+function () { self.nvPick('Add task'); },
+function () { self.setState({ nvTab: 'docs' }); },
+function () { self.setState({ nvTab: 'home' }); }
+];
+this._nvLoop = setInterval(function () { seq[step % seq.length](); step++; }, 1700);
+}
+componentWillUnmount() { clearInterval(this._nvLoop); clearTimeout(this._nvT); }
+}
+</script>
+</body>
+</html>

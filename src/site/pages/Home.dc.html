@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Laney Fong — Index</title>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400&amp;display=swap">
+<style>
+html{scroll-padding-bottom:132px}
+body{margin:0;background:#ffffff}
+[data-ask]:focus-visible{outline:2px solid #3F6C9B;outline-offset:3px;border-radius:6px}
+a{color:#6E6A66;text-decoration:none}a:hover{color:#1F1F1F}
+.lf-side{position:sticky;top:80px}
+.lf-rv{animation:lf-rv .8s cubic-bezier(.23,1,.32,1) both}
+@keyframes lf-rv{from{opacity:0;filter:blur(10px);transform:translateY(6px)}to{opacity:1;filter:none;transform:none}}
+.lf-tile{transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.lf-tile img{transition:transform .6s cubic-bezier(.23,1,.32,1),filter .6s ease}
+.lf-tile:hover{transform:translateY(-3px)}
+.lf-tile:active{transform:translateY(-1px) scale(.996)}
+.lf-tile:hover img{transform:scale(1.03)}
+.lf-tile .lf-cap{transition:color .3s ease}
+.lf-tile:hover .lf-cap{color:#1F1F1F}
+nav a span{transition:border-color .3s ease,border-bottom-style .01s}
+nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
+.lf-btn{transition:transform .25s cubic-bezier(.23,1,.32,1),box-shadow .25s ease,background-color .25s ease}
+.lf-btn:hover{transform:scale(1.07);box-shadow:0 10px 30px rgba(31,31,31,.2)}
+.lf-btn:active{transform:scale(.93)}
+.lf-seg{transition:background-color .3s cubic-bezier(.23,1,.32,1),color .3s ease,box-shadow .3s ease}
+.lf-cta{transition:transform .3s cubic-bezier(.23,1,.32,1),box-shadow .3s ease}
+.lf-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(31,31,31,.22)}
+.lf-cta:active{transform:translateY(0) scale(.98)}
+.lf-cta svg{transition:transform .3s cubic-bezier(.23,1,.32,1)}
+.lf-cta:hover svg{transform:translateX(4px)}
+@keyframes lf-wipe{from{opacity:0;clip-path:inset(100% 0 0 0);transform:translateY(20px) scale(1.04)}to{opacity:1;clip-path:inset(0 0 0 0);transform:none}}
+@keyframes lf-prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes lf-hero{from{transform:scale(1.05) translateY(0)}to{transform:scale(1.05) translateY(5%)}}
+@supports (animation-timeline: view()){
+.lf-wipe{animation:lf-wipe 1.1s cubic-bezier(.23,1,.32,1) both;animation-timeline:view();animation-range:entry 0% entry 92%}
+.lf-prog{animation:lf-prog linear both;animation-timeline:scroll(nearest);transform-origin:0 50%}
+.lf-hero{animation:lf-hero linear both;animation-timeline:scroll(nearest);animation-range:0 70vh}
+}
+.lf-chatwrap{position:sticky;top:80px}
+@media (max-width:820px){.lf-side{position:static}.lf-chatwrap{position:relative;top:0}}
+@keyframes lf-sr{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes lf-sr-img{from{opacity:0;transform:translateY(24px) scale(.985)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){
+.lf-sr{animation:lf-sr .9s cubic-bezier(.23,1,.32,1) both;animation-timeline:view();animation-range:entry 0% entry 85%}
+.lf-sr-img{animation:lf-sr-img 1s cubic-bezier(.23,1,.32,1) both;animation-timeline:view();animation-range:entry 0% entry 90%}
+}
+@keyframes lf-pop-l{from{opacity:0;transform:translateY(30px) scale(.7) rotate(-6deg)}to{opacity:1;transform:none}}
+@keyframes lf-pop-r{from{opacity:0;transform:translateY(30px) scale(.7) rotate(6deg)}to{opacity:1;transform:none}}
+.lf-pop{animation:lf-pop-l .5s cubic-bezier(.22,1.08,.3,1) backwards;transform-origin:50% 160%;transition:transform .25s cubic-bezier(.23,1,.32,1),box-shadow .25s ease}
+.lf-pop:nth-child(even){animation-name:lf-pop-r}
+.lf-pop:nth-child(1){animation-delay:0.02s}.lf-pop:nth-child(2){animation-delay:0.07s}.lf-pop:nth-child(3){animation-delay:0.11s}.lf-pop:nth-child(4){animation-delay:0.15s}.lf-pop:nth-child(5){animation-delay:0.20s}.lf-pop:nth-child(6){animation-delay:0.24s}.lf-pop:nth-child(7){animation-delay:0.29s}.lf-pop:nth-child(8){animation-delay:0.34s}.lf-pop:nth-child(9){animation-delay:0.38s}.lf-pop:nth-child(10){animation-delay:0.42s}.lf-pop:nth-child(11){animation-delay:0.47s}.lf-pop:nth-child(12){animation-delay:0.52s}
+.lf-pop:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(31,31,31,.16)}
+.lf-pop:active{transform:translateY(-1px) scale(.98)}
+.lf-fan{scrollbar-width:none;-ms-overflow-style:none}
+.lf-fan::-webkit-scrollbar{display:none}
+.lf-vid::-webkit-media-controls-panel{opacity:0;transition:opacity .3s ease}
+.lf-vid:hover::-webkit-media-controls-panel,.lf-vid:focus-within::-webkit-media-controls-panel{opacity:1}
+.lf-scr{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.23,1,.32,1),transform .75s cubic-bezier(.23,1,.32,1)}
+.lf-in .lf-scr{opacity:1;transform:none}
+.lf-in .lf-scr:nth-child(2){transition-delay:.11s}
+.lf-in .lf-scr:nth-child(3){transition-delay:.22s}
+.lf-scr-in{transition:opacity .45s ease,transform .45s cubic-bezier(.23,1,.32,1),box-shadow .45s ease}
+@keyframes lf-fill{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.lf-scr:hover .lf-scr-in,.lf-scr:focus-visible .lf-scr-in{opacity:1 !important;box-shadow:0 18px 40px rgba(31,31,31,.16) !important}
+.lf-scr:hover .lf-scr-in{transform:translateY(-4px)}
+@media (prefers-reduced-motion:reduce){.lf-scr{opacity:1 !important;transform:none !important}.lf-scr-in{transition:none}}
+.lf-cam-a,.lf-cam-b{transition:none}
+@keyframes lf-camA{0%{transform:translate(0,0) scale(1);opacity:1}14%{transform:translate(0,0) scale(1);opacity:1}66%{transform:translate(8.42%,-5.03%) scale(2.616);opacity:1}84%{transform:translate(8.42%,-5.03%) scale(2.616);opacity:1}100%{transform:translate(8.42%,-5.03%) scale(2.616);opacity:0}}
+@keyframes lf-camB{0%{opacity:0}64%{opacity:0}80%{opacity:1}100%{opacity:1}}
+.lf-play .lf-cam-a{animation:lf-camA 6s cubic-bezier(.4,0,.2,1) both}
+.lf-play .lf-cam-b{animation:lf-camB 6s cubic-bezier(.4,0,.2,1) both}
+.lf-cur{position:absolute;pointer-events:none;z-index:2;animation-timing-function:cubic-bezier(.3,0,.12,1);animation-iteration-count:infinite;will-change:left,top}
+.lf-cur-in{animation:lf-jit 3.4s ease-in-out infinite alternate;will-change:transform}
+@keyframes lf-jit{from{transform:translate(0,0)}to{transform:translate(1.6px,-1.3px)}}
+@keyframes lf-cur1{0%{left:21%;top:28%}16.07%{left:21%;top:28%}23.21%{left:33%;top:46%}35.71%{left:33%;top:46%}44.64%{left:29%;top:49%}53.57%{left:29%;top:49%}57.14%{left:15%;top:42%}75%{left:15%;top:42%}83.93%{left:19%;top:33%}94.64%{left:19%;top:33%}100%{left:21%;top:28%}}
+.lf-cur1{animation-name:lf-cur1}
+.lf-cur1 .lf-cur-in{animation-duration:3.3s}
+@keyframes lf-cur2{0%{left:44%;top:20%}13.56%{left:44%;top:20%}22.03%{left:50%;top:42%}40.68%{left:50%;top:42%}47.46%{left:48%;top:45%}54.24%{left:48%;top:45%}57.63%{left:36%;top:30%}72.88%{left:36%;top:30%}83.05%{left:41%;top:24%}94.92%{left:41%;top:24%}100%{left:44%;top:20%}}
+.lf-cur2{animation-name:lf-cur2}
+.lf-cur2 .lf-cur-in{animation-duration:4.1s}
+@keyframes lf-cur3{0%{left:60%;top:30%}17.86%{left:60%;top:30%}23.21%{left:66%;top:18%}33.93%{left:66%;top:18%}41.07%{left:55%;top:38%}55.36%{left:55%;top:38%}64.29%{left:57%;top:41%}73.21%{left:57%;top:41%}76.79%{left:63%;top:54%}92.86%{left:63%;top:54%}100%{left:60%;top:30%}}
+.lf-cur3{animation-name:lf-cur3}
+.lf-cur3 .lf-cur-in{animation-duration:3.7s}
+@keyframes lf-cur4{0%{left:76%;top:28%}12.28%{left:76%;top:28%}19.3%{left:86%;top:40%}35.09%{left:86%;top:40%}43.86%{left:83%;top:43%}52.63%{left:83%;top:43%}56.14%{left:71%;top:38%}75.44%{left:71%;top:38%}84.21%{left:74%;top:32%}94.74%{left:74%;top:32%}100%{left:76%;top:28%}}
+.lf-cur4{animation-name:lf-cur4}
+.lf-cur4 .lf-cur-in{animation-duration:4.6s}
+.lf-dot{position:absolute;transform:translate(-50%,-50%);transition:transform .25s cubic-bezier(.23,1,.32,1),box-shadow .25s ease}
+.lf-dot:hover{transform:translate(-50%,-50%) scale(1.14)}
+.lf-dot:active{transform:translate(-50%,-50%) scale(.94)}
+.lf-dot::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1.5px solid currentColor;opacity:0;animation:lf-ring 2.6s ease-out infinite}
+.lf-dot:nth-of-type(2)::after{animation-delay:.5s}.lf-dot:nth-of-type(3)::after{animation-delay:1s}.lf-dot:nth-of-type(4)::after{animation-delay:1.5s}
+@keyframes lf-ring{0%{opacity:.5;transform:scale(.85)}70%{opacity:0;transform:scale(1.45)}100%{opacity:0}}
+.lf-flow-pulse{stroke-dasharray:9 91;stroke-dashoffset:100;animation:lf-flowdash 3.2s linear infinite}
+@keyframes lf-flowdash{to{stroke-dashoffset:0}}
+@media (min-width:1100px){.lf-page{display:grid !important;max-width:1280px !important;grid-template-columns:152px minmax(0,700px) 152px;justify-content:center;column-gap:48px !important}.lf-page>main{max-width:none !important}}
+.lf-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:15px;line-height:22px;color:#6E6A66}
+.lf-dot{display:inline-block;flex:none;width:7px;height:7px;border-radius:50%;background:#7FB7A4;box-shadow:0 0 0 3px rgba(127,183,164,.18)}
+.lf-h1{margin:0;max-width:680px;font-weight:400;font-size:clamp(28px,3.1vw,38px);line-height:1.16;letter-spacing:-.035em;color:#1F1F1F;text-wrap:balance}
+.lf-h1 span{color:#8A857F}
+.lf-past{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding-top:18px;border-top:1px solid #EFECE8;font-size:15px;line-height:22px}
+.lf-past-k{color:#A8A39D}
+.lf-past-v{color:#1F1F1F}
+.lf-past-v i{font-style:normal;color:#C9C5BF;padding:0 2px}
+.lf-labstrip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:640px){.lf-labstrip{grid-template-columns:minmax(0,1fr)}}
+.lf-labtile{display:block;color:inherit;text-decoration:none}
+.lf-labframe{position:relative;display:block;aspect-ratio:3 / 2;border-radius:6px;overflow:hidden;background:#F3F3F1;box-shadow:inset 0 0 0 1px rgba(31,31,31,.05);transition:transform .45s cubic-bezier(.23,1,.32,1),box-shadow .45s ease}
+.lf-labzoom{position:absolute;left:0;right:0;top:50%;display:block;transform:translateY(-50%);zoom:.78;pointer-events:none}
+.lf-labzoom-nav{top:auto;bottom:0;transform:none}
+.lf-labtile:hover .lf-labframe{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(31,31,31,.05),0 14px 30px -18px rgba(31,31,31,.3)}
+.lf-labtile:focus-visible{outline:2px solid #3F6C9B;outline-offset:4px;border-radius:6px}
+.lf-shot{opacity:0;animation-timing-function:cubic-bezier(.33,0,.2,1);animation-iteration-count:infinite;animation-fill-mode:both;will-change:opacity,transform}
+.lf-shot:first-child{opacity:1}
+@keyframes lf-shot1{0%,100%{opacity:1;transform:none}}
+@keyframes lf-shot2{0%{opacity:0;transform:scale(1.045)}6%{opacity:1}50%{opacity:1}56%{opacity:0}100%{opacity:0;transform:scale(1)}}
+@keyframes lf-shot3{0%{opacity:0;transform:scale(1.045)}5%{opacity:1}33%{opacity:1}39%{opacity:0}100%{opacity:0;transform:scale(1)}}
+@keyframes lf-slide3{0%{opacity:1;transform:translateX(100%);animation-timing-function:cubic-bezier(.65,0,.35,1)}6%{opacity:1;transform:translateX(0)}33.33%{opacity:1;transform:translateX(0);animation-timing-function:cubic-bezier(.65,0,.35,1)}39.33%{opacity:1;transform:translateX(-100%)}39.34%{opacity:1;transform:translateX(100%)}100%{opacity:1;transform:translateX(100%)}}
+.lf-cap-line{will-change:opacity,transform,filter}
+@media (prefers-reduced-motion:reduce){.lf-rv{animation:none}.lf-cur{display:none}.lf-pop{animation:none}.lf-flow-pulse{animation:none;opacity:0}.lf-shot{animation:none}.lf-sr,.lf-sr-img,.lf-wipe,.lf-hero,.lf-cam-a,.lf-cam-b,.lf-cap-line{animation:none !important}.lf-tile:hover,.lf-cta:hover,.lf-btn:hover{transform:none}.lf-sheet{transition:none !important}.lf-tile img{transition:none}}
+@media (min-width:821px){.lf-side{height:calc(100vh - 106px);min-height:300px;box-sizing:border-box;z-index:12}}
+.lf-sbsig{display:block;height:46px;width:auto;margin:0 0 4px 0;transform:rotate(30deg);transform-origin:center;opacity:.9;pointer-events:none;user-select:none}
+.lf-ic{position:relative;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;color:#8C8782;transition:color .2s ease,background-color .2s ease}
+.lf-ic:hover,.lf-ic:focus-visible{color:#1F1F1F;background:#F3F2F0}
+.lf-ic::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,3px);padding:3px 7px;border-radius:6px;background:#1F1F1F;color:#fff;font-size:12px;line-height:16px;letter-spacing:0;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.23,1,.32,1)}
+.lf-ic:hover::after,.lf-ic:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.lf-ic,.lf-ic::after{transition:none}}
+.lf-vcur{position:fixed;left:0;top:0;z-index:30;width:0;height:0;pointer-events:none;will-change:transform;font-size:13px;line-height:18px;color:#1F1F1F;font-size:0}
+.lf-vcur::after{content:"View";position:absolute;left:0;top:0;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);box-shadow:0 0 0 1px rgba(31,31,31,.06),0 6px 18px -6px rgba(31,31,31,.18);font-family:'PP Neue Montreal','Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;letter-spacing:-.01em;white-space:nowrap;opacity:0;transform:translate(-50%,-50%) scale(.4);transition:opacity .2s ease,transform .35s cubic-bezier(.23,1,.32,1)}
+.lf-vcur.on::after{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.lf-vcur.on.down::after{transform:translate(-50%,-50%) scale(.92)}
+@media (hover:hover) and (pointer:fine){.lf-tile,.lf-tile *{cursor:none !important}}
+@media (prefers-reduced-motion:reduce){.lf-vcur::after{transition:opacity .15s ease}}
+.lf-tile .lf-wipe>img,.lf-tile .lf-wipe>video{transition:scale .8s cubic-bezier(.23,1,.32,1)}
+.lf-tile .lf-wipe::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(31,31,31,0);background:rgba(31,31,31,0);transition:background-color .5s ease,box-shadow .5s ease}
+@media (hover:hover) and (pointer:fine){.lf-tile:hover .lf-wipe>img,.lf-tile:hover .lf-wipe>video{scale:1.03}.lf-tile:hover .lf-wipe::after{background:rgba(31,31,31,.035);box-shadow:inset 0 0 0 1px rgba(31,31,31,.06)}.lf-tile .lf-cap>span{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s cubic-bezier(.23,1,.32,1)}.lf-tile:hover .lf-cap>span{background-size:100% 1px}}
+@media (prefers-reduced-motion:reduce){.lf-tile .lf-wipe>img,.lf-tile .lf-wipe>video{transition:none}.lf-tile:hover .lf-wipe>img,.lf-tile:hover .lf-wipe>video{scale:1}}
+@media (max-width:820px){.lf-page{justify-content:flex-start !important}}
+</style>
+</helmet>
+<div style="position: relative; background: #ffffff; color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; letter-spacing: -0.02em">
+
+<div class="lf-page" style="box-sizing: border-box; max-width: 1180px; margin: 0 auto; padding: 80px clamp(20px, 5vw, 80px) 120px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; column-gap: 56px; row-gap: 32px">
+
+<header class="lf-side" style="flex: 0 0 152px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<a href="/" style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 300; font-size: 22px; line-height: 21px; letter-spacing: -0.5px; color: #1F1F1F">Laney Fong</a>
+<nav aria-label="Primary" style="display: flex; flex-direction: column; align-items: flex-start; font-size: 15px; line-height: 22px">
+<a href="/" aria-current="page" style="display: block; padding: 4px 0; color: #1F1F1F"><span style="border-bottom: 1px solid #1F1F1F">Index</span></a>
+<a href="/about" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">About</span></a>
+<a href="/lab" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Lab</span></a>
+<a href="/resume" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Resume</span></a>
+</nav>
+</div>
+
+<div class="lf-sb" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px">
+<img class="lf-sbsig" src="/media/sig.webp" alt="Laney’s signature" draggable="false">
+<nav aria-label="Contact" style="display: flex; align-items: center; gap: 4px; margin-left: -7px">
+<a href="mailto:laneyrfong@gmail.com" class="lf-ic" aria-label="Email" data-tip="Email"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><rect x="2.5" y="4.5" width="15" height="11" rx="2"></rect><path d="M3.5 5.5l6.5 5 6.5-5" stroke-linecap="round"></path></svg></a>
+<a href="https://www.linkedin.com/in/laneyfong/" class="lf-ic" aria-label="LinkedIn" data-tip="LinkedIn"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="15" height="15" rx="3.5"></rect><path d="M6.5 9v5M6.5 6.4v.1" stroke-linecap="round"></path><path d="M9.5 14V9m0 2.4c0-1.4.9-2.5 2.2-2.5s2 .9 2 2.4V14" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+<a href="https://x.com/laneyuxui" class="lf-ic" aria-label="X" data-tip="X"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M3.5 3.5h3.6l9.4 13h-3.6z" stroke-linejoin="round"></path><path d="M16 3.5l-5.3 5.9M9.3 10.6 4 16.5"></path></svg></a>
+</nav>
+</div>
+</header>
+
+<main style="flex: 1 1 400px; min-width: 0; max-width: 700px; display: flex; flex-direction: column; gap: 28px">
+
+<section class="lf-rv lf-hero2" style="display: flex; flex-direction: column; gap: 18px; padding: 8px 0 12px">
+<div class="lf-eyebrow">Product Designer</div>
+<h1 class="lf-h1">I reduce cognitive overload in AI and complex&nbsp;products, <span>building experiences people trust and return to, from 0&nbsp;to&nbsp;1.</span></h1>
+<div class="lf-past"><span class="lf-past-k">Previously</span><span class="lf-past-v">MyShake <i>&#183;</i> Sensitel <i>&#183;</i> Eximlabs <i>&#183;</i> Mind Coffee</span></div>
+</section>
+
+<section class="lf-rv" aria-label="Selected work" style="display: flex; flex-direction: column; gap: 20px; padding-top: 28px; animation-delay: 0.24s">
+<h2 style="margin: 0; font-weight: 400; font-size: 16px; line-height: 24px; color: #1F1F1F">Selected work</h2>
+<sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+<button type="button" class="lf-tile" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding: 0 0 20px; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: inherit">
+<span class="lf-wipe" style="position: relative; display: block; overflow: hidden; border-radius: 6px; background: {{ p.bg }}; aspect-ratio: 3 / 2">
+<sc-if value="{{ p.noVid }}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{ p.shots }}" as="sh" hint-placeholder-count="2">
+<img class="lf-shot" src="{{ sh.src }}" alt="{{ sh.alt }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation-name: {{ sh.anim }}; animation-duration: {{ sh.dur }}; animation-delay: {{ sh.delay }}">
+</sc-for>
+</sc-if>
+<sc-if value="{{ p.hasVid }}" hint-placeholder-val="{{ false }}">
+<video src="{{ p.vid }}" poster="{{ p.poster }}" autoplay="true" loop="true" muted="true" playsinline="true" preload="auto" disablepictureinpicture="true" aria-label="{{ p.alt }}" style="position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); object-fit: cover; pointer-events: none; background: transparent"></video>
+</sc-if>
+</span>
+<span class="lf-cap" style="display: block; text-align: center; color: #6E6A66"><span style="color: #1F1F1F">{{ p.title }}</span> — {{ p.blurb }}</span>
+</button>
+</sc-for>
+</section>
+
+<section class="lf-rv" aria-label="Experiments from the Lab" style="display: flex; flex-direction: column; gap: 12px; padding-top: 8px; animation-delay: 0.32s">
+<div class="lf-labstrip">
+<a href="/lab" class="lf-labtile " aria-label="Lab experiment: Read more, read less"><span class="lf-labframe"><span class="lf-labzoom"><dc-import name="ReadMore" preview="{{ true }}" hint-size="100%,300px"></dc-import></span></span></a>
+<a href="/lab" class="lf-labtile " aria-label="Lab experiment: Shape-shifting loader"><span class="lf-labframe"><span class="lf-labzoom"><dc-import name="Loader" preview="{{ true }}" hint-size="100%,300px"></dc-import></span></span></a>
+<a href="/lab" class="lf-labtile " aria-label="Lab experiment: Blind box"><span class="lf-labframe"><video src="/media/lab-box-loop.mp4" poster="/media/lab-box-poster.webp" autoplay="true" loop="true" muted="true" playsinline="true" preload="auto" disablepictureinpicture="true" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none"></video></span></a>
+<a href="/lab" class="lf-labtile " aria-label="Lab experiment: Quick-add tab bar"><span class="lf-labframe"><span class="lf-labzoom lf-labzoom-nav"><dc-import name="NavBar" preview="{{ true }}" hint-size="100%,350px"></dc-import></span></span></a>
+</div>
+<a href="/lab" style="align-self: flex-end; font-size: 15px; line-height: 22px; color: #6E6A66"><span style="border-bottom: 1px dotted #A8A39D">More in the Lab &#8594;</span></a>
+</section>
+
+</main>
+
+
+
+</div>
+
+<div aria-hidden="true" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; height: 96px; pointer-events: none">
+<div style="position: absolute; inset: 0; backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px); mask-image: linear-gradient(to bottom, transparent 0%, #000 20%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%)"></div>
+<div style="position: absolute; inset: 0; backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); mask-image: linear-gradient(to bottom, transparent 14%, #000 38%); -webkit-mask-image: linear-gradient(to bottom, transparent 14%, #000 38%)"></div>
+<div style="position: absolute; inset: 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); mask-image: linear-gradient(to bottom, transparent 30%, #000 58%); -webkit-mask-image: linear-gradient(to bottom, transparent 30%, #000 58%)"></div>
+<div style="position: absolute; inset: 0; backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); mask-image: linear-gradient(to bottom, transparent 46%, #000 76%); -webkit-mask-image: linear-gradient(to bottom, transparent 46%, #000 76%)"></div>
+<div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.46) 42%, rgba(255, 255, 255, 0.8) 100%)"></div>
+</div>
+
+<div data-ask-dock="1" style="position: fixed; left: 0; right: 0; bottom: 20px; z-index: 11; display: flex; justify-content: center; pointer-events: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.23,1,.32,1)">
+<button type="button" data-ask="1" aria-haspopup="dialog" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 10px; border: 0; background: none; cursor: pointer; font: inherit; font-size: 15px; line-height: 22px; letter-spacing: inherit; color: #3F6C9B">
+<span style="border-bottom: 1px dotted #3F6C9B">Ask LLManey</span>
+</button>
+</div>
+
+<sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+<div class="lf-sheet" role="dialog" aria-modal="true" aria-label="{{ cur.title }}" style="position: fixed; inset: 0; z-index: 20; background: #ffffff; transition: clip-path 0.7s cubic-bezier(0.32, 0.72, 0, 1); clip-path: {{ clip }}">
+<div class="lf-scroll" style="height: 100%; overflow-y: auto; scroll-padding-bottom: 120px">
+<div aria-hidden="true" style="position: sticky; top: 0; z-index: 3; height: 2px; background: rgba(31, 31, 31, 0.07)"><div class="lf-prog" style="height: 100%; background: #1F1F1F"></div></div>
+<article style="box-sizing: border-box; max-width: 1180px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 80px) 160px; display: flex; flex-direction: column">
+
+<div style="overflow: hidden; border-radius: 8px"><img class="lf-hero" src="{{ cur.img }}" alt="{{ cur.alt }}" style="display: block; width: 100%; height: auto"></div>
+
+<div class="lf-rv" style="width: 100%; max-width: 560px; margin: 64px auto 0; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 24px; animation-delay: 0.35s">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px">
+<h2 style="margin: 0; font-weight: 500; font-size: 16px; line-height: 24px; color: #1F1F1F">{{ cur.title }}</h2>
+<div role="group" aria-label="Detail level" style="display: flex; gap: 2px; padding: 3px; border-radius: 10px; background: rgba(31, 31, 31, 0.05); font-size: 15px; line-height: 22px">
+<button type="button" class="lf-seg" onClick="{{ showTldr }}" aria-pressed="{{ isTldr }}" style="min-height: 38px; padding: 0 14px; border: 0; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 500; letter-spacing: inherit; background: {{ tldrBg }}; box-shadow: {{ tldrShadow }}; color: {{ tldrColor }}">TL;DR</button>
+<button type="button" class="lf-seg" onClick="{{ showFull }}" aria-pressed="{{ isFull }}" style="min-height: 38px; padding: 0 14px; border: 0; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 500; letter-spacing: inherit; background: {{ fullBg }}; box-shadow: {{ fullShadow }}; color: {{ fullColor }}">Full</button>
+</div>
+</div>
+<p style="margin: 0; color: #1F1F1F">{{ cur.headline }}</p>
+<p style="margin: 0; color: #6E6A66">{{ cur.kicker }}</p>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 18px">
+<sc-for list="{{ cur.meta }}" as="f" hint-placeholder-count="4">
+<div style="display: flex; gap: 16px"><div style="flex: 0 0 96px; color: #6E6A66">{{ f.k }}</div><div style="flex: 1 1 auto; min-width: 0; color: #1F1F1F">{{ f.v }}</div></div>
+</sc-for>
+</div>
+
+</div>
+
+<sc-for list="{{ shown }}" as="b" hint-placeholder-count="6">
+<div class="lf-sr" id="{{ b.anchor }}" style="box-sizing: border-box; width: 100%; max-width: {{ b.maxw }}; margin: {{ b.mt }} auto 0">
+<sc-if value="{{ b.isSign }}" hint-placeholder-val="{{ false }}"><div style="display: flex; align-items: center; gap: 14px; color: #A8A39D"><span style="flex: 0 0 28px; height: 1px; background: #E9E6E2"></span><span style="font-family: 'Averia Serif Libre', Georgia, serif; font-weight: 400; font-size: 18px; line-height: 1; letter-spacing: 0.14em; color: #6E6A66">{{ b.text }}</span></div></sc-if>
+<sc-if value="{{ b.isLabel }}" hint-placeholder-val="{{ false }}"><div style="padding-top: 20px; border-top: 1px solid #E9E6E2; color: #6E6A66">{{ b.text }}</div></sc-if>
+<sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><h3 style="margin: 0; max-width: 620px; font-weight: 400; font-size: clamp(20px, 2.1vw, 24px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">{{ b.text }}</h3></sc-if>
+<sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 16px; line-height: 24px; color: #6E6A66">{{ b.text }}</p></sc-if>
+<sc-if value="{{ b.isQ }}" hint-placeholder-val="{{ false }}"><blockquote style="margin: 0; max-width: 620px; font-size: clamp(20px, 2.1vw, 24px); line-height: 1.3; letter-spacing: -0.025em; color: #1F1F1F">{{ b.text }}</blockquote></sc-if>
+<sc-if value="{{ b.isTags }}" hint-placeholder-val="{{ false }}"><div style="font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</div></sc-if>
+<sc-if value="{{ b.isStats }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 16px 48px">
+<sc-for list="{{ b.stats }}" as="st" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 32px; line-height: 1.1; letter-spacing: -0.025em; color: #1F1F1F">{{ st.n }}</div><div style="color: #6E6A66">{{ st.l }}</div></div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ b.isItems }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; font-size: 16px; line-height: 24px">
+<sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
+<div style="display: flex; flex-wrap: wrap; gap: 2px 16px; padding: 11px 0; border-bottom: 1px solid #E9E6E2"><div style="flex: 0 0 170px; color: #1F1F1F">{{ it.k }}</div><div style="flex: 1 1 240px; min-width: 0; color: #6E6A66">{{ it.v }}</div></div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ b.isVid }}" hint-placeholder-val="{{ false }}">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<sc-if value="{{ b.vidCtrl }}" hint-placeholder-val="{{ true }}">
+<div class="lf-wipe" style="box-sizing: border-box; padding: clamp(14px, 3.6%, 44px); border-radius: 12px; background: linear-gradient(155deg, #EEEEF3 0%, #E6E9EF 55%, #EDEAE6 100%)"><video class="lf-vid" src="{{ b.src }}" poster="{{ b.poster }}" autoplay="true" loop="true" muted="true" preload="auto" playsinline="true" disablepictureinpicture="true" aria-label="{{ b.alt }}" style="display: block; width: 100%; height: auto; border-radius: 8px; background: #F3F3F1; pointer-events: none; box-shadow: 0 1px 2px rgba(31,31,31,.06), 0 14px 34px -14px rgba(31,31,31,.28)"></video></div>
+</sc-if>
+<sc-if value="{{ b.plain }}" hint-placeholder-val="{{ false }}">
+<video class="lf-wipe" src="{{ b.src }}" poster="{{ b.poster }}" autoplay="true" loop="true" muted="true" preload="auto" playsinline="true" disablepictureinpicture="true" aria-label="{{ b.alt }}" style="display: block; width: 100%; height: auto; border-radius: 8px; background: #F3F3F1; pointer-events: none"></video>
+</sc-if>
+<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ b.isHot }}" hint-placeholder-val="{{ false }}">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="lf-wipe" style="box-sizing: border-box; display: flex; justify-content: center; padding: clamp(18px, 4%, 48px); border-radius: 10px; background: #F3F3F1">
+<div style="position: relative; width: 100%; max-width: {{ b.inner }}">
+<img src="{{ b.src }}" alt="{{ b.alt }}" style="display: block; width: 100%; height: auto">
+<sc-for list="{{ b.hots }}" as="h" hint-placeholder-count="4">
+<button type="button" class="lf-dot" onClick="{{ h.toggle }}" aria-pressed="{{ h.isOpen }}" aria-label="{{ h.label }}" style="left: {{ h.x }}%; top: {{ h.y }}%; display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1.5px solid #FFFFFF; border-radius: 50%; background: {{ h.bg }}; box-shadow: 0 3px 10px rgba(31, 31, 31, 0.28); cursor: pointer; font: inherit; font-size: 12px; line-height: 1; letter-spacing: 0; color: #FFFFFF">{{ h.n }}</button>
+</sc-for>
+</div>
+</div>
+<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: {{ b.capColor }}">{{ b.capText }}</figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ b.isBoard }}" hint-placeholder-val="{{ false }}">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="lf-wipe" style="position: relative; overflow: hidden; border-radius: 10px; background: #F3F3F1">
+<img src="{{ b.src }}" alt="{{ b.alt }}" style="display: block; width: 100%; height: auto">
+<div class="lf-cur lf-cur1" aria-hidden="true" style="left: 21%; top: 28%; animation-duration: 30s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#6B7A99" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #6B7A99; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 1</span></div></div>
+<div class="lf-cur lf-cur2" aria-hidden="true" style="left: 44%; top: 20%; animation-duration: 34s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#F24E1E" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #F24E1E; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 2</span></div></div>
+<div class="lf-cur lf-cur3" aria-hidden="true" style="left: 60%; top: 30%; animation-duration: 27s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#2F6FDE" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #2F6FDE; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 3</span></div></div>
+<div class="lf-cur lf-cur4" aria-hidden="true" style="left: 76%; top: 28%; animation-duration: 32s"><div class="lf-cur-in"><svg width="20" height="23" viewBox="0 0 22 25" fill="none" style="display: block; filter: drop-shadow(0 2px 5px rgba(31, 31, 31, 0.26))"><path d="M2 1.6 L2 20.4 L7.2 15.6 L10.6 23.2 L13.9 21.7 L10.6 14.4 L17.8 14.1 Z" fill="#E8A41E" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path></svg><span style="display: inline-block; margin: 1px 0 0 11px; padding: 2px 8px; border-radius: 6px; background: #E8A41E; color: #FFFFFF; font-size: 12px; line-height: 17px; white-space: nowrap">Tester 4</span></div></div>
+</div>
+<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ b.isFlow }}" hint-placeholder-val="{{ false }}">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="lf-wipe" style="box-sizing: border-box; padding: clamp(18px, 4%, 48px); border-radius: 10px; background: #F3F3F1">
+<svg class="lf-flow" viewBox="0 0 1640 480" role="img" aria-label="User flow: the person lands, uploads a screenshot or code, picks a preset or custom task, optionally adds notes, the agent analyses and returns a summary of issues" style="display: block; width: 100%; height: auto; overflow: visible; font-family: inherit; letter-spacing: -0.02em">
+<defs><marker id="lf-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9" fill="none" stroke="#B5B2AE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></marker></defs>
+<rect x="6" y="256" width="120" height="80" rx="6" fill="#C9F7F2" stroke="#35D1C4" stroke-width="2"></rect>
+<text x="66" y="285.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">User is on</text>
+<text x="66" y="306.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">landing page</text>
+<polygon points="205,252 470,252 430,340 165,340" fill="#FBD9A8" stroke="#E8923E" stroke-width="2" stroke-linejoin="round"></polygon>
+<text x="318" y="285.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Uploads screenshot or</text>
+<text x="318" y="306.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">code</text>
+<polygon points="578,251 661,296 578,341 495,296" fill="#D9C7FA" stroke="#7B3FE4" stroke-width="2" stroke-linejoin="round"></polygon>
+<text x="578" y="296" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">task</text>
+<ellipse cx="578" cy="163" rx="62" ry="48" fill="#F9ABA2" stroke="#E8473A" stroke-width="2"></ellipse>
+<text x="578" y="142" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Presets/</text>
+<text x="578" y="163" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">general/</text>
+<text x="578" y="184" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">suggested</text>
+<ellipse cx="578" cy="431" rx="62" ry="44" fill="#F9ABA2" stroke="#E8473A" stroke-width="2"></ellipse>
+<text x="578" y="431" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Custom</text>
+<polygon points="718,118 845,118 805,207 678,207" fill="#FBD9A8" stroke="#E8923E" stroke-width="2" stroke-linejoin="round"></polygon>
+<text x="761" y="152.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Clicks preset</text>
+<text x="761" y="173.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">option</text>
+<polygon points="1012,118 1127,163 1012,208 897,163" fill="#D9C7FA" stroke="#7B3FE4" stroke-width="2" stroke-linejoin="round"></polygon>
+<text x="1012" y="152.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Any additional</text>
+<text x="1012" y="173.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">notes</text>
+<ellipse cx="1011" cy="40" rx="50" ry="34" fill="#F9ABA2" stroke="#E8473A" stroke-width="2"></ellipse>
+<text x="1011" y="40" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Yes</text>
+<ellipse cx="1011" cy="288" rx="50" ry="36" fill="#F9ABA2" stroke="#E8473A" stroke-width="2"></ellipse>
+<text x="1011" y="288" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">No</text>
+<polygon points="1150,5 1320,5 1296,76 1126,76" fill="#FBD9A8" stroke="#E8923E" stroke-width="2" stroke-linejoin="round"></polygon>
+<text x="1223" y="29.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Types in notes</text>
+<text x="1223" y="50.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">→ submit</text>
+<path d="M1108 244 a118 14 0 0 1 236 0 v88 a118 14 0 0 1 -236 0 z" fill="#FBE9A8" stroke="#E0A92B" stroke-width="2"></path>
+<path d="M1108 244 a118 14 0 0 0 236 0" fill="none" stroke="#E0A92B" stroke-width="2"></path>
+<text x="1226" y="285.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Analyzing information and</text>
+<text x="1226" y="306.5" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">running synthetic user through</text>
+<rect x="1403" y="230" width="231" height="115" rx="6" fill="#C9F7F2" stroke="#35D1C4" stroke-width="2"></rect>
+<text x="1518" y="288" fill="#1F1F1F" font-size="15" text-anchor="middle" dominant-baseline="middle">Analysis and summary of issues</text>
+<path d="M128 296 H192" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M128 296 H192" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 0s"></path>
+<path d="M472 296 H489" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M472 296 H489" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 0.3s"></path>
+<path d="M578 250 V214" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M578 250 V214" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 0.6s"></path>
+<path d="M641 163 H672" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M641 163 H672" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 0.9s"></path>
+<path d="M847 163 H890" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M847 163 H890" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 1.2s"></path>
+<path d="M1012 118 V80" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M1012 118 V80" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 1.5s"></path>
+<path d="M1012 208 V248" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M1012 208 V248" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 1.5s"></path>
+<path d="M1061 288 H1101" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M1061 288 H1101" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 1.8s"></path>
+<path d="M1223 78 V226" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M1223 78 V226" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 1.8s"></path>
+<path d="M1347 288 H1396" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M1347 288 H1396" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 2.2s"></path>
+<path d="M578 342 V382" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M578 342 V382" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 0.6s"></path>
+<path d="M641 431 H1203 a20 20 0 0 0 20 -20 V354" fill="none" stroke="#B5B2AE" stroke-width="1.8" stroke-linecap="round" marker-end="url(#lf-ah)"></path>
+<path class="lf-flow-pulse" d="M641 431 H1203 a20 20 0 0 0 20 -20 V354" pathLength="100" fill="none" stroke="#3F6C9B" stroke-width="2.6" stroke-linecap="round" style="animation-delay: 0.9s"></path>
+</svg>
+</div>
+<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ b.isScreens }}" hint-placeholder-val="{{ false }}">
+<figure class="lf-screens" style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 28px clamp(28px, 8%, 76px)">
+<div class="lf-scr" style="flex: 0 1 270px; min-width: 190px; display: grid; overflow: hidden; border-radius: 10.5% / 4.713%; border: 1px solid #E9E6E2; background: #FFFFFF; box-shadow: 0 18px 44px rgba(31, 31, 31, 0.13)">
+<sc-for list="{{ b.screens }}" as="sc" hint-placeholder-count="3">
+<img src="{{ sc.src }}" alt="{{ sc.alt }}" style="grid-area: 1 / 1; display: block; width: 100%; height: 100%; aspect-ratio: 900 / 2005; object-fit: contain; object-position: center top; background: #FFFFFF; opacity: {{ sc.imgOp }}; transform: {{ sc.imgTf }}; transition: opacity 0.5s ease, transform 0.6s cubic-bezier(.23,1,.32,1)">
+</sc-for>
+</div>
+<div class="lf-scr" style="flex: 1 1 280px; max-width: 360px; min-width: 0; display: flex; flex-direction: column">
+<sc-for list="{{ b.screens }}" as="sc" hint-placeholder-count="3">
+<button type="button" onClick="{{ sc.pick }}" aria-pressed="{{ sc.on }}" style="position: relative; display: block; width: 100%; padding: 15px 0 15px 22px; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; text-align: left">
+<span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E9E6E2"><span style="display: block; width: 100%; height: 100%; background: #1F1F1F; transform-origin: 50% 0; transform: {{ sc.barTf }}; animation: {{ sc.barAnim }}"></span></span>
+<span style="display: flex; align-items: baseline; gap: 10px; font-size: 15px; line-height: 22px; color: {{ sc.labelColor }}; transition: color 0.3s ease"><span style="flex: 0 0 auto; font-size: 13px; color: {{ sc.numColor }}">{{ sc.num }}</span><span>{{ sc.title }}</span></span>
+<span style="display: grid; grid-template-rows: {{ sc.rows }}; transition: grid-template-rows 0.5s cubic-bezier(.23,1,.32,1)"><span style="overflow: hidden; min-height: 0"><span style="display: block; padding: 7px 0 0 27px; font-size: 15px; line-height: 22px; color: #6E6A66; opacity: {{ sc.capOp }}; transition: opacity 0.4s ease">{{ sc.text }}</span></span></span>
+</button>
+</sc-for>
+</div>
+</figure>
+</sc-if>
+<sc-if value="{{ b.isCam }}" hint-placeholder-val="{{ false }}">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="box-sizing: border-box; padding: clamp(14px, 3%, 34px); border-radius: 10px; background: #F3F3F1">
+<div class="lf-camwrap" style="position: relative; overflow: hidden; border-radius: 6px; background: #FFFFFF; aspect-ratio: {{ b.ratio }}">
+<img class="lf-cam-a" src="{{ b.src }}" alt="{{ b.alt }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: {{ b.origin }}; will-change: transform, opacity">
+<img class="lf-cam-b" src="{{ b.src2 }}" alt="{{ b.alt2 }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; will-change: transform, opacity">
+</div>
+</div>
+<div style="display: flex; justify-content: center">
+<button type="button" data-camreplay="1" class="lf-btn" style="display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 13px; border: 1px solid rgba(31, 31, 31, 0.1); border-radius: 999px; background: #FFFFFF; cursor: pointer; font: inherit; font-size: 13px; line-height: 18px; letter-spacing: inherit; color: #6E6A66"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7a5 5 0 1 1-1.6-3.7"></path><path d="M12 2v3H9"></path></svg>Replay</button>
+</div>
+<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ b.isLines }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 24px">
+<sc-for list="{{ b.lines }}" as="ln" hint-placeholder-count="4">
+<div class="lf-cap-line" style="animation-range: {{ ln.range }}; display: flex; gap: 14px; color: #1F1F1F"><span style="flex: 0 0 auto; font-size: 13px; line-height: 24px; color: #B9B4AE">{{ ln.i }}</span><span style="flex: 1 1 auto; min-width: 0">{{ ln.t }}</span></div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ b.isImg }}" hint-placeholder-val="{{ false }}">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<sc-if value="{{ b.padded }}" hint-placeholder-val="{{ true }}">
+<div class="lf-wipe" style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: clamp(18px, 4%, 48px); border-radius: 10px; background: #F3F3F1">
+<img src="{{ b.src }}" alt="{{ b.alt }}" style="display: block; width: 100%; max-width: {{ b.inner }}; height: auto">
+</div>
+</sc-if>
+<sc-if value="{{ b.bare }}" hint-placeholder-val="{{ false }}">
+<img class="lf-wipe" src="{{ b.src }}" alt="{{ b.alt }}" style="display: block; width: 100%; height: auto; border-radius: 8px">
+</sc-if>
+<sc-if value="{{ b.noSrc }}" hint-placeholder-val="{{ false }}">
+<div class="lf-wipe" style="aspect-ratio: 16 / 9; border-radius: 8px; border: 1px dashed #B9B4AE; background: #F8F8F7"></div>
+</sc-if>
+<figcaption style="text-align: center; font-size: 15px; line-height: 22px; color: #6E6A66">{{ b.text }}</figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ b.isLink }}" hint-placeholder-val="{{ false }}">
+<a class="lf-cta" href="{{ b.url }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #1F1F1F; color: #FFFFFF; font-size: 16px; line-height: 24px">{{ b.text }}
+<svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l7-7"></path><path d="M5 3.5h5.5V9"></path></svg>
+</a>
+</sc-if>
+<sc-if value="{{ b.isLock }}" hint-placeholder-val="{{ false }}">
+<form style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px">
+<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px">
+<label for="lf-pass" style="color: #6E6A66">Password</label>
+<input id="lf-pass" type="password" autocomplete="off" style="box-sizing: border-box; width: 100%; height: 44px; padding: 0 12px; border: 1px solid #B9B4AE; border-radius: 8px; background: #ffffff; font: inherit; color: #1F1F1F">
+</div>
+<button type="button" style="height: 44px; padding: 0 20px; border: 0; border-radius: 8px; background: #1F1F1F; color: #ffffff; font: inherit; letter-spacing: inherit; cursor: pointer">Unlock</button>
+</form>
+</sc-if>
+</div>
+</sc-for>
+
+<sc-if value="{{ showMore }}" hint-placeholder-val="{{ true }}">
+<div class="lf-sr" style="width: 100%; max-width: 560px; margin: 64px auto 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px">
+<button type="button" class="lf-cta" onClick="{{ openFull }}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #1F1F1F; color: #FFFFFF; cursor: pointer; font: inherit; font-size: 16px; letter-spacing: inherit">Read the full story
+<svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5"></path></svg>
+</button>
+
+</div>
+</sc-if>
+
+<div class="lf-sr" style="width: 100%; max-width: 560px; margin: 88px auto 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; color: #6E6A66">
+<span>Questions about this project?</span>
+<button type="button" data-ask="1" data-ask-ctx="{{ cur.title }}" aria-haspopup="dialog" style="min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #3F6C9B"><span style="border-bottom: 1px dotted #3F6C9B">Ask LLManey</span></button>
+</div>
+
+<div class="lf-sr" style="width: 100%; max-width: 560px; margin: 20px auto 0; padding-top: 20px; border-top: 1px solid #E9E6E2; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 16px">
+<button type="button" onClick="{{ close }}" style="min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #6E6A66">Back to index</button>
+<button type="button" onClick="{{ next }}" style="min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #1F1F1F">Next: {{ cur.nextTitle }}</button>
+</div>
+
+</article>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 24px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 12px; pointer-events: none">
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div role="menu" aria-label="Jump to a section" class="lf-fan" style="opacity: {{ menuOp }}; transform: {{ menuTf }}; transition: opacity 0.2s ease, transform 0.2s cubic-bezier(.23,1,.32,1); pointer-events: auto; display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px; max-width: min(1184px, calc(100vw - 28px)); padding: 26px 22px 40px; margin: -26px -22px -40px; overflow-x: auto">
+<sc-for list="{{ sections }}" as="sec" hint-placeholder-count="5">
+<button type="button" role="menuitem" class="lf-pop" onClick="{{ sec.go }}" style="flex: 0 0 auto; display: inline-flex; align-items: center; height: 34px; padding: 0 13px; border: 1px solid rgba(31, 31, 31, 0.08); border-radius: 999px; background: {{ sec.bg }}; box-shadow: 0 6px 18px rgba(31, 31, 31, 0.10); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); cursor: pointer; font: inherit; font-size: 13px; line-height: 17px; letter-spacing: inherit; white-space: nowrap; color: {{ sec.fg }}">{{ sec.label }}</button>
+</sc-for>
+</div>
+</sc-if>
+
+<div data-ask-dock="1" style="pointer-events: auto; display: flex; align-items: center; gap: 10px; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.23,1,.32,1)">
+<button type="button" class="lf-btn" data-ask="1" data-ask-ctx="{{ cur.title }}" aria-haspopup="dialog" style="height: 44px; padding: 0 17px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.7); box-shadow: 0 6px 24px rgba(31, 31, 31, 0.16); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); color: #3F6C9B; cursor: pointer; font: inherit; font-size: 14px; line-height: 20px; letter-spacing: inherit; white-space: nowrap">Ask LLManey</button>
+<button type="button" class="lf-btn" aria-expanded="{{ menuOpen }}" aria-label="Jump to a section" onClick="{{ toggleMenu }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.7); box-shadow: 0 6px 24px rgba(31, 31, 31, 0.16); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); color: #1F1F1F; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5L7 9.5 11.5 5"></path></svg>
+</sc-if>
+<sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5h10M2 7h7M2 10.5h4"></path></svg>
+</sc-if>
+</button>
+<button type="button" class="lf-btn" aria-label="Close case study" onClick="{{ close }}" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.7); box-shadow: 0 6px 24px rgba(31, 31, 31, 0.16); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); color: #1F1F1F; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<dc-import name="AskLLManey" start-open="{{ false }}" hint-size="0px,0px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var st = this.state || {};
+var open = typeof st.open === 'number' ? st.open : -1;
+var CASES = [{"title": "MyShake", "img": "/media/myshake-b.webp", "alt": "MyShake mobile app showing pinned locations on a Bay Area map and nearby earthquakes", "kicker": "3.8 million people had MyShake. Five percent opened it when the ground moved.", "headline": "Seven taps stood between people and knowing whether their family had survived the shaking.", "meta": [{"k": "Role", "v": "Lead Product Designer"}, {"k": "Team", "v": "3 Designers · 1 PM · 2 Engineers"}, {"k": "Timeline", "v": "3 months"}, {"k": "Impact", "v": "45% ↑ engagement"}], "blocks": [{"maxw": "560px", "mt": "88px", "text": "The story", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "", "stats": [], "items": [{"k": "The stake", "v": "When the ground shakes, one question matters: are the people I love safe? The app made you search, wait, verify a location and check a status — seven taps — before it would answer."}, {"k": "The gap", "v": "3.8 million people had MyShake, and only 5% opened it during an earthquake. The two alerts made it worse: one warns you seconds before shaking starts, the other arrives after it stops, and people could not tell them apart."}, {"k": "The turn", "v": "The team’s priorities and what users valued were misaligned, so I pushed for research into actual user needs before redesigning. 10 interviews and 50+ survey responses said the same thing: people open this app for their family, not for the earthquake data it was built around."}, {"k": "What changed", "v": "A dashboard of pinned people, answered in three taps. Engagement rose 45%, the two alerts became unmistakable, and the redesign shipped on MyShake's first design system."}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "The challenge", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Grow from 5% to 12.5% active users in three months", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "14px", "text": "The app led with earthquake data rather than personal safety, and its two alerts looked alike — so the people who had it mostly did not open it when it mattered.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "EEW: Early Warning", "v": "High priority. Seconds before shaking starts."}, {"k": "CEN: Post-Earthquake", "v": "Information update. Arrives after shaking is detected."}], "isItems": true}, {"maxw": "560px", "mt": "28px", "text": "", "stats": [{"n": "5%", "l": "Active today · 3.8M users"}, {"n": "12.5%", "l": "Target · 4M users"}], "items": [], "isStats": true}, {"maxw": "1020px", "mt": "56px", "text": "The app before the redesign — earthquake data first, safety second", "stats": [], "items": [], "isImg": true, "src": "/media/ms-before.webp", "alt": "Screens of the original MyShake app, led by earthquake data", "pad": true, "inner": "720px"}, {"maxw": "560px", "mt": "88px", "text": "Research", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "10 interviews · 50+ survey responses · 3 competitors", "stats": [], "items": [], "isTags": true}, {"maxw": "560px", "mt": "28px", "text": "People open this app for someone else", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "14px", "text": "Across the interviews and survey, the same order came back every time — and none of it was the seismic data the app was built around.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "1", "v": "Personal safety"}, {"k": "2", "v": "Family safety"}, {"k": "3", "v": "Property damage"}], "isItems": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Awareness", "v": "They worry about earthquakes and want timely alerts"}, {"k": "Evaluation", "v": "They search for apps but are not sure which to trust"}, {"k": "Adoption", "v": "Downloaded, but the confusing interface means they do not come back"}, {"k": "Churn", "v": "Without a real earthquake, it is just another app they uninstall"}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "The turn", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "How might we help someone find a loved one’s safety status in under three taps?", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Before · 7 taps", "v": "Launch, search, type a name, wait, verify a location, check a status, confirm safety"}, {"k": "After · 3 taps", "v": "Pinned people on the dashboard, with status on tap"}], "isItems": true}, {"maxw": "1020px", "mt": "56px", "text": "The storyboard: what it should feel like when the shaking starts", "stats": [], "items": [], "isImg": true, "src": "/media/ms-storyboard.webp", "alt": "Storyboard of a person checking on family during an earthquake"}, {"maxw": "560px", "mt": "88px", "text": "The design", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "A/B testing · Interaction design · Design systems · WCAG", "stats": [], "items": [], "isTags": true}, {"maxw": "560px", "mt": "14px", "text": "Four landing-page directions were tested against one question: how fast can you tell whether someone is safe? The fourth shipped.", "stats": [], "items": [], "isP": true}, {"maxw": "1020px", "mt": "56px", "text": "Information architecture — dashboard first, pinned people, one clear alert hierarchy", "stats": [], "items": [], "isImg": true, "src": "/media/ms-ia.webp", "alt": "MyShake information architecture diagram", "pad": true, "inner": "900px"}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Dashboard first", "v": "Pinned people appear on launch. No search, no navigation layers."}, {"k": "Two distinct alerts", "v": "Colour and language separate the warning that arrives before shaking from the update that follows it."}, {"k": "One-handed gestures", "v": "Tap to expand, swipe between people — designed for a stressful moment, not a calm one."}], "isItems": true}, {"maxw": "560px", "mt": "56px", "text": "The redesigned dashboard: pinned people on launch, earthquakes below", "stats": [], "items": [], "isHot": true, "src": "/media/ms-dashboard.webp", "alt": "MyShake dashboard showing pinned locations and nearby earthquakes", "pad": true, "inner": "360px", "hots": [{"x": 50, "y": 19, "text": "Your people are on screen the moment the app opens \u2014 no search, no tabs to dig through."}, {"x": 61, "y": 28, "text": "Tap a pin to see whether that person is safe. Three taps, down from seven."}, {"x": 25, "y": 68, "text": "Nearby earthquakes sit below the people, not above them \u2014 the data still matters, just second."}, {"x": 50, "y": 84, "text": "Preparation guides stay in the app, one scroll down instead of leading the screen."}]}, {"maxw": "620px", "mt": "56px", "text": "Two alerts, told apart by colour and language", "stats": [], "items": [], "isImg": true, "src": "/media/ms-alert.webp", "alt": "Alert screens showing the early warning and the post-earthquake update", "pad": true, "inner": "440px"}, {"maxw": "560px", "mt": "14px", "text": "The redesign also became MyShake’s first design system — every component tested for crisis moments.", "stats": [], "items": [], "isP": true}, {"maxw": "1020px", "mt": "56px", "text": "MyShake’s first design system — type, colour, states and components", "stats": [], "items": [], "isImg": true, "src": "/media/ms-system.webp", "alt": "The MyShake design system sheet", "pad": true, "inner": "880px"}, {"maxw": "560px", "mt": "88px", "text": "The solution", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Three taps to the only answer that matters", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "14px", "text": "Pinned people open the app, the two alerts read as different things at a glance, and the seismic detail people came for is one tap below instead of in the way.", "stats": [], "items": [], "isP": true}, {"maxw": "1020px", "mt": "56px", "text": "The shipped app in motion: dashboard to earthquake detail", "stats": [], "items": [], "src": "/media/ms-recording3.mp4", "plain": true, "alt": "Screen recording of the MyShake app: the dashboard, tapping View Earthquake Details on the alert, and scrolling the earthquake detail view", "isVid": true, "poster": "/media/ms-rec3-poster.webp"}, {"maxw": "780px", "mt": "56px", "text": "", "stats": [], "items": [], "isScreens": true, "screens": [{"src": "/media/ms-screen1c.webp", "alt": "MyShake dashboard with pinned locations and an alert about a friend in Japan", "label": "Dashboard", "title": "Dashboard: the people first", "text": "Your people and their alerts, on screen at launch. No search."}, {"src": "/media/ms-screen2b.webp", "alt": "MyShake earthquake feed sorted by distance, filtered to the past six days and magnitude 4.5 and above", "label": "Earthquake feed", "title": "Feed: the data, one tap down", "text": "All the seismic data, sorted by distance, one tap away."}, {"src": "/media/ms-screen3b.webp", "alt": "MyShake earthquake detail view showing shaking strength, a low damage estimate and 23 experience reports", "label": "Earthquake detail", "title": "Detail: severity in plain language", "text": "Shaking, damage and nearby reports on one screen, in plain words."}]}, {"maxw": "560px", "mt": "88px", "text": "What changed", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "", "stats": [{"n": "45%", "l": "More engagement"}, {"n": "7 → 3", "l": "Taps to a safety status"}], "items": [], "isStats": true}, {"maxw": "560px", "mt": "14px", "text": "It shipped, on that design system.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "“This is my proudest work.”", "stats": [], "items": [], "isQ": true}, {"maxw": "560px", "mt": "14px", "text": "The moment that made it was seeing that misalignment and pushing for research into actual user needs before any redesign. Ten interviews and fifty survey responses decided the information architecture; two engineering partners who believed in that research got it built.", "stats": [], "items": [], "isP": true}, {"maxw": "1020px", "mt": "56px", "text": "The team, at launch", "stats": [], "items": [], "isImg": true, "src": "/media/ms-team.webp", "alt": "The MyShake team celebrating the launch"}], "blurb": "pinned locations", "shots": [{"src": "/media/myshake-b.webp", "alt": "MyShake dashboard with pinned locations on a Bay Area map"}, {"src": "/media/frame-feed.webp", "alt": "MyShake earthquake feed, sorted by distance"}]}, {"title": "NVIDIA Scout", "img": "/media/scout-tile-hq.webp", "alt": "NVIDIA Scout web app mid-run: the test prompt, the agent working through a live site, and the activity log", "kicker": "At NVIDIA that news arrives as a Slack message, weeks after launch.", "headline": "A broken flow reaches the people using it long before it reaches anyone who can fix it.", "meta": [{"k": "Role", "v": "Lead Product Designer"}, {"k": "Team", "v": "5 collaborators · PM, UX Research, Visual Design, UX Dev"}, {"k": "Timeline", "v": "Spring – Fall 2026"}, {"k": "Status", "v": "Fully functional working product"}], "blocks": [{"maxw": "560px", "mt": "88px", "text": "The story", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "", "stats": [], "items": [{"k": "The stake", "v": "Internal tools ship, and the friction turns up later in a Slack thread. By then the fix is queued behind code-breaking bugs, and a usability issue only gets picked up if it clears the bar of being worth the time."}, {"k": "The gap", "v": "Engineers wanted to catch this before release, but they will not act on an AI that hands them a verdict. “You should be able to track down and reach the same conclusion yourself,” one told us."}, {"k": "The turn", "v": "We interviewed 7 people across ML engineering, QA and design. What they said they valued and what their workflows actually showed did not match, so we stopped designing for job titles and designed for the pre-launch staging review, where all three meet."}, {"k": "What exists now", "v": "A chat-based agent that runs persona-driven tests against a staging build and returns every finding with a screenshot, a step-by-step trace and a recommended fix that exports to Jira. Built, running, and tested with engineers at NVIDIA."}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "The problem", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "7 interviews · ML engineering, QA and design · Competitive analysis", "stats": [], "items": [], "isTags": true}, {"maxw": "560px", "mt": "14px", "text": "Internal feedback loops are thin and reactive. Usability problems surface in Slack after launch, and by then they queue behind code-breaking bugs — a usability fix has to be worth the time before anyone picks it up.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "“Feedback for internal tools comes from Slack post launch.” — P1", "stats": [], "items": [], "isQ": true}, {"maxw": "560px", "mt": "20px", "text": "“You should be able to, like, track down and reach the same conclusion yourself.” — P2", "stats": [], "items": [], "isQ": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Trust & transparency", "v": "Engineers need to verify a finding, and to know where accountability sits"}, {"k": "No feedback loop", "v": "Teams rely on Slack threads instead of structured testing"}, {"k": "Severity rules", "v": "Code-breaking bugs crowd out usability fixes"}, {"k": "Simple tools win", "v": "Near-zero setup, or it does not earn a place in the stack"}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "The insight", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "What engineers said and what their workflows showed did not match", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "What they said", "v": "Usability matters, human judgement matters, AI insight has to be trustworthy"}, {"k": "What they did", "v": "Relied on dashboards, feedback buttons, Slack and quick summaries"}], "isItems": true}, {"maxw": "560px", "mt": "14px", "text": "Affinity mapping also showed the roles overlapping more than our personas assumed — the same engineer wrote the code, ran QA and judged the UX. So we stopped designing for job titles and designed for the pre-launch staging review, where those roles converge.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "88px", "text": "The first flow", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "The first shape we drew for it", "stats": [], "items": [], "isH": true}, {"maxw": "1020px", "mt": "56px", "text": "The first user flow: upload, pick a task, run the synthetic user, read the summary", "stats": [], "items": [], "isFlow": true}, {"maxw": "560px", "mt": "14px", "text": "You arrive, upload a screenshot or some code, pick a preset task or write your own, add notes if you have any, and the agent runs a synthetic user through it and hands back a summary of issues.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "What survived", "v": "Presets with a custom escape hatch, optional context before the run, and the idea that you set it going and come back to a result."}, {"k": "What did not", "v": "Uploading a screenshot. Engineers test builds, not pictures of builds, so the entry point became a staging URL."}, {"k": "What was missing", "v": "The flow ends at “summary of issues” — the exact thing interviews said engineers would not act on. Everything after this point was about replacing that box with evidence."}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "The hard questions", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Most of the product was decided at a whiteboard, working through edge cases", "stats": [], "items": [], "isH": true}, {"maxw": "1020px", "mt": "56px", "text": "Working session: open questions, and what each one forces the product to decide", "stats": [], "items": [], "isImg": true, "src": "/media/nv-whiteboard.webp", "alt": "Whiteboard covered in handwritten open questions about the agent, transparency, personas and severity"}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Several agents at once", "v": "A single run is easy to show. Ten personas running at the same time is not — what is the state of each one, and where do you look first?"}, {"k": "Knowing when to pull the plug", "v": "If the agent is burning time on the wrong thing, the person has to see it and stop it. That question is why there is an activity log at all."}, {"k": "What counts as severe", "v": "If the tool ranks issues, it has to be able to say why one is more critical than another — otherwise the ranking is just a vibe with a number on it."}, {"k": "Evaluate, not fix", "v": "No accept, just dismiss. No edit, just evaluate. The agent reports what it found and the engineer decides — drawing that line kept the tool from pretending to be the designer."}, {"k": "Life after export", "v": "Once a finding becomes a Jira ticket, is it still open here? Issue tracking needed a resolved state and a mark for what had already been exported."}, {"k": "Naming a persona", "v": "Do we label a configuration “skilled engineer”, or spell out the traits behind it? Shorthand is readable and lossy; the full description is accurate and nobody reads it."}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "Finding the MVP", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Everything we could build, sorted into what we would", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "8px", "text": "Feature prioritisation · MVP, nice to have, future", "stats": [], "items": [], "isTags": true}, {"maxw": "1020px", "mt": "56px", "text": "Every idea on the table — then the column that became the first build", "stats": [], "items": [], "isCam": true, "src": "/media/board-clean2.webp", "alt": "Prioritisation board with three columns of sticky notes: MVP, nice to have, and future", "src2": "/media/mvp-tight.webp", "alt2": "Close-up of the MVP column of the prioritisation board", "origin": "0% 0%", "ratio": "1960 / 1198"}, {"maxw": "560px", "mt": "14px", "text": "The team put every idea on one board and sorted it against a single test: does this give an engineer evidence they can check, in a form they already work in? Anything that only made the output prettier, or that asked the agent to fix rather than find, moved right.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "40px", "text": "", "stats": [], "items": [], "isLines": true, "lines": ["A staging URL as the way in", "Personas as sliders: expertise, patience, accessibility needs, device familiarity", "Findings ranked highest to lowest", "An annotated screenshot and a written explanation for each one", "A hallucination guard explaining every insight", "Evidence strength over confidence scores: “reproduced 8 out of 10 times”", "Human in the loop: accept, reject or defer", "Export to Jira"]}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Evidence over confidence", "v": "“Reproduced 8 out of 10 times” instead of “87% confident” — a number an engineer can argue with beats a number they have to trust."}, {"k": "Held back", "v": "Comparing two runs, suggested copy and design fixes, design-system grounding, a developer view, a performance score."}, {"k": "Later", "v": "Cross-device runs, a live agent viewer, team comments on findings, a timeline replay of the test."}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "Peer testing", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "We also put it in front of designers, not just engineers", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "8px", "text": "Peer critique · Rose, bud, thorn", "stats": [], "items": [], "isTags": true}, {"maxw": "560px", "mt": "14px", "text": "Designers ran the agent themselves and sorted what they found into what worked, what could grow and what hurt. The sharpest signal was a contradiction: token usage landed in both columns — they wanted to know what a run would cost, and the way we showed it left them unsure how much they had left. That, and agent cards nobody wanted to read, became two of the four pivots below.", "stats": [], "items": [], "isP": true}, {"maxw": "1020px", "mt": "56px", "text": "The board at the end of the session", "stats": [], "items": [], "isBoard": true, "src": "/media/rbt-live.webp", "alt": "A FigJam board with Rose, Bud and Thorn columns of sticky notes from a peer critique session"}, {"maxw": "560px", "mt": "88px", "text": "The solution", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "An agent that shows its work", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "8px", "text": "Conversational UI · Evidence design · Jira integration", "stats": [], "items": [], "isTags": true}, {"maxw": "560px", "mt": "14px", "text": "Engineers prompt the agent in one conversation. It runs persona-driven tests against a staging build, and every finding arrives with the proof needed to check it.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Stage the build", "v": "A build is deployed to a staging URL"}, {"k": "Run agents", "v": "Persona agents execute test intents against it"}, {"k": "Review evidence", "v": "Annotated screenshots and log traces explain each finding"}, {"k": "Fix and ship", "v": "Findings export to Jira with a recommended fix"}], "isItems": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Annotated screenshots", "v": "Each issue links to a shot that highlights the problem"}, {"k": "Reproducible traces", "v": "Step-by-step logs let an engineer retrace the finding"}, {"k": "Expected vs actual", "v": "Every finding carries a recommended fix and a severity from P0 to P3"}], "isItems": true}, {"maxw": "1020px", "mt": "56px", "text": "The final design — the agent running a usability test against a staging build, start to finding", "stats": [], "items": [], "src": "/media/nv-zoom2.mp4", "alt": "Recording of the NVIDIA Scout agent running a usability test against a staging build", "isVid": true, "poster": "/media/nv-zoom2-poster.webp"}, {"maxw": "560px", "mt": "40px", "text": "", "stats": [], "items": [{"k": "Exporting to issue trackers", "v": "Select any number of findings and file them to Jira, GitHub or GitLab in one step, so they land where engineers already work."}, {"k": "Next action visible", "v": "Every run shows its status at a glance, and changes waiting to be tested sit beside them with a one-click Test."}], "isItems": true}, {"maxw": "1020px", "mt": "56px", "text": "Exporting to issue trackers: selected findings filed straight to Jira, GitHub or GitLab", "stats": [], "items": [], "isImg": true, "src": "/media/sc-export.webp", "alt": "Sixteen findings selected, with a File issues menu offering Jira, GitHub, GitLab and Manage connections", "pad": true, "inner": "600px"}, {"maxw": "1020px", "mt": "56px", "text": "Next action visible: every run's status, with the next change to test on the right", "stats": [], "items": [], "isImg": true, "src": "/media/sc-next.webp", "alt": "Runs listed as Completed, Failed and Running, beside a Changes to test panel with a pull request and a Test button", "pad": true, "inner": "900px"}, {"maxw": "560px", "mt": "88px", "text": "Iteration", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Four pivots, each from a real constraint — testing with engineers, weekly sponsor syncs, and peer critique.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "From roles to workflows", "v": "Role personas overlapped too much to design around, so the system was built around the staging review."}, {"k": "Per-agent token budgets", "v": "One global budget hid which agent spent what. Each agent now has its own cap and returns a partial coverage report instead of failing silently."}, {"k": "One chat interface", "v": "Engineers wanted control over setup; our sponsor wanted one click. A conversation backed by a live execution engine gave both."}, {"k": "Standardised findings", "v": "Critique flagged dense text and mixed severity names, so findings became compact summary bars on one P0–P3 scale."}], "isItems": true}, {"maxw": "560px", "mt": "14px", "text": "The thread through all four: when engineers and sponsors wanted different things, we went back to the workflow and asked what would earn trust.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "88px", "text": "Where it stands", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Built and running, frontend and backend, tested with engineers at NVIDIA. Next is iterating on what that testing surfaced and measuring against the targets we set: early detection, trust, actionability and efficiency, each above 80%.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "The real breakthrough was the gap between what engineers want and what they actually do. That is a workflow-trust problem, not a screen redesign.", "stats": [], "items": [], "isQ": true}, {"maxw": "560px", "mt": "14px", "text": "The lesson was knowing when to change course — cutting a survey that could not reach anyone, then changing the design four times as engineers and our sponsor pulled in different directions.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "88px", "text": "Thank you", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "A huge thank you to Mamta Kumari and everyone at NVIDIA who helped shape this design, and for your collaboration throughout the entire project.", "stats": [], "items": [], "isH": true}], "blurb": "QA agent"}, {"title": "IDBridge", "img": "/media/idb-tile-hq.webp", "alt": "IDBridge mobile home screen with next steps toward a California State ID", "kicker": "Six hours to design a way back.", "headline": "“If you lose your ID, you lose your life. Nothing starts without it.”", "meta": [{"k": "Role", "v": "Product Designer"}, {"k": "Team", "v": "2 designers · 2 researchers · 1 PM"}, {"k": "Timeline", "v": "6 hours (Oct 2025)"}, {"k": "Result", "v": "First Place Winner"}], "blocks": [{"maxw": "560px", "mt": "88px", "text": "The story", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "", "stats": [], "items": [{"k": "The stake", "v": "Without an ID, every door closes: no shelter bed, no housing referral, no bank account. In the 2023 California Statewide Study of People Experiencing Homelessness, more than 53% of participants named missing documents as a barrier to permanent housing."}, {"k": "The cost", "v": "“I walked four miles with a backpack and a hurt knee to get to a shelter that their website said had beds, only to be told they've been full since 4 PM.”"}, {"k": "The turn", "v": "We had six hours and no prior research. We spent the first two on empathy mapping and lived accounts instead of sketching, and used AI to condense papers while checking every insight against what people actually described."}, {"k": "What we built", "v": "An offline-first, privacy-first platform where someone builds a verified document trail, sees real shelter availability, and reaches a social worker. It won first place."}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "The problem", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "The barrier to housing is identity verification", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "14px", "text": "Beyond availability and cost, the overlooked obstacle is documentation. Without verifiable identity, referrals and proof of eligibility, the path to permanent housing is close to impossible to navigate.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Wasted journeys", "v": "“I walked four miles with a backpack and a hurt knee to get to a shelter that their website said had beds, only to be told they’ve been full since 4 PM.”"}, {"k": "Lost identity", "v": "“If you lose your ID, you lose your life. Nothing starts without it, and replacing it is a loop that takes months and money I don’t have.”"}], "isItems": true}, {"maxw": "560px", "mt": "14px", "text": "How might we build trust-centred, accessible tools that help unhoused individuals verify their identity and eligibility, so they can secure long-term housing?", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "88px", "text": "Research in two hours", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Literature review · Reddit research · AI-assisted synthesis", "stats": [], "items": [], "isTags": true}, {"maxw": "560px", "mt": "14px", "text": "With six hours total, we used AI to condense research papers and read lived accounts to validate them — fast patterns, with every insight checked against what people actually described.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "The finding", "v": "In the 2023 California Statewide Study of People Experiencing Homelessness, more than 53% of participants named missing documents as a barrier to permanent housing."}, {"k": "Where AI helped", "v": "Speed and breadth, bias detection, synthesis within reach of a resource-limited team."}, {"k": "Where it fell short", "v": "Lost human context, AI-sourced claims mixed with real ones, and false authority we had to backtrack on."}], "isItems": true}, {"maxw": "560px", "mt": "88px", "text": "The design", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "Verified identity, accessible housing", "stats": [], "items": [], "isH": true}, {"maxw": "560px", "mt": "8px", "text": "Product design · Prototyping · Accessibility", "stats": [], "items": [], "isTags": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "ID verification", "v": "Upload documents and referrals; a QR code carries the verification history."}, {"k": "Social worker connect", "v": "Chat with a representative about next steps based on eligibility."}, {"k": "Shelter listings", "v": "Real-time bed counts, so nobody walks four miles to a full shelter."}], "isItems": true}, {"maxw": "560px", "mt": "20px", "text": "", "stats": [], "items": [{"k": "Offline first", "v": "No data plan required"}, {"k": "Privacy first", "v": "The user controls what is shared"}, {"k": "Clear authority", "v": "Modelled on government services, so it reads as official"}], "isItems": true}, {"maxw": "1020px", "mt": "56px", "text": "The four core screens — Home, Documents, History, Map", "stats": [], "items": [], "isImg": true, "src": "/media/idb-screens.webp", "alt": "IDBridge screens: home, documents, history and map", "pad": true, "inner": "900px"}, {"maxw": "560px", "mt": "88px", "text": "What changed", "stats": [], "items": [], "isLabel": true}, {"maxw": "560px", "mt": "16px", "text": "First place, out of six hours.", "stats": [], "items": [], "isP": true}, {"maxw": "560px", "mt": "20px", "text": "Design cannot be replaced with AI — it lacks the empathy one human has for another.", "stats": [], "items": [], "isQ": true}, {"maxw": "560px", "mt": "14px", "text": "AI accelerated the research, but every AI-sourced insight had to be verified against lived experience. The ideas that resonated came when we stepped back from the suggestions and centred the people we were designing for.", "stats": [], "items": [], "isP": true}], "blurb": "offline verification"}];
+var n = CASES.length;
+var FULL = 'inset(0px 0px 0px 0px round 0px)';
+function rectClip(el) {
+var r = el.getBoundingClientRect();
+var w = window.innerWidth, h = window.innerHeight;
+return 'inset(' + Math.max(r.top, 0) + 'px ' + Math.max(w - r.right, 0) + 'px ' + Math.max(h - r.bottom, 0) + 'px ' + Math.max(r.left, 0) + 'px round 6px)';
+}
+var INTRO = 'Hi — I can help with case studies, design decisions, or quick summaries of the work on this page.';
+var chat = st.chat || [];
+function answer(q) {
+var t = q.toLowerCase();
+if (/process/.test(t)) return 'Laney starts with research, then synthesis, ideation and testing. On MyShake she saw that the team\u2019s priorities and what users valued were misaligned, pushed for research into actual user needs, and ran 10 user interviews and a 50+ response survey; that research shaped the information architecture.';
+if (/research|interview|survey/.test(t)) return 'She mixes interviews, surveys, competitive analysis and secondary research, and changes course when a method fails. On the NVIDIA AI UX agent the survey got zero responses, so the team scrapped it and leaned on 7 interviews across ML engineering, QA and UX design.';
+if (/myshake|earthquake|shake/.test(t)) return 'MyShake is an earthquake alert app. Laney was Product Designer, end-to-end, on a team of 5 designers, 1 PM and 2 engineers for 3 months. The redesign cut finding a loved one from 7 steps to 3 and raised engagement 45%. It shipped.';
+if (/nvidia|scout|agent|capstone/.test(t)) return 'An AI UX agent built with NVIDIA for her UCSC HCI capstone, with Laney as Lead Product Designer. It runs persona-driven agents against a staging build and gives engineers screenshots, step-by-step logs and a recommended fix they can export to Jira. It is a working product, tested with engineers.';
+if (/idbridge|id bridge|hackathon|designathon|unhoused|housing/.test(t)) return 'IDBridge is a verified identity platform for unhoused individuals, designed in a 6-hour designathon in October 2025. The team spent the first 2 hours on research and won first place with a privacy-first, offline design.';
+if (/verisupply|sensitel|confidential|password/.test(t)) return 'VeriSupply is from her 2026 role as Product Growth & Design Intern at Sensitel. The case study is confidential and needs a password.';
+if (/resume|experience|education|school|degree|background/.test(t)) return 'M.S. Human Computer Interaction at UC Santa Cruz (2026) and B.A. Cognitive Science at UC Berkeley (2024). Experience includes NVIDIA (capstone), Sensitel, MyShake, Eximlabs, Mind Coffee and Advanced Health Academy. The Resume page has the full list.';
+if (/who|about|laney|hobb|fun/.test(t)) return 'Laney is a product designer from the Bay Area, raised by a designer and an engineer. She describes herself as an artist, foodie, dog-lover, and traveler.';
+return 'I can only answer from what is in this portfolio. Try asking about MyShake, the NVIDIA AI UX agent, IDBridge, her design process or her research approach.';
+}
+function ask(q) {
+q = (q || '').trim();
+if (!q) return;
+var withQ = chat.concat([{ who: 'user', text: q }]);
+self.setState({ chat: withQ });
+function toEnd() { var el = document.querySelector('.lf-msgs'); if (el) el.scrollTop = el.scrollHeight; }
+setTimeout(toEnd, 30);
+setTimeout(function () { self.setState({ chat: withQ.concat([{ who: 'bot', text: answer(q) }]) }); setTimeout(toEnd, 30); }, 500);
+}
+var chatVals = {
+chatOpen: !!st.chatOpen,
+toggleChat: function () { self.setState({ chatOpen: !st.chatOpen }); },
+msgs: [{ who: 'bot', text: INTRO }].concat(chat).map(function (m) {
+var u = m.who === 'user';
+return { text: m.text, align: u ? 'flex-end' : 'flex-start', bg: u ? '#1F1F1F' : 'rgba(31, 31, 31, 0.06)', fg: u ? '#ffffff' : '#1F1F1F' };
+}),
+showPrompts: chat.length === 0,
+prompts: ['What\'s your design process?', 'Tell me about MyShake', 'How do you approach user research?'].map(function (p) { return { text: p, ask: function () { ask(p); } }; }),
+send: function (e) {
+e.preventDefault();
+var input = e.currentTarget.querySelector('input');
+var v = input ? input.value : '';
+if (input) input.value = '';
+ask(v);
+}
+};
+if (!window.__lfCurInstalled && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+window.__lfCurInstalled = true;
+var cur = document.createElement('div');
+cur.className = 'lf-vcur';
+cur.setAttribute('aria-hidden', 'true');
+cur.textContent = 'View';
+document.body.appendChild(cur);
+var cx = 0, cy = 0, tx = 0, ty = 0, on = false, raf = 0;
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var step = function () {
+cx += (tx - cx) * (reduce ? 1 : 0.22); cy += (ty - cy) * (reduce ? 1 : 0.22);
+cur.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
+raf = (Math.abs(tx - cx) > 0.2 || Math.abs(ty - cy) > 0.2) ? requestAnimationFrame(step) : 0;
+};
+document.addEventListener('mousemove', function (ev) {
+var t = ev.target; var hit = false;
+while (t && t !== document) { if (t.classList && t.classList.contains('lf-tile')) { hit = true; break; } t = t.parentNode; }
+tx = ev.clientX; ty = ev.clientY;
+if (hit && !on) { on = true; cx = tx; cy = ty; cur.classList.add('on'); }
+else if (!hit && on) { on = false; cur.classList.remove('on'); }
+if (!raf) raf = requestAnimationFrame(step);
+}, { passive: true });
+document.addEventListener('mousedown', function () { if (on) cur.classList.add('down'); });
+document.addEventListener('mouseup', function () { cur.classList.remove('down'); });
+document.addEventListener('click', function () { if (on) { on = false; cur.classList.remove('on'); } });
+document.addEventListener('mouseleave', function () { on = false; cur.classList.remove('on'); });
+}
+if (!window.__lfCamInstalled) {
+window.__lfCamInstalled = true;
+var reduceMo = function () { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; };
+var camWatch = function () {
+var vh = window.innerHeight || 1;
+var rows = document.querySelectorAll('.lf-screens');
+for (var j = 0; j < rows.length; j++) {
+var rr = rows[j].getBoundingClientRect();
+if (rr.top < vh * 0.88 && rr.bottom > 0 && rows[j].className.indexOf('lf-in') === -1) { rows[j].className += ' lf-in'; }
+}
+var wraps = document.querySelectorAll('.lf-camwrap');
+for (var k = 0; k < wraps.length; k++) {
+var w = wraps[k];
+var r = w.getBoundingClientRect();
+var inView = r.top < vh * 0.72 && r.bottom > vh * 0.18;
+var gone = r.bottom < 0 || r.top > vh;
+if (inView && !reduceMo()) {
+if (w.className.indexOf('lf-play') === -1) { w.className += ' lf-play'; }
+} else if (gone) {
+w.className = w.className.replace(/\s*lf-play/g, '');
+}
+}
+};
+var capPaint = function () {
+var vh = window.innerHeight || 1;
+var reduce = reduceMo();
+var caps = document.querySelectorAll('.lf-cap-line');
+for (var i = 0; i < caps.length; i++) {
+if (reduce) { caps[i].style.opacity = '1'; caps[i].style.filter = 'none'; caps[i].style.transform = 'none'; continue; }
+var cr = caps[i].getBoundingClientRect();
+var q = Math.max(0, Math.min(1, (vh * 0.95 - cr.top) / (vh * 0.34)));
+caps[i].style.opacity = q.toFixed(3);
+caps[i].style.filter = q > 0.985 ? 'none' : 'blur(' + ((1 - q) * 5).toFixed(2) + 'px)';
+caps[i].style.transform = q > 0.985 ? 'none' : 'translateY(' + ((1 - q) * 9).toFixed(2) + 'px)';
+}
+};
+var queued = false;
+var onScroll = function () {
+if (queued) return;
+queued = true;
+requestAnimationFrame(function () { queued = false; camWatch(); capPaint(); });
+};
+document.addEventListener('click', function (ev) {
+var t = ev.target;
+while (t && t.getAttribute && t.getAttribute('data-camreplay') === null) { t = t.parentNode; }
+if (!t || !t.getAttribute) return;
+var fig = t.parentNode;
+while (fig && fig.tagName !== 'FIGURE') { fig = fig.parentNode; }
+var w = fig ? fig.querySelector('.lf-camwrap') : null;
+if (!w) return;
+w.className = w.className.replace(/\s*lf-play/g, '');
+void w.offsetWidth;
+w.className += ' lf-play';
+});
+document.addEventListener('scroll', onScroll, true);
+window.addEventListener('resize', onScroll);
+window.__lfCamTick = onScroll;
+}
+if (window.__lfCamTick) { setTimeout(window.__lfCamTick, 60); setTimeout(window.__lfCamTick, 400); }
+var detail = st.detail || 'tldr';
+function tldrOf(blocks) {
+var out = [], labels = 0, i = 0;
+for (; i < blocks.length; i++) {
+if (blocks[i].isLabel) { labels++; if (labels > 1) break; }
+out.push(blocks[i]);
+}
+return out;
+}
+var EXTRA = {
+'MyShake': { vid: '/media/ms-tile-zoom4.mp4', poster: '/media/ms-tile-zoom5-poster.webp', bg: 'linear-gradient(180deg, #E0E9E5 0%, #C4D6CF 100%)' },
+'NVIDIA Scout': { bg: 'linear-gradient(180deg, #E9E6E0 0%, #D5CFC5 100%)', vid: '/media/scout-tile2.mp4', poster: '/media/scout-tile2-poster.webp' },
+'IDBridge': { bg: 'linear-gradient(180deg, #E1E7EF 0%, #C8D3E0 100%)', slide: true, shots: [
+{ src: '/media/idb2-hq.webp', alt: 'IDBridge home screen with next steps toward a California State ID' },
+{ src: '/media/idb2-documents.webp', alt: 'IDBridge documents screen with stored records' },
+{ src: '/media/idb2-map.webp', alt: 'IDBridge map of nearby shelters with live availability' }] }
+};
+var projects = CASES.map(function (c, i) {
+var ex = EXTRA[c.title] || {};
+var shotList = ex.shots || ((c.shots && c.shots.length) ? c.shots : [{ src: c.img, alt: c.alt }]);
+var cycle = shotList.length < 2 ? 10 : shotList.length * 4.5;
+var animName = ex.slide ? 'lf-slide3' : 'lf-shot' + Math.min(3, shotList.length);
+return Object.assign({}, c, {
+shots: shotList.map(function (s, k) {
+return { src: s.src, alt: s.alt || c.alt, anim: animName, dur: cycle + 's', delay: (-(cycle / shotList.length) * k).toFixed(2) + 's' };
+}),
+aria: 'Open ' + c.title + ' case study',
+bg: ex.bg || '#F3F3F1',
+hasVid: !!ex.vid, noVid: !ex.vid, vid: ex.vid || '', poster: ex.poster || '',
+nextTitle: CASES[(i + 1) % n].title,
+open: function (e) {
+var img = e.currentTarget.querySelector('.lf-wipe') || e.currentTarget.querySelector('img') || e.currentTarget;
+var from = rectClip(img);
+self.setState({ open: i, from: from, clip: from, detail: 'tldr', menuOpen: false });
+requestAnimationFrame(function () { requestAnimationFrame(function () { self.setState({ clip: FULL }); }); });
+}
+});
+});
+var curP = projects[open >= 0 ? open : 0];
+var shownBlocks = (detail === 'full' ? curP.blocks : tldrOf(curP.blocks)).map(function (b, i) {
+var o = Object.assign({}, b, { vidCtrl: !!(b.isVid && !b.plain), anchor: 'lf-b' + i, hasSrc: !!b.src, noSrc: !b.src, padded: !!(b.src && b.pad), bare: !!(b.src && !b.pad), inner: b.inner || '100%' });
+var scSel = typeof st.screen === 'number' ? st.screen : 0;
+if (b.screens) {
+if (!st.screenPicked) {
+if (self.__scrT) { clearTimeout(self.__scrT); }
+self.__scrT = setTimeout(function () { self.setState({ screen: (scSel + 1) % b.screens.length }); }, 3200);
+}
+o.screens = b.screens.map(function (sc, j) {
+var on = j === scSel;
+return {
+src: sc.src, alt: sc.alt, label: sc.label, num: ('0' + (j + 1)).slice(-2),
+aria: 'Show ' + sc.label,
+on: on,
+op: on ? '1' : '0.5',
+tf: on ? 'translateY(-4px)' : 'none',
+sh: on ? '0 18px 40px rgba(31, 31, 31, 0.16)' : '0 2px 10px rgba(31, 31, 31, 0.05)',
+labelColor: on ? '#1F1F1F' : '#8A857F',
+numColor: on ? '#6E6A66' : '#B9B4AE',
+title: sc.title, text: sc.text,
+capOp: on ? '1' : '0',
+imgOp: on ? '1' : '0',
+imgTf: on ? 'none' : 'scale(1.03)',
+rows: on ? '1fr' : '0fr',
+barTf: (on && st.screenPicked) ? 'scaleY(1)' : 'scaleY(0)',
+barAnim: (on && !st.screenPicked) ? 'lf-fill 3.2s linear both' : 'none',
+pick: function () { self.setState({ screen: j, screenPicked: true }); }
+};
+});
+
+}
+o.lines = (b.lines || []).map(function (t, j) { return { t: t, i: ('0' + (j + 1)).slice(-2), range: 'entry ' + (8 + j * 7) + '% entry ' + (46 + j * 7) + '%' }; });
+var hotKey = st.hot;
+o.hots = (b.hots || []).map(function (h, j) {
+var key = i + '-' + j;
+var on = hotKey === key;
+return { x: h.x, y: h.y, n: (j + 1), label: 'Detail ' + (j + 1) + ': ' + h.text, isOpen: on, bg: on ? '#1F1F1F' : '#3F6C9B', toggle: function () { self.setState({ hot: on ? null : key }); } };
+});
+var openHot = (b.hots || []).filter(function (h, j) { return hotKey === (i + '-' + j); })[0];
+o.capText = openHot ? openHot.text : b.text;
+o.capColor = openHot ? '#1F1F1F' : '#6E6A66';
+return o;
+});
+function glideTo(el) {
+var sc = document.querySelector('.lf-scroll');
+if (!sc) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+var start = sc.scrollTop;
+var target = start + el.getBoundingClientRect().top - sc.getBoundingClientRect().top - 72;
+target = Math.max(0, Math.min(target, sc.scrollHeight - sc.clientHeight));
+var dist = Math.abs(target - start);
+if (dist < 2) return;
+var dur = Math.min(1600, Math.max(700, 460 + dist * 0.26));
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce) { sc.scrollTop = target; return; }
+var t0 = null, stop = false;
+function cancel() { stop = true; }
+sc.addEventListener('wheel', cancel, { passive: true });
+sc.addEventListener('touchstart', cancel, { passive: true });
+function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+function step(ts) {
+if (stop) { sc.removeEventListener('wheel', cancel); sc.removeEventListener('touchstart', cancel); return; }
+if (t0 === null) t0 = ts;
+var pr = Math.min(1, (ts - t0) / dur);
+sc.scrollTop = start + (target - start) * ease(pr);
+if (pr < 1) { requestAnimationFrame(step); }
+else { sc.removeEventListener('wheel', cancel); sc.removeEventListener('touchstart', cancel); }
+}
+requestAnimationFrame(step);
+}
+function goTo(id) {
+self.setState({ menuShown: false, detail: 'full' });
+setTimeout(function () { self.setState({ menuOpen: false }); }, 200);
+var tries = 0;
+(function tick() {
+var el = document.getElementById(id);
+if (el) { glideTo(el); return; }
+if (tries++ < 30) requestAnimationFrame(tick);
+})();
+}
+function closeMenu() {
+self.setState({ menuShown: false });
+setTimeout(function () { self.setState({ menuOpen: false }); }, 200);
+}
+function backToTldr() {
+closeMenu();
+self.setState({ detail: 'tldr' });
+requestAnimationFrame(function () {
+var sc = document.querySelector('.lf-scroll');
+if (sc) sc.scrollTop = 0;
+});
+}
+var isTldrNow = detail !== 'full';
+var sections = [{
+num: '00', label: 'TL;DR', go: backToTldr,
+bg: isTldrNow ? '#1F1F1F' : 'rgba(255, 255, 255, 0.88)',
+fg: isTldrNow ? '#FFFFFF' : '#1F1F1F',
+numFg: isTldrNow ? 'rgba(255, 255, 255, 0.65)' : '#6E6A66'
+}];
+var NAV = {
+'The story': '-',
+'The challenge': 'Problem', 'The problem': 'Problem', 'The insight': 'Problem',
+'Research': 'Research', 'Research in two hours': 'Research',
+'The first flow': 'Process', 'The hard questions': 'Process', 'Finding the MVP': 'Process',
+'Peer testing': 'Testing',
+'The turn': 'Design', 'The design': 'Design', 'The solution': 'Solution', 'Iteration': 'Solution',
+'What changed': 'Outcome', 'Where it stands': 'Outcome'
+};
+var labelCount = 0;
+var lastNav = null;
+curP.blocks.forEach(function (b, i) {
+if (!b.isLabel) return;
+var id = 'lf-b' + i;
+labelCount++;
+var nav = NAV[b.text] || b.text;
+if (nav === '-' || nav === lastNav) return;
+lastNav = nav;
+sections.push({
+num: ('0' + sections.length).slice(-2), label: nav, go: function () { goTo(id); },
+bg: 'rgba(255, 255, 255, 0.88)', fg: '#1F1F1F', numFg: '#6E6A66'
+});
+});
+var secondId = null;
+var seenLabels = 0;
+curP.blocks.forEach(function (b, i) {
+if (!b.isLabel) return;
+seenLabels++;
+if (seenLabels === 2 && secondId === null) secondId = 'lf-b' + i;
+});
+var moreCount = sections.length - 1;
+curP.moreLine = moreCount > 0
+? moreCount + ' more ' + (moreCount === 1 ? 'section' : 'sections') + ' — ' + sections.slice(1, 4).map(function (s) { return s.label.toLowerCase(); }).join(', ') + (moreCount > 3 ? ', and more' : '')
+: '';
+return Object.assign(chatVals, {
+projects: projects,
+isOpen: open >= 0,
+cur: curP,
+shown: shownBlocks,
+sections: sections,
+menuOpen: !!st.menuOpen,
+menuClosed: !st.menuOpen,
+showMore: isTldrNow && moreCount > 0,
+openFull: function () {
+self.setState({ detail: 'full' });
+if (!secondId) return;
+var tries = 0;
+(function tick() {
+var el = document.getElementById(secondId);
+if (el) { glideTo(el); return; }
+if (tries++ < 30) requestAnimationFrame(tick);
+})();
+},
+menuOp: st.menuShown === false ? '0' : '1',
+menuTf: st.menuShown === false ? 'translateY(10px) scale(.97)' : 'none',
+toggleMenu: function () {
+if (st.menuOpen) {
+self.setState({ menuShown: false });
+setTimeout(function () { self.setState({ menuOpen: false }); }, 200);
+} else {
+self.setState({ menuOpen: true, menuShown: true });
+}
+},
+isTldr: detail !== 'full',
+isFull: detail === 'full',
+tldrColor: detail !== 'full' ? '#1F1F1F' : '#6E6A66',
+fullColor: detail === 'full' ? '#1F1F1F' : '#6E6A66',
+tldrBg: detail !== 'full' ? '#FFFFFF' : 'transparent',
+fullBg: detail === 'full' ? '#FFFFFF' : 'transparent',
+tldrShadow: detail !== 'full' ? '0 1px 2px rgba(31, 31, 31, 0.1)' : 'none',
+fullShadow: detail === 'full' ? '0 1px 2px rgba(31, 31, 31, 0.1)' : 'none',
+showTldr: function () { self.setState({ detail: 'tldr' }); },
+showFull: function () { self.setState({ detail: 'full' }); },
+clip: st.clip || FULL,
+close: function () {
+self.setState({ clip: st.from || 'inset(50% 50% 50% 50% round 6px)', menuOpen: false });
+setTimeout(function () { self.setState({ open: -1 }); }, 700);
+},
+next: function () {
+self.setState({ open: (open + 1) % n, clip: FULL, detail: 'tldr', menuOpen: false });
+var sc = document.querySelector('.lf-scroll');
+if (sc) sc.scrollTop = 0;
+}
+});
+}
+}
+</script>
+</body>
+</html>

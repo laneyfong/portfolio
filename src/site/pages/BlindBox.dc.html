@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blind box — live prototype</title>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400&amp;display=swap">
+<style>
+body{margin:0;background:transparent}
+.bb-3d{transform-style:preserve-3d}
+.bb-f{position:absolute;left:50%;top:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-sizing:border-box}
+@keyframes bb-turn{0%,100%{transform:rotateX(-24deg) rotateY(-40deg)}50%{transform:rotateX(-20deg) rotateY(-24deg)}}
+@keyframes bb-hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes bb-jiggle{0%,100%{transform:rotateZ(0) translateY(0)}20%{transform:rotateZ(-3deg) translateY(-3px)}45%{transform:rotateZ(2.5deg)}70%{transform:rotateZ(-1.5deg)}}
+@keyframes bb-sway{0%,100%{transform:rotateX(8deg) rotateY(-14deg) rotateZ(-1.5deg)}50%{transform:rotateX(4deg) rotateY(14deg) rotateZ(1.5deg)}}
+@keyframes bb-sheen{0%{transform:translateX(-140%) skewX(-16deg)}55%,100%{transform:translateX(260%) skewX(-16deg)}}
+@keyframes bb-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+@keyframes bb-ring{0%{box-shadow:0 3px 10px rgba(31,31,31,.22),0 0 0 0 rgba(63,108,155,.45)}100%{box-shadow:0 3px 10px rgba(31,31,31,.22),0 0 0 13px rgba(63,108,155,0)}}
+@keyframes bb-conf{0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.5);opacity:0}}
+@keyframes bb-glow{0%{transform:scale(.25);opacity:.95}100%{transform:scale(2);opacity:0}}
+@keyframes bb-spin{0%{transform:translateY(70px) rotateY(-540deg) scale(.15)}62%{transform:translateY(-14px) rotateY(18deg) scale(1.1)}82%{transform:translateY(3px) rotateY(-6deg) scale(.97)}100%{transform:translateY(0) rotateY(0) scale(1)}}
+@keyframes bb-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes bb-shimmer{0%{filter:hue-rotate(0deg) saturate(1.15)}100%{filter:hue-rotate(360deg) saturate(1.15)}}
+@keyframes bb-twinkle{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1.15)}}
+.bb-turn{animation:bb-turn 6s ease-in-out infinite}
+.bb-hover{animation:bb-hover 3.2s ease-in-out infinite}
+.bb-hit:hover~.bb-scene .bb-jig,.bb-hit:focus-visible~.bb-scene .bb-jig{animation:bb-jiggle .7s ease-in-out}
+.bb-hit:focus-visible{outline:2px solid #3F6C9B;outline-offset:4px;border-radius:16px}
+.bb-sway{animation:bb-sway 4.4s ease-in-out infinite}
+.bb-sheen{animation:bb-sheen 3.8s ease-in-out infinite}
+.bb-handle{animation:bb-ring 1.6s ease-out infinite}
+.bb-handle:focus-visible{outline:2px solid #3F6C9B;outline-offset:3px}
+.bb-hint-arrow{display:inline-block;animation:bb-nudge 1.2s ease-in-out infinite}
+.bb-spin{animation:bb-spin 1.05s cubic-bezier(.2,.7,.25,1) both}
+.bb-float{animation:bb-float 3s ease-in-out infinite}
+.bb-conf{animation:bb-conf 1s cubic-bezier(.15,.7,.3,1) both}
+.bb-glow{animation:bb-glow .9s cubic-bezier(.2,.7,.3,1) both}
+.bb-secret{animation:bb-shimmer 4.5s linear infinite}
+.bb-tw{animation:bb-twinkle 1.7s ease-in-out infinite}
+.bb-again{transition:transform .25s cubic-bezier(.23,1,.32,1),box-shadow .25s ease}
+.bb-again:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,31,31,.18)}
+.bb-again:active{transform:translateY(0) scale(.98)}
+@media (prefers-reduced-motion:reduce){.bb-turn,.bb-hover,.bb-sway,.bb-sheen,.bb-handle,.bb-hint-arrow,.bb-float,.bb-secret,.bb-tw{animation:none}.bb-spin{animation:none}.bb-conf,.bb-glow{display:none}}
+</style>
+</helmet>
+
+<div style="box-sizing: border-box; width: 100%; padding: 18px clamp(16px, 3vw, 26px) 18px; border-radius: 10px; background: #FFFFFF; border: 1px solid rgba(31, 31, 31, 0.08); color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 22px; letter-spacing: -0.02em; display: flex; flex-direction: column; gap: 10px; user-select: none; -webkit-user-select: none">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; font-size: 13px; line-height: 19px; color: #6E6A66">
+<div>Blind box &#183; Star series</div>
+<div>Collection {{ gotCount }} / {{ total }}</div>
+</div>
+
+<div style="position: relative; height: 340px; overflow: hidden; border-radius: 8px; background: radial-gradient(ellipse at 50% 66%, #EEF6F3 0%, #F7FAFA 42%, #FFFFFF 75%)">
+
+<div aria-hidden="true" style="position: absolute; left: 50%; bottom: 40px; width: 210px; height: 30px; margin-left: -105px; border-radius: 50%; background: radial-gradient(ellipse, rgba(31, 60, 70, 0.22) 0%, rgba(31, 60, 70, 0) 70%); transform: {{ floorTf }}; opacity: {{ floorOp }}; transition: transform 0.6s cubic-bezier(.23,1,.32,1), opacity 0.5s ease"></div>
+
+<button type="button" class="bb-hit" onClick="{{ openBox }}" aria-label="Open the blind box" style="position: absolute; left: 50%; top: 58px; width: 220px; height: 236px; margin-left: -110px; padding: 0; border: 0; background: none; cursor: pointer; z-index: 3; pointer-events: {{ boxPe }}"></button>
+
+<div class="bb-scene" aria-hidden="true" style="position: absolute; inset: 0; perspective: 900px; perspective-origin: 50% 35%; pointer-events: none">
+<div class="bb-3d" style="position: absolute; left: 50%; top: 196px; width: 0; height: 0; transform: {{ boxTf }}; transition: transform 0.75s cubic-bezier(.5,-0.35,.35,1) {{ boxDelay }}">
+<div class="bb-3d bb-hover" style="position: absolute; left: 0; top: 0">
+<div class="bb-3d bb-jig" style="position: absolute; left: 0; top: 0; transform-origin: 0 60px">
+<div class="bb-3d {{ turnCls }}" style="position: absolute; left: 0; top: 0; transform: rotateX(-22deg) rotateY(-32deg)">
+
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: translateZ(72px); border-radius: 3px; background: linear-gradient(165deg, #D3EEDC 0%, #BFE0E6 55%, #B0D1EE 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55), inset 0 -18px 30px rgba(40, 90, 110, 0.08); overflow: hidden">
+<svg viewBox="0 0 140 140" width="92" height="92" style="position: absolute; left: 26px; top: 8px; overflow: visible"><path d="M70,18 L84.7,49.8 L119.4,53.9 L93.8,77.8 L100.6,112.1 L70,95 L39.4,112.1 L46.2,77.8 L20.6,53.9 L55.3,49.8 Z" fill="#FFFFFF" fill-opacity="0.72" stroke="#FFFFFF" stroke-opacity="0.72" stroke-width="15" stroke-linejoin="round"></path></svg>
+<div style="position: absolute; left: 0; right: 0; top: 34px; text-align: center; font-family: 'Averia Serif Libre', Georgia, serif; font-size: 30px; line-height: 34px; color: #5C8FA8">?</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 9px; text-align: center; font-size: 9px; line-height: 12px; letter-spacing: 0.16em; color: rgba(31, 60, 70, 0.55)">LAB &#183; STAR SERIES</div>
+<div class="bb-sheen" style="position: absolute; top: 0; bottom: 0; left: 0; width: 38%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%)"></div>
+</div>
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: rotateY(90deg) translateZ(72px); border-radius: 3px; background: linear-gradient(165deg, #B7DDCB 0%, #A6CCD7 55%, #98BDDF 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 -18px 30px rgba(20, 60, 80, 0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px">
+<div style="display: flex; gap: 6px">
+<svg viewBox="0 0 140 140" width="16" height="16"><path d="M70,18 L84.7,49.8 L119.4,53.9 L93.8,77.8 L100.6,112.1 L70,95 L39.4,112.1 L46.2,77.8 L20.6,53.9 L55.3,49.8 Z" fill="#C0DEAD" stroke="#C0DEAD" stroke-width="15" stroke-linejoin="round"></path></svg>
+<svg viewBox="0 0 140 140" width="16" height="16"><path d="M70,18 L84.7,49.8 L119.4,53.9 L93.8,77.8 L100.6,112.1 L70,95 L39.4,112.1 L46.2,77.8 L20.6,53.9 L55.3,49.8 Z" fill="#F6BFB0" stroke="#F6BFB0" stroke-width="15" stroke-linejoin="round"></path></svg>
+<svg viewBox="0 0 140 140" width="16" height="16"><path d="M70,18 L84.7,49.8 L119.4,53.9 L93.8,77.8 L100.6,112.1 L70,95 L39.4,112.1 L46.2,77.8 L20.6,53.9 L55.3,49.8 Z" fill="#C6C2F0" stroke="#C6C2F0" stroke-width="15" stroke-linejoin="round"></path></svg>
+</div>
+<div style="font-size: 9px; line-height: 12px; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.95)">6 TO COLLECT</div>
+<div style="font-size: 9px; line-height: 12px; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.8)">1 IS A SECRET</div>
+</div>
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: rotateY(-90deg) translateZ(72px); background: linear-gradient(165deg, #DCF2E4 0%, #C9E6EC 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55)"></div>
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: rotateY(180deg) translateZ(72px); background: linear-gradient(165deg, #C3E4D5 0%, #A9CFE2 100%)"></div>
+<div class="bb-f" style="width: 144px; height: 144px; margin: -72px 0 0 -72px; transform: rotateX(-90deg) translateZ(62px); background: #9DC2D6"></div>
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: rotateY(180deg) translateZ(-71px); background: linear-gradient(180deg, #7FA9B8 0%, #9CC3CF 100%)"></div>
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: translateZ(-71px); background: linear-gradient(180deg, #86AFBE 0%, #A3C8D3 100%)"></div>
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: rotateY(-90deg) translateZ(-71px); background: linear-gradient(180deg, #7AA4B4 0%, #97BECB 100%)"></div>
+<div class="bb-f" style="width: 144px; height: 124px; margin: -62px 0 0 -72px; transform: rotateY(90deg) translateZ(-71px); background: linear-gradient(180deg, #8BB3C1 0%, #A8CCD6 100%)"></div>
+<div class="bb-f" style="width: 144px; height: 144px; margin: -72px 0 0 -72px; transform: rotateX(90deg) translateZ(-61px); background: #6F98A9"></div>
+
+<div class="bb-3d" style="position: absolute; left: 0; top: 0; transform: translate3d(0, -62px, -72px) rotateX({{ lidAng }}); transition: transform 0.7s cubic-bezier(.34,1.45,.55,1)">
+<div class="bb-3d" style="position: absolute; left: 0; top: 0; transform: translate3d(0, -9px, 72px)">
+<div class="bb-f" style="width: 156px; height: 156px; margin: -78px 0 0 -78px; transform: rotateX(90deg) translateZ(9px); border-radius: 4px; background: linear-gradient(135deg, #FFFFFF 0%, #EAF6F1 60%, #DCEDF3 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8); display: flex; align-items: center; justify-content: center">
+<svg viewBox="0 0 140 140" width="70" height="70"><path d="M70,18 L84.7,49.8 L119.4,53.9 L93.8,77.8 L100.6,112.1 L70,95 L39.4,112.1 L46.2,77.8 L20.6,53.9 L55.3,49.8 Z" fill="none" stroke="#A9D3C7" stroke-width="5" stroke-linejoin="round" stroke-dasharray="7 7"></path></svg>
+</div>
+<div class="bb-f" style="width: 156px; height: 156px; margin: -78px 0 0 -78px; transform: rotateX(-90deg) translateZ(9px); background: #B5D6DE"></div>
+<div class="bb-f" style="width: 156px; height: 18px; margin: -9px 0 0 -78px; transform: translateZ(78px); background: linear-gradient(180deg, #F2FAF7 0%, #D7ECEA 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6)"></div>
+<div class="bb-f" style="width: 156px; height: 18px; margin: -9px 0 0 -78px; transform: rotateY(90deg) translateZ(78px); background: linear-gradient(180deg, #DDEEEB 0%, #C2DDE1 100%)"></div>
+<div class="bb-f" style="width: 156px; height: 18px; margin: -9px 0 0 -78px; transform: rotateY(-90deg) translateZ(78px); background: linear-gradient(180deg, #F6FCFA 0%, #E2F1EE 100%)"></div>
+<div class="bb-f" style="width: 156px; height: 18px; margin: -9px 0 0 -78px; transform: rotateY(180deg) translateZ(78px); background: #CFE5E6"></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div aria-hidden="{{ bagHidden }}" style="position: absolute; left: 50%; top: 34px; width: 170px; height: 236px; margin-left: -85px; perspective: 700px; transform: {{ bagTf }}; opacity: {{ bagOp }}; transition: transform 0.75s cubic-bezier(.34,1.35,.6,1) {{ bagDelay }}, opacity 0.4s ease {{ bagDelay }}; pointer-events: {{ bagPe }}; z-index: 4">
+<div class="bb-3d {{ swayCls }}" style="position: absolute; inset: 0">
+
+<div style="position: absolute; left: 6px; right: 6px; top: 44px; bottom: 0; overflow: hidden; border-radius: 3px 3px 10px 10px; filter: drop-shadow(0 18px 18px rgba(30, 60, 80, 0.20))">
+<svg viewBox="0 0 158 192" width="100%" height="100%" preserveAspectRatio="none" style="display: block; overflow: visible">
+<defs>
+<linearGradient id="bbFoil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4F3EC"></stop><stop offset="0.35" stop-color="#F8FBF8"></stop><stop offset="0.6" stop-color="#D6E8F3"></stop><stop offset="1" stop-color="#C9DFF0"></stop></linearGradient>
+<linearGradient id="bbEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F3C46" stop-opacity="0.16"></stop><stop offset="0.12" stop-color="#1F3C46" stop-opacity="0"></stop><stop offset="0.86" stop-color="#1F3C46" stop-opacity="0"></stop><stop offset="1" stop-color="#1F3C46" stop-opacity="0.2"></stop></linearGradient>
+<radialGradient id="bbHi" cx="0.32" cy="0.3" r="0.5"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></radialGradient>
+<pattern id="bbCrimp" width="5" height="10" patternUnits="userSpaceOnUse"><rect width="2.4" height="10" fill="#1F3C46" fill-opacity="0.09"></rect></pattern>
+</defs>
+<path d="M4,0 L154,0 Q158,60 155,120 Q153,170 150,180 L8,180 Q5,170 3,120 Q0,60 4,0 Z" fill="url(#bbFoil)"></path>
+<path d="M4,0 L154,0 Q158,60 155,120 Q153,170 150,180 L8,180 Q5,170 3,120 Q0,60 4,0 Z" fill="url(#bbEdge)"></path>
+<ellipse cx="52" cy="62" rx="46" ry="58" fill="url(#bbHi)"></ellipse>
+<rect x="6" y="168" width="146" height="20" rx="2" fill="#E6F1F3"></rect>
+<rect x="6" y="168" width="146" height="20" rx="2" fill="url(#bbCrimp)"></rect>
+<path d="M79,52 L88.6,72.8 L111.3,75.5 L94.6,91.1 L99,113.5 L79,102.3 L59,113.5 L63.4,91.1 L46.7,75.5 L69.4,72.8 Z" fill="#FFFFFF" fill-opacity="0.85" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="10" stroke-linejoin="round"></path>
+<text x="79" y="96" text-anchor="middle" font-family="Averia Serif Libre, Georgia, serif" font-size="24" fill="#5C8FA8">?</text>
+<text x="79" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8" letter-spacing="1.6" fill="#1F3C46" fill-opacity="0.45">SURPRISE INSIDE</text>
+</svg>
+<div class="bb-sheen" style="position: absolute; top: 0; bottom: 14px; left: 0; width: 42%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: soft-light"></div>
+</div>
+
+<div style="position: absolute; left: 6px; right: 6px; top: 0; height: 47px; transform-origin: 100% 100%; transform: {{ stripTf }}; opacity: {{ stripOp }}; transition: transform {{ stripDur }} cubic-bezier(.23,1,.32,1), opacity {{ stripDur }} ease">
+<svg viewBox="0 0 158 47" width="100%" height="100%" preserveAspectRatio="none" style="display: block">
+<defs><linearGradient id="bbTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF6F0"></stop><stop offset="0.5" stop-color="#F9FBF9"></stop><stop offset="1" stop-color="#D9EAF4"></stop></linearGradient><pattern id="bbCrimp2" width="5" height="10" patternUnits="userSpaceOnUse"><rect width="2.4" height="10" fill="#1F3C46" fill-opacity="0.1"></rect></pattern></defs>
+<rect x="2" y="0" width="154" height="47" rx="3" fill="url(#bbTop)"></rect>
+<rect x="2" y="0" width="154" height="22" rx="3" fill="url(#bbCrimp2)"></rect>
+<circle cx="79" cy="11" r="4" fill="#FFFFFF" stroke="#1F3C46" stroke-opacity="0.14"></circle>
+</svg>
+</div>
+
+<div data-bb-line="1" aria-hidden="true" style="position: absolute; left: 14px; right: 14px; top: 46px; height: 0; border-top: 1.5px dashed rgba(31, 60, 70, 0.38)"></div>
+<div aria-hidden="true" style="position: absolute; left: 14px; top: 43px; width: {{ tearW }}; height: 7px; background: linear-gradient(135deg, transparent 0 33%, #FFFFFF 33% 67%, transparent 67%) 0 0 / 7px 7px, linear-gradient(45deg, transparent 0 33%, #FFFFFF 33% 67%, transparent 67%) 0 0 / 7px 7px"></div>
+<button type="button" class="bb-handle" data-bb-tear="1" role="slider" aria-label="Tear the bag open" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ tearPct }}" onClick="{{ tearStep }}" style="position: absolute; top: 32px; left: {{ handleLeft }}; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 50%; background: #FFFFFF; cursor: grab; touch-action: none; display: flex; align-items: center; justify-content: center; color: #3F6C9B; opacity: {{ handleOp }}; transition: opacity 0.3s ease">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5"></path></svg>
+</button>
+</div>
+</div>
+
+<sc-if value="{{ showChar }}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" class="bb-glow" style="position: absolute; left: 50%; top: 50%; width: 180px; height: 180px; margin: -110px 0 0 -90px; border-radius: 50%; background: radial-gradient(circle, {{ v.glow }} 0%, rgba(255,255,255,0) 68%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin-top: -20px">
+<sc-for list="{{ confetti }}" as="c" hint-placeholder-count="8">
+<span class="bb-conf" style="position: absolute; left: -4px; top: -4px; width: {{ c.w }}; height: {{ c.h }}; border-radius: {{ c.r }}; background: {{ c.color }}; --dx: {{ c.dx }}; --dy: {{ c.dy }}; --rot: {{ c.rot }}; animation-delay: {{ c.delay }}"></span>
+</sc-for>
+</div>
+<div role="img" aria-label="{{ v.name }}, {{ v.rarity }}" style="position: absolute; left: 50%; top: 50%; width: 170px; height: 170px; margin: -112px 0 0 -85px; perspective: 600px">
+<div class="bb-spin" style="position: absolute; inset: 0">
+<div class="bb-float" style="position: absolute; inset: 0">
+<svg class="{{ v.cls }}" viewBox="0 0 140 140" width="170" height="170" style="display: block; overflow: visible; filter: drop-shadow(0 14px 16px rgba(30, 60, 80, 0.18))">
+<defs>
+<linearGradient id="bbStar" x1="0.2" y1="0" x2="0.5" y2="1"><stop offset="0" stop-color="{{ v.c1 }}"></stop><stop offset="0.48" stop-color="{{ v.c2 }}"></stop><stop offset="1" stop-color="{{ v.c3 }}"></stop></linearGradient>
+<filter id="bbGrain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix><feComponentTransfer><feFuncA type="table" tableValues="0 0.16"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter>
+</defs>
+<path d="M71.0,18.0 L87.2,54.3 L126.6,58.4 L97.2,85.0 L105.4,123.8 L71.0,104.0 L36.6,123.8 L44.8,85.0 L15.4,58.4 L54.8,54.3 Z" fill="url(#bbStar)" stroke="url(#bbStar)" stroke-width="19" stroke-linejoin="round"></path>
+<path d="M71.0,18.0 L87.2,54.3 L126.6,58.4 L97.2,85.0 L105.4,123.8 L71.0,104.0 L36.6,123.8 L44.8,85.0 L15.4,58.4 L54.8,54.3 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="19" stroke-linejoin="round" filter="url(#bbGrain)"></path>
+<ellipse cx="59" cy="69" rx="4.9" ry="5.1" fill="#1F1F1F"></ellipse>
+<ellipse cx="85" cy="69" rx="4.9" ry="5.1" fill="#1F1F1F"></ellipse>
+<circle cx="60.7" cy="67.2" r="1.5" fill="#FFFFFF"></circle>
+<circle cx="86.7" cy="67.2" r="1.5" fill="#FFFFFF"></circle>
+<path d="M67.2,83.4 Q72,88.2 76.8,83.4" fill="none" stroke="#262626" stroke-width="2.3" stroke-linecap="round"></path>
+</svg>
+<sc-if value="{{ v.secret }}" hint-placeholder-val="{{ false }}">
+<div class="bb-tw" style="position: absolute; left: 4px; top: 30px; font-size: 18px; line-height: 1; color: #E8C25A">&#10022;</div>
+<div class="bb-tw" style="position: absolute; right: 2px; top: 18px; font-size: 13px; line-height: 1; color: #B9A0F0; animation-delay: 0.5s">&#10022;</div>
+<div class="bb-tw" style="position: absolute; right: 10px; bottom: 22px; font-size: 15px; line-height: 1; color: #8FC9E8; animation-delay: 1s">&#10022;</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+<div aria-live="polite" style="position: absolute; left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; font-size: 13px; line-height: 19px; color: #6E6A66; text-align: center">
+<sc-if value="{{ hintBox }}" hint-placeholder-val="{{ true }}"><span>Tap the box</span></sc-if>
+<sc-if value="{{ hintBag }}" hint-placeholder-val="{{ false }}"><span>Slide along the dotted line to tear it <span class="bb-hint-arrow" aria-hidden="true">&#8594;</span></span></sc-if>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; min-height: 40px">
+<div style="display: flex; align-items: center; gap: 10px; opacity: {{ infoOp }}; transform: {{ infoTf }}; transition: opacity 0.4s ease 0.5s, transform 0.5s cubic-bezier(.23,1,.32,1) 0.5s">
+<span style="font-size: 15px; line-height: 22px; color: #1F1F1F">{{ v.name }}</span>
+<span style="padding: 2px 9px; border-radius: 999px; background: {{ v.pillBg }}; color: {{ v.pillFg }}; font-size: 12px; line-height: 18px">{{ v.rarity }}</span>
+<span style="font-size: 13px; line-height: 19px; color: #6E6A66">{{ newLabel }}</span>
+</div>
+<button type="button" class="bb-again" onClick="{{ again }}" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: #1F1F1F; color: #FFFFFF; cursor: pointer; font: inherit; font-size: 14px; letter-spacing: inherit; opacity: {{ infoOp }}; pointer-events: {{ againPe }}; transition: opacity 0.4s ease 0.6s">Open another</button>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":620,"height":500}}'>
+class Component extends DCLogic {
+cast() {
+return [
+{ id: 'mint', name: 'Mint Star', rarity: 'Common', w: 4, c1: '#C0DEAD', c2: '#A9D3C7', c3: '#9CC8EC', glow: 'rgba(169, 211, 199, 0.9)' },
+{ id: 'peach', name: 'Peach Star', rarity: 'Common', w: 4, c1: '#FBD9B2', c2: '#F6BFB0', c3: '#F0A8C0', glow: 'rgba(246, 191, 176, 0.9)' },
+{ id: 'lilac', name: 'Lilac Star', rarity: 'Common', w: 4, c1: '#DCCFF6', c2: '#C6C2F0', c3: '#ADC3EF', glow: 'rgba(198, 194, 240, 0.9)' },
+{ id: 'lemon', name: 'Lemon Star', rarity: 'Rare', w: 2, c1: '#F9EFA2', c2: '#F6DB8F', c3: '#F2C38E', glow: 'rgba(246, 219, 143, 0.95)' },
+{ id: 'ocean', name: 'Ocean Star', rarity: 'Rare', w: 2, c1: '#B4E2EE', c2: '#92C6EC', c3: '#7FA6E6', glow: 'rgba(146, 198, 236, 0.95)' },
+{ id: 'aurora', name: 'Aurora Star', rarity: 'Secret', w: 1.45, c1: '#F6E3A0', c2: '#E8C6F2', c3: '#A6DFE8', glow: 'rgba(232, 194, 90, 0.95)', secret: true }
+];
+}
+pick() {
+var c = this.cast(), tot = 0, i;
+for (i = 0; i < c.length; i++) tot += c[i].w;
+var r = Math.random() * tot;
+for (i = 0; i < c.length; i++) { r -= c[i].w; if (r <= 0) return i; }
+return 0;
+}
+componentDidMount() {
+var self = this;
+this.setState({ stage: 'box', p: 0, ch: this.pick(), got: {} });
+this.onDown = function (e) {
+var h = e.target && e.target.closest ? e.target.closest('[data-bb-tear]') : null;
+if (!h || !self.state || self.state.stage !== 'bag') return;
+self.dragging = true; self.moved = false; self.startX = e.clientX;
+if (h.setPointerCapture && e.pointerId !== undefined) { try { h.setPointerCapture(e.pointerId); } catch (err) {} }
+e.preventDefault();
+};
+this.onMove = function (e) {
+if (!self.dragging) return;
+var line = document.querySelector('[data-bb-line]');
+if (!line) return;
+var r = line.getBoundingClientRect();
+var p = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+if (Math.abs(e.clientX - self.startX) > 3) self.moved = true;
+var cur = (self.state && self.state.p) || 0;
+if (p > cur) {
+self.setState({ p: p });
+if (p >= 0.97) { self.dragging = false; self.finish(); }
+}
+};
+this.onUp = function () {
+if (!self.dragging) return;
+self.dragging = false;
+var cur = (self.state && self.state.p) || 0;
+if (cur >= 0.8) self.finish();
+};
+document.addEventListener('pointerdown', this.onDown);
+document.addEventListener('pointermove', this.onMove);
+document.addEventListener('pointerup', this.onUp);
+document.addEventListener('pointercancel', this.onUp);
+}
+componentWillUnmount() {
+document.removeEventListener('pointerdown', this.onDown);
+document.removeEventListener('pointermove', this.onMove);
+document.removeEventListener('pointerup', this.onUp);
+document.removeEventListener('pointercancel', this.onUp);
+clearTimeout(this.t1); clearTimeout(this.t2); clearTimeout(this.t3);
+}
+openBox() {
+var self = this;
+if (!this.state || this.state.stage !== 'box') return;
+this.setState({ stage: 'lid' });
+this.t1 = setTimeout(function () { self.setState({ stage: 'rise' }); }, 520);
+this.t3 = setTimeout(function () { self.setState({ stage: 'bag', p: 0 }); }, 1250);
+}
+finish() {
+var self = this;
+if (!this.state || this.state.stage !== 'bag') return;
+var got = Object.assign({}, this.state.got || {});
+var id = this.cast()[this.state.ch].id;
+var isNew = !got[id];
+got[id] = true;
+this.setState({ stage: 'pop', p: 1, isNew: isNew, got: got, seed: Math.random() });
+this.t2 = setTimeout(function () { self.setState({ stage: 'reveal' }); }, 900);
+}
+renderVals() {
+var self = this;
+var st = this.state || {};
+var stage = st.stage || 'box';
+var p = st.p || 0;
+var cast = this.cast();
+var c = cast[typeof st.ch === 'number' ? st.ch : 0];
+var got = st.got || {};
+var isBox = stage === 'box', isLid = stage === 'lid', isRise = stage === 'rise', isBag = stage === 'bag', isPop = stage === 'pop', isRev = stage === 'reveal';
+var bagUp = isRise || isBag;
+var gone = isPop || isRev;
+var confetti = [];
+if (gone) {
+var cols = c.secret ? ['#E8C25A', '#B9A0F0', '#8FC9E8', '#F4A9D0', '#A9D3C7'] : [c.c1, c.c2, c.c3, '#3F6C9B', '#FFFFFF'];
+var seed = st.seed || 0.5;
+for (var k = 0; k < 24; k++) {
+var ang = (k / 24) * Math.PI * 2 + seed * 6.28;
+var dist = 96 + ((k * 37 + Math.floor(seed * 100)) % 70);
+confetti.push({
+dx: Math.round(Math.cos(ang) * dist) + 'px',
+dy: Math.round(Math.sin(ang) * dist * 0.8 - 30) + 'px',
+rot: Math.round((k % 2 ? 1 : -1) * (180 + k * 23)) + 'deg',
+w: (k % 3 === 0 ? 10 : 7) + 'px', h: (k % 3 === 0 ? 4 : 7) + 'px', r: (k % 3 === 0 ? '2px' : '50%'),
+color: cols[k % cols.length], delay: ((k % 5) * 0.025 + 0.1).toFixed(3) + 's'
+});
+}
+}
+var pill = c.secret ? { bg: 'linear-gradient(90deg, #F3E3A6, #DCCBFA, #CFE7F3)', fg: '#1F1F1F' }
+: (c.rarity === 'Rare' ? { bg: 'rgba(63, 108, 155, 0.12)', fg: '#3F6C9B' } : { bg: 'rgba(31, 31, 31, 0.06)', fg: '#6E6A66' });
+var lineW = 142;
+return {
+total: cast.length,
+gotCount: Object.keys(got).length,
+floorTf: isBox || isLid ? 'none' : (bagUp ? 'scale(0.8)' : 'scale(0.7)'),
+floorOp: isBox || isLid ? '1' : '0.55',
+boxPe: isBox ? 'auto' : 'none',
+turnCls: isBox ? 'bb-turn' : '',
+boxTf: isBox || isLid ? 'none' : 'translateY(430px)',
+boxDelay: isRise ? '0.35s' : '0s',
+lidAng: isBox ? '0deg' : '118deg',
+bagTf: isBox || isLid ? 'translateY(150px) scale(0.42)' : (bagUp ? 'none' : 'translateY(80px) scale(0.86)'),
+bagOp: bagUp ? '1' : '0',
+bagDelay: isRise ? '0.05s' : (isPop ? '0.3s' : '0s'),
+bagPe: isBag ? 'auto' : 'none',
+bagHidden: isBag ? 'false' : 'true',
+swayCls: isBag ? 'bb-sway' : '',
+stripTf: isBag || isRise ? ('translateY(' + (-p * 4).toFixed(1) + 'px) rotateZ(' + (-p * 10).toFixed(1) + 'deg) rotateX(' + (p * 22).toFixed(1) + 'deg)') : (gone ? 'translate(90px, -130px) rotateZ(48deg) rotateX(40deg)' : 'none'),
+stripOp: gone ? '0' : '1',
+stripDur: isBag ? '0.12s' : '0.55s',
+tearW: Math.round(p * lineW) + 'px',
+tearPct: Math.round(p * 100),
+handleLeft: Math.round(14 + p * lineW - 14) + 'px',
+handleOp: isBag ? '1' : '0',
+tearStep: function () {
+if (self.moved) { self.moved = false; return; }
+var cur = (self.state && self.state.p) || 0;
+var nx = Math.min(1, cur + 0.34);
+self.setState({ p: nx });
+if (nx >= 0.97) self.finish();
+},
+showChar: gone,
+confetti: confetti,
+v: {
+name: c.name, rarity: c.secret ? 'Secret ✦' : c.rarity,
+c1: c.c1, c2: c.c2, c3: c.c3, glow: c.glow,
+cls: c.secret ? 'bb-secret' : '', secret: !!c.secret,
+pillBg: pill.bg, pillFg: pill.fg
+},
+newLabel: isRev ? (st.isNew ? 'New!' : 'Already in your collection') : '',
+infoOp: isRev ? '1' : '0',
+infoTf: isRev ? 'none' : 'translateY(6px)',
+againPe: isRev ? 'auto' : 'none',
+hintBox: isBox,
+hintBag: isBag,
+openBox: function () { self.openBox(); },
+again: function () {
+clearTimeout(self.t1); clearTimeout(self.t2); clearTimeout(self.t3);
+self.setState({ stage: 'box', p: 0, ch: self.pick() });
+}
+};
+}
+}
+</script>
+</body>
+</html>

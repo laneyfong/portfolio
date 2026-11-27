@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Confidence you can see — live prototype</title>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:transparent}
+.cf-w{transition:filter .55s cubic-bezier(.23,1,.32,1),opacity .55s cubic-bezier(.23,1,.32,1),color .55s ease}
+.cf-soft{transition:background-color .25s ease}
+.cf-soft:hover{background:rgba(63,108,155,0.08)}
+@media (prefers-reduced-motion:reduce){.cf-w{transition:none}}
+</style>
+</helmet>
+
+<div style="box-sizing: border-box; width: 100%; padding: 22px clamp(18px, 3vw, 28px) 18px; border-radius: 10px; background: #FFFFFF; border: 1px solid rgba(31, 31, 31, 0.08); color: #1F1F1F; font-family: 'PP Neue Montreal', 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 21px; letter-spacing: -0.02em; display: flex; flex-direction: column; gap: 16px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; font-size: 13px; line-height: 19px; color: #6E6A66">
+<div>Keyboard access · run 2</div>
+<div>{{ statusLabel }}</div>
+</div>
+
+<p style="margin: 0; max-width: 54ch; font-size: clamp(15px, 1.5vw, 17px); line-height: 1.55">
+<sc-for list="{{ parts }}" as="p" hint-placeholder-count="4">
+<sc-if value="{{ p.plain }}" hint-placeholder-val="{{ true }}">
+<span class="cf-w" style="filter: {{ p.blur }}; opacity: {{ p.op }}; color: {{ p.color }}">{{ p.text }}</span>
+</sc-if>
+<sc-if value="{{ p.soft }}" hint-placeholder-val="{{ false }}">
+<button type="button" class="cf-w cf-soft" onClick="{{ p.inspect }}" aria-label="Why this is uncertain" style="filter: {{ p.blur }}; opacity: {{ p.op }}; color: {{ p.color }}; display: inline; margin: 0 -2px; padding: 0 2px; border: 0; border-radius: 4px; background: {{ p.bg }}; cursor: help; font: inherit; letter-spacing: inherit; text-align: left">{{ p.text }}</button>
+</sc-if>
+</sc-for>
+</p>
+
+<sc-if value="{{ hasNote }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 8px 24px rgba(31, 31, 31, 0.08); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); font-size: 13px; line-height: 19px">
+<span aria-hidden="true" style="flex: none; width: 6px; height: 6px; margin-top: 6px; border-radius: 50%; background: #3F6C9B"></span>
+<span style="color: #1F1F1F">{{ note }}</span>
+</div>
+</sc-if>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; padding-top: 2px; font-size: 13px; line-height: 19px; color: #6E6A66">
+<div>{{ hint }}</div>
+<button type="button" onClick="{{ replay }}" style="min-height: 36px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; letter-spacing: inherit; color: #3F6C9B"><span style="border-bottom: 1px dotted #3F6C9B">Replay</span></button>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":620,"height":320}}'>
+class Component extends DCLogic {
+segments() {
+return [
+{ kind: 'sure', text: 'The sign-in trigger is reachable by Tab and announces its label.' },
+{ kind: 'resolves', text: 'The privacy dialog holds focus and hands it back when it closes,', note: 'Resolved against evidence — screenshot plus a step-by-step trace for all four steps.' },
+{ kind: 'soft', text: 'though the country selector may not return focus to its trigger on Escape.', note: 'Still soft — the agent skipped this step on run 2, so nothing backs this up yet.' },
+{ kind: 'sure', text: 'Nothing else blocked the flow.' }
+];
+}
+words() {
+var out = [];
+this.segments().forEach(function (s, si) {
+s.text.split(' ').forEach(function (w) { out.push({ w: w, si: si, kind: s.kind }); });
+});
+return out;
+}
+start() {
+var self = this;
+clearInterval(this.timer);
+clearTimeout(this.settle);
+var total = this.words().length;
+this.setState({ n: 0, resolved: false, open: -1 });
+this.timer = setInterval(function () {
+var st = self.state || {};
+var n = (st.n || 0) + 1;
+if (n >= total) {
+clearInterval(self.timer);
+self.setState({ n: total });
+self.settle = setTimeout(function () { self.setState({ resolved: true }); }, 850);
+} else {
+self.setState({ n: n });
+}
+}, 85);
+}
+componentDidMount() { this.start(); }
+componentWillUnmount() { clearInterval(this.timer); clearTimeout(this.settle); }
+renderVals() {
+var self = this;
+var st = this.state || {};
+var n = st.n || 0;
+var resolved = !!st.resolved;
+var open = typeof st.open === 'number' ? st.open : -1;
+var segs = this.segments();
+var all = this.words();
+var done = n >= all.length;
+
+var parts = [];
+var idx = 0;
+for (var si = 0; si < segs.length; si++) {
+var words = segs[si].text.split(' ');
+var arrived = 0;
+for (var k = 0; k < words.length; k++) { if (idx + k < n) arrived++; }
+idx += words.length;
+if (arrived === 0) continue;
+var kind = segs[si].kind;
+var settled = arrived === words.length;
+var soft = settled && kind === 'soft';
+var waiting = settled && kind === 'resolves' && !resolved;
+var blur = '0px', op = '1', color = '#1F1F1F';
+if (!settled) { blur = '2.6px'; op = '0.45'; color = '#6E6A66'; }
+else if (soft) { blur = '1.5px'; op = '0.62'; color = '#6E6A66'; }
+else if (waiting) { blur = '1.8px'; op = '0.58'; color = '#6E6A66'; }
+parts.push({
+text: words.slice(0, arrived).join(' ') + ' ',
+plain: !soft,
+soft: soft,
+blur: 'blur(' + blur + ')',
+op: op,
+color: color,
+bg: open === si ? 'rgba(63, 108, 155, 0.1)' : 'transparent',
+inspect: (function (s) { return function () { self.setState({ open: open === s ? -1 : s }); }; })(si)
+});
+}
+
+var noteSeg = open >= 0 ? segs[open] : null;
+return {
+parts: parts,
+statusLabel: !done ? 'Checking\u2026' : (resolved ? '3 of 4 verified' : 'Resolving\u2026'),
+hasNote: !!(noteSeg && noteSeg.note),
+note: noteSeg && noteSeg.note ? noteSeg.note : '',
+hint: (done && resolved) ? 'Soft text is unverified \u2014 tap it.' : 'Answering\u2026',
+replay: function () { self.start(); }
+};
+}
+}
+</script>
+</body>
+</html>
