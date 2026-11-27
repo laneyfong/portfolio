@@ -188,7 +188,7 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 </sc-for>
 </sc-if>
 <sc-if value="{{ p.hasVid }}" hint-placeholder-val="{{ false }}">
-<video src="{{ p.vid }}" poster="{{ p.poster }}" autoplay="true" loop="true" muted="true" playsinline="true" preload="auto" disablepictureinpicture="true" aria-label="{{ p.alt }}" style="position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); object-fit: cover; pointer-events: none; background: transparent"></video>
+<video src="{{ p.vid }}" poster="{{ p.poster }}" data-loop-start="{{ p.loopStart }}" data-loop-end="{{ p.loopEnd }}" autoplay="true" loop="true" muted="true" playsinline="true" preload="auto" disablepictureinpicture="true" aria-label="{{ p.alt }}" style="position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); object-fit: cover; pointer-events: none; background: transparent"></video>
 </sc-if>
 </span>
 <span class="lf-cap" style="display: block; text-align: center; color: #6E6A66"><span style="color: #1F1F1F">{{ p.title }}</span> — {{ p.blurb }}</span>
@@ -504,6 +504,25 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
 class Component extends DCLogic {
+componentDidMount() {
+// Tile videos with data-loop-end loop between data-loop-start and data-loop-end,
+// so clips with a fade from/to black at either end loop without flashing black.
+if (window.__lfTrimLoop) return;
+window.__lfTrimLoop = true;
+var tick = function () {
+var vids = document.querySelectorAll('video[data-loop-end]');
+for (var i = 0; i < vids.length; i++) {
+var v = vids[i];
+var b = parseFloat(v.getAttribute('data-loop-end'));
+if (isNaN(b)) continue;
+var a = parseFloat(v.getAttribute('data-loop-start'));
+if (isNaN(a)) a = 0;
+if (!v.seeking && (v.currentTime >= b || v.currentTime < a - 0.05)) v.currentTime = a;
+}
+requestAnimationFrame(tick);
+};
+requestAnimationFrame(tick);
+}
 renderVals() {
 var self = this;
 var st = this.state || {};
@@ -653,7 +672,7 @@ return out;
 }
 var EXTRA = {
 'MyShake': { vid: '/media/ms-tile-zoom4.mp4', poster: '/media/ms-tile-zoom5-poster.webp', bg: 'linear-gradient(180deg, #E0E9E5 0%, #C4D6CF 100%)' },
-'NVIDIA Scout': { bg: 'linear-gradient(180deg, #E9E6E0 0%, #D5CFC5 100%)', vid: '/media/scout-tile2.mp4', poster: '/media/scout-tile2-poster.webp' },
+'NVIDIA Scout': { bg: 'linear-gradient(180deg, #E9E6E0 0%, #D5CFC5 100%)', vid: '/media/scout-tile2.mp4', poster: '/media/scout-tile2-poster.webp', loopStart: 0.44, loopEnd: 12.16 },
 'IDBridge': { bg: 'linear-gradient(180deg, #E1E7EF 0%, #C8D3E0 100%)', slide: true, shots: [
 { src: '/media/idb2-hq.webp', alt: 'IDBridge home screen with next steps toward a California State ID' },
 { src: '/media/idb2-documents.webp', alt: 'IDBridge documents screen with stored records' },
@@ -671,6 +690,7 @@ return { src: s.src, alt: s.alt || c.alt, anim: animName, dur: cycle + 's', dela
 aria: 'Open ' + c.title + ' case study',
 bg: ex.bg || '#F3F3F1',
 hasVid: !!ex.vid, noVid: !ex.vid, vid: ex.vid || '', poster: ex.poster || '',
+loopStart: ex.loopStart != null ? String(ex.loopStart) : '', loopEnd: ex.loopEnd != null ? String(ex.loopEnd) : '',
 nextTitle: CASES[(i + 1) % n].title,
 open: function (e) {
 var img = e.currentTarget.querySelector('.lf-wipe') || e.currentTarget.querySelector('img') || e.currentTarget;
