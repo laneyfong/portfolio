@@ -99,10 +99,10 @@ nav a:hover span{border-bottom-style:solid;border-bottom-color:#1F1F1F}
 @keyframes lf-ring{0%{opacity:.5;transform:scale(.85)}70%{opacity:0;transform:scale(1.45)}100%{opacity:0}}
 .lf-flow-pulse{stroke-dasharray:9 91;stroke-dashoffset:100;animation:lf-flowdash 3.2s linear infinite}
 @keyframes lf-flowdash{to{stroke-dashoffset:0}}
-@media (min-width:1100px){.lf-page{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-page>header.lf-side{grid-column:1;grid-row:1;justify-self:start;width:152px}.lf-page>main{grid-column:2;grid-row:1;max-width:none !important}.lf-page>.lf-clock{grid-column:3;grid-row:1;justify-self:end}}
+@media (min-width:1100px){.lf-page{display:grid !important;max-width:none !important;padding-left:72px !important;padding-right:72px !important;grid-template-columns:minmax(200px,1fr) minmax(0,700px) minmax(200px,1fr);justify-content:stretch;column-gap:0 !important}.lf-page>header.lf-side{grid-column:1;grid-row:1;justify-self:start;width:152px}.lf-page>main{grid-column:2;grid-row:1;max-width:none !important}.lf-page>.lf-topright{grid-column:3;grid-row:1;justify-self:end}}
 /* Frame: live Bay Area time, top-right, level with the name. Wide screens only. */
-.lf-clock{display:none}
-@media (min-width:1100px){.lf-clock{display:block;position:sticky;top:80px;font-size:14px;line-height:22px;color:#6E6A66;white-space:nowrap;font-variant-numeric:tabular-nums}}
+.lf-topright{display:none}
+@media (min-width:1100px){.lf-topright{display:block;position:sticky;top:80px;font-size:14px;line-height:22px;white-space:nowrap}.lf-topright a{display:inline-flex;align-items:center;gap:6px;color:#6E6A66}.lf-topright a:hover,.lf-topright a[aria-current]{color:#1F1F1F}.lf-nav-resume{display:none !important}}
 .lf-eyebrow{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:14px;line-height:22px;color:#6E6A66}
 .lf-eyebrow i{font-style:normal;color:#C9C5BF}
 .lf-eb-co{color:#1F1F1F}
@@ -171,7 +171,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <a href="/" aria-current="page" style="display: block; padding: 4px 0; color: #1F1F1F"><span style="border-bottom: 1px solid #1F1F1F">Index</span></a>
 <a href="/about" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">About</span></a>
 <a href="/lab" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Lab</span></a>
-<a href="/resume" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Resume</span></a>
+<a href="/resume" class="lf-nav-resume" style="display: block; padding: 4px 0"><span style="border-bottom: 1px dotted #A8A39D">Resume</span></a>
 </nav>
 </div>
 
@@ -224,7 +224,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 <p class="lf-colophon">Designed by me, built with Figma, Claude &amp; Cursor &#183; Set in Neue&nbsp;Montreal &amp; Averia.</p>
 
 </main>
-<aside class="lf-clock" aria-label="Laney&#8217;s local time">Bay Area &#183; {{ clock }}</aside>
+<div class="lf-topright"><a href="/resume"><span style="border-bottom: 1px dotted #A8A39D">Resume</span><svg aria-hidden="true" width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l7-7"></path><path d="M5 3.5h5.5V9"></path></svg></a></div>
 
 </div>
 
@@ -523,20 +523,7 @@ header.lf-side nav[aria-label="Primary"] a{padding:10px 0 !important}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
 class Component extends DCLogic {
-startClock() {
-// Live Bay Area time for the top-right of the frame, updated on each minute.
-var self = this;
-var fmt = function () { try { return new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit' }).format(new Date()); } catch (e) { return ''; } };
-var tick = function () { self.setState({ clock: fmt() }); };
-tick();
-this.clockT = setTimeout(function () { tick(); self.clockI = setInterval(tick, 60000); }, 60000 - (Date.now() % 60000) + 50);
-}
-stopClock() { clearTimeout(this.clockT); clearInterval(this.clockI); }
-componentWillUnmount() {
-this.stopClock();
-}
 componentDidMount() {
-this.startClock();
 // Tile videos with data-loop-end loop between data-loop-start and data-loop-end,
 // so clips with a fade from/to black at either end loop without flashing black.
 if (window.__lfTrimLoop) return;
@@ -866,7 +853,6 @@ curP.moreLine = moreCount > 0
 ? moreCount + ' more ' + (moreCount === 1 ? 'section' : 'sections') + ' — ' + sections.slice(1, 4).map(function (s) { return s.label.toLowerCase(); }).join(', ') + (moreCount > 3 ? ', and more' : '')
 : '';
 return Object.assign(chatVals, {
-clock: (this.state || {}).clock || '',
 projects: projects,
 isOpen: open >= 0,
 cur: curP,
